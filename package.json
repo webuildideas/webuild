@@ -7,8 +7,10 @@
   "author": "Vince Brown <vince@vincebrown.me>",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
     "start": "next start",
+    "build": "next build",
+    "export": "next export",
+    "deploy": "npm run build && npm run export",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "test": "NODE_ENV=test jest --watch",
