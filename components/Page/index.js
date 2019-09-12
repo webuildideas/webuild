@@ -16,10 +16,10 @@ import Nav from '../Nav'
 const Page = ({ children }) => (
   <ThemeProvider theme={styleTheme}>
     <>
+      <GlobalStyle />
       <Meta />
       <Nav />
       {children}
-      <GlobalStyle />
     </>
   </ThemeProvider>
 )

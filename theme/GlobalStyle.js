@@ -1,6 +1,11 @@
+// Packages
 import { createGlobalStyle } from 'styled-components'
 
+// Consts
+import { reset } from './reset'
+
 export const GlobalStyle = createGlobalStyle`
+  ${reset}
   @font-face {
     font-family: 'overpass';
     font-style: normal;
@@ -40,7 +45,15 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-size: 100%;
     font-family: ${props => props.theme.primaryFontFamily};
-    color: ${props => props.theme.black}
+    color: ${props => props.theme.black};
+
+    @media (max-width: 425px) {
+      font-size: 85%;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 92%;
+    }
   }
   *, *:before, *:after {
     box-sizing: inherit;
