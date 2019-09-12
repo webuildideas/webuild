@@ -1,11 +1,12 @@
-import React from 'react'
+// Components
+import PageIntro from '../components/PageIntro'
 
 const Home = () => (
   <div>
-    <div className="hero">
-      <h1 className="title">WeBuild</h1>
-      <p>Accelerate your startup's growth with great design</p>
-    </div>
+    <PageIntro
+      heading="World-class product design for your startup"
+      blurb="We combine our deep expertise in product design and strategy to accelerate business growth for industry leaders and fast-growing startups."
+    />
   </div>
 )
 
