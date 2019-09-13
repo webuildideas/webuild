@@ -1,4 +1,4 @@
-export const typeScale = {
+export const typography = {
   primaryFontFamily: "'overpass', Helvetica, sans-serif",
   f1: '3.25rem',
   f2: '2rem',

@@ -1,7 +1,7 @@
 import { colorPalette } from './colorPalette'
-import { typeScale } from './typeScale'
+import { typography } from './typography'
 
 export const styleTheme = {
   ...colorPalette,
-  ...typeScale,
+  ...typography,
 }
