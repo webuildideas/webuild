@@ -1,13 +1,15 @@
 // Components
+import React from 'react'
 import PageIntro from '../components/PageIntro'
+import Layout from '../components/layout'
 
 const WhatWeDo = () => (
-  <div>
+  <Layout>
     <PageIntro
       heading="What We Do"
       blurb="Services Blurb will go here once it is ready"
     />
-  </div>
+  </Layout>
 )
 
 export default WhatWeDo

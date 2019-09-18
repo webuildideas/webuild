@@ -1,6 +1,6 @@
 // Packages
 import React from 'react'
-import Link from 'next/link'
+import { Link } from 'gatsby'
 import styled from 'styled-components'
 
 const NavLink = styled.a`
@@ -14,16 +14,16 @@ const NavLink = styled.a`
 
 const Nav = () => (
   <div>
-    <Link href="/">
+    <Link to="/">
       <NavLink>webuild</NavLink>
     </Link>
-    <Link href="/who-we-are">
+    <Link to="/who-we-are">
       <NavLink>Who We Are</NavLink>
     </Link>
-    <Link href="/what-we-do">
+    <Link to="/what-we-do">
       <NavLink>What We Do</NavLink>
     </Link>
-    <Link href="/case-studies">
+    <Link to="/case-studies">
       <NavLink>Case Studies</NavLink>
     </Link>
   </div>
