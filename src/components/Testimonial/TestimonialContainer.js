@@ -21,6 +21,8 @@ const TestimonialContainer = styled.div`
     width: 50px;
     height: 50px;
     margin-right: 20px;
+    border-radius: 50%;
+    overflow: hidden;
   }
 
   .client-name {
