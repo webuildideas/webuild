@@ -6,41 +6,6 @@ import { reset } from './reset'
 
 export const GlobalStyle = createGlobalStyle`
   ${reset}
-  @font-face {
-    font-family: 'overpass';
-    font-style: normal;
-    font-weight: 400;
-    src: url('/static/fonts/Overpass-Regular.ttf') format('truetype');
-  }
-
-  @font-face {
-    font-family: 'overpass';
-    font-style: normal;
-    font-weight: 400;
-    src: url('/static/fonts/Overpass-Regular.ttf') format('truetype');
-  }
-
-  @font-face {
-    font-family: 'overpass';
-    font-style: normal;
-    font-weight: 700;
-    src: url('/static/fonts/Overpass-Bold.ttf') format('truetype');
-  }
-
-  @font-face {
-    font-family: 'overpass';
-    font-style: normal;
-    font-weight: 800;
-    src: url('/static/fonts/Overpass-ExtraBold.ttf') format('truetype');
-  }
-
-  @font-face {
-    font-family: 'overpass';
-    font-style: normal;
-    font-weight: 900;
-    src: url('/static/fonts/Overpass-Black.ttf') format('truetype');
-  }
-
   html {
     box-sizing: border-box;
     font-size: 100%;

@@ -25,6 +25,19 @@ module.exports = {
         accessToken: process.env.GATSBY_PROD_ACCESS_TOKEN,
       },
     },
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        google: {
+          families: [
+            'Overpass',
+            'Overpass:bold',
+            'Overpass:black',
+            'Overpass:extra-bold',
+          ],
+        },
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,

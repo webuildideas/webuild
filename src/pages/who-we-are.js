@@ -1,15 +1,15 @@
 // Components
 import React from 'react'
 import PageIntro from '../components/PageIntro'
-import Layout from '../components/layout'
+import Page from '../components/Page'
 
 const WhoWeAre = () => (
-  <Layout>
+  <Page>
     <PageIntro
       heading="Who we are"
       blurb="About us blurb will go here once it is ready"
     />
-  </Layout>
+  </Page>
 )
 
 export default WhoWeAre

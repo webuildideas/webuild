@@ -10,14 +10,12 @@ import { styleTheme } from '../../theme/styleTheme'
 import { GlobalStyle } from '../../theme/GlobalStyle'
 
 // Components
-import Meta from '../Meta'
 import Nav from '../Nav'
 
 const Page = ({ children }) => (
   <ThemeProvider theme={styleTheme}>
     <>
       <GlobalStyle />
-      <Meta />
       <Nav />
       {children}
     </>
@@ -25,7 +23,7 @@ const Page = ({ children }) => (
 )
 
 Page.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.node.isRequired,
 }
 
 export default Page

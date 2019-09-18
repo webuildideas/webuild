@@ -1,15 +1,19 @@
-// Components
+// Packages
 import React from 'react'
+
+// Components
 import PageIntro from '../components/PageIntro'
-import Layout from '../components/layout'
+import Page from '../components/Page'
+import SEO from '../components/Seo'
 
 const WhatWeDo = () => (
-  <Layout>
+  <Page>
+    <SEO title="What We Do" />
     <PageIntro
       heading="What We Do"
       blurb="Services Blurb will go here once it is ready"
     />
-  </Layout>
+  </Page>
 )
 
 export default WhatWeDo

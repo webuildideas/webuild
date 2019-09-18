@@ -1,5 +1,5 @@
 export const typography = {
-  primaryFontFamily: "'overpass', Helvetica, sans-serif",
+  primaryFontFamily: "'Overpass', Helvetica, sans-serif",
   f1: '3.25rem',
   f2: '2rem',
   f3: '1.625rem',
