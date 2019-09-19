@@ -11,11 +11,11 @@ import MaxWidthContainer from '../components/Shared/MaxWidthContainer'
 import Page from '../components/Page'
 import PageIntro from '../components/PageIntro'
 import TestimonialListing from '../components/TestimonialListing'
-import SEO from '../components/SEO'
+// import SEO from '../components/SEO'
 
 const Testimonials = ({ data }) => (
   <Page>
-    <SEO title="Testimonials" />
+    {/* <SEO title="Testimonials" /> */}
     <PageIntro
       heading="Why our partners love us"
       blurb="Collaboration, commitment, and design that delivers results<br/> keeps our partners raving about us."
