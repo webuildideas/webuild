@@ -18,9 +18,6 @@ const OverlayNav = ({ isOpen }) => (
       <li className="OverlayNavLink">
         <Link to="/case-studies">Case Studies</Link>
       </li>
-      <li className="OverlayNavLink">
-        <Link to="/testimonials">Testimonials</Link>
-      </li>
       <li>
         <Link to="/case-studies">Get in touch</Link>
       </li>
