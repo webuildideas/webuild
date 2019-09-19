@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 const NavContainer = styled.div`
+  position: relative;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   padding: 1.875rem 2.5rem;
   margin-bottom: 4rem;
@@ -11,25 +12,22 @@ const NavContainer = styled.div`
     align-content: center;
   }
 
-  .NavDesktopLinks {
-    @media screen and (max-width: 768px) {
-      display: none;
-    }
+  .Logo {
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
-  .mobile-NavIcon {
+  .NavIcon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    right: 2.5rem;
     cursor: pointer;
     @media screen and (min-width: 768px) {
       display: none;
-    }
-  }
-
-  a {
-    font-size: ${props => props.theme.f4};
-    margin-right: 8px;
-    cursor: pointer;
-    &:hover {
-      color: ${props => props.theme.blue};
     }
   }
 `

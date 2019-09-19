@@ -9,7 +9,7 @@ export const colorPalette = {
   subtleGreyHover: '#F7F7FF',
   white: '#FFF',
   darkBlue: '#202E3B',
-  darkBlueLight: '#2C3E50',
+  darkBlueHover: '#2C3E50',
   blue: '#2386FE',
   blueHover: '#4F9EFE',
   purple: '#7A33E1',

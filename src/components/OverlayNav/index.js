@@ -11,18 +11,18 @@ import OverlayNavContainer from './OverlayNavContainer'
 
 const OverlayNav = ({ isOpen, onClose }) => (
   <OverlayNavContainer isOpen={isOpen}>
-    <CloseIcon onClick={onClose} />
-    <ul>
-      <li>
+    <CloseIcon className="CloseIcon" onClick={onClose} />
+    <ul className="OverlayNavList">
+      <li className="OverlayNavLink">
         <Link to="/who-we-are">Who We Are</Link>
       </li>
-      <li>
+      <li className="OverlayNavLink">
         <Link to="/what-we-do">What We Do</Link>
       </li>
-      <li>
+      <li className="OverlayNavLink">
         <Link to="/case-studies">Case Studies</Link>
       </li>
-      <li>
+      <li className="OverlayNavLink">
         <Link to="/testimonials">Testimonials</Link>
       </li>
       <li>
