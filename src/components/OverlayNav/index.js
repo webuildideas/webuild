@@ -3,15 +3,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 
-// Assets
-import CloseIcon from '../../static/svgs/closeIcon.inline.svg'
-
 // Styled Components
 import OverlayNavContainer from './OverlayNavContainer'
 
-const OverlayNav = ({ isOpen, onClose }) => (
+const OverlayNav = ({ isOpen }) => (
   <OverlayNavContainer isOpen={isOpen}>
-    <CloseIcon className="CloseIcon" onClick={onClose} />
     <ul className="OverlayNavList">
       <li className="OverlayNavLink">
         <Link to="/who-we-are">Who We Are</Link>
@@ -34,7 +30,6 @@ const OverlayNav = ({ isOpen, onClose }) => (
 
 OverlayNav.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
 }
 
 export default OverlayNav

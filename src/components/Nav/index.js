@@ -1,5 +1,5 @@
 // Packages
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'gatsby'
 
 // Assets
@@ -15,41 +15,36 @@ import MaxWidthContainer from '../Shared/MaxWidthContainer'
 import { AppContext } from '../AppProvider'
 import OverlayNav from '../OverlayNav'
 
-const Nav = () => (
-  <AppContext.Consumer>
-    {context => (
-      <>
-        {console.log(context)}
-        <NavContainer>
-          <MaxWidthContainer className="MaxWidthContainer">
-            <Link className="Logo" to="/">
-              <Logo />
-            </Link>
-            <NavDesktopLinks className="NavDesktopLinks">
-              <li>
-                <Link to="/who-we-are">Who We Are</Link>
-              </li>
-              <li>
-                <Link to="/what-we-do">What We Do</Link>
-              </li>
-              <li>
-                <Link to="/case-studies">Case Studies</Link>
-              </li>
-            </NavDesktopLinks>
+const Nav = () => {
+  const { isNavOpen, toggleNav } = useContext(AppContext)
+  return (
+    <>
+      <NavContainer isSticky={false}>
+        <MaxWidthContainer className="MaxWidthContainer">
+          <Link className={`Logo ${isNavOpen ? 'isOpen' : ''}`} to="/">
+            <Logo />
+          </Link>
+          <NavDesktopLinks className="NavDesktopLinks">
+            <li>
+              <Link to="/who-we-are">Who We Are</Link>
+            </li>
+            <li>
+              <Link to="/what-we-do">What We Do</Link>
+            </li>
+            <li>
+              <Link to="/case-studies">Case Studies</Link>
+            </li>
+          </NavDesktopLinks>
 
-            <NavIcon
-              className="NavIcon"
-              onClick={() => context.toggleNav(true)}
-            />
-          </MaxWidthContainer>
-        </NavContainer>
-        <OverlayNav
-          isOpen={context.isNavOpen}
-          onClose={() => context.toggleNav(false)}
-        />
-      </>
-    )}
-  </AppContext.Consumer>
-)
+          <NavIcon
+            className={`NavIcon ${isNavOpen ? 'isOpen' : ''}`}
+            onClick={() => (isNavOpen ? toggleNav(false) : toggleNav(true))}
+          />
+        </MaxWidthContainer>
+      </NavContainer>
+      <OverlayNav isOpen={isNavOpen} onClose={() => toggleNav(false)} />
+    </>
+  )
+}
 
 export default Nav

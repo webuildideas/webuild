@@ -1,7 +1,11 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
- */
+/* eslint-disable */
 
-// You can delete this file if you're not using it
+// Packages
+const React = require('react')
+
+// Components
+const AppProvider = require('./src/components/AppProvider').default
+
+exports.wrapPageElement = ({element, props}) => {
+  return <AppProvider {...props}>{element}</AppProvider>
+}

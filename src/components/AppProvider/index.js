@@ -1,4 +1,9 @@
 /* eslint-disable react/no-unused-state */
+/**
+ * This components is only used in gatsby-browser.js
+ * to provide every page with this context.
+ */
+// Packages
 import React, { Component, createContext } from 'react'
 import PropTypes from 'prop-types'
 

@@ -12,8 +12,8 @@ const WhoWeAre = () => (
   <Page>
     <MaxWidthContainer>
       <PageIntro
-        heading="Who we are"
-        blurb="About us blurb will go here once it is ready"
+        heading="Not your average agency"
+        blurb="We’re a remote team of designers, product makers &amp; strategists passionate about design."
       />
     </MaxWidthContainer>
   </Page>

@@ -24,6 +24,7 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-helmet": "^5.2.1",
+    "react-masonry-component": "^6.2.1",
     "styled-components": "^4.3.2"
   },
   "devDependencies": {
@@ -60,7 +61,6 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "NODE_ENV=test jest --watch",

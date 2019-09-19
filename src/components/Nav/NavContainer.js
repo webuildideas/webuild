@@ -2,9 +2,9 @@ import styled from 'styled-components'
 
 const NavContainer = styled.div`
   position: relative;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: ${props =>
+    props.isSticky ? '0px 4px 8px rgba(0, 0, 0, 0.1)' : ''};
   padding: 1.875rem 2.5rem;
-  margin-bottom: 4rem;
 
   .MaxWidthContainer {
     display: flex;
@@ -13,19 +13,24 @@ const NavContainer = styled.div`
   }
 
   .Logo {
-    position: absolute;
+    position: relative;
     z-index: 10;
-    top: 50%;
-    transform: translateY(-50%);
+    fill: ${props => props.theme.black};
+    &.isOpen {
+      fill: ${props => props.theme.white};
+    }
   }
 
   .NavIcon {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    position: relative;
     z-index: 10;
-    right: 2.5rem;
     cursor: pointer;
+    fill: ${props => props.theme.blue};
+
+    &.isOpen {
+      fill: ${props => props.theme.white};
+    }
+
     @media screen and (min-width: 768px) {
       display: none;
     }

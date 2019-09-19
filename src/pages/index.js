@@ -6,7 +6,7 @@ import MaxWidthContainer from '../components/Shared/MaxWidthContainer'
 
 // Components
 import Page from '../components/Page'
-import SEO from '../components/Seo'
+import SEO from '../components/SEO'
 import PageIntro from '../components/PageIntro'
 
 const IndexPage = () => (
@@ -14,8 +14,8 @@ const IndexPage = () => (
     <SEO title="Home" />
     <MaxWidthContainer>
       <PageIntro
-        heading="World-class product design for your startup"
-        blurb="We combine our deep expertise in product design and strategy to accelerate business growth for industry leaders and fast-growing startups."
+        heading="Scaling startups <br />through user-driven design"
+        blurb="We’re a digital product design studio. We partner with inspiring entrepreneurs and growth-minded startups to achieve ambitious business goals through design."
       />
     </MaxWidthContainer>
   </Page>
