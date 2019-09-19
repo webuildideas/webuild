@@ -1,8 +1,6 @@
 export const colorPalette = {
   black: '#0E0E1B',
   blackHover: '#3E3E49',
-  bgBlack: '#202E3B',
-  bgBlackLight: '#2C3E50',
   grey: '#7B8D9D',
   greyHover: '#95A4B1',
   lightGrey: '#E4E4F3',
@@ -10,6 +8,8 @@ export const colorPalette = {
   subtleGrey: '#F5F5FF',
   subtleGreyHover: '#F7F7FF',
   white: '#FFF',
+  darkBlue: '#202E3B',
+  darkBlueLight: '#2C3E50',
   blue: '#2386FE',
   blueHover: '#4F9EFE',
   purple: '#7A33E1',
