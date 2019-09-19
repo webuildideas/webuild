@@ -7,7 +7,10 @@
 import React, { Component, createContext } from 'react'
 import PropTypes from 'prop-types'
 
-export const AppContext = createContext()
+export const AppContext = createContext({
+  isNavOpen: false,
+  toggleNav: () => {},
+})
 
 class AppProvider extends Component {
   static propTypes = {
