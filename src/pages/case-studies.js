@@ -7,11 +7,11 @@ import MaxWidthContainer from '../components/Shared/MaxWidthContainer'
 // Components
 import PageIntro from '../components/PageIntro'
 import Page from '../components/Page'
-// import SEO from '../components/SEO'
+import Meta from '../components/Meta'
 
 const CaseStudies = () => (
   <Page>
-    {/* <SEO title="What We Do" /> */}
+    <Meta title="Case Studies" />
     <MaxWidthContainer>
       <PageIntro
         heading="We help our partners solve <br> ambitious design challenges"

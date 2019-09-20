@@ -5,11 +5,13 @@ import React from 'react'
 import MaxWidthContainer from '../components/Shared/MaxWidthContainer'
 
 // Components
+import Meta from '../components/Meta'
 import PageIntro from '../components/PageIntro'
 import Page from '../components/Page'
 
 const WhoWeAre = () => (
   <Page>
+    <Meta title="Who We Are" />
     <MaxWidthContainer>
       <PageIntro
         heading="Not your average agency"

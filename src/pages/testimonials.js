@@ -8,14 +8,14 @@ import GradientBackground from '../components/Shared/GradientBackground'
 import MaxWidthContainer from '../components/Shared/MaxWidthContainer'
 
 // Components
+import Meta from '../components/Meta'
 import Page from '../components/Page'
 import PageIntro from '../components/PageIntro'
 import TestimonialListing from '../components/TestimonialListing'
-// import SEO from '../components/SEO'
 
 const Testimonials = ({ data }) => (
   <Page>
-    {/* <SEO title="Testimonials" /> */}
+    <Meta title="Testimonials" />
     <PageIntro
       heading="Why our partners love us"
       blurb="Collaboration, commitment, and design that delivers results<br/> keeps our partners raving about us."

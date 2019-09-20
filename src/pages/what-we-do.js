@@ -5,13 +5,13 @@ import React from 'react'
 import MaxWidthContainer from '../components/Shared/MaxWidthContainer'
 
 // Components
+import Meta from '../components/Meta'
 import PageIntro from '../components/PageIntro'
 import Page from '../components/Page'
-// import SEO from '../components/SEO'
 
 const WhatWeDo = () => (
   <Page>
-    {/* <SEO title="What We Do" /> */}
+    <Meta title="What We Do" />
     <MaxWidthContainer>
       <PageIntro
         heading="We deliver results for startups <br /> through user-driven design"

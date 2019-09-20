@@ -1,11 +1,13 @@
+// Packages
 import React from 'react'
 
+// Components
+import Meta from '../components/Meta'
 import Page from '../components/Page'
-// import SEO from '../components/SEO'
 
 const NotFoundPage = () => (
   <Page>
-    {/* <SEO title="404: Not found" /> */}
+    <Meta title="404: Not found" />
     <h1>NOT FOUND</h1>
     <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
   </Page>
