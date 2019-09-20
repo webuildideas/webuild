@@ -10,7 +10,7 @@ const Page = require('./src/components/Page').default
 exports.wrapPageElement = ({element, props}) => {
   return (
     <AppProvider {...props}>
-      <Page>{element}</Page>
+      <Page {...props}>{element}</Page>
     </AppProvider>
   )
 }
