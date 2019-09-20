@@ -15,13 +15,28 @@ export const AppContext = createContext({
 class AppProvider extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
+    path: PropTypes.string,
   }
 
-  state = {
-    isNavOpen: false,
-    toggleNav: navState => {
-      this.setState({ isNavOpen: navState })
-    },
+  constructor(props) {
+    super(props)
+    this.state = {
+      isNavOpen: false,
+      path: props.path,
+      toggleNav: navState => {
+        this.setState({ isNavOpen: navState })
+      },
+    }
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.path !== prevState.path) {
+      return {
+        isNavOpen: false,
+        path: nextProps.path,
+      }
+    }
+    return null
   }
 
   render() {
