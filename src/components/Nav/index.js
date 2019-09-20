@@ -2,9 +2,6 @@
 import React, { useContext } from 'react'
 import { Link } from 'gatsby'
 
-// Assets
-import Logo from '../../static/svgs/logo.inline.svg'
-
 // Styled Components
 import NavContainer from './NavContainer'
 import NavDesktopLinks from './NavDesktopLinks'
@@ -13,6 +10,7 @@ import MaxWidthContainer from '../Shared/MaxWidthContainer'
 // Components
 import { AppContext } from '../AppProvider'
 import OverlayNav from '../OverlayNav'
+import Logo from './Logo'
 import MenuIcon from './MenuIcon'
 
 const Nav = () => {
@@ -22,7 +20,7 @@ const Nav = () => {
       <NavContainer isSticky={false}>
         <MaxWidthContainer className="MaxWidthContainer">
           <Link className={`Logo ${isNavOpen ? 'isOpen' : ''}`} to="/">
-            <Logo />
+            <Logo className="Logo" isOpen={isNavOpen} />
           </Link>
           <NavDesktopLinks className="NavDesktopLinks">
             <li>

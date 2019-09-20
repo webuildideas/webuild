@@ -15,10 +15,6 @@ const NavContainer = styled.div`
   .Logo {
     position: relative;
     z-index: 10;
-    fill: ${props => props.theme.black};
-    &.isOpen {
-      fill: ${props => props.theme.white};
-    }
   }
 
   .MenuIcon {
@@ -26,7 +22,6 @@ const NavContainer = styled.div`
     z-index: 10;
     cursor: pointer;
     font-size: ${props => props.theme.f2};
-
     @media screen and (min-width: 768px) {
       display: none;
     }

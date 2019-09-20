@@ -4,14 +4,14 @@ import PropTypes from 'prop-types'
 import { animated, useSpring, config } from 'react-spring'
 
 const MenuIcon = ({ isOpen, ...props }) => {
-  const openedTransformationConfig = {
+  const openConfig = {
     top: 'translate(2, 7) rotate(0)',
     center: 'translate(2, 19) rotate(0)',
     bottom: 'translate(2, 31) rotate(0)',
     color: '#2386FE',
   }
 
-  const closedTransformationConfig = {
+  const closedConfig = {
     top: 'translate(7, 32) rotate(-45)',
     center: 'translate(10, 4) rotate(45)',
     bottom: 'translate(7, 32) rotate(-45)',
@@ -19,7 +19,7 @@ const MenuIcon = ({ isOpen, ...props }) => {
   }
 
   const { top, center, bottom, color } = useSpring({
-    to: isOpen ? closedTransformationConfig : openedTransformationConfig,
+    to: isOpen ? closedConfig : openConfig,
     config: config.stiff,
   })
 
