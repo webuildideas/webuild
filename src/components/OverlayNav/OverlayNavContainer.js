@@ -1,18 +1,17 @@
 // Packages
 import styled from 'styled-components'
+import { animated } from 'react-spring'
 
-const OverlayNavContainer = styled.div`
+const OverlayNavContainer = styled(animated.div)`
   position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   color: ${props => props.theme.white};
   background-color: ${props => props.theme.darkBlue};
-  font-size: ${props => props.theme.f2};
+  font-size: 32px;
   font-weight: 800;
   letter-spacing: 0.2px;
-  display: ${props => (props.isOpen ? 'block' : 'none')};
   padding: 2.1875rem 2.5rem;
 
   .CloseIcon {
@@ -21,11 +20,12 @@ const OverlayNavContainer = styled.div`
   }
 
   .OverlayNavList {
-    padding-top: 7.5rem;
+    padding-top: 11rem;
   }
 
   .OverlayNavLink {
     margin-bottom: 3rem;
+    position: relative;
   }
 `
 
