@@ -34,7 +34,7 @@ Testimonials.propTypes = {
   data: PropTypes.object.isRequired,
 }
 
-export const ALL_TESTIMONIAL_QUERY = graphql`
+export const TESTIMONIAL_LISTING_PAGE_QUERY = graphql`
   query AllTestimonialQuery {
     allContentfulTestimonial(sort: { order: ASC, fields: createdAt }) {
       edges {

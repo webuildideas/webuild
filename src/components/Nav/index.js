@@ -3,7 +3,6 @@ import React, { useContext } from 'react'
 import { Link } from 'gatsby'
 
 // Assets
-import NavIcon from '../../static/svgs/navIcon.inline.svg'
 import Logo from '../../static/svgs/logo.inline.svg'
 
 // Styled Components
@@ -14,6 +13,7 @@ import MaxWidthContainer from '../Shared/MaxWidthContainer'
 // Components
 import { AppContext } from '../AppProvider'
 import OverlayNav from '../OverlayNav'
+import MenuIcon from './MenuIcon'
 
 const Nav = () => {
   const { isNavOpen, toggleNav } = useContext(AppContext)
@@ -36,8 +36,9 @@ const Nav = () => {
             </li>
           </NavDesktopLinks>
 
-          <NavIcon
-            className={`NavIcon ${isNavOpen ? 'isOpen' : ''}`}
+          <MenuIcon
+            isOpen={isNavOpen}
+            className="Icon MenuIcon"
             onClick={() => (isNavOpen ? toggleNav(false) : toggleNav(true))}
           />
         </MaxWidthContainer>

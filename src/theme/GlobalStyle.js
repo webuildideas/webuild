@@ -13,13 +13,14 @@ export const GlobalStyle = createGlobalStyle`
     color: ${props => props.theme.black};
 
     @media (max-width: 425px) {
-      font-size: 85%;
+      font-size: 70%;
     }
 
-    @media (max-width: 768px) {
-      font-size: 92%;
+    @media (min-width: 425px ) and (max-width: 768px) {
+      font-size: 82%;
     }
   }
+
   *, *:before, *:after {
     box-sizing: inherit;
   }
@@ -56,4 +57,13 @@ export const GlobalStyle = createGlobalStyle`
     }
     &:focus { outline: none; }
 }
+
+.Icon {
+    position: relative;
+    display: none;
+    display: inline-flex;
+    align-self: center;
+    width: 1em;
+    height: 1em;
+  }
 `

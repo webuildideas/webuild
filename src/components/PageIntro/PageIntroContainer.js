@@ -13,7 +13,7 @@ const PageIntroContainer = styled.div`
     color: ${props => props.theme.black};
     text-align: center;
     font-weight: 900;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
   }
   h2 {
     font-size: ${props => props.theme.f5};
@@ -23,6 +23,7 @@ const PageIntroContainer = styled.div`
     max-width: 39.375rem;
     margin: 0 auto;
     line-height: 1.6;
+    font-weight: 400;
   }
 `
 

@@ -21,15 +21,11 @@ const NavContainer = styled.div`
     }
   }
 
-  .NavIcon {
+  .MenuIcon {
     position: relative;
     z-index: 10;
     cursor: pointer;
-    fill: ${props => props.theme.blue};
-
-    &.isOpen {
-      fill: ${props => props.theme.white};
-    }
+    font-size: ${props => props.theme.f2};
 
     @media screen and (min-width: 768px) {
       display: none;
