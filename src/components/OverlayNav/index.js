@@ -10,13 +10,14 @@ import OverlayNavContainer from './OverlayNavContainer'
 const OverlayNav = ({ isOpen }) => {
   const animationStyles = useSpring({
     opacity: isOpen ? 1 : 0,
-    bottom: isOpen ? '0px' : '-10px',
-    delay: 200,
+    bottom: isOpen ? '0px' : '-20px',
+    delay: 480,
     config: config.slow,
   })
 
   const overlayNavContainerAnimation = useSpring({
     left: isOpen ? '0' : '-100%',
+    config: { mass: 1, tension: 295, friction: 40 },
   })
 
   return (

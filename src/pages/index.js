@@ -8,14 +8,13 @@ import MaxWidthContainer from '../components/Shared/MaxWidthContainer'
 import GradientBackground from '../components/Shared/GradientBackground'
 
 // Components
-import Page from '../components/Page'
 import Meta from '../components/Meta'
 import PageIntro from '../components/PageIntro'
 import TestimonialListing from '../components/TestimonialListing'
 import StyledButton from '../components/Button'
 
 const IndexPage = ({ data }) => (
-  <Page>
+  <>
     <Meta title="Home" />
     <PageIntro
       heading="Scaling startups <br />through user-driven design"
@@ -30,7 +29,7 @@ const IndexPage = ({ data }) => (
         <StyledButton to="/testimonials">See More Kind Words </StyledButton>
       </MaxWidthContainer>
     </GradientBackground>
-  </Page>
+  </>
 )
 
 IndexPage.propTypes = {

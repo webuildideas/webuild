@@ -6,11 +6,10 @@ import MaxWidthContainer from '../components/Shared/MaxWidthContainer'
 
 // Components
 import PageIntro from '../components/PageIntro'
-import Page from '../components/Page'
 import Meta from '../components/Meta'
 
 const CaseStudies = () => (
-  <Page>
+  <>
     <Meta title="Case Studies" />
     <MaxWidthContainer>
       <PageIntro
@@ -18,7 +17,7 @@ const CaseStudies = () => (
         blurb="We partner with inspiring entrepreneurs and values-driven companies to design and create world-class digital products, tools and experiences."
       />
     </MaxWidthContainer>
-  </Page>
+  </>
 )
 
 export default CaseStudies

@@ -9,12 +9,11 @@ import MaxWidthContainer from '../components/Shared/MaxWidthContainer'
 
 // Components
 import Meta from '../components/Meta'
-import Page from '../components/Page'
 import PageIntro from '../components/PageIntro'
 import TestimonialListing from '../components/TestimonialListing'
 
 const Testimonials = ({ data }) => (
-  <Page>
+  <>
     <Meta title="Testimonials" />
     <PageIntro
       heading="Why our partners love us"
@@ -27,7 +26,7 @@ const Testimonials = ({ data }) => (
         />
       </MaxWidthContainer>
     </GradientBackground>
-  </Page>
+  </>
 )
 
 Testimonials.propTypes = {

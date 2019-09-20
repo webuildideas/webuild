@@ -7,10 +7,9 @@ import MaxWidthContainer from '../components/Shared/MaxWidthContainer'
 // Components
 import Meta from '../components/Meta'
 import PageIntro from '../components/PageIntro'
-import Page from '../components/Page'
 
 const WhoWeAre = () => (
-  <Page>
+  <>
     <Meta title="Who We Are" />
     <MaxWidthContainer>
       <PageIntro
@@ -18,7 +17,7 @@ const WhoWeAre = () => (
         blurb="We’re a remote team of designers, product makers &amp; strategists passionate about design."
       />
     </MaxWidthContainer>
-  </Page>
+  </>
 )
 
 export default WhoWeAre
