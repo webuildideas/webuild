@@ -9,14 +9,14 @@ import GradientBackground from '../components/Shared/GradientBackground'
 
 // Components
 import Page from '../components/Page'
-// import SEO from '../components/SEO'
+import Meta from '../components/Meta'
 import PageIntro from '../components/PageIntro'
 import TestimonialListing from '../components/TestimonialListing'
 import StyledButton from '../components/Button'
 
 const IndexPage = ({ data }) => (
   <Page>
-    {/* <SEO title="Home" /> */}
+    <Meta title="Home" />
     <PageIntro
       heading="Scaling startups <br />through user-driven design"
       blurb="We’re a digital product design studio. We partner with inspiring entrepreneurs and growth-minded startups to achieve ambitious business goals through design."
