@@ -2,8 +2,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-// Utils
-
 // Styled Components
 import TestimonialContainer from './TestimonialContainer'
 
@@ -19,11 +17,15 @@ const Testimonial = ({
     <p className="testimonial">{testimonial}</p>
     <div className="client">
       <div className="client-img">
-        <img
-          src={headshotSrc}
-          srcSet={headshotSrcSet}
-          alt={`${name} Headshot`}
-        />
+        {headshotSrcSet ? (
+          <img
+            src={headshotSrc}
+            srcSet={headshotSrcSet}
+            alt={`${name} Headshot`}
+          />
+        ) : (
+          <img src={headshotSrc} alt={`${name} Headshot`} />
+        )}
       </div>
       <div className="client-details">
         <p className="client-name">{name}</p>
@@ -36,7 +38,7 @@ const Testimonial = ({
 Testimonial.propTypes = {
   name: PropTypes.string.isRequired,
   headshotSrc: PropTypes.string.isRequired,
-  headshotSrcSet: PropTypes.string.isRequired,
+  headshotSrcSet: PropTypes.string,
   companyRole: PropTypes.string.isRequired,
   company: PropTypes.string.isRequired,
   testimonial: PropTypes.string.isRequired,

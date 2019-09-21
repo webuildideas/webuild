@@ -1,7 +1,7 @@
 {
   "name": "WeBuild",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "WeBuild Portfolio Site built with Gatsby and Contentful",
   "version": "1.0.0",
   "author": "Vince Brown <vince@vincebrown.me>",
   "dependencies": {
@@ -31,7 +31,9 @@
   "devDependencies": {
     "@babel/core": "^7.6.0",
     "@storybook/addon-actions": "^5.2.1",
+    "@storybook/addon-knobs": "^5.2.1",
     "@storybook/addon-links": "^5.2.1",
+    "@storybook/addon-options": "^5.2.1",
     "@storybook/addons": "^5.2.1",
     "@storybook/react": "^5.2.1",
     "babel-eslint": "^9.0.0",
@@ -55,10 +57,6 @@
     "jest": "^24.9.0",
     "prettier": "^1.16.4"
   },
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -71,9 +69,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/webuildideas/webuild"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/webuildideas/webuild/issues"
   }
 }
