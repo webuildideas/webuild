@@ -1,8 +1,8 @@
 // Packages
-import React, { useRef } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
-import { animated, useSpring, useTrail, useChain } from 'react-spring'
+import { animated, useSpring, useTrail } from 'react-spring'
 
 // Styled Components
 import OverlayNavContainer from './OverlayNavContainer'
@@ -27,14 +27,12 @@ const OverlayNav = ({ isOpen }) => {
     },
   ]
 
-  const overlaySpringRef = useRef()
   const overlaySpring = useSpring({
     // ref: overlaySpringRef,
     left: isOpen ? '0%' : '-100%',
     config: { mass: 1, tension: 295, friction: 40 },
   })
 
-  const linkTrailRef = useRef()
   const linkTrail = useTrail(navLinks.length, {
     // ref: linkTrailRef,
     from: {
@@ -44,6 +42,7 @@ const OverlayNav = ({ isOpen }) => {
     opacity: isOpen ? 1 : 0,
     y: 0,
     config: { mass: 1, tension: 295, friction: 40 },
+    delay: 450,
   })
 
   // useChain([overlaySpringRef, linkTrailRef], [0, 2])
