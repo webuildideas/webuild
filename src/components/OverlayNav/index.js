@@ -1,19 +1,14 @@
 // Packages
-import React from 'react'
+import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
-import { animated, useSpring, useTrail } from 'react-spring'
+import { animated, useSpring, useTrail, useChain } from 'react-spring'
 
 // Styled Components
 import OverlayNavContainer from './OverlayNavContainer'
 
 const OverlayNav = ({ isOpen }) => {
-  const overlayProps = useSpring({
-    x: isOpen ? '0' : '-100',
-    config: { mass: 1, tension: 295, friction: 40 },
-  })
-
-  const overlayNavLinks = [
+  const navLinks = [
     {
       title: 'Who we are',
       slug: '/who-we-are',
@@ -32,28 +27,30 @@ const OverlayNav = ({ isOpen }) => {
     },
   ]
 
-  const linkTrial = useTrail(overlayNavLinks.length, {
+  const overlaySpringRef = useRef()
+  const overlaySpring = useSpring({
+    // ref: overlaySpringRef,
+    left: isOpen ? '0%' : '-100%',
     config: { mass: 1, tension: 295, friction: 40 },
+  })
+
+  const linkTrailRef = useRef()
+  const linkTrail = useTrail(navLinks.length, {
+    // ref: linkTrailRef,
     from: {
       opacity: 0,
       y: 100,
     },
     opacity: isOpen ? 1 : 0,
     y: 0,
-    delay: 450,
+    config: { mass: 1, tension: 295, friction: 40 },
   })
 
+  // useChain([overlaySpringRef, linkTrailRef], [0, 2])
   return (
-    <OverlayNavContainer
-      isOpen={isOpen}
-      style={{
-        ...overlayProps,
-        // eslint-disable-next-line no-shadow
-        transform: overlayProps.x.interpolate(x => `translate3d(${x}%, 0,0)`),
-      }}
-    >
+    <OverlayNavContainer isOpen={isOpen} style={overlaySpring}>
       <ul className="OverlayNavList">
-        {linkTrial.map(({ y, ...rest }, index) => (
+        {linkTrail.map(({ y, ...rest }, index) => (
           <animated.li
             key={`navLink-${index}`}
             className="OverlayNavLink"
@@ -63,9 +60,7 @@ const OverlayNav = ({ isOpen }) => {
               transform: y.interpolate(y => `translate3d(0,${y}px,0)`),
             }}
           >
-            <Link to={overlayNavLinks[index].slug}>
-              {overlayNavLinks[index].title}
-            </Link>
+            <Link to={navLinks[index].slug}>{navLinks[index].title}</Link>
           </animated.li>
         ))}
       </ul>

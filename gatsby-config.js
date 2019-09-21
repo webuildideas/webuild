@@ -67,10 +67,10 @@ module.exports = {
         name: `WeBuild`,
         short_name: `WeBuild`,
         start_url: `/`,
-        background_color: `#000`,
-        theme_color: `#000`,
+        background_color: `#202E3B`,
+        theme_color: `#202E3B`,
         display: `minimal-ui`,
-        icon: `src/static/images/webuild-icon.png`, // This path is relative to the root of the site.
+        icon: `src/static/images/webuild-favicon.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
