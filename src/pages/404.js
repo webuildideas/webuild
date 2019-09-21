@@ -1,15 +1,23 @@
 // Packages
 import React from 'react'
 
+// Styled Components
+import MaxWidthContainer from '../components/Shared/MaxWidthContainer'
+import StyledButton from '../components/Button'
+
 // Components
+import PageIntro from '../components/PageIntro'
 import Meta from '../components/Meta'
 
 const NotFoundPage = () => (
-  <>
+  <MaxWidthContainer style={{ textAlign: 'center' }}>
     <Meta title="404: Not found" />
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  </>
+    <PageIntro
+      heading="You must be lost."
+      blurb="Error 404. Looks like this page doesn't exist..."
+    />
+    <StyledButton to="/">Back To Home</StyledButton>
+  </MaxWidthContainer>
 )
 
 export default NotFoundPage
