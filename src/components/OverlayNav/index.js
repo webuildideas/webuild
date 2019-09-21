@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
-import { animated, useSpring, useTrail } from 'react-spring'
+import { animated, useSpring, useTrail, config } from 'react-spring'
 
 // Styled Components
 import OverlayNavContainer from './OverlayNavContainer'
@@ -42,7 +42,13 @@ const OverlayNav = ({ isOpen }) => {
     opacity: isOpen ? 1 : 0,
     y: 0,
     config: { mass: 1, tension: 295, friction: 40 },
-    delay: 450,
+    delay: 550,
+  })
+
+  const fadeInSpring = useSpring({
+    opacity: isOpen ? 1 : 0,
+    config: config.molasses,
+    delay: 800,
   })
 
   return (
@@ -64,23 +70,25 @@ const OverlayNav = ({ isOpen }) => {
       </ul>
 
       <div className="OverlayNav__social">
-        <p>Follow Us On</p>
-        <a
+        <animated.p style={fadeInSpring}>Follow Us On</animated.p>
+        <animated.a
           className="OverlayNavLink"
           href="https://www.dribbble.com/webuild/"
           target="_blank"
           rel="noopener noreferrer"
+          style={fadeInSpring}
         >
           Dribbble
-        </a>
-        <a
+        </animated.a>
+        <animated.a
           className="OverlayNavLink"
           href="https://www.instagram.com/webuild.io/"
           target="_blank"
           rel="noopener noreferrer"
+          style={fadeInSpring}
         >
           Instagram
-        </a>
+        </animated.a>
       </div>
     </OverlayNavContainer>
   )
