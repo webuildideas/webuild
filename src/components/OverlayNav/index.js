@@ -45,7 +45,6 @@ const OverlayNav = ({ isOpen }) => {
     delay: 450,
   })
 
-  // useChain([overlaySpringRef, linkTrailRef], [0, 2])
   return (
     <OverlayNavContainer isOpen={isOpen} style={overlaySpring}>
       <ul className="OverlayNavList">
@@ -63,6 +62,26 @@ const OverlayNav = ({ isOpen }) => {
           </animated.li>
         ))}
       </ul>
+
+      <div className="OverlayNav__social">
+        <p>Follow Us On</p>
+        <a
+          className="OverlayNavLink"
+          href="https://www.dribbble.com/webuild/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Dribbble
+        </a>
+        <a
+          className="OverlayNavLink"
+          href="https://www.instagram.com/webuild.io/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Instagram
+        </a>
+      </div>
     </OverlayNavContainer>
   )
 }
