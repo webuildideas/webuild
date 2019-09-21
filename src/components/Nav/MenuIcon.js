@@ -8,7 +8,7 @@ const MenuIcon = ({ isOpen, ...props }) => {
     top: 'translate(2, 7) rotate(0)',
     center: 'translate(2, 19) rotate(0)',
     bottom: 'translate(2, 31) rotate(0)',
-    color: '#2386FE',
+    color: '#0E0E1B',
   }
 
   const closedConfig = {

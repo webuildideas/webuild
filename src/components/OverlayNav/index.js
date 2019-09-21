@@ -2,39 +2,72 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
-import { animated, useSpring, config } from 'react-spring'
+import { animated, useSpring, useTrail } from 'react-spring'
 
 // Styled Components
 import OverlayNavContainer from './OverlayNavContainer'
 
 const OverlayNav = ({ isOpen }) => {
-  const animationStyles = useSpring({
-    opacity: isOpen ? 1 : 0,
-    bottom: isOpen ? '0px' : '-20px',
-    delay: 480,
-    config: config.slow,
-  })
-
-  const overlayNavContainerAnimation = useSpring({
-    left: isOpen ? '0' : '-100%',
+  const overlayProps = useSpring({
+    x: isOpen ? '0' : '-100',
     config: { mass: 1, tension: 295, friction: 40 },
   })
 
+  const overlayNavLinks = [
+    {
+      title: 'Who we are',
+      slug: '/who-we-are',
+    },
+    {
+      title: 'What we do',
+      slug: '/what-we-do',
+    },
+    {
+      title: 'Case Studies',
+      slug: '/case-studies',
+    },
+    {
+      title: 'Get in touch',
+      slug: '/get-in-touch',
+    },
+  ]
+
+  const linkTrial = useTrail(overlayNavLinks.length, {
+    config: { mass: 1, tension: 295, friction: 40 },
+    from: {
+      opacity: 0,
+      y: 100,
+    },
+    opacity: isOpen ? 1 : 0,
+    y: 0,
+    delay: 450,
+  })
+
   return (
-    <OverlayNavContainer isOpen={isOpen} style={overlayNavContainerAnimation}>
+    <OverlayNavContainer
+      isOpen={isOpen}
+      style={{
+        ...overlayProps,
+        // eslint-disable-next-line no-shadow
+        transform: overlayProps.x.interpolate(x => `translate3d(${x}%, 0,0)`),
+      }}
+    >
       <ul className="OverlayNavList">
-        <animated.li className="OverlayNavLink" style={animationStyles}>
-          <Link to="/who-we-are">Who we are</Link>
-        </animated.li>
-        <animated.li className="OverlayNavLink" style={animationStyles}>
-          <Link to="/what-we-do">What we do</Link>
-        </animated.li>
-        <animated.li className="OverlayNavLink" style={animationStyles}>
-          <Link to="/case-studies">Case Studies</Link>
-        </animated.li>
-        <animated.li className="OverlayNavLink" style={animationStyles}>
-          <Link to="/case-studies">Get in touch</Link>
-        </animated.li>
+        {linkTrial.map(({ y, ...rest }, index) => (
+          <animated.li
+            key={`navLink-${index}`}
+            className="OverlayNavLink"
+            style={{
+              ...rest,
+              // eslint-disable-next-line no-shadow
+              transform: y.interpolate(y => `translate3d(0,${y}px,0)`),
+            }}
+          >
+            <Link to={overlayNavLinks[index].slug}>
+              {overlayNavLinks[index].title}
+            </Link>
+          </animated.li>
+        ))}
       </ul>
     </OverlayNavContainer>
   )

@@ -25,7 +25,6 @@ const OverlayNavContainer = styled(animated.div)`
 
   .OverlayNavLink {
     margin-bottom: 3rem;
-    position: relative;
   }
 `
 
