@@ -13,7 +13,6 @@ const Button = styled(props => <Link {...props} />)`
   line-height: 1;
   padding: 1.75rem 2.825rem;
   border-radius: 4px;
-  margin: 2rem auto;
   max-width: 17.5rem;
 `
 

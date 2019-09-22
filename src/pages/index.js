@@ -24,7 +24,7 @@ const IndexPage = ({ data }) => (
       blurb="We’re a digital product design studio. We partner with inspiring entrepreneurs and growth-minded startups to achieve ambitious business goals through design."
     />
     <GradientBackground gradient="linear-gradient(161.81deg, #F5F5FF -26.24%, rgba(250, 250, 251, 0) 85.41%);">
-      <SiteMaxWidthContainer padding={`${rhythmUnit(3.5)} 0 0`}>
+      <SiteMaxWidthContainer padding={`${rhythmUnit(3.5)} 0`}>
         <h5
           className="h5"
           style={{
@@ -38,7 +38,14 @@ const IndexPage = ({ data }) => (
         <TestimonialListing
           testimonials={data.allContentfulTestimonial.edges}
         />
-        <StyledButton to="/testimonials">See More Kind Words </StyledButton>
+        <div
+          style={{
+            textAlign: 'center',
+            marginTop: rhythmUnit(2),
+          }}
+        >
+          <StyledButton to="/testimonials">See More Kind Words </StyledButton>
+        </div>
       </SiteMaxWidthContainer>
     </GradientBackground>
   </>
