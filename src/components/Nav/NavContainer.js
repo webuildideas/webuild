@@ -6,7 +6,7 @@ const NavContainer = styled.div`
     props.isSticky ? '0px 4px 8px rgba(0, 0, 0, 0.1)' : ''};
   padding: 1.875rem 2.5rem;
 
-  .MaxWidthContainer {
+  .SiteMaxWidthContainer {
     display: flex;
     justify-content: space-between;
     align-content: center;

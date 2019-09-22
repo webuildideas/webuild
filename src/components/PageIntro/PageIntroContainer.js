@@ -22,6 +22,12 @@ const PageIntroContainer = styled.div`
     margin: 0 auto;
     line-height: 1.6;
     font-weight: 400;
+    br {
+      display: none;
+      @media (min-width: 600px) {
+        display: block;
+      }
+    }
   }
 `
 

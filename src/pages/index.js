@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
 // Styled Components
-import MaxWidthContainer from '../components/Shared/MaxWidthContainer'
+import SiteMaxWidthContainer from '../components/Shared/SiteMaxWidthContainer'
 import GradientBackground from '../components/Shared/GradientBackground'
 
 // Components
@@ -21,13 +21,13 @@ const IndexPage = ({ data }) => (
       blurb="We’re a digital product design studio. We partner with inspiring entrepreneurs and growth-minded startups to achieve ambitious business goals through design."
     />
     <GradientBackground gradient="linear-gradient(161.81deg, #F5F5FF -26.24%, rgba(250, 250, 251, 0) 85.41%);">
-      <MaxWidthContainer padding="5.625rem 0">
+      <SiteMaxWidthContainer padding="5.625rem 0">
         <h5>Why our partners love us</h5>
         <TestimonialListing
           testimonials={data.allContentfulTestimonial.edges}
         />
         <StyledButton to="/testimonials">See More Kind Words </StyledButton>
-      </MaxWidthContainer>
+      </SiteMaxWidthContainer>
     </GradientBackground>
   </>
 )

@@ -5,7 +5,7 @@ import { Link } from 'gatsby'
 // Styled Components
 import NavContainer from './NavContainer'
 import NavDesktopLinks from './NavDesktopLinks'
-import MaxWidthContainer from '../Shared/MaxWidthContainer'
+import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
 
 // Components
 import { AppContext } from '../AppProvider'
@@ -18,7 +18,7 @@ const Nav = () => {
   return (
     <>
       <NavContainer isSticky={false}>
-        <MaxWidthContainer className="MaxWidthContainer">
+        <SiteMaxWidthContainer className="SiteMaxWidthContainer">
           <Link className={`Logo ${isNavOpen ? 'isOpen' : ''}`} to="/">
             <Logo className="Logo" isOpen={isNavOpen} />
           </Link>
@@ -39,7 +39,7 @@ const Nav = () => {
             className="Icon MenuIcon"
             onClick={() => (isNavOpen ? toggleNav(false) : toggleNav(true))}
           />
-        </MaxWidthContainer>
+        </SiteMaxWidthContainer>
       </NavContainer>
       <OverlayNav isOpen={isNavOpen} onClose={() => toggleNav(false)} />
     </>

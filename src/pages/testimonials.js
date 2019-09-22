@@ -5,7 +5,7 @@ import { graphql } from 'gatsby'
 
 // Styled Components
 import GradientBackground from '../components/Shared/GradientBackground'
-import MaxWidthContainer from '../components/Shared/MaxWidthContainer'
+import SiteMaxWidthContainer from '../components/Shared/SiteMaxWidthContainer'
 
 // Components
 import Meta from '../components/Meta'
@@ -20,11 +20,11 @@ const Testimonials = ({ data }) => (
       blurb="Collaboration, commitment, and design that delivers results<br/> keeps our partners raving about us."
     />
     <GradientBackground gradient="linear-gradient(161.81deg, #F5F5FF -26.24%, rgba(250, 250, 251, 0) 85.41%);">
-      <MaxWidthContainer padding="5.625rem 0">
+      <SiteMaxWidthContainer padding="5.625rem 0">
         <TestimonialListing
           testimonials={data.allContentfulTestimonial.edges}
         />
-      </MaxWidthContainer>
+      </SiteMaxWidthContainer>
     </GradientBackground>
   </>
 )
