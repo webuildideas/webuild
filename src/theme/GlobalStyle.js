@@ -87,7 +87,7 @@ export const GlobalStyle = createGlobalStyle`
   h3,
   .h3{
     font-size: ${props => props.theme.f3};
-    letter-spacing: -0.2rem;
+    letter-spacing: -0.02rem;
     font-weight: 800;
   }
 
@@ -150,13 +150,13 @@ export const GlobalStyle = createGlobalStyle`
   h1,
   h2,
   h3 {
-    line-height: 1.2;
+    line-height: 1.2 // 120%;
   }
   
   h4,
   h5,
   h6 {
-    line-height: 1.4;
+    line-height: 1.4 // 140%;
   }
 
   .Icon {
