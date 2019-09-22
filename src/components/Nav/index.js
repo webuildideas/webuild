@@ -24,6 +24,7 @@ const Nav = () => {
         onPin={() => togglePinnedNav(true)}
         onUnpin={() => togglePinnedNav(false)}
         onUnfix={() => togglePinnedNav(false)}
+        style={{ transition: 'all 600ms ease-in-out' }}
       >
         <NavContainer isPinned={isNavPinned}>
           <SiteMaxWidthContainer className="SiteMaxWidthContainer">
