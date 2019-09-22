@@ -150,13 +150,15 @@ export const GlobalStyle = createGlobalStyle`
   h1,
   h2,
   h3 {
-    line-height: 1.2 // 120%;
+    line-height: 1.2;
+    font-weight: 900;
   }
   
   h4,
   h5,
   h6 {
-    line-height: 1.4 // 140%;
+    line-height: 1.4;
+    font-weight: 800;
   }
 
   .Icon {

@@ -3,6 +3,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
+// Utils
+import { rhythmUnit } from '../utils/typography'
+
 // Styled Components
 import SiteMaxWidthContainer from '../components/Shared/SiteMaxWidthContainer'
 import GradientBackground from '../components/Shared/GradientBackground'
@@ -21,8 +24,17 @@ const IndexPage = ({ data }) => (
       blurb="We’re a digital product design studio. We partner with inspiring entrepreneurs and growth-minded startups to achieve ambitious business goals through design."
     />
     <GradientBackground gradient="linear-gradient(161.81deg, #F5F5FF -26.24%, rgba(250, 250, 251, 0) 85.41%);">
-      <SiteMaxWidthContainer padding="5.625rem 0">
-        <h5>Why our partners love us</h5>
+      <SiteMaxWidthContainer padding={`${rhythmUnit(3.5)} 0 0`}>
+        <h5
+          className="h5"
+          style={{
+            textTransform: 'uppercase',
+            marginBottom: rhythmUnit(1.25),
+            textAlign: 'center',
+          }}
+        >
+          Why our partners love us
+        </h5>
         <TestimonialListing
           testimonials={data.allContentfulTestimonial.edges}
         />
