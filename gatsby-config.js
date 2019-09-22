@@ -18,7 +18,7 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-react-svg',
+      resolve: `gatsby-plugin-react-svg`,
       options: {
         rule: {
           include: /\.inline\.svg$/,
@@ -45,15 +45,10 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-web-font-loader',
+      resolve: `gatsby-plugin-web-font-loader`,
       options: {
         google: {
-          families: [
-            'Overpass',
-            'Overpass:bold',
-            'Overpass:black',
-            'Overpass:extra-bold',
-          ],
+          families: [`Overpass`, `Overpass:black`, `Overpass:extra-bold`],
         },
       },
     },

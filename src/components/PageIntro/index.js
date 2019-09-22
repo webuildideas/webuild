@@ -12,7 +12,7 @@ const PageIntro = ({ heading, blurb }) => {
   return (
     <PageIntroContainer bgColor="#fff">
       <h1 dangerouslySetInnerHTML={createHeader()} />
-      <h2 dangerouslySetInnerHTML={createBlurb()} />
+      <h2 className="h5" dangerouslySetInnerHTML={createBlurb()} />
     </PageIntroContainer>
   )
 }
