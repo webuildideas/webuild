@@ -67,8 +67,8 @@ module.exports = {
         name: `WeBuild`,
         short_name: `WeBuild`,
         start_url: `/`,
-        background_color: `#202E3B`,
-        theme_color: `#202E3B`,
+        background_color: `#2C3E50`,
+        theme_color: `#2C3E50`,
         display: `minimal-ui`,
         icon: `src/static/images/webuild-favicon.png`, // This path is relative to the root of the site.
       },

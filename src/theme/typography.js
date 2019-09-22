@@ -1,3 +1,10 @@
+// f1 - 52px
+// f2 - 32px
+// f3 - 26px
+// f4 - 24px
+// f5 - 20px
+// f6 - 15px
+// f7 - 13px
 export const typography = {
   primaryFontFamily: "'Overpass', Helvetica, sans-serif",
   f1: '3.25rem',
@@ -8,10 +15,3 @@ export const typography = {
   f6: '.9375rem',
   f7: '.8125rem',
 }
-// f1 - 52px
-// f2 - 32px
-// f3 - 26px
-// f4 - 24px
-// f5 - 20px
-// f6 - 15px
-// f7 - 13px

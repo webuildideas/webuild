@@ -56,4 +56,4 @@ addDecorator(story => (
   </AppProvider>
 ))
 
-configure(loadStories, module)
+configure(loadStories, module) 
