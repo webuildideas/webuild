@@ -2,6 +2,9 @@
 import styled from 'styled-components'
 import { animated } from 'react-spring'
 
+// utils
+import { rhythmUnit } from '../../utils/typography'
+
 const OverlayNavContainer = styled(animated.div)`
   position: fixed;
   top: 0;
@@ -9,12 +12,12 @@ const OverlayNavContainer = styled(animated.div)`
   height: 100%;
   color: ${props => props.theme.white};
   background-color: ${props => props.theme.darkBlue};
-  font-size: 28px;
+  font-size: ${props => props.theme.f2};
   font-weight: 800;
-  letter-spacing: 0.2px;
+  letter-spacing: ${props => props.theme.tracked};
   padding: 2.1875rem 2.5rem;
   @media (min-height: 600px) {
-    font-size: 32px;
+    font-size: 2rem;
   }
 
   .CloseIcon {
@@ -23,32 +26,40 @@ const OverlayNavContainer = styled(animated.div)`
   }
 
   .OverlayNavList {
-    padding-top: 90px;
+    padding-top: ${() => rhythmUnit(2.75)};
 
     @media (min-height: 600px) {
-      padding-top: 120px;
+      padding-top: ${() => rhythmUnit(4.75)};
     }
   }
 
   .OverlayNavLink {
     display: block;
-    margin-bottom: 3rem;
+    margin-bottom: ${() => rhythmUnit(1.5)};
   }
 
   .OverlayNav__social {
-    padding-top: 60px;
+    padding-top: ${() => rhythmUnit(1.5)};
+
     @media (min-height: 600px) {
-      padding-top: 100px;
+      padding-top: ${() => rhythmUnit(3)};
     }
+
     @media (min-height: 690px) {
-      padding-top: 160px;
+      padding-top: ${() => rhythmUnit(5)};
     }
+
+    .OverlayNavLink {
+      font-size: ${props => props.theme.f2};
+      margin-bottom: ${() => rhythmUnit(1.25)};
+    }
+
     p {
       text-transform: uppercase;
       font-size: ${props => props.theme.f6};
       color: ${props => props.theme.grey};
       font-weight: 800;
-      margin-bottom: 2rem;
+      margin-bottom: ${() => rhythmUnit(0.75)};
     }
   }
 `

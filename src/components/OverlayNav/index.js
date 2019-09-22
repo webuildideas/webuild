@@ -52,7 +52,7 @@ const OverlayNav = ({ isOpen }) => {
   })
 
   return (
-    <OverlayNavContainer isOpen={isOpen} style={overlaySpring}>
+    <OverlayNavContainer style={overlaySpring}>
       <ul className="OverlayNavList">
         {linkTrail.map(({ y, ...rest }, index) => (
           <animated.li
