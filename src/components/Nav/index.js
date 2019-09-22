@@ -1,6 +1,7 @@
 // Packages
 import React, { useContext } from 'react'
 import { Link } from 'gatsby'
+import Helmet from 'react-helmet'
 import Headroom from 'react-headroom'
 
 // Styled Components
@@ -20,6 +21,11 @@ const Nav = () => {
   )
   return (
     <>
+      <Helmet
+        bodyAttributes={{
+          class: isNavOpen && 'overlay-is-open',
+        }}
+      />
       <Headroom
         onPin={() => togglePinnedNav(true)}
         onUnpin={() => togglePinnedNav(false)}

@@ -30,6 +30,11 @@ export const GlobalStyle = createGlobalStyle`
   body {
     padding: 0;
     margin: 0;
+    &.overlay-is-open {
+      position: fixed;
+      height: 100vh;
+      overflow-y: hidden;
+    }
   }
 
   a {
