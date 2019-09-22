@@ -11,16 +11,15 @@ export const GlobalStyle = createGlobalStyle`
     font-family: ${props => props.theme.primaryFontFamily};
     color: ${props => props.theme.black};
     // Base Font size is 20px
-    // One Rhythm unit is 20 * 1.6 = 32px or 1.6rem
     font-size: 125%;
     line-height: 1.6;
 
     @media (max-width: 425px) {
-      font-size: 70%;
+      font-size: 100%; // Base Font Size 16px
     }
 
     @media (min-width: 425px ) and (max-width: 768px) {
-      font-size: 82%;
+      font-size: 112.5%; // Base Font Size 18px
     }
   }
 
