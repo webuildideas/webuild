@@ -3,7 +3,8 @@ import styled from 'styled-components'
 const NavContainer = styled.div`
   position: relative;
   box-shadow: ${props =>
-    props.isSticky ? '0px 4px 8px rgba(0, 0, 0, 0.1)' : ''};
+    props.isPinned ? '0px 4px 8px rgba(0, 0, 0, 0.1)' : ''};
+  background-color: ${props => (props.isPinned ? props.theme.white : '')};
   padding: 1.875rem 2.5rem;
 
   .SiteMaxWidthContainer {

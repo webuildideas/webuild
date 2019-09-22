@@ -9,7 +9,9 @@ import PropTypes from 'prop-types'
 
 export const AppContext = createContext({
   isNavOpen: false,
+  isNavPinned: false,
   toggleNav: () => {},
+  togglePinnedNav: () => {},
 })
 
 class AppProvider extends Component {
@@ -25,6 +27,9 @@ class AppProvider extends Component {
       path: props.path,
       toggleNav: navState => {
         this.setState({ isNavOpen: navState })
+      },
+      togglePinnedNav: navState => {
+        this.setState({ isNavPinned: navState })
       },
     }
   }
