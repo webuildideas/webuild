@@ -6,6 +6,16 @@
 // Packages
 import React, { Component, createContext } from 'react'
 import PropTypes from 'prop-types'
+import { ThemeProvider } from 'styled-components'
+
+// Consts
+import { styleTheme } from '../../theme/styleTheme'
+
+// Styled Components
+import { GlobalStyle } from '../../theme/GlobalStyle'
+
+// Components
+import Nav from '../Nav'
 
 export const AppContext = createContext({
   isNavOpen: false,
@@ -24,6 +34,7 @@ class AppProvider extends Component {
     super(props)
     this.state = {
       isNavOpen: false,
+      isNavPinned: false,
       path: props.path,
       toggleNav: navState => {
         this.setState({ isNavOpen: navState })
@@ -46,8 +57,20 @@ class AppProvider extends Component {
 
   render() {
     const { children } = this.props
+    const { isNavOpen, toggleNav, togglePinnedNav, isNavPinned } = this.state
     return (
-      <AppContext.Provider value={this.state}>{children}</AppContext.Provider>
+      <ThemeProvider theme={styleTheme}>
+        <AppContext.Provider value={this.state}>
+          <GlobalStyle />
+          <Nav
+            isNavPinned={isNavPinned}
+            isNavOpen={isNavOpen}
+            toggleNav={toggleNav}
+            togglePinnedNav={togglePinnedNav}
+          />
+          {children}
+        </AppContext.Provider>
+      </ThemeProvider>
     )
   }
 }

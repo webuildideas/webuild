@@ -8,12 +8,11 @@ const { callProjectHuddle } = require('./src/utils/projectHuddle')
 
 // Components
 const AppProvider = require('./src/components/AppProvider').default
-const Page = require('./src/components/Page').default
 
 exports.wrapPageElement = ({ element, props }) => {
   return (
     <AppProvider {...props}>
-      <Page>{element}</Page>
+      {element}
     </AppProvider>
   )
 }
