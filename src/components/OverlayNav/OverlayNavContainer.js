@@ -36,6 +36,9 @@ const OverlayNavContainer = styled(animated.div)`
   .OverlayNavLink {
     display: block;
     margin-bottom: ${() => rhythmUnit(1.5)};
+    &:last-of-type {
+      margin-bottom: 0;
+    }
   }
 
   .OverlayNav__social {
@@ -46,7 +49,7 @@ const OverlayNavContainer = styled(animated.div)`
     }
 
     @media (min-height: 690px) {
-      padding-top: ${() => rhythmUnit(5)};
+      padding-top: ${() => rhythmUnit(4)};
     }
 
     .OverlayNavLink {

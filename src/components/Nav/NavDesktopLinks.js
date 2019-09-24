@@ -21,7 +21,7 @@ const NavDesktopLinks = styled.ul`
       position: absolute;
       width: 100%;
       height: 2px;
-      bottom: 0;
+      bottom: -6px;
       left: 0;
       background-color: ${props => props.theme.blackHover};
       visibility: hidden;
