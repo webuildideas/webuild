@@ -39,6 +39,7 @@ const ContactContainer = styled.div`
     }
   }
   .wave-emoji {
+    will-change: transform;
     display: inline-block;
     margin-right: ${() => rhythmUnit(0.5)};
   }
