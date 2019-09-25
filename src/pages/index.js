@@ -43,6 +43,7 @@ const IndexPage = ({ data }) => (
           style={{
             textAlign: 'center',
             marginTop: rhythmUnit(2),
+            marginBottom: rhythmUnit(2.5),
           }}
         >
           <StyledButton to="/testimonials">See More Kind Words </StyledButton>
