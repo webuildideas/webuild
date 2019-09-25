@@ -1,5 +1,5 @@
 // Packages
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import { animated, useSpring, useTrail, config } from 'react-spring'
@@ -7,7 +7,7 @@ import { animated, useSpring, useTrail, config } from 'react-spring'
 // Styled Components
 import OverlayNavContainer from './OverlayNavContainer'
 
-const OverlayNav = ({ isOpen }) => {
+const OverlayNav = ({ isOpen, onContact }) => {
   const navLinks = [
     {
       title: 'Who we are',
@@ -64,7 +64,13 @@ const OverlayNav = ({ isOpen }) => {
               transform: y.interpolate(y => `translate3d(0,${y}px,0)`),
             }}
           >
-            <Link to={navLinks[index].slug}>{navLinks[index].title}</Link>
+            {navLinks[index].title === 'Get in touch' ? (
+              <a href="mailto:hi@webuild.io" onClick={onContact}>
+                {navLinks[index].title}
+              </a>
+            ) : (
+              <Link to={navLinks[index].slug}>{navLinks[index].title}</Link>
+            )}
           </animated.li>
         ))}
       </ul>
@@ -96,6 +102,7 @@ const OverlayNav = ({ isOpen }) => {
 
 OverlayNav.propTypes = {
   isOpen: PropTypes.bool.isRequired,
+  onContact: PropTypes.func,
 }
 
 export default OverlayNav

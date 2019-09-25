@@ -55,7 +55,7 @@ const Nav = ({ isNavOpen, isNavPinned, toggleNav, togglePinnedNav }) => (
       </NavContainer>
     </Headroom>
 
-    <OverlayNav isOpen={isNavOpen} onClose={() => toggleNav(false)} />
+    <OverlayNav isOpen={isNavOpen} onContact={() => toggleNav(false)} />
   </>
 )
 
