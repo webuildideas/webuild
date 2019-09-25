@@ -14,6 +14,7 @@ import SiteMaxWidthContainer from '../components/Shared/SiteMaxWidthContainer'
 import Meta from '../components/Meta'
 import PageIntro from '../components/PageIntro'
 import TestimonialListing from '../components/TestimonialListing'
+import Contact from '../components/Contact'
 
 const Testimonials = ({ data }) => (
   <>
@@ -27,6 +28,7 @@ const Testimonials = ({ data }) => (
         <TestimonialListing
           testimonials={data.allContentfulTestimonial.edges}
         />
+        <Contact />
       </SiteMaxWidthContainer>
     </GradientBackground>
   </>
