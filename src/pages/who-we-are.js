@@ -6,6 +6,7 @@ import SiteMaxWidthContainer from '../components/Shared/SiteMaxWidthContainer'
 
 // Components
 import Meta from '../components/Meta'
+import Contact from '../components/Contact'
 import PageIntro from '../components/PageIntro'
 
 const WhoWeAre = () => (
@@ -16,6 +17,7 @@ const WhoWeAre = () => (
         heading="Not your average agency"
         blurb="We’re a remote team of designers, product makers &amp; strategists passionate about design."
       />
+      <Contact />
     </SiteMaxWidthContainer>
   </>
 )

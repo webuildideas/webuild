@@ -15,6 +15,7 @@ import Meta from '../components/Meta'
 import PageIntro from '../components/PageIntro'
 import TestimonialListing from '../components/TestimonialListing'
 import StyledButton from '../components/Button'
+import Contact from '../components/Contact'
 
 const IndexPage = ({ data }) => (
   <>
@@ -46,6 +47,7 @@ const IndexPage = ({ data }) => (
         >
           <StyledButton to="/testimonials">See More Kind Words </StyledButton>
         </div>
+        <Contact />
       </SiteMaxWidthContainer>
     </GradientBackground>
   </>

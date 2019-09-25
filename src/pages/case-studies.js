@@ -6,6 +6,7 @@ import SiteMaxWidthContainer from '../components/Shared/SiteMaxWidthContainer'
 
 // Components
 import PageIntro from '../components/PageIntro'
+import Contact from '../components/Contact'
 import Meta from '../components/Meta'
 
 const CaseStudies = () => (
@@ -16,6 +17,7 @@ const CaseStudies = () => (
         heading="We help our partners solve <br> ambitious design challenges"
         blurb="We partner with inspiring entrepreneurs and values-driven companies to design and create world-class digital products, tools and experiences."
       />
+      <Contact />
     </SiteMaxWidthContainer>
   </>
 )
