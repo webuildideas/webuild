@@ -42,7 +42,7 @@ const Nav = ({ isNavOpen, isNavPinned, toggleNav, togglePinnedNav }) => (
               <Link to="/what-we-do">What We Do</Link>
             </li>
             <li>
-              <Link to="/case-studies">Case Studiess</Link>
+              <Link to="/case-studies">Case Studies</Link>
             </li>
           </NavDesktopLinks>
 
