@@ -54,7 +54,14 @@ module.exports = {
         background_color: `#2C3E50`,
         theme_color: `#2C3E50`,
         display: `minimal-ui`,
-        icon: `src/static/images/webuild-favicon.png`, // This path is relative to the root of the site.
+        icon: `src/static/images/favicons/webuild-favicon.png`, // This path is relative to the root of the site.
+        icons: [
+          {
+            src: `/favicons/webuild-apple-touch-icon.png`,
+            sizes: `180x180`,
+            type: `image/png`,
+          },
+        ],
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

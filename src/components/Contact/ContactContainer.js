@@ -33,10 +33,6 @@ const ContactContainer = styled.div`
     font-weight: 900;
     text-transform: uppercase;
     font-size: ${props => props.theme.f2};
-    transition: color ease-in 250ms;
-    &:hover {
-      color: ${props => props.theme.blue};
-    }
   }
   .wave-emoji {
     will-change: transform;
@@ -62,7 +58,6 @@ const ContactContainer = styled.div`
     &:hover:before {
       visibility: visible;
       transform: scaleX(1);
-      background-color: ${props => props.theme.blueHover};
     }
   }
 `
