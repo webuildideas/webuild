@@ -8,6 +8,7 @@ import SiteMaxWidthContainer from '../components/Shared/SiteMaxWidthContainer'
 import Meta from '../components/Meta'
 import Contact from '../components/Contact'
 import PageIntro from '../components/PageIntro'
+import Footer from '../components/Footer'
 
 const WhoWeAre = () => (
   <>
@@ -19,6 +20,7 @@ const WhoWeAre = () => (
       />
       <Contact />
     </SiteMaxWidthContainer>
+    <Footer />
   </>
 )
 

@@ -1,5 +1,5 @@
 // Packages
-import React, { useContext } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import { animated, useSpring, useTrail, config } from 'react-spring'

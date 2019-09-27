@@ -16,6 +16,7 @@ import PageIntro from '../components/PageIntro'
 import TestimonialListing from '../components/TestimonialListing'
 import StyledButton from '../components/Button'
 import Contact from '../components/Contact'
+import Footer from '../components/Footer'
 
 const IndexPage = ({ data }) => (
   <>
@@ -25,7 +26,7 @@ const IndexPage = ({ data }) => (
       blurb="We’re a digital product design studio. We partner with inspiring entrepreneurs and growth-minded startups to achieve ambitious business goals through design."
     />
     <GradientBackground gradient="linear-gradient(161.81deg, #F5F5FF -26.24%, rgba(250, 250, 251, 0) 85.41%);">
-      <SiteMaxWidthContainer padding={`${rhythmUnit(3.5)} 0`}>
+      <SiteMaxWidthContainer padding={`${rhythmUnit(3.5)} 0 0`}>
         <h5
           className="h5"
           style={{
@@ -50,6 +51,7 @@ const IndexPage = ({ data }) => (
         </div>
         <Contact />
       </SiteMaxWidthContainer>
+      <Footer />
     </GradientBackground>
   </>
 )

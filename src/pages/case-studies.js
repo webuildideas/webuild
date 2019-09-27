@@ -8,6 +8,7 @@ import SiteMaxWidthContainer from '../components/Shared/SiteMaxWidthContainer'
 import PageIntro from '../components/PageIntro'
 import Contact from '../components/Contact'
 import Meta from '../components/Meta'
+import Footer from '../components/Footer'
 
 const CaseStudies = () => (
   <>
@@ -19,6 +20,7 @@ const CaseStudies = () => (
       />
       <Contact />
     </SiteMaxWidthContainer>
+    <Footer />
   </>
 )
 
