@@ -58,23 +58,6 @@ module.exports = {
         theme_color: `#2C3E50`,
         display: `minimal-ui`,
         icon: `src/static/images/favicons/webuild-favicon-512x512.png`, // This path is relative to the root of the site.
-        icons: [
-          {
-            src: `src/static/images/favicons/favicon.ico`,
-            sizes: `48x48`,
-            type: `image/x-icon`,
-          },
-          {
-            src: `src/static/images/favicons/android-chrome-192x192.png`,
-            sizes: `192x192`,
-            type: `image/png`,
-          },
-          {
-            src: `src/static/images/favicons/android-chrome-384x384.png`,
-            sizes: `384x384`,
-            type: `image/png`,
-          },
-        ],
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
