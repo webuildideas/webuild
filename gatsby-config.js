@@ -34,11 +34,14 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-web-font-loader`,
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
-        google: {
-          families: [`Overpass`, `Overpass:black`, `Overpass:extra-bold`],
-        },
+        fonts: [
+          {
+            family: `Overpass`,
+            variants: [`400`, `800`, `900`],
+          },
+        ],
       },
     },
     `gatsby-transformer-sharp`,
