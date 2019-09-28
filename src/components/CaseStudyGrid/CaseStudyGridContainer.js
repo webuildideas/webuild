@@ -7,7 +7,8 @@ import { rhythmUnit } from '../../utils/typography'
 const CaseStudyGridContainer = styled.div`
   display: grid;
   justify-items: center;
-  grid-gap: ${() => rhythmUnit(1.25)};
+  column-gap: ${() => rhythmUnit(1)};
+  row-gap: ${() => rhythmUnit(2)};
   grid-template-columns: 1fr;
   @media (min-width: 800px) {
     grid-template-columns: 1fr 1fr;

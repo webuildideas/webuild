@@ -8,7 +8,7 @@ const TestimonialGridContainer = styled.div`
   display: grid;
   justify-items: center;
   grid-template-columns: 1fr;
-  grid-gap: ${() => rhythmUnit(1.25)};
+  grid-gap: ${() => rhythmUnit(1)};
   @media (min-width: 1000px) {
     grid-template-columns: 1fr 1fr;
   }
