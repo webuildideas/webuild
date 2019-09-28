@@ -98,8 +98,9 @@ export const HOMEPAGE_QUERY = graphql`
     allContentfulCaseStudy(limit: 4, sort: { order: ASC, fields: createdAt }) {
       edges {
         node {
+          url
+          name
           tagline
-          title
           listingImage {
             fluid {
               srcSet

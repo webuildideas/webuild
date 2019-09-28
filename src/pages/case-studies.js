@@ -37,8 +37,9 @@ export const CASE_STUDIES_LISTING_QUERY = graphql`
     allContentfulCaseStudy(sort: { order: ASC, fields: createdAt }) {
       edges {
         node {
+          url
+          name
           tagline
-          title
           listingImage {
             fluid {
               srcSet

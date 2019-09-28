@@ -12,7 +12,8 @@ const CaseStudyGrid = ({ caseStudies }) => (
   <CaseStudyGridContainer>
     {caseStudies.map(({ node }) => (
       <CaseStudy
-        name={node.title}
+        key={node.url}
+        name={node.name}
         tagline={node.tagline}
         listingImgSrc={node.listingImage.fluid.src}
         listingImgSrcSet={node.listingImage.fluid.srcSet}
@@ -24,7 +25,8 @@ const CaseStudyGrid = ({ caseStudies }) => (
 CaseStudyGrid.propTypes = {
   caseStudies: PropTypes.arrayOf(
     PropTypes.shape({
-      title: PropTypes.string,
+      url: PropTypes.string,
+      name: PropTypes.string,
       tagline: PropTypes.string,
       listingImage: PropTypes.shape({
         fluid: PropTypes.shape({

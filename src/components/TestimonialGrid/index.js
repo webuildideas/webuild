@@ -25,7 +25,22 @@ const TestimonialGrid = ({ testimonials }) => (
 )
 
 TestimonialGrid.propTypes = {
-  testimonials: PropTypes.array.isRequired,
+  testimonials: PropTypes.arrayOf(
+    PropTypes.shape({
+      company: PropTypes.string,
+      name: PropTypes.string,
+      role: PropTypes.string,
+      testimonial: PropTypes.shape({
+        testimonial: PropTypes.string,
+      }),
+      headShot: PropTypes.shape({
+        fixed: PropTypes.shape({
+          src: PropTypes.string,
+          srcSet: PropTypes.string,
+        }),
+      }),
+    })
+  ).isRequired,
 }
 
 export default TestimonialGrid
