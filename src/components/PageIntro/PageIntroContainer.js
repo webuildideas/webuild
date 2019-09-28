@@ -5,10 +5,13 @@ import styled from 'styled-components'
 import { rhythmUnit } from '../../utils/typography'
 
 const PageIntroContainer = styled.div`
-  padding: ${() => rhythmUnit(2.75)} 0 ${() => rhythmUnit(2.75)};
+  padding: ${() => `${rhythmUnit(2.75)} ${rhythmUnit(1)}`};
   text-align: center;
   background-color: ${props => (props.bgColor ? props.bgColor : '')};
-
+  @media (min-width: 800px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
   h1 {
     color: ${props => props.theme.black};
     text-align: center;
@@ -18,8 +21,6 @@ const PageIntroContainer = styled.div`
   h2 {
     color: ${props => props.theme.grey};
     text-align: center;
-    max-width: 39.375rem;
-    margin: 0 auto;
     line-height: 1.6;
     font-weight: 400;
     br {

@@ -12,8 +12,8 @@ const PageIntro = ({ heading, blurb }) => {
   const createBlurb = () => ({ __html: blurb })
   return (
     <PageIntroContainer bgColor="#fff">
-      <h1 dangerouslySetInnerHTML={createHeader()} />
       <ContentMaxWidthContainer>
+        <h1 dangerouslySetInnerHTML={createHeader()} />
         <h2 className="h5" dangerouslySetInnerHTML={createBlurb()} />
       </ContentMaxWidthContainer>
     </PageIntroContainer>

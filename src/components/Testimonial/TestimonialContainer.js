@@ -50,6 +50,7 @@ const TestimonialContainer = styled.div`
     font-size: ${props => props.theme.f6};
     color: ${props => props.theme.grey};
     font-weight: 400;
+    line-height: 1.3;
   }
 `
 
