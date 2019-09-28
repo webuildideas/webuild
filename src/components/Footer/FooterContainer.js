@@ -9,7 +9,7 @@ const FooterContainer = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   max-width: 1100px;
-  margin: ${() => `0 auto ${rhythmUnit(3)}`};
+  margin: ${() => `0 auto ${rhythmUnit(1.75)}`};
   padding: ${() => `0 ${rhythmUnit(1)}`};
   font-size: ${props => props.theme.f7};
   text-transform: uppercase;
