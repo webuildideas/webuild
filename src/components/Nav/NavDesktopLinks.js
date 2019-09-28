@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
 const NavDesktopLinks = styled.ul`
-  display: grid;
-  grid-template-columns: repeat(3, 120px);
+  display: none;
   width: 360px;
-  align-self: center;
 
-  @media screen and (max-width: 768px) {
-    display: none;
+  @media screen and (min-width: 768px) {
+    display: grid;
+    grid-template-columns: repeat(3, 120px);
+    align-self: center;
   }
 
   li a {

@@ -1,27 +1,30 @@
 // Packages
-import React from 'react'
+import React, { useEffect, useContext } from 'react'
 
-// Styled Components
-import SiteMaxWidthContainer from '../components/Shared/SiteMaxWidthContainer'
+// Context
+import { AppContext } from '../components/AppProvider'
 
 // Components
 import Meta from '../components/Meta'
+import ServicesHero from '../components/ServicesHero'
 import Contact from '../components/Contact'
-import PageIntro from '../components/PageIntro'
 import Footer from '../components/Footer'
 
-const WhatWeDo = () => (
-  <>
-    <Meta title="What We Do" />
-    <SiteMaxWidthContainer>
-      <PageIntro
-        heading="We deliver results for startups <br /> through user-driven design"
-        blurb="We combine our deep expertise in product design and strategy to accelerate business growth for industry leaders and fast-growing startups."
-      />
+const WhatWeDo = () => {
+  const { setNavColorTheme } = useContext(AppContext)
+
+  useEffect(() => {
+    setNavColorTheme('dark')
+  }, [setNavColorTheme])
+
+  return (
+    <>
+      <Meta title="What We Do" />
+      <ServicesHero />
       <Contact />
-    </SiteMaxWidthContainer>
-    <Footer />
-  </>
-)
+      <Footer />
+    </>
+  )
+}
 
 export default WhatWeDo

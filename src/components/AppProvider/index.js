@@ -22,6 +22,8 @@ export const AppContext = createContext({
   isNavPinned: false,
   toggleNav: () => {},
   togglePinnedNav: () => {},
+  navColorTheme: 'light',
+  setNavColorTheme: () => {},
 })
 
 class AppProvider extends Component {
@@ -42,6 +44,10 @@ class AppProvider extends Component {
       togglePinnedNav: navState => {
         this.setState({ isNavPinned: navState })
       },
+      navColorTheme: 'light',
+      setNavColorTheme: colorTheme => {
+        this.setState({ navColorTheme: colorTheme })
+      },
     }
   }
 
@@ -57,7 +63,13 @@ class AppProvider extends Component {
 
   render() {
     const { children } = this.props
-    const { isNavOpen, toggleNav, togglePinnedNav, isNavPinned } = this.state
+    const {
+      isNavOpen,
+      toggleNav,
+      togglePinnedNav,
+      isNavPinned,
+      navColorTheme,
+    } = this.state
     return (
       <ThemeProvider theme={styleTheme}>
         <AppContext.Provider value={this.state}>
@@ -67,6 +79,7 @@ class AppProvider extends Component {
             isNavOpen={isNavOpen}
             toggleNav={toggleNav}
             togglePinnedNav={togglePinnedNav}
+            colorTheme={navColorTheme}
           />
           {children}
         </AppContext.Provider>

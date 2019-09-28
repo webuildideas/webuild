@@ -1,8 +1,11 @@
 // Packages
-import React from 'react'
+import React, { useEffect, useContext } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
+
+// Context
+import { AppContext } from '../components/AppProvider'
 
 // Utils
 import { rhythmUnit } from '../utils/typography'
@@ -26,31 +29,22 @@ const SectionHeading = styled.h5`
   margin-bottom: ${() => rhythmUnit(1.5)};
 `
 
-const IndexPage = ({ data }) => (
-  <>
-    <Meta title="Home" />
-    <PageIntro
-      heading="Scaling startups <br />through user-driven design"
-      blurb="We’re a digital product design studio. We partner with inspiring entrepreneurs and growth-minded startups to achieve ambitious business goals through design."
-    />
-    <SiteMaxWidthContainer padding={`${rhythmUnit(3.5)} 0 0`}>
-      <SectionHeading>Case Studies</SectionHeading>
-      <CaseStudyGrid caseStudies={data.allContentfulCaseStudy.edges} />
-      <div
-        style={{
-          textAlign: 'center',
-          marginTop: rhythmUnit(2),
-          marginBottom: rhythmUnit(2.5),
-        }}
-      >
-        <StyledButton to="/case-studies">See More Case Studies</StyledButton>
-      </div>
-    </SiteMaxWidthContainer>
+const IndexPage = ({ data }) => {
+  const { setNavColorTheme } = useContext(AppContext)
 
-    <GradientBackground gradient="linear-gradient(161.81deg, #F5F5FF -26.24%, rgba(250, 250, 251, 0) 85.41%);">
+  useEffect(() => {
+    setNavColorTheme('light')
+  }, [setNavColorTheme])
+  return (
+    <>
+      <Meta title="Home" />
+      <PageIntro
+        heading="Scaling startups <br />through user-driven design"
+        blurb="We’re a digital product design studio. We partner with inspiring entrepreneurs and growth-minded startups to achieve ambitious business goals through design."
+      />
       <SiteMaxWidthContainer padding={`${rhythmUnit(3.5)} 0 0`}>
-        <SectionHeading> Why our partners love us</SectionHeading>
-        <TestimonialGrid testimonials={data.allContentfulTestimonial.edges} />
+        <SectionHeading>Case Studies</SectionHeading>
+        <CaseStudyGrid caseStudies={data.allContentfulCaseStudy.edges} />
         <div
           style={{
             textAlign: 'center',
@@ -58,15 +52,31 @@ const IndexPage = ({ data }) => (
             marginBottom: rhythmUnit(2.5),
           }}
         >
-          <StyledButton to="/testimonials">See More Kind Words </StyledButton>
+          <StyledButton to="/case-studies">See More Case Studies</StyledButton>
         </div>
       </SiteMaxWidthContainer>
-    </GradientBackground>
 
-    <Contact />
-    <Footer />
-  </>
-)
+      <GradientBackground gradient="linear-gradient(161.81deg, #F5F5FF -26.24%, rgba(250, 250, 251, 0) 85.41%);">
+        <SiteMaxWidthContainer padding={`${rhythmUnit(3.5)} 0 0`}>
+          <SectionHeading> Why our partners love us</SectionHeading>
+          <TestimonialGrid testimonials={data.allContentfulTestimonial.edges} />
+          <div
+            style={{
+              textAlign: 'center',
+              marginTop: rhythmUnit(2),
+              marginBottom: rhythmUnit(2.5),
+            }}
+          >
+            <StyledButton to="/testimonials">See More Kind Words </StyledButton>
+          </div>
+        </SiteMaxWidthContainer>
+      </GradientBackground>
+
+      <Contact />
+      <Footer />
+    </>
+  )
+}
 
 IndexPage.propTypes = {
   data: PropTypes.object.isRequired,

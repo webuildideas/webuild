@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 // Packages
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import Helmet from 'react-helmet'
 import Headroom from 'react-headroom'
@@ -11,12 +11,17 @@ import NavDesktopLinks from './NavDesktopLinks'
 import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
 
 // Components
-// import { AppContext } from '../AppProvider'
 import OverlayNav from '../OverlayNav'
 import Logo from './Logo'
 import MenuIcon from './MenuIcon'
 
-const Nav = ({ isNavOpen, isNavPinned, toggleNav, togglePinnedNav }) => (
+const Nav = ({
+  isNavOpen,
+  isNavPinned,
+  toggleNav,
+  togglePinnedNav,
+  colorTheme,
+}) => (
   <>
     <Helmet
       bodyAttributes={{
@@ -29,7 +34,10 @@ const Nav = ({ isNavOpen, isNavPinned, toggleNav, togglePinnedNav }) => (
       onUnfix={() => togglePinnedNav(false)}
       style={{ transition: 'all 600ms ease-in-out' }}
     >
-      <NavContainer isPinned={isNavPinned}>
+      <NavContainer
+        isPinned={isNavPinned}
+        className={`nav-theme--${colorTheme}`}
+      >
         <SiteMaxWidthContainer className="SiteMaxWidthContainer">
           <Link className={`Logo ${isNavOpen ? 'isOpen' : ''}`} to="/">
             <Logo className="Logo" isOpen={isNavOpen} />
@@ -58,5 +66,13 @@ const Nav = ({ isNavOpen, isNavPinned, toggleNav, togglePinnedNav }) => (
     <OverlayNav isOpen={isNavOpen} onContact={() => toggleNav(false)} />
   </>
 )
+
+Nav.propTypes = {
+  isNavOpen: PropTypes.bool,
+  toggleNav: PropTypes.func,
+  isNavPinned: PropTypes.bool,
+  togglePinnedNav: PropTypes.func,
+  colorTheme: PropTypes.string,
+}
 
 export default Nav

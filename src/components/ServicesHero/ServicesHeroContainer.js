@@ -4,21 +4,22 @@ import styled from 'styled-components'
 // Utils
 import { rhythmUnit } from '../../utils/typography'
 
-const PageIntroContainer = styled.div`
+const ServicesHeroContainer = styled.div`
   padding: ${() => `${rhythmUnit(2.75)} ${rhythmUnit(1)}`};
   text-align: center;
   @media (min-width: 800px) {
     padding-left: 0;
     padding-right: 0;
   }
+  color: ${props => props.theme.white};
+  background-color: ${props => props.theme.darkBlue};
+
   h1 {
-    color: ${props => props.theme.black};
     text-align: center;
     margin-bottom: ${() => rhythmUnit(1.25)};
   }
 
   h2 {
-    color: ${props => props.theme.grey};
     text-align: center;
     line-height: 1.6;
     font-weight: 400;
@@ -31,4 +32,4 @@ const PageIntroContainer = styled.div`
   }
 `
 
-export default PageIntroContainer
+export default ServicesHeroContainer
