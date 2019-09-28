@@ -3,13 +3,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 // Styled Components
-import TestimonialGrid from './TestimonialGrid'
+import TestimonialGridContainer from './TestimonialGridContainer'
 
 // Components
 import Testimonial from '../Testimonial'
 
-const TestimonialListing = ({ testimonials }) => (
-  <TestimonialGrid>
+const TestimonialGrid = ({ testimonials }) => (
+  <TestimonialGridContainer>
     {testimonials.map(({ node: testimonial }) => (
       <Testimonial
         key={testimonial.name}
@@ -21,11 +21,11 @@ const TestimonialListing = ({ testimonials }) => (
         testimonial={testimonial.testimonial.testimonial}
       />
     ))}
-  </TestimonialGrid>
+  </TestimonialGridContainer>
 )
 
-TestimonialListing.propTypes = {
+TestimonialGrid.propTypes = {
   testimonials: PropTypes.array.isRequired,
 }
 
-export default TestimonialListing
+export default TestimonialGrid

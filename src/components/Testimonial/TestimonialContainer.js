@@ -9,11 +9,11 @@ const TestimonialContainer = styled.div`
   background-color: ${props => props.theme.white};
   max-width: 26.75rem;
   padding: ${() => rhythmUnit(1)};
-  @media (min-width: 425px) and (max-width: 768px) {
+  @media (min-width: 425px) {
     padding: ${() => rhythmUnit(1.25)};
   }
-  @media (min-width: 769px) {
-    padding: ${() => rhythmUnit(1.5)};
+  @media (min-width: 800px) {
+    /* padding: ${() => rhythmUnit(1.5)}; */
   }
 
   .testimonial {

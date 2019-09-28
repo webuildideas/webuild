@@ -13,7 +13,7 @@ import SiteMaxWidthContainer from '../components/Shared/SiteMaxWidthContainer'
 // Components
 import Meta from '../components/Meta'
 import PageIntro from '../components/PageIntro'
-import TestimonialListing from '../components/TestimonialListing'
+import TestimonialGrid from '../components/TestimonialGrid'
 import Contact from '../components/Contact'
 import Footer from '../components/Footer'
 
@@ -26,9 +26,7 @@ const Testimonials = ({ data }) => (
     />
     <GradientBackground gradient="linear-gradient(161.81deg, #F5F5FF -26.24%, rgba(250, 250, 251, 0) 85.41%);">
       <SiteMaxWidthContainer padding={`${rhythmUnit(3)} 0 0`}>
-        <TestimonialListing
-          testimonials={data.allContentfulTestimonial.edges}
-        />
+        <TestimonialGrid testimonials={data.allContentfulTestimonial.edges} />
         <Contact />
       </SiteMaxWidthContainer>
     </GradientBackground>

@@ -1,6 +1,6 @@
 // Packages
 import React from 'react'
-import { storiesOf, addDecorator } from '@storybook/react'
+import { storiesOf } from '@storybook/react'
 // Styled Components
 import { withKnobs, text } from '@storybook/addon-knobs'
 
