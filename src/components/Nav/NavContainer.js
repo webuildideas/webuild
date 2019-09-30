@@ -32,6 +32,7 @@ const NavContainer = styled.div`
 
   // Themes
   &.nav-theme--dark {
+    background: ${props => props.theme.white};
     @media screen and (min-width: 768px) {
       background: ${props => props.theme.darkBlue};
       color: ${props => props.theme.white};

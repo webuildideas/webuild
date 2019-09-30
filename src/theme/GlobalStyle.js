@@ -177,4 +177,16 @@ export const GlobalStyle = createGlobalStyle`
   .headroom--pinned {
     z-index: 5 !important;
   }
+
+  .headroom-wrapper {
+    background:${props => props.theme.darkBlue};
+  }
+
+  .headroom--unfixed {
+    .nav-theme--dark {
+      @media (min-width: 768px) {
+        background: transparent !important;
+      }
+    }
+  }
 `
