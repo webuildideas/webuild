@@ -172,4 +172,9 @@ export const GlobalStyle = createGlobalStyle`
   .Icon--align-baseline {
     bottom: -0.125em;
   }
+
+
+  .headroom--pinned {
+    z-index: 5 !important;
+  }
 `

@@ -1,18 +1,14 @@
 // Packages
 import React from 'react'
 
-const DtBgShapes = () => (
-  <svg width="1440" height="715" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <mask
-      id="a"
-      maskUnits="userSpaceOnUse"
-      x="0"
-      y="0"
-      width="1440"
-      height="715"
-    >
-      <path fill="#202E3B" d="M0 0h1440v715H0z" />
-    </mask>
+const DtBgShapes = props => (
+  <svg
+    width="1440"
+    height="715"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
     <g mask="url(#a)">
       <path
         d="M592.568 587.534c11.22-13.219 22.439-28.603 32.002-26.383 9.581 2.25 17.461 22.171 16.165 44.144-1.347 21.96-11.883 46.021-27.01 49.303-15.126 3.281-34.86-14.248-39.139-28.508-4.297-14.29 6.812-25.323 17.982-38.556z"
