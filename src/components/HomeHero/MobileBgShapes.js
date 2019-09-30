@@ -5,6 +5,7 @@ const MobileBgShapes = props => (
   <svg
     width="262"
     height="565"
+    viewbox="0 0 262 565"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     {...props}

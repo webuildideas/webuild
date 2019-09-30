@@ -21,7 +21,7 @@ const HomeHeroContainer = styled.div`
   @media (min-width: 1024px) {
     margin-bottom: 0;
     padding-bottom: 0;
-    max-height: 545px;
+    max-height: 605px;
   }
 
   h1 {
@@ -88,7 +88,9 @@ const HomeHeroContainer = styled.div`
     }
 
     @media (min-width: 1024px) {
-      max-width: 350px;
+      max-width: 375px;
+      position: relative;
+      top: 10px;
     }
   }
 
@@ -101,6 +103,7 @@ const HomeHeroContainer = styled.div`
     width: 100%;
     height: 100%;
     z-index: 0;
+    overflow: visible;
   }
 
   .HomeHero__mobile-bg {

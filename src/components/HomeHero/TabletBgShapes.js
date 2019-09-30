@@ -5,6 +5,7 @@ const TabletBgShapes = props => (
   <svg
     width="768"
     height="715"
+    viewbox="0 0 768 715"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     {...props}
