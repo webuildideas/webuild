@@ -169,4 +169,7 @@ export const GlobalStyle = createGlobalStyle`
     width: 1em;
     height: 1em;
   }
+  .Icon--align-baseline {
+    bottom: -0.125em;
+  }
 `

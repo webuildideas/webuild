@@ -16,6 +16,7 @@ import GradientBackground from '../components/Shared/GradientBackground'
 
 // Components
 import Meta from '../components/Meta'
+import HomeHero from '../components/HomeHero'
 import PageIntro from '../components/PageIntro'
 import TestimonialGrid from '../components/TestimonialGrid'
 import CaseStudyGrid from '../components/CaseStudyGrid'
@@ -33,15 +34,14 @@ const IndexPage = ({ data }) => {
   const { setNavColorTheme } = useContext(AppContext)
 
   useEffect(() => {
-    setNavColorTheme('light')
+    setNavColorTheme('dark')
   }, [setNavColorTheme])
+
   return (
     <>
       <Meta title="Home" />
-      <PageIntro
-        heading="Scaling startups <br />through user-driven design"
-        blurb="We’re a digital product design studio. We partner with inspiring entrepreneurs and growth-minded startups to achieve ambitious business goals through design."
-      />
+      <HomeHero />
+
       <SiteMaxWidthContainer padding={`${rhythmUnit(3.5)} 0 0`}>
         <SectionHeading>Case Studies</SectionHeading>
         <CaseStudyGrid caseStudies={data.allContentfulCaseStudy.edges} />
