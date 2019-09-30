@@ -85,6 +85,9 @@ const HomeHeroContainer = styled.div`
     cursor: pointer;
     @media (min-width: 768px) {
       display: block;
+    }
+
+    @media (min-width: 1024px) {
       max-width: 350px;
     }
   }
