@@ -13,6 +13,7 @@ import { rhythmUnit } from '../utils/typography'
 // Styled Components
 import SiteMaxWidthContainer from '../components/Shared/SiteMaxWidthContainer'
 import GradientBackground from '../components/Shared/GradientBackground'
+import ServiceContainer from '../components/Shared/ServiceContainer'
 
 // Components
 import Meta from '../components/Meta'
@@ -22,6 +23,7 @@ import CaseStudyGrid from '../components/CaseStudyGrid'
 import StyledButton from '../components/Button'
 import Contact from '../components/Contact'
 import Footer from '../components/Footer'
+import Target from '../components/Svgs/Target'
 
 const SectionHeading = styled.h5`
   text-transform: uppercase;
@@ -48,11 +50,26 @@ const IndexPage = ({ data }) => {
           style={{
             textAlign: 'center',
             marginTop: rhythmUnit(2),
-            marginBottom: rhythmUnit(2.5),
+            marginBottom: rhythmUnit(4.25),
           }}
         >
           <StyledButton to="/case-studies">See More Case Studies</StyledButton>
         </div>
+
+        <ServiceContainer style={{ marginBottom: rhythmUnit(3.75) }}>
+          <div className="ServiceCopy">
+            <h3>We’re the only design partner you’ll ever need</h3>
+            <p>
+              We’ll handle all things design so you can focus on what you do
+              best: running your business. Think of us as an integrated part of
+              your product team — plug us in and we’ll design your ideas and
+              deliver results.
+            </p>
+          </div>
+          <div className="ServiceIcon">
+            <Target />
+          </div>
+        </ServiceContainer>
       </SiteMaxWidthContainer>
 
       <GradientBackground gradient="linear-gradient(161.81deg, #F5F5FF -26.24%, rgba(250, 250, 251, 0) 85.41%);">
