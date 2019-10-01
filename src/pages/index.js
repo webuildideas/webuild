@@ -17,7 +17,6 @@ import GradientBackground from '../components/Shared/GradientBackground'
 // Components
 import Meta from '../components/Meta'
 import HomeHero from '../components/HomeHero'
-import PageIntro from '../components/PageIntro'
 import TestimonialGrid from '../components/TestimonialGrid'
 import CaseStudyGrid from '../components/CaseStudyGrid'
 import StyledButton from '../components/Button'

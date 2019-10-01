@@ -25,7 +25,7 @@ const Nav = ({
   <>
     <Helmet
       bodyAttributes={{
-        class: isNavOpen && 'overlay-is-open',
+        class: isNavOpen && 'overlayIsOpen',
       }}
     />
     <Headroom
@@ -36,7 +36,9 @@ const Nav = ({
     >
       <NavContainer
         isPinned={isNavPinned}
-        className={`nav-theme--${colorTheme}`}
+        className={`${
+          isNavOpen ? 'overlayIsOpen' : ''
+        } nav-theme--${colorTheme}`}
       >
         <SiteMaxWidthContainer className="SiteMaxWidthContainer">
           <Link className={`Logo ${isNavOpen ? 'isOpen' : ''}`} to="/">

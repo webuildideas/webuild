@@ -30,10 +30,11 @@ export const GlobalStyle = createGlobalStyle`
   body {
     padding: 0;
     margin: 0;
-    &.overlay-is-open {
+    &.overlayIsOpen {
       position: fixed;
       height: 100vh;
       overflow-y: hidden;
+      width: 100%;
     }
   }
 
@@ -173,9 +174,13 @@ export const GlobalStyle = createGlobalStyle`
     bottom: -0.125em;
   }
 
+  .headroom-wrapper {
+    width: 100%;
+  }
 
-  .headroom--pinned {
+  .headroom {
     z-index: 5 !important;
+    width: 100%;
   }
 
   .headroom-wrapper {

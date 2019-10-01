@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 const NavContainer = styled.div`
   position: relative;
+  width: 100%;
   box-shadow: ${props =>
     props.isPinned ? '0px 4px 8px rgba(0, 0, 0, 0.1)' : ''};
   background-color: ${props =>
@@ -15,14 +16,7 @@ const NavContainer = styled.div`
     align-content: center;
   }
 
-  .Logo {
-    position: relative;
-    z-index: 10;
-  }
-
   .MenuIcon {
-    position: relative;
-    z-index: 10;
     cursor: pointer;
     font-size: ${props => props.theme.f2};
     @media screen and (min-width: 768px) {
@@ -33,6 +27,9 @@ const NavContainer = styled.div`
   // Themes
   &.nav-theme--dark {
     background: ${props => props.theme.white};
+    &.overlayIsOpen {
+      background: transparent;
+    }
     @media screen and (min-width: 768px) {
       background: ${props => props.theme.darkBlue};
       color: ${props => props.theme.white};

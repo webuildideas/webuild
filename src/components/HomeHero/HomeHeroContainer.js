@@ -65,7 +65,7 @@ const HomeHeroContainer = styled.div`
 
   .HomeHero__content {
     position: relative;
-    z-index: 2;
+    z-index: 1;
     text-align: center;
     max-width: 1100px;
     margin: 0 auto;
@@ -79,7 +79,6 @@ const HomeHeroContainer = styled.div`
   .HomeHero__phone {
     display: none;
     position: relative;
-    z-index: 100;
     max-width: 280px;
     margin: 0 auto;
     cursor: pointer;
