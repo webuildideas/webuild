@@ -51,8 +51,7 @@ export const TESTIMONIAL_LISTING_PAGE_QUERY = graphql`
           }
           headshot {
             fixed(cropFocus: FACE, height: 100, width: 100) {
-              src
-              srcSet
+              ...GatsbyContentfulFixed_withWebp
             }
           }
         }

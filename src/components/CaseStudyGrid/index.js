@@ -10,14 +10,20 @@ import CaseStudy from '../CaseStudy'
 
 const CaseStudyGrid = ({ caseStudies }) => (
   <CaseStudyGridContainer>
+    {/**
+     * We check to see if node exists because this component needs
+     * to handle different responses from Contentful
+     * When node is present that means we are on the listing page
+     * when it is not present we are dealing with realtional field
+     * data from contentful that is currently used on the HomePage
+     * of the webuild site.
+     */}
     {caseStudies.map(study =>
       study.node ? (
         <CaseStudy
           key={study.node.slug}
           name={study.node.name}
           tagline={study.node.tagline}
-          listingImgSrc={study.node.listingImage.fluid.srcWebp}
-          listingImgSrcSet={study.node.listingImage.fluid.srcSetWebp}
           listingImg={study.node.listingImage.fluid}
         />
       ) : (
@@ -25,8 +31,6 @@ const CaseStudyGrid = ({ caseStudies }) => (
           key={study.slug}
           name={study.name}
           tagline={study.tagline}
-          listingImgSrc={study.listingImage.fluid.srcWebp}
-          listingImgSrcSet={study.listingImage.fluid.srcSetWebp}
           listingImg={study.listingImage.fluid}
         />
       )
@@ -40,12 +44,7 @@ CaseStudyGrid.propTypes = {
       slug: PropTypes.string,
       name: PropTypes.string,
       tagline: PropTypes.string,
-      listingImage: PropTypes.shape({
-        fluid: PropTypes.shape({
-          srcWebp: PropTypes.string,
-          srcSetWebp: PropTypes.string,
-        }),
-      }),
+      listingImage: PropTypes.object,
     })
   ).isRequired,
 }

@@ -76,7 +76,9 @@ const IndexPage = ({ data }) => {
       <GradientBackground gradient="linear-gradient(161.81deg, #F5F5FF -26.24%, rgba(250, 250, 251, 0) 85.41%);">
         <SiteMaxWidthContainer padding={`${rhythmUnit(3.5)} 0 0`}>
           <SectionHeading> Why our partners love us</SectionHeading>
-          <TestimonialGrid testimonials={data.allContentfulTestimonial.edges} />
+          <TestimonialGrid
+            testimonials={data.allContentfulHomePage.edges[0].node.testimonials}
+          />
           <div
             style={{
               textAlign: 'center',
@@ -101,27 +103,6 @@ IndexPage.propTypes = {
 
 export const HOMEPAGE_QUERY = graphql`
   query homepageQuery {
-    allContentfulTestimonial(
-      limit: 4
-      sort: { order: ASC, fields: createdAt }
-    ) {
-      edges {
-        node {
-          company
-          name
-          role
-          testimonial {
-            testimonial
-          }
-          headshot {
-            fixed(cropFocus: FACE, height: 100, width: 100) {
-              src
-              srcSet
-            }
-          }
-        }
-      }
-    }
     allContentfulHomePage(filter: { pageTitle: { eq: "Home" } }) {
       edges {
         node {
@@ -132,6 +113,19 @@ export const HOMEPAGE_QUERY = graphql`
             listingImage {
               fluid {
                 ...GatsbyContentfulFluid_withWebp
+              }
+            }
+          }
+          testimonials {
+            company
+            name
+            role
+            testimonial {
+              testimonial
+            }
+            headshot {
+              fixed(cropFocus: FACE, height: 100, width: 100) {
+                ...GatsbyContentfulFixed_withWebp
               }
             }
           }

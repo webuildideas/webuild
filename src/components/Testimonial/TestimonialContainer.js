@@ -35,9 +35,6 @@ const TestimonialContainer = styled.div`
     margin-right: ${() => rhythmUnit(0.5)};
     border-radius: 50%;
     overflow: hidden;
-    img {
-      width: 100%;
-    }
   }
 
   .client-name {
