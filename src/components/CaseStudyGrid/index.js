@@ -10,7 +10,6 @@ import CaseStudy from '../CaseStudy'
 
 const CaseStudyGrid = ({ caseStudies }) => (
   <CaseStudyGridContainer>
-    {console.log(caseStudies)}
     {caseStudies.map(study =>
       study.node ? (
         <CaseStudy

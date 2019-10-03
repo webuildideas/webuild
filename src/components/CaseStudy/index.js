@@ -8,14 +8,7 @@ import CaseStudyContainer from './CaseStudyContainer'
 
 const CaseStudy = ({ name, tagline, listingImg }) => (
   <CaseStudyContainer>
-    <Img
-      className="CaseStudy__img"
-      fluid={listingImg}
-      alt={`${name}`}
-      imgStyle={{
-        objectFit: 'fill',
-      }}
-    />
+    <Img className="CaseStudy__img" fluid={listingImg} alt={`${name}`} />
     <h3 className="CaseStudy__name">{name}</h3>
     <p className="CaseStudy__tagline">{tagline}</p>
   </CaseStudyContainer>

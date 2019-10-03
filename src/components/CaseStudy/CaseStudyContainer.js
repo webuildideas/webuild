@@ -11,8 +11,6 @@ const CaseStudyContainer = styled.div`
 
   .CaseStudy__img {
     margin-bottom: ${() => rhythmUnit(1)};
-    max-width: 535px;
-    max-height: 435px;
   }
 
   .CaseStudy__name {
