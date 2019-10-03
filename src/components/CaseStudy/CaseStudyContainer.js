@@ -5,11 +5,14 @@ import styled from 'styled-components'
 import { rhythmUnit } from '../../utils/typography'
 
 const CaseStudyContainer = styled.div`
+  width: 100%;
   max-width: 26.75rem;
   text-align: center;
 
   .CaseStudy__img {
     margin-bottom: ${() => rhythmUnit(1)};
+    max-width: 535px;
+    max-height: 435px;
   }
 
   .CaseStudy__name {

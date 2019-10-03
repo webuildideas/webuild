@@ -1,17 +1,20 @@
 // Packages
 import React from 'react'
 import PropTypes from 'prop-types'
+import Img from 'gatsby-image'
 
 // Styled Components
 import CaseStudyContainer from './CaseStudyContainer'
 
-const CaseStudy = ({ name, tagline, listingImgSrc, listingImgSrcSet }) => (
+const CaseStudy = ({ name, tagline, listingImg }) => (
   <CaseStudyContainer>
-    <img
+    <Img
       className="CaseStudy__img"
-      src={listingImgSrc}
-      srcSet={listingImgSrcSet && listingImgSrcSet}
+      fluid={listingImg}
       alt={`${name}`}
+      imgStyle={{
+        objectFit: 'fill',
+      }}
     />
     <h3 className="CaseStudy__name">{name}</h3>
     <p className="CaseStudy__tagline">{tagline}</p>
@@ -21,8 +24,7 @@ const CaseStudy = ({ name, tagline, listingImgSrc, listingImgSrcSet }) => (
 CaseStudy.propTypes = {
   name: PropTypes.string.isRequired,
   tagline: PropTypes.string.isRequired,
-  listingImgSrc: PropTypes.string.isRequired,
-  listingImgSrcSet: PropTypes.string.isRequired,
+  listingImg: PropTypes.object,
 }
 
 export default CaseStudy

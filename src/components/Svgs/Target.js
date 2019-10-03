@@ -5,7 +5,7 @@ const Target = () => (
   <svg
     width="321"
     height="321"
-    viewbox="0 0 321 321"
+    viewBox="0 0 321 321"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >

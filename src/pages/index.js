@@ -42,10 +42,11 @@ const IndexPage = ({ data }) => {
     <>
       <Meta title="Home" />
       <HomeHero />
-
       <SiteMaxWidthContainer padding={`${rhythmUnit(3.5)} 0 0`}>
         <SectionHeading>Case Studies</SectionHeading>
-        <CaseStudyGrid caseStudies={data.allContentfulCaseStudy.edges} />
+        <CaseStudyGrid
+          caseStudies={data.allContentfulHomePage.edges[0].node.caseStudies}
+        />
         <div
           style={{
             textAlign: 'center',
@@ -121,17 +122,17 @@ export const HOMEPAGE_QUERY = graphql`
         }
       }
     }
-    allContentfulCaseStudy(limit: 4, sort: { order: ASC, fields: createdAt }) {
+    allContentfulHomePage(filter: { pageTitle: { eq: "Home" } }) {
       edges {
         node {
-          url
-          name
-          tagline
-          listingImage {
-            fluid {
-              srcSet
-              src
-              sizes
+          caseStudies {
+            slug
+            name
+            tagline
+            listingImage {
+              fluid {
+                ...GatsbyContentfulFluid_withWebp
+              }
             }
           }
         }
