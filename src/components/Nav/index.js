@@ -33,6 +33,7 @@ const Nav = ({
       onUnpin={() => togglePinnedNav(false)}
       onUnfix={() => togglePinnedNav(false)}
       style={{ transition: 'all 600ms ease-in-out' }}
+      className={`nav-theme--${colorTheme}`}
     >
       <NavContainer
         isPinned={isNavPinned}

@@ -183,14 +183,21 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
   }
 
-  .headroom-wrapper {
+  .headroom-wrapper.nav-theme--dark {
     background:${props => props.theme.darkBlue};
+    .headroom--unfixed {
+      .nav-theme--dark {
+        @media (min-width: 768px) {
+          background: transparent;
+        }
+      }
+    }
   }
 
   .headroom--unfixed {
     .nav-theme--dark {
       @media (min-width: 768px) {
-        background: transparent !important;
+        /* background: transparent !important; */
       }
     }
   }
