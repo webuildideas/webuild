@@ -80,8 +80,9 @@ const HomeHeroContainer = styled.div`
     display: none;
     position: relative;
     max-width: 280px;
-    margin: 0 auto;
     cursor: pointer;
+    margin: 0 auto;
+    width: 100%;
     @media (min-width: 768px) {
       display: block;
     }
