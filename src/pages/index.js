@@ -24,6 +24,7 @@ import StyledButton from '../components/Button'
 import Contact from '../components/Contact'
 import Footer from '../components/Footer'
 import Target from '../components/Svgs/Target'
+import InlineLink from '../components/InlineLink'
 
 const SectionHeading = styled.h5`
   text-transform: uppercase;
@@ -66,6 +67,14 @@ const IndexPage = ({ data }) => {
               your product team — plug us in and we’ll design your ideas and
               deliver results.
             </p>
+            <div className="ServiceLinks">
+              <InlineLink to="/who-we-are" withArrow>
+                Learn About Us
+              </InlineLink>
+              <InlineLink to="/what-we-do" withArrow>
+                See How We Can Help
+              </InlineLink>
+            </div>
           </div>
           <div className="ServiceIcon">
             <Target />

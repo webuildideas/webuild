@@ -15,7 +15,7 @@ const ServiceContainer = styled.div`
     grid-gap: ${() => rhythmUnit(1)};
   }
 
-  @media (min-width: 1100px) {
+  @media (min-width: 1140px) {
     padding: 0;
   }
 
@@ -29,17 +29,17 @@ const ServiceContainer = styled.div`
   .ServiceIcon {
     order: 1;
     margin-bottom: ${() => rhythmUnit(1)};
-    max-width: 300px;
+    max-width: 290px;
     justify-self: center;
 
     svg {
-      width: 110%;
+      width: 100%;
       height: 100%;
     }
     @media (min-width: 768px) {
       order: 2;
       margin-bottom: 0;
-      justify-self: auto;
+      justify-self: end;
     }
   }
 
@@ -57,6 +57,12 @@ const ServiceContainer = styled.div`
 
   .ServiceLinks {
     margin-top: ${() => rhythmUnit(1)};
+    a + a {
+      margin-left: ${() => rhythmUnit(0.75)};
+      @media (min-width: 768px) {
+        margin-left: ${() => rhythmUnit(1.5)};
+      }
+    }
   }
 `
 

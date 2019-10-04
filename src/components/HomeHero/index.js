@@ -3,9 +3,6 @@ import React from 'react'
 import { graphql, Link, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 
-// Assets
-import Phone from '../../static/images/home-hero-phone.png'
-
 // Icons
 import Arrow from '../../static/svgs/arrow.inline.svg'
 
