@@ -37,6 +37,10 @@ const NavContainer = styled.div`
         fill: ${props => props.theme.white};
       }
     }
+
+    .NavDesktopLinks li a:before {
+      background-color: ${props => props.theme.white};
+    }
   }
 `
 

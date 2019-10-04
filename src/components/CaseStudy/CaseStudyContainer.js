@@ -1,10 +1,13 @@
 // Packages
+import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'gatsby'
 
 // utils
 import { rhythmUnit } from '../../utils/typography'
 
-const CaseStudyContainer = styled.div`
+const CaseStudyContainer = styled(props => <Link {...props} />)`
+  display: block;
   width: 100%;
   max-width: 26.75rem;
   text-align: center;

@@ -22,6 +22,7 @@ const CaseStudyGrid = ({ caseStudies }) => (
       study.node ? (
         <CaseStudy
           key={study.node.slug}
+          slug={study.node.slug}
           name={study.node.name}
           tagline={study.node.tagline}
           listingImg={study.node.listingImage.fluid}
@@ -29,6 +30,7 @@ const CaseStudyGrid = ({ caseStudies }) => (
       ) : (
         <CaseStudy
           key={study.slug}
+          slug={study.slug}
           name={study.name}
           tagline={study.tagline}
           listingImg={study.listingImage.fluid}
