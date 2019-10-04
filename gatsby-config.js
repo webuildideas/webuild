@@ -64,7 +64,7 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     `gatsby-plugin-offline`,
     {
-      resolve: `gatsby-plugin-netlify-headers`,
+      resolve: `gatsby-plugin-netlify`,
       allPageHeaders: [
         '/*.html; cache-control: public, max-age=0,must-revalidate',
         '/*/*.html; cache-control: public, max-age=0,must-revalidate',
