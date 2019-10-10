@@ -6,7 +6,7 @@ import { Link } from 'gatsby'
 // utils
 import { rhythmUnit } from '../../utils/typography'
 
-const CaseStudyContainer = styled(props => <Link {...props} />)`
+const CaseStudyListingContainer = styled(props => <Link {...props} />)`
   display: block;
   width: 100%;
   max-width: 26.75rem;
@@ -27,4 +27,4 @@ const CaseStudyContainer = styled(props => <Link {...props} />)`
   }
 `
 
-export default CaseStudyContainer
+export default CaseStudyListingContainer

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import CaseStudyGridContainer from './CaseStudyGridContainer'
 
 // Components
-import CaseStudy from '../CaseStudy'
+import CaseStudyListing from '../CaseStudyListing'
 
 const CaseStudyGrid = ({ caseStudies }) => (
   <CaseStudyGridContainer>
@@ -20,7 +20,7 @@ const CaseStudyGrid = ({ caseStudies }) => (
      */}
     {caseStudies.map(study =>
       study.node ? (
-        <CaseStudy
+        <CaseStudyListing
           key={study.node.slug}
           slug={study.node.slug}
           name={study.node.name}
@@ -28,7 +28,7 @@ const CaseStudyGrid = ({ caseStudies }) => (
           listingImg={study.node.listingImage.fluid}
         />
       ) : (
-        <CaseStudy
+        <CaseStudyListing
           key={study.slug}
           slug={study.slug}
           name={study.name}
