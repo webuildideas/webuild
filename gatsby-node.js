@@ -2,8 +2,7 @@ const path = require('path')
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
-  const CaseStudyDetail = path.resolve('./src/components/CaseStudyDetail')
-  return new Promise(resolve => {
+  return new Promise((resolve, reject) => {
     graphql(`
       {
         allContentfulCaseStudy {
@@ -18,7 +17,7 @@ exports.createPages = ({ graphql, actions }) => {
       results.data.allContentfulCaseStudy.edges.forEach(({ node }) => {
         createPage({
           path: `/case-studies/${node.slug}`,
-          component: CaseStudyDetail,
+          component: path.resolve('./src/components/CaseStudyDetail/index.js'),
           context: {
             slug: node.slug,
           },
