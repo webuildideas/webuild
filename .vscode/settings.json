@@ -1,0 +1,25 @@
+{
+  "eslint.autoFixOnSave": true,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "editor.formatOnSave": true,
+  "[css]": {
+    "editor.formatOnSave": true
+  },
+  "[SCSS]": {
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.formatOnSave": true
+  },
+  "[JSX]": {
+    "editor.formatOnSave": true
+  },
+  "[`styled-components`]": {
+    "editor.formatOnSave": true
+  },
+  "[`styled-jsx`]": {
+    "editor.formatOnSave": true
+  }
+}

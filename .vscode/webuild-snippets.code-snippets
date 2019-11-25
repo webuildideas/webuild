@@ -1,0 +1,12 @@
+{
+  "Styled Components Rhythm Unit": {
+    "prefix": "gvr",
+    "body": ["${() => rhythmUnit($1)};"],
+    "description": "Expands a function that calls our Rhythm Unit helper"
+  },
+  "Styled Components Props theme fn": {
+    "prefix": "scf",
+    "body": ["${props => props.theme.$1};"],
+    "description": "Expands Styled components prop fn"
+  }
+}
