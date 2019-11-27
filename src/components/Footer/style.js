@@ -4,7 +4,7 @@ import styled from 'styled-components'
 // Utils
 import { rhythmUnit } from '../../utils/typography'
 
-const FooterContainer = styled.div`
+export const FooterContainer = styled.div`
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -62,5 +62,3 @@ const FooterContainer = styled.div`
     }
   }
 `
-
-export default FooterContainer

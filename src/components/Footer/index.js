@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 
 // Styled Components
-import FooterContainer from './FooterContainer'
+import { FooterContainer } from './style'
 
 const Footer = () => {
   const d = new Date()
