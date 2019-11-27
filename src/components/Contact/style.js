@@ -4,7 +4,7 @@ import styled from 'styled-components'
 // Utils
 import { rhythmUnit } from '../../utils/typography'
 
-const ContactContainer = styled.div`
+export const ContactContainer = styled.div`
   text-align: center;
   padding-top: ${() => rhythmUnit(3.25)};
   padding-bottom: ${() => rhythmUnit(3.5)};
@@ -61,5 +61,3 @@ const ContactContainer = styled.div`
     }
   }
 `
-
-export default ContactContainer

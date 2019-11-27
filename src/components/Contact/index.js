@@ -3,12 +3,12 @@ import React, { useState } from 'react'
 import { animated, useSpring } from 'react-spring'
 
 // Styled Components
-import ContactContainer from './ContactContainer'
+import { ContactContainer } from './style'
 
 const Contact = () => {
   const [hovered, setHover] = useState(false)
   const handleMouseEnter = () => setHover(true)
-  const handleMousLeave = () => setHover(false)
+  const handleMouseLeave = () => setHover(false)
   const waveSpring = useSpring({
     from: { transform: 'rotate(5deg)' },
     to: hovered
@@ -27,7 +27,7 @@ const Contact = () => {
       <a
         href="mailto:hi@webuild.io"
         onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMousLeave}
+        onMouseLeave={handleMouseLeave}
       >
         <animated.span className="wave-emoji" style={waveSpring}>
           👋
