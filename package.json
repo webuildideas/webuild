@@ -7,7 +7,7 @@
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.6",
     "dotenv": "^8.2.0",
-    "gatsby": "^2.18.2",
+    "gatsby": "^2.18.4",
     "gatsby-image": "^2.2.33",
     "gatsby-plugin-manifest": "^2.2.29",
     "gatsby-plugin-netlify": "^2.1.25",
@@ -25,18 +25,11 @@
     "react-dom": "^16.12.0",
     "react-headroom": "^3.0.0",
     "react-helmet": "^5.2.1",
-    "react-masonry-component": "^6.2.1",
     "react-spring": "^8.0.27",
     "styled-components": "^4.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",
-    "@storybook/addon-actions": "^5.2.6",
-    "@storybook/addon-knobs": "^5.2.6",
-    "@storybook/addon-links": "^5.2.6",
-    "@storybook/addon-options": "^5.2.6",
-    "@storybook/addons": "^5.2.6",
-    "@storybook/react": "^5.2.6",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
