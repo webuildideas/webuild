@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Img from 'gatsby-image'
 
 // Styled Components
-import CaseStudyListingContainer from './CaseStudyListingContainer'
+import { CaseStudyListingContainer } from './style'
 
 const CaseStudyListing = ({ name, tagline, listingImg, slug }) => (
   <CaseStudyListingContainer to={`/case-studies/${slug}`}>
