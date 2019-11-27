@@ -5,7 +5,7 @@ import { Link } from 'gatsby'
 import { animated, useSpring, useTrail, config } from 'react-spring'
 
 // Styled Components
-import OverlayNavContainer from './OverlayNavContainer'
+import { OverlayNavContainer } from './style'
 
 const OverlayNav = ({ isOpen, onContact }) => {
   const navLinks = [
@@ -69,8 +69,8 @@ const OverlayNav = ({ isOpen, onContact }) => {
                 {navLinks[index].title}
               </a>
             ) : (
-              <Link to={navLinks[index].slug}>{navLinks[index].title}</Link>
-            )}
+                <Link to={navLinks[index].slug}>{navLinks[index].title}</Link>
+              )}
           </animated.li>
         ))}
       </ul>

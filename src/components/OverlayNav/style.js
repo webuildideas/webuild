@@ -5,7 +5,7 @@ import { animated } from 'react-spring'
 // utils
 import { rhythmUnit } from '../../utils/typography'
 
-const OverlayNavContainer = styled(animated.div)`
+export const OverlayNavContainer = styled(animated.div)`
   position: fixed;
   z-index: 3;
   top: 0;
@@ -67,5 +67,3 @@ const OverlayNavContainer = styled(animated.div)`
     }
   }
 `
-
-export default OverlayNavContainer
