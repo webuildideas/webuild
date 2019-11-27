@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import { rhythmUnit } from '../../utils/typography'
 
-const TestimonialContainer = styled.div`
+export const TestimonialContainer = styled.div`
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
   background-color: ${props => props.theme.white};
@@ -50,5 +50,3 @@ const TestimonialContainer = styled.div`
     line-height: 1.3;
   }
 `
-
-export default TestimonialContainer

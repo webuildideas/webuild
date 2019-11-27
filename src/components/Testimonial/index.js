@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Img from 'gatsby-image'
 
 // Styled Components
-import TestimonialContainer from './TestimonialContainer'
+import { TestimonialContainer } from './style'
 
 const Testimonial = ({ name, headshot, companyRole, company, testimonial }) => (
   <TestimonialContainer>
