@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 // Styled Components
-import TestimonialGridContainer from './TestimonialGridContainer'
+import { TestimonialGridContainer } from './style'
 
 // Components
 import Testimonial from '../Testimonial'

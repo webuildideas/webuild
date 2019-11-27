@@ -4,7 +4,7 @@ import styled from 'styled-components'
 // Utils
 import { rhythmUnit } from '../../utils/typography'
 
-const TestimonialGridContainer = styled.div`
+export const TestimonialGridContainer = styled.div`
   display: grid;
   justify-items: center;
   grid-template-columns: 1fr;
@@ -22,5 +22,3 @@ const TestimonialGridContainer = styled.div`
     padding: 0;
   }
 `
-
-export default TestimonialGridContainer
