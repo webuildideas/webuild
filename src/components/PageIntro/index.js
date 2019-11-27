@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 // Styled Components
 import ContentMaxWidthContainer from '../Shared/ContentMaxWidthContainer'
-import PageIntroContainer from './PageIntroContainer'
+import { PageIntroContainer } from './style'
 
 const PageIntro = ({ heading, blurb }) => {
   const createHeader = () => ({ __html: heading })

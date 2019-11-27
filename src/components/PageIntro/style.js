@@ -4,7 +4,7 @@ import styled from 'styled-components'
 // Utils
 import { rhythmUnit } from '../../utils/typography'
 
-const PageIntroContainer = styled.div`
+export const PageIntroContainer = styled.div`
   padding: ${() => `${rhythmUnit(2.75)} ${rhythmUnit(1)}`};
   text-align: center;
   @media (min-width: 800px) {
@@ -30,5 +30,3 @@ const PageIntroContainer = styled.div`
     }
   }
 `
-
-export default PageIntroContainer
