@@ -1,10 +1,8 @@
 // Packages
-import React, { useContext, useEffect } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
-// Context
-import { AppContext } from '../components/AppProvider'
 // Styled Components
 import SiteMaxWidthContainer from '../components/Shared/SiteMaxWidthContainer'
 
@@ -15,28 +13,20 @@ import Contact from '../components/Contact'
 import Meta from '../components/Meta'
 import Footer from '../components/Footer'
 
-const CaseStudies = ({ data }) => {
-  const { setNavColorTheme } = useContext(AppContext)
-
-  useEffect(() => {
-    setNavColorTheme('light')
-  }, [setNavColorTheme])
-
-  return (
-    <>
-      <Meta title="Case Studies" />
-      <SiteMaxWidthContainer>
-        <PageIntro
-          heading="We help our partners solve <br> ambitious design challenges"
-          blurb="We partner with inspiring entrepreneurs and values-driven companies to design and create world-class digital products, tools and experiences."
-        />
-        <CaseStudyGrid caseStudies={data.allContentfulCaseStudy.edges} />
-        <Contact />
-      </SiteMaxWidthContainer>
-      <Footer />
-    </>
-  )
-}
+const CaseStudies = ({ data }) => (
+  <>
+    <Meta title="Case Studies" />
+    <SiteMaxWidthContainer>
+      <PageIntro
+        heading="We help our partners solve <br> ambitious design challenges"
+        blurb="We partner with inspiring entrepreneurs and values-driven companies to design and create world-class digital products, tools and experiences."
+      />
+      <CaseStudyGrid caseStudies={data.allContentfulCaseStudy.edges} />
+      <Contact />
+    </SiteMaxWidthContainer>
+    <Footer />
+  </>
+)
 
 CaseStudies.propTypes = {
   data: PropTypes.object.isRequired,

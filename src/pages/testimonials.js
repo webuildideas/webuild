@@ -1,10 +1,7 @@
 // Packages
-import React, { useContext, useEffect } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-
-// Context
-import { AppContext } from '../components/AppProvider'
 
 // Utils
 import { rhythmUnit } from '../utils/typography'
@@ -20,30 +17,22 @@ import TestimonialGrid from '../components/TestimonialGrid'
 import Contact from '../components/Contact'
 import Footer from '../components/Footer'
 
-const Testimonials = ({ data }) => {
-  const { setNavColorTheme } = useContext(AppContext)
-
-  useEffect(() => {
-    setNavColorTheme('light')
-  }, [setNavColorTheme])
-
-  return (
-    <>
-      <Meta title="Testimonials" />
-      <PageIntro
-        heading="Why our partners love us"
-        blurb="Collaboration, commitment, and design that delivers results<br/> keeps our partners raving about us."
-      />
-      <GradientBackground gradient="linear-gradient(161.81deg, #F5F5FF -26.24%, rgba(250, 250, 251, 0) 85.41%);">
-        <SiteMaxWidthContainer padding={`${rhythmUnit(3)} 0 0`}>
-          <TestimonialGrid testimonials={data.allContentfulTestimonial.edges} />
-          <Contact />
-        </SiteMaxWidthContainer>
-      </GradientBackground>
-      <Footer />
-    </>
-  )
-}
+const Testimonials = ({ data }) => (
+  <>
+    <Meta title="Testimonials" />
+    <PageIntro
+      heading="Why our partners love us"
+      blurb="Collaboration, commitment, and design that delivers results<br/> keeps our partners raving about us."
+    />
+    <GradientBackground gradient="linear-gradient(161.81deg, #F5F5FF -26.24%, rgba(250, 250, 251, 0) 85.41%);">
+      <SiteMaxWidthContainer padding={`${rhythmUnit(3)} 0 0`}>
+        <TestimonialGrid testimonials={data.allContentfulTestimonial.edges} />
+        <Contact />
+      </SiteMaxWidthContainer>
+    </GradientBackground>
+    <Footer />
+  </>
+)
 Testimonials.propTypes = {
   data: PropTypes.object.isRequired,
 }
