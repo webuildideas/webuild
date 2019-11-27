@@ -14,7 +14,7 @@ import ServiceContainer from '../components/Shared/ServiceContainer'
 
 // Components
 import Meta from '../components/Meta'
-import HomeHero from '../components/HomeHero'
+import PageIntro from '../components/PageIntro'
 import TestimonialGrid from '../components/TestimonialGrid'
 import CaseStudyGrid from '../components/CaseStudyGrid'
 import StyledButton from '../components/Button'
@@ -32,7 +32,10 @@ const SectionHeading = styled.h5`
 const IndexPage = ({ data }) => (
   <>
     <Meta title="Home" />
-    <HomeHero />
+    <PageIntro
+      heading="Supercharge your product with results-driven design."
+      blurb="We help you iterate and optimize without breaking stride to increase retention and attract new users."
+    />
     <SiteMaxWidthContainer padding={`${rhythmUnit(3.5)} 0 0`}>
       <SectionHeading>Case Studies</SectionHeading>
       <CaseStudyGrid
