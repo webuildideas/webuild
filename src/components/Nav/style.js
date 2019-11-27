@@ -1,6 +1,32 @@
+// Packages
 import styled from 'styled-components'
 
-const NavDesktopLinks = styled.ul`
+export const NavContainer = styled.div`
+  position: relative;
+  width: 100%;
+  box-shadow: ${props =>
+    props.isPinned ? '0px 4px 8px rgba(0, 0, 0, 0.1)' : ''};
+  background-color: ${props =>
+    props.isPinned ? props.theme.white : 'rgba(0,0,0,0)'};
+  /* transition: background-color 400ms ease-out; */
+  padding: 1.875rem 2.5rem;
+
+  .SiteMaxWidthContainer {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+  }
+
+  .MenuIcon {
+    cursor: pointer;
+    font-size: ${props => props.theme.f2};
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
+  }
+`
+
+export const NavDesktopLinks = styled.ul`
   display: none;
   width: 360px;
 
@@ -34,5 +60,3 @@ const NavDesktopLinks = styled.ul`
     }
   }
 `
-
-export default NavDesktopLinks

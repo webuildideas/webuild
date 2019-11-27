@@ -6,8 +6,7 @@ import Helmet from 'react-helmet'
 import Headroom from 'react-headroom'
 
 // Styled Components
-import NavContainer from './NavContainer'
-import NavDesktopLinks from './NavDesktopLinks'
+import { NavContainer, NavDesktopLinks } from './style'
 import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
 
 // Components
@@ -15,31 +14,18 @@ import OverlayNav from '../OverlayNav'
 import Logo from './Logo'
 import MenuIcon from './MenuIcon'
 
-const Nav = ({
-  isNavOpen,
-  isNavPinned,
-  toggleNav,
-  togglePinnedNav,
-  colorTheme,
-}) => (
+const Nav = ({ isNavOpen, isNavPinned, toggleNav, togglePinnedNav }) => (
   <>
-    <Helmet
-      bodyAttributes={{
-        class: isNavOpen && 'overlayIsOpen',
-      }}
-    />
+    <Helmet bodyAttributes={{ class: isNavOpen && 'overlayIsOpen' }} />
     <Headroom
       onPin={() => togglePinnedNav(true)}
       onUnpin={() => togglePinnedNav(false)}
       onUnfix={() => togglePinnedNav(false)}
       style={{ transition: 'all 600ms ease-in-out' }}
-      className={`nav-theme--${colorTheme}`}
     >
       <NavContainer
         isPinned={isNavPinned}
-        className={`${
-          isNavOpen ? 'overlayIsOpen' : ''
-        } nav-theme--${colorTheme}`}
+        className={`${isNavOpen ? 'overlayIsOpen' : ''}`}
       >
         <SiteMaxWidthContainer className="SiteMaxWidthContainer">
           <Link className={`Logo ${isNavOpen ? 'isOpen' : ''}`} to="/">
@@ -75,7 +61,6 @@ Nav.propTypes = {
   toggleNav: PropTypes.func,
   isNavPinned: PropTypes.bool,
   togglePinnedNav: PropTypes.func,
-  colorTheme: PropTypes.string,
 }
 
 export default Nav
