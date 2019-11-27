@@ -4,7 +4,7 @@ import styled from 'styled-components'
 // utils
 import { rhythmUnit } from '../../utils/typography'
 
-const CaseStudyGridContainer = styled.div`
+export const CaseStudyGridContainer = styled.div`
   display: grid;
   justify-items: center;
   column-gap: ${() => rhythmUnit(1)};
@@ -23,5 +23,3 @@ const CaseStudyGridContainer = styled.div`
     padding: 0;
   }
 `
-
-export default CaseStudyGridContainer

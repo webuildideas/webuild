@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 // Styled Components
-import CaseStudyGridContainer from './CaseStudyGridContainer'
+import { CaseStudyGridContainer } from './style'
 
 // Components
 import CaseStudyListing from '../CaseStudyListing'
@@ -14,7 +14,7 @@ const CaseStudyGrid = ({ caseStudies }) => (
      * We check to see if node exists because this component needs
      * to handle different responses from Contentful
      * When node is present that means we are on the listing page
-     * when it is not present we are dealing with realtional field
+     * when it is not present we are dealing with relational field
      * data from contentful that is currently used on the HomePage
      * of the webuild site.
      */}
