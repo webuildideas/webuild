@@ -6,16 +6,27 @@ import Img from 'gatsby-image'
 // Styled Components
 import { TestimonialContainer } from './style'
 
-const Testimonial = ({ name, headshot, companyRole, company, testimonial }) => (
+const Testimonial = ({
+  name,
+  headshot,
+  companyRole,
+  company,
+  testimonial,
+  isStory,
+}) => (
   <TestimonialContainer>
     <p className="testimonial">{testimonial}</p>
     <div className="client">
       <div className="client-img">
-        <Img
-          style={{ width: '100%', height: '100%' }}
-          fixed={headshot}
-          alt={`${name} Headshot`}
-        />
+        {isStory ? (
+          <img src={headshot} alt={`${name} Headshot`} />
+        ) : (
+          <Img
+            style={{ width: '100%', height: '100%' }}
+            fixed={headshot}
+            alt={`${name} Headshot`}
+          />
+        )}
       </div>
       <div className="client-details">
         <p className="client-name">{name}</p>
@@ -31,5 +42,11 @@ Testimonial.propTypes = {
   companyRole: PropTypes.string.isRequired,
   company: PropTypes.string.isRequired,
   testimonial: PropTypes.string.isRequired,
+  isStory: PropTypes.bool,
 }
+
+Testimonial.defaultProps = {
+  isStory: false,
+}
+
 export default Testimonial
