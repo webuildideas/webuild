@@ -9,8 +9,30 @@
         "semi": false
       }
     ],
+    "react/jsx-boolean-value": 0,
     "react/jsx-props-no-spreading": 0,
     "react/static-property-placement": 0,
-    "import/no-extraneous-dependencies": 0
+    "import/no-extraneous-dependencies": 0,
+    "react/jsx-sort-props": [
+      1,
+      {
+        "callbacksLast": false,
+        "shorthandFirst": false,
+        "shorthandLast": false,
+        "ignoreCase": true,
+        "noSortAlphabetically": false,
+        "reservedFirst": true
+      }
+    ],
+    "react/sort-prop-types": [
+      1,
+      {
+        "callbacksLast": false,
+        "ignoreCase": true,
+        "requiredFirst": false,
+        "sortShapeProp": true,
+        "noSortAlphabetically": false
+      }
+    ]
   }
 }

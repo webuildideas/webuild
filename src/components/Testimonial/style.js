@@ -3,31 +3,30 @@ import styled from 'styled-components'
 
 import { rhythmUnit } from '../../utils/typography'
 
-export const TestimonialContainer = styled.div`
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
-  border-radius: 8px;
+export const Testimonial = styled.div`
   background-color: ${props => props.theme.white};
   max-width: 26.75rem;
   padding: ${() => rhythmUnit(1)};
+
   @media (min-width: 425px) {
     padding: ${() => rhythmUnit(1.25)};
   }
-  @media (min-width: 800px) {
-    /* padding: ${() => rhythmUnit(1.5)}; */
-  }
 
-  .testimonial {
-    font-size: ${props => props.theme.f4};
+  .Testimonial {
+    font-size: ${props => props.theme.f3};
     line-height: 1.6;
     margin-bottom: ${() => rhythmUnit(1)};
+    span {
+      font-weight: 700;
+    }
   }
 
-  .client {
+  .Testimonial__client {
     display: flex;
     align-items: center;
   }
 
-  .client-img {
+  .Testimonial__client-img {
     min-width: 50px;
     min-height: 50px;
     width: 50px;
@@ -37,16 +36,32 @@ export const TestimonialContainer = styled.div`
     overflow: hidden;
   }
 
-  .client-name {
-    font-size: ${props => props.theme.f6};
-    font-weight: 800;
+  .Testimonial__client-name {
+    font-size: ${props => props.theme.f4};
+    font-weight: 700;
     margin-bottom: ${() => rhythmUnit(0.25)};
   }
 
-  .client-company {
-    font-size: ${props => props.theme.f6};
-    color: ${props => props.theme.grey};
+  .Testimonial__client-company {
+    font-size: ${props => props.theme.f4};
     font-weight: 400;
     line-height: 1.3;
+  }
+`
+
+// Modifier for the large featured Testimonial
+export const FeaturedTestimonial = styled(Testimonial)`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1100px;
+
+  .Testimonial__client-featured-img {
+    position: relative;
+    img {
+      display: block;
+      position: absolute;
+      right: -25px;
+      bottom: -40px;
+    }
   }
 `
