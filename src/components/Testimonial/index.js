@@ -58,10 +58,10 @@ const Testimonial = ({
 }
 
 Testimonial.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   company: PropTypes.string.isRequired,
   companyRole: PropTypes.string.isRequired,
-  headshot: PropTypes.object,
+  headshot: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   isFeatured: PropTypes.bool,
   isStory: PropTypes.bool,
   name: PropTypes.string.isRequired,

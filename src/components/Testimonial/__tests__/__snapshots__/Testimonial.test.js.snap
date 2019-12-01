@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Testimonial /> renders and matches snapshot 1`] = `
+<styled.div>
+  <p
+    className="Testimonial"
+  >
+    I've worked with dozens of agencies in my career, and hands-down
+     
+    <span>
+      WeBuild stands far above the crowd.
+    </span>
+     If you're lucky enough to have the chance to work with them, don't hesitate! Just do it. You won't regret it.
+  </p>
+  <div
+    className="Testimonial__client"
+  >
+    <div
+      className="Testimonial__client-img"
+    >
+      <img
+        alt="Paul Lappas Headshot"
+        src="test-file-stub"
+      />
+    </div>
+    <div
+      className="Testimonial__client-details"
+    >
+      <p
+        className="Testimonial__client-name"
+      >
+        Paul Lappas
+      </p>
+      <p
+        className="Testimonial__client-company"
+      >
+        CEO/Co-Founder, intermix.io
+      </p>
+    </div>
+  </div>
+</styled.div>
+`;

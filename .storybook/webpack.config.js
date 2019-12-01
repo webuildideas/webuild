@@ -16,6 +16,8 @@ module.exports = ({ config }) => {
     require.resolve("@babel/plugin-proposal-class-properties"),
     // use babel-plugin-remove-graphql-queries to remove static queries from components when rendering in storybook
     require.resolve("babel-plugin-remove-graphql-queries"),
+
+    require.resolve("babel-plugin-react-docgen"),
   ]
 
   // Prefer Gatsby ES6 entrypoint (module) over commonjs (main) entrypoint

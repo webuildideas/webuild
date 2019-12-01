@@ -5,7 +5,6 @@
   "version": "1.0.0",
   "author": "Vince Brown <vince@vincebrown.me>",
   "dependencies": {
-    "babel-plugin-styled-components": "^1.10.6",
     "dotenv": "^8.2.0",
     "gatsby": "^2.18.4",
     "gatsby-image": "^2.2.34",
@@ -31,13 +30,17 @@
   "devDependencies": {
     "@babel/core": "^7.7.4",
     "@storybook/addon-actions": "^5.2.6",
+    "@storybook/addon-docs": "^5.2.7",
     "@storybook/addon-links": "^5.2.6",
     "@storybook/addons": "^5.2.6",
     "@storybook/react": "^5.2.6",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
+    "babel-plugin-react-docgen": "^3.2.0",
     "babel-plugin-remove-graphql-queries": "^2.7.17",
+    "babel-plugin-styled-components": "^1.10.6",
+    "babel-preset-gatsby": "^0.2.23",
     "casual": "^1.6.2",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
@@ -53,8 +56,10 @@
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^2.3.0",
     "gatsby-plugin-eslint": "^2.0.8",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^24.9.0",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "waait": "^1.0.5"
   },
   "scripts": {
     "build": "gatsby build",
