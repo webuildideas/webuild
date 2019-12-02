@@ -1,28 +1,18 @@
-/* eslint-disable react/no-danger */
 // Packages
 import React from 'react'
 import PropTypes from 'prop-types'
 
 // Styled Components
-import ContentMaxWidthContainer from '../Shared/ContentMaxWidthContainer'
-import { PageIntroContainer } from './style'
+import * as S from './style'
 
-const PageIntro = ({ heading, blurb }) => {
-  const createHeader = () => ({ __html: heading })
-  const createBlurb = () => ({ __html: blurb })
-  return (
-    <PageIntroContainer bgColor="#fff">
-      <ContentMaxWidthContainer>
-        <h1 dangerouslySetInnerHTML={createHeader()} />
-        <h2 className="h5" dangerouslySetInnerHTML={createBlurb()} />
-      </ContentMaxWidthContainer>
-    </PageIntroContainer>
-  )
-}
+const PageIntro = ({ children }) => (
+  <S.PageIntro>
+    <div className="PageIntro__inner">{children}</div>
+  </S.PageIntro>
+)
 
 PageIntro.propTypes = {
-  heading: PropTypes.string.isRequired,
-  blurb: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
 }
 
 export default PageIntro

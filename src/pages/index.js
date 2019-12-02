@@ -10,18 +10,13 @@ import { rhythmUnit } from '../utils/typography'
 // Styled Components
 import SiteMaxWidthContainer from '../components/Shared/SiteMaxWidthContainer'
 import GradientBackground from '../components/Shared/GradientBackground'
-import ServiceContainer from '../components/Shared/ServiceContainer'
 
 // Components
 import Meta from '../components/Meta'
 import PageIntro from '../components/PageIntro'
 import TestimonialGrid from '../components/TestimonialGrid'
-import CaseStudyGrid from '../components/CaseStudyGrid'
-import StyledButton from '../components/Button'
 import Contact from '../components/Contact'
 import Footer from '../components/Footer'
-import Target from '../components/Svgs/Target'
-import InlineLink from '../components/InlineLink'
 
 const SectionHeading = styled.h5`
   text-transform: uppercase;
@@ -32,64 +27,18 @@ const SectionHeading = styled.h5`
 const IndexPage = ({ data }) => (
   <>
     <Meta title="Home" />
-    <PageIntro
-      heading="Supercharge your product with results-driven design."
-      blurb="We help you iterate and optimize without breaking stride to increase retention and attract new users."
-    />
-    <SiteMaxWidthContainer padding={`${rhythmUnit(3.5)} 0 0`}>
-      <SectionHeading>Case Studies</SectionHeading>
-      <CaseStudyGrid
-        caseStudies={data.allContentfulHomePage.edges[0].node.caseStudies}
-      />
-      <div
-        style={{
-          textAlign: 'center',
-          marginTop: rhythmUnit(2),
-          marginBottom: rhythmUnit(4.25),
-        }}
-      >
-        <StyledButton to="/case-studies">See More Case Studies</StyledButton>
-      </div>
-
-      <ServiceContainer style={{ marginBottom: rhythmUnit(3.75) }}>
-        <div className="ServiceCopy">
-          <h3>We’re the only design partner you’ll ever need</h3>
-          <p>
-            We’ll handle all things design so you can focus on what you do best:
-            running your business. Think of us as an integrated part of your
-            product team — plug us in and we’ll design your ideas and deliver
-            results.
-          </p>
-          <div className="ServiceLinks">
-            <InlineLink to="/who-we-are" withArrow>
-              Learn About Us
-            </InlineLink>
-            <InlineLink to="/what-we-do" withArrow>
-              See How We Can Help
-            </InlineLink>
-          </div>
-        </div>
-        <div className="ServiceIcon">
-          <Target />
-        </div>
-      </ServiceContainer>
-    </SiteMaxWidthContainer>
+    <PageIntro>
+      <span>Supercharge your product with results-driven design.</span> We help
+      you iterate and optimize without breaking stride to increase retention and
+      attract new users.
+    </PageIntro>
 
     <GradientBackground gradient="linear-gradient(161.81deg, #F5F5FF -26.24%, rgba(250, 250, 251, 0) 85.41%);">
       <SiteMaxWidthContainer padding={`${rhythmUnit(3.5)} 0 0`}>
-        <SectionHeading> Why our partners love us</SectionHeading>
+        <SectionHeading>Our Partners Love Us</SectionHeading>
         <TestimonialGrid
           testimonials={data.allContentfulHomePage.edges[0].node.testimonials}
         />
-        <div
-          style={{
-            textAlign: 'center',
-            marginTop: rhythmUnit(2),
-            marginBottom: rhythmUnit(2.5),
-          }}
-        >
-          <StyledButton to="/testimonials">See More Kind Words </StyledButton>
-        </div>
       </SiteMaxWidthContainer>
     </GradientBackground>
 

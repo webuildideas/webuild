@@ -14,10 +14,11 @@ const WhoWeAre = () => (
   <>
     <Meta title="Who We Are" />
     <SiteMaxWidthContainer>
-      <PageIntro
-        heading="Not your average agency"
-        blurb="We’re a remote team of designers, product makers &amp; strategists passionate about design."
-      />
+      <PageIntro>
+        <span>Not your average agency.</span> We combine our deep expertise in
+        product design and strategy to accelerate business growth for industry
+        leaders and fast-growing startups.
+      </PageIntro>
       <Contact />
     </SiteMaxWidthContainer>
     <Footer />

@@ -17,10 +17,13 @@ const CaseStudies = ({ data }) => (
   <>
     <Meta title="Case Studies" />
     <SiteMaxWidthContainer>
-      <PageIntro
-        heading="We help our partners solve <br> ambitious design challenges"
-        blurb="We partner with inspiring entrepreneurs and values-driven companies to design and create world-class digital products, tools and experiences."
-      />
+      <PageIntro>
+        <span>
+          We help our partners solve ambitious challenges through design.
+        </span>{' '}
+        We partner with inspiring entrepreneurs and growth-stage companies to
+        create digital products and experiences.
+      </PageIntro>
       <CaseStudyGrid caseStudies={data.allContentfulCaseStudy.edges} />
       <Contact />
     </SiteMaxWidthContainer>
