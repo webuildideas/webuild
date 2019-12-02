@@ -19,13 +19,13 @@ const Nav = ({ isNavOpen, isNavPinned, toggleNav, togglePinnedNav }) => (
     <Helmet bodyAttributes={{ class: isNavOpen && 'overlayIsOpen' }} />
     <Headroom
       onPin={() => togglePinnedNav(true)}
-      onUnpin={() => togglePinnedNav(false)}
       onUnfix={() => togglePinnedNav(false)}
+      onUnpin={() => togglePinnedNav(false)}
       style={{ transition: 'all 600ms ease-in-out' }}
     >
       <NavContainer
-        isPinned={isNavPinned}
         className={`${isNavOpen ? 'overlayIsOpen' : ''}`}
+        isPinned={isNavPinned}
       >
         <SiteMaxWidthContainer className="SiteMaxWidthContainer">
           <Link className={`Logo ${isNavOpen ? 'isOpen' : ''}`} to="/">
@@ -36,16 +36,16 @@ const Nav = ({ isNavOpen, isNavPinned, toggleNav, togglePinnedNav }) => (
               <Link to="/who-we-are">Who We Are</Link>
             </li>
             <li>
-              <Link to="/what-we-do">What We Do</Link>
+              <Link to="/case-studies">Case Studies</Link>
             </li>
             <li>
-              <Link to="/case-studies">Case Studies</Link>
+              <Link to="/">Get In Touch</Link>
             </li>
           </NavDesktopLinks>
 
           <MenuIcon
-            isOpen={isNavOpen}
             className="Icon MenuIcon"
+            isOpen={isNavOpen}
             onClick={() => (isNavOpen ? toggleNav(false) : toggleNav(true))}
           />
         </SiteMaxWidthContainer>
@@ -58,8 +58,8 @@ const Nav = ({ isNavOpen, isNavPinned, toggleNav, togglePinnedNav }) => (
 
 Nav.propTypes = {
   isNavOpen: PropTypes.bool,
-  toggleNav: PropTypes.func,
   isNavPinned: PropTypes.bool,
+  toggleNav: PropTypes.func,
   togglePinnedNav: PropTypes.func,
 }
 
