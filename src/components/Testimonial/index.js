@@ -6,6 +6,10 @@ import Img from 'gatsby-image'
 // Styled Components
 import * as S from './style'
 
+/**
+ * Use the `Testimonial` component to display client testimonials
+ * and display either in a grid view or as full width "featured".
+ */
 const Testimonial = ({
   children,
   name,
@@ -58,12 +62,19 @@ const Testimonial = ({
 }
 
 Testimonial.propTypes = {
+  /** The actual copy for testimonial */
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  /** The company the client represents */
   company: PropTypes.string.isRequired,
+  /** The role of the client */
   companyRole: PropTypes.string.isRequired,
+  /** The headshot of the client */
   headshot: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  /** Whether the testimonial is the featured type */
   isFeatured: PropTypes.bool,
+  /** Whether it is displaying in storybook (does not use gatsby-image when true) */
   isStory: PropTypes.bool,
+  /** The name of the client */
   name: PropTypes.string.isRequired,
 }
 

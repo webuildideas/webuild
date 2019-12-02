@@ -11,6 +11,9 @@ import featuredHeadshot from '../../static/images/stories/hiten-shah-large-heads
 export default {
   title: 'Testimonial',
   component: Testimonial,
+  parameters: {
+    componentSubtitle: 'Display Client Testimonials',
+  },
 }
 
 const normalDecorator = story => (
