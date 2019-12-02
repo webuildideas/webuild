@@ -9,7 +9,6 @@ import { rhythmUnit } from '../utils/typography'
 
 // Styled Components
 import SiteMaxWidthContainer from '../components/Shared/SiteMaxWidthContainer'
-import GradientBackground from '../components/Shared/GradientBackground'
 
 // Components
 import Meta from '../components/Meta'
@@ -33,14 +32,14 @@ const IndexPage = ({ data }) => (
       attract new users.
     </PageIntro>
 
-    <GradientBackground gradient="linear-gradient(161.81deg, #F5F5FF -26.24%, rgba(250, 250, 251, 0) 85.41%);">
+    <div style={{ backgroundColor: '#FCFCFC' }}>
       <SiteMaxWidthContainer padding={`${rhythmUnit(3.5)} 0 0`}>
         <SectionHeading>Our Partners Love Us</SectionHeading>
         <TestimonialGrid
           testimonials={data.allContentfulHomePage.edges[0].node.testimonials}
         />
       </SiteMaxWidthContainer>
-    </GradientBackground>
+    </div>
 
     <Contact />
     <Footer />

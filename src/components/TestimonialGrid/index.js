@@ -22,25 +22,23 @@ const TestimonialGrid = ({ testimonials }) => (
       t.node ? (
         <Testimonial
           key={t.node.name}
-          name={t.node.name}
-          headshotSrc={t.node.headshot.fixed.src}
-          headshotSrcSet={t.node.headshot.fixed.srcset}
-          headshot={t.node.headshot.fixed}
-          companyRole={t.node.role}
           company={t.node.company}
-          testimonial={t.node.testimonial.testimonial}
-        />
+          companyRole={t.node.role}
+          headshot={t.node.headshot.fixed}
+          name={t.node.name}
+        >
+          {t.node.testimonial.testimonial}
+        </Testimonial>
       ) : (
         <Testimonial
           key={t.name}
-          name={t.name}
-          headshot={t.headshot.fixed}
-          headshotSrc={t.headshot.fixed.src}
-          headshotSrcSet={t.headshot.fixed.srcset}
-          companyRole={t.role}
           company={t.company}
-          testimonial={t.testimonial.testimonial}
-        />
+          companyRole={t.role}
+          headshot={t.headshot.fixed}
+          name={t.name}
+        >
+          {t.testimonial.testimonial}
+        </Testimonial>
       )
     )}
   </TestimonialGridContainer>
@@ -50,16 +48,16 @@ TestimonialGrid.propTypes = {
   testimonials: PropTypes.arrayOf(
     PropTypes.shape({
       company: PropTypes.string,
-      name: PropTypes.string,
-      role: PropTypes.string,
-      testimonial: PropTypes.shape({
-        testimonial: PropTypes.string,
-      }),
       headShot: PropTypes.shape({
         fixed: PropTypes.shape({
           src: PropTypes.string,
           srcSet: PropTypes.string,
         }),
+      }),
+      name: PropTypes.string,
+      role: PropTypes.string,
+      testimonial: PropTypes.shape({
+        testimonial: PropTypes.string,
       }),
     })
   ).isRequired,
