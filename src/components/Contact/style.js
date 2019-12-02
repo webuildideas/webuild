@@ -5,13 +5,13 @@ import styled from 'styled-components'
 import { rhythmUnit } from '../../utils/typography'
 
 export const ContactContainer = styled.div`
-  text-align: center;
+  background-color: ${props => props.theme.vulcan};
+  color: #fff;
   padding-top: ${() => rhythmUnit(3.25)};
   padding-bottom: ${() => rhythmUnit(3.5)};
   padding-left: ${() => rhythmUnit(1)};
   padding-right: ${() => rhythmUnit(1)};
   font-size: ${props => props.theme.f5};
-  max-width: 37rem;
   margin: 0 auto;
   @media (min-width: 700px) {
     padding-left: 0;

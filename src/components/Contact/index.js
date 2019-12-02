@@ -18,12 +18,8 @@ const Contact = () => {
   })
   return (
     <ContactContainer>
-      <h5>Have an idea in mind? Let's talk</h5>
-      <p>
-        We believe the magic happens when thoughtful collaboration and
-        unparalleled expertise come together to turn great ideas into great
-        products.
-      </p>
+      <h5>Let's Do Something Bold</h5>
+      <p>Ready to take your product to the next level? Drop us a line.</p>
       <a
         href="mailto:hi@webuild.io"
         onMouseEnter={handleMouseEnter}
