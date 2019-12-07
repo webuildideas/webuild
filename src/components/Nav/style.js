@@ -1,20 +1,20 @@
 // Packages
 import styled from 'styled-components'
 
-export const NavContainer = styled.div`
+export const NavContainer = styled.header`
   position: relative;
   width: 100%;
   box-shadow: ${props =>
     props.isPinned ? '0px 4px 8px rgba(0, 0, 0, 0.1)' : ''};
   background-color: ${props =>
     props.isPinned ? props.theme.white : 'rgba(0,0,0,0)'};
-  /* transition: background-color 400ms ease-out; */
   padding: 1.875rem 2.5rem;
+  padding: ${props => (props.isPinned ? '0.875rem 2.5rem' : '1.875rem 2.5rem')};
 
   .SiteMaxWidthContainer {
     display: flex;
     justify-content: space-between;
-    align-content: center;
+    align-items: center;
   }
 
   .MenuIcon {
@@ -26,17 +26,25 @@ export const NavContainer = styled.div`
   }
 `
 
-export const NavDesktopLinks = styled.ul`
-  display: none;
-  width: 360px;
-
-  @media screen and (min-width: 768px) {
-    display: grid;
-    grid-template-columns: repeat(3, 120px);
-    align-self: center;
+export const NavDesktopLinks = styled.nav`
+  ul {
+    display: none;
+    width: 100%;
+    @media screen and (min-width: 768px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr 190px;
+      align-items: center;
+      grid-gap: 2rem;
+    }
   }
 
-  li a {
+  .Button {
+    display: block;
+    text-align: center;
+    font-size: ${props => props.theme.f7};
+  }
+
+  li a:not(.Button) {
     position: relative;
     text-transform: uppercase;
     font-size: ${props => props.theme.f7};

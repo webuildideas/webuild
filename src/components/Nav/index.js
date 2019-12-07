@@ -13,6 +13,7 @@ import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
 import OverlayNav from '../OverlayNav'
 import Logo from './Logo'
 import MenuIcon from './MenuIcon'
+import Button from '../Button'
 
 const Nav = ({ isNavOpen, isNavPinned, toggleNav, togglePinnedNav }) => (
   <>
@@ -32,15 +33,19 @@ const Nav = ({ isNavOpen, isNavPinned, toggleNav, togglePinnedNav }) => (
             <Logo className="Logo" isOpen={isNavOpen} />
           </Link>
           <NavDesktopLinks className="NavDesktopLinks">
-            <li>
-              <Link to="/who-we-are">Who We Are</Link>
-            </li>
-            <li>
-              <Link to="/case-studies">Case Studies</Link>
-            </li>
-            <li>
-              <Link to="/">Get In Touch</Link>
-            </li>
+            <ul>
+              <li>
+                <Link to="/who-we-are">Who We Are</Link>
+              </li>
+              <li>
+                <Link to="/case-studies">Case Studies</Link>
+              </li>
+              <li>
+                <Button className="Button" to="/">
+                  Get In Touch
+                </Button>
+              </li>
+            </ul>
           </NavDesktopLinks>
 
           <MenuIcon
