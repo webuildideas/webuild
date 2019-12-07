@@ -5,14 +5,14 @@ import { animated } from 'react-spring'
 // utils
 import { rhythmUnit } from '../../utils/typography'
 
-export const OverlayNavContainer = styled(animated.div)`
+export const OverlayNavContainer = styled(animated.nav)`
   position: fixed;
   z-index: 3;
   top: 0;
   width: 100%;
   height: 100%;
   color: ${props => props.theme.white};
-  background-color: ${props => props.theme.darkBlue};
+  background-color: ${props => props.theme.tuna};
   font-size: ${props => props.theme.f2};
   font-weight: 800;
   letter-spacing: ${props => props.theme.tracked};

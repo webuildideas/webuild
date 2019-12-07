@@ -14,10 +14,6 @@ const OverlayNav = ({ isOpen, onContact }) => {
       slug: '/who-we-are',
     },
     {
-      title: 'What we do',
-      slug: '/what-we-do',
-    },
-    {
       title: 'Case Studies',
       slug: '/case-studies',
     },

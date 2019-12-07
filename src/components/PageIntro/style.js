@@ -8,7 +8,7 @@ export const PageIntro = styled.div`
   font-size: ${props => props.theme.f1};
   line-height: 1.2;
   padding: ${() => `${rhythmUnit(2.75)} ${rhythmUnit(1)}`};
-  @media (min-width: 800px) {
+  @media (min-width: 1100px) {
     padding-left: 0;
     padding-right: 0;
   }
