@@ -1,22 +1,32 @@
 // Packages
 import React from 'react'
-import { Link } from 'gatsby'
 
 // Styled Components
 import { FooterContainer } from './style'
+import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
 
 const Footer = () => {
   const d = new Date()
   return (
     <FooterContainer>
-      <p className="copyright">&copy; WEBUILD {d.getFullYear()}</p>
-      <Link className="back-home" to="/">
-        ← BACK TO HOME
-      </Link>
-      <p className="follow-social">
-        Follow us on: <a href="https://www.dribbble.com">Dribble</a>{' '}
-        <span>&amp;</span> <a href="https://www.instagram.com">Instagram</a>
-      </p>
+      <SiteMaxWidthContainer>
+        <h1 className="Footer__title">Let's Do Something Bold</h1>
+        <h2 className="Footer__subtitle">
+          Ready to take your product to the next level? Drop us a line.
+        </h2>
+        <a className="Footer__btn" href="mailto:hi@webuild.io">
+          <span className="wave-emoji">👋</span>
+          <span className="email">HI@WEBUILD.IO</span>
+        </a>
+
+        <div className="Footer__follow">
+          <p className="Footer__copyright">&copy; WEBUILD {d.getFullYear()}</p>
+          <p className="Footer__social">
+            Follow us on: <a href="https://www.dribbble.com">Dribble</a>{' '}
+            <span>&amp;</span> <a href="https://www.instagram.com">Instagram</a>
+          </p>
+        </div>
+      </SiteMaxWidthContainer>
     </FooterContainer>
   )
 }

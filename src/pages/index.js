@@ -14,7 +14,6 @@ import SiteMaxWidthContainer from '../components/Shared/SiteMaxWidthContainer'
 import Meta from '../components/Meta'
 import PageIntro from '../components/PageIntro'
 import TestimonialGrid from '../components/TestimonialGrid'
-import Contact from '../components/Contact'
 import Footer from '../components/Footer'
 
 const SectionHeading = styled.h5`
@@ -41,7 +40,6 @@ const IndexPage = ({ data }) => (
       </SiteMaxWidthContainer>
     </div>
 
-    <Contact />
     <Footer />
   </>
 )
