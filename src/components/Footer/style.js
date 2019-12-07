@@ -8,6 +8,7 @@ export const FooterContainer = styled.footer`
   background-color: ${props => props.theme.vulcan};
   color: #fff;
   padding: ${() => `${rhythmUnit(2.75)} ${rhythmUnit(1)} ${rhythmUnit(1.25)}`};
+  margin-top: ${() => rhythmUnit(3.75)};
   @media (min-width: 1140px) {
     padding-left: 0;
     padding-right: 0;
