@@ -63,8 +63,8 @@ class AppProvider extends Component {
         <AppContext.Provider value={this.state}>
           <GlobalStyle />
           <Nav
-            isNavPinned={isNavPinned}
             isNavOpen={isNavOpen}
+            isNavPinned={isNavPinned}
             toggleNav={toggleNav}
             togglePinnedNav={togglePinnedNav}
           />

@@ -5,15 +5,15 @@ import PropTypes from 'prop-types'
 // Styled Components
 import * as S from './style'
 
-const Button = ({ children, type, ...rest }) => {
+const Button = ({ children, type, ...props }) => {
   const renderButtonType = () => {
     switch (type) {
       case 'primary':
-        return <S.PrimaryButton {...rest}>{children}</S.PrimaryButton>
+        return <S.PrimaryButton {...props}>{children}</S.PrimaryButton>
       case 'secondary':
-        return <S.SecondaryButton {...rest}>{children}</S.SecondaryButton>
+        return <S.SecondaryButton {...props}>{children}</S.SecondaryButton>
       default:
-        return <S.PrimaryButton {...rest}>{children}</S.PrimaryButton>
+        return <S.PrimaryButton {...props}>{children}</S.PrimaryButton>
     }
   }
   return renderButtonType()

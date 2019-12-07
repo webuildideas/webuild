@@ -30,9 +30,9 @@ const MenuIcon = ({ isOpen, ...props }) => {
       viewBox="0 0 44 44"
       xmlns="http://www.w3.org/2000/animated."
     >
-      <animated.rect width="40" height="3" transform={top} />
-      <animated.rect width="40" height="3" transform={center} />
-      <animated.rect width="40" height="3" transform={bottom} />
+      <animated.rect height="3" transform={top} width="40" />
+      <animated.rect height="3" transform={center} width="40" />
+      <animated.rect height="3" transform={bottom} width="40" />
     </animated.svg>
   )
 }

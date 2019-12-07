@@ -22,18 +22,18 @@ const CaseStudyGrid = ({ caseStudies }) => (
       study.node ? (
         <CaseStudyListing
           key={study.node.slug}
-          slug={study.node.slug}
-          name={study.node.name}
-          tagline={study.node.tagline}
           listingImg={study.node.listingImage.fluid}
+          name={study.node.name}
+          slug={study.node.slug}
+          tagline={study.node.tagline}
         />
       ) : (
         <CaseStudyListing
           key={study.slug}
-          slug={study.slug}
-          name={study.name}
-          tagline={study.tagline}
           listingImg={study.listingImage.fluid}
+          name={study.name}
+          slug={study.slug}
+          tagline={study.tagline}
         />
       )
     )}
@@ -43,10 +43,10 @@ const CaseStudyGrid = ({ caseStudies }) => (
 CaseStudyGrid.propTypes = {
   caseStudies: PropTypes.arrayOf(
     PropTypes.shape({
-      slug: PropTypes.string,
-      name: PropTypes.string,
-      tagline: PropTypes.string,
       listingImage: PropTypes.object,
+      name: PropTypes.string,
+      slug: PropTypes.string,
+      tagline: PropTypes.string,
     })
   ).isRequired,
 }

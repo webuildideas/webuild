@@ -25,8 +25,6 @@ const Meta = ({ description, lang, meta, title }) => {
       htmlAttributes={{
         lang,
       }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
         {
           name: `description`,
@@ -61,6 +59,8 @@ const Meta = ({ description, lang, meta, title }) => {
           content: metaDescription,
         },
       ].concat(meta)}
+      title={title}
+      titleTemplate={`%s | ${site.siteMetadata.title}`}
     />
   )
 }

@@ -8,17 +8,17 @@ import { CaseStudyListingContainer } from './style'
 
 const CaseStudyListing = ({ name, tagline, listingImg, slug }) => (
   <CaseStudyListingContainer to={`/case-studies/${slug}`}>
-    <Img className="CaseStudy__img" fluid={listingImg} alt={`${name}`} />
+    <Img alt={`${name}`} className="CaseStudy__img" fluid={listingImg} />
     <h3 className="CaseStudy__name">{name}</h3>
     <p className="CaseStudy__tagline">{tagline}</p>
   </CaseStudyListingContainer>
 )
 
 CaseStudyListing.propTypes = {
-  name: PropTypes.string.isRequired,
-  tagline: PropTypes.string.isRequired,
   listingImg: PropTypes.object,
+  name: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
+  tagline: PropTypes.string.isRequired,
 }
 
 export default CaseStudyListing

@@ -13,8 +13,8 @@ const NotFoundPage = () => (
   <SiteMaxWidthContainer style={{ textAlign: 'center' }}>
     <Meta title="404: Not found" />
     <PageIntro
-      heading="You must be lost."
       blurb="Error 404. Looks like this page doesn't exist..."
+      heading="You must be lost."
     />
     <StyledButton to="/">Back To Home</StyledButton>
   </SiteMaxWidthContainer>
