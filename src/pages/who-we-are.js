@@ -6,7 +6,6 @@ import SiteMaxWidthContainer from '../components/Shared/SiteMaxWidthContainer'
 
 // Components
 import Meta from '../components/Meta'
-import Contact from '../components/Contact'
 import PageIntro from '../components/PageIntro'
 import Footer from '../components/Footer'
 
@@ -19,7 +18,6 @@ const WhoWeAre = () => (
         product design and strategy to accelerate business growth for industry
         leaders and fast-growing startups.
       </PageIntro>
-      <Contact />
     </SiteMaxWidthContainer>
     <Footer />
   </>

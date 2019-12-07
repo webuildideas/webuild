@@ -9,7 +9,6 @@ import SiteMaxWidthContainer from '../components/Shared/SiteMaxWidthContainer'
 // Components
 import PageIntro from '../components/PageIntro'
 import CaseStudyGrid from '../components/CaseStudyGrid'
-import Contact from '../components/Contact'
 import Meta from '../components/Meta'
 import Footer from '../components/Footer'
 
@@ -25,7 +24,6 @@ const CaseStudies = ({ data }) => (
         create digital products and experiences.
       </PageIntro>
       <CaseStudyGrid caseStudies={data.allContentfulCaseStudy.edges} />
-      <Contact />
     </SiteMaxWidthContainer>
     <Footer />
   </>
