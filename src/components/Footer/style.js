@@ -7,26 +7,7 @@ import { rhythmUnit } from '../../utils/typography'
 export const FooterContainer = styled.footer`
   background-color: ${props => props.theme.vulcan};
   color: #fff;
-  padding: ${() => `${rhythmUnit(2.75)} ${rhythmUnit(1)} ${rhythmUnit(1.25)}`};
-  margin-top: ${() => rhythmUnit(3.75)};
-  @media (min-width: 1140px) {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  .Footer__title {
-    font-size: ${props => props.theme.f3};
-    text-transform: uppercase;
-    font-weight: 800;
-    letter-spacing: ${props => props.theme.tracked};
-    margin-bottom: ${() => rhythmUnit(0.75)};
-  }
-
-  .Footer__subtitle {
-    font-size: ${props => props.theme.f2};
-    font-weight: 400;
-    max-width: 520px;
-    margin-bottom: ${() => rhythmUnit(1)};
-  }
+  padding: ${() => `${rhythmUnit(2.75)} 0 ${rhythmUnit(1.25)}`};
 
   .Footer__btn {
     display: inline-block;

@@ -4,10 +4,14 @@ import styled from 'styled-components'
 // Utils
 import { rhythmUnit } from '../../utils/typography'
 
-export const PageIntro = styled.div`
+export const PageIntro = styled.section`
   font-size: ${props => props.theme.f1};
   line-height: 1.2;
   padding: ${() => `${rhythmUnit(2.75)} ${rhythmUnit(1)}`};
+
+  h1 {
+    font-weight: 400;
+  }
   @media (min-width: 1100px) {
     padding-left: 0;
     padding-right: 0;

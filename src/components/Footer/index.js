@@ -4,16 +4,22 @@ import React from 'react'
 // Styled Components
 import { FooterContainer } from './style'
 import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
+import SectionHeading from '../Shared/SectionHeading'
 
 const Footer = () => {
   const d = new Date()
   return (
     <FooterContainer>
       <SiteMaxWidthContainer>
-        <h1 className="Footer__title">Let's Do Something Bold</h1>
-        <h2 className="Footer__subtitle">
-          Ready to take your product to the next level? Drop us a line.
-        </h2>
+        <SectionHeading>
+          <h1 className="SectionHeading__title">Let's Do Something Bold</h1>
+          <h2
+            className="SectionHeading__subtitle"
+            style={{ maxWidth: '520px' }}
+          >
+            Ready to take your product to the next level? Drop us a line.
+          </h2>
+        </SectionHeading>
         <a className="Footer__btn" href="mailto:hi@webuild.io">
           <span className="wave-emoji">👋</span>
           <span className="email">HI@WEBUILD.IO</span>

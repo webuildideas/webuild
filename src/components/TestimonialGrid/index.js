@@ -3,21 +3,20 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 // Styled Components
-import { TestimonialGridContainer } from './style'
+import * as S from './style'
 
 // Components
 import Testimonial from '../Testimonial'
-
+/**
+ * We check to see if node exists because this component needs
+ * to handle different responses from Contentful
+ * When node is present that means we are on the listing page
+ * when it is not present we are dealing with realtional field
+ * data from contentful that is currently used on the HomePage
+ * of the webuild site.
+ */
 const TestimonialGrid = ({ testimonials }) => (
-  <TestimonialGridContainer>
-    {/**
-     * We check to see if node exists because this component needs
-     * to handle different responses from Contentful
-     * When node is present that means we are on the listing page
-     * when it is not present we are dealing with realtional field
-     * data from contentful that is currently used on the HomePage
-     * of the webuild site.
-     */}
+  <S.TestimonialGrid>
     {testimonials.map(t =>
       t.node ? (
         <Testimonial
@@ -41,7 +40,7 @@ const TestimonialGrid = ({ testimonials }) => (
         </Testimonial>
       )
     )}
-  </TestimonialGridContainer>
+  </S.TestimonialGrid>
 )
 
 TestimonialGrid.propTypes = {

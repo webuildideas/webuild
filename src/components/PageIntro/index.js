@@ -12,7 +12,7 @@ const PageIntro = ({ children }) => (
 )
 
 PageIntro.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  children: PropTypes.node.isRequired,
 }
 
 export default PageIntro

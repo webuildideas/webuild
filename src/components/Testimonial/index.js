@@ -18,24 +18,28 @@ const Testimonial = ({
   company,
   isStory,
   isFeatured,
+  ...props
 }) => {
   /**
    * If isStory is true the component is being rendered in Storybook
    * Storybook currently has errors with gatsby-img due to GraphQL queries
    */
-  const renderHeadshot = () =>
-    isStory ? (
-      <img alt={`${name} Headshot`} src={headshot} />
-    ) : (
+  const renderHeadshot = () => {
+    if (isStory || isFeatured) {
+      return <img alt={`${name} Headshot`} src={headshot} />
+    }
+
+    return (
       <Img
         alt={`${name} Headshot`}
         fixed={headshot}
         style={{ width: '100%', height: '100%' }}
       />
     )
+  }
 
   return isFeatured ? (
-    <S.FeaturedTestimonial>
+    <S.FeaturedTestimonial {...props}>
       <div className="Testimonial__content">
         <p className="Testimonial">{children}</p>
         <div className="Testimonial__client">
@@ -48,7 +52,7 @@ const Testimonial = ({
       <div className="Testimonial__client-featured-img">{renderHeadshot()}</div>
     </S.FeaturedTestimonial>
   ) : (
-    <S.Testimonial>
+    <S.Testimonial {...props}>
       <p className="Testimonial">{children}</p>
       <div className="Testimonial__client">
         <div className="Testimonial__client-img">{renderHeadshot()}</div>
