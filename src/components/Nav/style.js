@@ -8,8 +8,8 @@ export const NavContainer = styled.header`
     props.isPinned ? '0px 4px 8px rgba(0, 0, 0, 0.1)' : ''};
   background-color: ${props =>
     props.isPinned ? props.theme.white : 'rgba(0,0,0,0)'};
-  padding: 1.875rem 2.5rem;
-  padding: ${props => (props.isPinned ? '0.875rem 2.5rem' : '1.875rem 2.5rem')};
+  padding-top: ${props => (props.isPinned ? '0.875rem' : '1.875rem')};
+  padding-bottom: ${props => (props.isPinned ? '0.875rem' : '1.875rem')};
 
   .SiteMaxWidthContainer {
     display: flex;
