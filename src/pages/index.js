@@ -12,6 +12,7 @@ import SectionHeading from '../components/Shared/SectionHeading'
 
 // Components
 import Meta from '../components/Meta'
+import CaseStudyListing from '../components/CaseStudyListing'
 import PageIntro from '../components/PageIntro'
 import DesignPartner from '../components/DesignPartner'
 import Testimonial from '../components/Testimonial'
@@ -19,7 +20,7 @@ import TestimonialGrid from '../components/TestimonialGrid'
 import Footer from '../components/Footer'
 
 const IndexPage = ({ data }) => {
-  const homeData = data.allContentfulHomePage.edges[0].node
+  const homeData = data.contentfulHomePage
   return (
     <>
       <Meta title="Home" />
@@ -30,6 +31,13 @@ const IndexPage = ({ data }) => {
           retention and attract new users.
         </h1>
       </PageIntro>
+      <div
+        style={{
+          paddingTop: `${rhythmUnit(8.5)}`,
+        }}
+      >
+        <CaseStudyListing caseStudies={homeData.caseStudies} />
+      </div>
 
       <DesignPartner />
 
@@ -72,51 +80,55 @@ IndexPage.propTypes = {
 
 export const HOMEPAGE_QUERY = graphql`
   query homepageQuery {
-    allContentfulHomePage(filter: { pageTitle: { eq: "Home" } }) {
-      edges {
-        node {
-          caseStudies {
-            slug
-            name
-            tagline
-            listingImage {
-              fluid {
-                ...GatsbyContentfulFluid_withWebp
-              }
-            }
+    contentfulHomePage(pageTitle: { eq: "Home" }) {
+      caseStudies {
+        name
+        tagline
+        slug
+        successSummary {
+          successSummary
+        }
+        logo {
+          file {
+            url
           }
-
-          featuredTestimonial {
-            company
-            name
-            role
-            testimonial {
-              testimonial
-            }
-            featuredHeadshot {
-              fluid(maxWidth: 1000) {
-                src
-              }
-            }
-            headshot {
-              fixed(cropFocus: FACE, height: 100, width: 100) {
-                ...GatsbyContentfulFixed_withWebp
-              }
-            }
+        }
+        listingImage {
+          fluid {
+            ...GatsbyContentfulFluid_withWebp
           }
+        }
+      }
 
-          testimonials {
-            company
-            name
-            role
-            testimonial {
-              testimonial
-            }
-            headshot {
-              fixed(cropFocus: FACE, height: 100, width: 100) {
-                ...GatsbyContentfulFixed_withWebp
-              }
-            }
+      featuredTestimonial {
+        company
+        name
+        role
+        testimonial {
+          testimonial
+        }
+        featuredHeadshot {
+          fluid(maxWidth: 1000) {
+            src
+          }
+        }
+        headshot {
+          fixed(cropFocus: FACE, height: 100, width: 100) {
+            ...GatsbyContentfulFixed_withWebp
+          }
+        }
+      }
+
+      testimonials {
+        company
+        name
+        role
+        testimonial {
+          testimonial
+        }
+        headshot {
+          fixed(cropFocus: FACE, height: 100, width: 100) {
+            ...GatsbyContentfulFixed_withWebp
           }
         }
       }

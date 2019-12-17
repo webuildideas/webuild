@@ -24,5 +24,8 @@
   },
   "cSpell.words": [
     "metrics"
-  ]
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
 }

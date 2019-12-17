@@ -1,24 +1,33 @@
 // Packages
 import React from 'react'
 import PropTypes from 'prop-types'
-import Img from 'gatsby-image'
 
 // Styled Components
-import { CaseStudyListingContainer } from './style'
+import * as S from './style'
 
-const CaseStudyListing = ({ name, tagline, listingImg, slug }) => (
-  <CaseStudyListingContainer to={`/case-studies/${slug}`}>
-    <Img alt={`${name}`} className="CaseStudy__img" fluid={listingImg} />
-    <h3 className="CaseStudy__name">{name}</h3>
-    <p className="CaseStudy__tagline">{tagline}</p>
-  </CaseStudyListingContainer>
+// Components
+import CaseStudy from '../CaseStudy'
+
+const CaseStudyListing = ({ caseStudies }) => (
+  <S.CaseStudyListing>
+    {caseStudies.map((study, idx) => {
+      const s = study.node || study
+      // Even # items we want image on right.
+      const layout = (idx + 1) % 2 === 0 ? 'left' : 'right'
+      return <CaseStudy key={s.slug} caseStudy={s} layout={layout} />
+    })}
+  </S.CaseStudyListing>
 )
 
 CaseStudyListing.propTypes = {
-  listingImg: PropTypes.object,
-  name: PropTypes.string.isRequired,
-  slug: PropTypes.string.isRequired,
-  tagline: PropTypes.string.isRequired,
+  caseStudies: PropTypes.arrayOf(
+    PropTypes.shape({
+      listingImage: PropTypes.object,
+      name: PropTypes.string,
+      slug: PropTypes.string,
+      tagline: PropTypes.string,
+    })
+  ).isRequired,
 }
 
 export default CaseStudyListing

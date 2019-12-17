@@ -8,7 +8,7 @@ import SiteMaxWidthContainer from '../components/Shared/SiteMaxWidthContainer'
 
 // Components
 import PageIntro from '../components/PageIntro'
-import CaseStudyGrid from '../components/CaseStudyGrid'
+import CaseStudyListing from '../components/CaseStudyListing'
 import Meta from '../components/Meta'
 import Footer from '../components/Footer'
 
@@ -23,7 +23,7 @@ const CaseStudies = ({ data }) => (
         We partner with inspiring entrepreneurs and growth-stage companies to
         create digital products and experiences.
       </PageIntro>
-      <CaseStudyGrid caseStudies={data.allContentfulCaseStudy.edges} />
+      <CaseStudyListing caseStudies={data.allContentfulCaseStudy.edges} />
     </SiteMaxWidthContainer>
     <Footer />
   </>
@@ -41,6 +41,9 @@ export const CASE_STUDIES_LISTING_QUERY = graphql`
           slug
           name
           tagline
+          successSummary {
+            successSummary
+          }
           listingImage {
             fluid {
               ...GatsbyContentfulFluid_withWebp
