@@ -24,13 +24,7 @@ const IndexPage = ({ data }) => {
   return (
     <>
       <Meta title="Home" />
-      <PageIntro>
-        <h1>
-          <span>Supercharge your product with results-driven design.</span> We
-          help you iterate and optimize without breaking stride to increase
-          retention and attract new users.
-        </h1>
-      </PageIntro>
+      <PageIntro maxWidth={1040}>{homeData.heroCopy.heroCopy}</PageIntro>
       <div
         style={{
           paddingTop: `${rhythmUnit(8.5)}`,
@@ -81,6 +75,10 @@ IndexPage.propTypes = {
 export const HOMEPAGE_QUERY = graphql`
   query homepageQuery {
     contentfulHomePage(pageTitle: { eq: "Home" }) {
+      heroCopy {
+        heroCopy
+      }
+
       caseStudies {
         name
         tagline

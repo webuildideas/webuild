@@ -39,7 +39,7 @@ CaseStudy.propTypes = {
     /** The listing image for the case study */
     listingImage: PropTypes.object,
     /** The logo of the client */
-    logo: PropTypes.string.isRequired,
+    // logo: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
     successSummary: PropTypes.object,

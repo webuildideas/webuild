@@ -9,19 +9,19 @@ export const PageIntro = styled.section`
   line-height: 1.2;
   padding: ${() => `${rhythmUnit(2.75)} ${rhythmUnit(1)}`};
 
-  h1 {
-    font-weight: 400;
-  }
   @media (min-width: 1100px) {
     padding-left: 0;
     padding-right: 0;
   }
 
-  .PageIntro__inner {
-    max-width: 1080px;
-    margin-left: auto;
-    margin-right: auto;
+  h1 {
+    font-weight: 400;
   }
+
+  .PageIntro__inner {
+    max-width: ${props => props.maxWidth}px;
+  }
+
   span {
     font-weight: 900;
   }
