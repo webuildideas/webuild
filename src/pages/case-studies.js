@@ -12,22 +12,21 @@ import CaseStudyListing from '../components/CaseStudyListing'
 import Meta from '../components/Meta'
 import Footer from '../components/Footer'
 
-const CaseStudies = ({ data }) => (
-  <>
-    <Meta title="Case Studies" />
-    <SiteMaxWidthContainer>
-      <PageIntro>
-        <span>
-          We help our partners solve ambitious challenges through design.
-        </span>{' '}
-        We partner with inspiring entrepreneurs and growth-stage companies to
-        create digital products and experiences.
+const CaseStudies = ({ data }) => {
+  console.log(data)
+  return (
+    <>
+      <Meta title="Case Studies" />
+      <PageIntro maxWidth={1000}>
+        {data.contentfulCaseStudies.heroCopy.heroCopy}
       </PageIntro>
-      <CaseStudyListing caseStudies={data.allContentfulCaseStudy.edges} />
-    </SiteMaxWidthContainer>
-    <Footer />
-  </>
-)
+      <SiteMaxWidthContainer>
+        <CaseStudyListing caseStudies={data.allContentfulCaseStudy.edges} />
+      </SiteMaxWidthContainer>
+      <Footer />
+    </>
+  )
+}
 
 CaseStudies.propTypes = {
   data: PropTypes.object.isRequired,
@@ -35,6 +34,11 @@ CaseStudies.propTypes = {
 
 export const CASE_STUDIES_LISTING_QUERY = graphql`
   query caseStudiesListingQuery {
+    contentfulCaseStudies(pageTitle: { eq: "Case Studies" }) {
+      heroCopy {
+        heroCopy
+      }
+    }
     allContentfulCaseStudy(sort: { order: ASC, fields: createdAt }) {
       edges {
         node {
