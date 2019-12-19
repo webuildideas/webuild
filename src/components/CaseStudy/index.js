@@ -14,6 +14,7 @@ const CaseStudy = ({ caseStudy, layout }) => (
   <SiteMaxWidthContainer className="CaseStudy">
     <S.CaseStudy layout={layout}>
       <div className="CaseStudy__content">
+        <img alt="" src={caseStudy.logo.file.url} />
         <h1 className="CaseStudy__tagline">{caseStudy.tagline}</h1>
         {caseStudy.successSummary && (
           <p className="CaseStudy__summary">
@@ -39,7 +40,7 @@ CaseStudy.propTypes = {
     /** The listing image for the case study */
     listingImage: PropTypes.object,
     /** The logo of the client */
-    // logo: PropTypes.string.isRequired,
+    logo: PropTypes.object.isRequired,
     name: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
     successSummary: PropTypes.object,

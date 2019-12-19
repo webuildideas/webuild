@@ -12,12 +12,15 @@ export const CaseStudy = styled.article`
     flex-wrap: nowrap;
   }
   .CaseStudy__img {
+    position: relative;
     display: block;
     margin-bottom: ${() => rhythmUnit(1)};
     min-width: 300px;
     width: 100%;
     order: 1;
     @media (min-width: 900px) {
+      left: ${props => (props.layout === 'left' ? '-100px' : '')};
+      right: ${props => (props.layout === 'right' ? '-100px' : '')};
       order: ${props => (props.layout === 'left' ? 1 : 2)};
     }
   }

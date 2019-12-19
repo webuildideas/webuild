@@ -45,6 +45,11 @@ export const CASE_STUDIES_LISTING_QUERY = graphql`
           slug
           name
           tagline
+          logo {
+            file {
+              url
+            }
+          }
           successSummary {
             successSummary
           }
