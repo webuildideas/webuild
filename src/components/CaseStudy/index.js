@@ -14,7 +14,13 @@ const CaseStudy = ({ caseStudy, layout }) => (
   <SiteMaxWidthContainer className="CaseStudy">
     <S.CaseStudy layout={layout}>
       <div className="CaseStudy__content">
-        <img alt="" src={caseStudy.logo.file.url} />
+        <object
+          className="CaseStudy__logo"
+          data={caseStudy.logo.file.url}
+          type="image/svg+xml"
+        >
+          <img alt={`${caseStudy.name} logo`} src={caseStudy.logo.file.url} />
+        </object>
         <h1 className="CaseStudy__tagline">{caseStudy.tagline}</h1>
         {caseStudy.successSummary && (
           <p className="CaseStudy__summary">
@@ -29,6 +35,7 @@ const CaseStudy = ({ caseStudy, layout }) => (
         alt={`${caseStudy.name}`}
         className="CaseStudy__img"
         fluid={caseStudy.listingImage.fluid}
+        imgStyle={{ objectFit: 'contain' }}
       />
     </S.CaseStudy>
   </SiteMaxWidthContainer>
@@ -41,11 +48,16 @@ CaseStudy.propTypes = {
     listingImage: PropTypes.object,
     /** The logo of the client */
     logo: PropTypes.object.isRequired,
+    /** The name of the client */
     name: PropTypes.string.isRequired,
+    /** The slug for the case study detail page */
     slug: PropTypes.string.isRequired,
+    /** Short summary of the success of the case study. */
     successSummary: PropTypes.object,
+    /** The tagline of the Case Study */
     tagline: PropTypes.string.isRequired,
   }),
+  /** Which side do you want the image to be on. */
   layout: PropTypes.oneOf(['right', 'left']),
 }
 

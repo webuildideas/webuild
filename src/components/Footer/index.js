@@ -2,14 +2,14 @@
 import React from 'react'
 
 // Styled Components
-import { FooterContainer } from './style'
+import * as S from './style'
 import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
 import SectionHeading from '../Shared/SectionHeading'
 
 const Footer = () => {
   const d = new Date()
   return (
-    <FooterContainer>
+    <S.Footer>
       <SiteMaxWidthContainer>
         <SectionHeading>
           <h1 className="SectionHeading__title">Let's Do Something Bold</h1>
@@ -33,7 +33,7 @@ const Footer = () => {
           </p>
         </div>
       </SiteMaxWidthContainer>
-    </FooterContainer>
+    </S.Footer>
   )
 }
 

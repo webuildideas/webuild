@@ -11,14 +11,28 @@ export const CaseStudy = styled.article`
   @media (min-width: 900px) {
     flex-wrap: nowrap;
   }
+
+  .CaseStudy__logo {
+    margin-bottom: ${() => rhythmUnit(0.75)};
+  }
+
   .CaseStudy__img {
     position: relative;
     display: block;
     margin-bottom: ${() => rhythmUnit(1)};
-    min-width: 300px;
     width: 100%;
+    max-width: 500px;
     order: 1;
+    margin-left: auto;
+    margin-right: auto;
+    @media (min-width: 700px) {
+      max-width: 700px;
+    }
     @media (min-width: 900px) {
+      min-width: 500px;
+      max-width: 100%;
+      margin-left: 0;
+      margin-right: 0;
       left: ${props => (props.layout === 'left' ? '-100px' : '')};
       right: ${props => (props.layout === 'right' ? '-100px' : '')};
       order: ${props => (props.layout === 'left' ? 1 : 2)};
@@ -35,6 +49,10 @@ export const CaseStudy = styled.article`
     line-height: 1.2;
     font-weight: 900;
     margin-bottom: ${() => rhythmUnit(0.25)};
+    font-size: ${props => props.theme.f2};
+    @media (min-width: 768px) {
+      font-size: ${props => props.theme.f1};
+    }
   }
   .CaseStudy__summary {
     font-size: ${props => props.theme.f3};
