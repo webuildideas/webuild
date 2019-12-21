@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PageIntro /> renders and matches snapshot 1`] = `
+<styled.section
+  maxWidth={1080}
+>
+  <styled.div>
+    <div
+      className="PageIntro__inner"
+    >
+      <h1
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<span>Supercharge your product with results-driven design.</span> We help you iterate and optimize without breaking stride to increase retention and attract new users.",
+          }
+        }
+      />
+    </div>
+  </styled.div>
+</styled.section>
+`;

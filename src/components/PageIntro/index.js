@@ -18,7 +18,7 @@ import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
 const renderMarkdownBold = md => {
   const regex = /([__]{2})/
   const formattedCopy = md.replace(regex, '<span>').replace(regex, '</span>')
-  return { __html: formattedCopy }
+  return formattedCopy
 }
 
 const PageIntro = ({ children, maxWidth }) => (
@@ -26,7 +26,7 @@ const PageIntro = ({ children, maxWidth }) => (
     <SiteMaxWidthContainer>
       <div className="PageIntro__inner">
         {/* eslint-disable-next-line */}
-        <h1 dangerouslySetInnerHTML={renderMarkdownBold(children)} />
+        <h1 dangerouslySetInnerHTML={{ __html: renderMarkdownBold(children) }} />
       </div>
     </SiteMaxWidthContainer>
   </S.PageIntro>
