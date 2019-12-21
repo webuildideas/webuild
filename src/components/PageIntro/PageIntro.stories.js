@@ -13,7 +13,7 @@ export default {
 }
 
 export const normal = () => (
-  <PageIntro>
+  <PageIntro maxWidth={1040}>
     __Supercharge your product with results-driven design.__ We help you iterate
     and optimize without breaking stride to increase retention and attract new
     users.

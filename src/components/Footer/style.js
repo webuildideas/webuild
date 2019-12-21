@@ -10,16 +10,6 @@ export const Footer = styled.footer`
   padding: ${() => `${rhythmUnit(2.75)} 0 ${rhythmUnit(1.25)}`};
 
   .Footer__btn {
-    display: inline-block;
-    font-size: ${props => props.theme.f4};
-    font-weight: 800;
-    text-transform: uppercase;
-    line-height: 1;
-    padding: ${() => ` ${rhythmUnit(0.5)} ${rhythmUnit(0.75)}`};
-    max-width: 14rem;
-    letter-spacing: 0.05em;
-    background-color: #fff;
-    color: ${props => props.theme.vulcan};
     span {
       margin-right: 4px;
     }

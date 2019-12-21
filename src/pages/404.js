@@ -18,7 +18,7 @@ const NotFoundPage = () => (
         Looks like this page doesn't exist...
       </h2>
     </SectionHeading>
-    <Button to="/" type="secondary">
+    <Button href="/" type="secondaryLink">
       Back To Home
     </Button>
   </SiteMaxWidthContainer>

@@ -3,23 +3,28 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
-// Styled Components
-import SiteMaxWidthContainer from '../components/Shared/SiteMaxWidthContainer'
+// Utils
+import { rhythmUnit } from '../utils/typography'
 
 // Components
 import Meta from '../components/Meta'
 import PageIntro from '../components/PageIntro'
+import JoinUs from '../components/JoinUs'
 import Footer from '../components/Footer'
 
 const WhoWeAre = ({ data }) => {
   const WhoWeAreData = data.contentfulAboutPage
-  console.log(data)
   return (
     <>
       <Meta title="Who We Are" />
-      <SiteMaxWidthContainer>
-        <PageIntro maxWidth={860}>{WhoWeAreData.heroCopy.heroCopy}</PageIntro>
-      </SiteMaxWidthContainer>
+      <PageIntro maxWidth={860}>{WhoWeAreData.heroCopy.heroCopy}</PageIntro>
+      <div
+        style={{
+          padding: `${rhythmUnit(3)} 0`,
+        }}
+      >
+        <JoinUs />
+      </div>
       <Footer />
     </>
   )

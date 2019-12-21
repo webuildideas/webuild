@@ -27,7 +27,7 @@ const CaseStudy = ({ caseStudy, layout }) => (
             {caseStudy.successSummary.successSummary}
           </p>
         )}
-        <Button to={`/case-studies/${caseStudy.slug}`} type="primary">
+        <Button href={`/case-studies/${caseStudy.slug}`} type="primaryLink">
           Read Case Study
         </Button>
       </div>

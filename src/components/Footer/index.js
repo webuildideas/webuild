@@ -1,6 +1,9 @@
 // Packages
 import React from 'react'
 
+// Components
+import Button from '../Button'
+
 // Styled Components
 import * as S from './style'
 import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
@@ -20,10 +23,10 @@ const Footer = () => {
             Ready to take your product to the next level? Drop us a line.
           </h2>
         </SectionHeading>
-        <a className="Footer__btn" href="mailto:hi@webuild.io">
+        <Button href="mailto:hi@webuild.io" type="primaryButton">
           <span className="wave-emoji">👋</span>
           <span className="email">HI@WEBUILD.IO</span>
-        </a>
+        </Button>
 
         <div className="Footer__follow">
           <p className="Footer__copyright">&copy; WEBUILD {d.getFullYear()}</p>

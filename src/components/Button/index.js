@@ -4,14 +4,37 @@ import PropTypes from 'prop-types'
 
 // Styled Components
 import * as S from './style'
-
-const Button = ({ children, type, ...props }) => {
+/**
+ * A Button can be rendered as a Gatsby`<Link>` or a regular `<a>` tag
+ * depending on the `type` you pass to it.
+ */
+const Button = ({ children, type, href, ...props }) => {
   const renderButtonType = () => {
     switch (type) {
-      case 'primary':
-        return <S.PrimaryButton {...props}>{children}</S.PrimaryButton>
-      case 'secondary':
-        return <S.SecondaryButton {...props}>{children}</S.SecondaryButton>
+      case 'primaryLink':
+        return (
+          <S.PrimaryLink to={href} {...props}>
+            {children}
+          </S.PrimaryLink>
+        )
+      case 'secondaryLink':
+        return (
+          <S.SecondaryLink to={href} {...props}>
+            {children}
+          </S.SecondaryLink>
+        )
+      case 'primaryButton':
+        return (
+          <S.PrimaryButton href={href} {...props}>
+            {children}
+          </S.PrimaryButton>
+        )
+      case 'secondaryButton':
+        return (
+          <S.SecondaryButton href={href} {...props}>
+            {children}
+          </S.SecondaryButton>
+        )
       default:
         return <S.PrimaryButton {...props}>{children}</S.PrimaryButton>
     }
@@ -24,12 +47,17 @@ Button.propTypes = {
   children: PropTypes.node,
   /** Location of the button */
   href: PropTypes.string,
-  /** The type of button */
-  type: PropTypes.oneOf(['primary', 'secondary', 'link']),
+  /** The style and type of button to render, if using primaryLink or SecondaryLink then the Gatsby <Link> component will be used instead of <a> */
+  type: PropTypes.oneOf([
+    'primaryButton',
+    'secondaryButton',
+    'primaryLink',
+    'secondaryLink',
+  ]),
 }
 
 Button.defaultProps = {
-  type: 'primary',
+  type: 'primaryButton',
 }
 
 export default Button

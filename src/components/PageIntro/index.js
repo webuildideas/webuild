@@ -35,7 +35,7 @@ const PageIntro = ({ children, maxWidth }) => (
 PageIntro.propTypes = {
   /** The copy for the PageIntro */
   children: PropTypes.node.isRequired,
-  /** The max width for PageIntro__inner */
+  /** The max width of the copy */
   maxWidth: PropTypes.number,
 }
 
