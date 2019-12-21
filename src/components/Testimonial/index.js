@@ -14,6 +14,7 @@ const Testimonial = ({
   children,
   name,
   headshot,
+  featuredHeadshot,
   companyRole,
   company,
   isStory,
@@ -24,45 +25,60 @@ const Testimonial = ({
    * If isStory is true the component is being rendered in Storybook
    * Storybook currently has errors with gatsby-img due to GraphQL queries
    */
-  const renderHeadshot = () => {
+  const renderHeadshot = headshotSrc => {
     if (isStory || isFeatured) {
-      return <img alt={`${name} Headshot`} src={headshot} />
+      return <img alt={`${name} Headshot`} src={headshotSrc} />
     }
 
     return (
       <Img
         alt={`${name} Headshot`}
-        fixed={headshot}
+        fixed={headshotSrc}
         style={{ width: '100%', height: '100%' }}
       />
     )
   }
 
-  return isFeatured ? (
-    <S.FeaturedTestimonial {...props}>
-      <div className="Testimonial__content">
+  const renderTestimonialType = () => {
+    if (isFeatured) {
+      return (
+        <S.FeaturedTestimonial {...props}>
+          <div className="Testimonial__content">
+            <p className="Testimonial">{children}</p>
+            <div className="Testimonial__client">
+              <div className="Testimonial__client-img">
+                {renderHeadshot(headshot)}
+              </div>
+              <div className="Testimonial__client-details">
+                <p className="Testimonial__client-name">{name}</p>
+                <p className="Testimonial__client-company">{`${companyRole}, ${company}`}</p>
+              </div>
+            </div>
+          </div>
+          <div className="Testimonial__client-featured-img">
+            {renderHeadshot(featuredHeadshot)}
+          </div>
+        </S.FeaturedTestimonial>
+      )
+    }
+
+    return (
+      <S.Testimonial {...props}>
         <p className="Testimonial">{children}</p>
         <div className="Testimonial__client">
+          <div className="Testimonial__client-img">
+            {renderHeadshot(headshot)}
+          </div>
           <div className="Testimonial__client-details">
             <p className="Testimonial__client-name">{name}</p>
             <p className="Testimonial__client-company">{`${companyRole}, ${company}`}</p>
           </div>
         </div>
-      </div>
-      <div className="Testimonial__client-featured-img">{renderHeadshot()}</div>
-    </S.FeaturedTestimonial>
-  ) : (
-    <S.Testimonial {...props}>
-      <p className="Testimonial">{children}</p>
-      <div className="Testimonial__client">
-        <div className="Testimonial__client-img">{renderHeadshot()}</div>
-        <div className="Testimonial__client-details">
-          <p className="Testimonial__client-name">{name}</p>
-          <p className="Testimonial__client-company">{`${companyRole}, ${company}`}</p>
-        </div>
-      </div>
-    </S.Testimonial>
-  )
+      </S.Testimonial>
+    )
+  }
+
+  return renderTestimonialType()
 }
 
 Testimonial.propTypes = {
@@ -72,6 +88,8 @@ Testimonial.propTypes = {
   company: PropTypes.string.isRequired,
   /** The role of the client */
   companyRole: PropTypes.string.isRequired,
+  /** The headshot to show when in the featured version */
+  featuredHeadshot: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   /** The headshot of the client */
   headshot: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   /** Whether the testimonial is the featured type */

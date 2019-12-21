@@ -49,16 +49,21 @@ const IndexPage = ({ data }) => {
               <br /> expertise come together, magic happens.
             </h2>
           </SectionHeading>
+
           <Testimonial
             company={homeData.featuredTestimonial.company}
             companyRole={homeData.featuredTestimonial.role}
-            headshot={homeData.featuredTestimonial.featuredHeadshot.fluid.src}
+            featuredHeadshot={
+              homeData.featuredTestimonial.featuredHeadshot.fluid.src
+            }
+            headshot={homeData.featuredTestimonial.headshot.fixed.src}
             isFeatured={true}
             name={homeData.featuredTestimonial.name}
             style={{ marginBottom: `${rhythmUnit(1)}` }}
           >
             {homeData.featuredTestimonial.testimonial.testimonial}
           </Testimonial>
+
           <TestimonialGrid testimonials={homeData.testimonials} />
         </SiteMaxWidthContainer>
       </section>

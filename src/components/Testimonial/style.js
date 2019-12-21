@@ -51,15 +51,26 @@ export const Testimonial = styled.div`
 
 // Modifier for the large featured Testimonial
 export const FeaturedTestimonial = styled(Testimonial)`
-  display: grid;
-  grid-template-columns: 1fr 0.75fr;
-  max-width: 1100px;
-  .Testimonial {
-    letter-spacing: 0.05em;
+  margin-left: auto;
+  margin-right: auto;
+  @media (min-width: 850px) {
+    display: grid;
+    grid-template-columns: 1fr 0.75fr;
+    max-width: 1100px;
+    .Testimonial {
+      letter-spacing: 0.05em;
+    }
+    .Testimonial__client-img {
+      display: none;
+    }
   }
 
   .Testimonial__client-featured-img {
     position: relative;
+    display: none;
+    @media (min-width: 850px) {
+      display: block;
+    }
     img {
       display: block;
       position: absolute;

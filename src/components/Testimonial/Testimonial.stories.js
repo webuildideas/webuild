@@ -62,7 +62,8 @@ export const featured = () => (
   <Testimonial
     company="KISSmetrics"
     companyRole="Co-Founder"
-    headshot={featuredHeadshot}
+    featuredHeadshot={featuredHeadshot}
+    headshot={headshot}
     isFeatured={true}
     isStory={true}
     name="Hiten Shah"

@@ -2,7 +2,7 @@
 import React from 'react'
 
 // Components
-import PageIntro from '.'
+import PageIntro, { renderMarkdownBold } from '.'
 
 export default {
   title: 'PageIntro',
@@ -14,9 +14,9 @@ export default {
 
 export const normal = () => (
   <PageIntro>
-    <span>Supercharge your product with results-driven design.</span> We help
-    you iterate and optimize without breaking stride to increase retention and
-    attract new users.
+    __Supercharge your product with results-driven design.__ We help you iterate
+    and optimize without breaking stride to increase retention and attract new
+    users.
   </PageIntro>
 )
 
