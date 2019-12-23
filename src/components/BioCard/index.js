@@ -6,6 +6,7 @@ import Img from 'gatsby-image'
 
 // Styled Components
 import * as S from './style'
+import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
 
 const BioCard = ({ children }) => {
   const { file } = useStaticQuery(
@@ -22,15 +23,17 @@ const BioCard = ({ children }) => {
     `
   )
   return (
-    <S.BioCard>
-      <div>
-        <Img
-          className="BioCard__img-wrapper"
-          fluid={file.childImageSharp.fluid}
-        />
-      </div>
-      <S.BioContent>{children}</S.BioContent>
-    </S.BioCard>
+    <SiteMaxWidthContainer>
+      <S.BioCard>
+        <div>
+          <Img
+            className="BioCard__img-wrapper"
+            fluid={file.childImageSharp.fluid}
+          />
+        </div>
+        <S.BioContent>{children}</S.BioContent>
+      </S.BioCard>
+    </SiteMaxWidthContainer>
   )
 }
 
