@@ -15,7 +15,7 @@ export const JoinUsJobs = styled.div`
   justify-content: space-between;
   margin-top: ${() => rhythmUnit(2)};
   margin-bottom: ${() => rhythmUnit(2)};
-  @media (min-width: 650px) {
+  @media (min-width: 800px) {
     grid-template-columns: repeat(3, 1fr);
   }
 `
