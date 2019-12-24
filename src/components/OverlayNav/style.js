@@ -12,7 +12,7 @@ export const OverlayNavContainer = styled(animated.nav)`
   width: 100%;
   height: 100%;
   color: ${props => props.theme.white};
-  background-color: ${props => props.theme.tuna};
+  background-color: ${props => props.theme.vulcan};
   font-size: ${props => props.theme.f2};
   font-weight: 800;
   letter-spacing: ${props => props.theme.tracked};

@@ -32,9 +32,10 @@ export const NavDesktopLinks = styled.nav`
     width: 100%;
     @media screen and (min-width: 768px) {
       display: grid;
-      grid-template-columns: 1fr 1fr 190px;
+      grid-template-columns: 1fr 190px;
       align-items: center;
       grid-gap: 2rem;
+      justify-content: end;
     }
   }
 

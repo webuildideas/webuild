@@ -6,7 +6,7 @@ import Helmet from 'react-helmet'
 import Headroom from 'react-headroom'
 
 // Styled Components
-import { NavContainer, NavDesktopLinks } from './style'
+import * as S from './style'
 import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
 
 // Components
@@ -24,7 +24,7 @@ const Nav = ({ isNavOpen, isNavPinned, toggleNav, togglePinnedNav }) => (
       onUnpin={() => togglePinnedNav(false)}
       style={{ transition: 'all 600ms ease-in-out' }}
     >
-      <NavContainer
+      <S.NavContainer
         className={`${isNavOpen ? 'overlayIsOpen' : ''}`}
         isPinned={isNavPinned}
       >
@@ -32,13 +32,10 @@ const Nav = ({ isNavOpen, isNavPinned, toggleNav, togglePinnedNav }) => (
           <Link className={`Logo ${isNavOpen ? 'isOpen' : ''}`} to="/">
             <Logo className="Logo" isOpen={isNavOpen} />
           </Link>
-          <NavDesktopLinks className="NavDesktopLinks">
+          <S.NavDesktopLinks className="NavDesktopLinks">
             <ul>
               <li>
                 <Link to="/who-we-are">Who We Are</Link>
-              </li>
-              <li>
-                <Link to="/case-studies">Case Studies</Link>
               </li>
               <li>
                 <Button className="Button" to="/">
@@ -46,7 +43,7 @@ const Nav = ({ isNavOpen, isNavPinned, toggleNav, togglePinnedNav }) => (
                 </Button>
               </li>
             </ul>
-          </NavDesktopLinks>
+          </S.NavDesktopLinks>
 
           <MenuIcon
             className="Icon MenuIcon"
@@ -54,7 +51,7 @@ const Nav = ({ isNavOpen, isNavPinned, toggleNav, togglePinnedNav }) => (
             onClick={() => (isNavOpen ? toggleNav(false) : toggleNav(true))}
           />
         </SiteMaxWidthContainer>
-      </NavContainer>
+      </S.NavContainer>
     </Headroom>
 
     <OverlayNav isOpen={isNavOpen} onContact={() => toggleNav(false)} />

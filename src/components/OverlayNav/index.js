@@ -14,10 +14,6 @@ const OverlayNav = ({ isOpen, onContact }) => {
       slug: '/who-we-are',
     },
     {
-      title: 'Case Studies',
-      slug: '/case-studies',
-    },
-    {
       title: 'Get in touch',
       slug: '/get-in-touch',
     },
@@ -47,6 +43,18 @@ const OverlayNav = ({ isOpen, onContact }) => {
     delay: 800,
   })
 
+  const renderNavLink = link => {
+    if (link.title === 'Get in touch') {
+      return (
+        <a href="mailto:hi@webuild.io" onClick={onContact}>
+          {link.title}
+        </a>
+      )
+    }
+
+    return <Link to={link.slug}>{link.title}</Link>
+  }
+
   return (
     <OverlayNavContainer style={overlaySpring}>
       <ul className="OverlayNavList">
@@ -60,13 +68,7 @@ const OverlayNav = ({ isOpen, onContact }) => {
               transform: y.interpolate(y => `translate3d(0,${y}px,0)`),
             }}
           >
-            {navLinks[index].title === 'Get in touch' ? (
-              <a href="mailto:hi@webuild.io" onClick={onContact}>
-                {navLinks[index].title}
-              </a>
-            ) : (
-              <Link to={navLinks[index].slug}>{navLinks[index].title}</Link>
-            )}
+            {renderNavLink(navLinks[index])}
           </animated.li>
         ))}
       </ul>
