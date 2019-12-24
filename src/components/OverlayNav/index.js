@@ -20,7 +20,6 @@ const OverlayNav = ({ isOpen, onContact }) => {
   ]
 
   const overlaySpring = useSpring({
-    // ref: overlaySpringRef,
     left: isOpen ? '0%' : '-100%',
     config: { mass: 1, tension: 295, friction: 40 },
   })
