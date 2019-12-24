@@ -38,7 +38,11 @@ const Nav = ({ isNavOpen, isNavPinned, toggleNav, togglePinnedNav }) => (
                 <Link to="/who-we-are">Who We Are</Link>
               </li>
               <li>
-                <Button className="Button" to="/">
+                <Button
+                  className="Button"
+                  href="mailto:hi@webuild.io"
+                  type="primaryButton"
+                >
                   Get In Touch
                 </Button>
               </li>
