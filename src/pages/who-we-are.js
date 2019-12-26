@@ -12,14 +12,17 @@ import PageIntro from '../components/PageIntro'
 import TeamMap from '../components/TeamMap'
 import BioCard from '../components/BioCard'
 import JoinUs from '../components/JoinUs'
+import PhotoGrid from '../components/PhotoGrid'
 import Footer from '../components/Footer'
 
 const WhoWeAre = ({ data }) => {
-  const WhoWeAreData = data.contentfulAboutPage
+  const pageData = data.contentfulAboutPage
   return (
     <>
       <Meta title="Who We Are" />
-      <PageIntro maxWidth={860}>{WhoWeAreData.heroCopy.heroCopy}</PageIntro>
+      <PageIntro maxWidth={860}>{pageData.heroCopy.heroCopy}</PageIntro>
+
+      <PhotoGrid photos={pageData.photoGrid} />
 
       <TeamMap />
 
@@ -66,6 +69,11 @@ export const WHO_WE_ARE_QUERY = graphql`
     contentfulAboutPage(pageTitle: { eq: "Who We Are" }) {
       heroCopy {
         heroCopy
+      }
+      photoGrid {
+        fluid {
+          srcSet
+        }
       }
     }
   }
