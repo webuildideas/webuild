@@ -20,9 +20,17 @@ const WhoWeAre = ({ data }) => {
   return (
     <>
       <Meta title="Who We Are" />
+
       <PageIntro maxWidth={860}>{pageData.heroCopy.heroCopy}</PageIntro>
 
-      <PhotoGrid photos={pageData.photoGrid} />
+      <div
+        style={{
+          marginTop: `${rhythmUnit(7)}`,
+          marginBottom: `${rhythmUnit(3)}`,
+        }}
+      >
+        <PhotoGrid photos={pageData.photoGrid} />
+      </div>
 
       <TeamMap />
 
