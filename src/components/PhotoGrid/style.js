@@ -4,9 +4,10 @@ import styled from 'styled-components'
 export const PhotoGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 17vh);
   @media (min-width: 825px) {
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(3, 22vh);
+    grid-template-rows: repeat(3, 20vh);
   }
   align-items: start;
   justify-items: center;
@@ -14,12 +15,11 @@ export const PhotoGrid = styled.div`
   max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
-  overflow: hidden;
 `
 
 export const PhotoItem = styled.img`
-  width: 100%;
   height: 100%;
+  width: 100%;
   object-fit: cover;
   object-position: center center;
 

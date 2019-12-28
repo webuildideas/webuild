@@ -13,6 +13,7 @@ import TeamMap from '../components/TeamMap'
 import BioCard from '../components/BioCard'
 import JoinUs from '../components/JoinUs'
 import PhotoGrid from '../components/PhotoGrid'
+import TestimonialSlider from '../components/TestimonialSlider'
 import Footer from '../components/Footer'
 
 const WhoWeAre = ({ data }) => {
@@ -81,6 +82,7 @@ export const WHO_WE_ARE_QUERY = graphql`
       photoGrid {
         fluid {
           srcSet
+          src
         }
       }
     }

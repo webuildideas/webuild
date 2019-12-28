@@ -14,6 +14,7 @@ const PhotoGrid = ({ photos }) => (
         key={`photo-${idx}`}
         alt="WeBuild Team"
         data-photo={idx + 1}
+        src={photo.fluid.src}
         srcSet={photo.fluid.srcSet}
       />
     ))}
