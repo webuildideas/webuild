@@ -26,10 +26,10 @@ export const CaseStudy = styled.article`
     margin-left: auto;
     margin-right: auto;
     @media (min-width: 700px) {
-      max-width: 700px;
+      max-width: 650px;
     }
     @media (min-width: 900px) {
-      min-width: 500px;
+      min-width: 400px;
       max-width: 100%;
       margin-left: 0;
       margin-right: 0;
@@ -39,16 +39,17 @@ export const CaseStudy = styled.article`
     }
   }
   .CaseStudy__content {
-    max-width: 500px;
     order: 2;
     @media (min-width: 900px) {
       order: ${props => (props.layout === 'left' ? 2 : 1)};
+      min-width: 440px;
+      max-width: 500px;
     }
   }
   .CaseStudy__tagline {
     line-height: 1.2;
     font-weight: 900;
-    margin-bottom: ${() => rhythmUnit(0.25)};
+    margin-bottom: ${() => rhythmUnit(0.5)};
     font-size: ${props => props.theme.f2};
     @media (min-width: 768px) {
       font-size: ${props => props.theme.f1};
