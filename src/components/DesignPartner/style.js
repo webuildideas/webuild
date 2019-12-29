@@ -28,7 +28,7 @@ export const DesignPartner = styled.section`
 export const DesignPartnerGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: ${() => rhythmUnit(1)};
+  grid-gap: ${() => rhythmUnit(2)};
   svg {
     margin-bottom: ${() => rhythmUnit(1)};
     width: 60px;
@@ -42,6 +42,7 @@ export const DesignPartnerGrid = styled.div`
 
   @media (min-width: 850px) {
     grid-template-columns: repeat(3, 1fr);
+    grid-gap: ${() => rhythmUnit(1)};
     svg {
       width: 50px;
     }
@@ -59,6 +60,6 @@ export const DesignPartnerGrid = styled.div`
     }
   }
   @media (min-width: 1200px) {
-    grid-gap: ${() => rhythmUnit(2.75)};
+    grid-gap: ${() => rhythmUnit(2.5)};
   }
 `

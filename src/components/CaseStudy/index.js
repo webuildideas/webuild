@@ -14,13 +14,9 @@ const CaseStudy = ({ caseStudy, layout }) => (
   <SiteMaxWidthContainer className="CaseStudy">
     <S.CaseStudy layout={layout}>
       <div className="CaseStudy__content">
-        <object
-          className="CaseStudy__logo"
-          data={caseStudy.logo.file.url}
-          type="image/svg+xml"
-        >
+        <div className="CaseStudy__logo">
           <img alt={`${caseStudy.name} logo`} src={caseStudy.logo.file.url} />
-        </object>
+        </div>
         <h1 className="CaseStudy__tagline">{caseStudy.tagline}</h1>
         {caseStudy.successSummary && (
           <p className="CaseStudy__summary">

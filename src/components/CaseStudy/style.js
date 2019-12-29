@@ -14,6 +14,10 @@ export const CaseStudy = styled.article`
 
   .CaseStudy__logo {
     margin-bottom: ${() => rhythmUnit(0.75)};
+    max-width: 120px;
+    @media (min-width: 768px) {
+      max-width: 140px;
+    }
   }
 
   .CaseStudy__img {
