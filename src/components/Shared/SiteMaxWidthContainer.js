@@ -10,6 +10,11 @@ const SiteMaxWidthContainer = styled.div`
   padding-left: ${() => rhythmUnit(1)};
   padding-right: ${() => rhythmUnit(1)};
 
+  @media (min-width: 768px) {
+    padding-left: ${() => rhythmUnit(0.75)};
+    padding-right: ${() => rhythmUnit(0.75)};
+  }
+
   @media (min-width: 1160px) {
     padding-left: 0;
     padding-right: 0;

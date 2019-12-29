@@ -14,8 +14,7 @@ export const PrimaryLink = styled(Link)`
   text-transform: uppercase;
   line-height: 1;
   padding: ${() => ` ${rhythmUnit(0.5)} ${rhythmUnit(1)}`};
-  max-width: 14rem;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.05px;
   border: 1px solid ${props => props.theme.vulcan};
   color: ${props => props.theme.vulcan};
   background-color: #fff;

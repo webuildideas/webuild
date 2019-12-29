@@ -6,6 +6,7 @@
   "author": "Vince Brown <vince@vincebrown.me>",
   "dependencies": {
     "dotenv": "^8.2.0",
+    "framer-motion": "^1.7.0",
     "gatsby": "^2.18.4",
     "gatsby-image": "^2.2.34",
     "gatsby-plugin-manifest": "^2.2.30",

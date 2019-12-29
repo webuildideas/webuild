@@ -17,12 +17,14 @@ import TestimonialSlider from '../components/TestimonialSlider'
 import Footer from '../components/Footer'
 
 const WhoWeAre = ({ data }) => {
-  const pageData = data.contentfulAboutPage
+  const aboutPageData = data.contentfulAboutPage
+  const { nodes: testimonialData } = data.allContentfulTestimonial
+  console.log(testimonialData)
   return (
     <>
       <Meta title="Who We Are" />
 
-      <PageIntro maxWidth={860}>{pageData.heroCopy.heroCopy}</PageIntro>
+      <PageIntro maxWidth={860}>{aboutPageData.heroCopy.heroCopy}</PageIntro>
 
       <div
         style={{
@@ -30,10 +32,18 @@ const WhoWeAre = ({ data }) => {
           marginBottom: `${rhythmUnit(3)}`,
         }}
       >
-        <PhotoGrid photos={pageData.photoGrid} />
+        <PhotoGrid photos={aboutPageData.photoGrid} />
       </div>
 
       <TeamMap />
+
+      <div
+        style={{
+          marginBottom: `${rhythmUnit(3)}`,
+        }}
+      >
+        <TestimonialSlider testimonials={testimonialData} />
+      </div>
 
       <div
         style={{
@@ -83,6 +93,24 @@ export const WHO_WE_ARE_QUERY = graphql`
         fluid {
           srcSet
           src
+        }
+      }
+    }
+    allContentfulTestimonial(
+      filter: { type: { eq: "Team Member" } }
+      limit: 4
+      sort: { fields: createdAt, order: ASC }
+    ) {
+      nodes {
+        name
+        role
+        testimonial {
+          testimonial
+        }
+        headshot {
+          fixed(cropFocus: FACE, height: 100, width: 100) {
+            ...GatsbyContentfulFixed_withWebp
+          }
         }
       }
     }
