@@ -41,7 +41,7 @@ const TestimonialDot = ({ slide, name, position, img }) => (
 )
 
 TestimonialDot.propTypes = {
-  img: PropTypes.string,
+  img: PropTypes.object,
   name: PropTypes.string.isRequired,
   position: PropTypes.string.isRequired,
   slide: PropTypes.number.isRequired,
