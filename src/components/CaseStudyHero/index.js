@@ -14,7 +14,7 @@ const CaseStudyHero = ({ background, successSummary, logo, heroImg }) => {
       <SiteMaxWidthContainer>
         <S.CaseStudyLogo alt="logo" src={logo} />
         <S.CaseStudySuccessSummary>{successSummary}</S.CaseStudySuccessSummary>
-        <Img fluid={heroImg} />
+        <Img durationFadeIn={250} fluid={heroImg} />
       </SiteMaxWidthContainer>
     </S.CaseStudyHero>
   )

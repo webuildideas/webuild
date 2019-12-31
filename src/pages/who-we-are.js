@@ -19,7 +19,6 @@ import Footer from '../components/Footer'
 const WhoWeAre = ({ data }) => {
   const aboutPageData = data.contentfulAboutPage
   const { nodes: testimonialData } = data.allContentfulTestimonial
-  console.log(testimonialData)
   return (
     <>
       <Meta title="Who We Are" />

@@ -31,7 +31,7 @@ const Footer = () => {
         <div className="Footer__follow">
           <p className="Footer__copyright">&copy; WEBUILD {d.getFullYear()}</p>
           <p className="Footer__social">
-            Follow us on: <a href="https://www.dribbble.com">Dribble</a>{' '}
+            Follow us on: <a href="https://www.dribbble.com">Dribbble</a>{' '}
             <span>&amp;</span> <a href="https://www.instagram.com">Instagram</a>
           </p>
         </div>

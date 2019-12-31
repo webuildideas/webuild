@@ -1,11 +1,18 @@
 // Packages
 import styled from 'styled-components'
 
+// Utils
+import { rhythmUnit } from '../../utils/typography'
+
 export const CaseStudyHero = styled.div`
   position: relative;
   color: white;
-  padding-top: 224px;
+  padding-top: ${() => rhythmUnit(4)};
   z-index: 1;
+  overflow: hidden;
+  @media (min-width: 768px) {
+    padding-top: ${() => rhythmUnit(8)};
+  }
   & > * {
     position: relative;
     z-index: 1;
@@ -14,26 +21,35 @@ export const CaseStudyHero = styled.div`
     content: '';
     position: absolute;
     top: 0;
-    left: -5%;
+    left: -2.5%;
     display: block;
-    width: 110%;
-    height: 70%;
+    width: 105%;
+    height: 90%;
     background-image: url(${props => props.backgroundSvg});
     background-repeat: no-repeat;
     background-size: cover;
-    border-bottom-left-radius: 90% 25%;
-    border-bottom-right-radius: 90% 25%;
+    border-bottom-left-radius: 90% 18%;
+    border-bottom-right-radius: 90% 18%;
     z-index: 0;
+    @media (min-width: 768px) {
+      height: 75%;
+    }
   }
 `
 
 export const CaseStudyLogo = styled.img`
-  max-width: 160px;
-  margin-bottom: 16px;
+  max-width: 120px;
+  margin-bottom: ${() => rhythmUnit(0.5)};
+  @media (min-width: 768px) {
+    max-width: 150px;
+  }
 `
 
 export const CaseStudySuccessSummary = styled.h1`
   font-weight: 400;
   line-height: 1.4;
-  margin-bottom: 124px;
+  margin-bottom: ${() => rhythmUnit(1.5)};
+  @media (min-width: 768px) {
+    margin-bottom: ${() => rhythmUnit(3.75)};
+  }
 `

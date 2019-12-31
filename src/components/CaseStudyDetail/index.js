@@ -2,6 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
+import { Helmet } from 'react-helmet'
 
 // Styled Components
 import * as S from './style'
@@ -12,14 +13,21 @@ import CaseStudyHero from '../CaseStudyHero'
 const CaseStudyDetail = ({ data: { contentfulCaseStudy: caseStudy } }) => {
   console.log(caseStudy)
   return (
-    <S.CaseStudyDetail className={`${caseStudy.slug}`}>
-      <CaseStudyHero
-        background={caseStudy.heroBackgroundImage.file.url}
-        heroImg={caseStudy.heroImage.fluid}
-        logo={caseStudy.whiteLogo.file.url}
-        successSummary={caseStudy.successSummary.successSummary}
+    <>
+      <Helmet
+        bodyAttributes={{
+          class: 'CaseStudyDetail',
+        }}
       />
-    </S.CaseStudyDetail>
+      <S.CaseStudyDetail className={`${caseStudy.slug}`}>
+        <CaseStudyHero
+          background={caseStudy.heroBackgroundImage.file.url}
+          heroImg={caseStudy.heroImage.fluid}
+          logo={caseStudy.whiteLogo.file.url}
+          successSummary={caseStudy.successSummary.successSummary}
+        />
+      </S.CaseStudyDetail>
+    </>
   )
 }
 

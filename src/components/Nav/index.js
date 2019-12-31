@@ -25,7 +25,7 @@ const Nav = ({ isNavOpen, isNavPinned, toggleNav, togglePinnedNav }) => (
       style={{ transition: 'all 600ms ease-in-out' }}
     >
       <S.NavContainer
-        className={`${isNavOpen ? 'overlayIsOpen' : ''}`}
+        className={`NavContainer ${isNavOpen ? 'overlayIsOpen' : ''}`}
         isPinned={isNavPinned}
       >
         <SiteMaxWidthContainer className="SiteMaxWidthContainer">

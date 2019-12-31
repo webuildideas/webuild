@@ -9,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
     font-family: ${props => props.theme.primaryFontFamily};
-    color: ${props => props.theme.black};
+    color: ${props => props.theme.vulcan};
     // Base Font size is 20px
     font-size: 125%;
     line-height: 1.6;
@@ -177,5 +177,28 @@ export const GlobalStyle = createGlobalStyle`
 
   .headroom {
     z-index: 5 !important;
+  }
+
+
+  .CaseStudyDetail .headroom--unfixed .NavContainer,
+  .CaseStudyDetail .headroom--unpinned .NavContainer {
+    color: #fff;
+    .Logo {
+      fill: #fff;
+    }
+
+    .MenuIcon {
+      fill: #fff;
+    }
+
+    .Button {
+      background-color: transparent;
+      border-color: #fff;
+      color: #fff;
+      &:hover {
+        color: ${props => props.theme.vulcan};;
+        background-color: #fff;
+      }
+    }
   }
 `
