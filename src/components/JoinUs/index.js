@@ -36,7 +36,7 @@ const JoinUs = () => (
         </S.JoinUsJob>
       </S.JoinUsJobs>
       <Button
-        href="https://docs.google.com/forms/d/1C-N35wN-8VwcDeSiUFk41TnPV7k0S_UxhEr6J8MYDAw/edit"
+        href="https://forms.gle/FvoC68UKVzXMKdjy9"
         target="_blank"
         type="secondaryButton"
       >

@@ -54,14 +54,24 @@ const WhoWeAre = ({ data }) => {
         <BioCard>
           <h2>We've Been There, Too.</h2>
           <p>
-            Meet our founder, Evan. He has bootstrapped and co-founded multiple
-            companies, all while traveling to 35 countries across 4 continents.
+            Meet our founder, Evan Shoemaker. He has bootstrapped and co-founded
+            multiple companies, all while traveling to 35 countries across 4
+            continents.
           </p>
-
           <p>
             Given his experience co-founding and growing startups, Evan has
             intimate experience with building products that get results, and
             he’s committed to helping other founders do the same.
+          </p>
+          <p>
+            You can find him and connect on{' '}
+            <a
+              href="https://www.linkedin.com/in/evanshoemaker/"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              LinkedIn
+            </a>
           </p>
         </BioCard>
       </div>
