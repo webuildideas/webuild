@@ -108,8 +108,9 @@ export const query = graphql`
         }
       }
       heroImage {
-        fluid {
-          ...GatsbyContentfulFluid_withWebp
+        fluid(quality: 90, maxWidth: 2200) {
+          src
+          srcSet
         }
       }
       whiteLogo {
