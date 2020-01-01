@@ -7,18 +7,15 @@ import Img from 'gatsby-image'
 import * as S from './style'
 import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
 
-const CaseStudyHero = ({ background, successSummary, logo, heroImg }) => {
-  console.log('hero')
-  return (
-    <S.CaseStudyHero backgroundSvg={background}>
-      <SiteMaxWidthContainer>
-        <S.CaseStudyLogo alt="logo" src={logo} />
-        <S.CaseStudySuccessSummary>{successSummary}</S.CaseStudySuccessSummary>
-        <Img durationFadeIn={250} fluid={heroImg} />
-      </SiteMaxWidthContainer>
-    </S.CaseStudyHero>
-  )
-}
+const CaseStudyHero = ({ background, successSummary, logo, heroImg }) => (
+  <S.CaseStudyHero backgroundSvg={background}>
+    <SiteMaxWidthContainer>
+      <S.CaseStudyLogo alt="logo" src={logo} />
+      <S.CaseStudySuccessSummary>{successSummary}</S.CaseStudySuccessSummary>
+      <Img fadeIn={false} fluid={heroImg} />
+    </SiteMaxWidthContainer>
+  </S.CaseStudyHero>
+)
 
 CaseStudyHero.propTypes = {
   background: PropTypes.string,
