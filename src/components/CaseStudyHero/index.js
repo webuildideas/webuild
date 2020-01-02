@@ -1,6 +1,7 @@
 // Packages
 import React from 'react'
 import PropTypes from 'prop-types'
+import Img from 'gatsby-image'
 
 // Styled Components
 import * as S from './style'
@@ -11,7 +12,7 @@ const CaseStudyHero = ({ background, successSummary, logo, heroImg }) => (
     <SiteMaxWidthContainer>
       <S.CaseStudyLogo alt="logo" src={logo} />
       <S.CaseStudySuccessSummary>{successSummary}</S.CaseStudySuccessSummary>
-      <img alt="Hero" src={heroImg.src} srcSet={heroImg.srcSet} />
+      <Img critical={true} fadeIn={false} fluid={heroImg} />
     </SiteMaxWidthContainer>
   </S.CaseStudyHero>
 )

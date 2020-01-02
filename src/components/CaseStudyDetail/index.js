@@ -11,9 +11,12 @@ import * as S from './style'
 import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
 
 // Components
+import CaseStudy from '../CaseStudy'
 import CaseStudyHero from '../CaseStudyHero'
+import CaseStudyCarousel from '../CaseStudyCarousel'
 import CaseStudyResult from '../CaseStudyResult'
 import Testimonial from '../Testimonial'
+import Footer from '../Footer'
 
 const CaseStudyDetail = ({ data: { contentfulCaseStudy: caseStudy } }) => {
   const {
@@ -23,9 +26,10 @@ const CaseStudyDetail = ({ data: { contentfulCaseStudy: caseStudy } }) => {
     featuredTestimonial,
     challengeSummary,
     solutionSummary,
+    nextCaseStudy,
+    designSystemGallery,
   } = caseStudy
 
-  console.log(resultOne, resultTwo, resultThree)
   return (
     <>
       <Helmet
@@ -56,6 +60,18 @@ const CaseStudyDetail = ({ data: { contentfulCaseStudy: caseStudy } }) => {
           </SiteMaxWidthContainer>
         )}
 
+        <div
+          style={{
+            paddingTop: `${rhythmUnit(4)}`,
+            paddingBottom: `${rhythmUnit(4)}`,
+          }}
+        >
+          <SiteMaxWidthContainer maxWidth={1400}>
+            {designSystemGallery && (
+              <CaseStudyCarousel images={designSystemGallery} />
+            )}
+          </SiteMaxWidthContainer>
+        </div>
         <SiteMaxWidthContainer>
           <S.CaseStudyResults>
             {resultOne && <CaseStudyResult content={resultOne.json.content} />}
@@ -86,6 +102,17 @@ const CaseStudyDetail = ({ data: { contentfulCaseStudy: caseStudy } }) => {
             </Testimonial>
           </div>
         )}
+        <div
+          style={{
+            paddingTop: `${rhythmUnit(4)}`,
+            paddingBottom: `${rhythmUnit(4)}`,
+            backgroundColor: '#F9F9F9',
+          }}
+        >
+          <CaseStudy caseStudy={nextCaseStudy} layout="right" />
+        </div>
+
+        <Footer />
       </S.CaseStudyDetail>
     </>
   )
@@ -108,9 +135,8 @@ export const query = graphql`
         }
       }
       heroImage {
-        fluid(quality: 90, maxWidth: 2200) {
-          src
-          srcSet
+        fluid(maxWidth: 2200, quality: 100) {
+          ...GatsbyContentfulFluid_withWebp_noBase64
         }
       }
       whiteLogo {
@@ -150,6 +176,30 @@ export const query = graphql`
           fixed(cropFocus: FACE, height: 100, width: 100) {
             ...GatsbyContentfulFixed_withWebp
           }
+        }
+      }
+      nextCaseStudy {
+        name
+        tagline
+        slug
+        successSummary {
+          successSummary
+        }
+        logo {
+          file {
+            url
+          }
+        }
+        listingImage {
+          fluid {
+            ...GatsbyContentfulFluid_withWebp
+          }
+        }
+      }
+      designSystemGallery {
+        fluid {
+          src
+          srcSet
         }
       }
     }
