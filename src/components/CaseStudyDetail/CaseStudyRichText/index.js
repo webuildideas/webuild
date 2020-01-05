@@ -4,6 +4,9 @@ import PropTypes from 'prop-types'
 import { BLOCKS } from '@contentful/rich-text-types'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
+// Styled Components
+import * as S from './style'
+
 // Components
 import CaseStudyCarousel from '../CaseStudyCarousel'
 
@@ -16,6 +19,7 @@ const buildCarouselImgArray = imgArr => {
     } = i
     return carouselImgArr.push({
       src: file['en-US'].url,
+      // TODO: Build out the srcSet sizes using query params
       srcSet: file['en-US'].url,
     })
   })
@@ -38,7 +42,11 @@ const CaseStudyRichText = ({ document }) => {
       },
     },
   }
-  return <div>{documentToReactComponents(document, options)}</div>
+  return (
+    <S.CaseStudyRichText>
+      {documentToReactComponents(document, options)}
+    </S.CaseStudyRichText>
+  )
 }
 
 CaseStudyRichText.propTypes = {
