@@ -5,6 +5,8 @@
   "version": "1.0.0",
   "author": "Vince Brown <vince@vincebrown.me>",
   "dependencies": {
+    "@contentful/rich-text-react-renderer": "^13.4.0",
+    "@contentful/rich-text-types": "^13.4.0",
     "dotenv": "^8.2.0",
     "framer-motion": "^1.7.0",
     "gatsby": "^2.18.4",

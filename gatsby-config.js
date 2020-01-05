@@ -31,6 +31,7 @@ module.exports = {
         spaceId: process.env.GATSBY_SPACE_ID,
         // Learn about environment variables: https://gatsby.dev/env-vars
         accessToken: process.env.GATSBY_PROD_ACCESS_TOKEN,
+        forceFullSync: true,
       },
     },
     {

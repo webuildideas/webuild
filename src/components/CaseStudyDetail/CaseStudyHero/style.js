@@ -2,7 +2,7 @@
 import styled from 'styled-components'
 
 // Utils
-import { rhythmUnit } from '../../utils/typography'
+import { rhythmUnit } from '../../../utils/typography'
 
 export const CaseStudyHero = styled.div`
   position: relative;

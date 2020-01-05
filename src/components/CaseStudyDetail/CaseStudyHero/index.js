@@ -5,7 +5,7 @@ import Img from 'gatsby-image'
 
 // Styled Components
 import * as S from './style'
-import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
+import SiteMaxWidthContainer from '../../Shared/SiteMaxWidthContainer'
 
 const CaseStudyHero = ({ background, successSummary, logo, heroImg }) => (
   <S.CaseStudyHero backgroundSvg={background}>

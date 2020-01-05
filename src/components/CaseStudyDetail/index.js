@@ -12,9 +12,9 @@ import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
 
 // Components
 import CaseStudy from '../CaseStudy'
-import CaseStudyHero from '../CaseStudyHero'
-import CaseStudyCarousel from '../CaseStudyCarousel'
-import CaseStudyResult from '../CaseStudyResult'
+import CaseStudyHero from './CaseStudyHero'
+import CaseStudyCarousel from './CaseStudyCarousel'
+import CaseStudyResult from './CaseStudyResult'
 import Testimonial from '../Testimonial'
 import Footer from '../Footer'
 
@@ -27,7 +27,7 @@ const CaseStudyDetail = ({ data: { contentfulCaseStudy: caseStudy } }) => {
     challengeSummary,
     solutionSummary,
     nextCaseStudy,
-    designSystemGallery,
+    designSystemCarousel,
   } = caseStudy
 
   return (
@@ -67,18 +67,16 @@ const CaseStudyDetail = ({ data: { contentfulCaseStudy: caseStudy } }) => {
           }}
         >
           <SiteMaxWidthContainer maxWidth={1400}>
-            {designSystemGallery && (
-              <CaseStudyCarousel images={designSystemGallery} />
+            {designSystemCarousel && designSystemCarousel.images && (
+              <CaseStudyCarousel images={designSystemCarousel.images} />
             )}
           </SiteMaxWidthContainer>
         </div>
         <SiteMaxWidthContainer>
           <S.CaseStudyResults>
-            {resultOne && <CaseStudyResult content={resultOne.json.content} />}
-            {resultTwo && <CaseStudyResult content={resultTwo.json.content} />}
-            {resultThree && (
-              <CaseStudyResult content={resultThree.json.content} />
-            )}
+            {resultOne && <CaseStudyResult document={resultOne.json} />}
+            {resultTwo && <CaseStudyResult document={resultTwo.json} />}
+            {resultThree && <CaseStudyResult document={resultThree.json} />}
           </S.CaseStudyResults>
         </SiteMaxWidthContainer>
 
@@ -102,6 +100,7 @@ const CaseStudyDetail = ({ data: { contentfulCaseStudy: caseStudy } }) => {
             </Testimonial>
           </div>
         )}
+
         <div
           style={{
             paddingTop: `${rhythmUnit(4)}`,
@@ -151,6 +150,14 @@ export const query = graphql`
       challengeSummary {
         challengeSummary
       }
+      designSystemCarousel {
+        images {
+          fluid {
+            src
+            srcSet
+          }
+        }
+      }
       resultOne {
         json
       }
@@ -194,12 +201,6 @@ export const query = graphql`
           fluid {
             ...GatsbyContentfulFluid_withWebp
           }
-        }
-      }
-      designSystemGallery {
-        fluid {
-          src
-          srcSet
         }
       }
     }
