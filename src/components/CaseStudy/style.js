@@ -23,10 +23,10 @@ export const CaseStudy = styled.article`
   .CaseStudy__img {
     position: relative;
     display: block;
-    margin-bottom: ${() => rhythmUnit(1)};
+    margin-bottom: ${props => (props.mobileTextFirst ? 0 : rhythmUnit(1))};
     width: 100%;
     max-width: 500px;
-    order: 1;
+    order: ${props => (props.mobileTextFirst ? 2 : 1)};
     margin-left: auto;
     margin-right: auto;
     @media (min-width: 700px) {
@@ -43,7 +43,8 @@ export const CaseStudy = styled.article`
     }
   }
   .CaseStudy__content {
-    order: 2;
+    order: ${props => (props.mobileTextFirst ? 1 : 2)};
+    margin-bottom: ${props => (props.mobileTextFirst ? rhythmUnit(1) : 0)};
     @media (min-width: 900px) {
       order: ${props => (props.layout === 'left' ? 2 : 1)};
       min-width: 440px;

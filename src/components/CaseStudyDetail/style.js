@@ -44,7 +44,6 @@ export const CaseStudyResults = styled(CaseStudyGrid)`
   grid-template-columns: minmax(200px, 400px);
   grid-template-rows: auto;
   grid-gap: ${() => rhythmUnit(2)};
-  margin-top: ${() => rhythmUnit(3)};
   margin-bottom: ${() => rhythmUnit(3.75)};
 
   @media (min-width: 800px) {

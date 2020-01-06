@@ -8,7 +8,6 @@ import { rhythmUnit } from '../../utils/typography'
 const CarouselDotGroup = styled(DotGroup)`
   display: flex;
   justify-content: center;
-  margin-top: ${() => rhythmUnit(1.5)};
   .carousel__dot {
     width: 10px;
     height: 10px;

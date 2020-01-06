@@ -13,6 +13,7 @@ export const GlobalStyle = createGlobalStyle`
     // Base Font size is 20px
     font-size: 125%;
     line-height: 1.6;
+    overflow-x: hidden;
 
     @media (max-width: 425px) {
       font-size: 100%; // Base Font Size 16px

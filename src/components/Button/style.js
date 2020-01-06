@@ -17,7 +17,6 @@ export const PrimaryLink = styled(Link)`
   letter-spacing: 0.05px;
   border: 1px solid ${props => props.theme.vulcan};
   color: ${props => props.theme.vulcan};
-  background-color: #fff;
   transition: background-color ease 250ms;
   &:hover {
     background-color: ${props => props.theme.vulcan};

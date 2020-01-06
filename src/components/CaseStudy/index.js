@@ -10,9 +10,9 @@ import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
 // Components
 import Button from '../Button'
 
-const CaseStudy = ({ caseStudy, layout }) => (
+const CaseStudy = ({ caseStudy, layout, mobileTextFirst }) => (
   <SiteMaxWidthContainer className="CaseStudy">
-    <S.CaseStudy layout={layout}>
+    <S.CaseStudy layout={layout} mobileTextFirst={mobileTextFirst}>
       <div className="CaseStudy__content">
         <div className="CaseStudy__logo">
           <img alt={`${caseStudy.name} logo`} src={caseStudy.logo.file.url} />
@@ -55,6 +55,7 @@ CaseStudy.propTypes = {
   }),
   /** Which side do you want the image to be on. */
   layout: PropTypes.oneOf(['right', 'left']),
+  mobileTextFirst: PropTypes.bool,
 }
 
 export default CaseStudy
