@@ -43,7 +43,7 @@ const CaseStudyDetail = ({ data: { contentfulCaseStudy: caseStudy } }) => {
           class: 'CaseStudyDetail',
         }}
       />
-      <Meta title={`${caseStudy.name} Case Study`} />
+      <Meta title={`${caseStudy.name}`} />
       <S.CaseStudyDetail className={`${caseStudy.slug}`}>
         <CaseStudyHero
           background={caseStudy.heroBackgroundImage.file.url}

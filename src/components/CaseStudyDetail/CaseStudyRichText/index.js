@@ -11,7 +11,7 @@ import * as S from './style'
 import CaseStudyCarousel from '../CaseStudyCarousel'
 
 const buildCarouselImgArray = imgArr => {
-  console.log(imgArr)
+  // console.log(imgArr)
   const carouselImgArr = []
   imgArr.map(i => {
     const {

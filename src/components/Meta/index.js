@@ -22,7 +22,7 @@ const Meta = ({ description, lang, meta, title }) => {
     `
   )
 
-  const metaTitle = title || contentfulSeo.seoTitle
+  const metaTitle = title ? `${title} | webuild` : 'webuild'
   const metaDescription =
     description || contentfulSeo.seoDescription.seoDescription
   console.log(contentfulSeo)
@@ -38,7 +38,7 @@ const Meta = ({ description, lang, meta, title }) => {
         },
         {
           property: `og:title`,
-          content: metaTitle,
+          content: contentfulSeo.seoTitle,
         },
         {
           property: `og:image`,
@@ -62,7 +62,7 @@ const Meta = ({ description, lang, meta, title }) => {
         // },
         {
           name: `twitter:title`,
-          content: metaTitle,
+          content: contentfulSeo.seoTitle,
         },
         {
           name: `twitter:description`,
@@ -70,7 +70,7 @@ const Meta = ({ description, lang, meta, title }) => {
         },
       ].concat(meta)}
       title={metaTitle}
-      titleTemplate={`webuild | ${metaTitle}`}
+      titleTemplate={`${metaTitle}`}
     />
   )
 }
