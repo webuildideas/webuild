@@ -18,6 +18,7 @@ import CaseStudyResult from './CaseStudyResult'
 import CaseStudyRichText from './CaseStudyRichText'
 import Testimonial from '../Testimonial'
 import Footer from '../Footer'
+import Meta from '../Meta'
 
 const CaseStudyDetail = ({ data: { contentfulCaseStudy: caseStudy } }) => {
   const {
@@ -42,6 +43,7 @@ const CaseStudyDetail = ({ data: { contentfulCaseStudy: caseStudy } }) => {
           class: 'CaseStudyDetail',
         }}
       />
+      <Meta title={`${caseStudy.name} Case Study`} />
       <S.CaseStudyDetail className={`${caseStudy.slug}`}>
         <CaseStudyHero
           background={caseStudy.heroBackgroundImage.file.url}

@@ -4,22 +4,28 @@ import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
 const Meta = ({ description, lang, meta, title }) => {
-  const { site } = useStaticQuery(
+  const { contentfulSeo } = useStaticQuery(
     graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
+      query SeoQuery {
+        contentfulSeo(title: { eq: "Site SEO Settings" }) {
+          seoTitle
+          seoDescription {
+            seoDescription
+          }
+          seoShareImage {
+            file {
+              url
+            }
           }
         }
       }
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
-
+  const metaTitle = title || contentfulSeo.seoTitle
+  const metaDescription =
+    description || contentfulSeo.seoDescription.seoDescription
+  console.log(contentfulSeo)
   return (
     <Helmet
       htmlAttributes={{
@@ -32,7 +38,11 @@ const Meta = ({ description, lang, meta, title }) => {
         },
         {
           property: `og:title`,
-          content: title,
+          content: metaTitle,
+        },
+        {
+          property: `og:image`,
+          content: contentfulSeo.seoShareImage.file.url,
         },
         {
           property: `og:description`,
@@ -42,25 +52,25 @@ const Meta = ({ description, lang, meta, title }) => {
           property: `og:type`,
           content: `website`,
         },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author,
-        },
+        // {
+        //   name: `twitter:card`,
+        //   content: `summary`,
+        // },
+        // {
+        //   name: `twitter:creator`,
+        //   // content: site.siteMetadata.author,
+        // },
         {
           name: `twitter:title`,
-          content: title,
+          content: metaTitle,
         },
         {
           name: `twitter:description`,
           content: metaDescription,
         },
       ].concat(meta)}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      title={metaTitle}
+      titleTemplate={`webuild | ${metaTitle}`}
     />
   )
 }

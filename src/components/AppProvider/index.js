@@ -16,12 +16,17 @@ import { GlobalStyle } from '../../theme/GlobalStyle'
 
 // Components
 import Nav from '../Nav'
+import Meta from '../Meta'
 
 export const AppContext = createContext({
   isNavOpen: false,
   isNavPinned: false,
-  toggleNav: () => {},
-  togglePinnedNav: () => {},
+  toggleNav: () => {
+    console.log('working')
+  },
+  togglePinnedNav: () => {
+    console.log('working')
+  },
 })
 
 class AppProvider extends Component {
@@ -60,6 +65,7 @@ class AppProvider extends Component {
     const { isNavOpen, toggleNav, togglePinnedNav, isNavPinned } = this.state
     return (
       <ThemeProvider theme={styleTheme}>
+        <Meta />
         <AppContext.Provider value={this.state}>
           <GlobalStyle />
           <Nav
