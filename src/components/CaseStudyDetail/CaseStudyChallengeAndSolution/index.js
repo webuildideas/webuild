@@ -11,7 +11,7 @@ import SiteMaxWidthContainer from '../../Shared/SiteMaxWidthContainer'
 import * as S from '../style'
 
 const CaseStudyChallengeAndSolution = ({ challenge, solution }) => {
-  const [ref, inView] = useInView({ threshold: 1 })
+  const [ref, inView] = useInView({ threshold: 1, triggerOnce: true })
   const controls = useAnimation()
 
   const variants = {
@@ -45,7 +45,7 @@ const CaseStudyChallengeAndSolution = ({ challenge, solution }) => {
             initial="hidden"
             variants={variants}
           >
-            Challenge {`iN VIEW: ${inView}`}
+            Challenge
           </motion.h3>
 
           <motion.p
