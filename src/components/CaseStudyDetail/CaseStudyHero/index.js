@@ -11,7 +11,12 @@ const CaseStudyHero = ({ background, successSummary, logo, heroImg }) => (
   <S.CaseStudyHero backgroundSvg={background}>
     <SiteMaxWidthContainer>
       <S.CaseStudyLogo alt="logo" src={logo} />
-      <S.CaseStudySuccessSummary>{successSummary}</S.CaseStudySuccessSummary>
+      <S.CaseStudySuccessSummary
+        animate={{ top: '0px' }}
+        initial={{ top: '30px' }}
+      >
+        {successSummary}
+      </S.CaseStudySuccessSummary>
       <Img critical={true} fadeIn={false} fluid={heroImg} />
     </SiteMaxWidthContainer>
   </S.CaseStudyHero>

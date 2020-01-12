@@ -16,7 +16,6 @@ import JoinUs from '../components/JoinUs'
 import PhotoGrid from '../components/PhotoGrid'
 import TestimonialSlider from '../components/TestimonialSlider'
 import Footer from '../components/Footer'
-import PageTransition from '../components/PageTransition'
 
 const WhoWeAre = ({ data }) => {
   const aboutPageData = data.contentfulAboutPage
@@ -86,7 +85,6 @@ const WhoWeAre = ({ data }) => {
         <JoinUs />
       </div>
       <Footer />
-      {/* <PageTransition /> */}
     </motion.div>
   )
 }

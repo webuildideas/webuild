@@ -19,7 +19,6 @@ import DesignPartner from '../components/DesignPartner'
 import Testimonial from '../components/Testimonial'
 import TestimonialGrid from '../components/TestimonialGrid'
 import Footer from '../components/Footer'
-import PageTransition from '../components/PageTransition'
 
 const IndexPage = ({ data }) => {
   const homeData = data.contentfulHomePage
@@ -71,7 +70,6 @@ const IndexPage = ({ data }) => {
       </section>
 
       <Footer />
-      {/* <PageTransition /> */}
     </motion.div>
   )
 }
