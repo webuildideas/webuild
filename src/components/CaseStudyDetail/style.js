@@ -1,10 +1,10 @@
 // Packages
 import styled from 'styled-components'
-
+import { motion } from 'framer-motion'
 // utils
 import { rhythmUnit } from '../../utils/typography'
 
-export const CaseStudyDetail = styled.article`
+export const CaseStudyDetail = styled(motion.article)`
   position: absolute;
   top: 0;
   width: 100%;

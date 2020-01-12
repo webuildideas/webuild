@@ -2,6 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
+import { motion } from 'framer-motion'
 
 // Utils
 import { rhythmUnit } from '../utils/typography'
@@ -15,12 +16,14 @@ import JoinUs from '../components/JoinUs'
 import PhotoGrid from '../components/PhotoGrid'
 import TestimonialSlider from '../components/TestimonialSlider'
 import Footer from '../components/Footer'
+import PageTransition from '../components/PageTransition'
 
 const WhoWeAre = ({ data }) => {
   const aboutPageData = data.contentfulAboutPage
   const { nodes: testimonialData } = data.allContentfulTestimonial
+
   return (
-    <>
+    <motion.div animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
       <Meta title="Who We Are" />
 
       <PageIntro maxWidth={860}>{aboutPageData.heroCopy.heroCopy}</PageIntro>
@@ -82,9 +85,9 @@ const WhoWeAre = ({ data }) => {
       >
         <JoinUs />
       </div>
-
       <Footer />
-    </>
+      {/* <PageTransition /> */}
+    </motion.div>
   )
 }
 

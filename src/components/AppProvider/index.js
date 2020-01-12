@@ -1,10 +1,10 @@
 /* eslint-disable react/no-unused-state */
 /**
- * This components is only used in gatsby-browser.js
+ * This component is only used in gatsby-browser.js
  * to provide every page with this context.
  */
 // Packages
-import React, { Component, createContext } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { ThemeProvider } from 'styled-components'
 
@@ -13,21 +13,11 @@ import { styleTheme } from '../../theme/styleTheme'
 
 // Styled Components
 import { GlobalStyle } from '../../theme/GlobalStyle'
+import { AppContext } from '../../utils/contexts'
 
 // Components
 import Nav from '../Nav'
 import Meta from '../Meta'
-
-export const AppContext = createContext({
-  isNavOpen: false,
-  isNavPinned: false,
-  toggleNav: () => {
-    console.log('working')
-  },
-  togglePinnedNav: () => {
-    console.log('working')
-  },
-})
 
 class AppProvider extends Component {
   static propTypes = {
@@ -40,7 +30,11 @@ class AppProvider extends Component {
     this.state = {
       isNavOpen: false,
       isNavPinned: false,
+      startExitAnimation: false,
       path: props.path,
+      triggerExitAnimation: startExitAnimation => {
+        this.setState({ startExitAnimation })
+      },
       toggleNav: navState => {
         this.setState({ isNavOpen: navState })
       },
@@ -55,6 +49,7 @@ class AppProvider extends Component {
       return {
         isNavOpen: false,
         path: nextProps.path,
+        startExitAnimation: false,
       }
     }
     return null

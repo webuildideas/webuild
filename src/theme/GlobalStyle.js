@@ -202,4 +202,8 @@ export const GlobalStyle = createGlobalStyle`
       }
     }
   }
+
+  .tl-wrapper {
+    position: static !important;
+  }
 `

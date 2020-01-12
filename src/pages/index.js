@@ -2,6 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
+import { motion } from 'framer-motion'
 
 // Utils
 import { rhythmUnit } from '../utils/typography'
@@ -18,11 +19,12 @@ import DesignPartner from '../components/DesignPartner'
 import Testimonial from '../components/Testimonial'
 import TestimonialGrid from '../components/TestimonialGrid'
 import Footer from '../components/Footer'
+import PageTransition from '../components/PageTransition'
 
 const IndexPage = ({ data }) => {
   const homeData = data.contentfulHomePage
   return (
-    <>
+    <motion.div animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
       <Meta title="Home" />
       <PageIntro maxWidth={1040}>{homeData.heroCopy.heroCopy}</PageIntro>
       <div
@@ -69,7 +71,8 @@ const IndexPage = ({ data }) => {
       </section>
 
       <Footer />
-    </>
+      {/* <PageTransition /> */}
+    </motion.div>
   )
 }
 

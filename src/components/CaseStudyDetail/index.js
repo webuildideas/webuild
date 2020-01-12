@@ -44,7 +44,12 @@ const CaseStudyDetail = ({ data: { contentfulCaseStudy: caseStudy } }) => {
         }}
       />
       <Meta title={`${caseStudy.name}`} />
-      <S.CaseStudyDetail className={`${caseStudy.slug}`}>
+      <S.CaseStudyDetail
+        animate={{ opacity: 1 }}
+        className={`${caseStudy.slug}`}
+        initial={{ opacity: 0 }}
+        transition={{ duration: 1 }}
+      >
         <CaseStudyHero
           background={caseStudy.heroBackgroundImage.file.url}
           heroImg={caseStudy.heroImage.fluid}

@@ -1,9 +1,9 @@
 // Packages
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
 import Helmet from 'react-helmet'
 import Headroom from 'react-headroom'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 // Styled Components
 import * as S from './style'
@@ -29,13 +29,28 @@ const Nav = ({ isNavOpen, isNavPinned, toggleNav, togglePinnedNav }) => (
         isPinned={isNavPinned}
       >
         <SiteMaxWidthContainer className="SiteMaxWidthContainer">
-          <Link className={`Logo ${isNavOpen ? 'isOpen' : ''}`} to="/">
+          <AniLink
+            bg="#0E0E1B"
+            className={`Logo ${isNavOpen ? 'isOpen' : ''}`}
+            cover
+            direction="right"
+            duration={1.5}
+            to="/"
+          >
             <Logo className="Logo" isOpen={isNavOpen} />
-          </Link>
+          </AniLink>
           <S.NavDesktopLinks className="NavDesktopLinks">
             <ul>
               <li>
-                <Link to="/who-we-are">Who We Are</Link>
+                <AniLink
+                  bg="#F3F3F3"
+                  cover
+                  direction="right"
+                  duration={1.5}
+                  to="/who-we-are"
+                >
+                  Who We Are
+                </AniLink>
               </li>
               <li>
                 <Button

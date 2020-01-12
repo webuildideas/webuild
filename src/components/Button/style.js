@@ -2,12 +2,12 @@
 import styled from 'styled-components'
 
 // Components
-import { Link } from 'gatsby'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 // Utils
 import { rhythmUnit } from '../../utils/typography'
 
-export const PrimaryLink = styled(Link)`
+export const PrimaryLink = styled(AniLink)`
   display: inline-block;
   font-size: ${props => props.theme.f4};
   font-weight: 800;

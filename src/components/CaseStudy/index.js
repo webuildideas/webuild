@@ -2,7 +2,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Img from 'gatsby-image'
-
 // Styled Components
 import * as S from './style'
 import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
@@ -10,32 +9,61 @@ import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
 // Components
 import Button from '../Button'
 
-const CaseStudy = ({ caseStudy, layout, mobileTextFirst }) => (
-  <SiteMaxWidthContainer className="CaseStudy">
-    <S.CaseStudy layout={layout} mobileTextFirst={mobileTextFirst}>
-      <div className="CaseStudy__content">
-        <div className="CaseStudy__logo">
-          <img alt={`${caseStudy.name} logo`} src={caseStudy.logo.file.url} />
+const CaseStudy = ({ caseStudy, layout, mobileTextFirst }) => {
+  console.log(caseStudy.name)
+  let bgColor
+
+  switch (caseStudy.name) {
+    case 'Student Loan Hero':
+      bgColor = '#41C781'
+      break
+
+    case 'Optimize':
+      bgColor = '#3A7CEB'
+      break
+
+    case 'GoSite':
+      bgColor = '#3A7CEB'
+      break
+
+    default:
+      bgColor = '#286AFF'
+      break
+  }
+  return (
+    <SiteMaxWidthContainer className="CaseStudy">
+      <S.CaseStudy layout={layout} mobileTextFirst={mobileTextFirst}>
+        <div className="CaseStudy__content">
+          <div className="CaseStudy__logo">
+            <img alt={`${caseStudy.name} logo`} src={caseStudy.logo.file.url} />
+          </div>
+          <h1 className="CaseStudy__tagline">{caseStudy.tagline}</h1>
+          {caseStudy.successSummary && (
+            <p className="CaseStudy__summary">
+              {caseStudy.successSummary.successSummary}
+            </p>
+          )}
+          <Button
+            bg={bgColor}
+            cover
+            direction="top"
+            duration={1.5}
+            href={`/case-studies/${caseStudy.slug}`}
+            type="primaryLink"
+          >
+            Read Case Study
+          </Button>
         </div>
-        <h1 className="CaseStudy__tagline">{caseStudy.tagline}</h1>
-        {caseStudy.successSummary && (
-          <p className="CaseStudy__summary">
-            {caseStudy.successSummary.successSummary}
-          </p>
-        )}
-        <Button href={`/case-studies/${caseStudy.slug}`} type="primaryLink">
-          Read Case Study
-        </Button>
-      </div>
-      <Img
-        alt={`${caseStudy.name}`}
-        className="CaseStudy__img"
-        fluid={caseStudy.listingImage.fluid}
-        imgStyle={{ objectFit: 'contain' }}
-      />
-    </S.CaseStudy>
-  </SiteMaxWidthContainer>
-)
+        <Img
+          alt={`${caseStudy.name}`}
+          className="CaseStudy__img"
+          fluid={caseStudy.listingImage.fluid}
+          imgStyle={{ objectFit: 'contain' }}
+        />
+      </S.CaseStudy>
+    </SiteMaxWidthContainer>
+  )
+}
 
 CaseStudy.propTypes = {
   /** Case Study Object */
