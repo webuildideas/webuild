@@ -10,9 +10,7 @@ import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
 import Button from '../Button'
 
 const CaseStudy = ({ caseStudy, layout, mobileTextFirst }) => {
-  console.log(caseStudy.name)
   let bgColor
-
   switch (caseStudy.name) {
     case 'Student Loan Hero':
       bgColor = '#41C781'

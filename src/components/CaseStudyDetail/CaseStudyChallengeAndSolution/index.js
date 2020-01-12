@@ -1,7 +1,8 @@
 // Packages
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useInView } from 'react-intersection-observer'
+import { motion, useAnimation } from 'framer-motion'
 
 // Components
 
@@ -11,16 +12,69 @@ import * as S from '../style'
 
 const CaseStudyChallengeAndSolution = ({ challenge, solution }) => {
   const [ref, inView] = useInView({ threshold: 1 })
+  const controls = useAnimation()
+
+  const variants = {
+    visible: i => ({
+      opacity: [0, 0.25, 0.4, 0.6, 0.6, 0.6, 0.7, 0.8, 1],
+      y: 0,
+      transition: {
+        duration: 0.5,
+        delay: i * 0.25,
+      },
+    }),
+    hidden: {
+      opacity: 0,
+      y: 15,
+    },
+  }
+
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible')
+    }
+  }, [controls, inView])
+
   return (
     <SiteMaxWidthContainer>
       <S.CaseStudyChallengeSolution ref={ref}>
         <div>
-          <h3>Challenge {`iN VIEW: ${inView}`}</h3>
-          <p>{challenge}</p>
+          <motion.h3
+            animate={controls}
+            custom={0}
+            initial="hidden"
+            variants={variants}
+          >
+            Challenge {`iN VIEW: ${inView}`}
+          </motion.h3>
+
+          <motion.p
+            animate={controls}
+            custom={1}
+            initial="hidden"
+            variants={variants}
+          >
+            {challenge}
+          </motion.p>
         </div>
         <div>
-          <h3>Solution</h3>
-          <p>{solution}</p>
+          <motion.h3
+            animate={controls}
+            custom={2}
+            initial="hidden"
+            variants={variants}
+          >
+            Solution
+          </motion.h3>
+
+          <motion.p
+            animate={controls}
+            custom={3}
+            initial="hidden"
+            variants={variants}
+          >
+            {solution}
+          </motion.p>
         </div>
       </S.CaseStudyChallengeSolution>
     </SiteMaxWidthContainer>
