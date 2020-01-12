@@ -34,7 +34,18 @@ const CaseStudyHero = ({ background, successSummary, logo, heroImg }) => (
       >
         {successSummary}
       </S.CaseStudySuccessSummary>
-      <Img fadeIn={true} fluid={heroImg} />
+      <motion.div
+        animate={{ top: '0px', opacity: '1' }}
+        initial={{
+          top: '120px',
+          overflow: 'hidden',
+          position: 'relative',
+          opacity: 0,
+        }}
+        transition={{ duration: 0.75, delay: 0.25 }}
+      >
+        <Img critical={true} fadeIn={false} fluid={heroImg} />
+      </motion.div>
     </SiteMaxWidthContainer>
   </S.CaseStudyHero>
 )
