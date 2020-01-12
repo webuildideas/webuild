@@ -35,7 +35,7 @@ const CaseStudyHero = ({ background, successSummary, logo, heroImg }) => (
         {successSummary}
       </S.CaseStudySuccessSummary>
       <motion.div
-        animate={{ top: '0px', opacity: '1' }}
+        animate={{ top: '0px', opacity: 1 }}
         initial={{
           top: '120px',
           overflow: 'hidden',

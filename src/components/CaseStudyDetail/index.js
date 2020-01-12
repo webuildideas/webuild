@@ -1,5 +1,5 @@
 // Packages
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
@@ -16,11 +16,15 @@ import CaseStudyHero from './CaseStudyHero'
 import CaseStudyCarousel from './CaseStudyCarousel'
 import CaseStudyResult from './CaseStudyResult'
 import CaseStudyRichText from './CaseStudyRichText'
+import CaseStudyChallengeSolution from './CaseStudyChallengeAndSolution'
 import Testimonial from '../Testimonial'
 import Footer from '../Footer'
 import Meta from '../Meta'
 
-const CaseStudyDetail = ({ data: { contentfulCaseStudy: caseStudy } }) => {
+// eslint-disable-next-line
+const CaseStudyDetail = memo(function ({
+  data: { contentfulCaseStudy: caseStudy },
+}) {
   const {
     resultOne,
     resultTwo,
@@ -59,18 +63,10 @@ const CaseStudyDetail = ({ data: { contentfulCaseStudy: caseStudy } }) => {
 
         <section>
           {challengeSummary && solutionSummary && (
-            <SiteMaxWidthContainer>
-              <S.CaseStudyChallengeSolution>
-                <div>
-                  <h3>Challenge</h3>
-                  <p>{challengeSummary.challengeSummary}</p>
-                </div>
-                <div>
-                  <h3>Solution</h3>
-                  <p>{solutionSummary.solutionSummary}</p>
-                </div>
-              </S.CaseStudyChallengeSolution>
-            </SiteMaxWidthContainer>
+            <CaseStudyChallengeSolution
+              challenge={challengeSummary.challengeSummary}
+              solution={solutionSummary.solutionSummary}
+            />
           )}
 
           <div
@@ -150,7 +146,7 @@ const CaseStudyDetail = ({ data: { contentfulCaseStudy: caseStudy } }) => {
       </S.CaseStudyDetail>
     </>
   )
-}
+})
 
 CaseStudyDetail.propTypes = {
   data: PropTypes.object,

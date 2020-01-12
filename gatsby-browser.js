@@ -18,5 +18,10 @@ exports.wrapPageElement = ({ element, props }) => {
 }
 
 exports.onClientEntry = () => {
+  async function loadPolyfills() {
+    if (typeof window.IntersectionObserver === 'undefined') {
+      await import('intersection-observer')
+    }
+  }
   callProjectHuddle()
 }
