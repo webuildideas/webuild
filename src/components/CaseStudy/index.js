@@ -47,7 +47,7 @@ const CaseStudy = ({ caseStudy, layout, mobileTextFirst }) => {
             bg={bgColor}
             cover
             direction="top"
-            duration={1.5}
+            duration={1.25}
             href={`/case-studies/${caseStudy.slug}`}
             type="primaryLink"
           >

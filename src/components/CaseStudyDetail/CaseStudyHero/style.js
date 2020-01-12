@@ -37,7 +37,7 @@ export const CaseStudyHero = styled.div`
   }
 `
 
-export const CaseStudyLogo = styled(motion.img)`
+export const CaseStudyLogo = styled.img`
   max-width: 120px;
   margin-bottom: ${() => rhythmUnit(0.5)};
   @media (min-width: 768px) {
@@ -46,6 +46,7 @@ export const CaseStudyLogo = styled(motion.img)`
 `
 
 export const CaseStudySuccessSummary = styled(motion.h1)`
+  position: relative;
   font-weight: 400;
   line-height: 1.4;
   margin-bottom: ${() => rhythmUnit(1.5)};

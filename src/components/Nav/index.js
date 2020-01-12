@@ -33,7 +33,7 @@ const Nav = ({ isNavOpen, isNavPinned, toggleNav, togglePinnedNav }) => (
             bg="#0E0E1B"
             className={`Logo ${isNavOpen ? 'isOpen' : ''}`}
             cover
-            direction="right"
+            direction="up"
             duration={1.5}
             to="/"
           >
