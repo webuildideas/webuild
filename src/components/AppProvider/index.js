@@ -19,8 +19,6 @@ import { AppContext } from '../../utils/contexts'
 import Nav from '../Nav'
 import Meta from '../Meta'
 
-import('rc-texty/assets/index.css')
-
 class AppProvider extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
