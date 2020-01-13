@@ -7,6 +7,6 @@ import { rhythmUnit } from '../../utils/typography'
 export const CaseStudyListing = styled.section`
   overflow: hidden;
   .CaseStudy:not(:last-child) {
-    margin-bottom: ${() => rhythmUnit(7)};
+    margin-bottom: ${() => rhythmUnit(5)};
   }
 `

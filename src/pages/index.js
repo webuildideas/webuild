@@ -1,8 +1,9 @@
 // Packages
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import { motion } from 'framer-motion'
+import { motion, useAnimation } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
 
 // Utils
 import { rhythmUnit } from '../utils/typography'
@@ -22,6 +23,34 @@ import Footer from '../components/Footer'
 
 const IndexPage = ({ data }) => {
   const homeData = data.contentfulHomePage
+  const [ref, inView] = useInView({
+    threshold: 1,
+    triggerOnce: true,
+  })
+
+  const controls = useAnimation()
+
+  const variants = {
+    visible: i => ({
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.65,
+        delay: i * 0.3,
+      },
+    }),
+    hidden: {
+      y: 25,
+      opacity: 0,
+    },
+  }
+
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible')
+    }
+  }, [controls, inView])
+
   return (
     <motion.div animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
       <Meta title="Home" />
@@ -45,12 +74,29 @@ const IndexPage = ({ data }) => {
             paddingBottom: `${rhythmUnit(4)}`,
           }}
         >
-          <SectionHeading style={{ marginBottom: `${rhythmUnit(2.75)}` }}>
-            <h1 className="SectionHeading__title">Our Partners Love Us</h1>
-            <h2 className="SectionHeading__subtitle">
+          <SectionHeading
+            ref={ref}
+            style={{ marginBottom: `${rhythmUnit(2.75)}` }}
+          >
+            <motion.h1
+              animate={controls}
+              className="SectionHeading__title"
+              custom={0}
+              initial="hidden"
+              variants={variants}
+            >
+              Our Partners Love Us
+            </motion.h1>
+            <motion.h2
+              animate={controls}
+              className="SectionHeading__subtitle"
+              custom={1}
+              initial="hidden"
+              variants={variants}
+            >
               When smart collaboration and remarkable
               <br /> expertise come together, magic happens.
-            </h2>
+            </motion.h2>
           </SectionHeading>
 
           <Testimonial
