@@ -1,5 +1,7 @@
 // Packages
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useInView } from 'react-intersection-observer'
+import { motion, useAnimation } from 'framer-motion'
 
 // Components
 import Button from '../Button'
@@ -11,29 +13,105 @@ import SectionHeading from '../Shared/SectionHeading'
 
 const Footer = () => {
   const d = new Date()
+  const [ref, inView] = useInView({
+    threshold: 0.9,
+    triggerOnce: true,
+  })
+
+  const controls = useAnimation()
+
+  const variants = {
+    visible: i => ({
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.55,
+        delay: i * 0.152,
+        type: 'spring',
+      },
+    }),
+    hidden: {
+      y: 25,
+      opacity: 0,
+    },
+  }
+
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible')
+    }
+  }, [controls, inView])
   return (
-    <S.Footer>
+    <S.Footer ref={ref}>
       <SiteMaxWidthContainer>
         <SectionHeading>
-          <h1 className="SectionHeading__title">Let's Do Something Bold</h1>
-          <h2
+          <motion.h1
+            animate={controls}
+            className="SectionHeading__title"
+            custom={0}
+            initial="hidden"
+            variants={variants}
+          >
+            Let's Do Something Bold
+          </motion.h1>
+          <motion.h2
+            animate={controls}
             className="SectionHeading__subtitle"
+            custom={1}
+            initial="hidden"
             style={{ maxWidth: '520px' }}
+            variants={variants}
           >
             Ready to take your product to the next level? Drop us a line.
-          </h2>
+          </motion.h2>
         </SectionHeading>
-        <Button href="mailto:hi@webuild.io" type="primaryButton">
+        <Button
+          className="Footer__btn"
+          href="mailto:hi@webuild.io"
+          type="primaryButton"
+        >
           <span className="wave-emoji">👋</span>
-          <span className="email">HI@WEBUILD.IO</span>
+          HI@WEBUILD.IO
         </Button>
 
         <div className="Footer__follow">
-          <p className="Footer__copyright">&copy; WEBUILD {d.getFullYear()}</p>
-          <p className="Footer__social">
-            Follow us on: <a href="https://www.dribbble.com">Dribbble</a>{' '}
-            <span>&amp;</span> <a href="https://www.instagram.com">Instagram</a>
-          </p>
+          <motion.p
+            animate={controls}
+            className="Footer__copyright"
+            custom={2}
+            initial="hidden"
+            variants={variants}
+          >
+            &copy; WEBUILD {d.getFullYear()}
+          </motion.p>
+          <motion.p
+            animate={controls}
+            className="Footer__social"
+            custom={3}
+            initial="hidden"
+            variants={variants}
+          >
+            Follow us on:{' '}
+            <motion.a
+              animate={controls}
+              custom={4}
+              href="https://www.dribbble.com"
+              initial="hidden"
+              variants={variants}
+            >
+              Dribbble
+            </motion.a>{' '}
+            <span>&amp;</span>{' '}
+            <motion.a
+              animate={controls}
+              custom={5}
+              href="https://www.instagram.com"
+              initial="hidden"
+              variants={variants}
+            >
+              Instagram
+            </motion.a>
+          </motion.p>
         </div>
       </SiteMaxWidthContainer>
     </S.Footer>

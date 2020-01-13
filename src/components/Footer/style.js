@@ -10,6 +10,12 @@ export const Footer = styled.footer`
   padding: ${() => `${rhythmUnit(2.75)} 0 ${rhythmUnit(1.25)}`};
 
   .Footer__btn {
+    transition: 500ms all ease;
+    &:hover {
+      span.border {
+        border: 1px solid #fff;
+      }
+    }
     span {
       margin-right: 4px;
     }

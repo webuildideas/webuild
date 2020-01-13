@@ -193,9 +193,11 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     .Button {
-      background-color: transparent;
-      span.border {border-color: #fff;}
       color: #fff;
+      span.border {
+        border-color: #fff;
+        background: transparent;
+      }
       &:hover {
         span.border {
           background-color: #fff;

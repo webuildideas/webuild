@@ -44,9 +44,13 @@ export const PrimaryLink = styled(AniLink)`
 export const SecondaryLink = styled(PrimaryLink)`
   border: none;
   color: ${props => props.theme.snow};
-  background-color: ${props => props.theme.vulcan};
+  span.border {
+    background-color: ${props => props.theme.vulcan};
+  }
   &:hover {
-    background-color: ${props => props.theme.tuna};
+    span.border {
+      background-color: ${props => props.theme.tuna};
+    }
   }
 `
 
@@ -60,7 +64,6 @@ export const PrimaryButton = styled.a`
   padding: ${() => ` ${rhythmUnit(0.5)} ${rhythmUnit(1)}`};
   letter-spacing: 0.05em;
   color: ${props => props.theme.vulcan};
-  background-color: #fff;
   transition: background-color ease 250ms;
   span.text {
     position: relative;
@@ -74,6 +77,8 @@ export const PrimaryButton = styled.a`
     width: 100%;
     height: 100%;
     border: 1px solid ${props => props.theme.vulcan};
+    background-color: #fff;
+    z-index: 0;
   }
   &:hover {
     span.border {
@@ -86,8 +91,12 @@ export const PrimaryButton = styled.a`
 export const SecondaryButton = styled(PrimaryButton)`
   border: none;
   color: ${props => props.theme.snow};
-  background-color: ${props => props.theme.vulcan};
+  span.border {
+    background-color: ${props => props.theme.vulcan};
+  }
   &:hover {
-    background-color: ${props => props.theme.tuna};
+    span.border {
+      background-color: ${props => props.theme.tuna};
+    }
   }
 `
