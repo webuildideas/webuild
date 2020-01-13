@@ -1,8 +1,10 @@
 // Packages
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
+import { useInView } from 'react-intersection-observer'
+import { motion, useAnimation } from 'framer-motion'
 
 // Styled Components
 import * as S from './style'
@@ -22,15 +24,44 @@ const BioCard = ({ children }) => {
       }
     `
   )
+
+  const [ref, inView] = useInView({
+    threshold: 0.7,
+    triggerOnce: true,
+  })
+
+  const controls = useAnimation()
+
+  const variants = {
+    visible: {
+      y: 0,
+      x: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.9,
+        delay: 0.4,
+      },
+    },
+    hidden: {
+      x: 25,
+      opacity: 0,
+    },
+  }
+
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible')
+    }
+  }, [controls, inView])
   return (
     <SiteMaxWidthContainer>
-      <S.BioCard>
-        <div>
+      <S.BioCard ref={ref}>
+        <motion.div animate={controls} initial="hidden" variants={variants}>
           <Img
             className="BioCard__img-wrapper"
             fluid={file.childImageSharp.fluid}
           />
-        </div>
+        </motion.div>
         <S.BioContent>{children}</S.BioContent>
       </S.BioCard>
     </SiteMaxWidthContainer>

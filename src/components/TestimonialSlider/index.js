@@ -1,8 +1,10 @@
 // Packages
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { CarouselProvider } from 'pure-react-carousel'
 import Img from 'gatsby-image'
+import { useInView } from 'react-intersection-observer'
+import { motion, useAnimation } from 'framer-motion'
 
 // Styles
 import 'pure-react-carousel/dist/react-carousel.es.css'
@@ -47,37 +49,68 @@ TestimonialDot.propTypes = {
   slide: PropTypes.number.isRequired,
 }
 
-const TestimonialSlider = ({ testimonials }) => (
-  <SiteMaxWidthContainer>
-    <CarouselProvider
-      naturalSlideHeight={20}
-      naturalSlideWidth={10}
-      totalSlides={testimonials.length}
-    >
-      <S.TestimonialSlider>
-        {testimonials.map((t, idx) => (
-          <TestimonialSlide key={`t-${t.name}`} index={idx}>
-            {t.testimonial.testimonial}
-          </TestimonialSlide>
-        ))}
-      </S.TestimonialSlider>
+const TestimonialSlider = ({ testimonials }) => {
+  const [ref, inView] = useInView({
+    threshold: 0.9,
+    triggerOnce: true,
+  })
 
-      <S.TestimonialDots>
-        {testimonials.map((t, idx) => (
-          <TestimonialDot
-            key={`tdot-${t.name}`}
-            img={t.headshot.fixed}
-            name={t.name}
-            position={t.role}
-            slide={idx}
-          />
-        ))}
-      </S.TestimonialDots>
+  const controls = useAnimation()
 
-      <S.TestimonialDotGroup />
-    </CarouselProvider>
-  </SiteMaxWidthContainer>
-)
+  const variants = {
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.9,
+        delay: 0.252,
+      },
+    },
+    hidden: {
+      y: 35,
+      opacity: 0,
+    },
+  }
+
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible')
+    }
+  }, [controls, inView])
+  return (
+    <SiteMaxWidthContainer ref={ref}>
+      <motion.div animate={controls} initial="hidden" variants={variants}>
+        <CarouselProvider
+          naturalSlideHeight={20}
+          naturalSlideWidth={10}
+          totalSlides={testimonials.length}
+        >
+          <S.TestimonialSlider>
+            {testimonials.map((t, idx) => (
+              <TestimonialSlide key={`t-${t.name}`} index={idx}>
+                {t.testimonial.testimonial}
+              </TestimonialSlide>
+            ))}
+          </S.TestimonialSlider>
+
+          <S.TestimonialDots>
+            {testimonials.map((t, idx) => (
+              <TestimonialDot
+                key={`tdot-${t.name}`}
+                img={t.headshot.fixed}
+                name={t.name}
+                position={t.role}
+                slide={idx}
+              />
+            ))}
+          </S.TestimonialDots>
+
+          <S.TestimonialDotGroup />
+        </CarouselProvider>
+      </motion.div>
+    </SiteMaxWidthContainer>
+  )
+}
 
 TestimonialSlider.propTypes = {
   /** An array of Testimonials to render in the slider. */

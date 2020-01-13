@@ -64,9 +64,9 @@ const Testimonial = ({
 
   const headshotVariants = {
     visible: {
-      ease: 'easeInOut',
       opacity: 1,
       transition: {
+        ease: 'easeInOut',
         duration: 1,
         delay: 0.75,
       },

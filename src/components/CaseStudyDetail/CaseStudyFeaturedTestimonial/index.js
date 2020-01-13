@@ -24,8 +24,6 @@ const CaseStudyFeaturedTestimonial = ({ featuredTestimonial }) => {
     visible: {
       width: '100%',
       opacity: [0.5, 0.6, 0.7, 1],
-      marginLeft: 'auto',
-      marginRight: 'auto',
       transition: {
         duration: 1.2,
         ease: 'backInOut',
@@ -34,6 +32,8 @@ const CaseStudyFeaturedTestimonial = ({ featuredTestimonial }) => {
     hidden: {
       width: '0%',
       opacity: 0.5,
+      marginLeft: 'auto',
+      marginRight: 'auto',
       backgroundColor: '#F9F9F9',
       overflow: 'hidden',
       position: 'absolute',

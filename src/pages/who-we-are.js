@@ -1,8 +1,9 @@
 // Packages
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import { motion } from 'framer-motion'
+import { motion, useAnimation } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
 
 // Utils
 import { rhythmUnit } from '../utils/typography'
@@ -20,6 +21,43 @@ import Footer from '../components/Footer'
 const WhoWeAre = ({ data }) => {
   const aboutPageData = data.contentfulAboutPage
   const { nodes: testimonialData } = data.allContentfulTestimonial
+
+  const [ref, inView] = useInView({
+    threshold: 0.7,
+    triggerOnce: true,
+  })
+
+  const controls = useAnimation()
+
+  const variants = {
+    visible: i => ({
+      y: 0,
+      x: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.9,
+        delay: i * 0.252,
+      },
+    }),
+    headingHidden: {
+      y: -25,
+      opacity: 0,
+    },
+    textHidden: {
+      x: -25,
+      opacity: 0,
+    },
+    hidden: {
+      y: 35,
+      opacity: 0,
+    },
+  }
+
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible')
+    }
+  }, [controls, inView])
 
   return (
     <motion.div animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
@@ -47,24 +85,47 @@ const WhoWeAre = ({ data }) => {
       </div>
 
       <div
+        ref={ref}
         style={{
           backgroundColor: '#F9F9F9',
           padding: `${rhythmUnit(3)} 0`,
         }}
       >
         <BioCard>
-          <h2>We've Been There, Too.</h2>
-          <p>
+          <motion.h2
+            animate={controls}
+            custom={0}
+            initial="headingHidden"
+            variants={variants}
+          >
+            We've Been There, Too.
+          </motion.h2>
+          <motion.p
+            animate={controls}
+            custom={1}
+            initial="textHidden"
+            variants={variants}
+          >
             Meet our founder, Evan Shoemaker. He has bootstrapped and co-founded
             multiple companies, all while traveling to 35 countries across 4
             continents.
-          </p>
-          <p>
+          </motion.p>
+          <motion.p
+            animate={controls}
+            custom={2}
+            initial="textHidden"
+            variants={variants}
+          >
             Given his experience co-founding and growing startups, Evan has
             intimate experience with building products that get results, and
             he’s committed to helping other founders do the same.
-          </p>
-          <p>
+          </motion.p>
+          <motion.p
+            animate={controls}
+            custom={3}
+            initial="textHidden"
+            variants={variants}
+          >
             You can find him and connect on{' '}
             <a
               href="https://www.linkedin.com/in/evanshoemaker/"
@@ -73,7 +134,7 @@ const WhoWeAre = ({ data }) => {
             >
               LinkedIn
             </a>
-          </p>
+          </motion.p>
         </BioCard>
       </div>
 
