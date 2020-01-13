@@ -1,10 +1,12 @@
 // Packages
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
 
 import { rhythmUnit } from '../../utils/typography'
 
-export const Testimonial = styled.div`
+export const Testimonial = styled(motion.div)`
   background-color: ${props => props.theme.white};
+  min-width: 100%;
   max-width: 26.75rem;
   padding: ${() => rhythmUnit(1)};
 
@@ -68,12 +70,20 @@ export const FeaturedTestimonial = styled(Testimonial)`
   .Testimonial__client-featured-img {
     position: relative;
     display: none;
+    /* overflow-y: hidden; */
     @media (min-width: 850px) {
       display: block;
     }
-    img {
+    .img-container {
       display: block;
       position: absolute;
+      right: -25px;
+      bottom: -40px;
+      overflow-y: hidden;
+    }
+    img {
+      display: block;
+      /* position: absolute; */
       right: -25px;
       bottom: -40px;
     }

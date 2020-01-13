@@ -17,7 +17,7 @@ import CaseStudyCarousel from './CaseStudyCarousel'
 import CaseStudyResult from './CaseStudyResult'
 import CaseStudyRichText from './CaseStudyRichText'
 import CaseStudyChallengeSolution from './CaseStudyChallengeAndSolution'
-import Testimonial from '../Testimonial'
+import CaseStudyFeaturedTestimonial from './CaseStudyFeaturedTestimonial'
 import Footer from '../Footer'
 import Meta from '../Meta'
 
@@ -91,29 +91,9 @@ const CaseStudyDetail = memo(function ({
           </SiteMaxWidthContainer>
 
           {featuredTestimonial && (
-            <div
-              style={{
-                paddingTop: `${rhythmUnit(4)}`,
-                paddingBottom: `${rhythmUnit(4)}`,
-                marginBottom: `${rhythmUnit(3.75)}`,
-                backgroundColor: '#F9F9F9',
-              }}
-            >
-              <SiteMaxWidthContainer>
-                <Testimonial
-                  company={featuredTestimonial.company}
-                  companyRole={featuredTestimonial.role}
-                  featuredHeadshot={
-                    featuredTestimonial.featuredHeadshot.fluid.src
-                  }
-                  headshot={featuredTestimonial.headshot.fixed.src}
-                  isFeatured={true}
-                  name={featuredTestimonial.name}
-                >
-                  {featuredTestimonial.testimonial.testimonial}
-                </Testimonial>
-              </SiteMaxWidthContainer>
-            </div>
+            <CaseStudyFeaturedTestimonial
+              featuredTestimonial={featuredTestimonial}
+            />
           )}
         </section>
 

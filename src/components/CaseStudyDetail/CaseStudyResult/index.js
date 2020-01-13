@@ -57,7 +57,6 @@ const CaseStudyResult = ({ document }) => {
   )
 
   useEffect(() => {
-    console.log('RESULTS IN VIEW', inView)
     if (inView) {
       controls.start('visible')
     }

@@ -1,7 +1,9 @@
 // Packages
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Img from 'gatsby-image'
+import { useInView } from 'react-intersection-observer'
+import { motion, useAnimation } from 'framer-motion'
 
 // Styled Components
 import * as S from './style'
@@ -21,37 +23,138 @@ const Testimonial = ({
   isFeatured,
   ...props
 }) => {
+  const [ref, inView] = useInView({
+    rootMargin: '-400px 0px',
+    triggerOnce: true,
+  })
+
+  const controls = useAnimation()
+  const featuredHeadshotControls = useAnimation()
+  const headshotControls = useAnimation()
+
+  const variants = {
+    visible: i => ({
+      opacity: [0, 0.25, 0.4, 0.6, 0.6, 0.6, 0.7, 0.8, 1],
+      y: 0,
+      transition: {
+        duration: 0.75,
+        delay: i * 0.25,
+      },
+    }),
+    hidden: {
+      opacity: 0,
+      y: 25,
+    },
+  }
+
+  const featureHeadshotVariants = {
+    visible: {
+      opacity: 1,
+      y: '0%',
+      transition: {
+        ease: 'easeInOut',
+        duration: 0.9,
+      },
+    },
+    hidden: {
+      opacity: 0.75,
+      y: '100%',
+    },
+  }
+
+  const headshotVariants = {
+    visible: {
+      ease: 'easeInOut',
+      opacity: 1,
+      transition: {
+        duration: 1,
+        delay: 0.75,
+      },
+    },
+    hidden: {
+      opacity: 0,
+      width: '100%',
+      height: '100%',
+    },
+  }
+
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible')
+      featuredHeadshotControls.start('visible')
+      headshotControls.start('visible')
+    }
+  }, [controls, featuredHeadshotControls, headshotControls, inView])
+
   /**
    * If isStory is true the component is being rendered in Storybook
    * Storybook currently has errors with gatsby-img due to GraphQL queries
    */
   const renderHeadshot = headshotSrc => {
     if (isStory || isFeatured) {
-      return <img alt={`${name} Headshot`} src={headshotSrc} />
+      return (
+        <div className="img-container">
+          <motion.img
+            alt={`${name} Headshot`}
+            animate={featuredHeadshotControls}
+            initial="hidden"
+            src={headshotSrc}
+            variants={featureHeadshotVariants}
+          />
+        </div>
+      )
     }
 
     return (
-      <Img
-        alt={`${name} Headshot`}
-        fixed={headshotSrc}
-        style={{ width: '100%', height: '100%' }}
-      />
+      <motion.div
+        animate={headshotControls}
+        initial="hidden"
+        variants={headshotVariants}
+      >
+        <Img
+          alt={`${name} Headshot`}
+          fixed={headshotSrc}
+          style={{ width: '100%', height: '100%' }}
+        />
+      </motion.div>
     )
   }
 
   const renderTestimonialType = () => {
     if (isFeatured) {
       return (
-        <S.FeaturedTestimonial {...props}>
+        <S.FeaturedTestimonial ref={ref} {...props}>
           <div className="Testimonial__content">
-            <p className="Testimonial">{children}</p>
+            <motion.p
+              animate={controls}
+              className="Testimonial"
+              custom={1}
+              initial="hidden"
+              variants={variants}
+            >
+              {children}
+            </motion.p>
             <div className="Testimonial__client">
               <div className="Testimonial__client-img">
                 {renderHeadshot(headshot)}
               </div>
               <div className="Testimonial__client-details">
-                <p className="Testimonial__client-name">{name}</p>
-                <p className="Testimonial__client-company">{`${companyRole}, ${company}`}</p>
+                <motion.p
+                  animate={controls}
+                  className="Testimonial__client-name"
+                  custom={2}
+                  initial="hidden"
+                  variants={variants}
+                >
+                  {name}
+                </motion.p>
+                <motion.p
+                  animate={controls}
+                  className="Testimonial__client-company"
+                  custom={3}
+                  initial="hidden"
+                  variants={variants}
+                >{`${companyRole}, ${company}`}</motion.p>
               </div>
             </div>
           </div>
@@ -63,15 +166,37 @@ const Testimonial = ({
     }
 
     return (
-      <S.Testimonial {...props}>
-        <p className="Testimonial">{children}</p>
+      <S.Testimonial ref={ref} {...props}>
+        <motion.p
+          animate={controls}
+          className="Testimonial"
+          custom={1}
+          initial="hidden"
+          variants={variants}
+        >
+          {children}
+        </motion.p>
         <div className="Testimonial__client">
           <div className="Testimonial__client-img">
             {renderHeadshot(headshot)}
           </div>
           <div className="Testimonial__client-details">
-            <p className="Testimonial__client-name">{name}</p>
-            <p className="Testimonial__client-company">{`${companyRole}, ${company}`}</p>
+            <motion.p
+              animate={controls}
+              className="Testimonial__client-name"
+              custom={2}
+              initial="hidden"
+              variants={variants}
+            >
+              {name}
+            </motion.p>
+            <motion.p
+              animate={controls}
+              className="Testimonial__client-company"
+              custom={3}
+              initial="hidden"
+              variants={variants}
+            >{`${companyRole}, ${company}`}</motion.p>
           </div>
         </div>
       </S.Testimonial>

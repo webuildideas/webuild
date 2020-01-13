@@ -1,9 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Testimonial /> renders and matches snapshot 1`] = `
-<styled.div>
-  <p
+<Styled(Component)>
+  <ForwardRef(MotionComponent)
+    animate={
+      AnimationControls {
+        "componentControls": Set {},
+        "hasMounted": false,
+        "pendingAnimations": Array [],
+      }
+    }
     className="Testimonial"
+    custom={1}
+    initial="hidden"
+    variants={
+      Object {
+        "hidden": Object {
+          "opacity": 0,
+          "y": 25,
+        },
+        "visible": [Function],
+      }
+    }
   >
     I've worked with dozens of agencies in my career, and hands-down
      
@@ -11,32 +29,96 @@ exports[`<Testimonial /> renders and matches snapshot 1`] = `
       WeBuild stands far above the crowd.
     </span>
      If you're lucky enough to have the chance to work with them, don't hesitate! Just do it. You won't regret it.
-  </p>
+  </ForwardRef(MotionComponent)>
   <div
     className="Testimonial__client"
   >
     <div
       className="Testimonial__client-img"
     >
-      <img
-        alt="Paul Lappas Headshot"
-        src="test-file-stub"
-      />
+      <div
+        className="img-container"
+      >
+        <ForwardRef(MotionComponent)
+          alt="Paul Lappas Headshot"
+          animate={
+            AnimationControls {
+              "componentControls": Set {},
+              "hasMounted": false,
+              "pendingAnimations": Array [],
+            }
+          }
+          initial="hidden"
+          src="test-file-stub"
+          variants={
+            Object {
+              "hidden": Object {
+                "opacity": 0.75,
+                "y": "100%",
+              },
+              "visible": Object {
+                "opacity": 1,
+                "transition": Object {
+                  "duration": 0.9,
+                  "ease": "easeInOut",
+                },
+                "y": "0%",
+              },
+            }
+          }
+        />
+      </div>
     </div>
     <div
       className="Testimonial__client-details"
     >
-      <p
+      <ForwardRef(MotionComponent)
+        animate={
+          AnimationControls {
+            "componentControls": Set {},
+            "hasMounted": false,
+            "pendingAnimations": Array [],
+          }
+        }
         className="Testimonial__client-name"
+        custom={2}
+        initial="hidden"
+        variants={
+          Object {
+            "hidden": Object {
+              "opacity": 0,
+              "y": 25,
+            },
+            "visible": [Function],
+          }
+        }
       >
         Paul Lappas
-      </p>
-      <p
+      </ForwardRef(MotionComponent)>
+      <ForwardRef(MotionComponent)
+        animate={
+          AnimationControls {
+            "componentControls": Set {},
+            "hasMounted": false,
+            "pendingAnimations": Array [],
+          }
+        }
         className="Testimonial__client-company"
+        custom={3}
+        initial="hidden"
+        variants={
+          Object {
+            "hidden": Object {
+              "opacity": 0,
+              "y": 25,
+            },
+            "visible": [Function],
+          }
+        }
       >
         CEO/Co-Founder, intermix.io
-      </p>
+      </ForwardRef(MotionComponent)>
     </div>
   </div>
-</styled.div>
+</Styled(Component)>
 `;
