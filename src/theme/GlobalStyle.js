@@ -194,11 +194,13 @@ export const GlobalStyle = createGlobalStyle`
 
     .Button {
       background-color: transparent;
-      border-color: #fff;
+      span.border {border-color: #fff;}
       color: #fff;
       &:hover {
+        span.border {
+          background-color: #fff;
+        }
         color: ${props => props.theme.vulcan};;
-        background-color: #fff;
       }
     }
   }

@@ -1,7 +1,10 @@
 // Packages
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Img from 'gatsby-image'
+import { motion, useAnimation } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
+
 // Styled Components
 import * as S from './style'
 import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
@@ -10,6 +13,65 @@ import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
 import Button from '../Button'
 
 const CaseStudy = ({ caseStudy, layout, mobileTextFirst }) => {
+  const [ref, inView] = useInView({
+    threshold: 0.75,
+    triggerOnce: true,
+  })
+
+  const textControls = useAnimation()
+  const logoControls = useAnimation()
+  const imageControls = useAnimation()
+
+  const variants = {
+    visible: i => ({
+      opacity: [0, 0.25, 0.4, 0.6, 0.6, 0.6, 0.7, 0.8, 1],
+      y: 0,
+      transition: {
+        duration: 0.5,
+        delay: i * 0.25,
+        type: 'spring',
+      },
+    }),
+    hidden: {
+      opacity: 0,
+      y: 25,
+    },
+    logoVisible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.85,
+      },
+    },
+    logoHidden: {
+      opacity: 0,
+      y: 10,
+    },
+    imageVisible: {
+      x: 0,
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        delay: 0.15,
+        ease: 'easeInOut',
+      },
+    },
+    imageHidden: {
+      x: layout === 'right' ? 100 : -100,
+      y: 90,
+      opacity: 0,
+    },
+  }
+
+  useEffect(() => {
+    if (inView) {
+      textControls.start('visible')
+      logoControls.start('logoVisible')
+      imageControls.start('imageVisible')
+    }
+  }, [textControls, inView, logoControls, imageControls])
+
   let bgColor
   switch (caseStudy.name) {
     case 'Student Loan Hero':
@@ -28,20 +90,42 @@ const CaseStudy = ({ caseStudy, layout, mobileTextFirst }) => {
       bgColor = '#286AFF'
       break
   }
+
   return (
     <SiteMaxWidthContainer className="CaseStudy">
-      <S.CaseStudy layout={layout} mobileTextFirst={mobileTextFirst}>
+      <S.CaseStudy ref={ref} layout={layout} mobileTextFirst={mobileTextFirst}>
         <div className="CaseStudy__content">
           <div className="CaseStudy__logo">
-            <img alt={`${caseStudy.name} logo`} src={caseStudy.logo.file.url} />
+            <motion.img
+              alt={`${caseStudy.name} logo`}
+              animate={logoControls}
+              initial="hidden"
+              src={caseStudy.logo.file.url}
+              variants={variants}
+            />
           </div>
-          <h1 className="CaseStudy__tagline">{caseStudy.tagline}</h1>
+          <motion.h1
+            animate={textControls}
+            className="CaseStudy__tagline"
+            custom={0}
+            initial="hidden"
+            variants={variants}
+          >
+            {caseStudy.tagline}
+          </motion.h1>
           {caseStudy.successSummary && (
-            <p className="CaseStudy__summary">
+            <motion.p
+              animate={textControls}
+              className="CaseStudy__summary"
+              custom={1}
+              initial="hidden"
+              variants={variants}
+            >
               {caseStudy.successSummary.successSummary}
-            </p>
+            </motion.p>
           )}
           <Button
+            animationDelay={0.5}
             bg={bgColor}
             cover
             direction="top"
@@ -52,12 +136,18 @@ const CaseStudy = ({ caseStudy, layout, mobileTextFirst }) => {
             Read Case Study
           </Button>
         </div>
-        <Img
-          alt={`${caseStudy.name}`}
+        <motion.div
+          animate={imageControls}
           className="CaseStudy__img"
-          fluid={caseStudy.listingImage.fluid}
-          imgStyle={{ objectFit: 'contain' }}
-        />
+          initial="imageHidden"
+          variants={variants}
+        >
+          <Img
+            alt={`${caseStudy.name}`}
+            fluid={caseStudy.listingImage.fluid}
+            imgStyle={{ objectFit: 'contain' }}
+          />
+        </motion.div>
       </S.CaseStudy>
     </SiteMaxWidthContainer>
   )
