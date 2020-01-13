@@ -10,6 +10,7 @@ export const CaseStudy = styled.article`
   flex-wrap: wrap;
   @media (min-width: 900px) {
     flex-wrap: nowrap;
+    align-items: center;
   }
 
   .CaseStudy__logo {

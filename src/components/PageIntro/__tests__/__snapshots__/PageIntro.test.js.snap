@@ -8,10 +8,28 @@ exports[`<PageIntro /> renders and matches snapshot 1`] = `
     <div
       className="PageIntro__inner"
     >
-      <h1
+      <ForwardRef(MotionComponent)
+        animate={
+          Object {
+            "opacity": 1,
+            "transition": Object {
+              "delay": 0.5,
+              "duration": 2.5,
+              "ease": "easeIn",
+              "type": "spring",
+            },
+            "y": 0,
+          }
+        }
         dangerouslySetInnerHTML={
           Object {
             "__html": "<span>Supercharge your product with results-driven design.</span> We help you iterate and optimize without breaking stride to increase retention and attract new users.",
+          }
+        }
+        initial={
+          Object {
+            "opacity": 0,
+            "y": 30,
           }
         }
       />

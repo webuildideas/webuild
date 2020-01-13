@@ -43,6 +43,7 @@ export const NavDesktopLinks = styled.nav`
     display: block;
     text-align: center;
     font-size: ${props => props.theme.f7};
+    max-width: 170px;
   }
 
   li a:not(.Button) {
