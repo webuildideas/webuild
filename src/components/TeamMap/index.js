@@ -1,5 +1,7 @@
 // Packages
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useInView } from 'react-intersection-observer'
+import { motion, useAnimation } from 'framer-motion'
 
 // Utils
 import { rhythmUnit } from '../../utils/typography'
@@ -11,25 +13,90 @@ import TeamMapSvg from '../../static/svgs/teamMap.inline.svg'
 import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
 import SectionHeading from '../Shared/SectionHeading'
 
-const TeamMap = () => (
-  <SiteMaxWidthContainer
-    style={{
-      paddingTop: `${rhythmUnit(2)}`,
-      paddingBottom: `${rhythmUnit(2)}`,
-    }}
-  >
-    <SectionHeading style={{ marginBottom: `${rhythmUnit(3)}` }}>
-      <h1 className="SectionHeading__title">
-        The world is our conference room
-      </h1>
-      <h2 className="SectionHeading__subtitle">
-        We embrace diversity and learning new things about each other’s
-        cultures. Each of us is proactive, strategic and strives for continuous
-        improvement.
-      </h2>
-    </SectionHeading>
-    <TeamMapSvg />
-  </SiteMaxWidthContainer>
-)
+const TeamMap = () => {
+  const [ref, inView] = useInView({
+    threshold: 0.5,
+    triggerOnce: true,
+  })
+
+  const controls = useAnimation()
+  const imageControls = useAnimation()
+
+  const variants = {
+    visible: i => ({
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.75,
+        delay: i * 0.152,
+        type: 'spring',
+      },
+    }),
+    imageVisible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 1.1,
+        delay: 0.5,
+      },
+    },
+    hidden: {
+      y: 15,
+      opacity: 0,
+    },
+    imageHidden: {
+      x: -25,
+      opacity: 0,
+    },
+  }
+
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible')
+      imageControls.start('imageVisible')
+    }
+  }, [controls, imageControls, inView])
+
+  return (
+    <SiteMaxWidthContainer
+      ref={ref}
+      style={{
+        paddingTop: `${rhythmUnit(2)}`,
+        paddingBottom: `${rhythmUnit(2)}`,
+      }}
+    >
+      <SectionHeading style={{ marginBottom: `${rhythmUnit(3)}` }}>
+        <motion.h1
+          animate={controls}
+          className="SectionHeading__title"
+          custom={0}
+          initial="hidden"
+          variants={variants}
+        >
+          The world is our conference room
+        </motion.h1>
+        <motion.h2
+          animate={controls}
+          className="SectionHeading__subtitle"
+          custom={1}
+          initial="hidden"
+          variants={variants}
+        >
+          We embrace diversity and learning new things about each other’s
+          cultures. Each of us is proactive, strategic and strives for
+          continuous improvement.
+        </motion.h2>
+      </SectionHeading>
+      <motion.div
+        animate={imageControls}
+        custom={2}
+        initial="imageHidden"
+        variants={variants}
+      >
+        <TeamMapSvg />
+      </motion.div>
+    </SiteMaxWidthContainer>
+  )
+}
 
 export default TeamMap
