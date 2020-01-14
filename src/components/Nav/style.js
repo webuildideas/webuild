@@ -24,6 +24,14 @@ export const NavContainer = styled.header`
       display: none;
     }
   }
+
+  .Logo {
+    transition: 300ms all ease-in;
+    &:hover {
+      transition: 300ms all ease-in;
+      transform: scale(1.025) translate(0, -2px);
+    }
+  }
 `
 
 export const NavDesktopLinks = styled.nav`
