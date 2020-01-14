@@ -192,6 +192,12 @@ export const GlobalStyle = createGlobalStyle`
       fill: #fff;
     }
 
+    .NavDesktopLinks {
+      a:before {
+        background-color: #fff;
+      }
+    }
+
     .Button {
       color: #fff;
       span.border {
