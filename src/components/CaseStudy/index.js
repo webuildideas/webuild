@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import Img from 'gatsby-image'
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 // Styled Components
 import * as S from './style'
@@ -96,33 +97,58 @@ const CaseStudy = ({ caseStudy, layout, mobileTextFirst }) => {
       <S.CaseStudy ref={ref} layout={layout} mobileTextFirst={mobileTextFirst}>
         <div className="CaseStudy__content">
           <div className="CaseStudy__logo">
-            <motion.img
-              alt={`${caseStudy.name} logo`}
-              animate={logoControls}
-              initial="hidden"
-              src={caseStudy.logo.file.url}
-              variants={variants}
-            />
+            <AniLink
+              bg={bgColor}
+              cover
+              direction="top"
+              duration={1.25}
+              to={`/case-studies/${caseStudy.slug}`}
+            >
+              <motion.img
+                alt={`${caseStudy.name} logo`}
+                animate={logoControls}
+                initial="hidden"
+                src={caseStudy.logo.file.url}
+                variants={variants}
+              />
+            </AniLink>
           </div>
-          <motion.h1
-            animate={textControls}
-            className="CaseStudy__tagline"
-            custom={0}
-            initial="hidden"
-            variants={variants}
+
+          <AniLink
+            bg={bgColor}
+            cover
+            direction="top"
+            duration={1.25}
+            to={`/case-studies/${caseStudy.slug}`}
           >
-            {caseStudy.tagline}
-          </motion.h1>
-          {caseStudy.successSummary && (
-            <motion.p
+            <motion.h1
               animate={textControls}
-              className="CaseStudy__summary"
-              custom={1}
+              className="CaseStudy__tagline"
+              custom={0}
               initial="hidden"
               variants={variants}
             >
-              {caseStudy.successSummary.successSummary}
-            </motion.p>
+              {caseStudy.tagline}
+            </motion.h1>
+          </AniLink>
+          {caseStudy.successSummary && (
+            <AniLink
+              bg={bgColor}
+              cover
+              direction="top"
+              duration={1.25}
+              to={`/case-studies/${caseStudy.slug}`}
+            >
+              <motion.p
+                animate={textControls}
+                className="CaseStudy__summary"
+                custom={1}
+                initial="hidden"
+                variants={variants}
+              >
+                {caseStudy.successSummary.successSummary}
+              </motion.p>
+            </AniLink>
           )}
           <Button
             animationDelay={0.1}
@@ -136,18 +162,26 @@ const CaseStudy = ({ caseStudy, layout, mobileTextFirst }) => {
             Read Case Study
           </Button>
         </div>
-        <motion.div
-          animate={imageControls}
+        <AniLink
+          bg={bgColor}
           className="CaseStudy__img"
-          initial="imageHidden"
-          variants={variants}
+          cover
+          direction="top"
+          duration={1.25}
+          to={`/case-studies/${caseStudy.slug}`}
         >
-          <Img
-            alt={`${caseStudy.name}`}
-            fluid={caseStudy.listingImage.fluid}
-            imgStyle={{ objectFit: 'contain' }}
-          />
-        </motion.div>
+          <motion.div
+            animate={imageControls}
+            initial="imageHidden"
+            variants={variants}
+          >
+            <Img
+              alt={`${caseStudy.name}`}
+              fluid={caseStudy.listingImage.fluid}
+              imgStyle={{ objectFit: 'contain' }}
+            />
+          </motion.div>
+        </AniLink>
       </S.CaseStudy>
     </SiteMaxWidthContainer>
   )
