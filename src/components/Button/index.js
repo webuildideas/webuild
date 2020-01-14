@@ -19,29 +19,28 @@ const Button = ({ children, type, href, animationDelay, ...props }) => {
 
   const variants = {
     visible: {
-      width: '100%',
+      y: 0,
       opacity: 1,
       transition: {
-        duration: 1.2,
-        ease: 'easeInOut',
-        type: 'spring',
+        duration: 0.4,
         delay: animationDelay + 0.1,
       },
     },
 
     hidden: {
-      width: '0%',
+      y: 15,
       opacity: 0,
     },
 
     textHidden: {
       opacity: 0,
+      y: 100,
     },
     textVisible: {
       opacity: 1,
+      y: 0,
       transition: {
-        duration: 0.7,
-        ease: 'easeInOut',
+        duration: 0.2,
         type: 'spring',
         delay: animationDelay + 0.2,
       },
