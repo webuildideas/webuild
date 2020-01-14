@@ -14,7 +14,7 @@ import Button from '../Button'
 
 const CaseStudy = ({ caseStudy, layout, mobileTextFirst }) => {
   const [ref, inView] = useInView({
-    threshold: 0.75,
+    threshold: 0.5,
     triggerOnce: true,
   })
 
