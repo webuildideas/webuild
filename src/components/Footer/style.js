@@ -7,7 +7,7 @@ import { rhythmUnit } from '../../utils/typography'
 export const Footer = styled.footer`
   background-color: ${props => props.theme.vulcan};
   color: #fff;
-  padding: ${() => `${rhythmUnit(2.75)} 0 ${rhythmUnit(1.25)}`};
+  padding: ${() => `${rhythmUnit(3.75)} 0 ${rhythmUnit(2)}`};
 
   .Footer__btn {
     transition: 500ms all ease;

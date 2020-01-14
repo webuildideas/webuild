@@ -25,13 +25,12 @@ const Footer = () => {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.55,
+        duration: 0.6,
         delay: i * 0.152,
-        type: 'spring',
       },
     }),
     hidden: {
-      y: 25,
+      y: 10,
       opacity: 0,
     },
   }
@@ -91,7 +90,6 @@ const Footer = () => {
             initial="hidden"
             variants={variants}
           >
-            Follow us on:{' '}
             <motion.a
               animate={controls}
               custom={4}
