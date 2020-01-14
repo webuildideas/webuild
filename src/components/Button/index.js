@@ -12,7 +12,6 @@ import * as S from './style'
  */
 const Button = ({ children, type, href, animationDelay, ...props }) => {
   const [ref, inView] = useInView({
-    threshold: 1,
     triggerOnce: true,
   })
   const controls = useAnimation()

@@ -52,14 +52,14 @@ const CaseStudy = ({ caseStudy, layout, mobileTextFirst }) => {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.5,
+        duration: 0.75,
         delay: 0.15,
         ease: 'easeInOut',
       },
     },
     imageHidden: {
-      x: layout === 'right' ? 100 : -100,
-      y: 90,
+      x: layout === 'right' ? 70 : -70,
+      y: 60,
       opacity: 0,
     },
   }
@@ -125,7 +125,7 @@ const CaseStudy = ({ caseStudy, layout, mobileTextFirst }) => {
             </motion.p>
           )}
           <Button
-            animationDelay={0.5}
+            animationDelay={0.1}
             bg={bgColor}
             cover
             direction="top"
