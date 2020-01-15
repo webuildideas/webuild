@@ -60,7 +60,7 @@ export const FeaturedTestimonial = styled(Testimonial)`
     grid-template-columns: 1fr 0.75fr;
     max-width: 1100px;
     .Testimonial {
-      letter-spacing: 0.05em;
+      letter-spacing: 0.5px;
     }
     .Testimonial__client-img {
       display: none;

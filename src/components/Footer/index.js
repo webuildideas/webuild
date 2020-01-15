@@ -95,6 +95,7 @@ const Footer = () => {
               custom={4}
               href="https://www.dribbble.com"
               initial="hidden"
+              target="_blank"
               variants={variants}
             >
               Dribbble
@@ -105,6 +106,7 @@ const Footer = () => {
               custom={5}
               href="https://www.instagram.com"
               initial="hidden"
+              target="_blank"
               variants={variants}
             >
               Instagram

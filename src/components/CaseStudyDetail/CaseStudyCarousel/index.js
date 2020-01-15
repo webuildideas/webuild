@@ -16,6 +16,8 @@ const CaseStudyCarousel = ({ images }) => {
   }
   return (
     <CarouselProvider
+      infinite={true}
+      isPlaying={true}
       naturalSlideHeight={9}
       naturalSlideWidth={16}
       totalSlides={images.length}
