@@ -40,7 +40,7 @@ const Nav = ({ isNavOpen, isNavPinned, toggleNav, togglePinnedNav }) => {
     if (inView) {
       controls.start('visible')
     }
-  })
+  }, [controls, inView])
   return (
     <>
       <Helmet bodyAttributes={{ class: isNavOpen && 'overlayIsOpen' }} />
