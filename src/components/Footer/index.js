@@ -93,7 +93,7 @@ const Footer = () => {
             <motion.a
               animate={controls}
               custom={4}
-              href="https://www.dribbble.com"
+              href="https://www.dribbble.com/webuild"
               initial="hidden"
               target="_blank"
               variants={variants}
@@ -104,7 +104,7 @@ const Footer = () => {
             <motion.a
               animate={controls}
               custom={5}
-              href="https://www.instagram.com"
+              href="https://www.instagram.com/wearewebuild"
               initial="hidden"
               target="_blank"
               variants={variants}
