@@ -42,7 +42,7 @@ export const CaseStudyRichText = styled.section`
   }
 
   p + .carousel {
-    margin-top: ${() => rhythmUnit(2)};
+    margin-top: ${() => rhythmUnit(2.5)};
   }
 
   .carousel + p {
