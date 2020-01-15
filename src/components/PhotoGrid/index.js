@@ -9,7 +9,6 @@ import * as S from './style'
 
 const PhotoGrid = ({ photos }) => {
   const [ref, inView] = useInView({
-    threshold: 1,
     triggerOnce: true,
   })
 
@@ -17,7 +16,7 @@ const PhotoGrid = ({ photos }) => {
 
   const variants = {
     visible: i => ({
-      opacity: [0, 0.25, 0.5, 0.75, 1],
+      opacity: 1,
       x: 0,
       y: 0,
       transition: {
