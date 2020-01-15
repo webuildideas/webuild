@@ -41,11 +41,11 @@ export const CaseStudyRichText = styled.section`
     margin-top: ${() => rhythmUnit(0.75)};
   }
 
-  p + .carousel {
+  p + div {
     margin-top: ${() => rhythmUnit(2.5)};
   }
 
-  .carousel + p {
+  div + p {
     margin-top: ${() => rhythmUnit(3)};
   }
 
