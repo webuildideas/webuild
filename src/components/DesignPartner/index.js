@@ -67,7 +67,14 @@ const DesignPartner = () => {
         </div>
         <S.DesignPartnerGrid>
           <div>
-            <Investigate />
+            <motion.div
+              animate={controls}
+              custom={1.75}
+              initial="hidden"
+              variants={variants}
+            >
+              <Investigate />
+            </motion.div>
             <motion.h3
               animate={controls}
               custom={2}
@@ -88,7 +95,14 @@ const DesignPartner = () => {
             </motion.p>
           </div>
           <div>
-            <Ideate />
+            <motion.div
+              animate={controls}
+              custom={1.75}
+              initial="hidden"
+              variants={variants}
+            >
+              <Ideate />
+            </motion.div>
             <motion.h3
               animate={controls}
               custom={4}
@@ -109,7 +123,14 @@ const DesignPartner = () => {
             </motion.p>
           </div>
           <div>
-            <Iterate />
+            <motion.div
+              animate={controls}
+              custom={1.75}
+              initial="hidden"
+              variants={variants}
+            >
+              <Iterate />
+            </motion.div>
             <motion.h3
               animate={controls}
               custom={6}
