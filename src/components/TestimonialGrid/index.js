@@ -1,6 +1,7 @@
 // Packages
 import React from 'react'
 import PropTypes from 'prop-types'
+import Masonry from 'react-masonry-css'
 
 // Styled Components
 import * as S from './style'
@@ -15,33 +16,36 @@ import Testimonial from '../Testimonial'
  * data from contentful that is currently used on the HomePage
  * of the webuild site.
  */
-const TestimonialGrid = ({ testimonials }) => (
-  <S.TestimonialGrid>
-    {testimonials.map(t =>
-      t.node ? (
-        <Testimonial
-          key={t.node.name}
-          company={t.node.company}
-          companyRole={t.node.role}
-          headshot={t.node.headshot.fixed}
-          name={t.node.name}
-        >
-          {t.node.testimonial.testimonial}
-        </Testimonial>
-      ) : (
-        <Testimonial
-          key={t.name}
-          company={t.company}
-          companyRole={t.role}
-          headshot={t.headshot.fixed}
-          name={t.name}
-        >
-          {t.testimonial.testimonial}
-        </Testimonial>
-      )
-    )}
-  </S.TestimonialGrid>
-)
+const TestimonialGrid = ({ testimonials }) => {
+  const breakpointColumnsObj = {
+    default: 2,
+    1100: 2,
+    900: 2,
+    700: 1,
+    500: 1,
+  }
+  return (
+    <S.TestimonialGrid>
+      <Masonry
+        breakpointCols={breakpointColumnsObj}
+        className="my-masonry-grid"
+        columnClassName="my-masonry-grid_column"
+      >
+        {testimonials.map(t => (
+          <Testimonial
+            key={t.name}
+            company={t.company}
+            companyRole={t.role}
+            headshot={t.headshot.fixed}
+            name={t.name}
+          >
+            {t.testimonial.testimonial}
+          </Testimonial>
+        ))}
+      </Masonry>
+    </S.TestimonialGrid>
+  )
+}
 
 TestimonialGrid.propTypes = {
   testimonials: PropTypes.arrayOf(
