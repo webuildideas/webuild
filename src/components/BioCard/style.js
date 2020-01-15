@@ -63,6 +63,15 @@ export const BioContent = styled.div`
     }
   }
 
+  a {
+    font-weight: 700;
+    transition: 200ms ease color;
+    &:hover {
+      color: ${props => props.theme.comet};
+      text-decoration: underline;
+    }
+  }
+
   p + p {
     margin-top: ${() => rhythmUnit(0.75)};
   }

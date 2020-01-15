@@ -130,6 +130,7 @@ const WhoWeAre = ({ data }) => {
             <a
               href="https://www.linkedin.com/in/evanshoemaker/"
               rel="noopener noreferrer"
+              style={{ fontWeight: 700 }}
               target="_blank"
             >
               LinkedIn
