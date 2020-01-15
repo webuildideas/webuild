@@ -93,7 +93,7 @@ const CaseStudy = ({ caseStudy, layout, mobileTextFirst }) => {
   }
 
   return (
-    <SiteMaxWidthContainer className="CaseStudy">
+    <SiteMaxWidthContainer className="CaseStudy" maxWidth={1200}>
       <S.CaseStudy ref={ref} layout={layout} mobileTextFirst={mobileTextFirst}>
         <div className="CaseStudy__content">
           <div className="CaseStudy__logo">
