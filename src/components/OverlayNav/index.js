@@ -85,7 +85,7 @@ const OverlayNav = ({ isOpen, onContact }) => {
         </animated.a>
         <animated.a
           className="OverlayNavLink"
-          href="https://www.instagram.com/webuild.io/"
+          href="https://www.instagram.com/wearewebuild/"
           rel="noopener noreferrer"
           style={fadeInSpring}
           target="_blank"
