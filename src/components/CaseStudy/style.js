@@ -57,6 +57,7 @@ export const CaseStudy = styled.article`
     font-weight: 900;
     margin-bottom: ${() => rhythmUnit(0.5)};
     font-size: ${props => props.theme.f2};
+
     @media (min-width: 768px) {
       font-size: ${props => props.theme.f1};
     }
@@ -64,6 +65,8 @@ export const CaseStudy = styled.article`
   .CaseStudy__summary {
     font-size: ${props => props.theme.f3};
     line-height: 1.6;
+    padding-right: ${() => rhythmUnit(2)};
+
     margin-bottom: ${() => rhythmUnit(1)};
   }
 `
