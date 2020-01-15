@@ -8,10 +8,6 @@ export const CaseStudyDetail = styled(motion.article)`
   position: absolute;
   top: 0;
   width: 100%;
-
-  .CaseStudy__img {
-    mix-blend-mode: multiply;
-  }
 `
 
 const CaseStudyGrid = styled.div`

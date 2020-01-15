@@ -49,7 +49,7 @@ export const CaseStudy = styled.article`
     @media (min-width: 900px) {
       order: ${props => (props.layout === 'left' ? 2 : 1)};
       min-width: 440px;
-      max-width: 500px;
+      max-width: 475px;
     }
   }
   .CaseStudy__tagline {

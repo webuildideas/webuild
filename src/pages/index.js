@@ -147,7 +147,7 @@ export const HOMEPAGE_QUERY = graphql`
         }
         listingImage {
           fluid {
-            ...GatsbyContentfulFluid_withWebp
+            ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
       }
