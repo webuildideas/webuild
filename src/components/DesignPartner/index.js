@@ -89,9 +89,9 @@ const DesignPartner = () => {
               initial="hidden"
               variants={variants}
             >
-              We don’t jump into design and try to dazzle you with cool
-              concepts. We start by understanding your goals, your market, your
-              users and what’s next for your business.
+              We don’t immediately jump into design and try to dazzle you with
+              cool concepts. We start by understanding your goals, your market,
+              your users and what’s next for your business.
             </motion.p>
           </div>
           <div>
