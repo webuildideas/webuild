@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { BLOCKS } from '@contentful/rich-text-types'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { useInView } from 'react-intersection-observer'
+import { useInView, inViewRef } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
 
 // Styled Components
@@ -43,7 +43,7 @@ const CaseStudyRichText = ({ document }) => {
       y: 0,
       transition: {
         duration: 0.75,
-        // delay: i * 0.25,
+        delay: i * 0.25,
       },
     }),
     hidden: {
@@ -53,35 +53,11 @@ const CaseStudyRichText = ({ document }) => {
   }
 
   useEffect(() => {
-    controls.start('visible')
     if (inView) {
+      controls.start('visible')
       setAutoPlay(true)
     }
   }, [controls, inView])
-
-  // eslint-disable-next-line
-  const Paragraph = ({ children }) => (
-    <motion.p
-      animate={controls}
-      custom={1}
-      initial="hidden"
-      variants={variants}
-    >
-      {children}
-    </motion.p>
-  )
-
-  // eslint-disable-next-line
-  const Heading = ({ children }) => (
-    <motion.h2
-      animate={controls}
-      custom={0}
-      initial="hidden"
-      variants={variants}
-    >
-      {children}
-    </motion.h2>
-  )
 
   const options = {
     renderNode: {
@@ -92,15 +68,33 @@ const CaseStudyRichText = ({ document }) => {
           <motion.img
             alt={title}
             animate={controls}
-            custom={2}
+            custom={3}
             initial="hidden"
             src={file['en-US'].url}
             variants={variants}
           />
         )
       },
-      [BLOCKS.HEADING_2]: (node, children) => <Heading>{children}</Heading>,
-      [BLOCKS.PARAGRAPH]: (node, children) => <Paragraph>{children}</Paragraph>,
+      [BLOCKS.HEADING_2]: (node, children) => (
+        <motion.h2
+          animate={controls}
+          custom={1}
+          initial="hidden"
+          variants={variants}
+        >
+          {children}
+        </motion.h2>
+      ),
+      [BLOCKS.PARAGRAPH]: (node, children) => (
+        <motion.p
+          animate={controls}
+          custom={2}
+          initial="hidden"
+          variants={variants}
+        >
+          {children}
+        </motion.p>
+      ),
       // eslint-disable-next-line
       [BLOCKS.EMBEDDED_ENTRY]: node => {
         const { images } = node.data.target.fields
@@ -115,8 +109,8 @@ const CaseStudyRichText = ({ document }) => {
   }
 
   return (
-    <S.CaseStudyRichText ref={ref}>
-      {documentToReactComponents(document, options)}
+    <S.CaseStudyRichText>
+      <div ref={ref}>{documentToReactComponents(document, options)}</div>
     </S.CaseStudyRichText>
   )
 }
