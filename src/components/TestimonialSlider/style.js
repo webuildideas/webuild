@@ -11,7 +11,7 @@ import { rhythmUnit } from '../../utils/typography'
 export const TestimonialSlider = styled(Slider)`
   max-height: 380px;
   @media (min-width: 350px) {
-    max-height: 325px;
+    max-height: 360px;
   }
   @media (min-width: 400px) {
     max-height: 275px;
