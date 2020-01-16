@@ -14,7 +14,7 @@ const CarouselDotGroup = styled(DotGroup)`
     padding: 0;
     border-radius: 50%;
     border: none;
-    background-color: ${props => props.theme.snow};
+    background-color: #e7e7e7;
     &.carousel__dot--selected {
       background-color: ${props => props.theme.bisonHide};
     }
