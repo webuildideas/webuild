@@ -11,6 +11,7 @@ export const Footer = styled.footer`
 
   .Footer__btn {
     transition: 500ms all ease;
+    /* margin-bottom: ${() => rhythmUnit(1)}; */
     &:hover {
       span.border {
         border: 1px solid #fff;
@@ -31,8 +32,8 @@ export const Footer = styled.footer`
     font-weight: 800;
     text-transform: uppercase;
     border-top: 1px solid ${props => props.theme.tuna};
-    padding-top: ${() => rhythmUnit(1.5)};
-    margin-top: ${() => rhythmUnit(1.5)};
+    padding-top: ${() => rhythmUnit(2)};
+    margin-top: ${() => rhythmUnit(2.75)};
     font-size: ${props => props.theme.f4};
   }
 
@@ -48,7 +49,7 @@ export const Footer = styled.footer`
     @media (max-width: 500px) {
       width: 100%;
       order: 1;
-      margin-bottom: ${() => rhythmUnit(0.5)};
+      margin-bottom: ${() => rhythmUnit(1.25)};
     }
     color: ${props => props.theme.comet};
     a {
