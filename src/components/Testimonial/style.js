@@ -67,6 +67,16 @@ export const FeaturedTestimonial = styled(Testimonial)`
     }
   }
 
+  .Testimonial__client-img {
+    border-radius: 50%;
+    .img-container {
+      border-radius: 50%;
+      img {
+        border-radius: 50%;
+      }
+    }
+  }
+
   .Testimonial__client-featured-img {
     position: relative;
     display: none;
