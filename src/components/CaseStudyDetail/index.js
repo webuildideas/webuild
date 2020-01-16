@@ -1,8 +1,9 @@
 // Packages
-import React, { memo } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
+import { useInView } from 'react-intersection-observer'
 
 import { rhythmUnit } from '../../utils/typography'
 
@@ -22,9 +23,14 @@ import Footer from '../Footer'
 import Meta from '../Meta'
 
 // eslint-disable-next-line
-const CaseStudyDetail = memo(function ({
+const CaseStudyDetail = ({
   data: { contentfulCaseStudy: caseStudy },
-}) {
+}) => {
+  const [shouldAutoplay, setAutoPlay] = useState(false)
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  })
   const {
     resultOne,
     resultTwo,
@@ -39,6 +45,13 @@ const CaseStudyDetail = memo(function ({
     projectSolution,
     projectOutcome,
   } = caseStudy
+
+  useEffect(() => {
+    if (inView) {
+      console.log(inView)
+      setAutoPlay(true)
+    }
+  }, [inView])
 
   return (
     <>
@@ -77,7 +90,12 @@ const CaseStudyDetail = memo(function ({
           >
             <SiteMaxWidthContainer maxWidth={1400}>
               {designSystemCarousel && designSystemCarousel.images && (
-                <CaseStudyCarousel images={designSystemCarousel.images} />
+                <div ref={ref}>
+                  <CaseStudyCarousel
+                    autoplay={shouldAutoplay}
+                    images={designSystemCarousel.images}
+                  />
+                </div>
               )}
             </SiteMaxWidthContainer>
           </div>
@@ -126,7 +144,7 @@ const CaseStudyDetail = memo(function ({
       </S.CaseStudyDetail>
     </>
   )
-})
+}
 
 CaseStudyDetail.propTypes = {
   data: PropTypes.object,

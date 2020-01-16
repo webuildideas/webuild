@@ -7,7 +7,7 @@ import 'pure-react-carousel/dist/react-carousel.es.css'
 // Styled Components
 import CarouselDotGroup from '../../Shared/CarouselDotGroup'
 
-const CaseStudyCarousel = ({ images }) => {
+const CaseStudyCarousel = ({ images, autoplay }) => {
   const renderImg = i => {
     if (i.fluid) {
       return <img alt="carousel" src={i.fluid.src} srcSet={i.fluid.srcSet} />
@@ -17,7 +17,7 @@ const CaseStudyCarousel = ({ images }) => {
   return (
     <CarouselProvider
       infinite={true}
-      isPlaying={true}
+      isPlaying={autoplay}
       naturalSlideHeight={9}
       naturalSlideWidth={16}
       totalSlides={images.length}
@@ -37,7 +37,12 @@ const CaseStudyCarousel = ({ images }) => {
 }
 
 CaseStudyCarousel.propTypes = {
+  autoplay: PropTypes.bool,
   images: PropTypes.array,
+}
+
+CaseStudyCarousel.defaultProps = {
+  autoplay: false,
 }
 
 export default CaseStudyCarousel

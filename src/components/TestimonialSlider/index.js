@@ -81,6 +81,7 @@ const TestimonialSlider = ({ testimonials }) => {
     <SiteMaxWidthContainer ref={ref}>
       <motion.div animate={controls} initial="hidden" variants={variants}>
         <CarouselProvider
+          infinite={true}
           naturalSlideHeight={20}
           naturalSlideWidth={10}
           totalSlides={testimonials.length}

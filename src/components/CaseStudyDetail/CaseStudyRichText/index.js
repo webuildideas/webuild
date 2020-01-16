@@ -1,5 +1,5 @@
 // Packages
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { BLOCKS } from '@contentful/rich-text-types'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
@@ -29,6 +29,8 @@ const buildCarouselImgArray = imgArr => {
 }
 
 const CaseStudyRichText = ({ document }) => {
+  const [shouldAutoplay, setAutoPlay] = useState(false)
+
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.2,
@@ -99,7 +101,7 @@ const CaseStudyRichText = ({ document }) => {
         const imgArr = buildCarouselImgArray(images['en-US'])
         return (
           <motion.div animate={controls} initial="hidden" variants={variants}>
-            <CaseStudyCarousel images={imgArr} />
+            <CaseStudyCarousel autoplay={shouldAutoplay} images={imgArr} />
           </motion.div>
         )
       },
@@ -107,11 +109,10 @@ const CaseStudyRichText = ({ document }) => {
   }
 
   useEffect(() => {
-    console.log('INVIEW', inView)
     if (inView) {
       controls.start('visible')
-    } else {
-      controls.start('hidden')
+      setAutoPlay(true)
+      console.log('CALLING AUTOPLAY')
     }
   }, [controls, inView])
 
