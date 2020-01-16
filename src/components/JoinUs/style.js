@@ -20,7 +20,7 @@ export const JoinUsJobs = styled.div`
   }
 `
 
-export const JoinUsJob = styled.div`
+export const JoinUsJob = styled.a`
   &:not(:last-of-type) {
     margin-bottom: ${() => rhythmUnit(1)};
   }

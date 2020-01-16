@@ -66,6 +66,7 @@ export const BioContent = styled.div`
   a {
     font-weight: 700;
     transition: 200ms ease color;
+    text-decoration: underline;
     &:hover {
       color: ${props => props.theme.comet};
       text-decoration: underline;

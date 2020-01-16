@@ -64,7 +64,10 @@ const JoinUs = () => {
             people to join our amazing remote team.
           </motion.h2>
         </SectionHeading>
-        <S.JoinUsJobs>
+        <S.JoinUsJobs
+          href="https://forms.gle/FvoC68UKVzXMKdjy9"
+          target="_blank"
+        >
           <S.JoinUsJob>
             <motion.h3
               animate={controls}
@@ -83,7 +86,10 @@ const JoinUs = () => {
               Remote (US Preferred)
             </motion.p>
           </S.JoinUsJob>
-          <S.JoinUsJob>
+          <S.JoinUsJob
+            href="https://forms.gle/FvoC68UKVzXMKdjy9"
+            target="_blank"
+          >
             <motion.h3
               animate={controls}
               custom={4}
@@ -101,7 +107,10 @@ const JoinUs = () => {
               Remote (US Preferred)
             </motion.p>
           </S.JoinUsJob>
-          <S.JoinUsJob>
+          <S.JoinUsJob
+            href="https://forms.gle/FvoC68UKVzXMKdjy9"
+            target="_blank"
+          >
             <motion.h3
               animate={controls}
               custom={6}
