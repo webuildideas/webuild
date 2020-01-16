@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import styled from 'styled-components'
 
 // Utils
 import { rhythmUnit } from '../utils/typography'
@@ -20,6 +21,13 @@ import DesignPartner from '../components/DesignPartner'
 import Testimonial from '../components/Testimonial'
 import TestimonialGrid from '../components/TestimonialGrid'
 import Footer from '../components/Footer'
+
+const CaseStudiesContainer = styled.div`
+  padding-top: ${() => rhythmUnit(5.5)};
+  @media (min-width: 768px) {
+    padding-top: ${() => rhythmUnit(8.5)};
+  }
+`
 
 const IndexPage = ({ data }) => {
   const homeData = data.contentfulHomePage
@@ -57,13 +65,9 @@ const IndexPage = ({ data }) => {
       <PageIntro animationDelay={0.75} maxWidth={1040}>
         {homeData.heroCopy.heroCopy}
       </PageIntro>
-      <div
-        style={{
-          paddingTop: `${rhythmUnit(8.5)}`,
-        }}
-      >
+      <CaseStudiesContainer>
         <CaseStudyListing caseStudies={homeData.caseStudies} />
-      </div>
+      </CaseStudiesContainer>
 
       <DesignPartner />
 
