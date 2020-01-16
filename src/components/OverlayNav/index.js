@@ -10,6 +10,10 @@ import { OverlayNavContainer } from './style'
 const OverlayNav = ({ isOpen, onContact }) => {
   const navLinks = [
     {
+      title: 'Work',
+      slug: '/',
+    },
+    {
       title: 'Who we are',
       slug: '/who-we-are',
     },
