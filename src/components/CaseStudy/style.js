@@ -30,6 +30,11 @@ export const CaseStudy = styled.article`
     order: ${props => (props.mobileTextFirst ? 2 : 1)};
     margin-left: auto;
     margin-right: auto;
+    transition: 300ms all ease-in;
+    &:hover {
+      transition: 300ms all ease-in;
+      transform: scale(1.025) translate(0, -2px);
+    }
     @media (min-width: 700px) {
       max-width: 650px;
     }
