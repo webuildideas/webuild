@@ -61,7 +61,7 @@ const Footer = () => {
             style={{ maxWidth: '520px' }}
             variants={variants}
           >
-            Ready to take your product to the next level? Drop us a line.
+            Ready to take your product to the next level. Drop us a line.
           </motion.h2>
         </SectionHeading>
         <Button
