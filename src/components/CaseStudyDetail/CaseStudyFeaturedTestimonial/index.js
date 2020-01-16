@@ -15,7 +15,6 @@ import SiteMaxWidthContainer from '../../Shared/SiteMaxWidthContainer'
 
 const CaseStudyFeaturedTestimonial = ({ featuredTestimonial }) => {
   const [ref, inView] = useInView({
-    rootMargin: '-400px 0px',
     triggerOnce: true,
   })
   const controls = useAnimation()
