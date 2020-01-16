@@ -69,7 +69,7 @@ const IndexPage = ({ data }) => {
   return (
     <motion.div animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
       <Meta title="Home" />
-      <PageIntro animationDelay={0.75} maxWidth={1040}>
+      <PageIntro animationDelay={0.35} maxWidth={1040}>
         {homeData.heroCopy.heroCopy}
       </PageIntro>
       <CaseStudiesContainer>
