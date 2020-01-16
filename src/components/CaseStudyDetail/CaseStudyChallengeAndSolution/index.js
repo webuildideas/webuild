@@ -11,7 +11,7 @@ import SiteMaxWidthContainer from '../../Shared/SiteMaxWidthContainer'
 import * as S from '../style'
 
 const CaseStudyChallengeAndSolution = ({ challenge, solution }) => {
-  const [ref, inView] = useInView({ threshold: 1, triggerOnce: true })
+  const [ref, inView] = useInView({ triggerOnce: true })
   const controls = useAnimation()
 
   const variants = {
@@ -41,7 +41,7 @@ const CaseStudyChallengeAndSolution = ({ challenge, solution }) => {
         <div>
           <motion.h3
             animate={controls}
-            custom={0}
+            custom={1}
             initial="hidden"
             variants={variants}
           >
@@ -50,7 +50,7 @@ const CaseStudyChallengeAndSolution = ({ challenge, solution }) => {
 
           <motion.p
             animate={controls}
-            custom={1}
+            custom={2}
             initial="hidden"
             variants={variants}
           >
@@ -60,7 +60,7 @@ const CaseStudyChallengeAndSolution = ({ challenge, solution }) => {
         <div>
           <motion.h3
             animate={controls}
-            custom={2}
+            custom={3}
             initial="hidden"
             variants={variants}
           >
@@ -69,7 +69,7 @@ const CaseStudyChallengeAndSolution = ({ challenge, solution }) => {
 
           <motion.p
             animate={controls}
-            custom={3}
+            custom={4}
             initial="hidden"
             variants={variants}
           >

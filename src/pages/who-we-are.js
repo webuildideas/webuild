@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-
+import styled from 'styled-components'
 // Utils
 import { rhythmUnit } from '../utils/typography'
 
@@ -17,6 +17,13 @@ import JoinUs from '../components/JoinUs'
 import PhotoGrid from '../components/PhotoGrid'
 import TestimonialSlider from '../components/TestimonialSlider'
 import Footer from '../components/Footer'
+
+const PhotoGridContainer = styled.div`
+  padding-top: ${() => rhythmUnit(5)};
+  @media (min-width: 768px) {
+    padding-top: ${() => rhythmUnit(7)};
+  }
+`
 
 const WhoWeAre = ({ data }) => {
   const aboutPageData = data.contentfulAboutPage
@@ -65,14 +72,9 @@ const WhoWeAre = ({ data }) => {
 
       <PageIntro maxWidth={860}>{aboutPageData.heroCopy.heroCopy}</PageIntro>
 
-      <div
-        style={{
-          marginTop: `${rhythmUnit(7)}`,
-          marginBottom: `${rhythmUnit(3)}`,
-        }}
-      >
+      <PhotoGridContainer>
         <PhotoGrid photos={aboutPageData.photoGrid} />
-      </div>
+      </PhotoGridContainer>
 
       <TeamMap />
 

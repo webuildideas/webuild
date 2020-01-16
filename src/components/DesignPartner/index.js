@@ -14,7 +14,6 @@ import Iterate from '../../static/svgs/iterate.inline.svg'
 
 const DesignPartner = () => {
   const [ref, inView] = useInView({
-    threshold: 0.9,
     triggerOnce: true,
   })
 

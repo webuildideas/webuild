@@ -26,7 +26,6 @@ const BioCard = ({ children }) => {
   )
 
   const [ref, inView] = useInView({
-    threshold: 0.7,
     triggerOnce: true,
   })
 

@@ -29,7 +29,6 @@ const CaseStudyDetail = ({
   const [shouldAutoplay, setAutoPlay] = useState(false)
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.2,
   })
   const {
     resultOne,
@@ -48,7 +47,6 @@ const CaseStudyDetail = ({
 
   useEffect(() => {
     if (inView) {
-      console.log(inView)
       setAutoPlay(true)
     }
   }, [inView])

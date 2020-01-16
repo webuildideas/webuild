@@ -14,7 +14,6 @@ import SectionHeading from '../Shared/SectionHeading'
 const Footer = () => {
   const d = new Date()
   const [ref, inView] = useInView({
-    threshold: 0.9,
     triggerOnce: true,
   })
 

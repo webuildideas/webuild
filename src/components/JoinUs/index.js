@@ -13,7 +13,6 @@ import SectionHeading from '../Shared/SectionHeading'
 
 const JoinUs = () => {
   const [ref, inView] = useInView({
-    threshold: 0.9,
     triggerOnce: true,
   })
 
@@ -25,7 +24,7 @@ const JoinUs = () => {
       opacity: 1,
       transition: {
         duration: 0.55,
-        delay: i * 0.152,
+        delay: i * 0.175,
         type: 'spring',
       },
     }),
@@ -47,7 +46,7 @@ const JoinUs = () => {
           <motion.h1
             animate={controls}
             className="SectionHeading__title"
-            custom={0}
+            custom={1}
             initial="hidden"
             variants={variants}
           >
@@ -56,7 +55,7 @@ const JoinUs = () => {
           <motion.h2
             animate={controls}
             className="SectionHeading__subtitle"
-            custom={1}
+            custom={2}
             initial="hidden"
             variants={variants}
           >

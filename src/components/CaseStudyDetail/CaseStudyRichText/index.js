@@ -33,7 +33,6 @@ const CaseStudyRichText = ({ document }) => {
 
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.2,
   })
 
   const controls = useAnimation()
@@ -44,7 +43,7 @@ const CaseStudyRichText = ({ document }) => {
       y: 0,
       transition: {
         duration: 0.75,
-        delay: i * 0.25,
+        // delay: i * 0.25,
       },
     }),
     hidden: {
@@ -52,6 +51,13 @@ const CaseStudyRichText = ({ document }) => {
       y: 25,
     },
   }
+
+  useEffect(() => {
+    controls.start('visible')
+    if (inView) {
+      setAutoPlay(true)
+    }
+  }, [controls, inView])
 
   // eslint-disable-next-line
   const Paragraph = ({ children }) => (
@@ -107,14 +113,6 @@ const CaseStudyRichText = ({ document }) => {
       },
     },
   }
-
-  useEffect(() => {
-    if (inView) {
-      controls.start('visible')
-      setAutoPlay(true)
-      console.log('CALLING AUTOPLAY')
-    }
-  }, [controls, inView])
 
   return (
     <S.CaseStudyRichText ref={ref}>
