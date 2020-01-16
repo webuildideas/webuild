@@ -8,6 +8,7 @@ export const CaseStudy = styled.article`
   position: relative;
   display: flex;
   flex-wrap: wrap;
+  padding-bottom: 2px;
   @media (min-width: 900px) {
     flex-wrap: nowrap;
     align-items: center;
