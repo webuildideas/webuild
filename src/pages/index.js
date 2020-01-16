@@ -29,6 +29,13 @@ const CaseStudiesContainer = styled.div`
   }
 `
 
+const MobileBreak = styled.span`
+  display: inline;
+  @media (min-width: 768px) {
+    display: block;
+  }
+`
+
 const IndexPage = ({ data }) => {
   const homeData = data.contentfulHomePage
   const [ref, inView] = useInView({
@@ -99,7 +106,10 @@ const IndexPage = ({ data }) => {
               variants={variants}
             >
               When smart collaboration and remarkable
-              <br /> expertise come together, magic happens.
+              <MobileBreak>
+                {' '}
+                expertise come together, magic happens.
+              </MobileBreak>
             </motion.h2>
           </SectionHeading>
 
