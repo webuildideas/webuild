@@ -1,5 +1,5 @@
 // Packages
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import Headroom from 'react-headroom'
@@ -113,7 +113,11 @@ const Nav = ({ isNavOpen, isNavPinned, toggleNav, togglePinnedNav }) => {
         </S.NavContainer>
       </Headroom>
 
-      <OverlayNav isOpen={isNavOpen} onContact={() => toggleNav(false)} />
+      <OverlayNav
+        isOpen={isNavOpen}
+        onContact={() => toggleNav(false)}
+        toggleNav={toggleNav}
+      />
     </>
   )
 }

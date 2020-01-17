@@ -7,7 +7,7 @@ import { animated, useSpring, useTrail, config } from 'react-spring'
 // Styled Components
 import { OverlayNavContainer } from './style'
 
-const OverlayNav = ({ isOpen, onContact }) => {
+const OverlayNav = ({ isOpen, onContact, toggleNav }) => {
   const navLinks = [
     {
       title: 'Work',
@@ -65,6 +65,7 @@ const OverlayNav = ({ isOpen, onContact }) => {
           <animated.li
             key={`navLink-${index}`}
             className="OverlayNavLink"
+            onClick={() => toggleNav(false)}
             style={{
               ...rest,
               // eslint-disable-next-line no-shadow
@@ -104,6 +105,7 @@ const OverlayNav = ({ isOpen, onContact }) => {
 OverlayNav.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onContact: PropTypes.func,
+  toggleNav: PropTypes.func,
 }
 
 export default OverlayNav
