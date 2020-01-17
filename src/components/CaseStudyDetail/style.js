@@ -8,6 +8,7 @@ export const CaseStudyDetail = styled(motion.article)`
   position: absolute;
   top: 0;
   width: 100%;
+  overflow: hidden;
 `
 
 const CaseStudyGrid = styled.div`
