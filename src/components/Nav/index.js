@@ -1,11 +1,12 @@
 // Packages
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import Headroom from 'react-headroom'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
+import { useWindowSize } from '../../utils/hooks'
 
 // Styled Components
 import * as S from './style'
@@ -20,6 +21,7 @@ import Button from '../Button'
 const Nav = ({ isNavOpen, isNavPinned, toggleNav, togglePinnedNav }) => {
   const [ref, inView] = useInView({ triggerOnce: true })
   const controls = useAnimation()
+  const windowSize = useWindowSize()
 
   const variants = {
     visible: (i = 0) => ({
@@ -37,10 +39,11 @@ const Nav = ({ isNavOpen, isNavPinned, toggleNav, togglePinnedNav }) => {
   }
 
   useEffect(() => {
+    console.log(windowSize)
     if (inView) {
       controls.start('visible')
     }
-  }, [controls, inView])
+  }, [controls, inView, windowSize])
   return (
     <>
       <Helmet bodyAttributes={{ class: isNavOpen && 'overlayIsOpen' }} />
@@ -70,7 +73,11 @@ const Nav = ({ isNavOpen, isNavPinned, toggleNav, togglePinnedNav }) => {
                 duration={1.5}
                 to="/"
               >
-                <Logo className="Logo" isOpen={isNavOpen} />
+                <Logo
+                  className="Logo"
+                  isOpen={isNavOpen}
+                  onClick={() => windowSize.width <= 500 && toggleNav(false)}
+                />
               </AniLink>
             </motion.div>
             <S.NavDesktopLinks className="NavDesktopLinks">
