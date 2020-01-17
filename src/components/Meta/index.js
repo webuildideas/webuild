@@ -22,7 +22,10 @@ const Meta = ({ description, lang, meta, title }) => {
     `
   )
 
-  const metaTitle = title ? `${title} | webuild` : 'webuild'
+  const metaTitle =
+    title === 'Home'
+      ? 'webuild - product design for startups'
+      : `${title} | webuild - product design for startups`
   const metaDescription =
     description || contentfulSeo.seoDescription.seoDescription
   return (
