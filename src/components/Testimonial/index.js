@@ -78,6 +78,12 @@ const Testimonial = ({
     },
   }
 
+  const renderMarkdownBold = md => {
+    const regex = /([__]{2})/
+    const formattedCopy = md.replace(regex, '<span>').replace(regex, '</span>')
+    return formattedCopy
+  }
+
   useEffect(() => {
     if (inView) {
       controls.start('visible')
@@ -129,11 +135,10 @@ const Testimonial = ({
               animate={controls}
               className="Testimonial"
               custom={1}
+              dangerouslySetInnerHTML={{ __html: renderMarkdownBold(children) }}
               initial="hidden"
               variants={variants}
-            >
-              {children}
-            </motion.p>
+            />
             <div className="Testimonial__client">
               <div className="Testimonial__client-img">
                 {renderHeadshot(headshot)}
@@ -171,11 +176,10 @@ const Testimonial = ({
           animate={controls}
           className="Testimonial"
           custom={1}
+          dangerouslySetInnerHTML={{ __html: renderMarkdownBold(children) }}
           initial="hidden"
           variants={variants}
-        >
-          {children}
-        </motion.p>
+        />
         <div className="Testimonial__client">
           <div className="Testimonial__client-img">
             {renderHeadshot(headshot)}
