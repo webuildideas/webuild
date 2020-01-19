@@ -7,7 +7,7 @@ import { BLOCKS } from '@contentful/rich-text-types'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 const CaseStudyResult = ({ document }) => {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.8 })
+  const [ref, inView] = useInView({ triggerOnce: true })
   const controls = useAnimation()
 
   const variants = {
