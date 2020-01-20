@@ -1,5 +1,5 @@
 // Packages
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { CarouselProvider } from 'pure-react-carousel'
 import Img from 'gatsby-image'
@@ -50,6 +50,7 @@ TestimonialDot.propTypes = {
 }
 
 const TestimonialSlider = ({ testimonials }) => {
+  const [shouldAutoplay, setAutoPlay] = useState(false)
   const [ref, inView] = useInView({
     threshold: 0.9,
     triggerOnce: true,
@@ -75,6 +76,7 @@ const TestimonialSlider = ({ testimonials }) => {
   useEffect(() => {
     if (inView) {
       controls.start('visible')
+      setAutoPlay(true)
     }
   }, [controls, inView])
   return (
@@ -82,6 +84,7 @@ const TestimonialSlider = ({ testimonials }) => {
       <motion.div animate={controls} initial="hidden" variants={variants}>
         <CarouselProvider
           infinite={true}
+          isPlaying={shouldAutoplay}
           naturalSlideHeight={20}
           naturalSlideWidth={10}
           totalSlides={testimonials.length}
