@@ -12,6 +12,7 @@ import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
 import SectionHeading from '../Shared/SectionHeading'
 
 const JoinUs = () => {
+  const formLink = 'https://forms.gle/FvoC68UKVzXMKdjy9'
   const [ref, inView] = useInView({
     triggerOnce: true,
   })
@@ -63,11 +64,8 @@ const JoinUs = () => {
             people to join our amazing remote team.
           </motion.h2>
         </SectionHeading>
-        <S.JoinUsJobs
-          href="https://forms.gle/FvoC68UKVzXMKdjy9"
-          target="_blank"
-        >
-          <S.JoinUsJob>
+        <S.JoinUsJobs>
+          <S.JoinUsJob href={formLink} target="_blank">
             <motion.h3
               animate={controls}
               custom={2}
@@ -85,10 +83,7 @@ const JoinUs = () => {
               Remote (US Preferred)
             </motion.p>
           </S.JoinUsJob>
-          <S.JoinUsJob
-            href="https://forms.gle/FvoC68UKVzXMKdjy9"
-            target="_blank"
-          >
+          <S.JoinUsJob href={formLink} target="_blank">
             <motion.h3
               animate={controls}
               custom={4}
@@ -106,10 +101,7 @@ const JoinUs = () => {
               Remote (US Preferred)
             </motion.p>
           </S.JoinUsJob>
-          <S.JoinUsJob
-            href="https://forms.gle/FvoC68UKVzXMKdjy9"
-            target="_blank"
-          >
+          <S.JoinUsJob href={formLink} target="_blank">
             <motion.h3
               animate={controls}
               custom={6}
