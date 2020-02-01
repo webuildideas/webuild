@@ -53,13 +53,90 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `WeBuild`,
-        short_name: `WeBuild`,
+        name: `webuild`,
+        short_name: `webuild`,
         start_url: `/`,
-        background_color: `#2C3E50`,
-        theme_color: `#2C3E50`,
+        background_color: `#0E0E1B`,
+        theme_color: `#0E0E1B`,
         display: `minimal-ui`,
-        icon: `src/static/images/favicons/webuild-favicon-512x512.png`, // This path is relative to the root of the site.
+        icon: `src/static/images/favicons/master-310x310.png`,
+        icons: [
+          {
+            src: `/favicons/favicon-16x16.png`,
+            sizes: `16x16`,
+            type: `image/png`,
+          },
+          {
+            src: `/favicons/favicon-32x32.png`,
+            sizes: `32x32`,
+            type: `image/png`,
+          },
+          {
+            src: `/favicons/android-icon-36x36.png`,
+            sizes: `36x36`,
+            type: `image/png`,
+          },
+          {
+            src: `/favicons/android-icon-48x48.png`,
+            sizes: `48x48`,
+            type: `image/png`,
+          },
+          {
+            src: `/favicons/apple-icon-57x57.png`,
+            sizes: `57x57`,
+            type: `image/png`,
+          },
+          {
+            src: `/favicons/apple-icon-60x60.png`,
+            sizes: `60x60`,
+            type: `image/png`,
+          },
+          {
+            src: `/favicons/android-icon-72x72.png`,
+            sizes: `72x72`,
+            type: `image/png`,
+          },
+          {
+            src: `/favicons/apple-icon-76x76.png`,
+            sizes: `76x76`,
+            type: `image/png`,
+          },
+          {
+            src: `/favicons/android-icon-96x96.png`,
+            sizes: `96x96`,
+            type: `image/png`,
+          },
+          {
+            src: `/favicons/apple-icon-114x114.png`,
+            sizes: `114x114`,
+            type: `image/png`,
+          },
+          {
+            src: `/favicons/apple-icon-120x120.png`,
+            sizes: `120x120`,
+            type: `image/png`,
+          },
+          {
+            src: `/favicons/android-icon-144x144.png`,
+            sizes: `144x144`,
+            type: `image/png`,
+          },
+          {
+            src: `/favicons/apple-icon-152x152.png`,
+            sizes: `152x152`,
+            type: `image/png`,
+          },
+          {
+            src: `/favicons/apple-icon-180x180.png`,
+            sizes: `180x180`,
+            type: `image/png`,
+          },
+          {
+            src: `/favicons/android-icon-192x192.png`,
+            sizes: `192x192`,
+            type: `image/png`,
+          },
+        ],
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
