@@ -198,16 +198,16 @@ export const GlobalStyle = createGlobalStyle`
       }
     }
 
-    .Button {
+    .Button.Button {
       color: #fff;
+      &:after {
+        background-color: #fff ;
+      }
       span.border {
         border-color: #fff;
         background: transparent;
       }
       &:hover {
-        span.border {
-          background-color: #fff;
-        }
         color: ${props => props.theme.vulcan};;
       }
     }

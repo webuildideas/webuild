@@ -17,6 +17,18 @@ export const PrimaryLink = styled(AniLink)`
   padding: ${() => ` ${rhythmUnit(0.5)} ${rhythmUnit(1)}`};
   letter-spacing: 0.05px;
   z-index: 1;
+  overflow: hidden;
+  &:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    transition: all 350ms ease;
+    z-index: 0;
+    background-color: ${props => props.theme.vulcan};
+  }
   span.text {
     position: relative;
     z-index: 1;
@@ -33,10 +45,10 @@ export const PrimaryLink = styled(AniLink)`
     z-index: -1;
   }
   color: ${props => props.theme.vulcan};
-  transition: background-color ease 250ms;
+  transition: color ease 250ms;
   &:hover {
-    span.border {
-      background-color: ${props => props.theme.vulcan};
+    &:after {
+      left: 0;
     }
     color: ${props => props.theme.snow};
   }
@@ -45,13 +57,8 @@ export const PrimaryLink = styled(AniLink)`
 export const SecondaryLink = styled(PrimaryLink)`
   border: none;
   color: ${props => props.theme.snow};
-  span.border {
+  &:after {
     background-color: ${props => props.theme.vulcan};
-  }
-  &:hover {
-    span.border {
-      background-color: ${props => props.theme.tuna};
-    }
   }
 `
 
@@ -66,6 +73,18 @@ export const PrimaryButton = styled.a`
   letter-spacing: 0.05em;
   color: ${props => props.theme.vulcan};
   transition: background-color ease 250ms;
+  overflow: hidden;
+  &:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    transition: all 350ms ease;
+    z-index: 0;
+    background-color: ${props => props.theme.vulcan};
+  }
   span.text {
     position: relative;
     z-index: 1;
@@ -83,22 +102,17 @@ export const PrimaryButton = styled.a`
     z-index: 0;
   }
   &:hover {
-    span.border {
-      background-color: ${props => props.theme.vulcan};
-    }
     color: ${props => props.theme.snow};
+    &:after {
+      left: 0;
+    }
   }
 `
 
 export const SecondaryButton = styled(PrimaryButton)`
   border: none;
   color: ${props => props.theme.snow};
-  span.border {
+  &:after {
     background-color: ${props => props.theme.vulcan};
-  }
-  &:hover {
-    span.border {
-      background-color: ${props => props.theme.tuna};
-    }
   }
 `

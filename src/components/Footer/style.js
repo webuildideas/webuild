@@ -10,14 +10,16 @@ export const Footer = styled.footer`
   padding: ${() => `${rhythmUnit(3.75)} 0 ${rhythmUnit(2)}`};
 
   .Footer__btn {
-    transition: 500ms all ease;
-    /* margin-bottom: ${() => rhythmUnit(1)}; */
-    &:hover {
-      span.border {
-        border: 1px solid #fff;
-      }
+    background-color: #fff;
+    &:after {
+      background-color: ${props => props.theme.vulcan};
     }
-    span {
+    span.border {
+      border-color: #fff;
+      z-index: 1;
+      background: transparent;
+    }
+    .wave-emoji {
       margin-right: 4px;
     }
   }
