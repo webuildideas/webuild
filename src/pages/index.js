@@ -25,7 +25,7 @@ import Footer from '../components/Footer'
 const CaseStudiesContainer = styled.div`
   padding-top: ${() => rhythmUnit(5)};
   @media (min-width: 768px) {
-    padding-top: ${() => rhythmUnit(6.5)};
+    padding-top: ${() => rhythmUnit(6)};
   }
 `
 
