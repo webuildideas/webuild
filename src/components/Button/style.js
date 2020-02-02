@@ -57,8 +57,12 @@ export const PrimaryLink = styled(AniLink)`
 export const SecondaryLink = styled(PrimaryLink)`
   border: none;
   color: ${props => props.theme.snow};
+  background-color: ${props => props.theme.vulcan};
+  span.border {
+    background-color: transparent;
+  }
   &:after {
-    background-color: ${props => props.theme.vulcan};
+    background-color: ${props => props.theme.tuna};
   }
 `
 
@@ -112,7 +116,11 @@ export const PrimaryButton = styled.a`
 export const SecondaryButton = styled(PrimaryButton)`
   border: none;
   color: ${props => props.theme.snow};
+  background-color: ${props => props.theme.vulcan};
+  span.border {
+    background-color: transparent;
+  }
   &:after {
-    background-color: ${props => props.theme.vulcan};
+    background-color: ${props => props.theme.tuna};
   }
 `
