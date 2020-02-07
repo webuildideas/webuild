@@ -31,7 +31,7 @@ export const DesignPartnerGrid = styled.div`
   grid-gap: ${() => rhythmUnit(2)};
   svg {
     margin-bottom: ${() => rhythmUnit(1)};
-    width: 60px;
+    width: 65px;
     transition: 300ms all ease-in;
     &:hover {
       transition: 300ms all ease-in;
@@ -48,18 +48,12 @@ export const DesignPartnerGrid = styled.div`
   @media (min-width: 850px) {
     grid-template-columns: repeat(3, 1fr);
     grid-gap: ${() => rhythmUnit(1)};
-    svg {
-      width: 50px;
-    }
     p {
       font-size: ${props => props.theme.f4};
     }
   }
   @media (min-width: 1024px) {
     grid-gap: ${() => rhythmUnit(2)};
-    svg {
-      width: 60px;
-    }
     p {
       font-size: ${props => props.theme.f3};
     }

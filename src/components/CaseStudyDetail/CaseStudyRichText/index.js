@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { BLOCKS } from '@contentful/rich-text-types'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { useInView, inViewRef } from 'react-intersection-observer'
+import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
 
 // Styled Components
