@@ -62,6 +62,11 @@ module.exports = {
         icon: `src/static/images/favicons/master-310x310.png`,
         icons: [
           {
+            src: `/favicons/android-icon-72x72.png`,
+            sizes: `72x72`,
+            type: `image/png`,
+          },
+          {
             src: `/favicons/favicon-32x32.png`,
             sizes: `32x32`,
             type: `image/png`,
@@ -84,11 +89,6 @@ module.exports = {
           {
             src: `/favicons/apple-icon-60x60.png`,
             sizes: `60x60`,
-            type: `image/png`,
-          },
-          {
-            src: `/favicons/android-icon-72x72.png`,
-            sizes: `72x72`,
             type: `image/png`,
           },
           {
