@@ -15,6 +15,7 @@ const Footer = () => {
   const d = new Date()
   const [ref, inView] = useInView({
     triggerOnce: true,
+    threshold: 0.75,
   })
 
   const controls = useAnimation()
@@ -64,6 +65,7 @@ const Footer = () => {
           </motion.h2>
         </SectionHeading>
         <Button
+          animationDelay={0.1}
           className="Footer__btn"
           href="mailto:hi@webuild.io"
           type="primaryButton"

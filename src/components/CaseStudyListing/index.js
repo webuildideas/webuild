@@ -11,10 +11,18 @@ import CaseStudy from '../CaseStudy'
 const CaseStudyListing = ({ caseStudies }) => (
   <S.CaseStudyListing>
     {caseStudies.map((study, idx) => {
-      const s = study.node || study
+      const animationThreshold = idx === 0 ? 0.25 : 0.8
+      const caseStudy = study.node || study
       // Even # items we want image on right.
       const layout = (idx + 1) % 2 === 0 ? 'left' : 'right'
-      return <CaseStudy key={s.slug} caseStudy={s} layout={layout} />
+      return (
+        <CaseStudy
+          key={caseStudy.slug}
+          animationThreshold={animationThreshold}
+          caseStudy={caseStudy}
+          layout={layout}
+        />
+      )
     })}
   </S.CaseStudyListing>
 )

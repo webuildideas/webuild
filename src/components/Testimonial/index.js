@@ -24,7 +24,7 @@ const Testimonial = ({
   ...props
 }) => {
   const [ref, inView] = useInView({
-    rootMargin: isFeatured ? '-300px 0px' : '-150px 0px',
+    threshold: 0.75,
     triggerOnce: true,
   })
 
