@@ -39,7 +39,6 @@ const Nav = ({ isNavOpen, isNavPinned, toggleNav, togglePinnedNav }) => {
   }
 
   useEffect(() => {
-    console.log(windowSize)
     if (inView) {
       controls.start('visible')
     }

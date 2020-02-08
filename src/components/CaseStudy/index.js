@@ -13,9 +13,15 @@ import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
 // Components
 import Button from '../Button'
 
-const CaseStudy = ({ caseStudy, layout, mobileTextFirst }) => {
+const CaseStudy = ({
+  animationThreshold,
+  caseStudy,
+  layout,
+  mobileTextFirst,
+}) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
+    threshold: animationThreshold,
   })
 
   const textControls = useAnimation()
@@ -186,8 +192,14 @@ const CaseStudy = ({ caseStudy, layout, mobileTextFirst }) => {
   )
 }
 
+CaseStudy.defaultProps = {
+  animationThreshold: 0.75,
+}
+
 CaseStudy.propTypes = {
   /** Case Study Object */
+  animationThreshold: PropTypes.number,
+  /** Which side do you want the image to be on. */
   caseStudy: PropTypes.shape({
     /** The listing image for the case study */
     listingImage: PropTypes.object,
@@ -202,8 +214,9 @@ CaseStudy.propTypes = {
     /** The tagline of the Case Study */
     tagline: PropTypes.string.isRequired,
   }),
-  /** Which side do you want the image to be on. */
+  /** To show the text before or after the image on mobile. */
   layout: PropTypes.oneOf(['right', 'left']),
+  /** The percentage of the case study to be in view before triggering animation. */
   mobileTextFirst: PropTypes.bool,
 }
 
