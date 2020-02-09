@@ -6,6 +6,10 @@ import { rhythmUnit } from '../../utils/typography'
 
 export const JoinUs = styled.section`
   background: white;
+
+  .peace-sign {
+    margin-right: 4px;
+  }
 `
 
 export const JoinUsJobs = styled.div`

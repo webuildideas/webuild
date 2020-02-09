@@ -54,10 +54,6 @@ const WhoWeAre = ({ data }) => {
       x: -25,
       opacity: 0,
     },
-    hidden: {
-      y: 35,
-      opacity: 0,
-    },
   }
 
   useEffect(() => {

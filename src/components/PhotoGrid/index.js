@@ -79,7 +79,7 @@ const PhotoGrid = ({ photos }) => {
           key={`photo-${idx}`}
           alt="WeBuild Team"
           animate={controls}
-          custom={idx}
+          custom={idx + 2}
           data-photo={idx + 1}
           initial={`image${idx + 1}Hidden`}
           src={photo.fluid.src}

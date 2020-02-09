@@ -27,6 +27,7 @@ const BioCard = ({ children }) => {
 
   const [ref, inView] = useInView({
     triggerOnce: true,
+    threshold: 0.75,
   })
 
   const controls = useAnimation()
@@ -61,7 +62,9 @@ const BioCard = ({ children }) => {
             fluid={file.childImageSharp.fluid}
           />
         </motion.div>
-        <S.BioContent>{children}</S.BioContent>
+        <S.BioContent animate={controls} initial="hidden" variants={variants}>
+          {children}
+        </S.BioContent>
       </S.BioCard>
     </SiteMaxWidthContainer>
   )
