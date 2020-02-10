@@ -44,7 +44,7 @@ const CaseStudyHero = ({ background, successSummary, logo, heroImg }) => (
         }}
         transition={{ duration: 0.75, delay: 0.25 }}
       >
-        <Img critical={true} fadeIn={false} fluid={heroImg} />
+        <Img fluid={heroImg} loading="eager" />
       </motion.div>
     </SiteMaxWidthContainer>
   </S.CaseStudyHero>

@@ -7,12 +7,13 @@ import { BLOCKS } from '@contentful/rich-text-types'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 const CaseStudyResult = ({ document }) => {
-  const [ref, inView] = useInView({ triggerOnce: true })
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+  })
   const controls = useAnimation()
-
   const variants = {
     visible: i => ({
-      opacity: [0, 0.25, 0.4, 0.6, 0.6, 0.6, 0.7, 0.8, 1],
+      opacity: 1,
       x: 0,
       transition: {
         duration: 0.5,
@@ -24,37 +25,12 @@ const CaseStudyResult = ({ document }) => {
       x: -15,
     },
   }
-
   const renderOptions = {
     renderNode: {
-      [BLOCKS.PARAGRAPH]: (node, children) => <Paragraph>{children}</Paragraph>,
-      [BLOCKS.HEADING_3]: (node, children) => <Heading>{children}</Heading>,
+      [BLOCKS.PARAGRAPH]: (node, children) => <p>{children}</p>,
+      [BLOCKS.HEADING_3]: (node, children) => <h3>{children}</h3>,
     },
   }
-
-  // eslint-disable-next-line
-  const Paragraph = ({ children }) => (
-    <motion.p
-      animate={controls}
-      custom={1}
-      initial="hidden"
-      variants={variants}
-    >
-      {children}
-    </motion.p>
-  )
-
-  // eslint-disable-next-line
-  const Heading = ({ children }) => (
-    <motion.h3
-      animate={controls}
-      custom={0}
-      initial="hidden"
-      variants={variants}
-    >
-      {children}
-    </motion.h3>
-  )
 
   useEffect(() => {
     if (inView) {
@@ -63,9 +39,16 @@ const CaseStudyResult = ({ document }) => {
   }, [controls, inView])
 
   return (
-    <div ref={ref} style={{ overflow: 'hidden' }}>
+    <motion.div
+      ref={ref}
+      animate={controls}
+      custom={1}
+      initial="hidden"
+      style={{ overflow: 'hidden' }}
+      variants={variants}
+    >
       {documentToReactComponents(document, renderOptions)}
-    </div>
+    </motion.div>
   )
 }
 

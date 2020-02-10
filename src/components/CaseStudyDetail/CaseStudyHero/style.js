@@ -39,7 +39,7 @@ export const CaseStudyHero = styled.div`
 
 export const CaseStudyLogo = styled.img`
   max-width: 120px;
-  margin-bottom: ${() => rhythmUnit(0.5)};
+  margin-bottom: ${() => rhythmUnit(0.75)};
   @media (min-width: 768px) {
     max-width: 150px;
   }

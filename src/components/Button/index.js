@@ -13,6 +13,7 @@ import * as S from './style'
 const Button = ({ children, type, href, animationDelay, ...props }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
+    threshold: 0.75,
   })
   const controls = useAnimation()
   const textControls = useAnimation()
@@ -60,13 +61,13 @@ const Button = ({ children, type, href, animationDelay, ...props }) => {
         return (
           <S.PrimaryLink to={href} {...props}>
             <motion.span
-              ref={ref}
               animate={controls}
               className="border"
               initial="hidden"
               variants={variants}
             />
             <motion.span
+              ref={ref}
               animate={textControls}
               className="text"
               initial="textHidden"
@@ -78,15 +79,15 @@ const Button = ({ children, type, href, animationDelay, ...props }) => {
         )
       case 'secondaryLink':
         return (
-          <S.SecondaryLink ref={ref} to={href} {...props}>
+          <S.SecondaryLink to={href} {...props}>
             <motion.span
-              ref={ref}
               animate={controls}
               className="border"
               initial="hidden"
               variants={variants}
             />
             <motion.span
+              ref={ref}
               animate={textControls}
               className="text"
               initial="textHidden"
@@ -100,13 +101,13 @@ const Button = ({ children, type, href, animationDelay, ...props }) => {
         return (
           <S.PrimaryButton href={href} {...props}>
             <motion.span
-              ref={ref}
               animate={controls}
               className="border"
               initial="hidden"
               variants={variants}
             />
             <motion.span
+              ref={ref}
               animate={textControls}
               className="text"
               initial="textHidden"
@@ -120,13 +121,13 @@ const Button = ({ children, type, href, animationDelay, ...props }) => {
         return (
           <S.SecondaryButton href={href} {...props}>
             <motion.span
-              ref={ref}
               animate={controls}
               className="border"
               initial="hidden"
               variants={variants}
             />
             <motion.span
+              ref={ref}
               animate={textControls}
               className="text"
               initial="textHidden"

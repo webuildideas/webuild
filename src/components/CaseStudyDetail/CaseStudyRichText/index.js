@@ -33,6 +33,7 @@ const CaseStudyRichText = ({ document }) => {
 
   const [ref, inView] = useInView({
     triggerOnce: true,
+    threshold: 0.25,
   })
 
   const controls = useAnimation()
@@ -99,11 +100,7 @@ const CaseStudyRichText = ({ document }) => {
       [BLOCKS.EMBEDDED_ENTRY]: node => {
         const { images } = node.data.target.fields
         const imgArr = buildCarouselImgArray(images['en-US'])
-        return (
-          <motion.div animate={controls} initial="hidden" variants={variants}>
-            <CaseStudyCarousel autoplay={shouldAutoplay} images={imgArr} />
-          </motion.div>
-        )
+        return <CaseStudyCarousel autoplay={shouldAutoplay} images={imgArr} />
       },
     },
   }
