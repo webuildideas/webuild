@@ -107,6 +107,11 @@ export const TestimonialDot = styled(Dot)`
     margin-right: ${() => rhythmUnit(0.5)};
     border-radius: 50%;
     overflow: hidden;
+    img,
+    picture {
+      border-radius: 50%;
+      overflow: hidden;
+    }
   }
 `
 

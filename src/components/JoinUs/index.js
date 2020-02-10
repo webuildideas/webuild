@@ -15,6 +15,7 @@ const JoinUs = () => {
   const formLink = 'https://forms.gle/FvoC68UKVzXMKdjy9'
   const [ref, inView] = useInView({
     triggerOnce: true,
+    threshold: 0.75,
   })
 
   const controls = useAnimation()
@@ -40,6 +41,7 @@ const JoinUs = () => {
       controls.start('visible')
     }
   }, [controls, inView])
+
   return (
     <S.JoinUs ref={ref}>
       <SiteMaxWidthContainer>
@@ -125,7 +127,7 @@ const JoinUs = () => {
           target="_blank"
           type="secondaryButton"
         >
-          ✌️Introduce Yourself
+          <span className="peace-sign">✌️</span>Introduce Yourself
         </Button>
       </SiteMaxWidthContainer>
     </S.JoinUs>

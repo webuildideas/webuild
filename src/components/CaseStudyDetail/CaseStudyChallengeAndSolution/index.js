@@ -11,7 +11,10 @@ import SiteMaxWidthContainer from '../../Shared/SiteMaxWidthContainer'
 import * as S from '../style'
 
 const CaseStudyChallengeAndSolution = ({ challenge, solution }) => {
-  const [ref, inView] = useInView({ triggerOnce: true })
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.75,
+  })
   const controls = useAnimation()
 
   const variants = {

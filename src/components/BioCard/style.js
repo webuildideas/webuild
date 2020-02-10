@@ -1,5 +1,6 @@
 // Packages
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
 
 // Utils
 import { rhythmUnit } from '../../utils/typography'
@@ -30,7 +31,7 @@ export const BioCard = styled.div`
   }
 `
 
-export const BioContent = styled.div`
+export const BioContent = styled(motion.div)`
   background-color: #fff;
   padding-top: ${() => rhythmUnit(2.25)};
   padding-bottom: ${() => rhythmUnit(2)};
