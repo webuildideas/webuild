@@ -32,6 +32,7 @@ module.exports = {
         accessToken: process.env.GATSBY_CONTENTFUL_ACCESS_TOKEN,
         environment:
           process.env.NODE_ENV === `production` ? `master` : `staging`,
+        forceFullSync: true,
       },
     },
     {
