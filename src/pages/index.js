@@ -85,7 +85,6 @@ const IndexPage = ({ data }) => {
             paddingBottom: `${rhythmUnit(4)}`,
           }}
         >
-          <p>staging</p>
           <SectionHeading
             ref={ref}
             style={{ marginBottom: `${rhythmUnit(2.75)}` }}
