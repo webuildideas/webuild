@@ -1,7 +1,7 @@
 {
-  "name": "WeBuild",
+  "name": "webuild",
   "private": true,
-  "description": "WeBuild Portfolio Site built with Gatsby and Contentful",
+  "description": "webuild Portfolio Site built with Gatsby and Contentful",
   "version": "1.0.0",
   "author": "Vince Brown <vince@vincebrown.me>",
   "dependencies": {
@@ -72,13 +72,10 @@
   },
   "scripts": {
     "build": "gatsby build",
-    "build-staging": "NODE_ENV=development gatsby build",
     "develop": "gatsby develop",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "NODE_ENV=test jest --watch",
-    "fullTestSuite": "NODE_ENV=test jest",
-    "test-win": "SET NODE_ENV=test&& jest --watch",
     "storybook": "NODE_ENV=production start-storybook -s public",
     "build-storybook": "NODE_ENV=production build-storybook -s public"
   },
