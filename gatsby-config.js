@@ -1,5 +1,5 @@
 require('dotenv').config({
-  path: `.env`,
+  path: `.env.${process.env.NODE_ENV}`,
 })
 
 module.exports = {
@@ -30,8 +30,7 @@ module.exports = {
       options: {
         spaceId: process.env.GATSBY_CONTENTFUL_SPACE_ID,
         accessToken: process.env.GATSBY_CONTENTFUL_ACCESS_TOKEN,
-        environment:
-          process.env.NODE_ENV === `production` ? `master` : `staging`,
+        environment: process.env.GATSBY_CONTENTFUL_ENVIRONMENT,
         forceFullSync: true,
       },
     },
