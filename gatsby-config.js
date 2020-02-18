@@ -4,8 +4,8 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `WeBuild`,
-    description: `We're WeBuild: a digital design and product studio. We design stunning user experiences, optimized for conversions and impact.`,
+    title: `webuild`,
+    description: `We're webuild: a digital design and product studio. We design stunning user experiences, optimized for conversions and impact.`,
     author: `Vincent Brown`,
   },
   plugins: [
