@@ -103,7 +103,10 @@ const JoinUs = () => {
               Remote (US Preferred)
             </motion.p>
           </S.JoinUsJob>
-          <S.JoinUsJob href={formLink} target="_blank">
+          <S.JoinUsJob
+            href="https://webuildideas.bamboohr.com/jobs/view.php?id=21"
+            target="_blank"
+          >
             <motion.h3
               animate={controls}
               custom={6}
