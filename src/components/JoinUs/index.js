@@ -12,7 +12,6 @@ import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
 import SectionHeading from '../Shared/SectionHeading'
 
 const JoinUs = () => {
-  const formLink = 'https://forms.gle/FvoC68UKVzXMKdjy9'
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.75,
@@ -67,7 +66,10 @@ const JoinUs = () => {
           </motion.h2>
         </SectionHeading>
         <S.JoinUsJobs>
-          <S.JoinUsJob href={formLink} target="_blank">
+          <S.JoinUsJob
+            href="https://webuildideas.bamboohr.com/jobs/view.php?id=22"
+            target="_blank"
+          >
             <motion.h3
               animate={controls}
               custom={2}
@@ -85,14 +87,17 @@ const JoinUs = () => {
               Remote (US Preferred)
             </motion.p>
           </S.JoinUsJob>
-          <S.JoinUsJob href={formLink} target="_blank">
+          <S.JoinUsJob
+            href="https://webuildideas.bamboohr.com/jobs/view.php?id=21"
+            target="_blank"
+          >
             <motion.h3
               animate={controls}
               custom={4}
               initial="hidden"
               variants={variants}
             >
-              Frontend Developer
+              Product Manager
             </motion.h3>
             <motion.p
               animate={controls}
@@ -103,34 +108,13 @@ const JoinUs = () => {
               Remote (US Preferred)
             </motion.p>
           </S.JoinUsJob>
-          <S.JoinUsJob
-            href="https://webuildideas.bamboohr.com/jobs/view.php?id=21"
-            target="_blank"
-          >
-            <motion.h3
-              animate={controls}
-              custom={6}
-              initial="hidden"
-              variants={variants}
-            >
-              Product Manager
-            </motion.h3>
-            <motion.p
-              animate={controls}
-              custom={7}
-              initial="hidden"
-              variants={variants}
-            >
-              Remote (US Preferred)
-            </motion.p>
-          </S.JoinUsJob>
         </S.JoinUsJobs>
         <Button
-          href="https://forms.gle/FvoC68UKVzXMKdjy9"
+          href="https://webuildideas.bamboohr.com/jobs/"
           target="_blank"
           type="secondaryButton"
         >
-          <span className="peace-sign">✌️</span>Introduce Yourself
+          View Open Positions
         </Button>
       </SiteMaxWidthContainer>
     </S.JoinUs>
