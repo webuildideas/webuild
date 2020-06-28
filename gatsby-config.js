@@ -50,7 +50,7 @@ module.exports = {
       options: {
         trackingId: "UA-60707530-1",
         head: true,
-        pageTransitionDelay: 1000,
+        pageTransitionDelay: 250,
       },
     },
     `gatsby-transformer-sharp`,
