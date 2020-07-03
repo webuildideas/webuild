@@ -137,6 +137,46 @@ const Button = ({ children, type, href, animationDelay, ...props }) => {
             </motion.span>
           </S.SecondaryButton>
         )
+      case 'primaryOutbound':
+        return (
+          <S.PrimaryOutbound href={href} {...props}>
+            <motion.span
+              animate={controls}
+              className="border"
+              initial="hidden"
+              variants={variants}
+            />
+            <motion.span
+              ref={ref}
+              animate={textControls}
+              className="text"
+              initial="textHidden"
+              variants={variants}
+            >
+              {children}
+            </motion.span>
+          </S.PrimaryOutbound>
+        )
+      case 'secondaryOutbound':
+        return (
+          <S.SecondaryOutbound href={href} {...props}>
+            <motion.span
+              animate={controls}
+              className="border"
+              initial="hidden"
+              variants={variants}
+            />
+            <motion.span
+              ref={ref}
+              animate={textControls}
+              className="text"
+              initial="textHidden"
+              variants={variants}
+            >
+              {children}
+            </motion.span>
+          </S.SecondaryOutbound>
+        )
       default:
         return <S.PrimaryButton {...props}>{children}</S.PrimaryButton>
     }
@@ -156,6 +196,8 @@ Button.propTypes = {
     'secondaryButton',
     'primaryLink',
     'secondaryLink',
+    'primaryOutbound',
+    'secondaryOutbound',
   ]),
 }
 

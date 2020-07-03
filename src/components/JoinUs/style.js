@@ -1,5 +1,6 @@
 // Packages
 import styled from 'styled-components'
+import { OutboundLink } from 'gatsby-plugin-google-analytics'
 
 // Utils
 import { rhythmUnit } from '../../utils/typography'
@@ -24,7 +25,7 @@ export const JoinUsJobs = styled.div`
   }
 `
 
-export const JoinUsJob = styled.a`
+export const JoinUsJob = styled(OutboundLink)`
   &:not(:last-of-type) {
     margin-bottom: ${() => rhythmUnit(1)};
   }
