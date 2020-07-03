@@ -112,7 +112,7 @@ const JoinUs = () => {
         <Button
           href="https://webuildideas.bamboohr.com/jobs/"
           target="_blank"
-          type="secondaryButton"
+          type="secondaryOutbound"
         >
           View Open Positions
         </Button>
