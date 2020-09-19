@@ -25,10 +25,10 @@ export const CaseStudy = styled.article`
   .CaseStudy__img {
     position: relative;
     display: block;
-    margin-bottom: ${props => (props.mobileTextFirst ? 0 : rhythmUnit(1))};
+    margin-bottom: ${(props) => (props.mobileTextFirst ? 0 : rhythmUnit(1))};
     width: 100%;
     max-width: 500px;
-    order: ${props => (props.mobileTextFirst ? 2 : 1)};
+    order: ${(props) => (props.mobileTextFirst ? 2 : 1)};
     margin-left: auto;
     margin-right: auto;
     transition: 300ms all ease-in;
@@ -44,16 +44,16 @@ export const CaseStudy = styled.article`
       max-width: 100%;
       margin-left: 0;
       margin-right: 0;
-      left: ${props => (props.layout === 'left' ? '-100px' : '')};
-      right: ${props => (props.layout === 'right' ? '-100px' : '')};
-      order: ${props => (props.layout === 'left' ? 1 : 2)};
+      left: ${(props) => (props.layout === 'left' ? '-100px' : '')};
+      right: ${(props) => (props.layout === 'right' ? '-100px' : '')};
+      order: ${(props) => (props.layout === 'left' ? 1 : 2)};
     }
   }
   .CaseStudy__content {
-    order: ${props => (props.mobileTextFirst ? 1 : 2)};
-    margin-bottom: ${props => (props.mobileTextFirst ? rhythmUnit(1) : 0)};
+    order: ${(props) => (props.mobileTextFirst ? 1 : 2)};
+    margin-bottom: ${(props) => (props.mobileTextFirst ? rhythmUnit(1) : 0)};
     @media (min-width: 900px) {
-      order: ${props => (props.layout === 'left' ? 2 : 1)};
+      order: ${(props) => (props.layout === 'left' ? 2 : 1)};
       min-width: 440px;
       max-width: 475px;
     }
@@ -62,14 +62,14 @@ export const CaseStudy = styled.article`
     line-height: 1.2;
     font-weight: 900;
     margin-bottom: ${() => rhythmUnit(0.5)};
-    font-size: ${props => props.theme.f2};
+    font-size: ${(props) => props.theme.f2};
 
     @media (min-width: 768px) {
-      font-size: ${props => props.theme.f1};
+      font-size: ${(props) => props.theme.f1};
     }
   }
   .CaseStudy__summary {
-    font-size: ${props => props.theme.f3};
+    font-size: ${(props) => props.theme.f3};
     line-height: 1.6;
     padding-right: ${() => rhythmUnit(2)};
 

@@ -35,7 +35,7 @@ export const TestimonialSlide = styled(Slide)`
  * The Actual Testimonial Copy
  */
 export const Testimonial = styled.blockquote`
-  font-size: ${props => props.theme.f2};
+  font-size: ${(props) => props.theme.f2};
   line-height: 1.4;
   text-align: center;
   @media (min-width: 1090px) {
@@ -89,14 +89,14 @@ export const TestimonialDot = styled(Dot)`
 
   .Testimonial__client-details {
     h5 {
-      font-size: ${props => props.theme.f3};
+      font-size: ${(props) => props.theme.f3};
       line-height: 1.2;
     }
     p {
-      font-size: ${props => props.theme.f3};
+      font-size: ${(props) => props.theme.f3};
       letter-spacing: 0.5px;
       @media (min-width: 860px) {
-        ${props => props.theme.f4};
+        ${(props) => props.theme.f4};
       }
     }
   }
@@ -131,9 +131,9 @@ export const TestimonialDotGroup = styled(DotGroup)`
     padding: 0;
     border-radius: 50%;
     border: none;
-    background-color: ${props => props.theme.snow};
+    background-color: ${(props) => props.theme.snow};
     &.carousel__dot--selected {
-      background-color: ${props => props.theme.bisonHide};
+      background-color: ${(props) => props.theme.bisonHide};
     }
     &:not(:last-of-type) {
       margin-right: ${() => rhythmUnit(0.75)};

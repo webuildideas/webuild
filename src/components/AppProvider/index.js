@@ -22,7 +22,7 @@ import Meta from '../Meta'
 class AppProvider extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
-    path: PropTypes.string,
+    path: PropTypes.string
   }
 
   constructor(props) {
@@ -32,15 +32,15 @@ class AppProvider extends Component {
       isNavPinned: false,
       startExitAnimation: false,
       path: props.path,
-      triggerExitAnimation: startExitAnimation => {
+      triggerExitAnimation: (startExitAnimation) => {
         this.setState({ startExitAnimation })
       },
-      toggleNav: navState => {
+      toggleNav: (navState) => {
         this.setState({ isNavOpen: navState })
       },
-      togglePinnedNav: navState => {
+      togglePinnedNav: (navState) => {
         this.setState({ isNavPinned: navState })
-      },
+      }
     }
   }
 
@@ -49,7 +49,7 @@ class AppProvider extends Component {
       return {
         isNavOpen: false,
         path: nextProps.path,
-        startExitAnimation: false,
+        startExitAnimation: false
       }
     }
     return null

@@ -8,19 +8,19 @@ const MenuIcon = ({ isOpen, ...props }) => {
     top: 'translate(2, 7) rotate(0)',
     center: 'translate(2, 19) rotate(0)',
     bottom: 'translate(2, 31) rotate(0)',
-    color: '#0E0E1B',
+    color: '#0E0E1B'
   }
 
   const closedConfig = {
     top: 'translate(7, 32) rotate(-45)',
     center: 'translate(10, 4) rotate(45)',
     bottom: 'translate(7, 32) rotate(-45)',
-    color: '#fff',
+    color: '#fff'
   }
 
   const { top, center, bottom, color } = useSpring({
     to: isOpen ? closedConfig : openConfig,
-    config: config.stiff,
+    config: config.stiff
   })
 
   return (
@@ -38,11 +38,11 @@ const MenuIcon = ({ isOpen, ...props }) => {
 }
 
 MenuIcon.propTypes = {
-  isOpen: PropTypes.bool,
+  isOpen: PropTypes.bool
 }
 
 MenuIcon.defaultProps = {
-  isOpen: false,
+  isOpen: false
 }
 
 export default MenuIcon

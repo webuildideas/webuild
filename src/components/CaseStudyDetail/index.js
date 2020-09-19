@@ -28,7 +28,7 @@ const CaseStudyDetail = ({
 }) => {
   const [shouldAutoplay, setAutoPlay] = useState(false)
   const [ref, inView] = useInView({
-    triggerOnce: true,
+    triggerOnce: true
   })
   const {
     resultOne,
@@ -42,7 +42,7 @@ const CaseStudyDetail = ({
     projectOverview,
     projectChallenge,
     projectSolution,
-    projectOutcome,
+    projectOutcome
   } = caseStudy
 
   useEffect(() => {
@@ -55,7 +55,7 @@ const CaseStudyDetail = ({
     <>
       <Helmet
         bodyAttributes={{
-          class: 'CaseStudyDetail',
+          class: 'CaseStudyDetail'
         }}
       />
       <Meta title={`${caseStudy.name}`} />
@@ -83,7 +83,7 @@ const CaseStudyDetail = ({
           <div
             style={{
               paddingTop: `${rhythmUnit(3)}`,
-              paddingBottom: `${rhythmUnit(3)}`,
+              paddingBottom: `${rhythmUnit(3)}`
             }}
           >
             <SiteMaxWidthContainer maxWidth={1400}>
@@ -128,7 +128,7 @@ const CaseStudyDetail = ({
           style={{
             paddingTop: `${rhythmUnit(2.5)}`,
             paddingBottom: `${rhythmUnit(1)}`,
-            backgroundColor: '#F9F9F9',
+            backgroundColor: '#F9F9F9'
           }}
         >
           <CaseStudy
@@ -145,7 +145,7 @@ const CaseStudyDetail = ({
 }
 
 CaseStudyDetail.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.object
 }
 
 export const query = graphql`

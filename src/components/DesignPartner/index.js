@@ -19,25 +19,25 @@ const DesignPartner = () => {
   const { width } = useWindowSize()
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: width > 500 ? 0.85 : 0.25,
+    threshold: width > 500 ? 0.85 : 0.25
   })
 
   const controls = useAnimation()
 
   const variants = {
-    visible: i => ({
+    visible: (i) => ({
       y: 0,
       opacity: 1,
       transition: {
         duration: 0.55,
         delay: i * 0.152,
-        type: 'spring',
-      },
+        type: 'spring'
+      }
     }),
     hidden: {
       y: 25,
-      opacity: 0,
-    },
+      opacity: 0
+    }
   }
 
   useEffect(() => {

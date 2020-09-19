@@ -8,28 +8,28 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 const CaseStudyResult = ({ document }) => {
   const [ref, inView] = useInView({
-    triggerOnce: true,
+    triggerOnce: true
   })
   const controls = useAnimation()
   const variants = {
-    visible: i => ({
+    visible: (i) => ({
       opacity: 1,
       x: 0,
       transition: {
         duration: 0.5,
-        delay: i * 0.3,
-      },
+        delay: i * 0.3
+      }
     }),
     hidden: {
       opacity: 0,
-      x: -15,
-    },
+      x: -15
+    }
   }
   const renderOptions = {
     renderNode: {
       [BLOCKS.PARAGRAPH]: (node, children) => <p>{children}</p>,
-      [BLOCKS.HEADING_3]: (node, children) => <h3>{children}</h3>,
-    },
+      [BLOCKS.HEADING_3]: (node, children) => <h3>{children}</h3>
+    }
   }
 
   useEffect(() => {
@@ -53,7 +53,7 @@ const CaseStudyResult = ({ document }) => {
 }
 
 CaseStudyResult.propTypes = {
-  document: PropTypes.object,
+  document: PropTypes.object
 }
 
 export default CaseStudyResult

@@ -12,17 +12,17 @@ import * as S from './style'
 // Components
 import CaseStudyCarousel from '../CaseStudyCarousel'
 
-const buildCarouselImgArray = imgArr => {
+const buildCarouselImgArray = (imgArr) => {
   // console.log(imgArr)
   const carouselImgArr = []
-  imgArr.map(i => {
+  imgArr.map((i) => {
     const {
-      fields: { file },
+      fields: { file }
     } = i
     return carouselImgArr.push({
       src: file['en-US'].url,
       // TODO: Build out the srcSet sizes using query params
-      srcSet: file['en-US'].url,
+      srcSet: file['en-US'].url
     })
   })
   return carouselImgArr
@@ -33,24 +33,24 @@ const CaseStudyRichText = ({ document }) => {
 
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.25,
+    threshold: 0.25
   })
 
   const controls = useAnimation()
 
   const variants = {
-    visible: i => ({
+    visible: (i) => ({
       opacity: [0, 0.25, 0.4, 0.6, 0.6, 0.6, 0.7, 0.8, 1],
       y: 0,
       transition: {
         duration: 0.75,
-        delay: i * 0.25,
-      },
+        delay: i * 0.25
+      }
     }),
     hidden: {
       opacity: 0,
-      y: 25,
-    },
+      y: 25
+    }
   }
 
   useEffect(() => {
@@ -101,8 +101,8 @@ const CaseStudyRichText = ({ document }) => {
         const { images } = node.data.target.fields
         const imgArr = buildCarouselImgArray(images['en-US'])
         return <CaseStudyCarousel autoplay={shouldAutoplay} images={imgArr} />
-      },
-    },
+      }
+    }
   }
 
   return (
@@ -113,7 +113,7 @@ const CaseStudyRichText = ({ document }) => {
 }
 
 CaseStudyRichText.propTypes = {
-  document: PropTypes.object,
+  document: PropTypes.object
 }
 
 export default CaseStudyRichText

@@ -7,13 +7,13 @@ import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
 // Components
 import BioCard from '.'
 
-const BioCardDecorator = story => (
+const BioCardDecorator = (story) => (
   <div
     style={{
       marginTop: '64px',
       backgroundColor: '#F9F9F9',
       paddingTop: '32px',
-      paddingBottom: '32px',
+      paddingBottom: '32px'
     }}
   >
     <SiteMaxWidthContainer>{story()}</SiteMaxWidthContainer>
@@ -25,9 +25,9 @@ export default {
   component: BioCard,
   parameters: {
     componentSubtitle:
-      'Renders a photo and description of a person in a Card layout.',
+      'Renders a photo and description of a person in a Card layout.'
   },
-  decorators: [BioCardDecorator],
+  decorators: [BioCardDecorator]
 }
 
 export const defaultState = () => (
@@ -47,5 +47,5 @@ export const defaultState = () => (
 )
 
 defaultState.story = {
-  name: 'Default',
+  name: 'Default'
 }

@@ -23,7 +23,7 @@ const TestimonialSlide = ({ index, children }) => (
 
 TestimonialSlide.propTypes = {
   children: PropTypes.node.isRequired,
-  index: PropTypes.number.isRequired,
+  index: PropTypes.number.isRequired
 }
 
 const TestimonialDot = ({ slide, name, position, img }) => (
@@ -46,14 +46,14 @@ TestimonialDot.propTypes = {
   img: PropTypes.object,
   name: PropTypes.string.isRequired,
   position: PropTypes.string.isRequired,
-  slide: PropTypes.number.isRequired,
+  slide: PropTypes.number.isRequired
 }
 
 const TestimonialSlider = ({ testimonials }) => {
   const [shouldAutoplay, setAutoPlay] = useState(false)
   const [ref, inView] = useInView({
     threshold: 0.9,
-    triggerOnce: true,
+    triggerOnce: true
   })
 
   const controls = useAnimation()
@@ -64,13 +64,13 @@ const TestimonialSlider = ({ testimonials }) => {
       opacity: 1,
       transition: {
         duration: 0.9,
-        delay: 0.252,
-      },
+        delay: 0.252
+      }
     },
     hidden: {
       y: 35,
-      opacity: 0,
-    },
+      opacity: 0
+    }
   }
 
   useEffect(() => {
@@ -129,8 +129,8 @@ TestimonialSlider.propTypes = {
           srcSet: PropTypes.string,
           srcSetWebp: PropTypes.string,
           srcWebp: PropTypes.string,
-          width: PropTypes.number,
-        }),
+          width: PropTypes.number
+        })
       }),
       /** The name of the person giving testimonial */
       name: PropTypes.string,
@@ -139,10 +139,10 @@ TestimonialSlider.propTypes = {
       /** The object containing the content of the testimonial */
       testimonial: PropTypes.shape({
         /** The testimonial the person gave. */
-        testimonial: PropTypes.string,
-      }),
+        testimonial: PropTypes.string
+      })
     })
-  ),
+  )
 }
 
 export default TestimonialSlider

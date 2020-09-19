@@ -49,13 +49,13 @@ export const DesignPartnerGrid = styled.div`
     grid-template-columns: repeat(3, 1fr);
     grid-gap: ${() => rhythmUnit(1)};
     p {
-      font-size: ${props => props.theme.f4};
+      font-size: ${(props) => props.theme.f4};
     }
   }
   @media (min-width: 1024px) {
     grid-gap: ${() => rhythmUnit(2)};
     p {
-      font-size: ${props => props.theme.f3};
+      font-size: ${(props) => props.theme.f3};
     }
   }
   @media (min-width: 1200px) {

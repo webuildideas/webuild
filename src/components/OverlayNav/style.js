@@ -11,11 +11,11 @@ export const OverlayNavContainer = styled(animated.nav)`
   top: 0;
   width: 100%;
   height: 100%;
-  color: ${props => props.theme.white};
-  background-color: ${props => props.theme.vulcan};
-  font-size: ${props => props.theme.f2};
+  color: ${(props) => props.theme.white};
+  background-color: ${(props) => props.theme.vulcan};
+  font-size: ${(props) => props.theme.f2};
   font-weight: 800;
-  letter-spacing: ${props => props.theme.tracked};
+  letter-spacing: ${(props) => props.theme.tracked};
   padding: 2.1875rem 2.5rem;
   @media (min-height: 600px) {
     font-size: 2rem;
@@ -54,14 +54,14 @@ export const OverlayNavContainer = styled(animated.nav)`
     }
 
     .OverlayNavLink {
-      font-size: ${props => props.theme.f2};
+      font-size: ${(props) => props.theme.f2};
       margin-bottom: ${() => rhythmUnit(1.25)};
     }
 
     p {
       text-transform: uppercase;
-      font-size: ${props => props.theme.f6};
-      color: ${props => props.theme.grey};
+      font-size: ${(props) => props.theme.f6};
+      color: ${(props) => props.theme.grey};
       font-weight: 800;
       margin-bottom: ${() => rhythmUnit(0.75)};
     }

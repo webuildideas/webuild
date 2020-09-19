@@ -14,25 +14,25 @@ import SectionHeading from '../Shared/SectionHeading'
 const JoinUs = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.75,
+    threshold: 0.75
   })
 
   const controls = useAnimation()
 
   const variants = {
-    visible: i => ({
+    visible: (i) => ({
       y: 0,
       opacity: 1,
       transition: {
         duration: 0.55,
         delay: i * 0.175,
-        type: 'spring',
-      },
+        type: 'spring'
+      }
     }),
     hidden: {
       y: 15,
-      opacity: 0,
-    },
+      opacity: 0
+    }
   }
 
   useEffect(() => {

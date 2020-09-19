@@ -17,11 +17,11 @@ const CaseStudy = ({
   animationThreshold,
   caseStudy,
   layout,
-  mobileTextFirst,
+  mobileTextFirst
 }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: animationThreshold,
+    threshold: animationThreshold
   })
 
   const textControls = useAnimation()
@@ -29,29 +29,29 @@ const CaseStudy = ({
   const imageControls = useAnimation()
 
   const variants = {
-    visible: i => ({
+    visible: (i) => ({
       opacity: [0, 0.25, 0.4, 0.6, 0.6, 0.6, 0.7, 0.8, 1],
       y: 0,
       transition: {
         duration: 0.5,
         delay: i * 0.25,
-        type: 'spring',
-      },
+        type: 'spring'
+      }
     }),
     hidden: {
       opacity: 0,
-      y: 25,
+      y: 25
     },
     logoVisible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.85,
-      },
+        duration: 0.85
+      }
     },
     logoHidden: {
       opacity: 0,
-      y: 10,
+      y: 10
     },
     imageVisible: {
       x: 0,
@@ -60,14 +60,14 @@ const CaseStudy = ({
       transition: {
         duration: 0.75,
         delay: 0.15,
-        ease: 'easeInOut',
-      },
+        ease: 'easeInOut'
+      }
     },
     imageHidden: {
       x: layout === 'right' ? 70 : -70,
       y: 60,
-      opacity: 0,
-    },
+      opacity: 0
+    }
   }
 
   useEffect(() => {
@@ -193,7 +193,7 @@ const CaseStudy = ({
 }
 
 CaseStudy.defaultProps = {
-  animationThreshold: 0.75,
+  animationThreshold: 0.75
 }
 
 CaseStudy.propTypes = {
@@ -212,12 +212,12 @@ CaseStudy.propTypes = {
     /** Short summary of the success of the case study. */
     successSummary: PropTypes.object,
     /** The tagline of the Case Study */
-    tagline: PropTypes.string.isRequired,
+    tagline: PropTypes.string.isRequired
   }),
   /** To show the text before or after the image on mobile. */
   layout: PropTypes.oneOf(['right', 'left']),
   /** The percentage of the case study to be in view before triggering animation. */
-  mobileTextFirst: PropTypes.bool,
+  mobileTextFirst: PropTypes.bool
 }
 
 export default CaseStudy

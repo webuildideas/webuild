@@ -5,16 +5,16 @@ import { animated, useSpring } from 'react-spring'
 
 const Logo = ({ isOpen, ...props }) => {
   const openConfig = {
-    color: '#0E0E1B',
+    color: '#0E0E1B'
   }
 
   const closedConfig = {
-    color: '#fff',
+    color: '#fff'
   }
 
   const { color } = useSpring({
     to: isOpen ? closedConfig : openConfig,
-    config: { mass: 1, tension: 280, friction: 120 },
+    config: { mass: 1, tension: 280, friction: 120 }
   })
 
   return (
@@ -32,7 +32,7 @@ const Logo = ({ isOpen, ...props }) => {
 }
 
 Logo.propTypes = {
-  isOpen: PropTypes.bool,
+  isOpen: PropTypes.bool
 }
 
 export default Logo

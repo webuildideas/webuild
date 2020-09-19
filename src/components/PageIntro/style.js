@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { rhythmUnit } from '../../utils/typography'
 
 export const PageIntro = styled.section`
-  font-size: ${props => props.theme.f1};
+  font-size: ${(props) => props.theme.f1};
   line-height: 1.2;
   padding: ${() => `${rhythmUnit(2.75)} 0 0`};
 
@@ -19,7 +19,7 @@ export const PageIntro = styled.section`
   }
 
   .PageIntro__inner {
-    max-width: ${props => props.maxWidth}px;
+    max-width: ${(props) => props.maxWidth}px;
   }
 
   span {

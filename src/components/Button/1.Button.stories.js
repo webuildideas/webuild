@@ -4,12 +4,12 @@ import React from 'react'
 // Components
 import Button from '.'
 
-const buttonDecorator = story => (
+const buttonDecorator = (story) => (
   <div
     style={{
       padding: '20% 0',
       maxWidth: '400px',
-      margin: '0 auto',
+      margin: '0 auto'
     }}
   >
     {story()}
@@ -20,9 +20,9 @@ export default {
   title: 'Button',
   component: Button,
   parameters: {
-    componentSubtitle: 'Render a Button component',
+    componentSubtitle: 'Render a Button component'
   },
-  decorators: [buttonDecorator],
+  decorators: [buttonDecorator]
 }
 
 export const primary = () => (

@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { rhythmUnit } from '../../utils/typography'
 
 export const Testimonial = styled(motion.div)`
-  background-color: ${props => props.theme.white};
+  background-color: ${(props) => props.theme.white};
   min-width: 100%;
   max-width: 26.75rem;
   padding: ${() => rhythmUnit(1)};
@@ -15,7 +15,7 @@ export const Testimonial = styled(motion.div)`
   }
 
   .Testimonial {
-    font-size: ${props => props.theme.f3};
+    font-size: ${(props) => props.theme.f3};
     line-height: 1.6;
     margin-bottom: ${() => rhythmUnit(1)};
     span {
@@ -39,13 +39,13 @@ export const Testimonial = styled(motion.div)`
   }
 
   .Testimonial__client-name {
-    font-size: ${props => props.theme.f4};
+    font-size: ${(props) => props.theme.f4};
     font-weight: 700;
     margin-bottom: ${() => rhythmUnit(0.25)};
   }
 
   .Testimonial__client-company {
-    font-size: ${props => props.theme.f4};
+    font-size: ${(props) => props.theme.f4};
     font-weight: 400;
     line-height: 1.3;
   }

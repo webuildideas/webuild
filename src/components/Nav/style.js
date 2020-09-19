@@ -4,12 +4,12 @@ import styled from 'styled-components'
 export const NavContainer = styled.header`
   position: relative;
   width: 100%;
-  box-shadow: ${props =>
+  box-shadow: ${(props) =>
     props.isPinned ? '0px 4px 8px rgba(0, 0, 0, 0.1)' : ''};
-  background-color: ${props =>
+  background-color: ${(props) =>
     props.isPinned ? props.theme.white : 'rgba(0,0,0,0)'};
-  padding-top: ${props => (props.isPinned ? '0.875rem' : '1.875rem')};
-  padding-bottom: ${props => (props.isPinned ? '0.875rem' : '1.875rem')};
+  padding-top: ${(props) => (props.isPinned ? '0.875rem' : '1.875rem')};
+  padding-bottom: ${(props) => (props.isPinned ? '0.875rem' : '1.875rem')};
 
   .SiteMaxWidthContainer {
     display: flex;
@@ -19,7 +19,7 @@ export const NavContainer = styled.header`
 
   .MenuIcon {
     cursor: pointer;
-    font-size: ${props => props.theme.f2};
+    font-size: ${(props) => props.theme.f2};
     @media screen and (min-width: 768px) {
       display: none;
     }
@@ -50,15 +50,15 @@ export const NavDesktopLinks = styled.nav`
   .Button {
     display: block;
     text-align: center;
-    font-size: ${props => props.theme.f7};
+    font-size: ${(props) => props.theme.f7};
     max-width: 170px;
   }
 
   li a:not(.Button) {
     position: relative;
     text-transform: uppercase;
-    font-size: ${props => props.theme.f7};
-    letter-spacing: ${props => props.theme.tracked};
+    font-size: ${(props) => props.theme.f7};
+    letter-spacing: ${(props) => props.theme.tracked};
     font-weight: 800;
     &:before {
       content: '';
@@ -67,7 +67,7 @@ export const NavDesktopLinks = styled.nav`
       height: 2px;
       bottom: -6px;
       left: 0;
-      background-color: ${props => props.theme.blackHover};
+      background-color: ${(props) => props.theme.blackHover};
       visibility: hidden;
       transform: scaleX(0);
       transition: all 0.3s ease-in-out 0s;

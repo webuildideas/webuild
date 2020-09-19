@@ -31,28 +31,28 @@ const Meta = ({ description, lang, meta, title }) => {
   return (
     <Helmet
       htmlAttributes={{
-        lang,
+        lang
       }}
       meta={[
         {
           name: `description`,
-          content: metaDescription,
+          content: metaDescription
         },
         {
           property: `og:title`,
-          content: contentfulSeo.seoTitle,
+          content: contentfulSeo.seoTitle
         },
         {
           property: `og:image`,
-          content: contentfulSeo.seoShareImage.file.url,
+          content: contentfulSeo.seoShareImage.file.url
         },
         {
           property: `og:description`,
-          content: metaDescription,
+          content: metaDescription
         },
         {
           property: `og:type`,
-          content: `website`,
+          content: `website`
         },
         // {
         //   name: `twitter:card`,
@@ -64,12 +64,12 @@ const Meta = ({ description, lang, meta, title }) => {
         // },
         {
           name: `twitter:title`,
-          content: contentfulSeo.seoTitle,
+          content: contentfulSeo.seoTitle
         },
         {
           name: `twitter:description`,
-          content: metaDescription,
-        },
+          content: metaDescription
+        }
       ].concat(meta)}
       title={metaTitle}
       titleTemplate={`${metaTitle}`}
@@ -80,14 +80,14 @@ const Meta = ({ description, lang, meta, title }) => {
 Meta.defaultProps = {
   lang: `en`,
   meta: [],
-  description: ``,
+  description: ``
 }
 
 Meta.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string,
+  title: PropTypes.string
 }
 
 export default Meta

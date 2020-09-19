@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require('path')
 
 exports.createPages = async ({ graphql, actions }) => {
@@ -20,8 +21,8 @@ exports.createPages = async ({ graphql, actions }) => {
       path: `/case-studies/${node.slug}`,
       component: path.resolve('./src/components/CaseStudyDetail/index.js'),
       context: {
-        slug: node.slug,
-      },
+        slug: node.slug
+      }
     })
   })
 }

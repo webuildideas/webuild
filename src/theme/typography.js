@@ -19,17 +19,17 @@ export const typography = {
   // Remove below
   f5: '1rem',
   f6: '0.79rem',
-  f7: '0.702rem',
+  f7: '0.702rem'
 }
 
 // Helper function for user to provide designer with scale
-export const getScaleByPercentage = percentage => {
+export const getScaleByPercentage = (percentage) => {
   const typeScale = ['2.566rem', '1.602rem', '1rem', '0.79rem']
 
   const newBaseFontSize = (16 * percentage) / 100
 
   const newRemScale = typeScale.map(
-    step => `${(parseFloat(step) * newBaseFontSize).toFixed(3)}px`
+    (step) => `${(parseFloat(step) * newBaseFontSize).toFixed(3)}px`
   )
 
   return { ...newRemScale }

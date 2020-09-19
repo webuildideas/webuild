@@ -16,7 +16,7 @@ import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
  * @return {Object} the object to use wtih dangerosulySetInnerHTML that includes
  * the updated string with added span tag around bold copy.
  */
-const renderMarkdownBold = md => {
+const renderMarkdownBold = (md) => {
   const regex = /([__]{2})/
   const formattedCopy = md.replace(regex, '<span>').replace(regex, '</span>')
   return formattedCopy
@@ -35,13 +35,13 @@ const PageIntro = ({ children, maxWidth, animationDelay }) => (
               duration: 2.5,
               delay: animationDelay,
               ease: 'easeIn',
-              type: 'spring',
-            },
+              type: 'spring'
+            }
           }}
           dangerouslySetInnerHTML={{ __html: renderMarkdownBold(children) }}
           initial={{
             y: 30,
-            opacity: 0,
+            opacity: 0
           }}
         />
       </div>
@@ -55,12 +55,12 @@ PageIntro.propTypes = {
   /** The copy for the PageIntro */
   children: PropTypes.node.isRequired,
   /** The max width of the copy */
-  maxWidth: PropTypes.number,
+  maxWidth: PropTypes.number
 }
 
 PageIntro.defaultProps = {
   maxWidth: 1080,
-  animationDelay: 0.5,
+  animationDelay: 0.5
 }
 
 export default PageIntro

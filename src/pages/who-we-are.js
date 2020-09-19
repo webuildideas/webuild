@@ -32,29 +32,29 @@ const WhoWeAre = ({ data }) => {
 
   const [ref, inView] = useInView({
     threshold: 0.7,
-    triggerOnce: true,
+    triggerOnce: true
   })
 
   const controls = useAnimation()
 
   const variants = {
-    visible: i => ({
+    visible: (i) => ({
       y: 0,
       x: 0,
       opacity: 1,
       transition: {
         duration: 0.9,
-        delay: i * 0.252,
-      },
+        delay: i * 0.252
+      }
     }),
     headingHidden: {
       y: -25,
-      opacity: 0,
+      opacity: 0
     },
     textHidden: {
       x: -25,
-      opacity: 0,
-    },
+      opacity: 0
+    }
   }
 
   useEffect(() => {
@@ -77,7 +77,7 @@ const WhoWeAre = ({ data }) => {
 
       <div
         style={{
-          marginBottom: `${rhythmUnit(3)}`,
+          marginBottom: `${rhythmUnit(3)}`
         }}
       >
         <TestimonialSlider testimonials={testimonialData} />
@@ -87,7 +87,7 @@ const WhoWeAre = ({ data }) => {
         ref={ref}
         style={{
           backgroundColor: '#F9F9F9',
-          padding: `${rhythmUnit(3)} 0`,
+          padding: `${rhythmUnit(3)} 0`
         }}
       >
         <BioCard>
@@ -140,7 +140,7 @@ const WhoWeAre = ({ data }) => {
 
       <div
         style={{
-          padding: `${rhythmUnit(3)} 0`,
+          padding: `${rhythmUnit(3)} 0`
         }}
       >
         <JoinUs />
@@ -151,7 +151,7 @@ const WhoWeAre = ({ data }) => {
 }
 
 WhoWeAre.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired
 }
 
 export const WHO_WE_ARE_QUERY = graphql`

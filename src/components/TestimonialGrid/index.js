@@ -22,7 +22,7 @@ const TestimonialGrid = ({ testimonials }) => {
     1100: 2,
     900: 2,
     700: 1,
-    500: 1,
+    500: 1
   }
   return (
     <S.TestimonialGrid>
@@ -31,7 +31,7 @@ const TestimonialGrid = ({ testimonials }) => {
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column"
       >
-        {testimonials.map(t => (
+        {testimonials.map((t) => (
           <Testimonial
             key={t.name}
             company={t.company}
@@ -54,16 +54,16 @@ TestimonialGrid.propTypes = {
       headShot: PropTypes.shape({
         fixed: PropTypes.shape({
           src: PropTypes.string,
-          srcSet: PropTypes.string,
-        }),
+          srcSet: PropTypes.string
+        })
       }),
       name: PropTypes.string,
       role: PropTypes.string,
       testimonial: PropTypes.shape({
-        testimonial: PropTypes.string,
-      }),
+        testimonial: PropTypes.string
+      })
     })
-  ).isRequired,
+  ).isRequired
 }
 
 export default TestimonialGrid

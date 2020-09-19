@@ -27,7 +27,7 @@ const BioCard = ({ children }) => {
 
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.75,
+    threshold: 0.75
   })
 
   const controls = useAnimation()
@@ -39,13 +39,13 @@ const BioCard = ({ children }) => {
       opacity: 1,
       transition: {
         duration: 0.9,
-        delay: 0.4,
-      },
+        delay: 0.4
+      }
     },
     hidden: {
       x: 25,
-      opacity: 0,
-    },
+      opacity: 0
+    }
   }
 
   useEffect(() => {
@@ -72,7 +72,7 @@ const BioCard = ({ children }) => {
 
 BioCard.propTypes = {
   /** The copy for the BioCard */
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 }
 
 export default BioCard

@@ -15,7 +15,7 @@ import SiteMaxWidthContainer from '../../Shared/SiteMaxWidthContainer'
 
 const CaseStudyFeaturedTestimonial = ({ featuredTestimonial }) => {
   const [ref, inView] = useInView({
-    triggerOnce: true,
+    triggerOnce: true
   })
   const controls = useAnimation()
 
@@ -25,8 +25,8 @@ const CaseStudyFeaturedTestimonial = ({ featuredTestimonial }) => {
       opacity: [0.5, 0.6, 0.7, 1],
       transition: {
         duration: 1.2,
-        ease: 'backInOut',
-      },
+        ease: 'backInOut'
+      }
     },
     hidden: {
       width: '0%',
@@ -39,8 +39,8 @@ const CaseStudyFeaturedTestimonial = ({ featuredTestimonial }) => {
       height: '100%',
       top: 0,
       left: 0,
-      zIndex: -1,
-    },
+      zIndex: -1
+    }
   }
 
   useEffect(() => {
@@ -56,7 +56,7 @@ const CaseStudyFeaturedTestimonial = ({ featuredTestimonial }) => {
         position: 'relative',
         paddingTop: `${rhythmUnit(4)}`,
         paddingBottom: `${rhythmUnit(4)}`,
-        marginBottom: `${rhythmUnit(3.75)}`,
+        marginBottom: `${rhythmUnit(3.75)}`
       }}
     >
       <motion.div
@@ -89,8 +89,8 @@ CaseStudyFeaturedTestimonial.propTypes = {
     isFeatured: PropTypes.bool,
     name: PropTypes.string,
     role: PropTypes.string,
-    testimonial: PropTypes.object,
-  }),
+    testimonial: PropTypes.object
+  })
 }
 
 export default CaseStudyFeaturedTestimonial

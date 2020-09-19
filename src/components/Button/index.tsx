@@ -1,19 +1,35 @@
-// Packages
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
 
-// Styled Components
 import * as S from './style'
-/**
- * A Button can be rendered as a Gatsby`<Link>` or a regular `<a>` tag
- * depending on the `type` you pass to it.
- */
-const Button = ({ children, type, href, animationDelay, ...props }) => {
+
+type ButtonType =
+  | 'primaryButton'
+  | 'secondaryButton'
+  | 'primaryLink'
+  | 'secondaryLink'
+  | 'primaryOutbound'
+  | 'secondaryOutbound'
+
+interface Props {
+  animationDelay: number
+  children: React.ReactNode
+  href: string
+  type: ButtonType
+}
+
+const Button = ({
+  children,
+  type = 'primaryButton',
+  href,
+  animationDelay = 0.2,
+  ...props
+}: Props) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.75,
+    threshold: 0.75
   })
   const controls = useAnimation()
   const textControls = useAnimation()
@@ -24,18 +40,18 @@ const Button = ({ children, type, href, animationDelay, ...props }) => {
       opacity: 1,
       transition: {
         duration: 0.4,
-        delay: animationDelay + 0.1,
-      },
+        delay: animationDelay + 0.1
+      }
     },
 
     hidden: {
       y: 15,
-      opacity: 0,
+      opacity: 0
     },
 
     textHidden: {
       opacity: 0,
-      y: 100,
+      y: 100
     },
     textVisible: {
       opacity: 1,
@@ -43,9 +59,9 @@ const Button = ({ children, type, href, animationDelay, ...props }) => {
       transition: {
         duration: 0.2,
         type: 'spring',
-        delay: animationDelay + 0.2,
-      },
-    },
+        delay: animationDelay + 0.2
+      }
+    }
   }
 
   useEffect(() => {
@@ -182,28 +198,6 @@ const Button = ({ children, type, href, animationDelay, ...props }) => {
     }
   }
   return renderButtonType()
-}
-
-Button.propTypes = {
-  animationDelay: PropTypes.number,
-  /** The Text of the button. */
-  children: PropTypes.node,
-  /** Location of the button */
-  href: PropTypes.string,
-  /** The style and type of button to render, if using primaryLink or SecondaryLink then the Gatsby <Link> component will be used instead of <a> */
-  type: PropTypes.oneOf([
-    'primaryButton',
-    'secondaryButton',
-    'primaryLink',
-    'secondaryLink',
-    'primaryOutbound',
-    'secondaryOutbound',
-  ]),
-}
-
-Button.defaultProps = {
-  type: 'primaryButton',
-  animationDelay: 0.2,
 }
 
 export default Button

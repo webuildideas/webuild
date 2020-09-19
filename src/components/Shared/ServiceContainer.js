@@ -44,13 +44,13 @@ const ServiceContainer = styled.div`
   }
 
   h3 {
-    font-size: ${props => props.theme.f1};
+    font-size: ${(props) => props.theme.f1};
     margin-bottom: ${() => rhythmUnit(1)};
     line-height: 1.1;
   }
 
   p {
-    color: ${props => props.theme.grey};
+    color: ${(props) => props.theme.grey};
     line-height: 1.6;
     letter-spacing: 0.02em;
   }

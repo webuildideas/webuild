@@ -33,9 +33,9 @@ CaseStudyListing.propTypes = {
       listingImage: PropTypes.object,
       name: PropTypes.string,
       slug: PropTypes.string,
-      tagline: PropTypes.string,
+      tagline: PropTypes.string
     })
-  ).isRequired,
+  ).isRequired
 }
 
 export default CaseStudyListing

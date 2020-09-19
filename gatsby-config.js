@@ -1,6 +1,6 @@
-require('dotenv').config({
+require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
-})
+});
 
 module.exports = {
   siteMetadata: {
@@ -10,6 +10,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-typescript`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -148,15 +149,15 @@ module.exports = {
     {
       resolve: `gatsby-plugin-netlify`,
       allPageHeaders: [
-        '/*.html; cache-control: public, max-age=0,must-revalidate',
-        '/*/*.html; cache-control: public, max-age=0,must-revalidate',
-        '/page-data/*; cache-control: public, max-age=0,must-revalidate',
-        '/static/*; cache-control: public, max-age=31536000, immutable',
-        '/*.js; cache-control: public, max-age=31536000, immutable',
-        '/sw.js; cache-control: public, max-age=0, must-revalidate',
-        '/*.css; cache-control: public, max-age=31536000, immutable',
-        '/google-fonts/*; cache-control: public, max-age=31536000, immutable',
+        "/*.html; cache-control: public, max-age=0,must-revalidate",
+        "/*/*.html; cache-control: public, max-age=0,must-revalidate",
+        "/page-data/*; cache-control: public, max-age=0,must-revalidate",
+        "/static/*; cache-control: public, max-age=31536000, immutable",
+        "/*.js; cache-control: public, max-age=31536000, immutable",
+        "/sw.js; cache-control: public, max-age=0, must-revalidate",
+        "/*.css; cache-control: public, max-age=31536000, immutable",
+        "/google-fonts/*; cache-control: public, max-age=31536000, immutable",
       ],
     },
   ],
-}
+};

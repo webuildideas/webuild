@@ -29,5 +29,5 @@ export const colorPalette = {
   red: '#EC6040',
   redHover: '#F08066',
   yellow: '#F0A94C',
-  yellowHover: '#F3BA70',
+  yellowHover: '#F3BA70'
 }

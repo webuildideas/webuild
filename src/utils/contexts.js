@@ -13,5 +13,5 @@ export const AppContext = createContext({
   },
   togglePinnedNav: () => {
     console.log('working')
-  },
+  }
 })

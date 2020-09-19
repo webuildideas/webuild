@@ -25,7 +25,7 @@ export const CaseStudyHero = styled.div`
     display: block;
     width: 105%;
     height: 90%;
-    background-image: url(${props => props.backgroundSvg});
+    background-image: url(${(props) => props.backgroundSvg});
     background-repeat: no-repeat;
     background-size: cover;
     border-bottom-left-radius: 90% 18%;

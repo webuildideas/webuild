@@ -25,7 +25,7 @@ const Testimonial = ({
 }) => {
   const [ref, inView] = useInView({
     threshold: 0.75,
-    triggerOnce: true,
+    triggerOnce: true
   })
 
   const controls = useAnimation()
@@ -33,18 +33,18 @@ const Testimonial = ({
   const headshotControls = useAnimation()
 
   const variants = {
-    visible: i => ({
+    visible: (i) => ({
       opacity: [0, 0.25, 0.4, 0.6, 0.6, 0.6, 0.7, 0.8, 1],
       y: 0,
       transition: {
         duration: 0.75,
-        delay: i * 0.25,
-      },
+        delay: i * 0.25
+      }
     }),
     hidden: {
       opacity: 0,
-      y: 25,
-    },
+      y: 25
+    }
   }
 
   const featureHeadshotVariants = {
@@ -53,13 +53,13 @@ const Testimonial = ({
       y: '0%',
       transition: {
         ease: 'easeInOut',
-        duration: 0.9,
-      },
+        duration: 0.9
+      }
     },
     hidden: {
       opacity: 0.75,
-      y: '100%',
-    },
+      y: '100%'
+    }
   }
 
   const headshotVariants = {
@@ -68,17 +68,17 @@ const Testimonial = ({
       transition: {
         ease: 'easeInOut',
         duration: 1,
-        delay: 0.75,
-      },
+        delay: 0.75
+      }
     },
     hidden: {
       opacity: 0,
       width: '100%',
-      height: '100%',
-    },
+      height: '100%'
+    }
   }
 
-  const renderMarkdownBold = md => {
+  const renderMarkdownBold = (md) => {
     const regex = /([__]{2})/
     const formattedCopy = md.replace(regex, '<span>').replace(regex, '</span>')
     return formattedCopy
@@ -96,7 +96,7 @@ const Testimonial = ({
    * If isStory is true the component is being rendered in Storybook
    * Storybook currently has errors with gatsby-img due to GraphQL queries
    */
-  const renderHeadshot = headshotSrc => {
+  const renderHeadshot = (headshotSrc) => {
     if (isStory || isFeatured) {
       return (
         <div className="img-container">
@@ -226,12 +226,12 @@ Testimonial.propTypes = {
   /** Whether it is displaying in storybook (does not use gatsby-image when true) */
   isStory: PropTypes.bool,
   /** The name of the client */
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired
 }
 
 Testimonial.defaultProps = {
   isFeatured: false,
-  isStory: false,
+  isStory: false
 }
 
 export default Testimonial

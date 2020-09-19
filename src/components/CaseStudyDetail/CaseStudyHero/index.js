@@ -13,16 +13,16 @@ const CaseStudyHero = ({ background, successSummary, logo, heroImg }) => (
       <motion.div
         animate={{
           opacity: 1,
-          left: '0px',
+          left: '0px'
         }}
         initial={{
           position: 'relative',
           overflow: 'hidden',
           left: '-60px',
-          opacity: 0,
+          opacity: 0
         }}
         transition={{
-          duration: 0.75,
+          duration: 0.75
         }}
       >
         <S.CaseStudyLogo alt="logo" src={logo} />
@@ -40,7 +40,7 @@ const CaseStudyHero = ({ background, successSummary, logo, heroImg }) => (
           top: '120px',
           overflow: 'hidden',
           position: 'relative',
-          opacity: 0,
+          opacity: 0
         }}
         transition={{ duration: 0.75, delay: 0.25 }}
       >
@@ -54,7 +54,7 @@ CaseStudyHero.propTypes = {
   background: PropTypes.string,
   heroImg: PropTypes.object,
   logo: PropTypes.string,
-  successSummary: PropTypes.string,
+  successSummary: PropTypes.string
 }
 
 export default CaseStudyHero

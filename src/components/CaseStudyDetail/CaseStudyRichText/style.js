@@ -10,7 +10,7 @@ export const CaseStudyRichText = styled.section`
   margin-right: auto;
   margin-bottom: ${() => rhythmUnit(4)};
   h2 {
-    font-size: ${props => props.theme.f1};
+    font-size: ${(props) => props.theme.f1};
     font-weight: 900;
     max-width: 840px;
     margin-bottom: ${() => rhythmUnit(1)};
@@ -24,7 +24,7 @@ export const CaseStudyRichText = styled.section`
     }
   }
   p {
-    font-size: ${props => props.theme.f3};
+    font-size: ${(props) => props.theme.f3};
     padding-left: ${() => rhythmUnit(1)};
     padding-right: ${() => rhythmUnit(1)};
     line-height: 1.6;

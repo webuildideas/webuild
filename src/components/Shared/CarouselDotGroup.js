@@ -20,7 +20,7 @@ const CarouselDotGroup = styled(DotGroup)`
     background-color: #e7e7e7;
     margin-bottom: ${() => rhythmUnit(0.5)};
     &.carousel__dot--selected {
-      background-color: ${props => props.theme.bisonHide};
+      background-color: ${(props) => props.theme.bisonHide};
     }
     &:not(:last-of-type) {
       margin-right: ${() => rhythmUnit(0.6)};

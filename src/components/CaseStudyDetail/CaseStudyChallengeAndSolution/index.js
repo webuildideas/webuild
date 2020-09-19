@@ -13,23 +13,23 @@ import * as S from '../style'
 const CaseStudyChallengeAndSolution = ({ challenge, solution }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.75,
+    threshold: 0.75
   })
   const controls = useAnimation()
 
   const variants = {
-    visible: i => ({
+    visible: (i) => ({
       opacity: [0, 0.25, 0.4, 0.6, 0.6, 0.6, 0.7, 0.8, 1],
       y: 0,
       transition: {
         duration: 0.5,
-        delay: i * 0.25,
-      },
+        delay: i * 0.25
+      }
     }),
     hidden: {
       opacity: 0,
-      y: 15,
-    },
+      y: 15
+    }
   }
 
   useEffect(() => {
@@ -86,7 +86,7 @@ const CaseStudyChallengeAndSolution = ({ challenge, solution }) => {
 
 CaseStudyChallengeAndSolution.propTypes = {
   challenge: PropTypes.string,
-  solution: PropTypes.string,
+  solution: PropTypes.string
 }
 
 export default CaseStudyChallengeAndSolution

@@ -15,24 +15,24 @@ const Footer = () => {
   const d = new Date()
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.75,
+    threshold: 0.75
   })
 
   const controls = useAnimation()
 
   const variants = {
-    visible: i => ({
+    visible: (i) => ({
       y: 0,
       opacity: 1,
       transition: {
         duration: 0.6,
-        delay: i * 0.152,
-      },
+        delay: i * 0.152
+      }
     }),
     hidden: {
       y: 10,
-      opacity: 0,
-    },
+      opacity: 0
+    }
   }
 
   useEffect(() => {

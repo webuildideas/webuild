@@ -49,7 +49,7 @@ export const BioContent = styled(motion.div)`
   }
 
   h2 {
-    font-size: ${props => props.theme.f3};
+    font-size: ${(props) => props.theme.f3};
     text-transform: uppercase;
     margin-bottom: ${() => rhythmUnit(0.75)};
     font-weight: 800;
@@ -58,9 +58,9 @@ export const BioContent = styled(motion.div)`
 
   p {
     line-height: 1.6;
-    font-size: ${props => props.theme.f4};
+    font-size: ${(props) => props.theme.f4};
     @media (min-width: 768px) {
-      font-size: ${props => props.theme.f3};
+      font-size: ${(props) => props.theme.f3};
     }
   }
 
@@ -69,7 +69,7 @@ export const BioContent = styled(motion.div)`
     transition: 200ms ease color;
     text-decoration: underline;
     &:hover {
-      color: ${props => props.theme.comet};
+      color: ${(props) => props.theme.comet};
       text-decoration: underline;
     }
   }

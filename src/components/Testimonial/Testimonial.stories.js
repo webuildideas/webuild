@@ -12,15 +12,15 @@ export default {
   title: 'Testimonial',
   component: Testimonial,
   parameters: {
-    componentSubtitle: 'Display Client Testimonials',
-  },
+    componentSubtitle: 'Display Client Testimonials'
+  }
 }
 
-const normalDecorator = story => (
+const normalDecorator = (story) => (
   <div
     style={{
       backgroundColor: '#F9F9F9',
-      padding: '32px',
+      padding: '32px'
     }}
   >
     {story()}
@@ -44,14 +44,14 @@ export const normal = () => (
 
 normal.story = {
   name: 'Default',
-  decorators: [normalDecorator],
+  decorators: [normalDecorator]
 }
 
-const featuredDecorator = story => (
+const featuredDecorator = (story) => (
   <div
     style={{
       backgroundColor: '#F9F9F9',
-      padding: '128px 32px',
+      padding: '128px 32px'
     }}
   >
     {story()}
@@ -76,5 +76,5 @@ export const featured = () => (
 )
 
 featured.story = {
-  decorators: [featuredDecorator],
+  decorators: [featuredDecorator]
 }

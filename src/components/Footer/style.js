@@ -5,14 +5,14 @@ import styled from 'styled-components'
 import { rhythmUnit } from '../../utils/typography'
 
 export const Footer = styled.footer`
-  background-color: ${props => props.theme.vulcan};
+  background-color: ${(props) => props.theme.vulcan};
   color: #fff;
   padding: ${() => `${rhythmUnit(3.75)} 0 ${rhythmUnit(2)}`};
 
   .Footer__btn {
     background-color: #fff;
     &:after {
-      background-color: ${props => props.theme.vulcan};
+      background-color: ${(props) => props.theme.vulcan};
     }
     span.border {
       border-color: #fff;
@@ -33,14 +33,14 @@ export const Footer = styled.footer`
     align-items: center;
     font-weight: 800;
     text-transform: uppercase;
-    border-top: 1px solid ${props => props.theme.tuna};
+    border-top: 1px solid ${(props) => props.theme.tuna};
     padding-top: ${() => rhythmUnit(2)};
     margin-top: ${() => rhythmUnit(2.75)};
-    font-size: ${props => props.theme.f4};
+    font-size: ${(props) => props.theme.f4};
   }
 
   .Footer__copyright {
-    color: ${props => props.theme.comet};
+    color: ${(props) => props.theme.comet};
     @media (max-width: 500px) {
       width: 100%;
       order: 2;
@@ -53,7 +53,7 @@ export const Footer = styled.footer`
       order: 1;
       margin-bottom: ${() => rhythmUnit(1.25)};
     }
-    color: ${props => props.theme.comet};
+    color: ${(props) => props.theme.comet};
     a {
       color: #fff;
     }

@@ -8,8 +8,8 @@ export default {
   title: 'PageIntro',
   component: PageIntro,
   parameters: {
-    componentSubtitle: 'Page Intro Hero Text',
-  },
+    componentSubtitle: 'Page Intro Hero Text'
+  }
 }
 
 export const normal = () => (
@@ -21,5 +21,5 @@ export const normal = () => (
 )
 
 normal.story = {
-  name: 'Default',
+  name: 'Default'
 }

@@ -40,24 +40,24 @@ const IndexPage = ({ data }) => {
   const homeData = data.contentfulHomePage
   const [ref, inView] = useInView({
     threshold: 1,
-    triggerOnce: true,
+    triggerOnce: true
   })
 
   const controls = useAnimation()
 
   const variants = {
-    visible: i => ({
+    visible: (i) => ({
       y: 0,
       opacity: 1,
       transition: {
         duration: 0.65,
-        delay: i * 0.3,
-      },
+        delay: i * 0.3
+      }
     }),
     hidden: {
       y: 25,
-      opacity: 0,
-    },
+      opacity: 0
+    }
   }
 
   useEffect(() => {
@@ -82,7 +82,7 @@ const IndexPage = ({ data }) => {
         <SiteMaxWidthContainer
           style={{
             paddingTop: `${rhythmUnit(3.5)}`,
-            paddingBottom: `${rhythmUnit(4)}`,
+            paddingBottom: `${rhythmUnit(4)}`
           }}
         >
           <SectionHeading
@@ -137,7 +137,7 @@ const IndexPage = ({ data }) => {
 }
 
 IndexPage.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired
 }
 
 export const HOMEPAGE_QUERY = graphql`

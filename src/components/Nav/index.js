@@ -29,13 +29,13 @@ const Nav = ({ isNavOpen, isNavPinned, toggleNav, togglePinnedNav }) => {
       y: 0,
       transition: {
         duration: 0.75,
-        delay: i * 0.5,
-      },
+        delay: i * 0.5
+      }
     }),
     hidden: {
       opacity: 0,
-      y: -25,
-    },
+      y: -25
+    }
   }
 
   useEffect(() => {
@@ -132,7 +132,7 @@ Nav.propTypes = {
   isNavOpen: PropTypes.bool,
   isNavPinned: PropTypes.bool,
   toggleNav: PropTypes.func,
-  togglePinnedNav: PropTypes.func,
+  togglePinnedNav: PropTypes.func
 }
 
 export default Nav

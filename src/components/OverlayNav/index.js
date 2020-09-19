@@ -11,42 +11,42 @@ const OverlayNav = ({ isOpen, onContact, toggleNav }) => {
   const navLinks = [
     {
       title: 'Work',
-      slug: '/',
+      slug: '/'
     },
     {
       title: 'Who we are',
-      slug: '/who-we-are',
+      slug: '/who-we-are'
     },
     {
       title: 'Get in touch',
-      slug: '/get-in-touch',
-    },
+      slug: '/get-in-touch'
+    }
   ]
 
   const overlaySpring = useSpring({
     left: isOpen ? '0%' : '-100%',
-    config: { mass: 1, tension: 295, friction: 40 },
+    config: { mass: 1, tension: 295, friction: 40 }
   })
 
   const linkTrail = useTrail(navLinks.length, {
     // ref: linkTrailRef,
     from: {
       opacity: 0,
-      y: 100,
+      y: 100
     },
     opacity: isOpen ? 1 : 0,
     y: 0,
     config: { mass: 1, tension: 295, friction: 40 },
-    delay: 550,
+    delay: 550
   })
 
   const fadeInSpring = useSpring({
     opacity: isOpen ? 1 : 0,
     config: config.molasses,
-    delay: 800,
+    delay: 800
   })
 
-  const renderNavLink = link => {
+  const renderNavLink = (link) => {
     if (link.title === 'Get in touch') {
       return (
         <a href="mailto:hi@webuild.io" onClick={onContact}>
@@ -69,7 +69,7 @@ const OverlayNav = ({ isOpen, onContact, toggleNav }) => {
             style={{
               ...rest,
               // eslint-disable-next-line no-shadow
-              transform: y.interpolate(y => `translate3d(0,${y}px,0)`),
+              transform: y.interpolate((y) => `translate3d(0,${y}px,0)`)
             }}
           >
             {renderNavLink(navLinks[index])}
@@ -105,7 +105,7 @@ const OverlayNav = ({ isOpen, onContact, toggleNav }) => {
 OverlayNav.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onContact: PropTypes.func,
-  toggleNav: PropTypes.func,
+  toggleNav: PropTypes.func
 }
 
 export default OverlayNav

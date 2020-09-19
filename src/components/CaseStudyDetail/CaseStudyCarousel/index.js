@@ -12,24 +12,24 @@ import CarouselDotGroup from '../../Shared/CarouselDotGroup'
 const CaseStudyCarousel = ({ images, autoplay }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.5,
+    threshold: 0.5
   })
 
   const controls = useAnimation()
 
   const variants = {
-    visible: i => ({
+    visible: (i) => ({
       opacity: [0, 0.25, 0.4, 0.6, 0.6, 0.6, 0.7, 0.8, 1],
       y: 0,
       transition: {
         duration: 0.75,
-        delay: i * 0.25,
-      },
+        delay: i * 0.25
+      }
     }),
     hidden: {
       opacity: 0,
-      y: 25,
-    },
+      y: 25
+    }
   }
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const CaseStudyCarousel = ({ images, autoplay }) => {
     }
   }, [controls, inView])
 
-  const renderImg = image => {
+  const renderImg = (image) => {
     if (image.fluid) {
       return (
         <img alt="carousel" src={image.fluid.src} srcSet={image.fluid.srcSet} />
@@ -76,11 +76,11 @@ const CaseStudyCarousel = ({ images, autoplay }) => {
 
 CaseStudyCarousel.propTypes = {
   autoplay: PropTypes.bool,
-  images: PropTypes.array,
+  images: PropTypes.array
 }
 
 CaseStudyCarousel.defaultProps = {
-  autoplay: false,
+  autoplay: false
 }
 
 export default CaseStudyCarousel

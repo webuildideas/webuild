@@ -8,8 +8,8 @@ export const GlobalStyle = createGlobalStyle`
   ${reset}
   html {
     box-sizing: border-box;
-    font-family: ${props => props.theme.primaryFontFamily};
-    color: ${props => props.theme.vulcan};
+    font-family: ${(props) => props.theme.primaryFontFamily};
+    color: ${(props) => props.theme.vulcan};
     // Base Font size is 20px
     font-size: 125%;
     line-height: 1.6;
@@ -57,7 +57,7 @@ export const GlobalStyle = createGlobalStyle`
   button,
   input[type="button"],
   input[type="submit"] {
-    font-family: ${props => props.theme.primaryFontFamily};
+    font-family: ${(props) => props.theme.primaryFontFamily};
     border: 1px solid currentColor;
     cursor: pointer;
     &::-moz-focus-inner {
@@ -74,78 +74,78 @@ export const GlobalStyle = createGlobalStyle`
 
   h1,
   .h1{
-    font-size: ${props => props.theme.f1};
+    font-size: ${(props) => props.theme.f1};
     letter-spacing: -0.035rem;
     font-weight: 900;
   }
 
   h2,
   .h2{
-    font-size: ${props => props.theme.f2};
+    font-size: ${(props) => props.theme.f2};
     letter-spacing: -0.03rem;
     font-weight: 900;
   }
 
   h3,
   .h3{
-    font-size: ${props => props.theme.f3};
+    font-size: ${(props) => props.theme.f3};
     letter-spacing: -0.02rem;
     font-weight: 800;
   }
 
   h4,
   .h4{
-    font-size: ${props => props.theme.f4};
+    font-size: ${(props) => props.theme.f4};
   }
 
   h5,
   .h5{
-    font-size: ${props => props.theme.f5};
+    font-size: ${(props) => props.theme.f5};
     letter-spacing: .035rem;
   }
 
   h6,
   .h6{
-    font-size: ${props => props.theme.f6};
+    font-size: ${(props) => props.theme.f6};
     letter-spacing: .05rem;
   }
 
    .f1 {
-    font-size: ${props => props.theme.f1};
+    font-size: ${(props) => props.theme.f1};
     letter-spacing: -0.035rem;
     font-weight: 900;
   }
 
 
   .f2 {
-    font-size: ${props => props.theme.f2};
+    font-size: ${(props) => props.theme.f2};
     letter-spacing: -0.03rem;
     font-weight: 900;
   }
 
   .f3 {
-    font-size: ${props => props.theme.f3};
+    font-size: ${(props) => props.theme.f3};
     letter-spacing: -0.03rem;
     font-weight: 800;
   }
 
   .f4 {
-    font-size: ${props => props.theme.f4};
+    font-size: ${(props) => props.theme.f4};
     letter-spacing: -0.03rem;
   }
 
   .f5 {
-    font-size: ${props => props.theme.f5};
+    font-size: ${(props) => props.theme.f5};
     letter-spacing: .035rem;
   }
 
   .f6 {
-    font-size: ${props => props.theme.f6};
+    font-size: ${(props) => props.theme.f6};
     letter-spacing: .05rem;
   }
 
   .f7 {
-    font-size: ${props => props.theme.f7}
+    font-size: ${(props) => props.theme.f7}
   }
 
 
@@ -208,7 +208,7 @@ export const GlobalStyle = createGlobalStyle`
         background: transparent;
       }
       &:hover {
-        color: ${props => props.theme.vulcan};;
+        color: ${(props) => props.theme.vulcan};;
       }
     }
   }
