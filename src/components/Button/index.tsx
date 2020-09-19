@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import PropTypes from 'prop-types'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
 
@@ -14,10 +13,10 @@ type ButtonType =
   | 'secondaryOutbound'
 
 interface Props {
-  animationDelay: number
-  children: React.ReactNode
   href: string
-  type: ButtonType
+  type?: ButtonType
+  animationDelay?: number
+  children: React.ReactNode
 }
 
 const Button = ({
@@ -75,7 +74,7 @@ const Button = ({
     switch (type) {
       case 'primaryLink':
         return (
-          <S.PrimaryLink to={href} {...props}>
+          <S.PrimaryLink to={href} {...props} data-testid="primaryLink">
             <motion.span
               animate={controls}
               className="border"
@@ -95,7 +94,7 @@ const Button = ({
         )
       case 'secondaryLink':
         return (
-          <S.SecondaryLink to={href} {...props}>
+          <S.SecondaryLink to={href} {...props} data-testid="secondaryLink">
             <motion.span
               animate={controls}
               className="border"
@@ -115,7 +114,7 @@ const Button = ({
         )
       case 'primaryButton':
         return (
-          <S.PrimaryButton href={href} {...props}>
+          <S.PrimaryButton href={href} {...props} data-testid="primaryButton">
             <motion.span
               animate={controls}
               className="border"
@@ -135,7 +134,11 @@ const Button = ({
         )
       case 'secondaryButton':
         return (
-          <S.SecondaryButton href={href} {...props}>
+          <S.SecondaryButton
+            href={href}
+            {...props}
+            data-testid="secondaryButton"
+          >
             <motion.span
               animate={controls}
               className="border"
@@ -155,7 +158,11 @@ const Button = ({
         )
       case 'primaryOutbound':
         return (
-          <S.PrimaryOutbound href={href} {...props}>
+          <S.PrimaryOutbound
+            href={href}
+            {...props}
+            data-testid="primaryOutbound"
+          >
             <motion.span
               animate={controls}
               className="border"
@@ -175,7 +182,11 @@ const Button = ({
         )
       case 'secondaryOutbound':
         return (
-          <S.SecondaryOutbound href={href} {...props}>
+          <S.SecondaryOutbound
+            href={href}
+            {...props}
+            data-testid="secondaryOutbound"
+          >
             <motion.span
               animate={controls}
               className="border"
