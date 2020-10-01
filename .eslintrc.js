@@ -40,7 +40,12 @@ module.exports = {
     '@typescript-eslint/ban-ts-ignore': 'off',
     'import/extensions': 0,
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    'no-submodule-imports': [true, 'gatsby-plugin-transition-link'],
+    '@typescript-eslint/no-unused-vars': ['error'],
+    'no-submodule-imports': 0,
+    'react/require-default-props': 0,
+    'import/prefer-default-export': 0,
+    'react/forbid-prop-types': 0,
+    'react/no-array-index-key': 0,
     'react/jsx-filename-extension': [
       1,
       { extensions: ['.js', '.jsx', '.tsx'] }
@@ -68,7 +73,8 @@ module.exports = {
     ]
   },
   env: {
-    'jest/globals': true
+    'jest/globals': true,
+    browser: true
   },
   settings: {
     react: {

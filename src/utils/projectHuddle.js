@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-console */
 export const callProjectHuddle = () => {
   if (process.env.NODE_ENV === 'production') {
     const d = document

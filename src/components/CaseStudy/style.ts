@@ -4,7 +4,10 @@ import styled from 'styled-components'
 // utils
 import { rhythmUnit } from '../../utils/typography'
 
-export const CaseStudy = styled.article`
+export const CaseStudy = styled.article<{
+  mobileTextFirst: boolean
+  layout: 'left' | 'right'
+}>`
   position: relative;
   display: flex;
   flex-wrap: wrap;

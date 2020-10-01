@@ -70,7 +70,13 @@ const Footer = () => {
           href="mailto:hi@webuild.io"
           type="primaryButton"
         >
-          <span className="wave-emoji">👋</span>
+          <span
+            aria-label="Waving hand emoji"
+            className="wave-emoji"
+            role="img"
+          >
+            👋
+          </span>
           HI@WEBUILD.IO
         </Button>
 

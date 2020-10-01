@@ -16,6 +16,10 @@ interface Props {
   href: string
   type?: ButtonType
   animationDelay?: number
+  bg?: string
+  cover?: boolean
+  direction?: 'top' | 'left' | 'right' | 'bottom'
+  duration?: number
   children: React.ReactNode
 }
 
