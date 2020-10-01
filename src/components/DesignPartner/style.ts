@@ -1,7 +1,4 @@
-// Packages
 import styled from 'styled-components'
-
-// Utils
 import { rhythmUnit } from '../../utils/typography'
 
 export const DesignPartner = styled.section`

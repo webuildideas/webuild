@@ -1,31 +1,28 @@
-// Packages
 import React, { useEffect } from 'react'
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-
-// Utils
 import { useWindowSize } from '../../utils/hooks.js'
 
-// Styled Components
 import * as S from './style'
 import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
 
-// Icons
 import Investigate from '../../static/svgs/investigate.inline.svg'
 import Ideate from '../../static/svgs/ideate.inline.svg'
 import Iterate from '../../static/svgs/iterate.inline.svg'
+
+const getThreshold = (width: number): number => (width > 500 ? 0.85 : 0.25)
 
 const DesignPartner = () => {
   const { width } = useWindowSize()
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: width > 500 ? 0.85 : 0.25
+    threshold: width ? getThreshold(width) : 0.25
   })
 
   const controls = useAnimation()
 
   const variants = {
-    visible: (i) => ({
+    visible: (i: number) => ({
       y: 0,
       opacity: 1,
       transition: {
@@ -47,13 +44,14 @@ const DesignPartner = () => {
   }, [controls, inView])
 
   return (
-    <S.DesignPartner>
+    <S.DesignPartner data-testid="designPartner">
       <SiteMaxWidthContainer>
         <div ref={ref}>
           <div className="DesignPartner__intro">
             <motion.h1
               animate={controls}
               custom={0}
+              data-testid="designPartner-title"
               initial="hidden"
               variants={variants}
             >
@@ -62,6 +60,7 @@ const DesignPartner = () => {
             <motion.p
               animate={controls}
               custom={1}
+              data-testid="designPartner-description"
               initial="hidden"
               variants={variants}
             >
@@ -72,7 +71,7 @@ const DesignPartner = () => {
             </motion.p>
           </div>
           <S.DesignPartnerGrid>
-            <div>
+            <div data-testid="designPartner-investigate">
               <motion.div
                 animate={controls}
                 custom={1.75}
@@ -100,7 +99,7 @@ const DesignPartner = () => {
                 market, your users and what’s next for your business.
               </motion.p>
             </div>
-            <div>
+            <div data-testid="designPartner-ideate">
               <motion.div
                 animate={controls}
                 custom={1.75}
@@ -128,7 +127,7 @@ const DesignPartner = () => {
                 talented team of UX/UI product designers will help you level up.
               </motion.p>
             </div>
-            <div>
+            <div data-testid="designPartner-iterate">
               <motion.div
                 animate={controls}
                 custom={1.75}

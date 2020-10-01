@@ -1,13 +1,12 @@
-// Packages
 import styled from 'styled-components'
-
-// utils
 import { rhythmUnit } from '../../utils/typography'
 
-export const CaseStudy = styled.article<{
+interface StyleProps {
   mobileTextFirst: boolean
-  layout: 'left' | 'right'
-}>`
+  layout: 'right' | 'left'
+}
+
+export const CaseStudy = styled.article<StyleProps>`
   position: relative;
   display: flex;
   flex-wrap: wrap;
