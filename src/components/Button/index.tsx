@@ -21,6 +21,7 @@ interface Props {
   direction?: 'top' | 'left' | 'right' | 'bottom'
   duration?: number
   children: React.ReactNode
+  className?: string
 }
 
 const Button = ({

@@ -1,12 +1,8 @@
-// Packages
 import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
 
-// Components
 import Button from '../Button'
-
-// Styled Components
 import * as S from './style'
 import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
 import SectionHeading from '../Shared/SectionHeading'
@@ -21,7 +17,7 @@ const Footer = () => {
   const controls = useAnimation()
 
   const variants = {
-    visible: (i) => ({
+    visible: (i: number) => ({
       y: 0,
       opacity: 1,
       transition: {
@@ -40,14 +36,16 @@ const Footer = () => {
       controls.start('visible')
     }
   }, [controls, inView])
+
   return (
-    <S.Footer ref={ref}>
+    <S.Footer ref={ref} data-testid="footer">
       <SiteMaxWidthContainer>
         <SectionHeading>
           <motion.h1
             animate={controls}
             className="SectionHeading__title"
             custom={0}
+            data-testid="footer-title"
             initial="hidden"
             variants={variants}
           >
@@ -57,6 +55,7 @@ const Footer = () => {
             animate={controls}
             className="SectionHeading__subtitle"
             custom={1}
+            data-testid="footer-subtitle"
             initial="hidden"
             style={{ maxWidth: '520px' }}
             variants={variants}
@@ -67,6 +66,7 @@ const Footer = () => {
         <Button
           animationDelay={0.1}
           className="Footer__btn"
+          data-testid="footer-button"
           href="mailto:hi@webuild.io"
           type="primaryButton"
         >
@@ -80,7 +80,7 @@ const Footer = () => {
           HI@WEBUILD.IO
         </Button>
 
-        <div className="Footer__follow">
+        <div className="Footer__follow" data-testid="footer-social">
           <motion.p
             animate={controls}
             className="Footer__copyright"

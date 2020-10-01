@@ -10,7 +10,7 @@ describe('<Button />', () => {
         Press Me
       </Button>
     )
-    mockAllIsIntersecting(true);
+    mockAllIsIntersecting(true)
     expect(getByTestId('primaryButton')).toBeTruthy()
   })
 })
