@@ -22,6 +22,7 @@ interface Props {
   duration?: number
   children: React.ReactNode
   className?: string
+  target?: string
 }
 
 const Button = ({

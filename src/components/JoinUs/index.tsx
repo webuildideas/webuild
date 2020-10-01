@@ -20,7 +20,7 @@ const JoinUs = () => {
   const controls = useAnimation()
 
   const variants = {
-    visible: (i) => ({
+    visible: (i: number) => ({
       y: 0,
       opacity: 1,
       transition: {
@@ -42,13 +42,14 @@ const JoinUs = () => {
   }, [controls, inView])
 
   return (
-    <S.JoinUs ref={ref}>
+    <S.JoinUs ref={ref} data-testid="joinUs">
       <SiteMaxWidthContainer>
         <SectionHeading>
           <motion.h1
             animate={controls}
             className="SectionHeading__title"
             custom={1}
+            data-testid="joinUs-title"
             initial="hidden"
             variants={variants}
           >
@@ -58,6 +59,7 @@ const JoinUs = () => {
             animate={controls}
             className="SectionHeading__subtitle"
             custom={2}
+            data-testid="joinUs-subtitle"
             initial="hidden"
             variants={variants}
           >
@@ -65,7 +67,7 @@ const JoinUs = () => {
             people to join our amazing remote team.
           </motion.h2>
         </SectionHeading>
-        <S.JoinUsJobs>
+        <S.JoinUsJobs data-testid="joinUs-jobs">
           <S.JoinUsJob
             href="https://webuildideas.bamboohr.com/jobs/view.php?id=22"
             target="_blank"
