@@ -8,7 +8,7 @@ import * as S from './style'
 import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
 import Button from '../Button'
 
-export type CaseStudy = {
+export type CaseStudyType = {
   listingImage: {
     fluid: {
       aspectRatio: number
@@ -34,9 +34,9 @@ export type CaseStudy = {
 
 interface Props {
   animationThreshold?: number
-  caseStudy: CaseStudy
+  caseStudy: CaseStudyType
   layout: 'right' | 'left'
-  mobileTextFirst: boolean
+  mobileTextFirst?: boolean
 }
 
 const CaseStudy = ({
