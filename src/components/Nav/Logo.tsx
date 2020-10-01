@@ -3,7 +3,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { animated, useSpring } from 'react-spring'
 
-const Logo = ({ isOpen, ...props }) => {
+interface Props {
+  isOpen: boolean
+  className?: string
+  onClick?: () => void
+}
+
+const Logo = ({ isOpen, ...props }: Props) => {
   const openConfig = {
     color: '#0E0E1B'
   }
@@ -12,6 +18,8 @@ const Logo = ({ isOpen, ...props }) => {
     color: '#fff'
   }
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   const { color } = useSpring({
     to: isOpen ? closedConfig : openConfig,
     config: { mass: 1, tension: 280, friction: 120 }

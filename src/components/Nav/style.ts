@@ -1,7 +1,11 @@
 // Packages
 import styled from 'styled-components'
 
-export const NavContainer = styled.header`
+interface StyleProps {
+  isPinned: boolean
+}
+
+export const NavContainer = styled.header<StyleProps>`
   position: relative;
   width: 100%;
   box-shadow: ${(props) =>

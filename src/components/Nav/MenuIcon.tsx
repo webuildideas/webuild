@@ -3,7 +3,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { animated, useSpring, config } from 'react-spring'
 
-const MenuIcon = ({ isOpen, ...props }) => {
+interface Props {
+  isOpen: boolean
+  className?: string
+  onClick?: () => void
+}
+
+const MenuIcon = ({ isOpen, ...props }: Props) => {
   const openConfig = {
     top: 'translate(2, 7) rotate(0)',
     center: 'translate(2, 19) rotate(0)',
@@ -18,6 +24,8 @@ const MenuIcon = ({ isOpen, ...props }) => {
     color: '#fff'
   }
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   const { top, center, bottom, color } = useSpring({
     to: isOpen ? closedConfig : openConfig,
     config: config.stiff
