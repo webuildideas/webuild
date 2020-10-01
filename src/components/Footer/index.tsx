@@ -1,8 +1,12 @@
+// Packages
 import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
 
+// Components
 import Button from '../Button'
+
+// Styled Components
 import * as S from './style'
 import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
 import SectionHeading from '../Shared/SectionHeading'

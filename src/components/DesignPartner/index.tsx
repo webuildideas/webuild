@@ -1,11 +1,14 @@
+// Packages
 import React, { useEffect } from 'react'
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { useWindowSize } from '../../utils/hooks.js'
 
+// Styled Components
 import * as S from './style'
 import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
 
+// Icons
 import Investigate from '../../static/svgs/investigate.inline.svg'
 import Ideate from '../../static/svgs/ideate.inline.svg'
 import Iterate from '../../static/svgs/iterate.inline.svg'

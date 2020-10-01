@@ -1,12 +1,16 @@
+// Packages
 import React, { useEffect } from 'react'
 import Img from 'gatsby-image'
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
+// Components
+import Button from '../Button'
+
+// Styled Components
 import * as S from './style'
 import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
-import Button from '../Button'
 
 export type CaseStudyType = {
   listingImage: {

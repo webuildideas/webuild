@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { rhythmUnit } from '../../utils/typography'
 
 interface StyleProps {
-  mobileTextFirst: boolean
+  mobileTextFirst?: boolean
   layout: 'right' | 'left'
 }
 

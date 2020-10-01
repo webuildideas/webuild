@@ -1,7 +1,9 @@
+// Packages
 import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
 
+// Styled Components
 import * as S from './style'
 
 type ButtonType =
