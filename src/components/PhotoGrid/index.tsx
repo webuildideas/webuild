@@ -1,13 +1,22 @@
 // Packages
 import React, { useEffect } from 'react'
-import PropTypes from 'prop-types'
 import { useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 
 // Styled Components
 import * as S from './style'
 
-const PhotoGrid = ({ photos }) => {
+type FluidPhoto = {
+  fluid: {
+    src: string
+    srcSet: string
+  }
+}
+interface Props {
+  photos: FluidPhoto[]
+}
+
+const PhotoGrid = ({ photos }: Props) => {
   const [ref, inView] = useInView({
     triggerOnce: true
   })
@@ -15,7 +24,7 @@ const PhotoGrid = ({ photos }) => {
   const controls = useAnimation()
 
   const variants = {
-    visible: (i) => ({
+    visible: (i: number) => ({
       opacity: 1,
       x: 0,
       y: 0,
@@ -89,10 +98,6 @@ const PhotoGrid = ({ photos }) => {
       ))}
     </S.PhotoGrid>
   )
-}
-
-PhotoGrid.propTypes = {
-  photos: PropTypes.array
 }
 
 export default PhotoGrid
