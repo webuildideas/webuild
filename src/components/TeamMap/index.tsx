@@ -13,42 +13,41 @@ import TeamMapSvg from '../../static/svgs/teamMap.inline.svg'
 import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
 import SectionHeading from '../Shared/SectionHeading'
 
+const variants = {
+  visible: (i: number) => ({
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.75,
+      delay: i * 0.152,
+      type: 'spring'
+    }
+  }),
+  imageVisible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 1.1,
+      delay: 0.5
+    }
+  },
+  hidden: {
+    y: 15,
+    opacity: 0
+  },
+  imageHidden: {
+    x: -25,
+    opacity: 0
+  }
+}
+
 const TeamMap = () => {
   const [ref, inView] = useInView({
     threshold: 0.75,
     triggerOnce: true
   })
-
   const controls = useAnimation()
   const imageControls = useAnimation()
-
-  const variants = {
-    visible: (i) => ({
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.75,
-        delay: i * 0.152,
-        type: 'spring'
-      }
-    }),
-    imageVisible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 1.1,
-        delay: 0.5
-      }
-    },
-    hidden: {
-      y: 15,
-      opacity: 0
-    },
-    imageHidden: {
-      x: -25,
-      opacity: 0
-    }
-  }
 
   useEffect(() => {
     if (inView) {
