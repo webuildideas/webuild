@@ -1,7 +1,7 @@
 // Packages
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Document, BLOCKS, MARKS } from '@contentful/rich-text-types'
+import { Document, MARKS, BLOCKS } from '@contentful/rich-text-types'
 import {
   documentToReactComponents,
   Options
@@ -17,12 +17,8 @@ interface Props {
   document: Document
 }
 
-const PageIntro = ({
-  document,
-  maxWidth = 1080,
-  animationDelay = 0.5
-}: Props) => {
-  const options: Options = {
+export const getRichTextOptions = (animationDelay = 0.5): Options => {
+  return {
     renderNode: {
       [BLOCKS.PARAGRAPH]: (_, copy) => (
         <motion.h1
@@ -47,6 +43,14 @@ const PageIntro = ({
       [MARKS.BOLD]: (text: React.ReactNode) => <span>{text}</span>
     }
   }
+}
+
+const PageIntro = ({
+  document,
+  maxWidth = 1080,
+  animationDelay = 0.5
+}: Props) => {
+  const options: Options = getRichTextOptions(animationDelay)
 
   return (
     <S.PageIntro maxWidth={maxWidth}>

@@ -67,7 +67,7 @@ const WhoWeAre = ({ data }) => {
     <motion.div animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
       <Meta title="Who We Are" />
 
-      <PageIntro maxWidth={860}>{aboutPageData.heroCopy.heroCopy}</PageIntro>
+      <PageIntro document={aboutPageData.heroTitle.json} maxWidth={860} />
 
       <PhotoGridContainer>
         <PhotoGrid photos={aboutPageData.photoGrid} />
@@ -157,6 +157,9 @@ WhoWeAre.propTypes = {
 export const WHO_WE_ARE_QUERY = graphql`
   query whoWeAreQuery {
     contentfulAboutPage(pageTitle: { eq: "Who We Are" }) {
+      heroTitle {
+        json
+      }
       heroCopy {
         heroCopy
       }
