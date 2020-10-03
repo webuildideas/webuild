@@ -4,7 +4,11 @@ import styled from 'styled-components'
 // Utils
 import { rhythmUnit } from '../../utils/typography'
 
-export const PageIntro = styled.section`
+interface StyleProps {
+  maxWidth: number
+}
+
+export const PageIntro = styled.section<StyleProps>`
   font-size: ${(props) => props.theme.f1};
   line-height: 1.2;
   padding: ${() => `${rhythmUnit(2.75)} 0 0`};

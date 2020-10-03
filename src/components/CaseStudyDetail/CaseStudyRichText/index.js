@@ -62,8 +62,7 @@ const CaseStudyRichText = ({ document }) => {
 
   const options = {
     renderNode: {
-      // eslint-disable-next-line
-      [BLOCKS.EMBEDDED_ASSET]: node => {
+      [BLOCKS.EMBEDDED_ASSET]: (node) => {
         const { file, title } = node.data.target.fields
         return (
           <motion.img
@@ -76,7 +75,7 @@ const CaseStudyRichText = ({ document }) => {
           />
         )
       },
-      [BLOCKS.HEADING_2]: (node, children) => (
+      [BLOCKS.HEADING_2]: (_, children) => (
         <motion.h2
           animate={controls}
           custom={1}
@@ -86,7 +85,7 @@ const CaseStudyRichText = ({ document }) => {
           {children}
         </motion.h2>
       ),
-      [BLOCKS.PARAGRAPH]: (node, children) => (
+      [BLOCKS.PARAGRAPH]: (_, children) => (
         <motion.p
           animate={controls}
           custom={2}
@@ -96,8 +95,7 @@ const CaseStudyRichText = ({ document }) => {
           {children}
         </motion.p>
       ),
-      // eslint-disable-next-line
-      [BLOCKS.EMBEDDED_ENTRY]: node => {
+      [BLOCKS.EMBEDDED_ENTRY]: (node) => {
         const { images } = node.data.target.fields
         const imgArr = buildCarouselImgArray(images['en-US'])
         return <CaseStudyCarousel autoplay={shouldAutoplay} images={imgArr} />

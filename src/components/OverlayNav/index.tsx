@@ -17,29 +17,28 @@ interface NavLink {
   slug: string
 }
 
-const OverlayNav = ({ isOpen, onContact, toggleNav }: Props) => {
-  const navLinks: NavLink[] = [
-    {
-      title: 'Work',
-      slug: '/'
-    },
-    {
-      title: 'Who we are',
-      slug: '/who-we-are'
-    },
-    {
-      title: 'Get in touch',
-      slug: '/get-in-touch'
-    }
-  ]
+const navLinks: NavLink[] = [
+  {
+    title: 'Work',
+    slug: '/'
+  },
+  {
+    title: 'Who we are',
+    slug: '/who-we-are'
+  },
+  {
+    title: 'Get in touch',
+    slug: '/get-in-touch'
+  }
+]
 
+const OverlayNav = ({ isOpen, onContact, toggleNav }: Props) => {
   const overlaySpring = useSpring({
     left: isOpen ? '0%' : '-100%',
     config: { mass: 1, tension: 295, friction: 40 }
   })
 
   const linkTrail = useTrail(navLinks.length, {
-    // ref: linkTrailRef,
     from: {
       opacity: 0,
       y: 100

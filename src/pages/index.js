@@ -69,9 +69,11 @@ const IndexPage = ({ data }) => {
   return (
     <motion.div animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
       <Meta title="Home" />
-      <PageIntro animationDelay={0.35} maxWidth={1040}>
-        {homeData.heroCopy.heroCopy}
-      </PageIntro>
+      <PageIntro
+        animationDelay={0.35}
+        document={homeData.heroTitle.json}
+        maxWidth={1040}
+      />
       <CaseStudiesContainer>
         <CaseStudyListing caseStudies={homeData.caseStudies} />
       </CaseStudiesContainer>
@@ -143,10 +145,9 @@ IndexPage.propTypes = {
 export const HOMEPAGE_QUERY = graphql`
   query homepageQuery {
     contentfulHomePage(pageTitle: { eq: "Home" }) {
-      heroCopy {
-        heroCopy
+      heroTitle {
+        json
       }
-
       caseStudies {
         name
         tagline
