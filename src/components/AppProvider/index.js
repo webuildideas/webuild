@@ -9,11 +9,11 @@ import PropTypes from 'prop-types'
 import { ThemeProvider } from 'styled-components'
 
 // Consts
-import { styleTheme } from '../../theme/styleTheme'
+import { styleTheme } from '../../common/theme/styleTheme'
 
 // Styled Components
-import { GlobalStyle } from '../../theme/GlobalStyle'
-import { AppContext } from '../../utils/contexts'
+import { GlobalStyle } from '../../common/theme/GlobalStyle'
+import { AppContext } from '../../common/context/contexts'
 
 // Components
 import Nav from '../Nav'

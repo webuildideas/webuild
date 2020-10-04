@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
 
 // Utils
-import { rhythmUnit } from '../../utils/typography'
+import { rhythmUnit } from '../../common/utils/typography'
 
 // Svg
 import TeamMapSvg from '../../static/svgs/teamMap.inline.svg'

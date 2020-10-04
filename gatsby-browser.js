@@ -4,8 +4,8 @@
 const React = require('react')
 
 // Utils
-const { callProjectHuddle } = require('./src/utils/projectHuddle')
-const loadPolyfills = require('./src/utils/polyfills').default
+const { callProjectHuddle } = require('./src/common/utils/projectHuddle')
+const loadPolyfills = require('./src/common/utils/polyfills').default
 
 // Components
 const AppProvider = require('./src/components/AppProvider').default

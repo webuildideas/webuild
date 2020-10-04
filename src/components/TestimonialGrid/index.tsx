@@ -3,7 +3,7 @@ import React from 'react'
 import Masonry from 'react-masonry-css'
 
 // Types
-import { Testimonials } from '../../types/Testimonial'
+import { Testimonials } from '../../common/types/Testimonial'
 
 // Styled Components
 import * as S from './style'

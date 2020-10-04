@@ -6,8 +6,9 @@ import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import styled from 'styled-components'
 import { OutboundLink } from 'gatsby-plugin-google-analytics'
+
 // Utils
-import { rhythmUnit } from '../utils/typography'
+import { rhythmUnit } from '../common/utils/typography'
 
 // Components
 import Meta from '../components/Meta'

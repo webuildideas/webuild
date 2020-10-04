@@ -2,7 +2,7 @@
 import styled from 'styled-components'
 
 // utils
-import { rhythmUnit } from '../../utils/typography'
+import { rhythmUnit } from '../../common/utils/typography'
 
 const ServiceContainer = styled.div`
   display: grid;

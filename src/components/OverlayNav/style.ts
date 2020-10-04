@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { animated } from 'react-spring'
 
 // utils
-import { rhythmUnit } from '../../utils/typography'
+import { rhythmUnit } from '../../common/utils/typography'
 
 export const OverlayNavContainer = styled(animated.nav)`
   position: fixed;

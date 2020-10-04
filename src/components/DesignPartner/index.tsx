@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react'
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { useWindowSize } from '../../utils/hooks.js'
+import { useWindowSize } from '../../common/hooks/useWindowSize'
 
 // Styled Components
 import * as S from './style'

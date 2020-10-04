@@ -5,7 +5,7 @@ import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
 
 // utils
-import { rhythmUnit } from '../../../utils/typography'
+import { rhythmUnit } from '../../../common/utils/typography'
 
 // Components
 import Testimonial from '../../Testimonial'

@@ -6,7 +6,7 @@ import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
 
 // Types
-import { Testimonial, Testimonials } from '../../types/Testimonial'
+import { Testimonial, Testimonials } from '../../common/types/Testimonial'
 
 // Styles
 import 'pure-react-carousel/dist/react-carousel.es.css'

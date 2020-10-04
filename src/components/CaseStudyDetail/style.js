@@ -2,7 +2,7 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 // utils
-import { rhythmUnit } from '../../utils/typography'
+import { rhythmUnit } from '../../common/utils/typography'
 
 export const CaseStudyDetail = styled(motion.article)`
   position: absolute;

@@ -7,7 +7,7 @@ import { useInView } from 'react-intersection-observer'
 import styled from 'styled-components'
 
 // Utils
-import { rhythmUnit } from '../utils/typography'
+import { rhythmUnit } from '../common/utils/typography'
 
 // Styled Components
 import SiteMaxWidthContainer from '../components/Shared/SiteMaxWidthContainer'

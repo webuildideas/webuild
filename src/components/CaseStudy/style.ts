@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { rhythmUnit } from '../../utils/typography'
+import { rhythmUnit } from '../../common/utils/typography'
 
 interface StyleProps {
   mobileTextFirst?: boolean

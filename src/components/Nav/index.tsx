@@ -5,7 +5,7 @@ import Headroom from 'react-headroom'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
-import { useWindowSize } from '../../utils/hooks'
+import { useWindowSize } from '../../common/hooks/useWindowSize'
 
 // Styled Components
 import * as S from './style'

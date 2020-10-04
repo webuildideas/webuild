@@ -4,10 +4,10 @@ import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import { useInView } from 'react-intersection-observer'
 
-import { rhythmUnit } from '../../utils/typography'
+import { rhythmUnit } from '../../common/utils/typography'
 
 // Types
-import { CaseStudyDetail as CaseStudyDetailType } from '../../types/CaseStudy'
+import { CaseStudyDetail as CaseStudyDetailType } from '../../common/types/CaseStudy'
 
 // Styled Components
 import * as S from './style'

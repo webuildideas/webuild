@@ -12,10 +12,9 @@ export function useWindowSize() {
   )
 
   const [windowSize, setWindowSize] = useState(getSize)
-
   useEffect(() => {
     if (!isClient) {
-      return false
+      return
     }
 
     function handleResize() {
@@ -23,8 +22,10 @@ export function useWindowSize() {
     }
 
     window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [getSize, isClient]) // Empty array ensures that effect is only run on mount and unmount
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [getSize, isClient])
 
   return windowSize
 }

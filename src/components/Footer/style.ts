@@ -2,7 +2,7 @@
 import styled from 'styled-components'
 
 // Utils
-import { rhythmUnit } from '../../utils/typography'
+import { rhythmUnit } from '../../common/utils/typography'
 
 export const Footer = styled.footer`
   background-color: ${(props) => props.theme.vulcan};

@@ -6,7 +6,7 @@ import { useInView } from 'react-intersection-observer'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 // Types
-import { CaseStudy as CaseStudyType } from '../../types/CaseStudy'
+import { CaseStudy as CaseStudyType } from '../../common/types/CaseStudy'
 
 // Components
 import Button from '../Button'
