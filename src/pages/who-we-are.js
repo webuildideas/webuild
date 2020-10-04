@@ -160,9 +160,6 @@ export const WHO_WE_ARE_QUERY = graphql`
       heroTitle {
         json
       }
-      heroCopy {
-        heroCopy
-      }
       photoGrid {
         fluid {
           srcSet
