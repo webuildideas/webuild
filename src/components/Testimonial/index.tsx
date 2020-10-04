@@ -15,7 +15,7 @@ interface Props {
   children: string
   name: string
   headshot: Headshot
-  featuredHeadshot: Headshot
+  featuredHeadshot?: Headshot
   companyRole: string
   company: string
   isFeatured?: boolean
@@ -126,7 +126,7 @@ const Testimonial = ({
           </div>
         </div>
         <div className="Testimonial__client-featured-img">
-          {renderFeaturedHeadshot(featuredHeadshot)}
+          {featuredHeadshot ? renderFeaturedHeadshot(featuredHeadshot) : null}
         </div>
       </S.FeaturedTestimonial>
     ),
