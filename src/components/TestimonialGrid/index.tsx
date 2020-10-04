@@ -2,24 +2,14 @@
 import React from 'react'
 import Masonry from 'react-masonry-css'
 
+// Types
+import { Testimonials } from '../../types/Testimonial'
+
 // Styled Components
 import * as S from './style'
 
 // Components
 import Testimonial from '../Testimonial'
-import { GatsbyImageFixed } from '../../types/GatsbyImage'
-
-export type Testimonial = {
-  company: string
-  headshot: GatsbyImageFixed
-  name: string
-  role: string
-  testimonial: {
-    testimonial: string
-  }
-}
-
-export type Testimonials = Testimonial[]
 
 interface Props {
   testimonials: Testimonials

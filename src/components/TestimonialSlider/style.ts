@@ -1,6 +1,6 @@
 // Packages
 import styled from 'styled-components'
-import { Slide, Slider, Dot, DotGroup } from 'pure-react-carousel'
+import { Slide, Slider, Dot, DotGroup, DotProps } from 'pure-react-carousel'
 
 // Utils
 import { rhythmUnit } from '../../utils/typography'
@@ -58,7 +58,7 @@ export const TestimonialDots = styled.div`
 /**
  * The Actual Large Testimonial dots containing headshot, name, role
  */
-export const TestimonialDot = styled(Dot)`
+export const TestimonialDot = styled(Dot)<DotProps>`
   display: none;
   align-items: center;
   text-align: left;
