@@ -4,7 +4,37 @@ import { createGlobalStyle } from 'styled-components'
 // Consts
 import { reset } from './reset'
 
-export const GlobalStyle = createGlobalStyle`
+interface StyleProps {
+  theme: {
+    // Typography
+    primaryFontFamily: string
+    tracked: string
+    tight: string
+    f1: string
+    f2: string
+    f3: string
+    f4: string
+    f5: string
+    f6: string
+    f7: string
+
+    // Color Palette
+    black: string
+    blackHover: string
+    vulcan: string
+    tuna: string
+    comet: string
+    stormGrey: string
+    bisonHide: string
+    coldTurkey: string
+    concrete: string
+    snow: string
+    white: string
+    grey: string
+  }
+}
+
+export const GlobalStyle = createGlobalStyle<StyleProps>`
   ${reset}
   html {
     box-sizing: border-box;

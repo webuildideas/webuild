@@ -23,7 +23,7 @@ export const typography = {
 }
 
 // Helper function for user to provide designer with scale
-export const getScaleByPercentage = (percentage) => {
+export const getScaleByPercentage = (percentage: number) => {
   const typeScale = ['2.566rem', '1.602rem', '1rem', '0.79rem']
 
   const newBaseFontSize = (16 * percentage) / 100
