@@ -5,36 +5,15 @@ import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
+// Types
+import { CaseStudy as CaseStudyType } from '../../types/CaseStudy'
+
 // Components
 import Button from '../Button'
 
 // Styled Components
 import * as S from './style'
 import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
-
-export type CaseStudyType = {
-  listingImage: {
-    fluid: {
-      aspectRatio: number
-      sizes: string
-      src: string
-      srcSet: string
-      srcSetWebp: string
-      srcWebp: string
-    }
-  }
-  logo: {
-    file: {
-      url: string
-    }
-  }
-  name: string
-  slug: string
-  successSummary: {
-    successSummary: string
-  }
-  tagline: string
-}
 
 interface Props {
   animationThreshold?: number

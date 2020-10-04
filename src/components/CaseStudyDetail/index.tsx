@@ -1,11 +1,13 @@
 // Packages
 import React, { useState, useEffect } from 'react'
-import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import { useInView } from 'react-intersection-observer'
 
 import { rhythmUnit } from '../../utils/typography'
+
+// Types
+import { CaseStudyDetail as CaseStudyDetailType } from '../../types/CaseStudy'
 
 // Styled Components
 import * as S from './style'
@@ -22,15 +24,24 @@ import CaseStudyFeaturedTestimonial from './CaseStudyFeaturedTestimonial'
 import Footer from '../Footer'
 import Meta from '../Meta'
 
-// eslint-disable-next-line
-const CaseStudyDetail = ({
-  data: { contentfulCaseStudy: caseStudy },
-}) => {
+interface Props {
+  data: {
+    contentfulCaseStudy: CaseStudyDetailType
+  }
+}
+
+const CaseStudyDetail = ({ data: { contentfulCaseStudy } }: Props) => {
   const [shouldAutoplay, setAutoPlay] = useState(false)
   const [ref, inView] = useInView({
     triggerOnce: true
   })
   const {
+    name,
+    slug,
+    heroBackgroundImage,
+    heroImage,
+    whiteLogo,
+    successSummary,
     resultOne,
     resultTwo,
     resultThree,
@@ -43,7 +54,7 @@ const CaseStudyDetail = ({
     projectChallenge,
     projectSolution,
     projectOutcome
-  } = caseStudy
+  } = contentfulCaseStudy
 
   useEffect(() => {
     if (inView) {
@@ -58,19 +69,21 @@ const CaseStudyDetail = ({
           class: 'CaseStudyDetail'
         }}
       />
-      <Meta title={`${caseStudy.name}`} />
+      <Meta title={name} />
       <S.CaseStudyDetail
         animate={{ opacity: 1 }}
-        className={`${caseStudy.slug}`}
+        className={slug}
         initial={{ opacity: 0 }}
         transition={{ duration: 1 }}
       >
-        <CaseStudyHero
-          background={caseStudy.heroBackgroundImage.file.url}
-          heroImg={caseStudy.heroImage.fluid}
-          logo={caseStudy.whiteLogo.file.url}
-          successSummary={caseStudy.successSummary.successSummary}
-        />
+        {heroBackgroundImage && heroImage && whiteLogo && successSummary ? (
+          <CaseStudyHero
+            background={heroBackgroundImage.file.url}
+            heroImg={heroImage.fluid}
+            logo={whiteLogo.file.url}
+            successSummary={successSummary.successSummary}
+          />
+        ) : null}
 
         <section>
           {challengeSummary && solutionSummary && (
@@ -124,28 +137,26 @@ const CaseStudyDetail = ({
         )}
         {projectOutcome && <CaseStudyRichText document={projectOutcome.json} />}
 
-        <div
-          style={{
-            paddingTop: `${rhythmUnit(2.5)}`,
-            paddingBottom: `${rhythmUnit(1)}`,
-            backgroundColor: '#F9F9F9'
-          }}
-        >
-          <CaseStudy
-            caseStudy={nextCaseStudy}
-            layout="right"
-            mobileTextFirst={true}
-          />
-        </div>
+        {nextCaseStudy ? (
+          <div
+            style={{
+              paddingTop: `${rhythmUnit(2.5)}`,
+              paddingBottom: `${rhythmUnit(1)}`,
+              backgroundColor: '#F9F9F9'
+            }}
+          >
+            <CaseStudy
+              caseStudy={nextCaseStudy}
+              layout="right"
+              mobileTextFirst={true}
+            />
+          </div>
+        ) : null}
 
         <Footer />
       </S.CaseStudyDetail>
     </>
   )
-}
-
-CaseStudyDetail.propTypes = {
-  data: PropTypes.object
 }
 
 export const query = graphql`

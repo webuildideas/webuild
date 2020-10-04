@@ -1,4 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
 
 exports.createPages = async ({ graphql, actions }) => {
@@ -19,7 +19,7 @@ exports.createPages = async ({ graphql, actions }) => {
   result.data.allContentfulCaseStudy.edges.forEach(({ node }) => {
     createPage({
       path: `/case-studies/${node.slug}`,
-      component: path.resolve('./src/components/CaseStudyDetail/index.js'),
+      component: path.resolve('./src/components/CaseStudyDetail/index.tsx'),
       context: {
         slug: node.slug
       }

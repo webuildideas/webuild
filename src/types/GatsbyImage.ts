@@ -7,3 +7,9 @@ export type GatsbyImageFixed = {
 export type GatsbyImageFluid = {
   fluid: FluidObject
 }
+
+export type GatsbyImageFile = {
+  file: {
+    url: string
+  }
+}
