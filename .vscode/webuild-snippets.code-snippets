@@ -28,30 +28,5 @@
       "export default $1"
     ],
     "description": "Scafolds out a functional component webuild style."
-  },
-  "Scafolds out a webuild Story for Storybook": {
-    "prefix": "wbs",
-    "body": [
-      "// Packages",
-      "import React from 'react'",
-      "",
-      "// Components",
-      "import $1 from '.'",
-      "",
-      "export default {",
-      "  title: '$1',",
-      "  component: $1,",
-      "  parameters: {",
-      "    componentSubtitle: '$2',",
-      "  },",
-      "}",
-      "",
-      "export const defaultState = () => <$1 />",
-      "",
-      "defaultState.story = {",
-      "  name: 'Default',",
-      "}"
-    ],
-    "description": "Scafolds out a webuild Story for Storybook"
   }
 }
