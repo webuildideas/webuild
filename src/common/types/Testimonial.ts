@@ -13,7 +13,7 @@ export type Testimonial = {
 export type Testimonials = Testimonial[]
 
 export type FeaturedTestimonial = {
-  comapny: string
+  company: string
   name: string
   role: string
   testimonial: {

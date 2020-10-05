@@ -19,8 +19,8 @@ import CaseStudyHero from './CaseStudyHero'
 import CaseStudyCarousel from './CaseStudyCarousel'
 import CaseStudyResult from './CaseStudyResult'
 import CaseStudyRichText from './CaseStudyRichText'
-import CaseStudyChallengeSolution from './CaseStudyChallengeAndSolution'
-import CaseStudyFeaturedTestimonial from './CaseStudyFeaturedTestimonial'
+import ChallengeAndSolution from './ChallengeAndSolution'
+import FeaturedTestimonial from './FeaturedTestimonial'
 import Footer from '../Footer'
 import Meta from '../Meta'
 
@@ -87,7 +87,7 @@ const CaseStudyDetail = ({ data: { contentfulCaseStudy } }: Props) => {
 
         <section>
           {challengeSummary && solutionSummary && (
-            <CaseStudyChallengeSolution
+            <ChallengeAndSolution
               challenge={challengeSummary.challengeSummary}
               solution={solutionSummary.solutionSummary}
             />
@@ -120,9 +120,7 @@ const CaseStudyDetail = ({ data: { contentfulCaseStudy } }: Props) => {
           </SiteMaxWidthContainer>
 
           {featuredTestimonial && (
-            <CaseStudyFeaturedTestimonial
-              featuredTestimonial={featuredTestimonial}
-            />
+            <FeaturedTestimonial featuredTestimonial={featuredTestimonial} />
           )}
         </section>
 

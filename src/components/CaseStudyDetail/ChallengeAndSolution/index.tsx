@@ -1,9 +1,9 @@
 // Packages
 import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
-import { motion, useAnimation } from 'framer-motion'
+import { motion, useAnimation, Variants } from 'framer-motion'
 
-// Styled Components
+// Commons
 import SiteMaxWidthContainer from '../../../common/styledComponents/SiteMaxWidthContainer'
 import * as S from '../style'
 
@@ -12,7 +12,7 @@ interface Props {
   solution: string
 }
 
-const variants = {
+const variants: Variants = {
   visible: (i: number) => ({
     opacity: [0, 0.25, 0.4, 0.6, 0.6, 0.6, 0.7, 0.8, 1],
     y: 0,
@@ -27,7 +27,7 @@ const variants = {
   }
 }
 
-const CaseStudyChallengeAndSolution = ({ challenge, solution }: Props) => {
+const ChallengeAndSolution = ({ challenge, solution }: Props) => {
   const animationControls = useAnimation()
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -86,4 +86,4 @@ const CaseStudyChallengeAndSolution = ({ challenge, solution }: Props) => {
   )
 }
 
-export default CaseStudyChallengeAndSolution
+export default ChallengeAndSolution
