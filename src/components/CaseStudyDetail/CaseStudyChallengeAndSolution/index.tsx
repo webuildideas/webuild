@@ -1,49 +1,51 @@
 // Packages
 import React, { useEffect } from 'react'
-import PropTypes from 'prop-types'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
-
-// Components
 
 // Styled Components
 import SiteMaxWidthContainer from '../../../common/styledComponents/SiteMaxWidthContainer'
 import * as S from '../style'
 
-const CaseStudyChallengeAndSolution = ({ challenge, solution }) => {
+interface Props {
+  challenge: string
+  solution: string
+}
+
+const variants = {
+  visible: (i: number) => ({
+    opacity: [0, 0.25, 0.4, 0.6, 0.6, 0.6, 0.7, 0.8, 1],
+    y: 0,
+    transition: {
+      duration: 0.5,
+      delay: i * 0.25
+    }
+  }),
+  hidden: {
+    opacity: 0,
+    y: 15
+  }
+}
+
+const CaseStudyChallengeAndSolution = ({ challenge, solution }: Props) => {
+  const animationControls = useAnimation()
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.75
   })
-  const controls = useAnimation()
-
-  const variants = {
-    visible: (i) => ({
-      opacity: [0, 0.25, 0.4, 0.6, 0.6, 0.6, 0.7, 0.8, 1],
-      y: 0,
-      transition: {
-        duration: 0.5,
-        delay: i * 0.25
-      }
-    }),
-    hidden: {
-      opacity: 0,
-      y: 15
-    }
-  }
 
   useEffect(() => {
     if (inView) {
-      controls.start('visible')
+      animationControls.start('visible')
     }
-  }, [controls, inView])
+  }, [animationControls, inView])
 
   return (
     <SiteMaxWidthContainer>
       <S.CaseStudyChallengeSolution ref={ref}>
         <div>
           <motion.h3
-            animate={controls}
+            animate={animationControls}
             custom={1}
             initial="hidden"
             variants={variants}
@@ -52,7 +54,7 @@ const CaseStudyChallengeAndSolution = ({ challenge, solution }) => {
           </motion.h3>
 
           <motion.p
-            animate={controls}
+            animate={animationControls}
             custom={2}
             initial="hidden"
             variants={variants}
@@ -62,7 +64,7 @@ const CaseStudyChallengeAndSolution = ({ challenge, solution }) => {
         </div>
         <div>
           <motion.h3
-            animate={controls}
+            animate={animationControls}
             custom={3}
             initial="hidden"
             variants={variants}
@@ -71,7 +73,7 @@ const CaseStudyChallengeAndSolution = ({ challenge, solution }) => {
           </motion.h3>
 
           <motion.p
-            animate={controls}
+            animate={animationControls}
             custom={4}
             initial="hidden"
             variants={variants}
@@ -82,11 +84,6 @@ const CaseStudyChallengeAndSolution = ({ challenge, solution }) => {
       </S.CaseStudyChallengeSolution>
     </SiteMaxWidthContainer>
   )
-}
-
-CaseStudyChallengeAndSolution.propTypes = {
-  challenge: PropTypes.string,
-  solution: PropTypes.string
 }
 
 export default CaseStudyChallengeAndSolution

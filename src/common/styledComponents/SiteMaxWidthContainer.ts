@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { rhythmUnit } from '../../common/utils/typography'
 
 interface StyleProps {
-  maxWidth: number
+  maxWidth?: number
 }
 
 const SiteMaxWidthContainer = styled.div<StyleProps>`
