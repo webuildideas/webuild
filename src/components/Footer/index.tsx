@@ -8,8 +8,8 @@ import Button from '../Button'
 
 // Styled Components
 import * as S from './style'
-import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
-import SectionHeading from '../Shared/SectionHeading'
+import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
+import SectionHeading from '../../common/styledComponents/SectionHeading'
 
 const Footer = () => {
   const d = new Date()

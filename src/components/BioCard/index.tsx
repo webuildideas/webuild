@@ -8,7 +8,7 @@ import { motion, useAnimation } from 'framer-motion'
 
 // Styled Components
 import * as S from './style'
-import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
+import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
 
 const BioCard = ({ children }) => {
   const { file } = useStaticQuery(

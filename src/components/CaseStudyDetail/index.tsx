@@ -11,7 +11,7 @@ import { CaseStudyDetail as CaseStudyDetailType } from '../../common/types/CaseS
 
 // Styled Components
 import * as S from './style'
-import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
+import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
 
 // Components
 import CaseStudy from '../CaseStudy'

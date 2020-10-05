@@ -4,7 +4,11 @@ import styled from 'styled-components'
 // Utils
 import { rhythmUnit } from '../../common/utils/typography'
 
-const SiteMaxWidthContainer = styled.div`
+interface StyleProps {
+  maxWidth: number
+}
+
+const SiteMaxWidthContainer = styled.div<StyleProps>`
   max-width: ${(props) => (props.maxWidth ? props.maxWidth : '1100')}px;
   margin: 0 auto;
   padding-left: ${() => rhythmUnit(1)};

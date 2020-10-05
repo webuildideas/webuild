@@ -9,7 +9,7 @@ import { useWindowSize } from '../../common/hooks/useWindowSize'
 
 // Styled Components
 import * as S from './style'
-import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
+import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
 
 // Components
 import OverlayNav from '../OverlayNav'

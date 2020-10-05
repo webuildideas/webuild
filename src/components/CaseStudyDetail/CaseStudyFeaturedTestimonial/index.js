@@ -11,7 +11,7 @@ import { rhythmUnit } from '../../../common/utils/typography'
 import Testimonial from '../../Testimonial'
 
 // Styled Components
-import SiteMaxWidthContainer from '../../Shared/SiteMaxWidthContainer'
+import SiteMaxWidthContainer from '../../../common/styledComponents/SiteMaxWidthContainer'
 
 const CaseStudyFeaturedTestimonial = ({ featuredTestimonial }) => {
   const [ref, inView] = useInView({

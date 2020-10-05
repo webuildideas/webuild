@@ -5,7 +5,7 @@ import Img from 'gatsby-image'
 import { motion } from 'framer-motion'
 // Styled Components
 import * as S from './style'
-import SiteMaxWidthContainer from '../../Shared/SiteMaxWidthContainer'
+import SiteMaxWidthContainer from '../../../common/styledComponents/SiteMaxWidthContainer'
 
 const CaseStudyHero = ({ background, successSummary, logo, heroImg }) => (
   <S.CaseStudyHero backgroundSvg={background}>

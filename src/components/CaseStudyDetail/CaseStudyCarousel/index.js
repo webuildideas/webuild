@@ -7,7 +7,7 @@ import { CarouselProvider, Slide, Slider } from 'pure-react-carousel'
 import 'pure-react-carousel/dist/react-carousel.es.css'
 
 // Styled Components
-import CarouselDotGroup from '../../Shared/CarouselDotGroup'
+import CarouselDotGroup from '../../../common/styledComponents/CarouselDotGroup'
 
 const CaseStudyCarousel = ({ images, autoplay }) => {
   const [ref, inView] = useInView({

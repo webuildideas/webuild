@@ -15,7 +15,7 @@ import 'pure-react-carousel/dist/react-carousel.es.css'
 import * as S from './style'
 
 // Components
-import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
+import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
 
 interface Props {
   testimonials: Testimonials

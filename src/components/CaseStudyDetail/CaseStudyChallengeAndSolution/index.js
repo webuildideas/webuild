@@ -7,7 +7,7 @@ import { motion, useAnimation } from 'framer-motion'
 // Components
 
 // Styled Components
-import SiteMaxWidthContainer from '../../Shared/SiteMaxWidthContainer'
+import SiteMaxWidthContainer from '../../../common/styledComponents/SiteMaxWidthContainer'
 import * as S from '../style'
 
 const CaseStudyChallengeAndSolution = ({ challenge, solution }) => {

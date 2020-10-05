@@ -10,8 +10,8 @@ import styled from 'styled-components'
 import { rhythmUnit } from '../common/utils/typography'
 
 // Styled Components
-import SiteMaxWidthContainer from '../components/Shared/SiteMaxWidthContainer'
-import SectionHeading from '../components/Shared/SectionHeading'
+import SiteMaxWidthContainer from '../common/styledComponents/SiteMaxWidthContainer'
+import SectionHeading from '../common/styledComponents/SectionHeading'
 
 // Components
 import Meta from '../components/Meta'

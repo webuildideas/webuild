@@ -1,7 +1,11 @@
 // Packages
 import styled from 'styled-components'
 
-const GradientBackground = styled.div`
+interface StyleProps {
+  gradient: string
+}
+
+const GradientBackground = styled.div<StyleProps>`
   background: ${(props) => props.gradient};
 `
 

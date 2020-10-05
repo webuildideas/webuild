@@ -9,7 +9,7 @@ import {
 
 // Styled Components
 import * as S from './style'
-import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
+import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
 
 interface Props {
   maxWidth?: number

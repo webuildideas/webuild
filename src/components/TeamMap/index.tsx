@@ -10,8 +10,8 @@ import { rhythmUnit } from '../../common/utils/typography'
 import TeamMapSvg from '../../static/svgs/teamMap.inline.svg'
 
 // Styled Components
-import SiteMaxWidthContainer from '../Shared/SiteMaxWidthContainer'
-import SectionHeading from '../Shared/SectionHeading'
+import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
+import SectionHeading from '../../common/styledComponents/SectionHeading'
 
 const variants = {
   visible: (i: number) => ({

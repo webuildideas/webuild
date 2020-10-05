@@ -2,8 +2,8 @@
 import React from 'react'
 
 // Styled Components
-import SiteMaxWidthContainer from '../components/Shared/SiteMaxWidthContainer'
-import SectionHeading from '../components/Shared/SectionHeading'
+import SiteMaxWidthContainer from '../common/styledComponents/SiteMaxWidthContainer'
+import SectionHeading from '../common/styledComponents/SectionHeading'
 import Button from '../components/Button'
 
 // Components
