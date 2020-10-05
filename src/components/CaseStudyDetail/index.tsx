@@ -4,12 +4,9 @@ import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import { useInView } from 'react-intersection-observer'
 
+// Commons
 import { rhythmUnit } from '../../common/utils/typography'
-
-// Types
 import { CaseStudyDetail as CaseStudyDetailType } from '../../common/types/CaseStudy'
-
-// Styled Components
 import * as S from './style'
 import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
 
@@ -17,7 +14,7 @@ import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthCon
 import CaseStudy from '../CaseStudy'
 import CaseStudyHero from './CaseStudyHero'
 import CaseStudyCarousel from './CaseStudyCarousel'
-import CaseStudyResult from './CaseStudyResult'
+import Result from './Result'
 import CaseStudyRichText from './CaseStudyRichText'
 import ChallengeAndSolution from './ChallengeAndSolution'
 import FeaturedTestimonial from './FeaturedTestimonial'
@@ -113,9 +110,9 @@ const CaseStudyDetail = ({ data: { contentfulCaseStudy } }: Props) => {
 
           <SiteMaxWidthContainer>
             <S.CaseStudyResults>
-              {resultOne && <CaseStudyResult document={resultOne.json} />}
-              {resultTwo && <CaseStudyResult document={resultTwo.json} />}
-              {resultThree && <CaseStudyResult document={resultThree.json} />}
+              {resultOne && <Result document={resultOne.json} />}
+              {resultTwo && <Result document={resultTwo.json} />}
+              {resultThree && <Result document={resultThree.json} />}
             </S.CaseStudyResults>
           </SiteMaxWidthContainer>
 
