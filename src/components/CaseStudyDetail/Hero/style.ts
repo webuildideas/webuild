@@ -4,7 +4,11 @@ import { motion } from 'framer-motion'
 // Utils
 import { rhythmUnit } from '../../../common/utils/typography'
 
-export const CaseStudyHero = styled.div`
+interface StyleProps {
+  backgroundSvg: string
+}
+
+export const CaseStudyHero = styled.div<StyleProps>`
   position: relative;
   color: white;
   padding-top: ${() => rhythmUnit(4)};

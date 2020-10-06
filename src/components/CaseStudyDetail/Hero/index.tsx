@@ -1,13 +1,26 @@
 // Packages
 import React from 'react'
 import PropTypes from 'prop-types'
-import Img from 'gatsby-image'
+import Img, { FluidObject } from 'gatsby-image'
 import { motion } from 'framer-motion'
-// Styled Components
+
+// Commons
 import * as S from './style'
 import SiteMaxWidthContainer from '../../../common/styledComponents/SiteMaxWidthContainer'
 
-const CaseStudyHero = ({ background, successSummary, logo, heroImg }) => (
+interface Props {
+  background: string
+  successSummary: string
+  logo: string
+  heroImg: FluidObject
+}
+
+const CaseStudyHero = ({
+  background,
+  successSummary,
+  logo,
+  heroImg
+}: Props) => (
   <S.CaseStudyHero backgroundSvg={background}>
     <SiteMaxWidthContainer>
       <motion.div

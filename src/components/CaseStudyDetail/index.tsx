@@ -12,7 +12,7 @@ import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthCon
 
 // Components
 import CaseStudy from '../CaseStudy'
-import CaseStudyHero from './CaseStudyHero'
+import Hero from './Hero'
 import CaseStudyCarousel from './CaseStudyCarousel'
 import Result from './Result'
 import CaseStudyRichText from './CaseStudyRichText'
@@ -74,7 +74,7 @@ const CaseStudyDetail = ({ data: { contentfulCaseStudy } }: Props) => {
         transition={{ duration: 1 }}
       >
         {heroBackgroundImage && heroImage && whiteLogo && successSummary ? (
-          <CaseStudyHero
+          <Hero
             background={heroBackgroundImage.file.url}
             heroImg={heroImage.fluid}
             logo={whiteLogo.file.url}
