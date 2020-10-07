@@ -1,17 +1,17 @@
 // Packages
 import React, { useEffect } from 'react'
-import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import { motion, useAnimation } from 'framer-motion'
+import { motion, useAnimation, Variants } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import styled from 'styled-components'
+import { Document } from '@contentful/rich-text-types'
 
-// Utils
+// Commons
 import { rhythmUnit } from '../common/utils/typography'
-
-// Styled Components
 import SiteMaxWidthContainer from '../common/styledComponents/SiteMaxWidthContainer'
 import SectionHeading from '../common/styledComponents/SectionHeading'
+import { CaseStudy } from '../common/types/CaseStudy'
+import { FeaturedTestimonial, Testimonials } from '../common/types/Testimonial'
 
 // Components
 import Meta from '../components/Meta'
@@ -21,6 +21,36 @@ import DesignPartner from '../components/DesignPartner'
 import Testimonial from '../components/Testimonial'
 import TestimonialGrid from '../components/TestimonialGrid'
 import Footer from '../components/Footer'
+
+export interface HomePageQueryResponse {
+  contentfulHomePage: {
+    heroTitle: {
+      json: Document
+    }
+    caseStudies: CaseStudy[]
+    featuredTestimonial: FeaturedTestimonial
+    testimonials: Testimonials
+  }
+}
+
+interface Props {
+  data: HomePageQueryResponse
+}
+
+const variants: Variants = {
+  visible: (i: number) => ({
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.65,
+      delay: i * 0.3
+    }
+  }),
+  hidden: {
+    y: 25,
+    opacity: 0
+  }
+}
 
 const CaseStudiesContainer = styled.div`
   padding-top: ${() => rhythmUnit(5)};
@@ -36,35 +66,19 @@ const MobileBreak = styled.span`
   }
 `
 
-const IndexPage = ({ data }) => {
+const IndexPage = ({ data }: Props) => {
   const homeData = data.contentfulHomePage
+  const animationControls = useAnimation()
   const [ref, inView] = useInView({
     threshold: 1,
     triggerOnce: true
   })
 
-  const controls = useAnimation()
-
-  const variants = {
-    visible: (i) => ({
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.65,
-        delay: i * 0.3
-      }
-    }),
-    hidden: {
-      y: 25,
-      opacity: 0
-    }
-  }
-
   useEffect(() => {
     if (inView) {
-      controls.start('visible')
+      animationControls.start('visible')
     }
-  }, [controls, inView])
+  }, [animationControls, inView])
 
   return (
     <motion.div animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
@@ -92,7 +106,7 @@ const IndexPage = ({ data }) => {
             style={{ marginBottom: `${rhythmUnit(2.75)}` }}
           >
             <motion.h1
-              animate={controls}
+              animate={animationControls}
               className="SectionHeading__title"
               custom={0}
               initial="hidden"
@@ -101,7 +115,7 @@ const IndexPage = ({ data }) => {
               Our Partners Love Us
             </motion.h1>
             <motion.h2
-              animate={controls}
+              animate={animationControls}
               className="SectionHeading__subtitle"
               custom={1}
               initial="hidden"
@@ -136,10 +150,6 @@ const IndexPage = ({ data }) => {
       <Footer />
     </motion.div>
   )
-}
-
-IndexPage.propTypes = {
-  data: PropTypes.object.isRequired
 }
 
 export const HOMEPAGE_QUERY = graphql`

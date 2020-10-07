@@ -3,6 +3,7 @@ import React, { useCallback, useEffect } from 'react'
 import Img, { FixedObject } from 'gatsby-image'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
+import { Properties as CSSProperties } from 'csstype'
 
 // Config
 import { variants, featureHeadshotVariants, headshotVariants } from './config'
@@ -19,6 +20,7 @@ interface Props {
   companyRole: string
   company: string
   isFeatured?: boolean
+  style?: CSSProperties
 }
 
 const renderMarkdownBold = (md: string) => {
