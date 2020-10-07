@@ -13,11 +13,27 @@ import { motion, useAnimation, Variants } from 'framer-motion'
 import * as S from './style'
 
 // Components
-import CaseStudyCarousel from '../CaseStudyCarousel'
+import Carousel from '../Carousel'
 
-const buildCarouselImgArray = (imgArr) => {
-  // console.log(imgArr)
-  const carouselImgArr = []
+export type CarouselImageInitial = {
+  fields: {
+    file: {
+      'en-US': {
+        url: string
+      }
+    }
+  }
+}
+
+export type CarouselImage = {
+  src: string
+  srcSet: string
+}
+
+const buildCarouselImgArray = (
+  imgArr: CarouselImageInitial[]
+): CarouselImage[] => {
+  const carouselImgArr: CarouselImage[] = []
   imgArr.map((i) => {
     const {
       fields: { file }
@@ -103,7 +119,7 @@ const CaseStudyRichText = ({ document }: Props) => {
       [BLOCKS.EMBEDDED_ENTRY]: (node) => {
         const { images } = node.data.target.fields
         const imgArr = buildCarouselImgArray(images['en-US'])
-        return <CaseStudyCarousel autoplay={shouldAutoplay} images={imgArr} />
+        return <Carousel autoplay={shouldAutoplay} images={imgArr} />
       }
     }
   }

@@ -13,7 +13,7 @@ import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthCon
 // Components
 import CaseStudy from '../CaseStudy'
 import Hero from './Hero'
-import CaseStudyCarousel from './CaseStudyCarousel'
+import Carousel from './Carousel'
 import Result from './Result'
 import RichText from './RichText'
 import ChallengeAndSolution from './ChallengeAndSolution'
@@ -99,7 +99,7 @@ const CaseStudyDetail = ({ data: { contentfulCaseStudy } }: Props) => {
             <SiteMaxWidthContainer maxWidth={1400}>
               {designSystemCarousel && designSystemCarousel.images && (
                 <div ref={ref}>
-                  <CaseStudyCarousel
+                  <Carousel
                     autoplay={shouldAutoplay}
                     images={designSystemCarousel.images}
                   />
