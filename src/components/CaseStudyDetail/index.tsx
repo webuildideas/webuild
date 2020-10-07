@@ -15,7 +15,7 @@ import CaseStudy from '../CaseStudy'
 import Hero from './Hero'
 import CaseStudyCarousel from './CaseStudyCarousel'
 import Result from './Result'
-import CaseStudyRichText from './CaseStudyRichText'
+import RichText from './RichText'
 import ChallengeAndSolution from './ChallengeAndSolution'
 import FeaturedTestimonial from './FeaturedTestimonial'
 import Footer from '../Footer'
@@ -121,16 +121,10 @@ const CaseStudyDetail = ({ data: { contentfulCaseStudy } }: Props) => {
           )}
         </section>
 
-        {projectOverview && (
-          <CaseStudyRichText document={projectOverview.json} />
-        )}
-        {projectChallenge && (
-          <CaseStudyRichText document={projectChallenge.json} />
-        )}
-        {projectSolution && (
-          <CaseStudyRichText document={projectSolution.json} />
-        )}
-        {projectOutcome && <CaseStudyRichText document={projectOutcome.json} />}
+        {projectOverview && <RichText document={projectOverview.json} />}
+        {projectChallenge && <RichText document={projectChallenge.json} />}
+        {projectSolution && <RichText document={projectSolution.json} />}
+        {projectOutcome && <RichText document={projectOutcome.json} />}
 
         {nextCaseStudy ? (
           <div

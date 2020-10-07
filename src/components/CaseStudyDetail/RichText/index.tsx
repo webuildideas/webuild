@@ -1,12 +1,15 @@
 // Packages
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import { BLOCKS } from '@contentful/rich-text-types'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { BLOCKS, Document } from '@contentful/rich-text-types'
+import {
+  documentToReactComponents,
+  Options
+} from '@contentful/rich-text-react-renderer'
 import { useInView } from 'react-intersection-observer'
-import { motion, useAnimation } from 'framer-motion'
+import { motion, useAnimation, Variants } from 'framer-motion'
 
-// Styled Components
+// Commons
 import * as S from './style'
 
 // Components
@@ -28,46 +31,48 @@ const buildCarouselImgArray = (imgArr) => {
   return carouselImgArr
 }
 
-const CaseStudyRichText = ({ document }) => {
-  const [shouldAutoplay, setAutoPlay] = useState(false)
+interface Props {
+  document: Document
+}
 
+const variants: Variants = {
+  visible: (i: number) => ({
+    opacity: [0, 0.25, 0.4, 0.6, 0.6, 0.6, 0.7, 0.8, 1],
+    y: 0,
+    transition: {
+      duration: 0.75,
+      delay: i * 0.25
+    }
+  }),
+  hidden: {
+    opacity: 0,
+    y: 25
+  }
+}
+
+const CaseStudyRichText = ({ document }: Props) => {
+  const animationControls = useAnimation()
+  const [shouldAutoplay, setAutoPlay] = useState(false)
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.25
   })
 
-  const controls = useAnimation()
-
-  const variants = {
-    visible: (i) => ({
-      opacity: [0, 0.25, 0.4, 0.6, 0.6, 0.6, 0.7, 0.8, 1],
-      y: 0,
-      transition: {
-        duration: 0.75,
-        delay: i * 0.25
-      }
-    }),
-    hidden: {
-      opacity: 0,
-      y: 25
-    }
-  }
-
   useEffect(() => {
     if (inView) {
-      controls.start('visible')
+      animationControls.start('visible')
       setAutoPlay(true)
     }
-  }, [controls, inView])
+  }, [animationControls, inView])
 
-  const options = {
+  const options: Options = {
     renderNode: {
       [BLOCKS.EMBEDDED_ASSET]: (node) => {
         const { file, title } = node.data.target.fields
         return (
           <motion.img
             alt={title}
-            animate={controls}
+            animate={animationControls}
             custom={3}
             initial="hidden"
             src={file['en-US'].url}
@@ -77,7 +82,7 @@ const CaseStudyRichText = ({ document }) => {
       },
       [BLOCKS.HEADING_2]: (_, children) => (
         <motion.h2
-          animate={controls}
+          animate={animationControls}
           custom={1}
           initial="hidden"
           variants={variants}
@@ -87,7 +92,7 @@ const CaseStudyRichText = ({ document }) => {
       ),
       [BLOCKS.PARAGRAPH]: (_, children) => (
         <motion.p
-          animate={controls}
+          animate={animationControls}
           custom={2}
           initial="hidden"
           variants={variants}

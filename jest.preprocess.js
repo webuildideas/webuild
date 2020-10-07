@@ -1,5 +1,5 @@
 const babelOptions = {
-  presets: ['babel-preset-gatsby']
+  presets: ['babel-preset-gatsby', '@babel/preset-typescript']
 }
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires

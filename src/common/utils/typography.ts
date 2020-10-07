@@ -6,5 +6,5 @@ const baseLineHeight = 1.6
 const baseVR = baseFontSize * baseLineHeight
 
 // Get a responsive rhythm unit for spacing
-export const rhythmUnit = (multiple) =>
+export const rhythmUnit = (multiple: number) =>
   `${(baseVR * multiple) / baseFontSize}rem`
