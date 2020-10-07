@@ -10,16 +10,17 @@
     "allowJs": true,
     "lib": ["dom", "es2015", "es2017"],
     "noImplicitReturns": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "skipLibCheck": true
   },
   "exclude": [
-    "./node_modules",
-    "./public",
-    "./.cache",
-    "./gatsby-config.ts",
-    "./gatsby-node.ts",
-    "./gatsby-browser.ts",
-    "./gatsby-ssr.ts"
+    "node_modules",
+    "public",
+    ".cache",
+    "./gatsby-config.js",
+    "./gatsby-node.js",
+    "./gatsby-browser.js",
+    "./gatsby-ssr.js"
   ],
   "include": ["./src/**/**/*"]
 }

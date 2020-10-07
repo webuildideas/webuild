@@ -11,7 +11,9 @@ export const callProjectHuddle = () => {
     ph.async = true
     ph.charset = 'UTF-8'
     ph.src = `${g}&v=${new Date().getTime()}`
-    s.parentNode.insertBefore(ph, s)
+    if (s.parentNode) {
+      s.parentNode.insertBefore(ph, s)
+    }
   } else {
     console.log('Development Mode: Project Huddle Disabled')
   }

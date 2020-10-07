@@ -70,7 +70,7 @@ const OverlayNav = ({ isOpen, onContact, toggleNav }: Props) => {
   return (
     <OverlayNavContainer style={overlaySpring}>
       <ul className="OverlayNavList">
-        {linkTrail.map(({ y, ...rest }, index) => (
+        {linkTrail.map(({ y, ...rest }, index: number) => (
           <animated.li
             key={`navLink-${index}`}
             className="OverlayNavLink"

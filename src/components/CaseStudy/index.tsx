@@ -5,15 +5,13 @@ import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
-// Types
+// Commons
 import { CaseStudy as CaseStudyType } from '../../common/types/CaseStudy'
+import * as S from './style'
+import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
 
 // Components
 import Button from '../Button'
-
-// Styled Components
-import * as S from './style'
-import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
 
 interface Props {
   animationThreshold?: number
@@ -122,7 +120,7 @@ const CaseStudy = ({
                 alt={`${caseStudy.name} logo`}
                 animate={logoControls}
                 initial="hidden"
-                src={caseStudy.logo.file.url}
+                src={caseStudy.logo?.file?.url}
                 variants={variants}
               />
             </AniLink>
@@ -176,26 +174,28 @@ const CaseStudy = ({
             Read Case Study
           </Button>
         </div>
-        <AniLink
-          bg={bgColor}
-          className="CaseStudy__img"
-          cover
-          direction="top"
-          duration={1.25}
-          to={`/case-studies/${caseStudy.slug}`}
-        >
-          <motion.div
-            animate={imageControls}
-            initial="imageHidden"
-            variants={variants}
+        {caseStudy?.listingImage?.fluid ? (
+          <AniLink
+            bg={bgColor}
+            className="CaseStudy__img"
+            cover
+            direction="top"
+            duration={1.25}
+            to={`/case-studies/${caseStudy.slug}`}
           >
-            <Img
-              alt={`${caseStudy.name}`}
-              fluid={caseStudy.listingImage.fluid}
-              imgStyle={{ objectFit: 'contain' }}
-            />
-          </motion.div>
-        </AniLink>
+            <motion.div
+              animate={imageControls}
+              initial="imageHidden"
+              variants={variants}
+            >
+              <Img
+                alt={`${caseStudy.name}`}
+                fluid={caseStudy.listingImage.fluid}
+                imgStyle={{ objectFit: 'contain' }}
+              />
+            </motion.div>
+          </AniLink>
+        ) : null}
       </S.CaseStudy>
     </SiteMaxWidthContainer>
   )
