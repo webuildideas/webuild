@@ -1,14 +1,16 @@
 // Packages
 import React, { useEffect } from 'react'
-import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import { motion, useAnimation } from 'framer-motion'
+import { motion, useAnimation, Variants } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import styled from 'styled-components'
 import { OutboundLink } from 'gatsby-plugin-google-analytics'
+import { Document } from '@contentful/rich-text-types'
 
-// Utils
+// Commons
 import { rhythmUnit } from '../common/utils/typography'
+import { GatsbyImageFluid } from '../common/types/GatsbyImage'
+import { Testimonials } from '../common/types/Testimonial'
 
 // Components
 import Meta from '../components/Meta'
@@ -20,49 +22,62 @@ import PhotoGrid from '../components/PhotoGrid'
 import TestimonialSlider from '../components/TestimonialSlider'
 import Footer from '../components/Footer'
 
+interface WhoWeAreQueryResponse {
+  contentfulAboutPage: {
+    heroTitle: {
+      json: Document
+    }
+    photoGrid: GatsbyImageFluid[]
+  }
+  allContentfulTestimonial: {
+    nodes: Testimonials
+  }
+}
+
+interface Props {
+  data: WhoWeAreQueryResponse
+}
+
 const PhotoGridContainer = styled.div`
   padding-top: ${() => rhythmUnit(5)};
   @media (min-width: 768px) {
     padding-top: ${() => rhythmUnit(7)};
   }
 `
+const variants: Variants = {
+  visible: (i: number) => ({
+    y: 0,
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.9,
+      delay: i * 0.252
+    }
+  }),
+  headingHidden: {
+    y: -25,
+    opacity: 0
+  },
+  textHidden: {
+    x: -25,
+    opacity: 0
+  }
+}
 
-const WhoWeAre = ({ data }) => {
+const WhoWeAre = ({ data }: Props) => {
   const aboutPageData = data.contentfulAboutPage
+  const animationControls = useAnimation()
   const { nodes: testimonialData } = data.allContentfulTestimonial
-
   const [ref, inView] = useInView({
     threshold: 0.7,
     triggerOnce: true
   })
 
-  const controls = useAnimation()
-
-  const variants = {
-    visible: (i) => ({
-      y: 0,
-      x: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.9,
-        delay: i * 0.252
-      }
-    }),
-    headingHidden: {
-      y: -25,
-      opacity: 0
-    },
-    textHidden: {
-      x: -25,
-      opacity: 0
-    }
-  }
-
   useEffect(() => {
     if (inView) {
-      controls.start('visible')
+      animationControls.start('visible')
     }
-  }, [controls, inView])
+  }, [animationControls, inView])
 
   return (
     <motion.div animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
@@ -93,7 +108,7 @@ const WhoWeAre = ({ data }) => {
       >
         <BioCard>
           <motion.h2
-            animate={controls}
+            animate={animationControls}
             custom={0}
             initial="headingHidden"
             variants={variants}
@@ -101,7 +116,7 @@ const WhoWeAre = ({ data }) => {
             We've Been There, Too.
           </motion.h2>
           <motion.p
-            animate={controls}
+            animate={animationControls}
             custom={1}
             initial="textHidden"
             variants={variants}
@@ -111,7 +126,7 @@ const WhoWeAre = ({ data }) => {
             continents.
           </motion.p>
           <motion.p
-            animate={controls}
+            animate={animationControls}
             custom={2}
             initial="textHidden"
             variants={variants}
@@ -121,7 +136,7 @@ const WhoWeAre = ({ data }) => {
             he’s committed to helping other founders do the same.
           </motion.p>
           <motion.p
-            animate={controls}
+            animate={animationControls}
             custom={3}
             initial="textHidden"
             variants={variants}
@@ -149,10 +164,6 @@ const WhoWeAre = ({ data }) => {
       <Footer />
     </motion.div>
   )
-}
-
-WhoWeAre.propTypes = {
-  data: PropTypes.object.isRequired
 }
 
 export const WHO_WE_ARE_QUERY = graphql`
