@@ -2,7 +2,7 @@
 import styled from 'styled-components'
 
 // Components
-import { OutboundLink } from 'gatsby-plugin-google-analytics'
+import { OutboundLink } from 'gatsby-plugin-gtag'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 // Utils
