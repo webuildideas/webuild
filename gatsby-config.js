@@ -49,11 +49,11 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-plugin-google-analytics',
+      resolve: `gatsby-plugin-gtag`,
       options: {
         trackingId: 'UA-60707530-1',
-        head: true,
-        pageTransitionDelay: 250
+        head: false,
+        anonymize: false
       }
     },
     `gatsby-transformer-sharp`,
