@@ -1,0 +1,91 @@
+// Packages
+import React, { useEffect } from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
+import Img, { FluidObject } from 'gatsby-image'
+import { useInView } from 'react-intersection-observer'
+import { motion, useAnimation, Variants } from 'framer-motion'
+
+// Commons
+import * as S from './style'
+import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
+
+interface Props {
+  children: React.ReactNode
+}
+
+interface BioCardQueryResponse {
+  file: {
+    childImageSharp: {
+      fluid: FluidObject
+    }
+  }
+}
+
+const variants: Variants = {
+  visible: {
+    y: 0,
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.9,
+      delay: 0.4
+    }
+  },
+  hidden: {
+    x: 25,
+    opacity: 0
+  }
+}
+
+const BioCard = ({ children }: Props) => {
+  const animationControls = useAnimation()
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.75
+  })
+  const { file } = useStaticQuery<BioCardQueryResponse>(
+    graphql`
+      query {
+        file(relativePath: { eq: "evan-shoemaker.jpg" }) {
+          childImageSharp {
+            fluid(maxWidth: 700) {
+              ...GatsbyImageSharpFluid_noBase64
+            }
+          }
+        }
+      }
+    `
+  )
+
+  useEffect(() => {
+    if (inView) {
+      animationControls.start('visible')
+    }
+  }, [animationControls, inView])
+
+  return (
+    <SiteMaxWidthContainer>
+      <S.BioCard ref={ref}>
+        <motion.div
+          animate={animationControls}
+          initial="hidden"
+          variants={variants}
+        >
+          <Img
+            className="BioCard__img-wrapper"
+            fluid={file.childImageSharp.fluid}
+          />
+        </motion.div>
+        <S.BioContent
+          animate={animationControls}
+          initial="hidden"
+          variants={variants}
+        >
+          {children}
+        </S.BioContent>
+      </S.BioCard>
+    </SiteMaxWidthContainer>
+  )
+}
+
+export default BioCard

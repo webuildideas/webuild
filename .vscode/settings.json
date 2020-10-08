@@ -1,6 +1,7 @@
 {
   "emmet.includeLanguages": {
-    "javascript": "javascriptreact"
+    "javascript": "javascriptreact",
+    "typescriptreact": "typescriptreact"
   },
   "editor.formatOnSave": true,
   "[css]": {
@@ -30,5 +31,5 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "prettier.disableLanguages": ["javascript", "javascriptreact"]
+  "prettier.disableLanguages": ["javascript", "javascriptreact", "typescript", "typescriptreact"]
 }

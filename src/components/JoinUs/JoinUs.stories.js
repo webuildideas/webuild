@@ -4,10 +4,10 @@ import React from 'react'
 // Components
 import JoinUs from '.'
 
-const JoinUsDecorator = story => (
+const JoinUsDecorator = (story) => (
   <div
     style={{
-      marginTop: '64px',
+      marginTop: '64px'
     }}
   >
     {story()}
@@ -18,13 +18,13 @@ export default {
   title: 'JoinUs',
   component: JoinUs,
   parameters: {
-    componentSubtitle: 'Join Us section advertising WeBuild Jobs',
+    componentSubtitle: 'Join Us section advertising WeBuild Jobs'
   },
-  decorators: [JoinUsDecorator],
+  decorators: [JoinUsDecorator]
 }
 
 export const defaultState = () => <JoinUs />
 
 defaultState.story = {
-  name: 'Default',
+  name: 'Default'
 }

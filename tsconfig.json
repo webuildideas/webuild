@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "strict": true,
+    "noEmit": true, // you don't need to emit TS files on compile
+    "target": "esnext",
+    "jsx": "react",
+    "allowJs": true,
+    "lib": ["dom", "es2015", "es2017"],
+    "noImplicitReturns": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  },
+  "exclude": [
+    "node_modules",
+    "public",
+    ".cache",
+    "./gatsby-config.js",
+    "./gatsby-node.js",
+    "./gatsby-browser.js",
+    "./gatsby-ssr.js"
+  ],
+  "include": ["./src/**/**/*"]
+}
