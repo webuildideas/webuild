@@ -1,6 +1,6 @@
 // Packages
 import styled from 'styled-components'
-import { OutboundLink } from 'gatsby-plugin-google-analytics'
+import { OutboundLink } from 'gatsby-plugin-gtag'
 
 // Utils
 import { rhythmUnit } from '../../common/utils/typography'
