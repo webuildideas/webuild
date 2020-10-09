@@ -1,6 +1,6 @@
 // Packages
 import React, { useCallback, useEffect } from 'react'
-import Img, { FixedObject } from 'gatsby-image'
+import Img, { FixedObject, FluidObject } from 'gatsby-image'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
 import { Properties as CSSProperties } from 'csstype'
@@ -11,12 +11,11 @@ import { variants, featureHeadshotVariants, headshotVariants } from './config'
 // Styled Components
 import * as S from './style'
 
-type Headshot = FixedObject | string
 interface Props {
   children: string
   name: string
-  headshot: Headshot
-  featuredHeadshot?: Headshot
+  headshot: FixedObject
+  featuredHeadshot?: FluidObject
   companyRole: string
   company: string
   isFeatured?: boolean
@@ -48,32 +47,28 @@ const Testimonial = ({
   })
 
   const renderFeaturedHeadshot = useCallback(
-    (featuredImage: Headshot) => {
-      if (typeof featuredImage !== 'string') {
-        return false
-      }
-
+    (featuredImage: FluidObject) => {
       return (
-        <div className="img-container">
-          <motion.img
+        <motion.div
+          animate={featuredAnimationControls}
+          className="img-container"
+          initial="hidden"
+          variants={featureHeadshotVariants}
+        >
+          <Img
             alt={`${name} Headshot`}
-            animate={featuredAnimationControls}
-            initial="hidden"
-            src={featuredImage}
-            variants={featureHeadshotVariants}
+            durationFadeIn={350}
+            fadeIn
+            fluid={featuredImage}
           />
-        </div>
+        </motion.div>
       )
     },
     [featuredAnimationControls, name]
   )
 
   const renderHeadshot = useCallback(
-    (headshotImage: Headshot) => {
-      if (typeof headshotImage === 'string') {
-        return false
-      }
-
+    (headshotImage: FixedObject) => {
       return (
         <motion.div
           animate={headshotAnimationControls}
@@ -82,8 +77,9 @@ const Testimonial = ({
         >
           <Img
             alt={`${name} Headshot`}
+            durationFadeIn={350}
+            fadeIn
             fixed={headshotImage}
-            style={{ width: '100%', height: '100%' }}
           />
         </motion.div>
       )
@@ -105,7 +101,7 @@ const Testimonial = ({
           />
           <div className="Testimonial__client">
             <div className="Testimonial__client-img">
-              {renderFeaturedHeadshot(headshot)}
+              {renderHeadshot(headshot)}
             </div>
             <div className="Testimonial__client-details">
               <motion.p
@@ -142,7 +138,8 @@ const Testimonial = ({
       name,
       props,
       ref,
-      renderFeaturedHeadshot
+      renderFeaturedHeadshot,
+      renderHeadshot
     ]
   )
 

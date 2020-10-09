@@ -133,9 +133,9 @@ const IndexPage = ({ data }: Props) => {
             company={homeData.featuredTestimonial.company}
             companyRole={homeData.featuredTestimonial.role}
             featuredHeadshot={
-              homeData.featuredTestimonial.featuredHeadshot.fluid.src
+              homeData.featuredTestimonial.featuredHeadshot.fluid
             }
-            headshot={homeData.featuredTestimonial.headshot.fixed.src}
+            headshot={homeData.featuredTestimonial.headshot.fixed}
             isFeatured={true}
             name={homeData.featuredTestimonial.name}
             style={{ marginBottom: `${rhythmUnit(1)}` }}
@@ -185,12 +185,12 @@ export const HOMEPAGE_QUERY = graphql`
           testimonial
         }
         featuredHeadshot {
-          fluid(maxWidth: 1000) {
-            src
+          fluid(maxWidth: 500) {
+            ...GatsbyContentfulFluid_withWebp
           }
         }
         headshot {
-          fixed(cropFocus: FACE, height: 100, width: 100) {
+          fixed(cropFocus: FACE, height: 50, width: 50) {
             ...GatsbyContentfulFixed_withWebp
           }
         }
@@ -204,7 +204,7 @@ export const HOMEPAGE_QUERY = graphql`
           testimonial
         }
         headshot {
-          fixed(cropFocus: FACE, height: 100, width: 100) {
+          fixed(cropFocus: FACE, height: 50, width: 50) {
             ...GatsbyContentfulFixed_withWebp
           }
         }

@@ -55,6 +55,8 @@ export const Testimonial = styled(motion.div)`
 export const FeaturedTestimonial = styled(Testimonial)`
   margin-left: auto;
   margin-right: auto;
+  padding: 0;
+
   @media (min-width: 850px) {
     display: grid;
     grid-template-columns: 1fr 0.75fr;
@@ -64,6 +66,14 @@ export const FeaturedTestimonial = styled(Testimonial)`
     }
     .Testimonial__client-img {
       display: none;
+    }
+  }
+
+  .Testimonial__content {
+    padding: ${() => rhythmUnit(1)};
+
+    @media (min-width: 425px) {
+      padding: ${() => rhythmUnit(1.25)};
     }
   }
 
@@ -84,18 +94,18 @@ export const FeaturedTestimonial = styled(Testimonial)`
     @media (min-width: 850px) {
       display: block;
     }
+
     .img-container {
       display: block;
       position: absolute;
-      right: -25px;
-      bottom: -40px;
+      width: 100%;
+      bottom: 0;
       overflow-y: hidden;
     }
-    img {
-      display: block;
-      /* position: absolute; */
-      right: -25px;
-      bottom: -40px;
+
+    .gatsby-image-wrapper {
+      width: 100%;
+      overflow: visible !important;
     }
   }
 `
