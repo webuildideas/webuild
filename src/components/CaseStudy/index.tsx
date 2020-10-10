@@ -190,6 +190,8 @@ const CaseStudy = ({
             >
               <Img
                 alt={`${caseStudy.name}`}
+                durationFadeIn={275}
+                fadeIn
                 fluid={caseStudy.listingImage.fluid}
                 imgStyle={{ objectFit: 'contain' }}
               />
