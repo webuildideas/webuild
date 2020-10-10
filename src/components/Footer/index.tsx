@@ -106,6 +106,7 @@ const Footer = () => {
               custom={4}
               href="https://www.dribbble.com/webuild"
               initial="hidden"
+              rel="noopener noreferrer"
               target="_blank"
               variants={variants}
             >
@@ -117,6 +118,7 @@ const Footer = () => {
               custom={5}
               href="https://www.instagram.com/wearewebuild"
               initial="hidden"
+              rel="noopener noreferrer"
               target="_blank"
               variants={variants}
             >

@@ -71,8 +71,8 @@ const CaseStudyFeaturedTestimonial = ({ featuredTestimonial }: Props) => {
         <Testimonial
           company={featuredTestimonial.company}
           companyRole={featuredTestimonial.role}
-          featuredHeadshot={featuredTestimonial.featuredHeadshot.fluid.src}
-          headshot={featuredTestimonial.headshot.fixed.src}
+          featuredHeadshot={featuredTestimonial.featuredHeadshot.fluid}
+          headshot={featuredTestimonial.headshot.fixed}
           isFeatured={true}
           name={featuredTestimonial.name}
         >

@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation, Variants } from 'framer-motion'
 import { CarouselProvider, Slide, Slider } from 'pure-react-carousel'
+import Img from 'gatsby-image'
 import 'pure-react-carousel/dist/react-carousel.es.css'
 
 // Commons
@@ -35,13 +36,13 @@ const variants: Variants = {
 const renderImg = (image: GatsbyImageFluid | CarouselImage) => {
   if (hasOwnProperty(image, 'fluid')) {
     return (
-      <img alt="carousel" src={image.fluid.src} srcSet={image.fluid.srcSet} />
+      <Img alt="carousel" durationFadeIn={250} fadeIn fluid={image.fluid} />
     )
   }
   return <img alt="carousel" src={image.src} srcSet={image.srcSet} />
 }
 
-const CaseStudyCarousel = ({ images, autoplay = false }: Props) => {
+const Carousel = ({ images, autoplay = false }: Props) => {
   const animationControls = useAnimation()
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -82,4 +83,4 @@ const CaseStudyCarousel = ({ images, autoplay = false }: Props) => {
   )
 }
 
-export default CaseStudyCarousel
+export default Carousel

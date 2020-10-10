@@ -179,9 +179,8 @@ export const query = graphql`
       }
       designSystemCarousel {
         images {
-          fluid {
-            src
-            srcSet
+          fluid(maxWidth: 1400) {
+            ...GatsbyContentfulFluid_withWebp
           }
         }
       }
@@ -203,7 +202,7 @@ export const query = graphql`
         }
         featuredHeadshot {
           fluid(maxWidth: 500) {
-            src
+            ...GatsbyContentfulFluid_withWebp
           }
         }
         headshot {
