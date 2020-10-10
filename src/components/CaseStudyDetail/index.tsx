@@ -161,8 +161,8 @@ export const query = graphql`
         }
       }
       heroImage {
-        fluid(maxWidth: 2200, quality: 100) {
-          ...GatsbyContentfulFluid_withWebp_noBase64
+        fluid(maxWidth: 1100) {
+          ...GatsbyContentfulFluid_withWebp
         }
       }
       whiteLogo {
@@ -202,12 +202,12 @@ export const query = graphql`
           testimonial
         }
         featuredHeadshot {
-          fluid(maxWidth: 1000) {
+          fluid(maxWidth: 500) {
             src
           }
         }
         headshot {
-          fixed(cropFocus: FACE, height: 100, width: 100) {
+          fixed(cropFocus: FACE, height: 50, width: 50) {
             ...GatsbyContentfulFixed_withWebp
           }
         }
@@ -237,7 +237,7 @@ export const query = graphql`
           }
         }
         listingImage {
-          fluid {
+          fluid(maxWidth: 625) {
             ...GatsbyContentfulFluid_withWebp
           }
         }
