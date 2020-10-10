@@ -48,8 +48,8 @@ const BioCard = ({ children }: Props) => {
       query {
         file(relativePath: { eq: "evan-shoemaker.jpg" }) {
           childImageSharp {
-            fluid(maxWidth: 700) {
-              ...GatsbyImageSharpFluid_noBase64
+            fluid(maxWidth: 365) {
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }

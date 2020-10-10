@@ -70,6 +70,7 @@ const JoinUs = () => {
         <S.JoinUsJobs data-testid="joinUs-jobs">
           <S.JoinUsJob
             href="https://webuildideas.bamboohr.com/jobs/view.php?id=22"
+            rel="noopener noreferrer"
             target="_blank"
           >
             <motion.h3
@@ -91,6 +92,7 @@ const JoinUs = () => {
           </S.JoinUsJob>
           <S.JoinUsJob
             href="https://webuildideas.bamboohr.com/jobs/view.php?id=21"
+            rel="noopener noreferrer"
             target="_blank"
           >
             <motion.h3
@@ -113,6 +115,7 @@ const JoinUs = () => {
         </S.JoinUsJobs>
         <Button
           href="https://webuildideas.bamboohr.com/jobs/"
+          rel="noopener noreferrer"
           target="_blank"
           type="secondaryOutbound"
         >

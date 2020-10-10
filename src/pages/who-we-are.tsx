@@ -84,7 +84,6 @@ const WhoWeAre = ({ data }: Props) => {
       <Meta title="Who We Are" />
 
       <PageIntro document={aboutPageData.heroTitle.json} maxWidth={860} />
-
       <PhotoGridContainer>
         <PhotoGrid photos={aboutPageData.photoGrid} />
       </PhotoGridContainer>
@@ -173,9 +172,8 @@ export const WHO_WE_ARE_QUERY = graphql`
         json
       }
       photoGrid {
-        fluid {
-          srcSet
-          src
+        fluid(maxWidth: 500) {
+          ...GatsbyContentfulFluid_withWebp
         }
       }
     }
@@ -191,7 +189,7 @@ export const WHO_WE_ARE_QUERY = graphql`
           testimonial
         }
         headshot {
-          fixed(cropFocus: FACE, height: 100, width: 100) {
+          fixed(cropFocus: FACE, height: 60, width: 60) {
             ...GatsbyContentfulFixed_withWebp
           }
         }
