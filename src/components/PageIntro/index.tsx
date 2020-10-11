@@ -2,8 +2,9 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Document, MARKS, BLOCKS } from '@contentful/rich-text-types'
+import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import {
-  documentToReactComponents,
+  // documentToReactComponents,
   Options
 } from '@contentful/rich-text-react-renderer'
 
@@ -56,7 +57,7 @@ const PageIntro = ({
     <S.PageIntro maxWidth={maxWidth}>
       <SiteMaxWidthContainer>
         <div className="PageIntro__inner">
-          {documentToReactComponents(document, options)}
+          {renderRichText(document, options)}
         </div>
       </SiteMaxWidthContainer>
     </S.PageIntro>

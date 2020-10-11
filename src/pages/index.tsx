@@ -24,9 +24,7 @@ import Footer from '../components/Footer'
 
 export interface HomePageQueryResponse {
   contentfulHomePage: {
-    heroTitle: {
-      json: Document
-    }
+    heroTitle: Document
     caseStudies: CaseStudy[]
     featuredTestimonial: FeaturedTestimonial
     testimonials: Testimonials
@@ -85,7 +83,7 @@ const IndexPage = ({ data }: Props) => {
       <Meta title="Home" />
       <PageIntro
         animationDelay={0.35}
-        document={homeData.heroTitle.json}
+        document={homeData.heroTitle}
         maxWidth={1040}
       />
       <CaseStudiesContainer>
@@ -156,7 +154,7 @@ export const HOMEPAGE_QUERY = graphql`
   query homepageQuery {
     contentfulHomePage(pageTitle: { eq: "Home" }) {
       heroTitle {
-        json
+        raw
       }
       caseStudies {
         name
