@@ -3,10 +3,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Document, MARKS, BLOCKS } from '@contentful/rich-text-types'
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
-import {
-  // documentToReactComponents,
-  Options
-} from '@contentful/rich-text-react-renderer'
+import { Options } from '@contentful/rich-text-react-renderer'
 
 // Styled Components
 import * as S from './style'

@@ -90,9 +90,16 @@ export const FeaturedTestimonial = styled(Testimonial)`
   .Testimonial__client-featured-img {
     position: relative;
     display: none;
-    /* overflow-y: hidden; */
+    overflow-y: visible;
     @media (min-width: 850px) {
       display: block;
+    }
+
+    .overflow-container {
+      overflow-y: hidden;
+      position: relative;
+      height: 150%;
+      bottom: 50%;
     }
 
     .img-container {
@@ -100,7 +107,6 @@ export const FeaturedTestimonial = styled(Testimonial)`
       position: absolute;
       width: 100%;
       bottom: 0;
-      overflow-y: hidden;
     }
 
     .gatsby-image-wrapper {

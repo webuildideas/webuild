@@ -49,19 +49,21 @@ const Testimonial = ({
   const renderFeaturedHeadshot = useCallback(
     (featuredImage: FluidObject) => {
       return (
-        <motion.div
-          animate={featuredAnimationControls}
-          className="img-container"
-          initial="hidden"
-          variants={featureHeadshotVariants}
-        >
-          <Img
-            alt={`${name} Headshot`}
-            durationFadeIn={350}
-            fadeIn
-            fluid={featuredImage}
-          />
-        </motion.div>
+        <div className="overflow-container">
+          <motion.div
+            animate={featuredAnimationControls}
+            className="img-container"
+            initial="hidden"
+            variants={featureHeadshotVariants}
+          >
+            <Img
+              alt={`${name} Headshot`}
+              durationFadeIn={350}
+              fadeIn
+              fluid={featuredImage}
+            />
+          </motion.div>
+        </div>
       )
     },
     [featuredAnimationControls, name]

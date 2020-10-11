@@ -31,7 +31,7 @@ const variants: Variants = {
 }
 
 const renderImg = (image: GatsbyImageFluid) => {
-  return <Img alt="carousel" durationFadeIn={250} fadeIn fluid={image.fluid} />
+  return <Img alt="carousel" durationFadeIn={125} fadeIn fluid={image.fluid} />
 }
 
 const Carousel = ({ images, autoplay = false }: Props) => {
