@@ -110,9 +110,9 @@ const CaseStudyDetail = ({ data: { contentfulCaseStudy } }: Props) => {
 
           <SiteMaxWidthContainer>
             <S.CaseStudyResults>
-              {resultOne && <Result document={resultOne.json} />}
-              {resultTwo && <Result document={resultTwo.json} />}
-              {resultThree && <Result document={resultThree.json} />}
+              {resultOne && <Result document={resultOne} />}
+              {resultTwo && <Result document={resultTwo} />}
+              {resultThree && <Result document={resultThree} />}
             </S.CaseStudyResults>
           </SiteMaxWidthContainer>
 
@@ -121,10 +121,10 @@ const CaseStudyDetail = ({ data: { contentfulCaseStudy } }: Props) => {
           )}
         </section>
 
-        {projectOverview && <RichText document={projectOverview.json} />}
-        {projectChallenge && <RichText document={projectChallenge.json} />}
-        {projectSolution && <RichText document={projectSolution.json} />}
-        {projectOutcome && <RichText document={projectOutcome.json} />}
+        {projectOverview && <RichText document={projectOverview} />}
+        {/* {projectChallenge && <RichText document={projectChallenge} />} */}
+        {/* {projectSolution && <RichText document={projectSolution} />} */}
+        {/* {projectOutcome && <RichText document={projectOutcome} />} */}
 
         {nextCaseStudy ? (
           <div
@@ -185,13 +185,13 @@ export const query = graphql`
         }
       }
       resultOne {
-        json
+        raw
       }
       resultTwo {
-        json
+        raw
       }
       resultThree {
-        json
+        raw
       }
       featuredTestimonial {
         company
@@ -212,16 +212,25 @@ export const query = graphql`
         }
       }
       projectChallenge {
-        json
+        raw
       }
       projectOutcome {
-        json
+        raw
       }
       projectOverview {
-        json
+        raw
+        references {
+          contentful_id
+          ... on ContentfulAsset {
+            id
+            fluid(maxWidth: 1100) {
+              ...GatsbyContentfulFluid_withWebp
+            }
+          }
+        }
       }
       projectSolution {
-        json
+        raw
       }
       nextCaseStudy {
         name

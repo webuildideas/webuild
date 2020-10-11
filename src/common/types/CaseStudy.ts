@@ -53,13 +53,13 @@ export type CaseStudyDetail = {
   designSystemCarousel?: {
     images: GatsbyImageFluid[]
   }
-  resultOne?: { json: Document }
-  resultTwo?: { json: Document }
-  resultThree?: { json: Document }
+  resultOne?: Document
+  resultTwo?: Document
+  resultThree?: Document
   featuredTestimonial?: FeaturedTestimonial
-  projectChallenge?: { json: Document }
-  projectOutcome?: { json: Document }
-  projectOverview?: { json: Document }
-  projectSolution?: { json: Document }
+  projectChallenge?: Document
+  projectOutcome?: Document
+  projectOverview?: Document
+  projectSolution?: Document
   nextCaseStudy?: CaseStudy
 }

@@ -1,13 +1,11 @@
 // Packages
 import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
+import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import { BLOCKS, Document } from '@contentful/rich-text-types'
-import {
-  documentToReactComponents,
-  Options
-} from '@contentful/rich-text-react-renderer'
+import { Options } from '@contentful/rich-text-react-renderer'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation, Variants } from 'framer-motion'
+import Img from 'gatsby-image'
 
 // Commons
 import * as S from './style'
@@ -67,6 +65,7 @@ const variants: Variants = {
 }
 
 const CaseStudyRichText = ({ document }: Props) => {
+  console.log('Document', document)
   const animationControls = useAnimation()
   const [shouldAutoplay, setAutoPlay] = useState(false)
   const [ref, inView] = useInView({
@@ -84,16 +83,15 @@ const CaseStudyRichText = ({ document }: Props) => {
   const options: Options = {
     renderNode: {
       [BLOCKS.EMBEDDED_ASSET]: (node) => {
-        const { file, title } = node.data.target.fields
         return (
-          <motion.img
-            alt={title}
+          <motion.div
             animate={animationControls}
             custom={3}
             initial="hidden"
-            src={file['en-US'].url}
             variants={variants}
-          />
+          >
+            <Img {...node.data.target} durationFadeIn={300} fadeIn />
+          </motion.div>
         )
       },
       [BLOCKS.HEADING_2]: (_, children) => (
@@ -126,13 +124,9 @@ const CaseStudyRichText = ({ document }: Props) => {
 
   return (
     <S.CaseStudyRichText>
-      <div ref={ref}>{documentToReactComponents(document, options)}</div>
+      <div ref={ref}>{renderRichText(document, options)}</div>
     </S.CaseStudyRichText>
   )
-}
-
-CaseStudyRichText.propTypes = {
-  document: PropTypes.object
 }
 
 export default CaseStudyRichText
