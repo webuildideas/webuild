@@ -138,6 +138,12 @@ module.exports = {
             type: `image/png`
           },
           {
+            src: `/favicons/maskable-icon.png`,
+            sizes: `180x180`,
+            type: `image/png`,
+            purpose: 'any maskable'
+          },
+          {
             src: `/favicons/android-icon-192x192.png`,
             sizes: `192x192`,
             type: `image/png`
