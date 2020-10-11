@@ -122,9 +122,9 @@ const CaseStudyDetail = ({ data: { contentfulCaseStudy } }: Props) => {
         </section>
 
         {projectOverview && <RichText document={projectOverview} />}
-        {/* {projectChallenge && <RichText document={projectChallenge} />} */}
-        {/* {projectSolution && <RichText document={projectSolution} />} */}
-        {/* {projectOutcome && <RichText document={projectOutcome} />} */}
+        {projectChallenge && <RichText document={projectChallenge} />}
+        {projectSolution && <RichText document={projectSolution} />}
+        {projectOutcome && <RichText document={projectOutcome} />}
 
         {nextCaseStudy ? (
           <div
@@ -211,12 +211,6 @@ export const query = graphql`
           }
         }
       }
-      projectChallenge {
-        raw
-      }
-      projectOutcome {
-        raw
-      }
       projectOverview {
         raw
         references {
@@ -227,10 +221,71 @@ export const query = graphql`
               ...GatsbyContentfulFluid_withWebp
             }
           }
+          ... on ContentfulCarousel {
+            images {
+              fluid(maxWidth: 1100) {
+                ...GatsbyContentfulFluid_withWebp
+              }
+            }
+          }
+        }
+      }
+      projectChallenge {
+        raw
+        references {
+          contentful_id
+          ... on ContentfulAsset {
+            id
+            fluid(maxWidth: 1100) {
+              ...GatsbyContentfulFluid_withWebp
+            }
+          }
+          ... on ContentfulCarousel {
+            images {
+              fluid(maxWidth: 1100) {
+                ...GatsbyContentfulFluid_withWebp
+              }
+            }
+          }
         }
       }
       projectSolution {
         raw
+        references {
+          contentful_id
+          ... on ContentfulAsset {
+            id
+            fluid(maxWidth: 1100) {
+              ...GatsbyContentfulFluid_withWebp
+            }
+          }
+          ... on ContentfulCarousel {
+            images {
+              fluid(maxWidth: 1100) {
+                ...GatsbyContentfulFluid_withWebp
+              }
+            }
+          }
+        }
+      }
+      projectOutcome {
+        raw
+        references {
+          contentful_id
+          ... on ContentfulAsset {
+            id
+            fluid(maxWidth: 1100) {
+              ...GatsbyContentfulFluid_withWebp
+            }
+          }
+          ... on ContentfulCarousel {
+            images {
+              fluid(maxWidth: 1100) {
+                ...GatsbyContentfulFluid_withWebp
+              }
+            }
+          }
+        }
       }
       nextCaseStudy {
         name

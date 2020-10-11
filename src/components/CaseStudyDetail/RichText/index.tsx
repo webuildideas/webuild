@@ -13,38 +13,6 @@ import * as S from './style'
 // Components
 import Carousel from '../Carousel'
 
-export type CarouselImageInitial = {
-  fields: {
-    file: {
-      'en-US': {
-        url: string
-      }
-    }
-  }
-}
-
-export type CarouselImage = {
-  src: string
-  srcSet: string
-}
-
-const buildCarouselImgArray = (
-  imgArr: CarouselImageInitial[]
-): CarouselImage[] => {
-  const carouselImgArr: CarouselImage[] = []
-  imgArr.map((i) => {
-    const {
-      fields: { file }
-    } = i
-    return carouselImgArr.push({
-      src: file['en-US'].url,
-      // TODO: Build out the srcSet sizes using query params
-      srcSet: file['en-US'].url
-    })
-  })
-  return carouselImgArr
-}
-
 interface Props {
   document: Document
 }
@@ -65,7 +33,6 @@ const variants: Variants = {
 }
 
 const CaseStudyRichText = ({ document }: Props) => {
-  console.log('Document', document)
   const animationControls = useAnimation()
   const [shouldAutoplay, setAutoPlay] = useState(false)
   const [ref, inView] = useInView({
@@ -115,9 +82,8 @@ const CaseStudyRichText = ({ document }: Props) => {
         </motion.p>
       ),
       [BLOCKS.EMBEDDED_ENTRY]: (node) => {
-        const { images } = node.data.target.fields
-        const imgArr = buildCarouselImgArray(images['en-US'])
-        return <Carousel autoplay={shouldAutoplay} images={imgArr} />
+        const { images } = node.data.target
+        return <Carousel autoplay={shouldAutoplay} images={images} />
       }
     }
   }

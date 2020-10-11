@@ -9,13 +9,10 @@ import 'pure-react-carousel/dist/react-carousel.es.css'
 // Commons
 import CarouselDotGroup from '../../../common/styledComponents/CarouselDotGroup'
 import { GatsbyImageFluid } from '../../../common/types/GatsbyImage'
-import { hasOwnProperty } from '../../../common/utils/typeNarrowing'
-
-import { CarouselImage } from '../RichText'
 
 interface Props {
   autoplay?: boolean
-  images: (GatsbyImageFluid | CarouselImage)[]
+  images: GatsbyImageFluid[]
 }
 
 const variants: Variants = {
@@ -33,13 +30,8 @@ const variants: Variants = {
   }
 }
 
-const renderImg = (image: GatsbyImageFluid | CarouselImage) => {
-  if (hasOwnProperty(image, 'fluid')) {
-    return (
-      <Img alt="carousel" durationFadeIn={250} fadeIn fluid={image.fluid} />
-    )
-  }
-  return <img alt="carousel" src={image.src} srcSet={image.srcSet} />
+const renderImg = (image: GatsbyImageFluid) => {
+  return <Img alt="carousel" durationFadeIn={250} fadeIn fluid={image.fluid} />
 }
 
 const Carousel = ({ images, autoplay = false }: Props) => {
