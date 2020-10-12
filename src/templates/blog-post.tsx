@@ -3,7 +3,9 @@ import React from 'react'
 import { graphql } from 'gatsby'
 
 const BlogPost = ({ data: { contentfulBlogPost: blogPost } }) => {
-  return <h1>{blogPost.title}</h1>
+  return (
+    <h1 className="text-orange-700 md:text-indigo-600">{blogPost.title}</h1>
+  )
 }
 
 export const query = graphql`

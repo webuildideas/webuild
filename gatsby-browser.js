@@ -1,9 +1,11 @@
-/* eslint-disable */
-
+/* eslint-disable @typescript-eslint/no-var-requires */
 // Packages
 const React = require('react')
 
-// Utils
+// Tailwind
+require('./src/common/theme/tailwind.css')
+
+// Commons
 const { callProjectHuddle } = require('./src/common/utils/projectHuddle')
 const loadPolyfills = require('./src/common/utils/polyfills').default
 
@@ -11,11 +13,7 @@ const loadPolyfills = require('./src/common/utils/polyfills').default
 const AppProvider = require('./src/components/AppProvider').default
 
 exports.wrapPageElement = ({ element, props }) => {
-  return (
-    <AppProvider {...props}>
-      {element}
-    </AppProvider>
-  )
+  return <AppProvider {...props}>{element}</AppProvider>
 }
 
 exports.onClientEntry = () => {

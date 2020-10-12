@@ -22,5 +22,5 @@
     "./gatsby-browser.js",
     "./gatsby-ssr.js"
   ],
-  "include": ["./src/**/**/*"]
+  "include": ["./src/**/*"]
 }
