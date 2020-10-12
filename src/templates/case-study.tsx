@@ -5,21 +5,21 @@ import { Helmet } from 'react-helmet'
 import { useInView } from 'react-intersection-observer'
 
 // Commons
-import { rhythmUnit } from '../../common/utils/typography'
-import { CaseStudyDetail as CaseStudyDetailType } from '../../common/types/CaseStudy'
-import * as S from './style'
-import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
+import { rhythmUnit } from '../common/utils/typography'
+import { CaseStudyDetail as CaseStudyDetailType } from '../common/types/CaseStudy'
+import * as S from '../components/CaseStudyDetail/style'
+import SiteMaxWidthContainer from '../common/styledComponents/SiteMaxWidthContainer'
 
 // Components
-import CaseStudy from '../CaseStudy'
-import Hero from './Hero'
-import Carousel from './Carousel'
-import Result from './Result'
-import RichText from './RichText'
-import ChallengeAndSolution from './ChallengeAndSolution'
-import FeaturedTestimonial from './FeaturedTestimonial'
-import Footer from '../Footer'
-import Meta from '../Meta'
+import Hero from '../components/CaseStudyDetail/Hero'
+import Carousel from '../components/CaseStudyDetail/Carousel'
+import Result from '../components/CaseStudyDetail/Result'
+import RichText from '../components/CaseStudyDetail/RichText'
+import ChallengeAndSolution from '../components/CaseStudyDetail/ChallengeAndSolution'
+import FeaturedTestimonial from '../components/CaseStudyDetail/FeaturedTestimonial'
+import CaseStudy from '../components/CaseStudy'
+import Footer from '../components/Footer'
+import Meta from '../components/Meta'
 
 interface Props {
   data: {

@@ -19,7 +19,7 @@ exports.createPages = async ({ graphql, actions }) => {
   result.data.allContentfulCaseStudy.edges.forEach(({ node }) => {
     createPage({
       path: `/case-studies/${node.slug}`,
-      component: path.resolve('./src/components/CaseStudyDetail/index.tsx'),
+      component: path.resolve('./src/templates/case-study.tsx'),
       context: {
         slug: node.slug
       }
