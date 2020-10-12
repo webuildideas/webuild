@@ -1,12 +1,17 @@
 // Packages
 import React from 'react'
+import { graphql } from 'gatsby'
 
-// Commons
-
-// Components
-
-const BlogPost = () => {
-  return <h1>Hello Component</h1>
+const BlogPost = ({ data: { contentfulBlogPost: blogPost } }) => {
+  return <h1>{blogPost.title}</h1>
 }
+
+export const query = graphql`
+  query blogPostQuery($slug: String!) {
+    contentfulBlogPost(slug: { eq: $slug }) {
+      title
+    }
+  }
+`
 
 export default BlogPost

@@ -23,7 +23,12 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  result.data.allContentfulCaseStudy.edges.forEach(({ node }) => {
+  const {
+    allContentfulCaseStudy: caseStudies,
+    allContentfulBlogPost: blogPosts
+  } = result.data
+
+  caseStudies.edges.forEach(({ node }) => {
     createPage({
       path: `/case-studies/${node.slug}`,
       component: path.resolve('./src/templates/case-study.tsx'),
@@ -33,7 +38,7 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  result.data.allContentfulBlogPost.edges.forEach(({ node }) => {
+  blogPosts.edges.forEach(({ node }) => {
     createPage({
       path: `/blog/${node.slug}`,
       component: path.resolve('./src/templates/blog-post.tsx'),
