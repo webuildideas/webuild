@@ -116,6 +116,7 @@ const IndexPage = ({ data }: Props) => {
           </div>
 
           <Testimonial
+            className="mb-6"
             company={homeData.featuredTestimonial.company}
             companyRole={homeData.featuredTestimonial.role}
             featuredHeadshot={
@@ -124,7 +125,6 @@ const IndexPage = ({ data }: Props) => {
             headshot={homeData.featuredTestimonial.headshot.fixed}
             isFeatured={true}
             name={homeData.featuredTestimonial.name}
-            style={{ marginBottom: `${rhythmUnit(1)}` }}
           >
             {homeData.featuredTestimonial.testimonial.testimonial}
           </Testimonial>

@@ -20,6 +20,7 @@ interface Props {
   company: string
   isFeatured?: boolean
   style?: CSSProperties
+  className?: string
 }
 
 const renderMarkdownBold = (md: string) => {
