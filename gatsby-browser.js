@@ -1,7 +1,9 @@
 /* eslint-disable */
-
 // Packages
 const React = require('react')
+
+// Tailwind
+require('./src/common/theme/tailwind.css')
 
 // Utils
 const { callProjectHuddle } = require('./src/common/utils/projectHuddle')

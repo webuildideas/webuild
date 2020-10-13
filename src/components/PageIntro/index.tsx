@@ -6,7 +6,6 @@ import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import { Options } from '@contentful/rich-text-react-renderer'
 
 // Styled Components
-import * as S from './style'
 import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
 
 interface Props {
@@ -28,6 +27,7 @@ export const getRichTextOptions = (animationDelay = 0.5): Options => {
               type: 'spring'
             }
           }}
+          className="font-normal text-xl leading-tight"
           initial={{
             y: 30,
             opacity: 0
@@ -38,7 +38,9 @@ export const getRichTextOptions = (animationDelay = 0.5): Options => {
       )
     },
     renderMark: {
-      [MARKS.BOLD]: (text: React.ReactNode) => <span>{text}</span>
+      [MARKS.BOLD]: (text: React.ReactNode) => (
+        <span className="font-black">{text}</span>
+      )
     }
   }
 }
@@ -49,15 +51,13 @@ const PageIntro = ({
   animationDelay = 0.5
 }: Props) => {
   const options: Options = getRichTextOptions(animationDelay)
-
+  const maxWidthStyle = { maxWidth }
   return (
-    <S.PageIntro maxWidth={maxWidth}>
+    <section className="pt-16">
       <SiteMaxWidthContainer>
-        <div className="PageIntro__inner">
-          {renderRichText(document, options)}
-        </div>
+        <div style={maxWidthStyle}>{renderRichText(document, options)}</div>
       </SiteMaxWidthContainer>
-    </S.PageIntro>
+    </section>
   )
 }
 

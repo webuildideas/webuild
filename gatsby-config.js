@@ -56,6 +56,7 @@ module.exports = {
         anonymize: false
       }
     },
+    `gatsby-plugin-postcss`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,

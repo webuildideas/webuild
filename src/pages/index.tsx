@@ -79,7 +79,7 @@ const IndexPage = ({ data }: Props) => {
   }, [animationControls, inView])
 
   return (
-    <motion.div animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
+    <div>
       <Meta title="Home" />
       <PageIntro
         animationDelay={0.35}
@@ -146,7 +146,7 @@ const IndexPage = ({ data }: Props) => {
       </section>
 
       <Footer />
-    </motion.div>
+    </div>
   )
 }
 
