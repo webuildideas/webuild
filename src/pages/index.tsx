@@ -9,9 +9,9 @@ import { Document } from '@contentful/rich-text-types'
 // Commons
 import { rhythmUnit } from '../common/utils/typography'
 import SiteMaxWidthContainer from '../common/styledComponents/SiteMaxWidthContainer'
-import SectionHeading from '../common/styledComponents/SectionHeading'
 import { CaseStudy } from '../common/types/CaseStudy'
 import { FeaturedTestimonial, Testimonials } from '../common/types/Testimonial'
+import '../common/styles/SectionHeading.css'
 
 // Components
 import Meta from '../components/Meta'
@@ -89,16 +89,8 @@ const IndexPage = ({ data }: Props) => {
       <DesignPartner />
 
       <section style={{ backgroundColor: '#F9F9F9' }}>
-        <SiteMaxWidthContainer
-          style={{
-            paddingTop: `${rhythmUnit(3.5)}`,
-            paddingBottom: `${rhythmUnit(4)}`
-          }}
-        >
-          <SectionHeading
-            ref={ref}
-            style={{ marginBottom: `${rhythmUnit(2.75)}` }}
-          >
+        <SiteMaxWidthContainer className="pt-20 pb-24">
+          <div ref={ref} className="mb-16">
             <motion.h1
               animate={animationControls}
               className="SectionHeading__title"
@@ -121,7 +113,7 @@ const IndexPage = ({ data }: Props) => {
                 expertise come together, magic happens.
               </MobileBreak>
             </motion.h2>
-          </SectionHeading>
+          </div>
 
           <Testimonial
             company={homeData.featuredTestimonial.company}
