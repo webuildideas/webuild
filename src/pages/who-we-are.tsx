@@ -170,8 +170,8 @@ export const WHO_WE_ARE_QUERY = graphql`
         raw
       }
       photoGrid {
-        fluid(maxWidth: 500) {
-          ...GatsbyContentfulFluid_withWebp
+        fluid(maxWidth: 625) {
+          ...GatsbyContentfulFluid_withWebp_noBase64
         }
       }
     }
@@ -188,7 +188,7 @@ export const WHO_WE_ARE_QUERY = graphql`
         }
         headshot {
           fixed(cropFocus: FACE, height: 60, width: 60) {
-            ...GatsbyContentfulFixed_withWebp
+            ...GatsbyContentfulFixed_withWebp_noBase64
           }
         }
       }
