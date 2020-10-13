@@ -81,11 +81,7 @@ const IndexPage = ({ data }: Props) => {
   return (
     <div>
       <Meta title="Home" />
-      <PageIntro
-        animationDelay={0.35}
-        document={homeData.heroTitle}
-        maxWidth={1040}
-      />
+      <PageIntro document={homeData.heroTitle} maxWidth={1040} />
       <CaseStudiesContainer>
         <CaseStudyListing caseStudies={homeData.caseStudies} />
       </CaseStudiesContainer>

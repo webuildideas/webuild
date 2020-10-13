@@ -10,54 +10,45 @@ import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthCon
 
 interface Props {
   maxWidth?: number
-  animationDelay?: number
   document: Document
 }
 
-export const getRichTextOptions = (animationDelay = 0.5): Options => {
-  const headingInitial = {
-    y: 30,
-    opacity: 0
-  }
-  const headingAnimate = {
-    y: 0,
-    opacity: 1,
-    transition: {
-      delay: animationDelay,
-      type: 'spring'
-    }
-  }
-  return {
-    renderNode: {
-      [BLOCKS.PARAGRAPH]: (_, copy) => (
-        <motion.h1
-          animate={headingAnimate}
-          className="font-normal text-xl leading-tight"
-          initial={headingInitial}
-        >
-          {copy}
-        </motion.h1>
-      )
-    },
-    renderMark: {
-      [MARKS.BOLD]: (text: React.ReactNode) => (
-        <span className="font-black">{text}</span>
-      )
-    }
+const richTextOptions: Options = {
+  renderNode: {
+    [BLOCKS.PARAGRAPH]: (_, copy) => (
+      <motion.h1
+        animate={{
+          y: 0,
+          opacity: 1,
+          transition: {
+            type: 'spring'
+          }
+        }}
+        className="font-normal text-xl leading-tight"
+        initial={{
+          y: 30,
+          opacity: 0.1
+        }}
+      >
+        {copy}
+      </motion.h1>
+    )
+  },
+  renderMark: {
+    [MARKS.BOLD]: (text: React.ReactNode) => (
+      <span className="font-black">{text}</span>
+    )
   }
 }
 
-const PageIntro = ({
-  document,
-  maxWidth = 1080,
-  animationDelay = 0.5
-}: Props) => {
-  const options: Options = getRichTextOptions(animationDelay)
+const PageIntro = ({ document, maxWidth = 1080 }: Props) => {
   const maxWidthStyle = { maxWidth }
   return (
     <section className="pt-16">
       <SiteMaxWidthContainer>
-        <div style={maxWidthStyle}>{renderRichText(document, options)}</div>
+        <div style={maxWidthStyle}>
+          {renderRichText(document, richTextOptions)}
+        </div>
       </SiteMaxWidthContainer>
     </section>
   )
