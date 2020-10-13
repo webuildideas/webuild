@@ -170,7 +170,7 @@ export const HOMEPAGE_QUERY = graphql`
         }
         listingImage {
           fluid(maxWidth: 625) {
-            ...GatsbyContentfulFluid_withWebp
+            ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
       }
@@ -184,12 +184,12 @@ export const HOMEPAGE_QUERY = graphql`
         }
         featuredHeadshot {
           fluid(maxWidth: 500) {
-            ...GatsbyContentfulFluid_withWebp
+            ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
         headshot {
           fixed(cropFocus: FACE, height: 50, width: 50) {
-            ...GatsbyContentfulFixed_withWebp
+            ...GatsbyContentfulFixed_withWebp_noBase64
           }
         }
       }
@@ -203,7 +203,7 @@ export const HOMEPAGE_QUERY = graphql`
         }
         headshot {
           fixed(cropFocus: FACE, height: 50, width: 50) {
-            ...GatsbyContentfulFixed_withWebp
+            ...GatsbyContentfulFixed_withWebp_noBase64
           }
         }
       }

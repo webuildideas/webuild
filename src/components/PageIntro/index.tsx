@@ -5,7 +5,7 @@ import { Document, MARKS, BLOCKS } from '@contentful/rich-text-types'
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import { Options } from '@contentful/rich-text-react-renderer'
 
-// Styled Components
+// Commons
 import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
 
 interface Props {
@@ -15,23 +15,25 @@ interface Props {
 }
 
 export const getRichTextOptions = (animationDelay = 0.5): Options => {
+  const headingInitial = {
+    y: 30,
+    opacity: 0
+  }
+  const headingAnimate = {
+    y: 0,
+    opacity: 1,
+    transition: {
+      delay: animationDelay,
+      type: 'spring'
+    }
+  }
   return {
     renderNode: {
       [BLOCKS.PARAGRAPH]: (_, copy) => (
         <motion.h1
-          animate={{
-            y: 0,
-            opacity: 1,
-            transition: {
-              delay: animationDelay,
-              type: 'spring'
-            }
-          }}
+          animate={headingAnimate}
           className="font-normal text-xl leading-tight"
-          initial={{
-            y: 30,
-            opacity: 0
-          }}
+          initial={headingInitial}
         >
           {copy}
         </motion.h1>
