@@ -58,7 +58,7 @@ const Testimonial = ({
           >
             <Img
               alt={`${name} Headshot`}
-              durationFadeIn={350}
+              durationFadeIn={100}
               fadeIn
               fluid={featuredImage}
             />
