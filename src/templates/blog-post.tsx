@@ -12,16 +12,25 @@ interface Props {
 }
 
 const BlogPost = ({ data: { contentfulBlogPost: blogPost } }: Props) => {
-  return (
-    <h1 className="text-orange-700 md:text-indigo-600">{blogPost.title}</h1>
-  )
+  return <h1 className="text-stormGrey">{blogPost.title}</h1>
 }
 
 export const query = graphql`
   query blogPostQuery($slug: String!) {
     contentfulBlogPost(slug: { eq: $slug }) {
       title
-      content
+      content {
+        raw
+        references {
+          contentful_id
+          ... on ContentfulAsset {
+            id
+            fluid(maxWidth: 1100) {
+              ...GatsbyContentfulFluid_withWebp_noBase64
+            }
+          }
+        }
+      }
       publishDate
       readNext
       topic
