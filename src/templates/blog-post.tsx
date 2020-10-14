@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 
 // Commons
 import { TypeBlogPost } from '../common/types/BlogPost'
+import SiteMaxWidthContainer from '../common/styledComponents/SiteMaxWidthContainer'
 
 interface Props {
   data: {
@@ -12,7 +13,11 @@ interface Props {
 }
 
 const BlogPost = ({ data: { contentfulBlogPost: blogPost } }: Props) => {
-  return <h1 className="text-stormGrey">{blogPost.title}</h1>
+  return (
+    <SiteMaxWidthContainer>
+      <h1 className="text-xl">{blogPost.title}</h1>
+    </SiteMaxWidthContainer>
+  )
 }
 
 export const query = graphql`
@@ -32,7 +37,6 @@ export const query = graphql`
         }
       }
       publishDate
-      readNext
       topic
     }
   }
