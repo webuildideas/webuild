@@ -162,7 +162,7 @@ export const query = graphql`
       }
       heroImage {
         fluid(maxWidth: 1100) {
-          ...GatsbyContentfulFluid_withWebp
+          ...GatsbyContentfulFluid_withWebp_noBase64
         }
       }
       whiteLogo {
@@ -180,7 +180,7 @@ export const query = graphql`
       designSystemCarousel {
         images {
           fluid(maxWidth: 1400) {
-            ...GatsbyContentfulFluid_withWebp
+            ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
       }
@@ -202,12 +202,12 @@ export const query = graphql`
         }
         featuredHeadshot {
           fluid(maxWidth: 500) {
-            ...GatsbyContentfulFluid_withWebp
+            ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
         headshot {
           fixed(cropFocus: FACE, height: 50, width: 50) {
-            ...GatsbyContentfulFixed_withWebp
+            ...GatsbyContentfulFixed_withWebp_noBase64
           }
         }
       }
@@ -218,13 +218,13 @@ export const query = graphql`
           ... on ContentfulAsset {
             id
             fluid(maxWidth: 1100) {
-              ...GatsbyContentfulFluid_withWebp
+              ...GatsbyContentfulFluid_withWebp_noBase64
             }
           }
           ... on ContentfulCarousel {
             images {
               fluid(maxWidth: 1100) {
-                ...GatsbyContentfulFluid_withWebp
+                ...GatsbyContentfulFluid_withWebp_noBase64
               }
             }
           }
@@ -237,13 +237,13 @@ export const query = graphql`
           ... on ContentfulAsset {
             id
             fluid(maxWidth: 1100) {
-              ...GatsbyContentfulFluid_withWebp
+              ...GatsbyContentfulFluid_withWebp_noBase64
             }
           }
           ... on ContentfulCarousel {
             images {
               fluid(maxWidth: 1100) {
-                ...GatsbyContentfulFluid_withWebp
+                ...GatsbyContentfulFluid_withWebp_noBase64
               }
             }
           }
@@ -256,13 +256,13 @@ export const query = graphql`
           ... on ContentfulAsset {
             id
             fluid(maxWidth: 1100) {
-              ...GatsbyContentfulFluid_withWebp
+              ...GatsbyContentfulFluid_withWebp_noBase64
             }
           }
           ... on ContentfulCarousel {
             images {
               fluid(maxWidth: 1100) {
-                ...GatsbyContentfulFluid_withWebp
+                ...GatsbyContentfulFluid_withWebp_noBase64
               }
             }
           }
@@ -275,13 +275,13 @@ export const query = graphql`
           ... on ContentfulAsset {
             id
             fluid(maxWidth: 1100) {
-              ...GatsbyContentfulFluid_withWebp
+              ...GatsbyContentfulFluid_withWebp_noBase64
             }
           }
           ... on ContentfulCarousel {
             images {
               fluid(maxWidth: 1100) {
-                ...GatsbyContentfulFluid_withWebp
+                ...GatsbyContentfulFluid_withWebp_noBase64
               }
             }
           }
@@ -301,7 +301,7 @@ export const query = graphql`
         }
         listingImage {
           fluid(maxWidth: 625) {
-            ...GatsbyContentfulFluid_withWebp
+            ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
       }
