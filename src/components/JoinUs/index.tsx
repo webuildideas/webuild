@@ -3,13 +3,13 @@ import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
 
-// Components
-import Button from '../Button'
-
-// Styled Components
+// Commons
 import * as S from './style'
 import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
-import SectionHeading from '../../common/styledComponents/SectionHeading'
+import '../../common/styles/SectionHeading.css'
+
+// Components
+import Button from '../Button'
 
 const JoinUs = () => {
   const [ref, inView] = useInView({
@@ -44,7 +44,7 @@ const JoinUs = () => {
   return (
     <S.JoinUs ref={ref} data-testid="joinUs">
       <SiteMaxWidthContainer>
-        <SectionHeading>
+        <div>
           <motion.h1
             animate={controls}
             className="SectionHeading__title"
@@ -66,7 +66,7 @@ const JoinUs = () => {
             We’re always looking for inspiring, down to earth, and talented
             people to join our amazing remote team.
           </motion.h2>
-        </SectionHeading>
+        </div>
         <S.JoinUsJobs data-testid="joinUs-jobs">
           <S.JoinUsJob
             href="https://webuildideas.bamboohr.com/jobs/view.php?id=22"

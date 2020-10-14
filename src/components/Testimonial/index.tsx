@@ -20,6 +20,7 @@ interface Props {
   company: string
   isFeatured?: boolean
   style?: CSSProperties
+  className?: string
 }
 
 const renderMarkdownBold = (md: string) => {
@@ -58,7 +59,7 @@ const Testimonial = ({
           >
             <Img
               alt={`${name} Headshot`}
-              durationFadeIn={350}
+              durationFadeIn={100}
               fadeIn
               fluid={featuredImage}
             />

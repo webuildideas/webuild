@@ -3,15 +3,12 @@ import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
 
-// Utils
-import { rhythmUnit } from '../../common/utils/typography'
+// Commons
+import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
+import '../../common/styles/SectionHeading.css'
 
 // Svg
 import TeamMapSvg from '../../static/svgs/teamMap.inline.svg'
-
-// Styled Components
-import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
-import SectionHeading from '../../common/styledComponents/SectionHeading'
 
 const variants = {
   visible: (i: number) => ({
@@ -42,31 +39,25 @@ const variants = {
 }
 
 const TeamMap = () => {
+  const animationControls = useAnimation()
+  const imageAnimationControls = useAnimation()
   const [ref, inView] = useInView({
     threshold: 0.75,
     triggerOnce: true
   })
-  const controls = useAnimation()
-  const imageControls = useAnimation()
 
   useEffect(() => {
     if (inView) {
-      controls.start('visible')
-      imageControls.start('imageVisible')
+      animationControls.start('visible')
+      imageAnimationControls.start('imageVisible')
     }
-  }, [controls, imageControls, inView])
+  }, [animationControls, imageAnimationControls, inView])
 
   return (
-    <SiteMaxWidthContainer
-      ref={ref}
-      style={{
-        paddingTop: `${rhythmUnit(2)}`,
-        paddingBottom: `${rhythmUnit(2)}`
-      }}
-    >
-      <SectionHeading style={{ marginBottom: `${rhythmUnit(3)}` }}>
+    <SiteMaxWidthContainer ref={ref} className="py-16">
+      <div className="mb-20">
         <motion.h1
-          animate={controls}
+          animate={animationControls}
           className="SectionHeading__title"
           custom={0}
           initial="hidden"
@@ -75,7 +66,7 @@ const TeamMap = () => {
           The world is our conference room
         </motion.h1>
         <motion.h2
-          animate={controls}
+          animate={animationControls}
           className="SectionHeading__subtitle"
           custom={1}
           initial="hidden"
@@ -85,9 +76,9 @@ const TeamMap = () => {
           cultures. Each of us is proactive, strategic and strives for
           continuous improvement.
         </motion.h2>
-      </SectionHeading>
+      </div>
       <motion.div
-        animate={imageControls}
+        animate={imageAnimationControls}
         custom={2}
         initial="imageHidden"
         variants={variants}

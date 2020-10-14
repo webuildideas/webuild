@@ -9,9 +9,9 @@ import { Document } from '@contentful/rich-text-types'
 // Commons
 import { rhythmUnit } from '../common/utils/typography'
 import SiteMaxWidthContainer from '../common/styledComponents/SiteMaxWidthContainer'
-import SectionHeading from '../common/styledComponents/SectionHeading'
 import { CaseStudy } from '../common/types/CaseStudy'
 import { FeaturedTestimonial, Testimonials } from '../common/types/Testimonial'
+import '../common/styles/SectionHeading.css'
 
 // Components
 import Meta from '../components/Meta'
@@ -79,13 +79,9 @@ const IndexPage = ({ data }: Props) => {
   }, [animationControls, inView])
 
   return (
-    <motion.div animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
+    <div>
       <Meta title="Home" />
-      <PageIntro
-        animationDelay={0.35}
-        document={homeData.heroTitle}
-        maxWidth={1040}
-      />
+      <PageIntro document={homeData.heroTitle} maxWidth={1040} />
       <CaseStudiesContainer>
         <CaseStudyListing caseStudies={homeData.caseStudies} />
       </CaseStudiesContainer>
@@ -93,16 +89,8 @@ const IndexPage = ({ data }: Props) => {
       <DesignPartner />
 
       <section style={{ backgroundColor: '#F9F9F9' }}>
-        <SiteMaxWidthContainer
-          style={{
-            paddingTop: `${rhythmUnit(3.5)}`,
-            paddingBottom: `${rhythmUnit(4)}`
-          }}
-        >
-          <SectionHeading
-            ref={ref}
-            style={{ marginBottom: `${rhythmUnit(2.75)}` }}
-          >
+        <SiteMaxWidthContainer className="pt-20 pb-24">
+          <div ref={ref} className="mb-16">
             <motion.h1
               animate={animationControls}
               className="SectionHeading__title"
@@ -125,9 +113,10 @@ const IndexPage = ({ data }: Props) => {
                 expertise come together, magic happens.
               </MobileBreak>
             </motion.h2>
-          </SectionHeading>
+          </div>
 
           <Testimonial
+            className="mb-6"
             company={homeData.featuredTestimonial.company}
             companyRole={homeData.featuredTestimonial.role}
             featuredHeadshot={
@@ -136,7 +125,6 @@ const IndexPage = ({ data }: Props) => {
             headshot={homeData.featuredTestimonial.headshot.fixed}
             isFeatured={true}
             name={homeData.featuredTestimonial.name}
-            style={{ marginBottom: `${rhythmUnit(1)}` }}
           >
             {homeData.featuredTestimonial.testimonial.testimonial}
           </Testimonial>
@@ -146,7 +134,7 @@ const IndexPage = ({ data }: Props) => {
       </section>
 
       <Footer />
-    </motion.div>
+    </div>
   )
 }
 
@@ -170,7 +158,7 @@ export const HOMEPAGE_QUERY = graphql`
         }
         listingImage {
           fluid(maxWidth: 625) {
-            ...GatsbyContentfulFluid_withWebp
+            ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
       }
@@ -184,12 +172,12 @@ export const HOMEPAGE_QUERY = graphql`
         }
         featuredHeadshot {
           fluid(maxWidth: 500) {
-            ...GatsbyContentfulFluid_withWebp
+            ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
         headshot {
           fixed(cropFocus: FACE, height: 50, width: 50) {
-            ...GatsbyContentfulFixed_withWebp
+            ...GatsbyContentfulFixed_withWebp_noBase64
           }
         }
       }
@@ -203,7 +191,7 @@ export const HOMEPAGE_QUERY = graphql`
         }
         headshot {
           fixed(cropFocus: FACE, height: 50, width: 50) {
-            ...GatsbyContentfulFixed_withWebp
+            ...GatsbyContentfulFixed_withWebp_noBase64
           }
         }
       }
