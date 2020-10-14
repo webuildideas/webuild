@@ -21,6 +21,10 @@ export const query = graphql`
   query blogPostQuery($slug: String!) {
     contentfulBlogPost(slug: { eq: $slug }) {
       title
+      content
+      publishDate
+      readNext
+      topic
     }
   }
 `
