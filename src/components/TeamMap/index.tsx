@@ -1,7 +1,7 @@
 // Packages
 import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
-import { motion, useAnimation } from 'framer-motion'
+import { motion, useAnimation, Variants } from 'framer-motion'
 
 // Commons
 import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
@@ -10,7 +10,7 @@ import '../../common/styles/SectionHeading.css'
 // Svg
 import TeamMapSvg from '../../static/svgs/teamMap.inline.svg'
 
-const variants = {
+const variants: Variants = {
   visible: (i: number) => ({
     y: 0,
     opacity: 1,

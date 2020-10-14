@@ -5,10 +5,10 @@ import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
 import { Properties as CSSProperties } from 'csstype'
 
-// Config
+// Component Config
 import { variants, featureHeadshotVariants, headshotVariants } from './config'
 
-// Styled Components
+// Styles
 import * as S from './style'
 
 interface Props {

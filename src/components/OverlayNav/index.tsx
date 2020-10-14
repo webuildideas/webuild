@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 import { animated, useSpring, useTrail, config } from 'react-spring'
 
-// Styled Components
+// Styles
 import { OverlayNavContainer } from './style'
 
 interface Props {

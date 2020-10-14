@@ -1,24 +1,13 @@
-import { GatsbyImageFixed, GatsbyImageFluid } from './GatsbyImage'
+import { TypeGatsbyImageFixed, TypeGatsbyImageFluid } from './GatsbyImage'
 
-export type Testimonial = {
-  company: string
-  headshot: GatsbyImageFixed
+export interface TypeTestimonial {
+  type?: 'Client' | 'Team Member'
   name: string
+  headshot: TypeGatsbyImageFixed
+  featuredHeadshot?: TypeGatsbyImageFluid
   role: string
+  company: string
   testimonial: {
     testimonial: string
   }
-}
-
-export type Testimonials = Testimonial[]
-
-export type FeaturedTestimonial = {
-  company: string
-  name: string
-  role: string
-  testimonial: {
-    testimonial: string
-  }
-  featuredHeadshot: GatsbyImageFluid
-  headshot: GatsbyImageFixed
 }

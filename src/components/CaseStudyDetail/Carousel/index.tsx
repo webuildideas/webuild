@@ -8,11 +8,11 @@ import 'pure-react-carousel/dist/react-carousel.es.css'
 
 // Commons
 import CarouselDotGroup from '../../../common/styledComponents/CarouselDotGroup'
-import { GatsbyImageFluid } from '../../../common/types/GatsbyImage'
+import { TypeGatsbyImageFluid } from '../../../common/types/GatsbyImage'
 
 interface Props {
   autoplay?: boolean
-  images: GatsbyImageFluid[]
+  images: TypeGatsbyImageFluid[]
 }
 
 const variants: Variants = {
@@ -30,7 +30,7 @@ const variants: Variants = {
   }
 }
 
-const renderImg = (image: GatsbyImageFluid) => {
+const renderImg = (image: TypeGatsbyImageFluid) => {
   return <Img alt="carousel" durationFadeIn={125} fadeIn fluid={image.fluid} />
 }
 

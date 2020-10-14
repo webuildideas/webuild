@@ -5,11 +5,11 @@ import { useAnimation, Variants } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 
 // Commons
-import { GatsbyImageFluid } from '../../common/types/GatsbyImage'
+import { TypeGatsbyImageFluid } from '../../common/types/GatsbyImage'
 import * as S from './style'
 
 interface Props {
-  photos: GatsbyImageFluid[]
+  photos: TypeGatsbyImageFluid[]
 }
 
 const variants: Variants = {

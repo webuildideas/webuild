@@ -1,7 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
-import { GatsbyImageFile } from '../../common/types/GatsbyImage'
+import { TypeContentfulAsset } from '../../common/types/Contentful'
 
 interface Props {
   description?: string
@@ -15,7 +15,7 @@ interface MetaQueryResponse {
     seoDescription: {
       seoDescription: string
     }
-    seoShareImage: GatsbyImageFile
+    seoShareImage: TypeContentfulAsset
   }
 }
 

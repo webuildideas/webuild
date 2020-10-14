@@ -3,25 +3,23 @@ import React, { useEffect, useState } from 'react'
 import { CarouselProvider } from 'pure-react-carousel'
 import Img from 'gatsby-image'
 import { useInView } from 'react-intersection-observer'
-import { motion, useAnimation } from 'framer-motion'
+import { motion, useAnimation, Variants } from 'framer-motion'
 
-// Types
-import { Testimonial, Testimonials } from '../../common/types/Testimonial'
-
-// Styles
-import 'pure-react-carousel/dist/react-carousel.es.css'
-
-// Styled Components
-import * as S from './style'
+// Commons
+import { TypeTestimonial } from '../../common/types/Testimonial'
 
 // Components
 import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
 
+// Styles
+import 'pure-react-carousel/dist/react-carousel.es.css'
+import * as S from './style'
+
 interface Props {
-  testimonials: Testimonials
+  testimonials: TypeTestimonial[]
 }
 
-const testimonialSliderVariants = {
+const testimonialSliderVariants: Variants = {
   visible: {
     y: 0,
     opacity: 1,
@@ -66,7 +64,7 @@ const TestimonialSlider = ({ testimonials }: Props) => {
           totalSlides={testimonials.length}
         >
           <S.TestimonialSlider>
-            {testimonials.map((t: Testimonial, idx: number) => (
+            {testimonials.map((t: TypeTestimonial, idx: number) => (
               <S.TestimonialSlide key={`t-${t.name}`} index={idx}>
                 <S.Testimonial>“{t.testimonial.testimonial}”</S.Testimonial>
               </S.TestimonialSlide>
@@ -74,7 +72,7 @@ const TestimonialSlider = ({ testimonials }: Props) => {
           </S.TestimonialSlider>
 
           <S.TestimonialDots>
-            {testimonials.map((t: Testimonial, idx: number) => (
+            {testimonials.map((t: TypeTestimonial, idx: number) => (
               <S.TestimonialDot key={`tdot-${t.name}`} slide={idx}>
                 <div className="Testimonial__client-headshot">
                   <Img

@@ -6,13 +6,13 @@ import { motion, useAnimation, Variants } from 'framer-motion'
 // Commons
 import { rhythmUnit } from '../../../common/utils/typography'
 import SiteMaxWidthContainer from '../../../common/styledComponents/SiteMaxWidthContainer'
-import { FeaturedTestimonial } from '../../../common/types/Testimonial'
+import { TypeTestimonial } from '../../../common/types/Testimonial'
 
 // Components
 import Testimonial from '../../Testimonial'
 
 interface Props {
-  featuredTestimonial: FeaturedTestimonial
+  featuredTestimonial: TypeTestimonial
 }
 
 const variants: Variants = {
@@ -71,7 +71,7 @@ const CaseStudyFeaturedTestimonial = ({ featuredTestimonial }: Props) => {
         <Testimonial
           company={featuredTestimonial.company}
           companyRole={featuredTestimonial.role}
-          featuredHeadshot={featuredTestimonial.featuredHeadshot.fluid}
+          featuredHeadshot={featuredTestimonial?.featuredHeadshot?.fluid}
           headshot={featuredTestimonial.headshot.fixed}
           isFeatured={true}
           name={featuredTestimonial.name}

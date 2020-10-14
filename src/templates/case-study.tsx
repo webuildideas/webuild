@@ -6,7 +6,7 @@ import { useInView } from 'react-intersection-observer'
 
 // Commons
 import { rhythmUnit } from '../common/utils/typography'
-import { CaseStudyDetail as CaseStudyDetailType } from '../common/types/CaseStudy'
+import { TypeCaseStudy } from '../common/types/CaseStudy'
 import * as S from '../components/CaseStudyDetail/style'
 import SiteMaxWidthContainer from '../common/styledComponents/SiteMaxWidthContainer'
 
@@ -23,11 +23,13 @@ import Meta from '../components/Meta'
 
 interface Props {
   data: {
-    contentfulCaseStudy: CaseStudyDetailType
+    contentfulCaseStudy: TypeCaseStudy
   }
 }
 
-const CaseStudyDetail = ({ data: { contentfulCaseStudy } }: Props) => {
+const CaseStudyDetail = ({
+  data: { contentfulCaseStudy: caseStudy }
+}: Props) => {
   const [shouldAutoplay, setAutoPlay] = useState(false)
   const [ref, inView] = useInView({
     triggerOnce: true
@@ -51,7 +53,7 @@ const CaseStudyDetail = ({ data: { contentfulCaseStudy } }: Props) => {
     projectChallenge,
     projectSolution,
     projectOutcome
-  } = contentfulCaseStudy
+  } = caseStudy
 
   useEffect(() => {
     if (inView) {
@@ -97,7 +99,7 @@ const CaseStudyDetail = ({ data: { contentfulCaseStudy } }: Props) => {
             }}
           >
             <SiteMaxWidthContainer maxWidth={1400}>
-              {designSystemCarousel && designSystemCarousel.images && (
+              {designSystemCarousel && (
                 <div ref={ref}>
                   <Carousel
                     autoplay={shouldAutoplay}

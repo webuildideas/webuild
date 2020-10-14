@@ -7,8 +7,7 @@ import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
 import { useWindowSize } from '../../common/hooks/useWindowSize'
 
-// Styled Components
-import * as S from './style'
+// Commons
 import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
 
 // Components
@@ -16,6 +15,9 @@ import OverlayNav from '../OverlayNav'
 import Logo from './Logo'
 import MenuIcon from './MenuIcon'
 import Button from '../Button'
+
+// Styles
+import * as S from './style'
 
 interface Props {
   isNavOpen: boolean

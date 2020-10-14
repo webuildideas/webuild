@@ -1,7 +1,7 @@
 // Packages
 import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
-import { motion, useAnimation } from 'framer-motion'
+import { motion, useAnimation, Variants } from 'framer-motion'
 
 // Commons
 import * as S from './style'
@@ -11,42 +11,41 @@ import '../../common/styles/SectionHeading.css'
 // Components
 import Button from '../Button'
 
+const variants: Variants = {
+  visible: (i: number) => ({
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.55,
+      delay: i * 0.175,
+      type: 'spring'
+    }
+  }),
+  hidden: {
+    y: 15,
+    opacity: 0
+  }
+}
+
 const JoinUs = () => {
+  const animationControls = useAnimation()
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.75
   })
 
-  const controls = useAnimation()
-
-  const variants = {
-    visible: (i: number) => ({
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.55,
-        delay: i * 0.175,
-        type: 'spring'
-      }
-    }),
-    hidden: {
-      y: 15,
-      opacity: 0
-    }
-  }
-
   useEffect(() => {
     if (inView) {
-      controls.start('visible')
+      animationControls.start('visible')
     }
-  }, [controls, inView])
+  }, [animationControls, inView])
 
   return (
     <S.JoinUs ref={ref} data-testid="joinUs">
       <SiteMaxWidthContainer>
         <div>
           <motion.h1
-            animate={controls}
+            animate={animationControls}
             className="SectionHeading__title"
             custom={1}
             data-testid="joinUs-title"
@@ -56,7 +55,7 @@ const JoinUs = () => {
             Join us and work from anywhere
           </motion.h1>
           <motion.h2
-            animate={controls}
+            animate={animationControls}
             className="SectionHeading__subtitle"
             custom={2}
             data-testid="joinUs-subtitle"
@@ -74,7 +73,7 @@ const JoinUs = () => {
             target="_blank"
           >
             <motion.h3
-              animate={controls}
+              animate={animationControls}
               custom={2}
               initial="hidden"
               variants={variants}
@@ -82,7 +81,7 @@ const JoinUs = () => {
               Product Designer
             </motion.h3>
             <motion.p
-              animate={controls}
+              animate={animationControls}
               custom={3}
               initial="hidden"
               variants={variants}
@@ -96,7 +95,7 @@ const JoinUs = () => {
             target="_blank"
           >
             <motion.h3
-              animate={controls}
+              animate={animationControls}
               custom={4}
               initial="hidden"
               variants={variants}
@@ -104,7 +103,7 @@ const JoinUs = () => {
               Product Manager
             </motion.h3>
             <motion.p
-              animate={controls}
+              animate={animationControls}
               custom={5}
               initial="hidden"
               variants={variants}
