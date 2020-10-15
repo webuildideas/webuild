@@ -5,7 +5,6 @@ import { Helmet } from 'react-helmet'
 import { useInView } from 'react-intersection-observer'
 
 // Commons
-import { rhythmUnit } from '../common/utils/typography'
 import { TypeCaseStudy } from '../common/types/CaseStudy'
 import * as S from '../components/CaseStudyDetail/style'
 import SiteMaxWidthContainer from '../common/styledComponents/SiteMaxWidthContainer'

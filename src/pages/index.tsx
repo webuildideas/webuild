@@ -88,7 +88,7 @@ const IndexPage = ({ data }: Props) => {
 
       <DesignPartner />
 
-      <section style={{ backgroundColor: '#F9F9F9' }}>
+      <section className="bg-snow">
         <SiteMaxWidthContainer className="pt-20 pb-24">
           <div ref={ref} className="mb-16">
             <motion.h1
