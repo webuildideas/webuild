@@ -24,9 +24,7 @@ import Footer from '../components/Footer'
 
 interface WhoWeAreQueryResponse {
   contentfulAboutPage: {
-    heroTitle: {
-      json: Document
-    }
+    heroTitle: Document
     photoGrid: GatsbyImageFluid[]
   }
   allContentfulTestimonial: {
@@ -83,8 +81,7 @@ const WhoWeAre = ({ data }: Props) => {
     <motion.div animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
       <Meta title="Who We Are" />
 
-      <PageIntro document={aboutPageData.heroTitle.json} maxWidth={860} />
-
+      <PageIntro document={aboutPageData.heroTitle} maxWidth={860} />
       <PhotoGridContainer>
         <PhotoGrid photos={aboutPageData.photoGrid} />
       </PhotoGridContainer>
@@ -170,12 +167,11 @@ export const WHO_WE_ARE_QUERY = graphql`
   query whoWeAreQuery {
     contentfulAboutPage(pageTitle: { eq: "Who We Are" }) {
       heroTitle {
-        json
+        raw
       }
       photoGrid {
-        fluid {
-          srcSet
-          src
+        fluid(maxWidth: 1000) {
+          ...GatsbyContentfulFluid_withWebp_noBase64
         }
       }
     }
@@ -191,8 +187,8 @@ export const WHO_WE_ARE_QUERY = graphql`
           testimonial
         }
         headshot {
-          fixed(cropFocus: FACE, height: 100, width: 100) {
-            ...GatsbyContentfulFixed_withWebp
+          fixed(cropFocus: FACE, height: 60, width: 60) {
+            ...GatsbyContentfulFixed_withWebp_noBase64
           }
         }
       }

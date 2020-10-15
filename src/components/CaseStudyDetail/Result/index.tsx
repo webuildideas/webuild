@@ -3,10 +3,8 @@ import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation, Variants } from 'framer-motion'
 import { BLOCKS, Document } from '@contentful/rich-text-types'
-import {
-  documentToReactComponents,
-  Options
-} from '@contentful/rich-text-react-renderer'
+import { renderRichText } from 'gatsby-source-contentful/rich-text'
+import { Options } from '@contentful/rich-text-react-renderer'
 
 interface Props {
   document: Document
@@ -55,7 +53,7 @@ const Result = ({ document }: Props) => {
       style={{ overflow: 'hidden' }}
       variants={variants}
     >
-      {documentToReactComponents(document, renderOptions)}
+      {renderRichText(document, renderOptions)}
     </motion.div>
   )
 }

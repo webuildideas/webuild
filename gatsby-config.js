@@ -56,6 +56,7 @@ module.exports = {
         anonymize: false
       }
     },
+    `gatsby-plugin-postcss`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,
@@ -138,8 +139,19 @@ module.exports = {
             type: `image/png`
           },
           {
+            src: `/favicons/maskable-icon.png`,
+            sizes: `180x180`,
+            type: `image/png`,
+            purpose: 'any maskable'
+          },
+          {
             src: `/favicons/android-icon-192x192.png`,
             sizes: `192x192`,
+            type: `image/png`
+          },
+          {
+            src: `/favicons/apple-icon-512x512.png`,
+            sizes: `512x512`,
             type: `image/png`
           }
         ]

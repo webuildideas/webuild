@@ -18,11 +18,16 @@ export const PhotoGrid = styled.div`
   margin-right: auto;
 `
 
-export const PhotoItem = styled(motion.img)`
+export const PhotoItem = styled(motion.div)`
   height: 100%;
   width: 100%;
   object-fit: cover;
   object-position: center center;
+
+  .gatsby-image-wrapper {
+    width: 100%;
+    height: 100%;
+  }
 
   &[data-photo='3'] {
     grid-column-start: 1;

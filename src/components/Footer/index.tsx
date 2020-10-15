@@ -9,7 +9,7 @@ import Button from '../Button'
 // Styled Components
 import * as S from './style'
 import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
-import SectionHeading from '../../common/styledComponents/SectionHeading'
+import '../../common/styles/SectionHeading.css'
 
 const Footer = () => {
   const d = new Date()
@@ -44,7 +44,7 @@ const Footer = () => {
   return (
     <S.Footer ref={ref} data-testid="footer">
       <SiteMaxWidthContainer>
-        <SectionHeading>
+        <div>
           <motion.h1
             animate={controls}
             className="SectionHeading__title"
@@ -66,7 +66,7 @@ const Footer = () => {
           >
             Ready to take your product to the next level? Drop us a line.
           </motion.h2>
-        </SectionHeading>
+        </div>
         <Button
           animationDelay={0.1}
           className="Footer__btn"
@@ -106,6 +106,7 @@ const Footer = () => {
               custom={4}
               href="https://www.dribbble.com/webuild"
               initial="hidden"
+              rel="noopener noreferrer"
               target="_blank"
               variants={variants}
             >
@@ -117,6 +118,7 @@ const Footer = () => {
               custom={5}
               href="https://www.instagram.com/wearewebuild"
               initial="hidden"
+              rel="noopener noreferrer"
               target="_blank"
               variants={variants}
             >

@@ -1,51 +1,17 @@
 // Packages
 import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
+import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import { BLOCKS, Document } from '@contentful/rich-text-types'
-import {
-  documentToReactComponents,
-  Options
-} from '@contentful/rich-text-react-renderer'
+import { Options } from '@contentful/rich-text-react-renderer'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation, Variants } from 'framer-motion'
+import Img from 'gatsby-image'
 
 // Commons
 import * as S from './style'
 
 // Components
 import Carousel from '../Carousel'
-
-export type CarouselImageInitial = {
-  fields: {
-    file: {
-      'en-US': {
-        url: string
-      }
-    }
-  }
-}
-
-export type CarouselImage = {
-  src: string
-  srcSet: string
-}
-
-const buildCarouselImgArray = (
-  imgArr: CarouselImageInitial[]
-): CarouselImage[] => {
-  const carouselImgArr: CarouselImage[] = []
-  imgArr.map((i) => {
-    const {
-      fields: { file }
-    } = i
-    return carouselImgArr.push({
-      src: file['en-US'].url,
-      // TODO: Build out the srcSet sizes using query params
-      srcSet: file['en-US'].url
-    })
-  })
-  return carouselImgArr
-}
 
 interface Props {
   document: Document
@@ -84,16 +50,15 @@ const CaseStudyRichText = ({ document }: Props) => {
   const options: Options = {
     renderNode: {
       [BLOCKS.EMBEDDED_ASSET]: (node) => {
-        const { file, title } = node.data.target.fields
         return (
-          <motion.img
-            alt={title}
+          <motion.div
             animate={animationControls}
             custom={3}
             initial="hidden"
-            src={file['en-US'].url}
             variants={variants}
-          />
+          >
+            <Img {...node.data.target} durationFadeIn={300} fadeIn />
+          </motion.div>
         )
       },
       [BLOCKS.HEADING_2]: (_, children) => (
@@ -117,22 +82,17 @@ const CaseStudyRichText = ({ document }: Props) => {
         </motion.p>
       ),
       [BLOCKS.EMBEDDED_ENTRY]: (node) => {
-        const { images } = node.data.target.fields
-        const imgArr = buildCarouselImgArray(images['en-US'])
-        return <Carousel autoplay={shouldAutoplay} images={imgArr} />
+        const { images } = node.data.target
+        return <Carousel autoplay={shouldAutoplay} images={images} />
       }
     }
   }
 
   return (
     <S.CaseStudyRichText>
-      <div ref={ref}>{documentToReactComponents(document, options)}</div>
+      <div ref={ref}>{renderRichText(document, options)}</div>
     </S.CaseStudyRichText>
   )
-}
-
-CaseStudyRichText.propTypes = {
-  document: PropTypes.object
 }
 
 export default CaseStudyRichText

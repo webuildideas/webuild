@@ -3,18 +3,16 @@ import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation, Variants } from 'framer-motion'
 import { CarouselProvider, Slide, Slider } from 'pure-react-carousel'
+import Img from 'gatsby-image'
 import 'pure-react-carousel/dist/react-carousel.es.css'
 
 // Commons
 import CarouselDotGroup from '../../../common/styledComponents/CarouselDotGroup'
 import { GatsbyImageFluid } from '../../../common/types/GatsbyImage'
-import { hasOwnProperty } from '../../../common/utils/typeNarrowing'
-
-import { CarouselImage } from '../RichText'
 
 interface Props {
   autoplay?: boolean
-  images: (GatsbyImageFluid | CarouselImage)[]
+  images: GatsbyImageFluid[]
 }
 
 const variants: Variants = {
@@ -32,16 +30,11 @@ const variants: Variants = {
   }
 }
 
-const renderImg = (image: GatsbyImageFluid | CarouselImage) => {
-  if (hasOwnProperty(image, 'fluid')) {
-    return (
-      <img alt="carousel" src={image.fluid.src} srcSet={image.fluid.srcSet} />
-    )
-  }
-  return <img alt="carousel" src={image.src} srcSet={image.srcSet} />
+const renderImg = (image: GatsbyImageFluid) => {
+  return <Img alt="carousel" durationFadeIn={125} fadeIn fluid={image.fluid} />
 }
 
-const CaseStudyCarousel = ({ images, autoplay = false }: Props) => {
+const Carousel = ({ images, autoplay = false }: Props) => {
   const animationControls = useAnimation()
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -82,4 +75,4 @@ const CaseStudyCarousel = ({ images, autoplay = false }: Props) => {
   )
 }
 
-export default CaseStudyCarousel
+export default Carousel

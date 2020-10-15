@@ -110,9 +110,9 @@ const CaseStudyDetail = ({ data: { contentfulCaseStudy } }: Props) => {
 
           <SiteMaxWidthContainer>
             <S.CaseStudyResults>
-              {resultOne && <Result document={resultOne.json} />}
-              {resultTwo && <Result document={resultTwo.json} />}
-              {resultThree && <Result document={resultThree.json} />}
+              {resultOne && <Result document={resultOne} />}
+              {resultTwo && <Result document={resultTwo} />}
+              {resultThree && <Result document={resultThree} />}
             </S.CaseStudyResults>
           </SiteMaxWidthContainer>
 
@@ -121,10 +121,10 @@ const CaseStudyDetail = ({ data: { contentfulCaseStudy } }: Props) => {
           )}
         </section>
 
-        {projectOverview && <RichText document={projectOverview.json} />}
-        {projectChallenge && <RichText document={projectChallenge.json} />}
-        {projectSolution && <RichText document={projectSolution.json} />}
-        {projectOutcome && <RichText document={projectOutcome.json} />}
+        {projectOverview && <RichText document={projectOverview} />}
+        {projectChallenge && <RichText document={projectChallenge} />}
+        {projectSolution && <RichText document={projectSolution} />}
+        {projectOutcome && <RichText document={projectOutcome} />}
 
         {nextCaseStudy ? (
           <div
@@ -161,7 +161,7 @@ export const query = graphql`
         }
       }
       heroImage {
-        fluid(maxWidth: 2200, quality: 100) {
+        fluid(maxWidth: 1100) {
           ...GatsbyContentfulFluid_withWebp_noBase64
         }
       }
@@ -179,20 +179,19 @@ export const query = graphql`
       }
       designSystemCarousel {
         images {
-          fluid {
-            src
-            srcSet
+          fluid(maxWidth: 1400) {
+            ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
       }
       resultOne {
-        json
+        raw
       }
       resultTwo {
-        json
+        raw
       }
       resultThree {
-        json
+        raw
       }
       featuredTestimonial {
         company
@@ -202,27 +201,91 @@ export const query = graphql`
           testimonial
         }
         featuredHeadshot {
-          fluid(maxWidth: 1000) {
-            src
+          fluid(maxWidth: 500) {
+            ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
         headshot {
-          fixed(cropFocus: FACE, height: 100, width: 100) {
-            ...GatsbyContentfulFixed_withWebp
+          fixed(cropFocus: FACE, height: 50, width: 50) {
+            ...GatsbyContentfulFixed_withWebp_noBase64
+          }
+        }
+      }
+      projectOverview {
+        raw
+        references {
+          contentful_id
+          ... on ContentfulAsset {
+            id
+            fluid(maxWidth: 1100) {
+              ...GatsbyContentfulFluid_withWebp_noBase64
+            }
+          }
+          ... on ContentfulCarousel {
+            images {
+              fluid(maxWidth: 1100) {
+                ...GatsbyContentfulFluid_withWebp_noBase64
+              }
+            }
           }
         }
       }
       projectChallenge {
-        json
-      }
-      projectOutcome {
-        json
-      }
-      projectOverview {
-        json
+        raw
+        references {
+          contentful_id
+          ... on ContentfulAsset {
+            id
+            fluid(maxWidth: 1100) {
+              ...GatsbyContentfulFluid_withWebp_noBase64
+            }
+          }
+          ... on ContentfulCarousel {
+            images {
+              fluid(maxWidth: 1100) {
+                ...GatsbyContentfulFluid_withWebp_noBase64
+              }
+            }
+          }
+        }
       }
       projectSolution {
-        json
+        raw
+        references {
+          contentful_id
+          ... on ContentfulAsset {
+            id
+            fluid(maxWidth: 1100) {
+              ...GatsbyContentfulFluid_withWebp_noBase64
+            }
+          }
+          ... on ContentfulCarousel {
+            images {
+              fluid(maxWidth: 1100) {
+                ...GatsbyContentfulFluid_withWebp_noBase64
+              }
+            }
+          }
+        }
+      }
+      projectOutcome {
+        raw
+        references {
+          contentful_id
+          ... on ContentfulAsset {
+            id
+            fluid(maxWidth: 1100) {
+              ...GatsbyContentfulFluid_withWebp_noBase64
+            }
+          }
+          ... on ContentfulCarousel {
+            images {
+              fluid(maxWidth: 1100) {
+                ...GatsbyContentfulFluid_withWebp_noBase64
+              }
+            }
+          }
+        }
       }
       nextCaseStudy {
         name
@@ -237,8 +300,8 @@ export const query = graphql`
           }
         }
         listingImage {
-          fluid {
-            ...GatsbyContentfulFluid_withWebp
+          fluid(maxWidth: 625) {
+            ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
       }

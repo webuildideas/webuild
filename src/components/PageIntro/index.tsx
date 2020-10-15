@@ -2,64 +2,55 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Document, MARKS, BLOCKS } from '@contentful/rich-text-types'
-import {
-  documentToReactComponents,
-  Options
-} from '@contentful/rich-text-react-renderer'
+import { renderRichText } from 'gatsby-source-contentful/rich-text'
+import { Options } from '@contentful/rich-text-react-renderer'
 
-// Styled Components
-import * as S from './style'
+// Commons
 import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
 
 interface Props {
   maxWidth?: number
-  animationDelay?: number
   document: Document
 }
 
-export const getRichTextOptions = (animationDelay = 0.5): Options => {
-  return {
-    renderNode: {
-      [BLOCKS.PARAGRAPH]: (_, copy) => (
-        <motion.h1
-          animate={{
-            y: 0,
-            opacity: 1,
-            transition: {
-              delay: animationDelay,
-              type: 'spring'
-            }
-          }}
-          initial={{
-            y: 30,
-            opacity: 0
-          }}
-        >
-          {copy}
-        </motion.h1>
-      )
-    },
-    renderMark: {
-      [MARKS.BOLD]: (text: React.ReactNode) => <span>{text}</span>
-    }
+const richTextOptions: Options = {
+  renderNode: {
+    [BLOCKS.PARAGRAPH]: (_, copy) => (
+      <motion.h1
+        animate={{
+          y: 0,
+          opacity: 1,
+          transition: {
+            type: 'spring'
+          }
+        }}
+        className="font-normal text-xl leading-tight"
+        initial={{
+          y: 30,
+          opacity: 0.1
+        }}
+      >
+        {copy}
+      </motion.h1>
+    )
+  },
+  renderMark: {
+    [MARKS.BOLD]: (text: React.ReactNode) => (
+      <span className="font-black">{text}</span>
+    )
   }
 }
 
-const PageIntro = ({
-  document,
-  maxWidth = 1080,
-  animationDelay = 0.5
-}: Props) => {
-  const options: Options = getRichTextOptions(animationDelay)
-
+const PageIntro = ({ document, maxWidth = 1080 }: Props) => {
+  const maxWidthStyle = { maxWidth }
   return (
-    <S.PageIntro maxWidth={maxWidth}>
+    <section className="pt-16">
       <SiteMaxWidthContainer>
-        <div className="PageIntro__inner">
-          {documentToReactComponents(document, options)}
+        <div style={maxWidthStyle}>
+          {renderRichText(document, richTextOptions)}
         </div>
       </SiteMaxWidthContainer>
-    </S.PageIntro>
+    </section>
   )
 }
 

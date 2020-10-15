@@ -1,0 +1,14 @@
+.SectionHeading__title {
+  @apply text-base;
+  @apply uppercase;
+  @apply font-extrabold;
+  @apply tracking-wider;
+  @apply mb-5;
+}
+
+.SectionHeading__subtitle {
+  @apply text-lg;
+  @apply font-normal;
+  @apply mb-6;
+  max-width: 750px;
+}

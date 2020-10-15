@@ -25,6 +25,7 @@ interface Props {
   children: React.ReactNode
   className?: string
   target?: string
+  rel?: string
 }
 
 const Button = ({
