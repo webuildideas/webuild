@@ -170,7 +170,7 @@ export const WHO_WE_ARE_QUERY = graphql`
         raw
       }
       photoGrid {
-        fluid(maxWidth: 625) {
+        fluid(maxWidth: 1000) {
           ...GatsbyContentfulFluid_withWebp_noBase64
         }
       }
