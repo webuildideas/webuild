@@ -69,12 +69,7 @@ const CaseStudyDetail = ({
         }}
       />
       <Meta title={name} />
-      <S.CaseStudyDetail
-        animate={{ opacity: 1 }}
-        className={slug}
-        initial={{ opacity: 0 }}
-        transition={{ duration: 1 }}
-      >
+      <S.CaseStudyDetail className={slug}>
         {heroBackgroundImage && heroImage && whiteLogo && successSummary ? (
           <Hero
             background={heroBackgroundImage.file.url}
@@ -92,12 +87,7 @@ const CaseStudyDetail = ({
             />
           )}
 
-          <div
-            style={{
-              paddingTop: `${rhythmUnit(3)}`,
-              paddingBottom: `${rhythmUnit(3)}`
-            }}
-          >
+          <div className="py-20">
             <SiteMaxWidthContainer maxWidth={1400}>
               {designSystemCarousel && (
                 <div ref={ref}>
@@ -129,13 +119,7 @@ const CaseStudyDetail = ({
         {projectOutcome && <RichText document={projectOutcome} />}
 
         {nextCaseStudy ? (
-          <div
-            style={{
-              paddingTop: `${rhythmUnit(2.5)}`,
-              paddingBottom: `${rhythmUnit(1)}`,
-              backgroundColor: '#F9F9F9'
-            }}
-          >
+          <div className="bg-snow pt-16 pb-6">
             <CaseStudy
               caseStudy={nextCaseStudy}
               layout="right"
