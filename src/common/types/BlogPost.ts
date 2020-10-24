@@ -8,5 +8,5 @@ export interface TypeBlogPost {
   publishDate: string
   readNext?: TypeBlogPost[]
   topic?: string[]
-  author: TypeAuthor[]
+  author: TypeAuthor
 }
