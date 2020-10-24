@@ -10,6 +10,9 @@ import Img from 'gatsby-image'
 // Commons
 import { TypeBlogPost } from '../common/types/BlogPost'
 
+// Components
+import Meta from '../components/Meta'
+
 interface Props {
   data: {
     contentfulBlogPost: TypeBlogPost
@@ -26,28 +29,31 @@ const options: Options = {
 
 const BlogPost = ({ data: { contentfulBlogPost: blogPost } }: Props) => {
   return (
-    <article className="prose mx-auto pt-16 pb-12 px-6 md:px-0">
-      <h1 className="text-xl mb-12">{blogPost.title}</h1>
-      <div className="flex items-center">
-        {blogPost.author ? (
-          <>
-            <Img
-              alt={`${blogPost.author.name} Headshot`}
-              className="rounded-full mr-4 inline-block"
-              durationFadeIn={150}
-              fadeIn
-              fixed={blogPost.author.headshot.fixed}
-              imgStyle={{ marginTop: 0, marginBottom: 0 }}
-            />
-            <p key={`${blogPost.author.name}`} className="inline">
-              by {blogPost.author.name} on{' '}
-              {dayjs(blogPost.publishDate).format('MMMM DD, YYYY')}
-            </p>
-          </>
-        ) : null}
-      </div>
-      {blogPost.content ? renderRichText(blogPost.content, options) : null}
-    </article>
+    <>
+      <Meta title={blogPost.title} />
+      <article className="prose mx-auto pt-16 pb-12 px-6 md:px-0">
+        <h1 className="text-xl mb-12">{blogPost.title}</h1>
+        <div className="flex items-center">
+          {blogPost.author ? (
+            <>
+              <Img
+                alt={`${blogPost.author.name} Headshot`}
+                className="rounded-full mr-4 inline-block"
+                durationFadeIn={150}
+                fadeIn
+                fixed={blogPost.author.headshot.fixed}
+                imgStyle={{ marginTop: 0, marginBottom: 0 }}
+              />
+              <p key={`${blogPost.author.name}`} className="inline">
+                by {blogPost.author.name} on{' '}
+                {dayjs(blogPost.publishDate).format('MMMM DD, YYYY')}
+              </p>
+            </>
+          ) : null}
+        </div>
+        {blogPost.content ? renderRichText(blogPost.content, options) : null}
+      </article>
+    </>
   )
 }
 

@@ -1,7 +1,6 @@
 // Packages
 import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
-import { Helmet } from 'react-helmet'
 import { useInView } from 'react-intersection-observer'
 
 // Commons
@@ -60,14 +59,12 @@ const CaseStudyDetail = ({
     }
   }, [inView])
 
+  const metaBodyAtributes = {
+    class: 'CaseStudyDetail'
+  }
   return (
     <>
-      <Helmet
-        bodyAttributes={{
-          class: 'CaseStudyDetail'
-        }}
-      />
-      <Meta title={name} />
+      <Meta bodyAttributes={metaBodyAtributes} title={name} />
       <S.CaseStudyDetail className={slug}>
         {heroBackgroundImage && heroImage && whiteLogo && successSummary ? (
           <Hero

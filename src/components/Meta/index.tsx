@@ -1,11 +1,12 @@
 import React from 'react'
-import Helmet from 'react-helmet'
+import Helmet, { HelmetProps } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
+
+// Commons
 import { TypeContentfulAsset } from '../../common/types/Contentful'
 
-interface Props {
+interface Props extends HelmetProps {
   description?: string
-  lang?: string
   title: string
 }
 
@@ -19,7 +20,12 @@ interface MetaQueryResponse {
   }
 }
 
-const Meta = ({ description, lang = 'en', title }: Props) => {
+const Meta = ({
+  bodyAttributes,
+  htmlAttributes,
+  description,
+  title
+}: Props) => {
   const { contentfulSeo } = useStaticQuery<MetaQueryResponse>(
     graphql`
       query SeoQuery {
@@ -77,10 +83,9 @@ const Meta = ({ description, lang = 'en', title }: Props) => {
     }
   ]
 
-  const htmlAttributes = { lang }
-
   return (
     <Helmet
+      bodyAttributes={bodyAttributes}
       htmlAttributes={htmlAttributes}
       meta={metaProperties}
       title={metaTitle}
