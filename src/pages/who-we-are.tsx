@@ -11,6 +11,7 @@ import { Document } from '@contentful/rich-text-types'
 import { rhythmUnit } from '../common/utils/typography'
 import { TypeGatsbyImageFluid } from '../common/types/GatsbyImage'
 import { TypeTestimonial } from '../common/types/Testimonial'
+import { TypeJob } from '../common/types/Job'
 
 // Components
 import Meta from '../components/Meta'
