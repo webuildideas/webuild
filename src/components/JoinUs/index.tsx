@@ -1,15 +1,20 @@
 // Packages
 import React, { useEffect } from 'react'
+import { OutboundLink } from 'gatsby-plugin-gtag'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation, Variants } from 'framer-motion'
 
 // Commons
-import * as S from './style'
 import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
 import '../../common/styles/SectionHeading.css'
 
 // Components
 import Button from '../Button'
+import { TypeJob } from '../../common/types/Job'
+
+interface Props {
+  jobs: TypeJob[]
+}
 
 const variants: Variants = {
   visible: (i: number) => ({
@@ -27,7 +32,7 @@ const variants: Variants = {
   }
 }
 
-const JoinUs = () => {
+const JoinUs = ({ jobs }: Props) => {
   const animationControls = useAnimation()
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -41,7 +46,7 @@ const JoinUs = () => {
   }, [animationControls, inView])
 
   return (
-    <S.JoinUs ref={ref} data-testid="joinUs">
+    <section ref={ref} data-testid="joinUs">
       <SiteMaxWidthContainer>
         <div>
           <motion.h1
@@ -66,52 +71,41 @@ const JoinUs = () => {
             people to join our amazing remote team.
           </motion.h2>
         </div>
-        <S.JoinUsJobs data-testid="joinUs-jobs">
-          <S.JoinUsJob
-            href="https://webuildideas.bamboohr.com/jobs/view.php?id=22"
-            rel="noopener noreferrer"
-            target="_blank"
+        {jobs.length > 0 ? (
+          <div
+            className="grid grid-cols-1 md:grid-cols-3 justify-between gap-3 my-12"
+            data-testid="joinUs-jobs"
           >
-            <motion.h3
-              animate={animationControls}
-              custom={2}
-              initial="hidden"
-              variants={variants}
-            >
-              Product Designer
-            </motion.h3>
-            <motion.p
-              animate={animationControls}
-              custom={3}
-              initial="hidden"
-              variants={variants}
-            >
-              Remote (US Preferred)
-            </motion.p>
-          </S.JoinUsJob>
-          <S.JoinUsJob
-            href="https://webuildideas.bamboohr.com/jobs/view.php?id=21"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <motion.h3
-              animate={animationControls}
-              custom={4}
-              initial="hidden"
-              variants={variants}
-            >
-              Product Manager
-            </motion.h3>
-            <motion.p
-              animate={animationControls}
-              custom={5}
-              initial="hidden"
-              variants={variants}
-            >
-              Remote (US Preferred)
-            </motion.p>
-          </S.JoinUsJob>
-        </S.JoinUsJobs>
+            {jobs.map((job: TypeJob, idx: number) => {
+              return (
+                <OutboundLink
+                  key={`job-${idx}`}
+                  href={job.applicationLink}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <motion.h3
+                    animate={animationControls}
+                    className="uppercase mb-3"
+                    custom={idx + 2}
+                    initial="hidden"
+                    variants={variants}
+                  >
+                    {job.title}
+                  </motion.h3>
+                  <motion.p
+                    animate={animationControls}
+                    custom={idx + 3}
+                    initial="hidden"
+                    variants={variants}
+                  >
+                    {job.location}
+                  </motion.p>
+                </OutboundLink>
+              )
+            })}
+          </div>
+        ) : null}
         <Button
           href="https://webuildideas.bamboohr.com/jobs/"
           rel="noopener noreferrer"
@@ -121,7 +115,7 @@ const JoinUs = () => {
           View Open Positions
         </Button>
       </SiteMaxWidthContainer>
-    </S.JoinUs>
+    </section>
   )
 }
 

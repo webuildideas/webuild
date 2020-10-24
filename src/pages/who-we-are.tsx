@@ -27,6 +27,9 @@ interface WhoWeAreQueryResponse {
     heroTitle: Document
     photoGrid: TypeGatsbyImageFluid[]
   }
+  allContentfulJob: {
+    nodes: TypeJob[]
+  }
   allContentfulTestimonial: {
     nodes: TypeTestimonial[]
   }
@@ -66,6 +69,7 @@ const WhoWeAre = ({ data }: Props) => {
   const aboutPageData = data.contentfulAboutPage
   const animationControls = useAnimation()
   const { nodes: testimonialData } = data.allContentfulTestimonial
+  const { nodes: jobs } = data.allContentfulJob
   const [ref, inView] = useInView({
     threshold: 0.7,
     triggerOnce: true
@@ -77,8 +81,11 @@ const WhoWeAre = ({ data }: Props) => {
     }
   }, [animationControls, inView])
 
+  const initial = { opacity: 0 }
+  const animateTo = { opacity: 1 }
+
   return (
-    <motion.div animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
+    <motion.div animate={animateTo} initial={initial}>
       <Meta title="Who We Are" />
 
       <PageIntro document={aboutPageData.heroTitle} maxWidth={860} />
@@ -88,21 +95,11 @@ const WhoWeAre = ({ data }: Props) => {
 
       <TeamMap />
 
-      <div
-        style={{
-          marginBottom: `${rhythmUnit(3)}`
-        }}
-      >
+      <div className="mb-20">
         <TestimonialSlider testimonials={testimonialData} />
       </div>
 
-      <div
-        ref={ref}
-        style={{
-          backgroundColor: '#F9F9F9',
-          padding: `${rhythmUnit(3)} 0`
-        }}
-      >
+      <div ref={ref} className="py-20 bg-snow">
         <BioCard>
           <motion.h2
             animate={animationControls}
@@ -140,9 +137,9 @@ const WhoWeAre = ({ data }: Props) => {
           >
             You can find him and connect on{' '}
             <OutboundLink
+              className="font-bold"
               href="https://www.linkedin.com/in/evanshoemaker/"
               rel="noopener noreferrer"
-              style={{ fontWeight: 700 }}
               target="_blank"
             >
               LinkedIn
@@ -151,12 +148,8 @@ const WhoWeAre = ({ data }: Props) => {
         </BioCard>
       </div>
 
-      <div
-        style={{
-          padding: `${rhythmUnit(3)} 0`
-        }}
-      >
-        <JoinUs />
+      <div className="py-20">
+        <JoinUs jobs={jobs} />
       </div>
       <Footer />
     </motion.div>
@@ -173,6 +166,14 @@ export const WHO_WE_ARE_QUERY = graphql`
         fluid(maxWidth: 1000) {
           ...GatsbyContentfulFluid_withWebp_noBase64
         }
+      }
+    }
+    allContentfulJob(filter: { isOpen: { eq: true } }) {
+      nodes {
+        isOpen
+        location
+        title
+        applicationLink
       }
     }
     allContentfulTestimonial(

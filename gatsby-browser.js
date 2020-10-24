@@ -5,7 +5,7 @@ const React = require('react')
 // Tailwind
 require('./src/common/theme/tailwind.css')
 
-// Commons
+// Utils
 const { callProjectHuddle } = require('./src/common/utils/projectHuddle')
 const loadPolyfills = require('./src/common/utils/polyfills').default
 
