@@ -6,6 +6,16 @@ import { BLOCKS } from '@contentful/rich-text-types'
 import { Options } from '@contentful/rich-text-react-renderer'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  LinkedinShareButton,
+  LinkedinIcon,
+  EmailShareButton,
+  EmailIcon
+} from 'react-share'
 
 // Commons
 import { TypeBlogPost } from '../common/types/BlogPost'
@@ -27,12 +37,25 @@ const options: Options = {
   }
 }
 
+const shareUrl = window.location.href
 const BlogPost = ({ data: { contentfulBlogPost: blogPost } }: Props) => {
   return (
     <>
       <Meta title={blogPost.title} />
-      <article className="prose mx-auto pt-16 pb-12 px-6 md:px-0">
-        <h1 className="text-xl mb-12">{blogPost.title}</h1>
+      <FacebookShareButton url={shareUrl}>
+        <FacebookIcon />
+      </FacebookShareButton>
+      <TwitterShareButton url={shareUrl}>
+        <TwitterIcon />
+      </TwitterShareButton>
+      <LinkedinShareButton url={shareUrl}>
+        <LinkedinIcon />
+      </LinkedinShareButton>
+      <EmailShareButton url={shareUrl}>
+        <EmailIcon />
+      </EmailShareButton>
+      <article className="prose lg:prose-xl mx-auto pt-16 pb-12 px-6 md:px-0">
+        <h1 className="text-xl lg:mb-0">{blogPost.title}</h1>
         <div className="flex items-center">
           {blogPost.author ? (
             <>
