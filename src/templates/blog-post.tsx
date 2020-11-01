@@ -45,7 +45,7 @@ const BlogPost = ({ data: { contentfulBlogPost: blogPost } }: Props) => {
       <Meta title={blogPost.title} />
       <FacebookShareButton
         quote={blogPost.shareQuote?.shareQuote}
-        url="https://webuild.io"
+        url={shareUrl}
       >
         <FacebookIcon />
       </FacebookShareButton>
