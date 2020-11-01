@@ -9,4 +9,8 @@ export interface TypeBlogPost {
   readNext?: TypeBlogPost[]
   topic?: string[]
   author: TypeAuthor
+  hashtags?: string[]
+  shareQuote?: {
+    shareQuote: string
+  }
 }

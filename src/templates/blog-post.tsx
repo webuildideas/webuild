@@ -39,22 +39,41 @@ const options: Options = {
 
 const shareUrl = window.location.href
 const BlogPost = ({ data: { contentfulBlogPost: blogPost } }: Props) => {
+  console.log(blogPost)
   return (
     <>
       <Meta title={blogPost.title} />
-      <FacebookShareButton url={shareUrl}>
+      <FacebookShareButton
+        quote={blogPost.shareQuote?.shareQuote}
+        url="https://webuild.io"
+      >
         <FacebookIcon />
       </FacebookShareButton>
-      <TwitterShareButton url={shareUrl}>
+      <TwitterShareButton
+        hashtags={blogPost.hashtags}
+        title={blogPost.shareQuote?.shareQuote}
+        url={shareUrl}
+        via="wearewebuild"
+      >
         <TwitterIcon />
       </TwitterShareButton>
-      <LinkedinShareButton url={shareUrl}>
+      <LinkedinShareButton
+        source="webuild"
+        summary={blogPost.shareQuote?.shareQuote}
+        title={blogPost.title}
+        url={shareUrl}
+      >
         <LinkedinIcon />
       </LinkedinShareButton>
-      <EmailShareButton url={shareUrl}>
+      <EmailShareButton
+        body={blogPost.shareQuote?.shareQuote}
+        separator=" | "
+        subject={`Check out this blog post ${blogPost.title}`}
+        url={shareUrl}
+      >
         <EmailIcon />
       </EmailShareButton>
-      <article className="prose lg:prose-xl mx-auto pt-16 pb-12 px-6 md:px-0">
+      <article className="prose mx-auto pt-16 pb-12 px-6 md:px-0">
         <h1 className="text-xl lg:mb-0">{blogPost.title}</h1>
         <div className="flex items-center">
           {blogPost.author ? (
@@ -106,6 +125,10 @@ export const query = graphql`
       }
       publishDate
       topic
+      hashtags
+      shareQuote {
+        shareQuote
+      }
     }
   }
 `
