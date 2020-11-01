@@ -39,7 +39,6 @@ const options: Options = {
 
 const shareUrl = window.location.href
 const BlogPost = ({ data: { contentfulBlogPost: blogPost } }: Props) => {
-  console.log(blogPost)
   return (
     <>
       <Meta title={blogPost.title} />

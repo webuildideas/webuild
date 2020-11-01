@@ -74,12 +74,24 @@ const Meta = ({
       content: `website`
     },
     {
+      name: `twitter:card`,
+      content: `summary_large_image`
+    },
+    {
+      name: `twitter:site`,
+      content: `@wearewebuild`
+    },
+    {
       name: `twitter:title`,
       content: contentfulSeo.seoTitle
     },
     {
       name: `twitter:description`,
       content: metaDescription
+    },
+    {
+      name: `twitter:image`,
+      content: contentfulSeo.seoShareImage.file.url
     }
   ]
 
