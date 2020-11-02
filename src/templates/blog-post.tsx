@@ -22,6 +22,7 @@ import { TypeBlogPost } from '../common/types/BlogPost'
 
 // Components
 import Meta from '../components/Meta'
+import SuggestedNext from '../components/BlogPost/SuggestedNext/index.'
 
 interface Props {
   data: {
@@ -94,6 +95,7 @@ const BlogPost = ({ data: { contentfulBlogPost: blogPost } }: Props) => {
         </div>
         {blogPost.content ? renderRichText(blogPost.content, options) : null}
       </article>
+      <SuggestedNext posts={blogPost.readNext} />
     </>
   )
 }
@@ -123,6 +125,11 @@ export const query = graphql`
         }
       }
       publishDate
+      readNext {
+        title
+        topic
+        slug
+      }
       topic
       hashtags
       shareQuote {
