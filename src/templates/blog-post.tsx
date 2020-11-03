@@ -22,11 +22,14 @@ import { TypeBlogPost } from '../common/types/BlogPost'
 
 // Components
 import Meta from '../components/Meta'
-import SuggestedNext from '../components/BlogPost/SuggestedNext/index.'
+import ReadNext from '../components/BlogPost/ReadNext'
 
 interface Props {
   data: {
     contentfulBlogPost: TypeBlogPost
+    allContentfulBlogPost: {
+      nodes: TypeBlogPost[]
+    }
   }
 }
 
@@ -39,7 +42,12 @@ const options: Options = {
 }
 
 const shareUrl = window.location.href
-const BlogPost = ({ data: { contentfulBlogPost: blogPost } }: Props) => {
+const BlogPost = ({
+  data: {
+    contentfulBlogPost: blogPost,
+    allContentfulBlogPost: { nodes: relatedBlogPostsByTopic }
+  }
+}: Props) => {
   return (
     <>
       <Meta title={blogPost.title} />
@@ -95,13 +103,16 @@ const BlogPost = ({ data: { contentfulBlogPost: blogPost } }: Props) => {
         </div>
         {blogPost.content ? renderRichText(blogPost.content, options) : null}
       </article>
-      <SuggestedNext posts={blogPost.readNext} />
+      <ReadNext
+        posts={blogPost.readNext}
+        relatedPostsByTopic={relatedBlogPostsByTopic}
+      />
     </>
   )
 }
 
 export const query = graphql`
-  query blogPostQuery($slug: String!) {
+  query blogPostQuery($slug: String!, $topic: [String]) {
     contentfulBlogPost(slug: { eq: $slug }) {
       title
       author {
@@ -134,6 +145,14 @@ export const query = graphql`
       hashtags
       shareQuote {
         shareQuote
+      }
+    }
+    allContentfulBlogPost(
+      filter: { topic: { in: $topic }, slug: { ne: $slug } }
+    ) {
+      nodes {
+        title
+        slug
       }
     }
   }

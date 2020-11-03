@@ -17,6 +17,7 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             slug
+            topic
           }
         }
       }
@@ -43,7 +44,8 @@ exports.createPages = async ({ graphql, actions }) => {
       path: `/${node.slug}`,
       component: path.resolve('./src/templates/blog-post.tsx'),
       context: {
-        slug: node.slug
+        slug: node.slug,
+        topic: node.topic
       }
     })
   })
