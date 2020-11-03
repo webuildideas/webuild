@@ -41,7 +41,7 @@ const options: Options = {
   }
 }
 
-const shareUrl = window.location.href
+const shareUrl = 'https://webuild.io/'
 const BlogPost = ({
   data: {
     contentfulBlogPost: blogPost,
