@@ -2,6 +2,7 @@ import { graphql } from 'gatsby'
 import React from 'react'
 import SiteMaxWidthContainer from '../common/styledComponents/SiteMaxWidthContainer'
 import { TypeBlogPost } from '../common/types/BlogPost'
+import Meta from '../components/Meta'
 
 interface Props {
   data: {
@@ -17,6 +18,7 @@ const Insights = ({
 }: Props) => {
   return (
     <SiteMaxWidthContainer>
+      <Meta title="Insights" />
       <h1 className="mb-12">Articles & Insights</h1>
       {blogPosts.map((post: TypeBlogPost) => (
         <div key={`item-${post.slug}`} className="mb-8">
