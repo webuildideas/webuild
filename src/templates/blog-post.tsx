@@ -6,16 +6,6 @@ import { BLOCKS } from '@contentful/rich-text-types'
 import { Options } from '@contentful/rich-text-react-renderer'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import {
-  FacebookShareButton,
-  FacebookIcon,
-  TwitterShareButton,
-  TwitterIcon,
-  LinkedinShareButton,
-  LinkedinIcon,
-  EmailShareButton,
-  EmailIcon
-} from 'react-share'
 
 // Commons
 import { TypeBlogPost } from '../common/types/BlogPost'
@@ -23,6 +13,8 @@ import { TypeBlogPost } from '../common/types/BlogPost'
 // Components
 import Meta from '../components/Meta'
 import ReadNext from '../components/BlogPost/ReadNext'
+import SocialShare from '../components/BlogPost/SocialShare'
+import SiteMaxWidthContainer from '../common/styledComponents/SiteMaxWidthContainer'
 
 interface Props {
   data: {
@@ -41,7 +33,6 @@ const options: Options = {
   }
 }
 
-const shareUrl = 'https://webuild.io/'
 const BlogPost = ({
   data: {
     contentfulBlogPost: blogPost,
@@ -49,39 +40,9 @@ const BlogPost = ({
   }
 }: Props) => {
   return (
-    <>
+    <SiteMaxWidthContainer className="grid grid-cols-12 gap-8">
       <Meta title={blogPost.title} />
-      <FacebookShareButton
-        quote={blogPost.shareQuote?.shareQuote}
-        url={shareUrl}
-      >
-        <FacebookIcon />
-      </FacebookShareButton>
-      <TwitterShareButton
-        hashtags={blogPost.hashtags}
-        title={blogPost.shareQuote?.shareQuote}
-        url={shareUrl}
-        via="wearewebuild"
-      >
-        <TwitterIcon />
-      </TwitterShareButton>
-      <LinkedinShareButton
-        source="webuild"
-        summary={blogPost.shareQuote?.shareQuote}
-        title={blogPost.title}
-        url={shareUrl}
-      >
-        <LinkedinIcon />
-      </LinkedinShareButton>
-      <EmailShareButton
-        body={blogPost.shareQuote?.shareQuote}
-        separator=" | "
-        subject={`Check out this blog post ${blogPost.title}`}
-        url={shareUrl}
-      >
-        <EmailIcon />
-      </EmailShareButton>
-      <article className="prose mx-auto pt-16 pb-12 px-6 md:px-0">
+      <article className="prose mx-auto pt-16 pb-12 md:px-0 col-span-12 md:col-span-8">
         <h1 className="text-xl lg:mb-0">{blogPost.title}</h1>
         <div className="flex items-center">
           {blogPost.author ? (
@@ -101,13 +62,19 @@ const BlogPost = ({
             </>
           ) : null}
         </div>
+        <SocialShare
+          hashtags={blogPost.hashtags}
+          shareQuote={blogPost.shareQuote?.shareQuote}
+          title={blogPost.title}
+        />
         {blogPost.content ? renderRichText(blogPost.content, options) : null}
       </article>
       <ReadNext
+        className="col-span-12 md:col-span-3 pb-8 md:pt-16 md:pb-12"
         posts={blogPost.readNext}
         relatedPostsByTopic={relatedBlogPostsByTopic}
       />
-    </>
+    </SiteMaxWidthContainer>
   )
 }
 
@@ -118,7 +85,7 @@ export const query = graphql`
       author {
         name
         headshot {
-          fixed(cropFocus: FACE, height: 65, width: 65) {
+          fixed(cropFocus: FACE, height: 50, width: 50) {
             ...GatsbyContentfulFixed_withWebp_noBase64
           }
         }

@@ -7,32 +7,43 @@ import { TypeBlogPost } from '../../../common/types/BlogPost'
 interface Props {
   posts?: TypeBlogPost[]
   relatedPostsByTopic: TypeBlogPost[]
+  className?: string
 }
 
-const ReadNext = ({ posts, relatedPostsByTopic }: Props) => {
+const ReadNext = ({ posts, relatedPostsByTopic, className }: Props) => {
   const hasPosts = posts && posts.length > 0
   const hasRelated = relatedPostsByTopic && relatedPostsByTopic.length > 0
   return hasPosts || hasRelated ? (
-    <div className="max-w-screen-sm m-auto mb-10">
-      <h3 className="mb-4">You might also want to check out these articles</h3>
-      <div className="border-solid border-2 border-concrete rounded p-6">
+    <div className={`${className}`}>
+      <h3 className="mb-4">Relateds Posts</h3>
+      <div>
         {posts && posts.length > 0
           ? posts.map((post: TypeBlogPost) => {
               return (
-                <div key={`suggested-${post.slug}`}>
-                  <a className="hover:text-stormGrey" href={post.slug}>
-                    {post.title}
-                  </a>
-                </div>
+                <a
+                  key={`suggested-${post.slug}`}
+                  className="hover:text-stormGrey"
+                  href={post.slug}
+                >
+                  <div>
+                    <h5 className="font-medium mb-4">{post.title}</h5>
+                    <p className="text-sm underline">Read Next</p>
+                  </div>
+                </a>
               )
             })
           : relatedPostsByTopic.map((post: TypeBlogPost) => {
               return (
-                <div key={`suggested-${post.slug}`}>
-                  <a className="hover:text-stormGrey" href={post.slug}>
-                    {post.title}
-                  </a>
-                </div>
+                <a
+                  key={`suggested-${post.slug}`}
+                  className="hover:text-stormGrey"
+                  href={post.slug}
+                >
+                  <div>
+                    <h5 className="font-medium mb-4">{post.title}</h5>
+                    <p className="text-sm underline">Read Next</p>
+                  </div>
+                </a>
               )
             })}
       </div>
