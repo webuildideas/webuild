@@ -79,7 +79,7 @@ const BlogPost = ({
 }
 
 export const query = graphql`
-  query blogPostQuery($slug: String!, $topic: [String]) {
+  query blogPostQuery($slug: String!, $topics: [String]) {
     contentfulBlogPost(slug: { eq: $slug }) {
       title
       author {
@@ -105,17 +105,24 @@ export const query = graphql`
       publishDate
       readNext {
         title
-        topic
+        topics {
+          name
+        }
         slug
       }
-      topic
+      topics {
+        name
+      }
       hashtags
       shareQuote {
         shareQuote
       }
     }
     allContentfulBlogPost(
-      filter: { topic: { in: $topic }, slug: { ne: $slug } }
+      filter: {
+        topics: { elemMatch: { name: { in: $topics } } }
+        slug: { ne: $slug }
+      }
     ) {
       nodes {
         title

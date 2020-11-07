@@ -1,5 +1,6 @@
 import { Document } from '@contentful/rich-text-types'
 import { TypeAuthor } from './Author'
+import { TypeTopic } from './Topic'
 
 export interface TypeBlogPost {
   title: string
@@ -7,7 +8,7 @@ export interface TypeBlogPost {
   content: Document
   publishDate: string
   readNext?: TypeBlogPost[]
-  topic?: string[]
+  topic?: TypeTopic[]
   author: TypeAuthor
   hashtags?: string[]
   shareQuote?: {
