@@ -5,6 +5,7 @@
   "version": "1.0.0",
   "author": "Vince Brown <vince@vincebrown.me>",
   "dependencies": {
+    "@apollo/client": "^3.2.5",
     "@contentful/rich-text-react-renderer": "^14.1.1",
     "@contentful/rich-text-types": "^14.1.1",
     "@tailwindcss/typography": "^0.2.0",
@@ -30,6 +31,7 @@
     "gatsby-transformer-sharp": "^2.5.17",
     "gsap": "^3.5.1",
     "intersection-observer": "^0.11.0",
+    "lodash": "^4.17.20",
     "postcss": "^8.1.1",
     "prop-types": "^15.7.2",
     "pure-react-carousel": "^1.27.3",
