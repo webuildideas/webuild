@@ -27,6 +27,13 @@ module.exports = {
         semi: false
       }
     ],
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': [
+      'warn',
+      {
+        additionalHooks: 'useRecoilCallback'
+      }
+    ],
     'react/jsx-boolean-value': 0,
     'react/jsx-props-no-spreading': 0,
     'react/static-property-placement': 0,

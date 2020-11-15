@@ -7,7 +7,7 @@ import { TypeContentfulAsset } from '../../common/types/Contentful'
 
 interface Props extends HelmetProps {
   description?: string
-  title: string
+  title?: string
 }
 
 interface MetaQueryResponse {
