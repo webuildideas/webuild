@@ -8,7 +8,7 @@ export interface TypeBlogPost {
   content: Document
   publishDate: string
   readNext?: TypeBlogPost[]
-  topic?: TypeTopic[]
+  topics?: TypeTopic[]
   author: TypeAuthor
   hashtags?: string[]
   shareQuote?: {

@@ -17,6 +17,9 @@ const FILTER_BY_TOPIC_QUERY = gql`
       nodes {
         title
         slug
+        topics {
+          name
+        }
       }
     }
   }

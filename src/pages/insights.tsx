@@ -3,6 +3,7 @@ import React from 'react'
 import { atom, useRecoilValue } from 'recoil'
 
 // Commons
+import { kebabCase } from 'lodash'
 import SiteMaxWidthContainer from '../common/styledComponents/SiteMaxWidthContainer'
 import { TypeBlogPost } from '../common/types/BlogPost'
 import { TypeTopic } from '../common/types/Topic'
@@ -33,7 +34,7 @@ const Insights = ({
     allContentfulTopic: { nodes: topics }
   }
 }: Props) => {
-  const postsFiltered = useRecoilValue(postsFilteredByTopic)
+  const postsFiltered = useRecoilValue<TypeBlogPost[]>(postsFilteredByTopic)
 
   console.log('Filtered Posts', postsFiltered)
   return (
@@ -46,13 +47,45 @@ const Insights = ({
           <TopicFilters topics={topics} />
         </aside>
         <div className="col-span-12 md:col-span-8">
-          {blogPosts.map((post: TypeBlogPost) => (
-            <article key={`item-${post.slug}`} className="mb-8">
-              <h2>
-                <a href={post.slug}>{post.title}</a>
-              </h2>
-            </article>
-          ))}
+          {postsFiltered.length > 0
+            ? postsFiltered.map((post: TypeBlogPost) => (
+                <article key={`item-${post.slug}`} className="mb-8">
+                  <h2>
+                    <a href={post.slug}>{post.title}</a>
+                  </h2>
+                  {post.topics && post.topics.length > 0 && (
+                    <div className="mt-3">
+                      {post.topics.map((topic) => (
+                        <p
+                          key={`topic-${kebabCase(topic.name)}`}
+                          className="inline-block mr-3 border-tuna text-comet border border-solid rounded-sm p-1"
+                        >
+                          {topic.name}
+                        </p>
+                      ))}
+                    </div>
+                  )}
+                </article>
+              ))
+            : blogPosts.map((post: TypeBlogPost) => (
+                <article key={`item-${post.slug}`} className="mb-8">
+                  <h2>
+                    <a href={post.slug}>{post.title}</a>
+                  </h2>
+                  {post.topics && post.topics.length > 0 && (
+                    <div className="mt-3">
+                      {post.topics.map((topic) => (
+                        <p
+                          key={`topic-${kebabCase(topic.name)}`}
+                          className="inline-block mr-3 border-tuna text-comet border border-solid rounded-sm p-1"
+                        >
+                          {topic.name}
+                        </p>
+                      ))}
+                    </div>
+                  )}
+                </article>
+              ))}
         </div>
       </div>
     </SiteMaxWidthContainer>
@@ -66,6 +99,9 @@ export const INSIGHTS_QUERY = graphql`
         slug
         title
         publishDate
+        topics {
+          name
+        }
       }
     }
     allContentfulTopic(sort: { fields: name, order: ASC }) {
