@@ -1,5 +1,6 @@
 // Packages
 import React from 'react'
+import { RecoilRoot } from 'recoil'
 
 // Commons
 import { callProjectHuddle } from './src/common/utils/projectHuddle'
@@ -12,7 +13,11 @@ import './src/common/theme/tailwind.css'
 import AppProvider from './src/components/AppProvider'
 
 export const wrapPageElement = ({ element, props }) => {
-  return <AppProvider {...props}>{element}</AppProvider>
+  return (
+    <RecoilRoot>
+      <AppProvider {...props}>{element}</AppProvider>
+    </RecoilRoot>
+  )
 }
 
 export { wrapRootElement } from './src/common/apollo/wrap-root-element'
