@@ -63,10 +63,13 @@ const TopicFilters = ({ topics }: Props) => {
     <div>
       {topics.map((topic: TypeTopic) => {
         const handleOnClick = handleCreateOnFilterClick(topic.name)
+        const selectedStyle = topicsFilter.includes(topic.name)
+          ? 'text-bisonHide'
+          : ''
         return (
           <button
             key={kebabCase(topic.name)}
-            className="border-none block mb-4"
+            className={`border-none block mb-4 ${selectedStyle}`}
             onClick={handleOnClick}
             type="button"
           >

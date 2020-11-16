@@ -1,5 +1,5 @@
 import { graphql } from 'gatsby'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { atom, useRecoilValue } from 'recoil'
 
 // Commons
@@ -36,7 +36,28 @@ const Insights = ({
 }: Props) => {
   const postsFiltered = useRecoilValue<TypeBlogPost[]>(postsFilteredByTopic)
 
-  console.log('Filtered Posts', postsFiltered)
+  const renderBlogPosts = useCallback((posts: TypeBlogPost[]) => {
+    return posts.map((post: TypeBlogPost) => (
+      <article key={`item-${post.slug}`} className="mb-8">
+        <h2>
+          <a href={post.slug}>{post.title}</a>
+        </h2>
+        {post.topics && post.topics.length > 0 && (
+          <div className="mt-3">
+            {post.topics.map((topic) => (
+              <p
+                key={`topic-${kebabCase(topic.name)}`}
+                className="inline-block mr-3 border-tuna text-comet border border-solid rounded-sm p-1"
+              >
+                {topic.name}
+              </p>
+            ))}
+          </div>
+        )}
+      </article>
+    ))
+  }, [])
+
   return (
     <SiteMaxWidthContainer>
       <Meta title="Insights" />
@@ -48,44 +69,8 @@ const Insights = ({
         </aside>
         <div className="col-span-12 md:col-span-8">
           {postsFiltered.length > 0
-            ? postsFiltered.map((post: TypeBlogPost) => (
-                <article key={`item-${post.slug}`} className="mb-8">
-                  <h2>
-                    <a href={post.slug}>{post.title}</a>
-                  </h2>
-                  {post.topics && post.topics.length > 0 && (
-                    <div className="mt-3">
-                      {post.topics.map((topic) => (
-                        <p
-                          key={`topic-${kebabCase(topic.name)}`}
-                          className="inline-block mr-3 border-tuna text-comet border border-solid rounded-sm p-1"
-                        >
-                          {topic.name}
-                        </p>
-                      ))}
-                    </div>
-                  )}
-                </article>
-              ))
-            : blogPosts.map((post: TypeBlogPost) => (
-                <article key={`item-${post.slug}`} className="mb-8">
-                  <h2>
-                    <a href={post.slug}>{post.title}</a>
-                  </h2>
-                  {post.topics && post.topics.length > 0 && (
-                    <div className="mt-3">
-                      {post.topics.map((topic) => (
-                        <p
-                          key={`topic-${kebabCase(topic.name)}`}
-                          className="inline-block mr-3 border-tuna text-comet border border-solid rounded-sm p-1"
-                        >
-                          {topic.name}
-                        </p>
-                      ))}
-                    </div>
-                  )}
-                </article>
-              ))}
+            ? renderBlogPosts(postsFiltered)
+            : renderBlogPosts(blogPosts)}
         </div>
       </div>
     </SiteMaxWidthContainer>
