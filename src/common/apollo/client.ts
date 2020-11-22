@@ -5,7 +5,7 @@ const uri =
   typeof window === 'undefined' ? 'https://webuild.io' : window.location.origin
 
 const link = createHttpLink({
-  uri: `${uri}/___graphql`,
+  uri: `${uri}/___graphql?`,
   fetch
 })
 
