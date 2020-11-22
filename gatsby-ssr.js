@@ -12,4 +12,5 @@ export const wrapPageElement = ({ element, props }) => {
     </RecoilRoot>
   )
 }
-// export { wrapRootElement } from './src/common/apollo/wrap-root-element'
+
+export { wrapRootElement } from './src/common/apollo/wrap-root-element'
