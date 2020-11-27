@@ -91,6 +91,7 @@ export const INSIGHTS_QUERY = graphql`
     }
     allContentfulTopic(sort: { fields: name, order: ASC }) {
       nodes {
+        id
         name
       }
     }

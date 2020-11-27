@@ -11,14 +11,14 @@ import { postsFilteredByTopic } from '../../pages/insights'
 
 const FILTER_BY_TOPIC_QUERY = gql`
   query filterByTopicQuery($topics: [String]!) {
-    allContentfulBlogPost(
-      filter: { topics: { elemMatch: { name: { in: $topics } } } }
-    ) {
-      nodes {
-        title
-        slug
-        topics {
-          name
+    topicCollection(limit: 100, where: { name_in: $topics }) {
+      items {
+        linkedFrom {
+          blogPostCollection {
+            items {
+              title
+            }
+          }
         }
       }
     }
@@ -55,6 +55,7 @@ const TopicFilters = ({ topics }: Props) => {
 
   useEffect(() => {
     if (data && data?.allContentfulBlogPost?.nodes) {
+      console.log(data)
       setPostsState(data.allContentfulBlogPost.nodes)
     }
   }, [data, setPostsState])

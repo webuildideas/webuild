@@ -1,15 +1,15 @@
 import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client'
 import fetch from 'cross-fetch'
 
-const uri =
-  typeof window === 'undefined' ? 'https://webuild.io' : window.location.origin
-
-const link = createHttpLink({
-  uri: `${uri}/___graphql?`,
+const httpLink = createHttpLink({
+  uri: `https://graphql.contentful.com/content/v1/spaces/${process.env.GATSBY_CONTENTFUL_SPACE_ID}/environments/${process.env.GATSBY_CONTENTFUL_ENVIRONMENT}`,
+  headers: {
+    Authorization: `Bearer ${process.env.GATSBY_CONTENTFUL_ACCESS_TOKEN}`
+  },
   fetch
 })
 
 export const client = new ApolloClient({
-  link,
+  link: httpLink,
   cache: new InMemoryCache()
 })
