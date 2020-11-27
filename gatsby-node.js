@@ -13,13 +13,10 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
-      allContentfulBlogPost {
+      allContentfulInsight {
         edges {
           node {
             slug
-            topics {
-              name
-            }
           }
         }
       }
@@ -28,7 +25,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const {
     allContentfulCaseStudy: caseStudies,
-    allContentfulBlogPost: blogPosts
+    allContentfulInsight: insights
   } = result.data
 
   caseStudies.edges.forEach(({ node }) => {
@@ -41,14 +38,14 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  blogPosts.edges.forEach(({ node }) => {
-    const topics = node.topics.map((topic) => topic.name)
+  insights.edges.forEach(({ node }) => {
+    // const topics = node.topics.map((topic) => topic.name)
     createPage({
       path: `/${node.slug}`,
-      component: path.resolve('./src/templates/blog-post.tsx'),
+      component: path.resolve('./src/templates/insight.tsx'),
       context: {
-        slug: node.slug,
-        topics
+        slug: node.slug
+        // topics
       }
     })
   })
