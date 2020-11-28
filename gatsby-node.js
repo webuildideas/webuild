@@ -47,21 +47,22 @@ export const createPages = async ({ graphql, actions }) => {
     return topics.push(...edge.node.topics)
   })
 
+  createPage({
+    path: '/insights',
+    component: path.resolve('./src/templates/insights.tsx'),
+    context: {
+      topics: uniq(topics)
+    }
+  })
+
   insights.edges.forEach(({ node }) => {
     createPage({
       path: `/${node.slug}`,
       component: path.resolve('./src/templates/insight.tsx'),
       context: {
-        slug: node.slug
+        slug: node.slug,
+        topics: uniq(topics)
       }
     })
-  })
-
-  createPage({
-    path: '/insights/',
-    component: path.resolve('./src/templates/insights.tsx'),
-    context: {
-      topics: uniq(topics)
-    }
   })
 }

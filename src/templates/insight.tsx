@@ -19,6 +19,9 @@ import ReadNext from '../components/Insight/ReadNext'
 interface Props {
   data: {
     contentfulInsight: TypeInsight
+    allContentfulInsight: {
+      nodes: TypeInsight[]
+    }
   }
 }
 
@@ -30,7 +33,12 @@ const options: Options = {
   }
 }
 
-const Insight = ({ data: { contentfulInsight: insight } }: Props) => {
+const Insight = ({
+  data: {
+    contentfulInsight: insight,
+    allContentfulInsight: { nodes: relatedInsightsByTopic }
+  }
+}: Props) => {
   return (
     <SiteMaxWidthContainer className="grid grid-cols-12 gap-8">
       <Meta title={insight.title} />
@@ -64,14 +72,14 @@ const Insight = ({ data: { contentfulInsight: insight } }: Props) => {
       <ReadNext
         className="col-span-12 md:col-span-3 pb-8 md:pt-16 md:pb-12"
         posts={insight.readNext}
-        relatedPostsByTopic={[]}
+        relatedPostsByTopic={relatedInsightsByTopic}
       />
     </SiteMaxWidthContainer>
   )
 }
 
 export const query = graphql`
-  query insightQuery($slug: String!) {
+  query insightQuery($slug: String!, $topics: [String]) {
     contentfulInsight(slug: { eq: $slug }) {
       title
       author {
@@ -99,9 +107,19 @@ export const query = graphql`
       readNext {
         title
         slug
+        topics
       }
       shareQuote {
         shareQuote
+      }
+    }
+    allContentfulInsight(
+      filter: { topics: { in: $topics }, slug: { ne: $slug } }
+      limit: 5
+    ) {
+      nodes {
+        title
+        slug
       }
     }
   }

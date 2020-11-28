@@ -2,11 +2,11 @@
 import React from 'react'
 
 // Commons
-import { TypeBlogPost } from '../../../common/types/BlogPost'
+import { TypeInsight } from '../../../common/types/Insight'
 
 interface Props {
-  posts?: TypeBlogPost[]
-  relatedPostsByTopic: TypeBlogPost[]
+  posts?: TypeInsight[]
+  relatedPostsByTopic: TypeInsight[]
   className?: string
 }
 
@@ -18,7 +18,7 @@ const ReadNext = ({ posts, relatedPostsByTopic, className }: Props) => {
       <h3 className="mb-4">Relateds Posts</h3>
       <div>
         {posts && posts.length > 0
-          ? posts.map((post: TypeBlogPost) => {
+          ? posts.map((post: TypeInsight) => {
               return (
                 <a
                   key={`suggested-${post.slug}`}
@@ -32,7 +32,7 @@ const ReadNext = ({ posts, relatedPostsByTopic, className }: Props) => {
                 </a>
               )
             })
-          : relatedPostsByTopic.map((post: TypeBlogPost) => {
+          : relatedPostsByTopic.map((post: TypeInsight) => {
               return (
                 <a
                   key={`suggested-${post.slug}`}

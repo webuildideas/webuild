@@ -1,12 +1,11 @@
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import React, { useCallback } from 'react'
 import { atom, useRecoilValue } from 'recoil'
+import { kebabCase } from 'lodash'
 
 // Commons
-import { kebabCase } from 'lodash'
 import SiteMaxWidthContainer from '../common/styledComponents/SiteMaxWidthContainer'
-import { TypeBlogPost } from '../common/types/BlogPost'
-// import { TypeTopic } from '../common/types/Topic'
+import { TypeInsight } from '../common/types/Insight'
 
 // Components
 import Meta from '../components/Meta'
@@ -14,8 +13,8 @@ import TopicFilters from '../components/Insights/TopicFilters'
 
 interface Props {
   data: {
-    allContentfulBlogPost: {
-      nodes: TypeBlogPost[]
+    allContentfulInsight: {
+      nodes: TypeInsight[]
     }
   }
   pageContext: {
@@ -30,26 +29,26 @@ export const postsFilteredByTopic = atom({
 
 const Insights = ({
   data: {
-    allContentfulBlogPost: { nodes: blogPosts }
+    allContentfulInsight: { nodes: insights }
   },
   pageContext: { topics }
 }: Props) => {
-  const postsFiltered = useRecoilValue<TypeBlogPost[]>(postsFilteredByTopic)
+  const postsFiltered = useRecoilValue<TypeInsight[]>(postsFilteredByTopic)
 
-  const renderBlogPosts = useCallback((posts: TypeBlogPost[]) => {
-    return posts.map((post: TypeBlogPost) => (
+  const renderBlogPosts = useCallback((posts: TypeInsight[]) => {
+    return posts.map((post: TypeInsight) => (
       <article key={`item-${post.slug}`} className="mb-8">
         <h2>
-          <a href={post.slug}>{post.title}</a>
+          <Link to={`/${post.slug}`}>{post.title}</Link>
         </h2>
         {post.topics && post.topics.length > 0 && (
           <div className="mt-3">
             {post.topics.map((topic) => (
               <p
-                key={`topic-${kebabCase(topic.name)}`}
+                key={`topic-${kebabCase(topic)}`}
                 className="inline-block mr-3 border-tuna text-comet border border-solid rounded-sm p-1"
               >
-                {topic.name}
+                {topic}
               </p>
             ))}
           </div>
@@ -70,7 +69,7 @@ const Insights = ({
         <div className="col-span-12 md:col-span-8">
           {postsFiltered.length > 0
             ? renderBlogPosts(postsFiltered)
-            : renderBlogPosts(blogPosts)}
+            : renderBlogPosts(insights)}
         </div>
       </div>
     </SiteMaxWidthContainer>
@@ -79,14 +78,12 @@ const Insights = ({
 
 export const INSIGHTS_QUERY = graphql`
   query insightsQuery {
-    allContentfulBlogPost {
+    allContentfulInsight {
       nodes {
         slug
         title
         publishDate
-        topics {
-          name
-        }
+        topics
       }
     }
   }

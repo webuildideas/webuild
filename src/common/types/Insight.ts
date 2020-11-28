@@ -16,6 +16,7 @@ export interface TypeInsight {
   readNext?: TypeInsight[]
   author: TypeAuthor
   hashtags?: string[]
+  topics?: string[]
   shareQuote?: {
     shareQuote: string
   }
