@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const path = require('path')
+import path from 'path'
+import uniq from 'lodash/uniq'
 
-exports.createPages = async ({ graphql, actions }) => {
+export const createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   const result = await graphql(`
@@ -17,6 +17,7 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             slug
+            topics
           }
         }
       }
@@ -38,15 +39,29 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
+  const topics = []
+  insights.edges.map((edge) => {
+    if (!edge.node.topics) {
+      return
+    }
+    return topics.push(...edge.node.topics)
+  })
+
   insights.edges.forEach(({ node }) => {
-    // const topics = node.topics.map((topic) => topic.name)
     createPage({
       path: `/${node.slug}`,
       component: path.resolve('./src/templates/insight.tsx'),
       context: {
         slug: node.slug
-        // topics
       }
     })
+  })
+
+  createPage({
+    path: '/insights/',
+    component: path.resolve('./src/templates/insights.tsx'),
+    context: {
+      topics: uniq(topics)
+    }
   })
 }

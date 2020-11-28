@@ -5,9 +5,9 @@ import { gql, useQuery } from '@apollo/client'
 
 // Commons
 import { useSetRecoilState } from 'recoil'
-import { TypeTopic } from '../../common/types/Topic'
+// import { TypeTopic } from '../../common/types/Topic'
 
-import { postsFilteredByTopic } from '../../pages/insights'
+import { postsFilteredByTopic } from '../../templates/insights'
 
 const FILTER_BY_TOPIC_QUERY = gql`
   query filterByTopicQuery($topics: [String]!) {
@@ -26,7 +26,7 @@ const FILTER_BY_TOPIC_QUERY = gql`
 `
 
 interface Props {
-  topics: TypeTopic[]
+  topics: string[]
 }
 
 const TopicFilters = ({ topics }: Props) => {
@@ -62,19 +62,19 @@ const TopicFilters = ({ topics }: Props) => {
 
   return (
     <div>
-      {topics.map((topic: TypeTopic) => {
-        const handleOnClick = handleCreateOnFilterClick(topic.name)
-        const selectedStyle = topicsFilter.includes(topic.name)
+      {topics.map((topic) => {
+        const handleOnClick = handleCreateOnFilterClick(topic)
+        const selectedStyle = topicsFilter.includes(topic)
           ? 'text-bisonHide'
           : ''
         return (
           <button
-            key={kebabCase(topic.name)}
+            key={kebabCase(topic)}
             className={`border-none block mb-4 ${selectedStyle}`}
             onClick={handleOnClick}
             type="button"
           >
-            {topic.name}
+            {topic}
           </button>
         )
       })}

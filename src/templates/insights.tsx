@@ -6,7 +6,7 @@ import { atom, useRecoilValue } from 'recoil'
 import { kebabCase } from 'lodash'
 import SiteMaxWidthContainer from '../common/styledComponents/SiteMaxWidthContainer'
 import { TypeBlogPost } from '../common/types/BlogPost'
-import { TypeTopic } from '../common/types/Topic'
+// import { TypeTopic } from '../common/types/Topic'
 
 // Components
 import Meta from '../components/Meta'
@@ -17,9 +17,9 @@ interface Props {
     allContentfulBlogPost: {
       nodes: TypeBlogPost[]
     }
-    allContentfulTopic: {
-      nodes: TypeTopic[]
-    }
+  }
+  pageContext: {
+    topics: string[]
   }
 }
 
@@ -30,9 +30,9 @@ export const postsFilteredByTopic = atom({
 
 const Insights = ({
   data: {
-    allContentfulBlogPost: { nodes: blogPosts },
-    allContentfulTopic: { nodes: topics }
-  }
+    allContentfulBlogPost: { nodes: blogPosts }
+  },
+  pageContext: { topics }
 }: Props) => {
   const postsFiltered = useRecoilValue<TypeBlogPost[]>(postsFilteredByTopic)
 
@@ -87,12 +87,6 @@ export const INSIGHTS_QUERY = graphql`
         topics {
           name
         }
-      }
-    }
-    allContentfulTopic(sort: { fields: name, order: ASC }) {
-      nodes {
-        id
-        name
       }
     }
   }
