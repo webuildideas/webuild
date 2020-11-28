@@ -1,15 +1,18 @@
 // Packages
 import React, { useCallback, useEffect, useState } from 'react'
-import { gql, useQuery } from '@apollo/client'
+import { gql, useLazyQuery } from '@apollo/client'
 import { useSetRecoilState } from 'recoil'
 import kebabCase from 'lodash/kebabCase'
 
 // Commons
 import { filteredPostsAtom } from '../../common/store/insights/atoms'
+import { InsightType } from '../../common/types/Insight'
 
 const FILTER_INSIGHTS_QUERY = gql`
-  query filterInsightsQuery($topics: [String]!) {
-    insightCollection(where: { topics_contains_some: $topics }) {
+  query filterInsightsQuery($topics: [String]!, $types: [String]!) {
+    insightCollection(
+      where: { topics_contains_some: $topics, type_in: $types }
+    ) {
       items {
         title
         topics
@@ -24,28 +27,54 @@ interface Props {
   topics: string[]
 }
 
+const types: InsightType[] = ['Article', 'White Paper']
+
 const Filters = ({ topics }: Props) => {
   const [topicsFilter, setTopicsFilter] = useState<string[]>([])
+  const [typesFilter, setTypesFilter] = useState<InsightType[]>([])
   const setFilteredPosts = useSetRecoilState(filteredPostsAtom)
-  const { data, loading, refetch } = useQuery(FILTER_INSIGHTS_QUERY, {
-    variables: {
-      topics: topicsFilter
+  const [getFilteredInsights, { data, loading }] = useLazyQuery(
+    FILTER_INSIGHTS_QUERY,
+    {
+      variables: {
+        topics: topicsFilter,
+        types: typesFilter
+      }
     }
-  })
+  )
 
-  const handleCreateOnFilterClick = useCallback(
+  const createOnTopicClickHandler = useCallback(
     (name: string) => () => {
       if (topicsFilter.includes(name)) {
-        const updatedTopics = topicsFilter.filter((topic) => topic !== name)
-        setTopicsFilter(updatedTopics)
-        refetch()
+        const filterWithTopicRemoved = topicsFilter.filter(
+          (topic) => topic !== name
+        )
+        setTopicsFilter(filterWithTopicRemoved)
+        getFilteredInsights()
         return
       }
 
-      setTopicsFilter((prev) => [...prev, name])
-      refetch()
+      setTopicsFilter((prevFilter) => [...prevFilter, name])
+      getFilteredInsights()
     },
-    [topicsFilter, refetch]
+    [topicsFilter, getFilteredInsights]
+  )
+
+  const createOnTypeClickHandler = useCallback(
+    (name: InsightType) => () => {
+      if (typesFilter.includes(name)) {
+        const filterWithTypeRemoved = typesFilter.filter(
+          (type) => type !== name
+        )
+        setTypesFilter(filterWithTypeRemoved)
+        getFilteredInsights()
+        return
+      }
+
+      setTypesFilter((prevFilter) => [...prevFilter, name])
+      getFilteredInsights()
+    },
+    [typesFilter, getFilteredInsights]
   )
 
   useEffect(() => {
@@ -69,12 +98,11 @@ const Filters = ({ topics }: Props) => {
   }, [data, setFilteredPosts])
 
   return (
-    <div>
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        topics.map((topic) => {
-          const handleOnClick = handleCreateOnFilterClick(topic)
+    <>
+      <div>
+        <h5 className="mb-4">Filter by Topic</h5>
+        {topics.map((topic) => {
+          const handleOnClick = createOnTopicClickHandler(topic)
           const selectedStyle = topicsFilter.includes(topic)
             ? 'text-bisonHide'
             : ''
@@ -88,9 +116,29 @@ const Filters = ({ topics }: Props) => {
               {topic}
             </button>
           )
-        })
-      )}
-    </div>
+        })}
+      </div>
+
+      <div className="mt-8">
+        <h5 className="mb-4">Filter by Type</h5>
+        {types.map((type) => {
+          const handleOnClick = createOnTypeClickHandler(type)
+          const selectedStyle = typesFilter.includes(type)
+            ? 'text-bisonHide'
+            : ''
+          return (
+            <button
+              key={kebabCase(type)}
+              className={`border-none block mb-4 ${selectedStyle}`}
+              onClick={handleOnClick}
+              type="button"
+            >
+              {type}
+            </button>
+          )
+        })}
+      </div>
+    </>
   )
 }
 

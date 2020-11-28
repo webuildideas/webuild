@@ -59,7 +59,6 @@ const Insights = ({
       <h1 className="mb-12">Articles & Insights</h1>
       <div className="grid grid-cols-12 gap-8">
         <aside className="col-span-12 md:col-span-3">
-          <h5 className="mb-4">Filter by Topic</h5>
           <Filters topics={topics} />
         </aside>
         <div className="col-span-12 md:col-span-8">
