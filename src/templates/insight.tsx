@@ -13,8 +13,8 @@ import SiteMaxWidthContainer from '../common/styledComponents/SiteMaxWidthContai
 
 // Components
 import Meta from '../components/Meta'
-import SocialShare from '../components/BlogPost/SocialShare'
-import ReadNext from '../components/BlogPost/ReadNext'
+import SocialShare from '../components/Insight/SocialShare'
+import ReadNext from '../components/Insight/ReadNext'
 
 interface Props {
   data: {
