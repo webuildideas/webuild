@@ -1,11 +1,12 @@
 import { graphql, Link } from 'gatsby'
 import React, { useCallback } from 'react'
-import { atom, useRecoilValue } from 'recoil'
+import { useRecoilValue } from 'recoil'
 import { kebabCase } from 'lodash'
 
 // Commons
-import SiteMaxWidthContainer from '../common/styledComponents/SiteMaxWidthContainer'
 import { TypeInsight } from '../common/types/Insight'
+import { filteredPostsAtom } from '../common/store/insights/atoms'
+import SiteMaxWidthContainer from '../common/styledComponents/SiteMaxWidthContainer'
 
 // Components
 import Meta from '../components/Meta'
@@ -22,18 +23,13 @@ interface Props {
   }
 }
 
-export const postsFilteredByTopic = atom({
-  key: 'PostsFilteredByTopic',
-  default: []
-})
-
 const Insights = ({
   data: {
     allContentfulInsight: { nodes: insights }
   },
   pageContext: { topics }
 }: Props) => {
-  const postsFiltered = useRecoilValue<TypeInsight[]>(postsFilteredByTopic)
+  const { items: filteredItems, loading } = useRecoilValue(filteredPostsAtom)
 
   const renderBlogPosts = useCallback((posts: TypeInsight[]) => {
     return posts.map((post: TypeInsight) => (
@@ -67,9 +63,13 @@ const Insights = ({
           <TopicFilters topics={topics} />
         </aside>
         <div className="col-span-12 md:col-span-8">
-          {postsFiltered.length > 0
-            ? renderBlogPosts(postsFiltered)
-            : renderBlogPosts(insights)}
+          {loading ? (
+            <p>Loading...</p>
+          ) : filteredItems.length > 0 ? (
+            renderBlogPosts(filteredItems)
+          ) : (
+            renderBlogPosts(insights)
+          )}
         </div>
       </div>
     </SiteMaxWidthContainer>

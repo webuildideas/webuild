@@ -1,25 +1,20 @@
 // Packages
 import React, { useCallback, useEffect, useState } from 'react'
-import kebabCase from 'lodash/kebabCase'
 import { gql, useQuery } from '@apollo/client'
+import { useSetRecoilState } from 'recoil'
+import kebabCase from 'lodash/kebabCase'
 
 // Commons
-import { useSetRecoilState } from 'recoil'
-// import { TypeTopic } from '../../common/types/Topic'
+import { filteredPostsAtom } from '../../common/store/insights/atoms'
 
-import { postsFilteredByTopic } from '../../templates/insights'
-
-const FILTER_BY_TOPIC_QUERY = gql`
-  query filterByTopicQuery($topics: [String]!) {
-    topicCollection(limit: 100, where: { name_in: $topics }) {
+const FILTER_INSIGHTS_QUERY = gql`
+  query filterInsightsQuery($topics: [String]!) {
+    insightCollection(where: { topics_contains_some: $topics }) {
       items {
-        linkedFrom {
-          blogPostCollection {
-            items {
-              title
-            }
-          }
-        }
+        title
+        topics
+        slug
+        publishDate
       }
     }
   }
@@ -31,12 +26,12 @@ interface Props {
 
 const TopicFilters = ({ topics }: Props) => {
   const [topicsFilter, setTopicsFilter] = useState<string[]>([])
-  const { data, refetch } = useQuery(FILTER_BY_TOPIC_QUERY, {
+  const setFilteredPosts = useSetRecoilState(filteredPostsAtom)
+  const { data, loading, refetch } = useQuery(FILTER_INSIGHTS_QUERY, {
     variables: {
       topics: topicsFilter
     }
   })
-  const setPostsState = useSetRecoilState(postsFilteredByTopic)
 
   const handleCreateOnFilterClick = useCallback(
     (name: string) => () => {
@@ -54,30 +49,47 @@ const TopicFilters = ({ topics }: Props) => {
   )
 
   useEffect(() => {
-    if (data && data?.allContentfulBlogPost?.nodes) {
-      console.log(data)
-      setPostsState(data.allContentfulBlogPost.nodes)
+    if (loading) {
+      setFilteredPosts((prevState) => {
+        return {
+          ...prevState,
+          loading
+        }
+      })
     }
-  }, [data, setPostsState])
+  }, [loading, setFilteredPosts])
+
+  useEffect(() => {
+    if (data && data?.insightCollection?.items) {
+      setFilteredPosts({
+        items: data.insightCollection.items,
+        loading: false
+      })
+    }
+  }, [data, setFilteredPosts])
 
   return (
     <div>
-      {topics.map((topic) => {
-        const handleOnClick = handleCreateOnFilterClick(topic)
-        const selectedStyle = topicsFilter.includes(topic)
-          ? 'text-bisonHide'
-          : ''
-        return (
-          <button
-            key={kebabCase(topic)}
-            className={`border-none block mb-4 ${selectedStyle}`}
-            onClick={handleOnClick}
-            type="button"
-          >
-            {topic}
-          </button>
-        )
-      })}
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        topics.map((topic) => {
+          const handleOnClick = handleCreateOnFilterClick(topic)
+          const selectedStyle = topicsFilter.includes(topic)
+            ? 'text-bisonHide'
+            : ''
+          return (
+            <button
+              key={kebabCase(topic)}
+              className={`border-none block mb-4 ${selectedStyle}`}
+              onClick={handleOnClick}
+              type="button"
+            >
+              {topic}
+            </button>
+          )
+        })
+      )}
     </div>
   )
 }
