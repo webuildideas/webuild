@@ -24,7 +24,7 @@ interface Props {
   topics: string[]
 }
 
-const TopicFilters = ({ topics }: Props) => {
+const Filters = ({ topics }: Props) => {
   const [topicsFilter, setTopicsFilter] = useState<string[]>([])
   const setFilteredPosts = useSetRecoilState(filteredPostsAtom)
   const { data, loading, refetch } = useQuery(FILTER_INSIGHTS_QUERY, {
@@ -94,4 +94,4 @@ const TopicFilters = ({ topics }: Props) => {
   )
 }
 
-export default TopicFilters
+export default Filters

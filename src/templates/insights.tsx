@@ -10,7 +10,7 @@ import SiteMaxWidthContainer from '../common/styledComponents/SiteMaxWidthContai
 
 // Components
 import Meta from '../components/Meta'
-import TopicFilters from '../components/Insights/TopicFilters'
+import Filters from '../components/Insights/Filters'
 
 interface Props {
   data: {
@@ -60,7 +60,7 @@ const Insights = ({
       <div className="grid grid-cols-12 gap-8">
         <aside className="col-span-12 md:col-span-3">
           <h5 className="mb-4">Filter by Topic</h5>
-          <TopicFilters topics={topics} />
+          <Filters topics={topics} />
         </aside>
         <div className="col-span-12 md:col-span-8">
           {loading ? (
