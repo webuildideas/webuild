@@ -29,7 +29,11 @@ const Insights = ({
   },
   pageContext: { topics }
 }: Props) => {
-  const { items: filteredItems, loading } = useRecoilValue(filteredPostsAtom)
+  const {
+    items: filteredItems,
+    loading: filterLoading,
+    fetched: filterFetched
+  } = useRecoilValue(filteredPostsAtom)
 
   const renderBlogPosts = useCallback((posts: TypeInsight[]) => {
     return posts.map((post: TypeInsight) => (
@@ -62,10 +66,12 @@ const Insights = ({
           <Filters topics={topics} />
         </aside>
         <div className="col-span-12 md:col-span-8">
-          {loading ? (
+          {filterLoading ? (
             <p>Loading...</p>
           ) : filteredItems.length > 0 ? (
             renderBlogPosts(filteredItems)
+          ) : filterFetched ? (
+            <p>No Items found</p>
           ) : (
             renderBlogPosts(insights)
           )}

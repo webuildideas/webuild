@@ -28,79 +28,100 @@ interface Props {
 }
 
 const types: InsightType[] = ['Article', 'White Paper']
+interface filterState<T> {
+  noFilters: boolean
+  filters: T[]
+}
 
 const Filters = ({ topics }: Props) => {
-  const [topicsFilter, setTopicsFilter] = useState<string[]>(topics)
-  const [typesFilter, setTypesFilter] = useState<InsightType[]>(types)
-  const [firstTopicFilter, setFirstTopicFilter] = useState(true)
-  const [firstTypeFilter, setFirstTypeFilter] = useState(true)
+  const [topicsFilter, setTopicsFilter] = useState<filterState<string>>({
+    noFilters: true,
+    filters: topics
+  })
+  const [typesFilter, setTypesFilter] = useState<filterState<InsightType>>({
+    noFilters: true,
+    filters: types
+  })
   const setFilteredPosts = useSetRecoilState(filteredPostsAtom)
   const [getFilteredInsights, { data, loading }] = useLazyQuery(
     FILTER_INSIGHTS_QUERY,
     {
       variables: {
-        topics: topicsFilter,
-        types: typesFilter
+        topics: topicsFilter.filters,
+        types: typesFilter.filters
       }
     }
   )
 
   const createOnTopicClickHandler = useCallback(
     (name: string) => () => {
-      if (firstTopicFilter) {
-        setTopicsFilter([name])
-        setFirstTopicFilter(false)
+      if (topicsFilter.noFilters) {
+        setTopicsFilter({
+          filters: [name],
+          noFilters: false
+        })
         getFilteredInsights()
         return
       }
 
-      if (topicsFilter.includes(name)) {
-        const filterWithTopicRemoved = topicsFilter.filter(
+      if (topicsFilter.filters.includes(name)) {
+        const filterWithTopicRemoved = topicsFilter.filters.filter(
           (topic) => topic !== name
         )
-        if (filterWithTopicRemoved.length === 0) {
-          setTopicsFilter(topics)
-          setFirstTopicFilter(true)
-        } else {
-          setTopicsFilter(filterWithTopicRemoved)
-        }
+        const hasNoFilters = filterWithTopicRemoved.length === 0
+        setTopicsFilter({
+          filters: hasNoFilters ? topics : filterWithTopicRemoved,
+          noFilters: !!hasNoFilters
+        })
         getFilteredInsights()
         return
       }
 
-      setTopicsFilter((prevFilter) => [...prevFilter, name])
+      setTopicsFilter((prevState) => {
+        return {
+          filters: [...prevState.filters, name],
+          noFilters: prevState.noFilters
+        }
+      })
       getFilteredInsights()
     },
-    [topicsFilter, getFilteredInsights, firstTopicFilter, topics]
+    [topicsFilter, getFilteredInsights, topics]
   )
 
   const createOnTypeClickHandler = useCallback(
     (name: InsightType) => () => {
-      if (firstTypeFilter) {
-        setTypesFilter([name])
-        setFirstTypeFilter(false)
+      if (typesFilter.noFilters) {
+        setTypesFilter({
+          filters: [name],
+          noFilters: false
+        })
         getFilteredInsights()
         return
       }
-      if (typesFilter.includes(name)) {
-        const filterWithTypeRemoved = typesFilter.filter(
+
+      if (typesFilter.filters.includes(name)) {
+        const filterWithTypeRemoved = typesFilter.filters.filter(
           (type) => type !== name
         )
+        const hasNotFilters = filterWithTypeRemoved.length === 0
+        setTypesFilter({
+          filters: hasNotFilters ? types : filterWithTypeRemoved,
+          noFilters: !!hasNotFilters
+        })
 
-        if (filterWithTypeRemoved.length === 0) {
-          setTypesFilter(types)
-          setFirstTypeFilter(true)
-        } else {
-          setTypesFilter(filterWithTypeRemoved)
-        }
         getFilteredInsights()
         return
       }
 
-      setTypesFilter((prevFilter) => [...prevFilter, name])
+      setTypesFilter((prevState) => {
+        return {
+          filters: [...prevState.filters, name],
+          noFilters: prevState.noFilters
+        }
+      })
       getFilteredInsights()
     },
-    [typesFilter, getFilteredInsights, firstTypeFilter]
+    [typesFilter, getFilteredInsights]
   )
 
   useEffect(() => {
@@ -118,13 +139,11 @@ const Filters = ({ topics }: Props) => {
     if (data && data?.insightCollection?.items) {
       setFilteredPosts({
         items: data.insightCollection.items,
-        loading: false
+        loading: false,
+        fetched: true
       })
     }
   }, [data, setFilteredPosts])
-
-  console.log('topicsFilter', topicsFilter)
-  console.log('typesFilter', typesFilter)
 
   return (
     <>
@@ -133,7 +152,7 @@ const Filters = ({ topics }: Props) => {
         {topics.map((topic) => {
           const handleOnClick = createOnTopicClickHandler(topic)
           const selectedStyle =
-            !firstTopicFilter && topicsFilter.includes(topic)
+            !topicsFilter.noFilters && topicsFilter.filters.includes(topic)
               ? 'text-bisonHide'
               : ''
           return (
@@ -154,7 +173,7 @@ const Filters = ({ topics }: Props) => {
         {types.map((type) => {
           const handleOnClick = createOnTypeClickHandler(type)
           const selectedStyle =
-            !firstTypeFilter && typesFilter.includes(type)
+            !typesFilter.noFilters && typesFilter.filters.includes(type)
               ? 'text-bisonHide'
               : ''
           return (
