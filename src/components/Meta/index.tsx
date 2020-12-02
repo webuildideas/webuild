@@ -1,12 +1,13 @@
 import React from 'react'
-import Helmet from 'react-helmet'
+import Helmet, { HelmetProps } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
-import { GatsbyImageFile } from '../../common/types/GatsbyImage'
 
-interface Props {
+// Commons
+import { TypeContentfulAsset } from '../../common/types/Contentful'
+
+interface Props extends HelmetProps {
   description?: string
-  lang?: string
-  title: string
+  title?: string
 }
 
 interface MetaQueryResponse {
@@ -15,11 +16,16 @@ interface MetaQueryResponse {
     seoDescription: {
       seoDescription: string
     }
-    seoShareImage: GatsbyImageFile
+    seoShareImage: TypeContentfulAsset
   }
 }
 
-const Meta = ({ description, lang = 'en', title }: Props) => {
+const Meta = ({
+  bodyAttributes,
+  htmlAttributes,
+  description,
+  title
+}: Props) => {
   const { contentfulSeo } = useStaticQuery<MetaQueryResponse>(
     graphql`
       query SeoQuery {
@@ -68,19 +74,30 @@ const Meta = ({ description, lang = 'en', title }: Props) => {
       content: `website`
     },
     {
+      name: `twitter:card`,
+      content: `summary_large_image`
+    },
+    {
+      name: `twitter:site`,
+      content: `@wearewebuild`
+    },
+    {
       name: `twitter:title`,
       content: contentfulSeo.seoTitle
     },
     {
       name: `twitter:description`,
       content: metaDescription
+    },
+    {
+      name: `twitter:image`,
+      content: contentfulSeo.seoShareImage.file.url
     }
   ]
 
-  const htmlAttributes = { lang }
-
   return (
     <Helmet
+      bodyAttributes={bodyAttributes}
       htmlAttributes={htmlAttributes}
       meta={metaProperties}
       title={metaTitle}

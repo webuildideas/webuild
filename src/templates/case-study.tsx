@@ -1,33 +1,33 @@
 // Packages
 import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
-import { Helmet } from 'react-helmet'
 import { useInView } from 'react-intersection-observer'
 
 // Commons
-import { rhythmUnit } from '../../common/utils/typography'
-import { CaseStudyDetail as CaseStudyDetailType } from '../../common/types/CaseStudy'
-import * as S from './style'
-import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
+import { TypeCaseStudy } from '../common/types/CaseStudy'
+import * as S from '../components/CaseStudyDetail/style'
+import SiteMaxWidthContainer from '../common/styledComponents/SiteMaxWidthContainer'
 
 // Components
-import CaseStudy from '../CaseStudy'
-import Hero from './Hero'
-import Carousel from './Carousel'
-import Result from './Result'
-import RichText from './RichText'
-import ChallengeAndSolution from './ChallengeAndSolution'
-import FeaturedTestimonial from './FeaturedTestimonial'
-import Footer from '../Footer'
-import Meta from '../Meta'
+import Hero from '../components/CaseStudyDetail/Hero'
+import Carousel from '../components/CaseStudyDetail/Carousel'
+import Result from '../components/CaseStudyDetail/Result'
+import RichText from '../components/CaseStudyDetail/RichText'
+import ChallengeAndSolution from '../components/CaseStudyDetail/ChallengeAndSolution'
+import FeaturedTestimonial from '../components/CaseStudyDetail/FeaturedTestimonial'
+import CaseStudy from '../components/CaseStudy'
+import Footer from '../components/Footer'
+import Meta from '../components/Meta'
 
 interface Props {
   data: {
-    contentfulCaseStudy: CaseStudyDetailType
+    contentfulCaseStudy: TypeCaseStudy
   }
 }
 
-const CaseStudyDetail = ({ data: { contentfulCaseStudy } }: Props) => {
+const CaseStudyDetail = ({
+  data: { contentfulCaseStudy: caseStudy }
+}: Props) => {
   const [shouldAutoplay, setAutoPlay] = useState(false)
   const [ref, inView] = useInView({
     triggerOnce: true
@@ -51,7 +51,7 @@ const CaseStudyDetail = ({ data: { contentfulCaseStudy } }: Props) => {
     projectChallenge,
     projectSolution,
     projectOutcome
-  } = contentfulCaseStudy
+  } = caseStudy
 
   useEffect(() => {
     if (inView) {
@@ -59,20 +59,13 @@ const CaseStudyDetail = ({ data: { contentfulCaseStudy } }: Props) => {
     }
   }, [inView])
 
+  const metaBodyAtributes = {
+    class: 'CaseStudyDetail'
+  }
   return (
     <>
-      <Helmet
-        bodyAttributes={{
-          class: 'CaseStudyDetail'
-        }}
-      />
-      <Meta title={name} />
-      <S.CaseStudyDetail
-        animate={{ opacity: 1 }}
-        className={slug}
-        initial={{ opacity: 0 }}
-        transition={{ duration: 1 }}
-      >
+      <Meta bodyAttributes={metaBodyAtributes} title={name} />
+      <S.CaseStudyDetail className={slug}>
         {heroBackgroundImage && heroImage && whiteLogo && successSummary ? (
           <Hero
             background={heroBackgroundImage.file.url}
@@ -90,14 +83,9 @@ const CaseStudyDetail = ({ data: { contentfulCaseStudy } }: Props) => {
             />
           )}
 
-          <div
-            style={{
-              paddingTop: `${rhythmUnit(3)}`,
-              paddingBottom: `${rhythmUnit(3)}`
-            }}
-          >
+          <div className="py-20">
             <SiteMaxWidthContainer maxWidth={1400}>
-              {designSystemCarousel && designSystemCarousel.images && (
+              {designSystemCarousel && (
                 <div ref={ref}>
                   <Carousel
                     autoplay={shouldAutoplay}
@@ -127,13 +115,7 @@ const CaseStudyDetail = ({ data: { contentfulCaseStudy } }: Props) => {
         {projectOutcome && <RichText document={projectOutcome} />}
 
         {nextCaseStudy ? (
-          <div
-            style={{
-              paddingTop: `${rhythmUnit(2.5)}`,
-              paddingBottom: `${rhythmUnit(1)}`,
-              backgroundColor: '#F9F9F9'
-            }}
-          >
+          <div className="bg-snow pt-16 pb-6">
             <CaseStudy
               caseStudy={nextCaseStudy}
               layout="right"

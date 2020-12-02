@@ -13,22 +13,25 @@ interface Props {
   document: Document
 }
 
+const headingAnimationInitialConfig = {
+  y: 30,
+  opacity: 0.1
+}
+
+const headingAnimationConfig = {
+  y: 0,
+  opacity: 1,
+  transition: {
+    type: 'spring'
+  }
+}
 const richTextOptions: Options = {
   renderNode: {
     [BLOCKS.PARAGRAPH]: (_, copy) => (
       <motion.h1
-        animate={{
-          y: 0,
-          opacity: 1,
-          transition: {
-            type: 'spring'
-          }
-        }}
+        animate={headingAnimationConfig}
         className="font-normal text-xl leading-tight"
-        initial={{
-          y: 30,
-          opacity: 0.1
-        }}
+        initial={headingAnimationInitialConfig}
       >
         {copy}
       </motion.h1>

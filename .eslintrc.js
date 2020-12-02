@@ -27,6 +27,13 @@ module.exports = {
         semi: false
       }
     ],
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': [
+      'warn',
+      {
+        additionalHooks: 'useRecoilCallback'
+      }
+    ],
     'react/jsx-boolean-value': 0,
     'react/jsx-props-no-spreading': 0,
     'react/static-property-placement': 0,
@@ -48,6 +55,8 @@ module.exports = {
     'react/no-array-index-key': 0,
     'no-nested-ternary': 0,
     'consistent-return': 0,
+    'no-shadow': 'off',
+    '@typescript-eslint/no-shadow': ['error'],
     'react/jsx-filename-extension': [
       1,
       { extensions: ['.js', '.jsx', '.tsx'] }

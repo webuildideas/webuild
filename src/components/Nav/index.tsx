@@ -5,10 +5,14 @@ import Headroom from 'react-headroom'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import { useWindowSize } from '../../common/hooks/useWindowSize'
 
-// Styled Components
-import * as S from './style'
+// Commons
+import {
+  isOverlayNavOpenAtom,
+  isNavPinnedAtom
+} from '../../common/store/userInterface/atoms'
 import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
 
 // Components
@@ -17,143 +21,113 @@ import Logo from './Logo'
 import MenuIcon from './MenuIcon'
 import Button from '../Button'
 
-interface Props {
-  isNavOpen: boolean
-  isNavPinned: boolean
-  toggleNav: (toggle: boolean) => void
-  togglePinnedNav: (toggle: boolean) => void
+// Styles
+import * as S from './style'
+
+const variants = {
+  visible: (i = 0) => ({
+    opacity: [0, 0.25, 0.4, 0.6, 0.6, 0.6, 0.7, 0.8, 1],
+    y: 0,
+    transition: {
+      duration: 0.75,
+      delay: i * 0.5
+    }
+  }),
+  hidden: {
+    opacity: 0,
+    y: -25
+  }
 }
 
-const Nav = memo(
-  ({ isNavOpen, isNavPinned, toggleNav, togglePinnedNav }: Props) => {
-    const [ref, inView] = useInView({ triggerOnce: true })
-    const controls = useAnimation()
-    const windowSize = useWindowSize()
+const Nav = memo(function NavMemo() {
+  const windowSize = useWindowSize()
+  const animationControls = useAnimation()
+  const [ref, inView] = useInView({ triggerOnce: true })
+  const [isNavPinned, setIsNavPinned] = useRecoilState(isNavPinnedAtom)
+  const isOverlayNavOpen = useRecoilValue(isOverlayNavOpenAtom)
 
-    const toggleNavMain = useCallback(() => toggleNav(!isNavOpen), [
-      isNavOpen,
-      toggleNav
-    ])
+  const pinNav = useCallback(() => setIsNavPinned(true), [setIsNavPinned])
 
-    const closeMainNav = useCallback(() => toggleNav(false), [toggleNav])
+  const unpinNav = useCallback(() => setIsNavPinned(false), [setIsNavPinned])
 
-    const closeNavMobile = useCallback(() => {
-      if (!windowSize.width || windowSize.width > 500) {
-        return
-      }
-      toggleNav(false)
-    }, [toggleNav, windowSize])
-
-    const pinNav = useCallback(() => togglePinnedNav(true), [togglePinnedNav])
-
-    const unpinPinnedNav = useCallback(() => togglePinnedNav(false), [
-      togglePinnedNav
-    ])
-
-    const variants = {
-      visible: (i = 0) => ({
-        opacity: [0, 0.25, 0.4, 0.6, 0.6, 0.6, 0.7, 0.8, 1],
-        y: 0,
-        transition: {
-          duration: 0.75,
-          delay: i * 0.5
-        }
-      }),
-      hidden: {
-        opacity: 0,
-        y: -25
-      }
+  useEffect(() => {
+    if (inView) {
+      animationControls.start('visible')
     }
+  }, [animationControls, inView, windowSize])
 
-    useEffect(() => {
-      if (inView) {
-        controls.start('visible')
-      }
-    }, [controls, inView, windowSize])
-    return (
-      <>
-        <Helmet bodyAttributes={{ class: isNavOpen && 'overlayIsOpen' }} />
-        <Headroom
-          onPin={pinNav}
-          onUnfix={unpinPinnedNav}
-          onUnpin={unpinPinnedNav}
-          style={{ transition: 'all 600ms ease-in-out' }}
+  const helmetAttrs = { class: isOverlayNavOpen ? 'overlayIsOpen' : '' }
+  return (
+    <>
+      <Helmet bodyAttributes={helmetAttrs} />
+      <Headroom
+        onPin={pinNav}
+        onUnfix={unpinNav}
+        onUnpin={unpinNav}
+        style={{ transition: 'all 600ms ease-in-out' }}
+      >
+        <S.NavContainer
+          ref={ref}
+          className={`NavContainer ${isOverlayNavOpen ? 'overlayIsOpen' : ''}`}
+          isPinned={isNavPinned}
         >
-          <S.NavContainer
-            ref={ref}
-            className={`NavContainer ${isNavOpen ? 'overlayIsOpen' : ''}`}
-            isPinned={isNavPinned}
-          >
-            <SiteMaxWidthContainer className="SiteMaxWidthContainer">
-              <motion.div
-                animate={controls}
-                custom={1}
-                initial="hidden"
-                variants={variants}
+          <SiteMaxWidthContainer className="SiteMaxWidthContainer">
+            <motion.div
+              animate={animationControls}
+              custom={1}
+              initial="hidden"
+              variants={variants}
+            >
+              <AniLink
+                bg="#0E0E1B"
+                className={`Logo ${isOverlayNavOpen ? 'isOpen' : ''}`}
+                cover
+                direction="up"
+                duration={1.5}
+                to="/"
               >
-                <AniLink
-                  bg="#0E0E1B"
-                  className={`Logo ${isNavOpen ? 'isOpen' : ''}`}
-                  cover
-                  direction="up"
-                  duration={1.5}
-                  to="/"
+                <Logo />
+              </AniLink>
+            </motion.div>
+            <S.NavDesktopLinks className="NavDesktopLinks">
+              <ul>
+                <motion.li
+                  animate={animationControls}
+                  custom={1.5}
+                  initial="hidden"
+                  variants={variants}
                 >
-                  <Logo
-                    className="Logo"
-                    isOpen={isNavOpen}
-                    onClick={closeNavMobile}
-                  />
-                </AniLink>
-              </motion.div>
-              <S.NavDesktopLinks className="NavDesktopLinks">
-                <ul>
-                  <motion.li
-                    animate={controls}
-                    custom={1.5}
-                    initial="hidden"
-                    variants={variants}
+                  <AniLink
+                    bg="#F3F3F3"
+                    cover
+                    direction="right"
+                    duration={1.5}
+                    to="/who-we-are"
                   >
-                    <AniLink
-                      bg="#F3F3F3"
-                      cover
-                      direction="right"
-                      duration={1.5}
-                      to="/who-we-are"
-                    >
-                      Who We Are
-                    </AniLink>
-                  </motion.li>
-                  <li>
-                    <Button
-                      animationDelay={1.2}
-                      className="Button"
-                      href="mailto:hi@webuild.io"
-                      type="primaryButton"
-                    >
-                      Get In Touch
-                    </Button>
-                  </li>
-                </ul>
-              </S.NavDesktopLinks>
+                    Who We Are
+                  </AniLink>
+                </motion.li>
+                <li>
+                  <Button
+                    animationDelay={1.2}
+                    className="Button"
+                    href="mailto:hi@webuild.io"
+                    type="primaryButton"
+                  >
+                    Get In Touch
+                  </Button>
+                </li>
+              </ul>
+            </S.NavDesktopLinks>
 
-              <MenuIcon
-                className="Icon MenuIcon"
-                isOpen={isNavOpen}
-                onClick={toggleNavMain}
-              />
-            </SiteMaxWidthContainer>
-          </S.NavContainer>
-        </Headroom>
+            <MenuIcon />
+          </SiteMaxWidthContainer>
+        </S.NavContainer>
+      </Headroom>
 
-        <OverlayNav
-          isOpen={isNavOpen}
-          onContact={closeMainNav}
-          toggleNav={toggleNav}
-        />
-      </>
-    )
-  }
-)
+      <OverlayNav />
+    </>
+  )
+})
 
 export default Nav

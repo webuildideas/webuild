@@ -1,15 +1,16 @@
-/* eslint-disable */
-
 // Packages
-const React = require('react')
+import React from 'react'
+import { RecoilRoot } from 'recoil'
 
 // Components
-const AppProvider = require('./src/components/AppProvider').default
+import AppProvider from './src/components/AppProvider'
 
-exports.wrapPageElement = ({ element, props }) => {
+export const wrapPageElement = ({ element, props }) => {
   return (
-    <AppProvider {...props}>
-      {element}
-    </AppProvider>
+    <RecoilRoot>
+      <AppProvider {...props}>{element}</AppProvider>
+    </RecoilRoot>
   )
 }
+
+export { wrapRootElement } from './src/common/apollo/wrap-root-element'

@@ -9,8 +9,8 @@ import { Document } from '@contentful/rich-text-types'
 // Commons
 import { rhythmUnit } from '../common/utils/typography'
 import SiteMaxWidthContainer from '../common/styledComponents/SiteMaxWidthContainer'
-import { CaseStudy } from '../common/types/CaseStudy'
-import { FeaturedTestimonial, Testimonials } from '../common/types/Testimonial'
+import { TypeCaseStudy } from '../common/types/CaseStudy'
+import { TypeTestimonial } from '../common/types/Testimonial'
 import '../common/styles/SectionHeading.css'
 
 // Components
@@ -25,9 +25,9 @@ import Footer from '../components/Footer'
 export interface HomePageQueryResponse {
   contentfulHomePage: {
     heroTitle: Document
-    caseStudies: CaseStudy[]
-    featuredTestimonial: FeaturedTestimonial
-    testimonials: Testimonials
+    caseStudies: TypeCaseStudy[]
+    featuredTestimonial: TypeTestimonial
+    testimonials: TypeTestimonial[]
   }
 }
 
@@ -88,7 +88,7 @@ const IndexPage = ({ data }: Props) => {
 
       <DesignPartner />
 
-      <section style={{ backgroundColor: '#F9F9F9' }}>
+      <section className="bg-snow">
         <SiteMaxWidthContainer className="pt-20 pb-24">
           <div ref={ref} className="mb-16">
             <motion.h1
@@ -120,7 +120,7 @@ const IndexPage = ({ data }: Props) => {
             company={homeData.featuredTestimonial.company}
             companyRole={homeData.featuredTestimonial.role}
             featuredHeadshot={
-              homeData.featuredTestimonial.featuredHeadshot.fluid
+              homeData.featuredTestimonial?.featuredHeadshot?.fluid
             }
             headshot={homeData.featuredTestimonial.headshot.fixed}
             isFeatured={true}

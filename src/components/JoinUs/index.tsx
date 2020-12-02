@@ -5,7 +5,6 @@ import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation, Variants } from 'framer-motion'
 
 // Commons
-import * as S from './style'
 import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
 import '../../common/styles/SectionHeading.css'
 

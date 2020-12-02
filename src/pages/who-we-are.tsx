@@ -9,8 +9,8 @@ import { Document } from '@contentful/rich-text-types'
 
 // Commons
 import { rhythmUnit } from '../common/utils/typography'
-import { GatsbyImageFluid } from '../common/types/GatsbyImage'
-import { Testimonials } from '../common/types/Testimonial'
+import { TypeGatsbyImageFluid } from '../common/types/GatsbyImage'
+import { TypeTestimonial } from '../common/types/Testimonial'
 import { TypeJob } from '../common/types/Job'
 
 // Components
@@ -26,13 +26,13 @@ import Footer from '../components/Footer'
 interface WhoWeAreQueryResponse {
   contentfulAboutPage: {
     heroTitle: Document
-    photoGrid: GatsbyImageFluid[]
+    photoGrid: TypeGatsbyImageFluid[]
   }
   allContentfulJob: {
     nodes: TypeJob[]
   }
   allContentfulTestimonial: {
-    nodes: Testimonials
+    nodes: TypeTestimonial[]
   }
 }
 

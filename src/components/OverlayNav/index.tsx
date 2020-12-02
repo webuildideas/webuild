@@ -1,16 +1,14 @@
 // Packages
-import React from 'react'
+import React, { useCallback } from 'react'
 import { Link } from 'gatsby'
 import { animated, useSpring, useTrail, config } from 'react-spring'
+import { useRecoilState } from 'recoil'
 
-// Styled Components
+// Commons
+import { isOverlayNavOpenAtom } from '../../common/store/userInterface/atoms'
+
+// Styles
 import { OverlayNavContainer } from './style'
-
-interface Props {
-  isOpen: boolean
-  onContact: () => void
-  toggleNav: (open: boolean) => void
-}
 
 interface NavLink {
   title: string
@@ -32,9 +30,13 @@ const navLinks: NavLink[] = [
   }
 ]
 
-const OverlayNav = ({ isOpen, onContact, toggleNav }: Props) => {
+const OverlayNav = () => {
+  const [isOverlayNavOpen, setIsOverlayNavOpen] = useRecoilState(
+    isOverlayNavOpenAtom
+  )
+
   const overlaySpring = useSpring({
-    left: isOpen ? '0%' : '-100%',
+    left: isOverlayNavOpen ? '0%' : '-100%',
     config: { mass: 1, tension: 295, friction: 40 }
   })
 
@@ -43,29 +45,36 @@ const OverlayNav = ({ isOpen, onContact, toggleNav }: Props) => {
       opacity: 0,
       y: 100
     },
-    opacity: isOpen ? 1 : 0,
+    opacity: isOverlayNavOpen ? 1 : 0,
     y: 0,
     config: { mass: 1, tension: 295, friction: 40 },
     delay: 550
   })
 
   const fadeInSpring = useSpring({
-    opacity: isOpen ? 1 : 0,
+    opacity: isOverlayNavOpen ? 1 : 0,
     config: config.molasses,
     delay: 800
   })
 
-  const renderNavLink = (link: NavLink) => {
-    if (link.title === 'Get in touch') {
-      return (
-        <a href="mailto:hi@webuild.io" onClick={onContact}>
-          {link.title}
-        </a>
-      )
-    }
+  const handleCloseOverlayNav = useCallback(() => setIsOverlayNavOpen(false), [
+    setIsOverlayNavOpen
+  ])
 
-    return <Link to={link.slug}>{link.title}</Link>
-  }
+  const renderNavLink = useCallback(
+    (link: NavLink) => {
+      if (link.title === 'Get in touch') {
+        return (
+          <a href="mailto:hi@webuild.io" onClick={handleCloseOverlayNav}>
+            {link.title}
+          </a>
+        )
+      }
+
+      return <Link to={link.slug}>{link.title}</Link>
+    },
+    [handleCloseOverlayNav]
+  )
 
   return (
     <OverlayNavContainer style={overlaySpring}>
@@ -74,11 +83,12 @@ const OverlayNav = ({ isOpen, onContact, toggleNav }: Props) => {
           <animated.li
             key={`navLink-${index}`}
             className="OverlayNavLink"
-            onClick={() => toggleNav(false)}
+            onClick={handleCloseOverlayNav}
             style={{
               ...rest,
-              // eslint-disable-next-line no-shadow
-              transform: y.interpolate((y: number) => `translate3d(0,${y}px,0)`)
+              transform: y.interpolate(
+                (yVal: number) => `translate3d(0,${yVal}px,0)`
+              )
             }}
           >
             {renderNavLink(navLinks[index])}

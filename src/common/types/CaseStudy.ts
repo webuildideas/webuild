@@ -1,65 +1,35 @@
 import { Document } from '@contentful/rich-text-types'
-import { GatsbyImageFluid, GatsbyImageFile } from './GatsbyImage'
-import { FeaturedTestimonial } from './Testimonial'
+import { TypeTestimonial } from './Testimonial'
+import { TypeContentfulAsset } from './Contentful'
+import { TypeCarousel } from './Carousel'
+import { TypeGatsbyImageFluid } from './GatsbyImage'
 
-export type CaseStudy = {
+export interface TypeCaseStudy {
   name: string
-  tagline?: string
-  slug: string
-  heroImage?: GatsbyImageFluid
-  heroBackgroundImage?: GatsbyImageFile
-  whiteLogo?: GatsbyImageFile
-  logo?: GatsbyImageFile
-  listingImage?: GatsbyImageFluid
+  slug?: string
+  logo: TypeContentfulAsset
+  whiteLogo?: TypeContentfulAsset
+  heroBackgroundImage?: TypeContentfulAsset
+  heroImage?: TypeGatsbyImageFluid
+  listingImage: TypeGatsbyImageFluid
+  tagline: string
   successSummary: {
     successSummary: string
-  }
-  solutionSummary?: {
-    solutionSummary: string
   }
   challengeSummary?: {
     challengeSummary: string
   }
-  designSystemCarousel?: {
-    images: GatsbyImageFluid[]
-  }
-  resultOne?: { json: Document }
-  resultTwo?: { json: Document }
-  resultThree?: { json: Document }
-  featuredTestimonial?: FeaturedTestimonial
-  projectChallenge?: { json: Document }
-  projectOutcome?: { json: Document }
-  projectOverview?: { json: Document }
-  projectSolution?: { json: Document }
-}
-
-export type CaseStudyDetail = {
-  name: string
-  tagline?: string
-  slug: string
-  heroImage?: GatsbyImageFluid
-  heroBackgroundImage?: GatsbyImageFile
-  whiteLogo?: GatsbyImageFile
-  logo?: GatsbyImageFile
-  successSummary: {
-    successSummary: string
-  }
   solutionSummary?: {
     solutionSummary: string
   }
-  challengeSummary?: {
-    challengeSummary: string
-  }
-  designSystemCarousel?: {
-    images: GatsbyImageFluid[]
-  }
+  designSystemCarousel?: TypeCarousel
   resultOne?: Document
   resultTwo?: Document
   resultThree?: Document
-  featuredTestimonial?: FeaturedTestimonial
-  projectChallenge?: Document
-  projectOutcome?: Document
+  featuredTestimonial?: TypeTestimonial
   projectOverview?: Document
+  projectChallenge?: Document
   projectSolution?: Document
-  nextCaseStudy?: CaseStudy
+  projectOutcome?: Document
+  nextCaseStudy?: TypeCaseStudy
 }

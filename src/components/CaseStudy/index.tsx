@@ -6,7 +6,7 @@ import { useInView } from 'react-intersection-observer'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 // Commons
-import { CaseStudy as CaseStudyType } from '../../common/types/CaseStudy'
+import { TypeCaseStudy } from '../../common/types/CaseStudy'
 import * as S from './style'
 import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
 
@@ -15,7 +15,7 @@ import Button from '../Button'
 
 interface Props {
   animationThreshold?: number
-  caseStudy: CaseStudyType
+  caseStudy: TypeCaseStudy
   layout: 'right' | 'left'
   mobileTextFirst?: boolean
 }
