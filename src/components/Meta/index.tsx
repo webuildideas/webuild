@@ -94,7 +94,6 @@ const Meta = ({
       content: contentfulSeo.seoShareImage.file.url
     }
   ]
-
   return (
     <Helmet
       bodyAttributes={bodyAttributes}
@@ -102,7 +101,11 @@ const Meta = ({
       meta={metaProperties}
       title={metaTitle}
       titleTemplate={`${metaTitle}`}
-    />
+    >
+      <script
+        src={`https://insight-engine.newfangled.com/api/v1/${process.env.GATSBY_NEWFANGLED_KEY}/beacon`}
+      />
+    </Helmet>
   )
 }
 
