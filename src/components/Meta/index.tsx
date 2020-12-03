@@ -4,6 +4,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 
 // Commons
 import { TypeContentfulAsset } from '../../common/types/Contentful'
+import { useTrackPageView } from '../../common/hooks/useTrackPageView'
 
 interface Props extends HelmetProps {
   description?: string
@@ -26,6 +27,7 @@ const Meta = ({
   description,
   title
 }: Props) => {
+  useTrackPageView()
   const { contentfulSeo } = useStaticQuery<MetaQueryResponse>(
     graphql`
       query SeoQuery {
