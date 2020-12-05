@@ -159,6 +159,13 @@ module.exports = {
         ]
       }
     },
+    {
+      resolve: 'gatsby-plugin-load-script',
+      options: {
+        src: `https://insight-engine.newfangled.com/api/v1/${process.env.GATSBY_NEWFANGLED_KEY}/beacon`,
+        crossorigin: 'anonymous'
+      }
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     `gatsby-plugin-offline`,

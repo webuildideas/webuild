@@ -38,6 +38,9 @@ interface WhoWeAreQueryResponse {
 
 interface Props {
   data: WhoWeAreQueryResponse
+  location: {
+    href: string
+  }
 }
 
 const PhotoGridContainer = styled.div`
@@ -66,7 +69,7 @@ const variants: Variants = {
   }
 }
 
-const WhoWeAre = ({ data }: Props) => {
+const WhoWeAre = ({ data, location }: Props) => {
   const aboutPageData = data.contentfulAboutPage
   const animationControls = useAnimation()
   const { nodes: testimonialData } = data.allContentfulTestimonial
@@ -87,7 +90,7 @@ const WhoWeAre = ({ data }: Props) => {
 
   return (
     <motion.div animate={animateTo} initial={initial}>
-      <Meta title="Who We Are" />
+      <Meta location={location.href} title="Who We Are" />
 
       <PageIntro document={aboutPageData.heroTitle} maxWidth={860} />
       <PhotoGridContainer>

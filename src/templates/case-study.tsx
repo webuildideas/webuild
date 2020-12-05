@@ -23,10 +23,14 @@ interface Props {
   data: {
     contentfulCaseStudy: TypeCaseStudy
   }
+  location: {
+    href: string
+  }
 }
 
 const CaseStudyDetail = ({
-  data: { contentfulCaseStudy: caseStudy }
+  data: { contentfulCaseStudy: caseStudy },
+  location
 }: Props) => {
   const [shouldAutoplay, setAutoPlay] = useState(false)
   const [ref, inView] = useInView({
@@ -64,7 +68,11 @@ const CaseStudyDetail = ({
   }
   return (
     <>
-      <Meta bodyAttributes={metaBodyAtributes} title={name} />
+      <Meta
+        bodyAttributes={metaBodyAtributes}
+        location={location.href}
+        title={name}
+      />
       <S.CaseStudyDetail className={slug}>
         {heroBackgroundImage && heroImage && whiteLogo && successSummary ? (
           <Hero

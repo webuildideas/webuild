@@ -10,6 +10,7 @@ import { useTrackPageView } from '../../common/hooks/useTrackPageView'
 interface Props extends HelmetProps {
   description?: string
   title?: string
+  location?: string
 }
 
 interface MetaQueryResponse {
@@ -26,9 +27,10 @@ const Meta = ({
   bodyAttributes,
   htmlAttributes,
   description,
-  title
+  title,
+  location
 }: Props) => {
-  useTrackPageView()
+  useTrackPageView(location, title)
   const { contentfulSeo } = useStaticQuery<MetaQueryResponse>(
     graphql`
       query SeoQuery {
@@ -104,11 +106,7 @@ const Meta = ({
       meta={metaProperties}
       title={metaTitle}
       titleTemplate={`${metaTitle}`}
-    >
-      <script
-        src={`https://insight-engine.newfangled.com/api/v1/${process.env.GATSBY_NEWFANGLED_KEY}/beacon`}
-      />
-    </Helmet>
+    />
   )
 }
 

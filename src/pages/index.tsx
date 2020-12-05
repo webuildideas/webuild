@@ -33,6 +33,9 @@ export interface HomePageQueryResponse {
 
 interface Props {
   data: HomePageQueryResponse
+  location: {
+    href: string
+  }
 }
 
 const variants: Variants = {
@@ -64,7 +67,7 @@ const MobileBreak = styled.span`
   }
 `
 
-const IndexPage = ({ data }: Props) => {
+const IndexPage = ({ data, location }: Props) => {
   const homeData = data.contentfulHomePage
   const animationControls = useAnimation()
   const [ref, inView] = useInView({
@@ -80,7 +83,7 @@ const IndexPage = ({ data }: Props) => {
 
   return (
     <div>
-      <Meta title="Home" />
+      <Meta location={location.href} title="Home" />
       <PageIntro document={homeData.heroTitle} maxWidth={1040} />
       <CaseStudiesContainer>
         <CaseStudyListing caseStudies={homeData.caseStudies} />
