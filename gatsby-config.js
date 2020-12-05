@@ -38,14 +38,16 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-webfonts`,
       options: {
-        fonts: [
-          {
-            family: `Overpass`,
-            variants: [`400`, `800`, `900`]
-          }
-        ]
+        fonts: {
+          google: [
+            {
+              family: `Overpass`,
+              variants: [`400`, `800`, `900`]
+            }
+          ]
+        }
       }
     },
     {
