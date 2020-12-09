@@ -27,7 +27,8 @@ module.exports = {
       coldTurkey: '#D2C1BC',
       concrete: '#F3F3F3',
       snow: '#F9F9F9',
-      white: '#FFF'
+      white: '#FFF',
+      error: 'red'
     },
     fontFamily: {
       primary: ['Overpass', 'Helvetica', 'sans-serif']

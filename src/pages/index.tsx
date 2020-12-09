@@ -21,6 +21,7 @@ import DesignPartner from '../components/DesignPartner'
 import Testimonial from '../components/Testimonial'
 import TestimonialGrid from '../components/TestimonialGrid'
 import Footer from '../components/Footer'
+import TestForm from '../components/TestForm'
 
 export interface HomePageQueryResponse {
   contentfulHomePage: {
@@ -133,6 +134,8 @@ const IndexPage = ({ data, location }: Props) => {
           </Testimonial>
 
           <TestimonialGrid testimonials={homeData.testimonials} />
+
+          <TestForm />
         </SiteMaxWidthContainer>
       </section>
 
