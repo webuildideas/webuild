@@ -1,5 +1,5 @@
-export const urlEncodeData = (data: Record<string, string | number>) => {
+export const urlEncodeData = (data: { [key: string]: string | number }) => {
   return Object.keys(data)
-    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+    .map((k) => `${encodeURIComponent(k)}=${encodeURIComponent(data[k])}`)
     .join('&')
 }
