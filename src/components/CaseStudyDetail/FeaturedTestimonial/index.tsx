@@ -3,13 +3,13 @@ import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation, Variants } from 'framer-motion'
 
-// Commons
-import { rhythmUnit } from '../../../common/utils/typography'
-import SiteMaxWidthContainer from '../../../common/styledComponents/SiteMaxWidthContainer'
-import { TypeTestimonial } from '../../../common/types/Testimonial'
+// Common
+import { rhythmUnit } from '@common/utils/typography'
+import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
+import { TypeTestimonial } from '@common/types/Testimonial'
 
 // Components
-import Testimonial from '../../Testimonial'
+import Testimonial from '@components/Testimonial'
 
 interface Props {
   featuredTestimonial: TypeTestimonial

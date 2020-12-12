@@ -3,21 +3,21 @@ import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 import { useInView } from 'react-intersection-observer'
 
-// Commons
-import { TypeCaseStudy } from '../common/types/CaseStudy'
-import * as S from '../components/CaseStudyDetail/style'
-import SiteMaxWidthContainer from '../common/styledComponents/SiteMaxWidthContainer'
+// Common
+import { TypeCaseStudy } from '@common/types/CaseStudy'
+import * as S from '@components/CaseStudyDetail/style'
+import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
 
 // Components
-import Hero from '../components/CaseStudyDetail/Hero'
-import Carousel from '../components/CaseStudyDetail/Carousel'
-import Result from '../components/CaseStudyDetail/Result'
-import RichText from '../components/CaseStudyDetail/RichText'
-import ChallengeAndSolution from '../components/CaseStudyDetail/ChallengeAndSolution'
-import FeaturedTestimonial from '../components/CaseStudyDetail/FeaturedTestimonial'
-import CaseStudy from '../components/CaseStudy'
-import Footer from '../components/Footer'
-import Meta from '../components/Meta'
+import Hero from '@components/CaseStudyDetail/Hero'
+import Carousel from '@components/CaseStudyDetail/Carousel'
+import Result from '@components/CaseStudyDetail/Result'
+import RichText from '@components/CaseStudyDetail/RichText'
+import ChallengeAndSolution from '@components/CaseStudyDetail/ChallengeAndSolution'
+import FeaturedTestimonial from '@components/CaseStudyDetail/FeaturedTestimonial'
+import CaseStudy from '@components/CaseStudy'
+import Footer from '@components/Footer'
+import Meta from '@components/Meta'
 
 interface Props {
   data: {

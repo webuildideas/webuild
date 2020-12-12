@@ -1,8 +1,11 @@
+// Packages
 import { Document } from '@contentful/rich-text-types'
-import { TypeTestimonial } from './Testimonial'
-import { TypeContentfulAsset } from './Contentful'
-import { TypeCarousel } from './Carousel'
-import { TypeGatsbyImageFluid } from './GatsbyImage'
+
+// Common
+import { TypeTestimonial } from '@common/types/Testimonial'
+import { TypeContentfulAsset } from '@common/types/Contentful'
+import { TypeCarousel } from '@common/types/Carousel'
+import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
 
 export interface TypeCaseStudy {
   name: string

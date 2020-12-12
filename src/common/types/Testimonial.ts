@@ -1,4 +1,8 @@
-import { TypeGatsbyImageFixed, TypeGatsbyImageFluid } from './GatsbyImage'
+// Common
+import {
+  TypeGatsbyImageFixed,
+  TypeGatsbyImageFluid
+} from '@common/types/GatsbyImage'
 
 export interface TypeTestimonial {
   type?: 'Client' | 'Team Member'

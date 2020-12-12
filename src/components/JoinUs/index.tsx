@@ -4,13 +4,13 @@ import { OutboundLink } from 'gatsby-plugin-gtag'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation, Variants } from 'framer-motion'
 
-// Commons
-import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
-import '../../common/styles/SectionHeading.css'
+// Common
+import { TypeJob } from '@common/types/Job'
+import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
+import '@common/styles/SectionHeading.css'
 
 // Components
-import Button from '../Button'
-import { TypeJob } from '../../common/types/Job'
+import Button from '@components/Button'
 
 interface Props {
   jobs: TypeJob[]

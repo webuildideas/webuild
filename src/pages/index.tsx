@@ -6,22 +6,22 @@ import { useInView } from 'react-intersection-observer'
 import styled from 'styled-components'
 import { Document } from '@contentful/rich-text-types'
 
-// Commons
-import { rhythmUnit } from '../common/utils/typography'
-import SiteMaxWidthContainer from '../common/styledComponents/SiteMaxWidthContainer'
-import { TypeCaseStudy } from '../common/types/CaseStudy'
-import { TypeTestimonial } from '../common/types/Testimonial'
-import '../common/styles/SectionHeading.css'
+// Common
+import { rhythmUnit } from '@common/utils/typography'
+import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
+import { TypeCaseStudy } from '@common/types/CaseStudy'
+import { TypeTestimonial } from '@common/types/Testimonial'
+import '@common/styles/SectionHeading.css'
 
 // Components
-import Meta from '../components/Meta'
-import CaseStudyListing from '../components/CaseStudyListing'
-import PageIntro from '../components/PageIntro'
-import DesignPartner from '../components/DesignPartner'
-import Testimonial from '../components/Testimonial'
-import TestimonialGrid from '../components/TestimonialGrid'
-import Footer from '../components/Footer'
-import TestForm from '../components/TestForm'
+import Meta from '@components/Meta'
+import CaseStudyListing from '@components/CaseStudyListing'
+import PageIntro from '@components/PageIntro'
+import DesignPartner from '@components/DesignPartner'
+import Testimonial from '@components/Testimonial'
+import TestimonialGrid from '@components/TestimonialGrid'
+import Footer from '@components/Footer'
+import TestForm from '@components/TestForm'
 
 export interface HomePageQueryResponse {
   contentfulHomePage: {

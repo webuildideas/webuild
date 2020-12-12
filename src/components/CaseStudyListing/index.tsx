@@ -1,9 +1,13 @@
 // Packages
 import React from 'react'
-import CaseStudy from '../CaseStudy'
 
-// Commons
-import { TypeCaseStudy } from '../../common/types/CaseStudy'
+// Common
+import { TypeCaseStudy } from '@common/types/CaseStudy'
+
+// Components
+import CaseStudy from '@components/CaseStudy'
+
+// Styles
 import * as S from './style'
 
 interface Props {

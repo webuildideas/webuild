@@ -1,8 +1,8 @@
 // Packages
 import React from 'react'
 
-// Commons
-import { TypeInsight } from '../../../common/types/Insight'
+// Common
+import { TypeInsight } from '@common/types/Insight'
 
 interface Props {
   posts?: TypeInsight[]

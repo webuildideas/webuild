@@ -1,5 +1,8 @@
+// Packages
 import { atom } from 'recoil'
-import { TypeInsight } from '../../types/Insight'
+
+// Common
+import { TypeInsight } from '@common/types/Insight'
 
 interface filteredPostsState {
   items: TypeInsight[]

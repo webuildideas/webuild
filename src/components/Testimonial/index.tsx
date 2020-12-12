@@ -5,7 +5,7 @@ import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
 import { Properties as CSSProperties } from 'csstype'
 
-// Component Config
+// Config
 import { variants, featureHeadshotVariants, headshotVariants } from './config'
 
 // Styles

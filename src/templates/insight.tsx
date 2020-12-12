@@ -8,13 +8,13 @@ import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
 // Common
-import { TypeInsight } from '../common/types/Insight'
-import SiteMaxWidthContainer from '../common/styledComponents/SiteMaxWidthContainer'
+import { TypeInsight } from '@common/types/Insight'
+import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
 
 // Components
-import Meta from '../components/Meta'
-import SocialShare from '../components/Insight/SocialShare'
-import ReadNext from '../components/Insight/ReadNext'
+import Meta from '@components/Meta'
+import SocialShare from '@components/Insight/SocialShare'
+import ReadNext from '@components/Insight/ReadNext'
 
 interface Props {
   data: {

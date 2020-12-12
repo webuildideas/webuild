@@ -3,8 +3,8 @@ import React, { useCallback } from 'react'
 import { animated, useSpring, config } from 'react-spring'
 import { useRecoilState } from 'recoil'
 
-// Commons
-import { isOverlayNavOpenAtom } from '../../common/store/userInterface/atoms'
+// Common
+import { isOverlayNavOpenAtom } from '@common/store/userInterface/atoms'
 
 const openConfig = {
   top: 'translate(2, 7) rotate(0)',

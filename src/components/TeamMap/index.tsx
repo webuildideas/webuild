@@ -3,12 +3,12 @@ import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation, Variants } from 'framer-motion'
 
-// Commons
-import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
-import '../../common/styles/SectionHeading.css'
+// Common
+import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
+import '@common/styles/SectionHeading.css'
 
-// Svg
-import TeamMapSvg from '../../static/svgs/teamMap.inline.svg'
+// Static Assets
+import TeamMapSvg from '@static/svgs/teamMap.inline.svg'
 
 const variants: Variants = {
   visible: (i: number) => ({

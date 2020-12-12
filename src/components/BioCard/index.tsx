@@ -6,8 +6,8 @@ import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation, Variants } from 'framer-motion'
 
 // Commons
+import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
 import * as S from './style'
-import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
 
 interface Props {
   children: React.ReactNode

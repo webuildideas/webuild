@@ -7,21 +7,21 @@ import styled from 'styled-components'
 import { OutboundLink } from 'gatsby-plugin-gtag'
 import { Document } from '@contentful/rich-text-types'
 
-// Commons
-import { rhythmUnit } from '../common/utils/typography'
-import { TypeGatsbyImageFluid } from '../common/types/GatsbyImage'
-import { TypeTestimonial } from '../common/types/Testimonial'
-import { TypeJob } from '../common/types/Job'
+// Common
+import { rhythmUnit } from '@common/utils/typography'
+import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
+import { TypeTestimonial } from '@common/types/Testimonial'
+import { TypeJob } from '@common/types/Job'
 
 // Components
-import Meta from '../components/Meta'
-import PageIntro from '../components/PageIntro'
-import TeamMap from '../components/TeamMap'
-import BioCard from '../components/BioCard'
-import JoinUs from '../components/JoinUs'
-import PhotoGrid from '../components/PhotoGrid'
-import TestimonialSlider from '../components/TestimonialSlider'
-import Footer from '../components/Footer'
+import Meta from '@components/Meta'
+import PageIntro from '@components/PageIntro'
+import TeamMap from '@components/TeamMap'
+import BioCard from '@components/BioCard'
+import JoinUs from '@components/JoinUs'
+import PhotoGrid from '@components/PhotoGrid'
+import TestimonialSlider from '@components/TestimonialSlider'
+import Footer from '@components/Footer'
 
 interface WhoWeAreQueryResponse {
   contentfulAboutPage: {

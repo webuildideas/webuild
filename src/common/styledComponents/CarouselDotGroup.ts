@@ -2,8 +2,8 @@
 import styled from 'styled-components'
 import { DotGroup } from 'pure-react-carousel'
 
-// Utils
-import { rhythmUnit } from '../../common/utils/typography'
+// Common
+import { rhythmUnit } from '@common/utils/typography'
 
 const CarouselDotGroup = styled(DotGroup)`
   display: flex;

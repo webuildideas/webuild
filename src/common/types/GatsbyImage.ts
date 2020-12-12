@@ -1,3 +1,4 @@
+// Packages
 import { FixedObject, FluidObject } from 'gatsby-image'
 
 export interface TypeGatsbyImageFixed {

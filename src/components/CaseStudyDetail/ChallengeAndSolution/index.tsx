@@ -3,8 +3,8 @@ import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation, Variants } from 'framer-motion'
 
-// Commons
-import SiteMaxWidthContainer from '../../../common/styledComponents/SiteMaxWidthContainer'
+// Common
+import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
 import * as S from '../style'
 
 interface Props {

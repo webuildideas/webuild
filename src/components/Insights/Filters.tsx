@@ -4,9 +4,9 @@ import { gql, useLazyQuery } from '@apollo/client'
 import { useSetRecoilState } from 'recoil'
 import kebabCase from 'lodash/kebabCase'
 
-// Commons
-import { filteredPostsAtom } from '../../common/store/insights/atoms'
-import { InsightType } from '../../common/types/Insight'
+// Common
+import { filteredPostsAtom } from '@common/store/insights/atoms'
+import { InsightType } from '@common/types/Insight'
 
 const FILTER_INSIGHTS_QUERY = gql`
   query filterInsightsQuery($topics: [String]!, $types: [String]!) {

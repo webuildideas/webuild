@@ -3,10 +3,8 @@ import React from 'react'
 import { ThemeProvider } from 'styled-components'
 
 // Consts
-import { styleTheme } from '../../common/theme/styleTheme'
-
-// Styled Components
-import { GlobalStyle } from '../../common/theme/GlobalStyle'
+import { styleTheme } from '@common/theme/styleTheme'
+import { GlobalStyle } from '@common/theme/GlobalStyle'
 
 // Components
 import Nav from '../Nav'

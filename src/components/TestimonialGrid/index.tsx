@@ -2,8 +2,8 @@
 import React from 'react'
 import Masonry from 'react-masonry-css'
 
-// Commons
-import { TypeTestimonial } from '../../common/types/Testimonial'
+// Common
+import { TypeTestimonial } from '@common/types/Testimonial'
 
 // Components
 import Testimonial from '../Testimonial'

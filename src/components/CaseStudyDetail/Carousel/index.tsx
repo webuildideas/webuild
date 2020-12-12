@@ -6,9 +6,9 @@ import { CarouselProvider, Slide, Slider } from 'pure-react-carousel'
 import Img from 'gatsby-image'
 import 'pure-react-carousel/dist/react-carousel.es.css'
 
-// Commons
-import CarouselDotGroup from '../../../common/styledComponents/CarouselDotGroup'
-import { TypeGatsbyImageFluid } from '../../../common/types/GatsbyImage'
+// Common
+import CarouselDotGroup from '@common/styledComponents/CarouselDotGroup'
+import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
 
 interface Props {
   autoplay?: boolean
