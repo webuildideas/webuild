@@ -1,6 +1,6 @@
 import { useCallback, useState, useEffect } from 'react'
 
-export function useWindowSize() {
+const useWindowSize = () => {
   const isClient = typeof window === 'object'
 
   const getSize = useCallback(
@@ -29,3 +29,5 @@ export function useWindowSize() {
 
   return windowSize
 }
+
+export default useWindowSize

@@ -3,9 +3,9 @@ import React from 'react'
 import Helmet, { HelmetProps } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
-// Commons
-import { TypeContentfulAsset } from '../../common/types/Contentful'
-import { useTrackPageView } from '../../common/hooks/useTrackPageView'
+// Common
+import useTrackPageView from '@common/hooks/useTrackPageView'
+import { TypeContentfulAsset } from '@common/types/Contentful'
 
 interface Props extends HelmetProps {
   description?: string

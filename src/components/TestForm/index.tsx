@@ -9,7 +9,9 @@ import {
   FormikProps
 } from 'formik'
 import * as Yup from 'yup'
-import useSubmitNfForm from '../../common/hooks/useSubmitNfForm'
+
+// Common
+import useSubmitNfForm from '@common/hooks/useSubmitNfForm'
 
 interface FormValues {
   firstName: string
@@ -27,9 +29,7 @@ const testFormSchema = Yup.object().shape({
 
 const TestForm = () => {
   const submitToInsightEngine = useSubmitNfForm({
-    formName: 'Test Form',
-    formDescription: 'A test form to test NF integration',
-    formId: 1234
+    formName: 'Test Form'
   })
 
   const handleSubmit = useCallback(

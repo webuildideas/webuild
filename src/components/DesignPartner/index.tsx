@@ -2,15 +2,15 @@
 import React, { useEffect } from 'react'
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { useWindowSize } from '../../common/hooks/useWindowSize'
 
-// Commons
-import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
+// Common
+import useWindowSize from '@common/hooks/useWindowSize'
+import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
 
 // Icons
-import Investigate from '../../static/svgs/investigate.inline.svg'
-import Ideate from '../../static/svgs/ideate.inline.svg'
-import Iterate from '../../static/svgs/iterate.inline.svg'
+import Investigate from '@static/svgs/investigate.inline.svg'
+import Ideate from '@static/svgs/ideate.inline.svg'
+import Iterate from '@static/svgs/iterate.inline.svg'
 
 const getThreshold = (width: number): number => (width > 500 ? 0.85 : 0.25)
 

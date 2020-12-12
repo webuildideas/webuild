@@ -1,28 +1,23 @@
+// Packages
 import { useCallback } from 'react'
 import { useCookies } from 'react-cookie'
+
+// Common
 import {
   NF_COOKIE,
   NF_FORM_SUBMISSION_URI,
   NF_TOKEN
-} from '../constants/newfangled'
-import { NFFormPayload } from '../types/NewFangled'
-import { urlEncodeData } from '../utils/forms'
+} from '@common/constants/newfangled'
+import { NFFormPayload } from '@common/types/NewFangled'
+import { urlEncodeData } from '@common/utils/forms'
 
 interface Props {
   formName: string
-  formDescription: string
-  formId: number
   pageLink?: string
   pageTitle?: string
 }
 
-export default function useSubmitNfForm({
-  formName,
-  formDescription,
-  formId,
-  pageLink,
-  pageTitle
-}: Props) {
+const useSubmitNfForm = ({ formName, pageLink, pageTitle }: Props) => {
   const [cookies, setCookie] = useCookies()
 
   const setNfCookie = useCallback(
@@ -53,8 +48,7 @@ export default function useSubmitNfForm({
       const payload: NFFormPayload = {
         token: NF_TOKEN,
         sessionid: cookie || '',
-        formtype: formName,
-        conversiondesc: formDescription,
+        conversiondesc: formName,
         email,
         fields: JSON.stringify(values),
         pagelink: pageLink || window.location.href,
@@ -63,12 +57,12 @@ export default function useSubmitNfForm({
         utm_content: searchParams.get('utm_content') || '',
         utm_source: searchParams.get('utm_source') || '',
         utm_medium: searchParams.get('utm_medium') || '',
-        formid: formId,
-        contentid: formId
+        formtype: 1234,
+        formid: 1234
       }
       return payload
     },
-    [cookies, formName, formId, formDescription, pageLink, pageTitle]
+    [cookies, formName, pageLink, pageTitle]
   )
 
   const submitToInsightEngine = useCallback(
@@ -84,12 +78,13 @@ export default function useSubmitNfForm({
         },
         body: encodedPayload
       })
-      const udpatedCookieValue = await response.text()
-      console.log('COOKIE RESP', udpatedCookieValue)
-      setNfCookie(udpatedCookieValue)
+      const updatedCookieValue = await response.text()
+      setNfCookie(updatedCookieValue)
     },
     [prepareDataForSubmission, setNfCookie]
   )
 
   return submitToInsightEngine
 }
+
+export default useSubmitNfForm

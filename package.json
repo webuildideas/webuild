@@ -78,6 +78,7 @@
     "eslint": "^7.9.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-prettier": "^6.10.0",
+    "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-html": "^6.1.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jest": "^24.0.1",
@@ -113,5 +114,9 @@
   },
   "bugs": {
     "url": "https://github.com/webuildideas/webuild/issues"
+  },
+  "volta": {
+    "node": "14.15.1",
+    "npm": "6.14.9"
   }
 }
