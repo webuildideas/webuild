@@ -10,8 +10,6 @@ const useTrackPageView = (
   useEffect(() => {
     const trackView = setTimeout(() => {
       if (initialRender) {
-        console.log('Tracking Page View:')
-        console.table({ 'PAGE URL': pageUrl, 'PAGE TITLE': pageTitle })
         window.NF.recordPageView(pageUrl, pageTitle)
         setInitialRender(false)
       }

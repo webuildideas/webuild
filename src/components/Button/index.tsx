@@ -3,6 +3,9 @@ import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
 
+// Common
+import { WithChildren, WithClassName } from '@common/types/Utilities'
+
 // Styled Components
 import * as S from './style'
 
@@ -14,7 +17,7 @@ type ButtonType =
   | 'primaryOutbound'
   | 'secondaryOutbound'
 
-interface Props {
+interface Props extends WithChildren, WithClassName {
   href: string
   type?: ButtonType
   animationDelay?: number
@@ -22,8 +25,6 @@ interface Props {
   cover?: boolean
   direction?: 'top' | 'left' | 'right' | 'bottom'
   duration?: number
-  children: React.ReactNode
-  className?: string
   target?: string
   rel?: string
 }

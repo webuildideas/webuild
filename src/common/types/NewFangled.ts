@@ -1,5 +1,7 @@
 /* eslint-disable camelcase */
 
+import { ObjectValues } from './Utilities'
+
 /**
  * @property token - The NF api Token
  * @property sessionid - The NF cookie
@@ -32,11 +34,15 @@ export type NFFormPayload = {
 }
 
 /**
- * Enum to handle Form names throughout the site
- * Once a name is added to the enum it is not to change
+ * Union Type to  handle Form names throughout the site.
+ *
+ * Once a name is added here it is not to change
  * or will fuck up anayltics in new fangled as it will be
  * recognized as a different form compeltely.
  */
-export enum NFForms {
-  testForm = 'Test Form'
-}
+
+export const NFForms = {
+  TestForm: 'Test Form'
+} as const
+
+export type NFForms = ObjectValues<typeof NFForms>

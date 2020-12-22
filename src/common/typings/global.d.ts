@@ -6,7 +6,7 @@ declare global {
   interface Window {
     NF: {
       recordPageView: (pageLink?: string, pageTitle?: string) => void
-      getActivityData: () => NFForms[]
+      getActivityData: () => { conversions: NFForms[] }
     }
   }
 }

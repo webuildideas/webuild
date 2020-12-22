@@ -7,11 +7,10 @@ import { motion, useAnimation, Variants } from 'framer-motion'
 
 // Commons
 import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
-import * as S from './style'
+import { WithChildren } from '@common/types/Utilities'
 
-interface Props {
-  children: React.ReactNode
-}
+// Styles
+import * as S from './style'
 
 interface BioCardQueryResponse {
   file: {
@@ -37,7 +36,7 @@ const variants: Variants = {
   }
 }
 
-const BioCard = ({ children }: Props) => {
+const BioCard = ({ children }: WithChildren) => {
   const animationControls = useAnimation()
   const [ref, inView] = useInView({
     triggerOnce: true,
