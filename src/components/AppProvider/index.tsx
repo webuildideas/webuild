@@ -4,13 +4,13 @@ import { ThemeProvider } from 'styled-components'
 import { useSetRecoilState } from 'recoil'
 
 // Common
+import { userConversionsAtom } from '@common/store/newfangled/atoms'
 import { styleTheme } from '@common/theme/styleTheme'
 import { GlobalStyle } from '@common/theme/GlobalStyle'
 
 // Components
-import { userConversionsAtom } from '@common/store/newfangled/atoms'
-import Nav from '../Nav'
-import Meta from '../Meta'
+import Nav from '@components/Nav'
+import Meta from '@components/Meta'
 
 const AppProvider: React.FC = ({ children }) => {
   const setUserConversions = useSetRecoilState(userConversionsAtom)
