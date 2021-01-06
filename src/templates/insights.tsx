@@ -1,16 +1,17 @@
+// Packages
 import { graphql, Link } from 'gatsby'
 import React, { useCallback } from 'react'
 import { useRecoilValue } from 'recoil'
 import { kebabCase } from 'lodash'
 
-// Commons
-import { TypeInsight } from '../common/types/Insight'
-import { filteredPostsAtom } from '../common/store/insights/atoms'
-import SiteMaxWidthContainer from '../common/styledComponents/SiteMaxWidthContainer'
+// Common
+import { TypeInsight } from '@common/types/Insight'
+import { filteredPostsAtom } from '@common/store/insights/atoms'
+import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
 
 // Components
-import Meta from '../components/Meta'
-import Filters from '../components/Insights/Filters'
+import Meta from '@components/Meta'
+import Filters from '@components/Insights/Filters'
 
 interface Props {
   data: {

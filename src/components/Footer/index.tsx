@@ -3,13 +3,15 @@ import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
 
-// Components
-import Button from '../Button'
+// Common
+import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
+import '@common/styles/SectionHeading.css'
 
-// Styled Components
+// Components
+import Button from '@components/Button'
+
+// Styles
 import * as S from './style'
-import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
-import '../../common/styles/SectionHeading.css'
 
 const Footer = () => {
   const d = new Date()

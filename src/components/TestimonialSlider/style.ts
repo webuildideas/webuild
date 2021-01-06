@@ -2,8 +2,8 @@
 import styled from 'styled-components'
 import { Slide, Slider, Dot, DotGroup, DotProps } from 'pure-react-carousel'
 
-// Utils
-import { rhythmUnit } from '../../common/utils/typography'
+// Common
+import { rhythmUnit } from '@common/utils/typography'
 
 /**
  * The Slides Container

@@ -1,13 +1,16 @@
+// Packages
 import React from 'react'
 import Helmet, { HelmetProps } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
-// Commons
-import { TypeContentfulAsset } from '../../common/types/Contentful'
+// Common
+import useTrackPageView from '@common/hooks/useTrackPageView'
+import { TypeContentfulAsset } from '@common/types/Contentful'
 
 interface Props extends HelmetProps {
   description?: string
   title?: string
+  location?: string
 }
 
 interface MetaQueryResponse {
@@ -24,8 +27,10 @@ const Meta = ({
   bodyAttributes,
   htmlAttributes,
   description,
-  title
+  title,
+  location
 }: Props) => {
+  useTrackPageView(location, title)
   const { contentfulSeo } = useStaticQuery<MetaQueryResponse>(
     graphql`
       query SeoQuery {
@@ -94,7 +99,6 @@ const Meta = ({
       content: contentfulSeo.seoShareImage.file.url
     }
   ]
-
   return (
     <Helmet
       bodyAttributes={bodyAttributes}

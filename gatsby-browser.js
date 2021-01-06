@@ -1,6 +1,7 @@
 // Packages
 import React from 'react'
 import { RecoilRoot } from 'recoil'
+import { CookiesProvider } from 'react-cookie'
 
 // Commons
 import { callProjectHuddle } from './src/common/utils/projectHuddle'
@@ -14,9 +15,11 @@ import AppProvider from './src/components/AppProvider'
 
 export const wrapPageElement = ({ element, props }) => {
   return (
-    <RecoilRoot>
-      <AppProvider {...props}>{element}</AppProvider>
-    </RecoilRoot>
+    <CookiesProvider>
+      <RecoilRoot>
+        <AppProvider {...props}>{element}</AppProvider>
+      </RecoilRoot>
+    </CookiesProvider>
   )
 }
 

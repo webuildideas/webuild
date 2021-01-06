@@ -6,21 +6,22 @@ import { useInView } from 'react-intersection-observer'
 import styled from 'styled-components'
 import { Document } from '@contentful/rich-text-types'
 
-// Commons
-import { rhythmUnit } from '../common/utils/typography'
-import SiteMaxWidthContainer from '../common/styledComponents/SiteMaxWidthContainer'
-import { TypeCaseStudy } from '../common/types/CaseStudy'
-import { TypeTestimonial } from '../common/types/Testimonial'
-import '../common/styles/SectionHeading.css'
+// Common
+import { rhythmUnit } from '@common/utils/typography'
+import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
+import { TypeCaseStudy } from '@common/types/CaseStudy'
+import { TypeTestimonial } from '@common/types/Testimonial'
+import '@common/styles/SectionHeading.css'
 
 // Components
-import Meta from '../components/Meta'
-import CaseStudyListing from '../components/CaseStudyListing'
-import PageIntro from '../components/PageIntro'
-import DesignPartner from '../components/DesignPartner'
-import Testimonial from '../components/Testimonial'
-import TestimonialGrid from '../components/TestimonialGrid'
-import Footer from '../components/Footer'
+import Meta from '@components/Meta'
+import CaseStudyListing from '@components/CaseStudyListing'
+import PageIntro from '@components/PageIntro'
+import DesignPartner from '@components/DesignPartner'
+import Testimonial from '@components/Testimonial'
+import TestimonialGrid from '@components/TestimonialGrid'
+import Footer from '@components/Footer'
+import TestForm from '@components/TestForm'
 
 export interface HomePageQueryResponse {
   contentfulHomePage: {
@@ -33,6 +34,9 @@ export interface HomePageQueryResponse {
 
 interface Props {
   data: HomePageQueryResponse
+  location: {
+    href: string
+  }
 }
 
 const variants: Variants = {
@@ -64,7 +68,7 @@ const MobileBreak = styled.span`
   }
 `
 
-const IndexPage = ({ data }: Props) => {
+const IndexPage = ({ data, location }: Props) => {
   const homeData = data.contentfulHomePage
   const animationControls = useAnimation()
   const [ref, inView] = useInView({
@@ -80,7 +84,7 @@ const IndexPage = ({ data }: Props) => {
 
   return (
     <div>
-      <Meta title="Home" />
+      <Meta location={location.href} title="Home" />
       <PageIntro document={homeData.heroTitle} maxWidth={1040} />
       <CaseStudiesContainer>
         <CaseStudyListing caseStudies={homeData.caseStudies} />
@@ -130,6 +134,8 @@ const IndexPage = ({ data }: Props) => {
           </Testimonial>
 
           <TestimonialGrid testimonials={homeData.testimonials} />
+
+          <TestForm />
         </SiteMaxWidthContainer>
       </section>
 

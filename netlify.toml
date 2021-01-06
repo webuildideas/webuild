@@ -8,3 +8,6 @@
 
 [context.deploy-preview.environment]
   GATSBY_CONTENTFUL_ENVIRONMENT = 'staging'
+
+[context.branch-deploy.environment]
+  GATSBY_CONTENTFUL_ENVIRONMENT = 'staging'

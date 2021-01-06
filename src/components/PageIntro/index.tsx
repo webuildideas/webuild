@@ -5,8 +5,8 @@ import { Document, MARKS, BLOCKS } from '@contentful/rich-text-types'
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import { Options } from '@contentful/rich-text-react-renderer'
 
-// Commons
-import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
+// Common
+import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
 
 interface Props {
   maxWidth?: number

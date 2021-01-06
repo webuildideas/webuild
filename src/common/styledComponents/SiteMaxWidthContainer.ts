@@ -1,8 +1,8 @@
 // Packages
 import styled from 'styled-components'
 
-// Utils
-import { rhythmUnit } from '../../common/utils/typography'
+// Common
+import { rhythmUnit } from '@common/utils/typography'
 
 interface StyleProps {
   maxWidth?: number

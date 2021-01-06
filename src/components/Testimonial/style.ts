@@ -2,7 +2,8 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
-import { rhythmUnit } from '../../common/utils/typography'
+// Common
+import { rhythmUnit } from '@common/utils/typography'
 
 export const Testimonial = styled(motion.div)`
   background-color: ${(props) => props.theme.white};

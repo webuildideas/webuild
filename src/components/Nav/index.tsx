@@ -6,20 +6,20 @@ import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
 import { useRecoilState, useRecoilValue } from 'recoil'
-import { useWindowSize } from '../../common/hooks/useWindowSize'
 
-// Commons
+// Common
 import {
   isOverlayNavOpenAtom,
   isNavPinnedAtom
-} from '../../common/store/userInterface/atoms'
-import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
+} from '@common/store/userInterface/atoms'
+import useWindowSize from '@common/hooks/useWindowSize'
+import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
 
 // Components
-import OverlayNav from '../OverlayNav'
-import Logo from './Logo'
-import MenuIcon from './MenuIcon'
-import Button from '../Button'
+import OverlayNav from '@components/OverlayNav'
+import Button from '@components/Button'
+import Logo from '@components/Nav/Logo'
+import MenuIcon from '@components/Nav/MenuIcon'
 
 // Styles
 import * as S from './style'

@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 import Img, { FluidObject } from 'gatsby-image'
 import { motion } from 'framer-motion'
 
-// Commons
+// Common
+import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
 import * as S from './style'
-import SiteMaxWidthContainer from '../../../common/styledComponents/SiteMaxWidthContainer'
 
 interface Props {
   background: string

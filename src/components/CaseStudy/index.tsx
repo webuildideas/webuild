@@ -5,13 +5,15 @@ import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
-// Commons
-import { TypeCaseStudy } from '../../common/types/CaseStudy'
-import * as S from './style'
-import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
+// Common
+import { TypeCaseStudy } from '@common/types/CaseStudy'
+import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
 
 // Components
-import Button from '../Button'
+import Button from '@components/Button'
+
+// Styles
+import * as S from './style'
 
 interface Props {
   animationThreshold?: number

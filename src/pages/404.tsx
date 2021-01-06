@@ -1,13 +1,13 @@
 // Packages
 import React from 'react'
 
-// Commons
-import SiteMaxWidthContainer from '../common/styledComponents/SiteMaxWidthContainer'
-import '../common/styles/SectionHeading.css'
+// Common
+import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
+import '@common/styles/SectionHeading.css'
 
 // Components
-import Button from '../components/Button'
-import Meta from '../components/Meta'
+import Button from '@components/Button'
+import Meta from '@components/Meta'
 
 const NotFoundPage = () => {
   const maxWidthContainerStyles = { paddingTop: '120px ' }

@@ -2,10 +2,10 @@
 import React, { useCallback } from 'react'
 import { animated, useSpring } from 'react-spring'
 import { useRecoilState } from 'recoil'
-import { useWindowSize } from '../../common/hooks/useWindowSize'
 
-// Commons
-import { isOverlayNavOpenAtom } from '../../common/store/userInterface/atoms'
+// Common
+import useWindowSize from '@common/hooks/useWindowSize'
+import { isOverlayNavOpenAtom } from '@common/store/userInterface/atoms'
 
 const overlayOpenConfig = {
   color: '#0E0E1B'

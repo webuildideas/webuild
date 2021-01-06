@@ -90,6 +90,13 @@ module.exports = {
   settings: {
     react: {
       version: 'detect'
+    },
+    'import/resolver': {
+      alias: [
+        ['@common', './src/common'],
+        ['@components', './src/components'],
+        ['@static', './src/static']
+      ]
     }
   }
 }

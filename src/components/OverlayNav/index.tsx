@@ -4,8 +4,8 @@ import { Link } from 'gatsby'
 import { animated, useSpring, useTrail, config } from 'react-spring'
 import { useRecoilState } from 'recoil'
 
-// Commons
-import { isOverlayNavOpenAtom } from '../../common/store/userInterface/atoms'
+// Common
+import { isOverlayNavOpenAtom } from '@common/store/userInterface/atoms'
 
 // Styles
 import { OverlayNavContainer } from './style'

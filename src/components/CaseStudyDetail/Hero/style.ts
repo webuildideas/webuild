@@ -1,8 +1,9 @@
 // Packages
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
-// Utils
-import { rhythmUnit } from '../../../common/utils/typography'
+
+// Common
+import { rhythmUnit } from '@common/utils/typography'
 
 interface StyleProps {
   backgroundSvg: string

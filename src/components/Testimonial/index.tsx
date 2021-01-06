@@ -3,24 +3,23 @@ import React, { useCallback, useEffect } from 'react'
 import Img, { FixedObject, FluidObject } from 'gatsby-image'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
-import { Properties as CSSProperties } from 'csstype'
 
-// Component Config
+// Common
+import { WithChildren, WithClassName, WithStyle } from '@common/types/Utilities'
+
+// Config
 import { variants, featureHeadshotVariants, headshotVariants } from './config'
 
 // Styles
 import * as S from './style'
 
-interface Props {
-  children: string
+interface Props extends WithChildren, WithClassName, WithStyle {
   name: string
   headshot: FixedObject
   featuredHeadshot?: FluidObject
   companyRole: string
   company: string
   isFeatured?: boolean
-  style?: CSSProperties
-  className?: string
 }
 
 const renderMarkdownBold = (md: string) => {
@@ -94,14 +93,16 @@ const Testimonial = ({
     () => (
       <S.FeaturedTestimonial ref={ref} {...props}>
         <div className="Testimonial__content">
-          <motion.p
-            animate={animationControls}
-            className="Testimonial"
-            custom={1}
-            dangerouslySetInnerHTML={{ __html: renderMarkdownBold(children) }}
-            initial="hidden"
-            variants={variants}
-          />
+          {children ? (
+            <motion.p
+              animate={animationControls}
+              className="Testimonial"
+              custom={1}
+              dangerouslySetInnerHTML={{ __html: renderMarkdownBold(children) }}
+              initial="hidden"
+              variants={variants}
+            />
+          ) : null}
           <div className="Testimonial__client">
             <div className="Testimonial__client-img">
               {renderHeadshot(headshot)}
@@ -149,14 +150,16 @@ const Testimonial = ({
   const renderTestimonial = useCallback(
     () => (
       <S.Testimonial ref={ref} {...props}>
-        <motion.p
-          animate={animationControls}
-          className="Testimonial"
-          custom={1}
-          dangerouslySetInnerHTML={{ __html: renderMarkdownBold(children) }}
-          initial="hidden"
-          variants={variants}
-        />
+        {children ? (
+          <motion.p
+            animate={animationControls}
+            className="Testimonial"
+            custom={1}
+            dangerouslySetInnerHTML={{ __html: renderMarkdownBold(children) }}
+            initial="hidden"
+            variants={variants}
+          />
+        ) : null}
         <div className="Testimonial__client">
           <div className="Testimonial__client-img">
             {renderHeadshot(headshot)}

@@ -5,11 +5,9 @@ import Img from 'gatsby-image'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation, Variants } from 'framer-motion'
 
-// Commons
-import { TypeTestimonial } from '../../common/types/Testimonial'
-
-// Components
-import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
+// Common
+import { TypeTestimonial } from '@common/types/Testimonial'
+import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
 
 // Styles
 import 'pure-react-carousel/dist/react-carousel.es.css'

@@ -6,7 +6,7 @@ import { OutboundLink } from 'gatsby-plugin-gtag'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 // Utils
-import { rhythmUnit } from '../../common/utils/typography'
+import { rhythmUnit } from '@common/utils/typography'
 
 export const PrimaryLink = styled(AniLink)`
   position: relative;

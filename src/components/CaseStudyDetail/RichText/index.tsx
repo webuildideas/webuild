@@ -7,11 +7,11 @@ import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation, Variants } from 'framer-motion'
 import Img from 'gatsby-image'
 
-// Commons
-import * as S from './style'
-
 // Components
-import Carousel from '../Carousel'
+import Carousel from '@components/CaseStudyDetail/Carousel'
+
+// Styles
+import * as S from './style'
 
 interface Props {
   document: Document

@@ -1,5 +1,8 @@
+// Packages
 import { Document } from '@contentful/rich-text-types'
-import { TypeAuthor } from './Author'
+
+// Common
+import { TypeAuthor } from '@common/types/Author'
 
 export type InsightType = 'Article' | 'White Paper'
 export interface TypeInsight {
