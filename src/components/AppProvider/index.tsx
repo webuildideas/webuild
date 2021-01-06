@@ -16,7 +16,14 @@ const AppProvider: React.FC = ({ children }) => {
   const setUserConversions = useSetRecoilState(userConversionsAtom)
 
   useEffect(() => {
-    setUserConversions(window.NF.getActivityData().conversions)
+    const setUserConversionsData = setTimeout(() => {
+      const conversions = window.NF.getActivityData()
+        ? window.NF.getActivityData().conversions
+        : []
+      setUserConversions(conversions)
+    }, 1000)
+
+    return () => clearTimeout(setUserConversionsData)
   })
 
   return (
