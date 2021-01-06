@@ -34,7 +34,7 @@ export type NFFormPayload = {
 }
 
 /**
- * Union Type to  handle Form names throughout the site.
+ * Union Type to handle Form names throughout the site.
  *
  * Once a name is added here it is not to change
  * or will fuck up anayltics in new fangled as it will be
