@@ -34,8 +34,13 @@ const TestForm = () => {
 
   const handleSubmit = useCallback(
     async (values: FormValues, actions: FormikHelpers<FormValues>) => {
+      const formattedSubmissionValues = {
+        'First Name': values.firstName,
+        'Last Name': values.lastName,
+        'Email Address': values.email
+      }
       actions.setSubmitting(true)
-      await submitToInsightEngine(values.email, values)
+      await submitToInsightEngine(values.email, formattedSubmissionValues)
       actions.setSubmitting(false)
     },
     [submitToInsightEngine]
