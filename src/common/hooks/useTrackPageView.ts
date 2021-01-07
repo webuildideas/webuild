@@ -1,16 +1,15 @@
 // Packages
 import { useEffect, useState } from 'react'
 
-const useTrackPageView = (
-  pageUrl: string = window.location.href,
-  pageTitle: string = document.title
-) => {
+const useTrackPageView = (pageUrl?: string, pageTitle?: string) => {
   const [initialRender, setInitialRender] = useState(true)
 
   useEffect(() => {
     const trackView = setTimeout(() => {
       if (initialRender) {
-        window.NF.recordPageView(pageUrl, pageTitle)
+        const url = pageUrl || window.location.href
+        const title = pageTitle || document.title
+        window.NF.recordPageView(url, title)
         setInitialRender(false)
       }
     }, 1000)
