@@ -8,16 +8,25 @@ import {
   NF_FORM_SUBMISSION_URI,
   NF_TOKEN
 } from '@common/constants/newfangled'
-import { NFFormPayload } from '@common/types/NewFangled'
+import { NFFormPayload, NFForms } from '@common/types/NewFangled'
+import { AOFormPayload } from '@common/types/ActOn'
 import { urlEncodeData } from '@common/utils/forms'
+import { AO_DEPLOYMENT_ID, AO_DOMAIN, AO_ID } from '@common/constants/actOn'
+import { actOnProcessForm } from '@common/utils/actOn'
 
 interface Props {
-  formName: string
+  actOnFormId: NFForms['actOnId']
+  formName: NFForms['name']
   pageLink?: string
   pageTitle?: string
 }
 
-const useSubmitNfForm = ({ formName, pageLink, pageTitle }: Props) => {
+const useSubmitNfForm = ({
+  formName,
+  actOnFormId,
+  pageLink,
+  pageTitle
+}: Props) => {
   const [cookies, setCookie] = useCookies()
 
   const setNfCookie = useCallback(
@@ -41,11 +50,22 @@ const useSubmitNfForm = ({ formName, pageLink, pageTitle }: Props) => {
   )
 
   const prepareDataForSubmission = useCallback(
-    (email: string, values): NFFormPayload => {
+    (
+      email: string,
+      values
+    ): { nfPayload: NFFormPayload; aoPayload: AOFormPayload } => {
       const cookie = cookies[NF_COOKIE]
       const paramsString = window.location.search
       const searchParams = new URLSearchParams(paramsString)
-      const payload: NFFormPayload = {
+      const aoPayload: AOFormPayload = {
+        aid: AO_ID,
+        fid: actOnFormId,
+        did: AO_DEPLOYMENT_ID,
+        server: AO_DOMAIN,
+        formName,
+        protocol: window.location.protocol
+      }
+      const nfPayload: NFFormPayload = {
         token: NF_TOKEN,
         sessionid: cookie || '',
         conversiondesc: formName,
@@ -60,26 +80,32 @@ const useSubmitNfForm = ({ formName, pageLink, pageTitle }: Props) => {
         formtype: 1234,
         formid: 1234
       }
-      return payload
+      return { nfPayload, aoPayload }
     },
-    [cookies, formName, pageLink, pageTitle]
+    [actOnFormId, cookies, formName, pageLink, pageTitle]
   )
 
   const submitToInsightEngine = useCallback(
     async (email: string, formValues) => {
-      const encodedPayload = urlEncodeData(
-        prepareDataForSubmission(email, formValues)
+      const { nfPayload, aoPayload } = prepareDataForSubmission(
+        email,
+        formValues
       )
+      const encodedNfPayload = urlEncodeData(nfPayload)
       const response = await fetch(NF_FORM_SUBMISSION_URI, {
         method: 'POST',
         mode: 'cors',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: encodedPayload
+        body: encodedNfPayload
       })
       const updatedCookieValue = await response.text()
       setNfCookie(updatedCookieValue)
+      setTimeout(
+        actOnProcessForm(aoPayload.fid, aoPayload.formName, aoPayload),
+        0
+      )
     },
     [prepareDataForSubmission, setNfCookie]
   )

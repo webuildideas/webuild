@@ -34,15 +34,20 @@ export type NFFormPayload = {
 }
 
 /**
- * Union Type to handle Form names throughout the site.
+ * Union Type to handle Form names and the Form's Act-On ID throughout the site.
  *
  * Once a name is added here it is not to change
  * or will fuck up anayltics in new fangled as it will be
  * recognized as a different form compeltely.
+ *
+ * The Name of a Form must match what the Form Name is in Act-On
  */
 
 export const NFForms = {
-  TestForm: 'Test Form'
+  TestForm: {
+    name: 'Test Form',
+    actOnId: 'faa1d9d1-8e70-4de8-9f35-02ef47666c7f'
+  }
 } as const
 
 export type NFForms = ObjectValues<typeof NFForms>

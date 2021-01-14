@@ -10,6 +10,7 @@ const useTrackPageView = (pageUrl?: string, pageTitle?: string) => {
         const url = pageUrl || window.location.href
         const title = pageTitle || document.title
         window.NF.recordPageView(url, title)
+        window.ActOn.Beacon.track(url, 'page', new Date().getTime())
         setInitialRender(false)
       }
     }, 1000)
