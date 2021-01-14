@@ -20,6 +20,8 @@ const AppProvider: React.FC = ({ children }) => {
       const conversions = window.NF.getActivityData()
         ? window.NF.getActivityData().conversions
         : []
+
+      console.log('Conversions', conversions)
       setUserConversions(conversions)
     }, 1000)
 

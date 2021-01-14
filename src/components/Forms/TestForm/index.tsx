@@ -12,30 +12,46 @@ import * as Yup from 'yup'
 
 // Common
 import useSubmitNfForm from '@common/hooks/useSubmitNfForm'
+import { NFForms } from '@common/types/NewFangled'
 
 interface FormValues {
-  firstName: string
-  lastName: string
-  email: string
+  'First Name': string
+  'Last Name': string
+  'Email Address': string
 }
 
-const initialFormValues: FormValues = { email: '', firstName: '', lastName: '' }
+const initialFormValues: FormValues = {
+  'Email Address': '',
+  'First Name': '',
+  'Last Name': ''
+}
 
 const testFormSchema = Yup.object().shape({
-  email: Yup.string().email('Invalid Email').required('This field is required'),
-  firstName: Yup.string().required('This field is required'),
-  lastName: Yup.string().required('This field is required')
+  'Email Address': Yup.string()
+    .email('Invalid Email')
+    .required('This field is required'),
+  'First Name': Yup.string().required('This field is required'),
+  'Last Name': Yup.string().required('This field is required')
 })
 
 const TestForm = () => {
   const submitToInsightEngine = useSubmitNfForm({
-    formName: 'Test Form'
+    formName: NFForms.TestForm.name,
+    actOnFormId: NFForms.TestForm.actOnId
   })
 
   const handleSubmit = useCallback(
     async (values: FormValues, actions: FormikHelpers<FormValues>) => {
+      const formattedSubmissionValues = {
+        'First Name': values['First Name'],
+        'Last Name': values['Last Name'],
+        'Email Address': values['Email Address']
+      }
       actions.setSubmitting(true)
-      await submitToInsightEngine(values.email, values)
+      await submitToInsightEngine(
+        values['Email Address'],
+        formattedSubmissionValues
+      )
       actions.setSubmitting(false)
     },
     [submitToInsightEngine]
@@ -50,36 +66,36 @@ const TestForm = () => {
         validationSchema={testFormSchema}
       >
         {({ isSubmitting }: FormikProps<FormValues>) => (
-          <Form>
+          <Form id={NFForms.TestForm.actOnId} name={NFForms.TestForm.name}>
             <Field
               className="block mb-4"
-              name="firstName"
+              name="First Name"
               placeholder="First Name"
               type="text"
             />
             <ErrorMessage
               className="text-error"
               component="div"
-              name="firstName"
+              name="First Name"
             />
 
             <Field
               className="block mb-4"
-              name="lastName"
+              name="Last Name"
               placeholder="Last Name"
               type="text"
             />
             <ErrorMessage
               className="text-error"
               component="div"
-              name="lastName"
+              name="Last Name"
             />
 
             <Field
               className="block mb-4"
-              name="email"
-              placeholder="Email address"
-              type="email"
+              name="Email Address"
+              placeholder="Email Address"
+              type="Email Address"
             />
             <ErrorMessage className="text-error" component="div" name="email" />
 
