@@ -1,6 +1,5 @@
 // Packages
 import React from 'react'
-import PropTypes from 'prop-types'
 import Img, { FluidObject } from 'gatsby-image'
 import { motion } from 'framer-motion'
 
@@ -62,12 +61,5 @@ const CaseStudyHero = ({
     </SiteMaxWidthContainer>
   </S.CaseStudyHero>
 )
-
-CaseStudyHero.propTypes = {
-  background: PropTypes.string,
-  heroImg: PropTypes.object,
-  logo: PropTypes.string,
-  successSummary: PropTypes.string
-}
 
 export default CaseStudyHero

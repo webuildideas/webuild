@@ -1,8 +1,11 @@
 // Packages
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Document, MARKS, BLOCKS } from '@contentful/rich-text-types'
-import { renderRichText } from 'gatsby-source-contentful/rich-text'
+import { MARKS, BLOCKS } from '@contentful/rich-text-types'
+import {
+  renderRichText,
+  RenderRichTextData
+} from 'gatsby-source-contentful/rich-text'
 import { Options } from '@contentful/rich-text-react-renderer'
 
 // Common
@@ -10,7 +13,7 @@ import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContaine
 
 interface Props {
   maxWidth?: number
-  document: Document
+  document: RenderRichTextData<never>
 }
 
 const headingAnimationInitialConfig = {

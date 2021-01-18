@@ -1,11 +1,9 @@
-// Packages
-import { Document } from '@contentful/rich-text-types'
-
 // Common
 import { TypeTestimonial } from '@common/types/Testimonial'
 import { TypeContentfulAsset } from '@common/types/Contentful'
 import { TypeCarousel } from '@common/types/Carousel'
 import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
+import { RenderRichTextData } from 'gatsby-source-contentful/rich-text'
 
 export interface TypeCaseStudy {
   name: string
@@ -26,13 +24,13 @@ export interface TypeCaseStudy {
     solutionSummary: string
   }
   designSystemCarousel?: TypeCarousel
-  resultOne?: Document
-  resultTwo?: Document
-  resultThree?: Document
+  resultOne?: RenderRichTextData<never>
+  resultTwo?: RenderRichTextData<never>
+  resultThree?: RenderRichTextData<never>
   featuredTestimonial?: TypeTestimonial
-  projectOverview?: Document
-  projectChallenge?: Document
-  projectSolution?: Document
-  projectOutcome?: Document
+  projectOverview?: RenderRichTextData<TypeCarousel | TypeContentfulAsset>
+  projectChallenge?: RenderRichTextData<TypeCarousel | TypeContentfulAsset>
+  projectSolution?: RenderRichTextData<TypeCarousel | TypeContentfulAsset>
+  projectOutcome?: RenderRichTextData<TypeCarousel | TypeContentfulAsset>
   nextCaseStudy?: TypeCaseStudy
 }

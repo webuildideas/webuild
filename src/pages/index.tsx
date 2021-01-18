@@ -4,7 +4,6 @@ import { graphql } from 'gatsby'
 import { motion, useAnimation, Variants } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import styled from 'styled-components'
-import { Document } from '@contentful/rich-text-types'
 
 // Common
 import { rhythmUnit } from '@common/utils/typography'
@@ -22,10 +21,11 @@ import Testimonial from '@components/Testimonial'
 import TestimonialGrid from '@components/TestimonialGrid'
 import Footer from '@components/Footer'
 import TestForm from '@components/Forms/TestForm'
+import { RenderRichTextData } from 'gatsby-source-contentful/rich-text'
 
 export interface HomePageQueryResponse {
   contentfulHomePage: {
-    heroTitle: Document
+    heroTitle: RenderRichTextData<never>
     caseStudies: TypeCaseStudy[]
     featuredTestimonial: TypeTestimonial
     testimonials: TypeTestimonial[]

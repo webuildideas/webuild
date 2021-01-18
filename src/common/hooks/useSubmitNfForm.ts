@@ -103,7 +103,7 @@ const useSubmitNfForm = ({
       const updatedCookieValue = await response.text()
       setNfCookie(updatedCookieValue)
       setTimeout(
-        actOnProcessForm(aoPayload.fid, aoPayload.formName, aoPayload),
+        () => actOnProcessForm(aoPayload.fid, aoPayload.formName, aoPayload),
         0
       )
     },

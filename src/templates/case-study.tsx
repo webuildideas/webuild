@@ -204,14 +204,16 @@ export const query = graphql`
       projectOverview {
         raw
         references {
-          contentful_id
           ... on ContentfulAsset {
-            id
+            contentful_id
+            __typename
             fluid(maxWidth: 1100) {
               ...GatsbyContentfulFluid_withWebp_noBase64
             }
           }
           ... on ContentfulCarousel {
+            contentful_id
+            __typename
             images {
               fluid(maxWidth: 1100) {
                 ...GatsbyContentfulFluid_withWebp_noBase64
@@ -223,14 +225,16 @@ export const query = graphql`
       projectChallenge {
         raw
         references {
-          contentful_id
           ... on ContentfulAsset {
-            id
+            contentful_id
+            __typename
             fluid(maxWidth: 1100) {
               ...GatsbyContentfulFluid_withWebp_noBase64
             }
           }
           ... on ContentfulCarousel {
+            contentful_id
+            __typename
             images {
               fluid(maxWidth: 1100) {
                 ...GatsbyContentfulFluid_withWebp_noBase64
@@ -242,14 +246,16 @@ export const query = graphql`
       projectSolution {
         raw
         references {
-          contentful_id
           ... on ContentfulAsset {
-            id
+            contentful_id
+            __typename
             fluid(maxWidth: 1100) {
               ...GatsbyContentfulFluid_withWebp_noBase64
             }
           }
           ... on ContentfulCarousel {
+            contentful_id
+            __typename
             images {
               fluid(maxWidth: 1100) {
                 ...GatsbyContentfulFluid_withWebp_noBase64
@@ -261,14 +267,16 @@ export const query = graphql`
       projectOutcome {
         raw
         references {
-          contentful_id
           ... on ContentfulAsset {
-            id
+            contentful_id
+            __typename
             fluid(maxWidth: 1100) {
               ...GatsbyContentfulFluid_withWebp_noBase64
             }
           }
           ... on ContentfulCarousel {
+            contentful_id
+            __typename
             images {
               fluid(maxWidth: 1100) {
                 ...GatsbyContentfulFluid_withWebp_noBase64
