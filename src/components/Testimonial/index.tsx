@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 // Packages
 import React, { useCallback, useEffect } from 'react'
 import Img, { FixedObject, FluidObject } from 'gatsby-image'
@@ -5,7 +6,7 @@ import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
 
 // Common
-import { WithChildren, WithClassName, WithStyle } from '@common/types/Utilities'
+import { WithClassName, WithStyle } from '@common/types/Utilities'
 
 // Config
 import { variants, featureHeadshotVariants, headshotVariants } from './config'
@@ -13,8 +14,9 @@ import { variants, featureHeadshotVariants, headshotVariants } from './config'
 // Styles
 import * as S from './style'
 
-interface Props extends WithChildren, WithClassName, WithStyle {
+interface Props extends WithClassName, WithStyle {
   name: string
+  children: string
   headshot: FixedObject
   featuredHeadshot?: FluidObject
   companyRole: string
