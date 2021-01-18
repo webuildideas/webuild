@@ -1,6 +1,3 @@
-// Packages
-import { Document } from '@contentful/rich-text-types'
-
 // Common
 import { TypeTestimonial } from '@common/types/Testimonial'
 import { TypeContentfulAsset } from '@common/types/Contentful'
@@ -27,9 +24,9 @@ export interface TypeCaseStudy {
     solutionSummary: string
   }
   designSystemCarousel?: TypeCarousel
-  resultOne?: Document
-  resultTwo?: Document
-  resultThree?: Document
+  resultOne?: RenderRichTextData<never>
+  resultTwo?: RenderRichTextData<never>
+  resultThree?: RenderRichTextData<never>
   featuredTestimonial?: TypeTestimonial
   projectOverview?: RenderRichTextData<TypeCarousel | TypeContentfulAsset>
   projectChallenge?: RenderRichTextData<TypeCarousel | TypeContentfulAsset>
