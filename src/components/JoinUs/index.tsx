@@ -13,7 +13,7 @@ import '@common/styles/SectionHeading.css'
 import Button from '@components/Button'
 
 interface Props {
-  jobs: TypeJob[]
+  jobs?: TypeJob[]
 }
 
 const variants: Variants = {
@@ -71,7 +71,7 @@ const JoinUs = ({ jobs }: Props) => {
             people to join our amazing remote team.
           </motion.h2>
         </div>
-        {jobs.length > 0 ? (
+        {jobs && jobs.length > 0 ? (
           <div
             className="grid grid-cols-1 md:grid-cols-3 justify-between gap-3 my-12"
             data-testid="joinUs-jobs"

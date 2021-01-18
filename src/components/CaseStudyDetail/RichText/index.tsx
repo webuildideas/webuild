@@ -104,7 +104,7 @@ const CaseStudyRichText = ({ document }: Props) => {
 
   return (
     <S.CaseStudyRichText>
-      <div ref={ref}>{renderRichText({ ...document }, options)}</div>
+      <div ref={ref}>{renderRichText(document, options)}</div>
     </S.CaseStudyRichText>
   )
 }

@@ -93,6 +93,8 @@ export const query = graphql`
       content {
         raw
         references {
+          __typename
+          contentful_id
           ... on ContentfulAsset {
             id
             fluid(maxWidth: 800) {

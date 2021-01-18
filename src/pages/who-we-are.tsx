@@ -5,7 +5,6 @@ import { motion, useAnimation, Variants } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import styled from 'styled-components'
 import { OutboundLink } from 'gatsby-plugin-gtag'
-import { Document } from '@contentful/rich-text-types'
 
 // Common
 import { rhythmUnit } from '@common/utils/typography'
@@ -22,10 +21,11 @@ import JoinUs from '@components/JoinUs'
 import PhotoGrid from '@components/PhotoGrid'
 import TestimonialSlider from '@components/TestimonialSlider'
 import Footer from '@components/Footer'
+import { RenderRichTextData } from 'gatsby-source-contentful/rich-text'
 
 interface WhoWeAreQueryResponse {
   contentfulAboutPage: {
-    heroTitle: Document
+    heroTitle: RenderRichTextData<never>
     photoGrid: TypeGatsbyImageFluid[]
   }
   allContentfulJob: {
