@@ -1,4 +1,7 @@
+/* eslint-disable camelcase */
 export interface TypeContentfulAsset {
+  __typename: string
+  contentful_id: string
   file: {
     url: string
     details?: {

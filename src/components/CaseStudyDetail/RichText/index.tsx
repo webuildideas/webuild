@@ -1,11 +1,18 @@
 // Packages
 import React, { useEffect, useState } from 'react'
-import { renderRichText } from 'gatsby-source-contentful/rich-text'
-import { BLOCKS, Document } from '@contentful/rich-text-types'
+import {
+  renderRichText,
+  RenderRichTextData
+} from 'gatsby-source-contentful/rich-text'
+import { BLOCKS } from '@contentful/rich-text-types'
 import { Options } from '@contentful/rich-text-react-renderer'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation, Variants } from 'framer-motion'
 import Img from 'gatsby-image'
+
+// Commons
+import { TypeCarousel } from '@common/types/Carousel'
+import { TypeContentfulAsset } from '@common/types/Contentful'
 
 // Components
 import Carousel from '@components/CaseStudyDetail/Carousel'
@@ -14,7 +21,7 @@ import Carousel from '@components/CaseStudyDetail/Carousel'
 import * as S from './style'
 
 interface Props {
-  document: Document
+  document: RenderRichTextData<TypeCarousel | TypeContentfulAsset>
 }
 
 const variants: Variants = {
@@ -82,15 +89,22 @@ const CaseStudyRichText = ({ document }: Props) => {
         </motion.p>
       ),
       [BLOCKS.EMBEDDED_ENTRY]: (node) => {
-        const { images } = node.data.target
-        return <Carousel autoplay={shouldAutoplay} images={images} />
+        if (!node.data.target) {
+          return
+        }
+        return (
+          <Carousel
+            autoplay={shouldAutoplay}
+            images={node.data.target.images}
+          />
+        )
       }
     }
   }
 
   return (
     <S.CaseStudyRichText>
-      <div ref={ref}>{renderRichText(document, options)}</div>
+      <div ref={ref}>{renderRichText({ ...document }, options)}</div>
     </S.CaseStudyRichText>
   )
 }
