@@ -13,7 +13,7 @@
     "dayjs": "^1.10.3",
     "dotenv": "^8.2.0",
     "formik": "^2.2.6",
-    "framer-motion": "^1.8.4",
+    "framer-motion": "^3.2.1",
     "gatsby": "^2.30.3",
     "gatsby-image": "^2.9.0",
     "gatsby-plugin-gtag": "^1.0.13",
