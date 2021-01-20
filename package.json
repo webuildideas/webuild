@@ -32,7 +32,7 @@
     "pure-react-carousel": "^1.27.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-headroom": "^3.0.0",
+    "react-headroom": "^3.1.0",
     "react-helmet": "^6.1.0",
     "react-intersection-observer": "^8.28.5",
     "react-masonry-css": "^1.0.14",
