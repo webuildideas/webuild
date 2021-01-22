@@ -8,7 +8,7 @@ import { callProjectHuddle } from './src/common/utils/projectHuddle'
 import loadPolyfills from './src/common/utils/polyfills'
 
 // Tailwind
-import './src/common/theme/tailwind.css'
+import './src/common/styles/tailwind.css'
 
 // Components
 import AppProvider from './src/components/AppProvider'

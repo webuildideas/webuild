@@ -45,6 +45,10 @@ module.exports = {
             {
               family: `Overpass`,
               variants: [`400`, `800`, `900`]
+            },
+            {
+              family: `Noto Serif SC`,
+              variants: [`500`]
             }
           ]
         }
