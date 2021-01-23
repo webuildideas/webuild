@@ -7,7 +7,7 @@
 // Vertical Rhythm
 
 export const typography = {
-  primaryFontFamily: "'Overpass', Helvetica, sans-serif",
+  primaryFontFamily: "'Overpass', sans-serif",
   tracked: '0.05rem',
   tight: '-0.035rem',
 

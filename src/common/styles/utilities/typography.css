@@ -1,0 +1,107 @@
+@layer utilities {
+  .text-h1 {
+    @apply text-6xl;
+    @apply leading-tight;
+    @apply font-extrabold;
+
+    @screen sm {
+      @apply text-7xl;
+    }
+
+    @screen md {
+      @apply text-8xl;
+    }
+  }
+
+  .text-h2 {
+    @apply text-4xl;
+    @apply leading-tight;
+    @apply font-normal;
+
+    @screen sm {
+      @apply text-5xl;
+    }
+
+    @screen md {
+      @apply text-6xl;
+    }
+  }
+
+  .text-h3 {
+    @apply text-2xl;
+    @apply leading-snug;
+    @apply font-normal;
+
+    @screen sm {
+      @apply text-3xl;
+    }
+
+    @screen md {
+      @apply text-4xl;
+    }
+  }
+
+  .text-h4 {
+    @apply text-base;
+    @apply leading-snug;
+    @apply font-extrabold;
+    @apply uppercase;
+
+    @screen sm {
+      @apply text-lg;
+    }
+
+    @screen md {
+      @apply text-xl;
+    }
+  }
+
+  .text-title-subheading {
+    @apply text-lg;
+    @apply leading-snug;
+    @apply font-medium;
+    @apply font-secondary;
+
+    @screen sm {
+      @apply text-2xl;
+    }
+
+    @screen md {
+      @apply text-3xl;
+    }
+  }
+
+  .text-body {
+    @apply text-base;
+    @apply leading-relaxed;
+    @apply tracking-wider;
+
+    @screen sm {
+      @apply text-lg;
+    }
+
+    @screen md {
+      @apply text-xl;
+    }
+  }
+
+  .text-caption {
+    @apply text-sm;
+    @apply leading-normal;
+    @apply tracking-wider;
+
+    @screen sm {
+      @apply text-tiny;
+    }
+
+    @screen md {
+      @apply text-base;
+    }
+  }
+
+  .text-tag {
+    @apply text-sm;
+    @apply leading-normal;
+    @apply tracking-wider;
+  }
+}

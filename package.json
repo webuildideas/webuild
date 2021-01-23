@@ -8,7 +8,9 @@
     "@apollo/client": "^3.3.7",
     "@contentful/rich-text-react-renderer": "^14.1.2",
     "@contentful/rich-text-types": "^14.1.2",
+    "@tailwindcss/forms": "^0.2.1",
     "@tailwindcss/typography": "^0.4.0",
+    "autoprefixer": "^10.2.3",
     "cross-fetch": "^3.0.6",
     "dayjs": "^1.10.3",
     "dotenv": "^8.2.0",
@@ -35,6 +37,7 @@
     "intersection-observer": "^0.12.0",
     "lodash": "^4.17.20",
     "postcss": "^8.2.4",
+    "postcss-import": "^14.0.0",
     "pure-react-carousel": "^1.27.6",
     "react": "^17.0.1",
     "react-cookie": "^4.0.3",
@@ -47,6 +50,7 @@
     "react-spring": "^8.0.27",
     "recoil": "0.1.2",
     "styled-components": "^5.2.1",
+    "tailwindcss": "^2.0.2",
     "yup": "^0.32.8"
   },
   "devDependencies": {
@@ -90,7 +94,6 @@
     "jest": "^26.6.3",
     "prettier": "^2.2.1",
     "source-map-support": "^0.5.19",
-    "tailwindcss": "^1.9.0",
     "ts-jest": "^26.4.4",
     "ts-node": "^9.1.1",
     "typescript": "^4.1.3",
