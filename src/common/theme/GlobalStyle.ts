@@ -102,12 +102,12 @@ export const GlobalStyle = createGlobalStyle<StyleProps>`
     padding-left: 0;
   }
 
-  /* h1,
+  h1,
   .h1{
     font-size: ${(props) => props.theme.f1};
     letter-spacing: -0.035rem;
     font-weight: 900;
-  } */
+  }
 
   h2,
   .h2{
