@@ -179,12 +179,12 @@ export const GlobalStyle = createGlobalStyle<StyleProps>`
   }
 
 
-  /* h1,
+  h1,
   h2,
   h3 {
     line-height: 1.2;
     font-weight: 900;
-  } */
+  }
   
   h4,
   h5,
