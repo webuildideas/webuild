@@ -1,8 +1,7 @@
 // Packages
-import { graphql, Link } from 'gatsby'
-import React, { useCallback } from 'react'
+import { graphql } from 'gatsby'
+import React from 'react'
 import { useRecoilValue } from 'recoil'
-import { kebabCase } from 'lodash'
 
 // Common
 import { TypeInsight } from '@common/types/Insight'
@@ -12,6 +11,7 @@ import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContaine
 // Components
 import Meta from '@components/Meta'
 import Filters from '@components/Insights/Filters'
+import InsightListing from '@components/Insights/InsightListing'
 
 interface Props {
   data: {
@@ -36,32 +36,14 @@ const Insights = ({
     fetched: filterFetched
   } = useRecoilValue(filteredPostsAtom)
 
-  const renderBlogPosts = useCallback((posts: TypeInsight[]) => {
-    return posts.map((post: TypeInsight) => (
-      <article key={`item-${post.slug}`} className="mb-8">
-        <h2>
-          <Link to={`/${post.slug}`}>{post.title}</Link>
-        </h2>
-        {post.topics && post.topics.length > 0 && (
-          <div className="mt-3">
-            {post.topics.map((topic) => (
-              <p
-                key={`topic-${kebabCase(topic)}`}
-                className="inline-block mr-3 border-tuna text-comet border border-solid rounded-sm p-1"
-              >
-                {topic}
-              </p>
-            ))}
-          </div>
-        )}
-      </article>
-    ))
-  }, [])
-
   return (
     <SiteMaxWidthContainer>
       <Meta title="Insights" />
-      <h1 className="mb-12">Articles & Insights</h1>
+      <h1 className="mb-4 text-h1">Insights & Ideas</h1>
+      <p className="text-title-subheading mb-8">
+        A collection of thoughts we are most proud of, from all faces of our
+        diverse team.
+      </p>
       <div className="grid grid-cols-12 gap-8">
         <aside className="col-span-12 md:col-span-3">
           <Filters topics={topics} />
@@ -70,11 +52,15 @@ const Insights = ({
           {filterLoading ? (
             <p>Loading...</p>
           ) : filteredItems.length > 0 ? (
-            renderBlogPosts(filteredItems)
+            filteredItems.map((insight) => (
+              <InsightListing key={`item-${insight.slug}`} insight={insight} />
+            ))
           ) : filterFetched ? (
             <p>No Items found</p>
           ) : (
-            renderBlogPosts(insights)
+            insights.map((insight) => (
+              <InsightListing key={`item-${insight.slug}`} insight={insight} />
+            ))
           )}
         </div>
       </div>
@@ -88,6 +74,12 @@ export const INSIGHTS_QUERY = graphql`
       nodes {
         slug
         title
+        type
+        illustration {
+          file {
+            url
+          }
+        }
         publishDate
         topics
       }

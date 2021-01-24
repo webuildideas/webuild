@@ -10,6 +10,7 @@ export interface TypeInsight {
   type: InsightType
   title: string
   slug: string
+  illustration?: TypeContentfulAsset
   content: RenderRichTextData<TypeCarousel | TypeContentfulAsset>
   publishDate: string
   readNext?: TypeInsight[]
