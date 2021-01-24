@@ -9,7 +9,7 @@ import { WithClassName } from '@common/types/Utilities'
 
 // Components
 
-import { insightTypeIconConfig } from './config'
+import { insightTypeIconConfig, insightTopicIconConfig } from './config'
 
 interface Props extends WithClassName {
   insight: TypeInsight
@@ -39,15 +39,24 @@ const InsightListing = ({
           </p>
         </div>
         {topics && topics.length > 0 && (
-          <div>
-            {topics.map((topic) => (
-              <p
-                key={`topic-${kebabCase(topic)}`}
-                className="inline-block mr-3 text-tag text-electricViolet capitalize"
-              >
-                {topic}
-              </p>
-            ))}
+          <div className="flex items-center">
+            {topics.map((topic) => {
+              const {
+                icon: TopicIcon,
+                name: topicName
+              } = insightTopicIconConfig[topic]
+              return (
+                <div
+                  key={`topic-${kebabCase(topicName)}`}
+                  className="flex items-center"
+                >
+                  <TopicIcon className="text-electricViolet mr-2" />
+                  <p className="inline-block mr-3 text-tag text-electricViolet capitalize">
+                    {topicName}
+                  </p>
+                </div>
+              )
+            })}
           </div>
         )}
       </div>
