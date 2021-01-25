@@ -7,8 +7,9 @@ import { kebabCase } from 'lodash'
 import { TypeInsight } from '@common/types/Insight'
 import { WithClassName } from '@common/types/Utilities'
 
-// Components
+import listingDefaultSrc from '@static/svgs/insights/default-insight-listing.svg'
 
+// Components
 import { insightTypeIconConfig, insightTopicIconConfig } from './config'
 
 interface Props extends WithClassName {
@@ -27,17 +28,24 @@ const InsightListing = ({
       {illustrationSrc ? (
         <img
           alt="listing illustration"
-          className="mb-6"
+          className="mb-6 w-full"
           src={illustrationSrc}
         />
-      ) : null}
+      ) : (
+        <img
+          alt="listing illustration"
+          className="mb-6 w-full"
+          src={listingDefaultSrc}
+        />
+      )}
       <div className="flex items-center">
-        <div className="flex items-center">
+        <div className="flex items-center mr-4">
           <TypeIcon className="mr-2" />
           <p className="text-caption font-extrabold uppercase mr-4">
             {typeName}
           </p>
         </div>
+
         {topics && topics.length > 0 && (
           <div className="flex items-center">
             {topics.map((topic) => {

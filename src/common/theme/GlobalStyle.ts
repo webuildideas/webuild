@@ -40,18 +40,8 @@ export const GlobalStyle = createGlobalStyle<StyleProps>`
     box-sizing: border-box;
     font-family: ${(props) => props.theme.primaryFontFamily};
     color: ${(props) => props.theme.vulcan};
-    // Base Font size is 20px
-    font-size: 125%;
-    line-height: 1.6;
+    font-size: 100%;
     overflow-x: hidden;
-
-    @media (max-width: 425px) {
-      font-size: 100%; // Base Font Size 16px
-    }
-
-    @media (min-width: 425px ) and (max-width: 768px) {
-      font-size: 112.5%; // Base Font Size 18px
-    }
   }
 
   *, *:before, *:after {
@@ -83,7 +73,6 @@ export const GlobalStyle = createGlobalStyle<StyleProps>`
   img[height] {
     max-width: none;
   }
-
   button,
   input[type="button"],
   input[type="submit"] {
@@ -100,97 +89,6 @@ export const GlobalStyle = createGlobalStyle<StyleProps>`
   ul, ol {
     list-style-position: outside;
     padding-left: 0;
-  }
-
-  h1,
-  .h1{
-    font-size: ${(props) => props.theme.f1};
-    letter-spacing: -0.035rem;
-    font-weight: 900;
-  }
-
-  h2,
-  .h2{
-    font-size: ${(props) => props.theme.f2};
-    letter-spacing: -0.03rem;
-    font-weight: 900;
-  }
-
-  h3,
-  .h3{
-    font-size: ${(props) => props.theme.f3};
-    letter-spacing: -0.02rem;
-    font-weight: 800;
-  }
-
-  h4,
-  .h4{
-    font-size: ${(props) => props.theme.f4};
-  }
-
-  h5,
-  .h5{
-    font-size: ${(props) => props.theme.f5};
-    letter-spacing: .035rem;
-  }
-
-  h6,
-  .h6{
-    font-size: ${(props) => props.theme.f6};
-    letter-spacing: .05rem;
-  }
-
-   .f1 {
-    font-size: ${(props) => props.theme.f1};
-    letter-spacing: -0.035rem;
-    font-weight: 900;
-  }
-
-
-  .f2 {
-    font-size: ${(props) => props.theme.f2};
-    letter-spacing: -0.03rem;
-    font-weight: 900;
-  }
-
-  .f3 {
-    font-size: ${(props) => props.theme.f3};
-    letter-spacing: -0.03rem;
-    font-weight: 800;
-  }
-
-  .f4 {
-    font-size: ${(props) => props.theme.f4};
-    letter-spacing: -0.03rem;
-  }
-
-  .f5 {
-    font-size: ${(props) => props.theme.f5};
-    letter-spacing: .035rem;
-  }
-
-  .f6 {
-    font-size: ${(props) => props.theme.f6};
-    letter-spacing: .05rem;
-  }
-
-  .f7 {
-    font-size: ${(props) => props.theme.f7}
-  }
-
-
-  h1,
-  h2,
-  h3 {
-    line-height: 1.2;
-    font-weight: 900;
-  }
-  
-  h4,
-  h5,
-  h6 {
-    line-height: 1.4;
-    font-weight: 800;
   }
 
   .Icon {
