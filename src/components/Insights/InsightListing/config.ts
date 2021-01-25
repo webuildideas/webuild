@@ -74,19 +74,19 @@ export const insightTopicIconConfig: InsightTopicIconConfig = {
   },
   design: {
     icon: Design,
-    name: 'Design'
+    name: 'Design Systems'
   },
   digital: {
     icon: Digital,
-    name: 'Digital'
+    name: 'Product Design'
   },
   expertise: {
     icon: Expertise,
-    name: 'Expertise'
+    name: 'Design Strategy'
   },
   growth: {
     icon: Growth,
-    name: 'Growth'
+    name: 'Performance'
   },
   management: {
     icon: Management,
