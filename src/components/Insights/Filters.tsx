@@ -17,7 +17,11 @@ const FILTER_INSIGHTS_QUERY = gql`
         title
         topics
         slug
+        type
         publishDate
+        illustration {
+          url
+        }
       }
     }
   }

@@ -2,6 +2,7 @@
 export interface TypeContentfulAsset {
   __typename: string
   contentful_id: string
+  url?: string
   file: {
     url: string
     details?: {
