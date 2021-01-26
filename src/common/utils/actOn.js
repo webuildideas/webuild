@@ -108,6 +108,7 @@ export function actOnProcessForm(formId, formName, payload) {
         payload.srcid = payload.srcid || ''
         payload.camp = payload.camp || ''
         addInput(dForm, 'ao_a', payloadArray[AoI].aid)
+        addInput(dForm, 'ao_f', payloadArray[AoI].fid)
         addInput(
           dForm,
           'ao_d',
