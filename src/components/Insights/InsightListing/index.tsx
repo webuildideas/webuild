@@ -24,50 +24,57 @@ const InsightListing = ({
     ? illustration?.file?.url
     : illustration?.url
   return (
-    <article className="mb-16">
-      <Link to={`/${slug}`}>
-        {illustrationSrc ? (
-          <img
-            alt="listing illustration"
-            className="mb-6 w-full"
-            src={illustrationSrc}
-          />
-        ) : (
-          <img
-            alt="listing illustration"
-            className="mb-6 w-full"
-            src={listingDefaultSrc}
-          />
-        )}
-        <div className="flex items-center">
-          <div className="flex items-center mr-4">
-            <TypeIcon className="mr-2 w-5" />
-            <p className="text-caption font-extrabold uppercase">{typeName}</p>
-          </div>
-
-          {topics && topics.length > 0 && (
-            <div className="flex items-center">
-              {topics.map((topic) => {
-                const {
-                  icon: TopicIcon,
-                  name: topicName
-                } = insightTopicIconConfig[topic]
-                return (
-                  <div
-                    key={`topic-${kebabCase(topicName)}`}
-                    className="flex items-center"
-                  >
-                    <TopicIcon className="text-electricViolet mr-2 w-5" />
-                    <p className="inline-block mr-3 text-tag text-electricViolet capitalize">
-                      {topicName}
-                    </p>
-                  </div>
-                )
-              })}
-            </div>
+    <article className="InsightListing mb-16">
+      <Link className="InsightListing-container" to={`/${slug}`}>
+        <div className="InsightListing-illustration">
+          {illustrationSrc ? (
+            <img
+              alt="listing illustration"
+              className="mb-6 w-full"
+              src={illustrationSrc}
+            />
+          ) : (
+            <img
+              alt="listing illustration"
+              className="mb-6 w-full"
+              src={listingDefaultSrc}
+            />
           )}
         </div>
-        <h2 className="text-h3 mt-4">{title}</h2>
+
+        <div className="InsightListing-content">
+          <div className="flex items-center">
+            <div className="flex items-center mr-4">
+              <TypeIcon className="mr-2 w-5" />
+              <p className="text-caption font-extrabold uppercase">
+                {typeName}
+              </p>
+            </div>
+
+            {topics && topics.length > 0 && (
+              <div className="flex items-center">
+                {topics.map((topic) => {
+                  const {
+                    icon: TopicIcon,
+                    name: topicName
+                  } = insightTopicIconConfig[topic]
+                  return (
+                    <div
+                      key={`topic-${kebabCase(topicName)}`}
+                      className="flex items-center"
+                    >
+                      <TopicIcon className="text-electricViolet mr-2 w-5" />
+                      <p className="inline-block mr-3 text-tag text-electricViolet capitalize">
+                        {topicName}
+                      </p>
+                    </div>
+                  )
+                })}
+              </div>
+            )}
+          </div>
+          <h2 className="text-h3 mt-4">{title}</h2>
+        </div>
       </Link>
     </article>
   )
