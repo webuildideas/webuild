@@ -1,4 +1,4 @@
-@layer utilities {
+@layer components {
   .text-h1 {
     @apply text-6xl;
     @apply leading-tight;
