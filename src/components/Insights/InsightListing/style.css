@@ -1,0 +1,22 @@
+.InsightListing-container {
+  @apply block;
+  @screen md {
+    @apply grid;
+    @apply grid-cols-2;
+    @apply items-center;
+  }
+}
+
+.InsightListing-content {
+  @apply bg-white;
+  @screen md {
+    @apply p-6;
+    @apply pr-0;
+  }
+}
+
+.InsightListing-illustration img {
+  @screen md {
+    min-width: 462px;
+  }
+}

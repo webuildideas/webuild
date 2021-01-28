@@ -7,10 +7,14 @@ import { kebabCase } from 'lodash'
 import { TypeInsight } from '@common/types/Insight'
 import { WithClassName } from '@common/types/Utilities'
 
+// Assets
 import listingDefaultSrc from '@static/svgs/insights/default-insight-listing.svg'
 
 // Components
 import { insightTypeIconConfig, insightTopicIconConfig } from './config'
+
+// Styles
+import './style.css'
 
 interface Props extends WithClassName {
   insight: TypeInsight
@@ -30,13 +34,13 @@ const InsightListing = ({
           {illustrationSrc ? (
             <img
               alt="listing illustration"
-              className="mb-6 w-full"
+              className="mb-6 w-full md:mb-0"
               src={illustrationSrc}
             />
           ) : (
             <img
               alt="listing illustration"
-              className="mb-6 w-full"
+              className="mb-6 w-full md:mb-0"
               src={listingDefaultSrc}
             />
           )}
