@@ -20,3 +20,21 @@
     min-width: 462px;
   }
 }
+
+.InsightListing-tags {
+  @apply flex;
+  @apply flex-wrap;
+  @apply items-center;
+  @apply gap-y-3;
+}
+
+.InsightListing-type {
+  @apply flex;
+  @apply items-center;
+  @apply mr-4;
+}
+
+.InsightListing-topics {
+  @apply flex;
+  @apply items-center;
+}

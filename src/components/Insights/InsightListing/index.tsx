@@ -47,8 +47,8 @@ const InsightListing = ({
         </div>
 
         <div className="InsightListing-content">
-          <div className="flex items-center">
-            <div className="flex items-center mr-4">
+          <div className="InsightListing-tags">
+            <div className="InsightListing-type">
               <TypeIcon className="mr-2 w-5" />
               <p className="text-caption font-extrabold uppercase">
                 {typeName}
@@ -56,7 +56,7 @@ const InsightListing = ({
             </div>
 
             {topics && topics.length > 0 && (
-              <div className="flex items-center">
+              <div className="InsightListing-topics">
                 {topics.map((topic) => {
                   const {
                     icon: TopicIcon,
