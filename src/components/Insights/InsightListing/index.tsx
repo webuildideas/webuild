@@ -68,7 +68,7 @@ const InsightListing = ({
                       className="flex items-center"
                     >
                       <TopicIcon className="text-electricViolet mr-2 w-5" />
-                      <p className="inline-block mr-3 text-tag text-electricViolet capitalize">
+                      <p className="inline-block mr-3 text-tag text-electricViolet capitalize whitespace-nowrap">
                         {topicName}
                       </p>
                     </div>

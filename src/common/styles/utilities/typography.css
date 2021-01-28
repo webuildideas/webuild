@@ -90,12 +90,12 @@
     @apply leading-normal;
     @apply tracking-wider;
 
-    @screen maxMd {
-      @apply text-tiny;
-    }
-
     @screen maxSm {
       @apply text-sm;
+    }
+
+    @screen maxMd {
+      @apply text-tiny;
     }
   }
 
