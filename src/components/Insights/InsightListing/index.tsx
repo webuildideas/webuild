@@ -66,6 +66,7 @@ const InsightListing = ({
           <img
             alt="listing illustration"
             className="mb-6 md:mb-0 w-full"
+            data-testid="insightListingIllustration"
             src={illustrationSrc || listingDefaultSrc}
           />
         </div>
@@ -73,7 +74,10 @@ const InsightListing = ({
         <div ref={contentContainerRef} className="InsightListing-content">
           <div className="InsightListing-tags">
             <div className="InsightListing-type">
-              <TypeIcon className="mr-2 w-5" />
+              <TypeIcon
+                className="mr-2 w-5"
+                data-testid="insightListingTypeIcon"
+              />
               <p className="text-caption font-extrabold uppercase">
                 {typeName}
               </p>
@@ -91,7 +95,10 @@ const InsightListing = ({
                       key={`topic-${kebabCase(topicName)}`}
                       className="flex items-center"
                     >
-                      <TopicIcon className="text-electricViolet mr-2 w-5" />
+                      <TopicIcon
+                        className="text-electricViolet mr-2 w-5"
+                        data-testid="insightListingTopicIcon"
+                      />
                       <p className="inline-block mr-3 text-tag text-electricViolet capitalize whitespace-nowrap">
                         {topicName}
                       </p>
