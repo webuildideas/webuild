@@ -15,7 +15,11 @@
   }
 }
 
-.InsightListing-illustration img {
+.InsightListing-illustration {
+  width: 100%;
+  @apply flex;
+  @apply items-center;
+  @apply bg-gray-200;
   @screen md {
     min-width: 462px;
   }

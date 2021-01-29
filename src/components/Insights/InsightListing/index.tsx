@@ -1,11 +1,12 @@
 // Packages
 import { Link } from 'gatsby'
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { kebabCase } from 'lodash'
 
 // Commons
 import { TypeInsight } from '@common/types/Insight'
 import { WithClassName } from '@common/types/Utilities'
+import useWindowSize from '@common/hooks/useWindowSize'
 
 // Assets
 import listingDefaultSrc from '@static/svgs/insights/default-insight-listing.svg'
@@ -23,30 +24,47 @@ interface Props extends WithClassName {
 const InsightListing = ({
   insight: { title, illustration, slug, topics, type }
 }: Props) => {
+  const { width } = useWindowSize()
+  const contentContainerRef = useRef<HTMLDivElement>(null)
+  const [illustrationHeight, setIllustrationHeight] = useState<
+    | {
+        height: string
+      }
+    | undefined
+  >()
+
   const { name: typeName, icon: TypeIcon } = insightTypeIconConfig[type]
   const illustrationSrc = illustration?.file?.url
     ? illustration?.file?.url
     : illustration?.url
+
+  useEffect(() => {
+    const setHeight = setTimeout(() => {
+      if (width && width >= 768 && contentContainerRef?.current) {
+        const contentHeight = contentContainerRef.current.clientHeight
+        const newIllustrationHeight = contentHeight + 32
+        setIllustrationHeight({ height: `${newIllustrationHeight}px` })
+      }
+    }, 350)
+
+    return () => clearTimeout(setHeight)
+  }, [contentContainerRef, width])
+
   return (
     <article className="InsightListing mb-16">
       <Link className="InsightListing-container" to={`/${slug}`}>
-        <div className="InsightListing-illustration">
-          {illustrationSrc ? (
-            <img
-              alt="listing illustration"
-              className="mb-6 w-full md:mb-0"
-              src={illustrationSrc}
-            />
-          ) : (
-            <img
-              alt="listing illustration"
-              className="mb-6 w-full md:mb-0"
-              src={listingDefaultSrc}
-            />
-          )}
+        <div
+          className="InsightListing-illustration"
+          style={illustrationHeight && illustrationHeight}
+        >
+          <img
+            alt="listing illustration"
+            className="mb-6 md:mb-0 w-full"
+            src={illustrationSrc || listingDefaultSrc}
+          />
         </div>
 
-        <div className="InsightListing-content">
+        <div ref={contentContainerRef} className="InsightListing-content">
           <div className="InsightListing-tags">
             <div className="InsightListing-type">
               <TypeIcon className="mr-2 w-5" />
