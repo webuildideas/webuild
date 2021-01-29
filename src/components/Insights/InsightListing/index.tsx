@@ -21,6 +21,8 @@ interface Props extends WithClassName {
   insight: TypeInsight
 }
 
+const TABLET_WINDOW_SIZE = 768
+
 const InsightListing = ({
   insight: { title, illustration, slug, topics, type }
 }: Props) => {
@@ -40,7 +42,11 @@ const InsightListing = ({
 
   useEffect(() => {
     const setHeight = setTimeout(() => {
-      if (width && width >= 768 && contentContainerRef?.current) {
+      if (
+        width &&
+        width >= TABLET_WINDOW_SIZE &&
+        contentContainerRef?.current
+      ) {
         const contentHeight = contentContainerRef.current.clientHeight
         const newIllustrationHeight = contentHeight + 32
         setIllustrationHeight({ height: `${newIllustrationHeight}px` })
