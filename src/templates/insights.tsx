@@ -11,8 +11,9 @@ import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContaine
 // Components
 import Meta from '@components/Meta'
 import Filters from '@components/Insights/Filters'
-import ListingInsight from '@modules/contentHub/components/ListingInsight'
 import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
+import ListingInsight from '@modules/contentHub/components/ListingInsight'
+import FeaturedInsight from '@modules/contentHub/components/FeaturedInsight'
 
 interface Props {
   data: {
@@ -57,6 +58,7 @@ const Insights = ({
         A collection of thoughts we are most proud of, from all faces of our
         diverse team.
       </p>
+      {featuredInsight ? <FeaturedInsight /> : null}
       <div className="grid grid-cols-12 lg:gap-8">
         <aside className="col-span-12 lg:col-span-3">
           <Filters topics={topics} />
