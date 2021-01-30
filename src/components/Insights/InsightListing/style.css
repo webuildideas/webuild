@@ -19,8 +19,8 @@
   width: 100%;
   @apply flex;
   @apply items-center;
-  @apply bg-gray-200;
   @screen md {
+    @apply bg-gray-200;
     min-width: 462px;
   }
 }

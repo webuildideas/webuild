@@ -28,6 +28,7 @@ const InsightListing = ({
 }: Props) => {
   const { width } = useWindowSize()
   const contentContainerRef = useRef<HTMLDivElement>(null)
+  const illustrationContainerRef = useRef<HTMLDivElement>(null)
   const [illustrationHeight, setIllustrationHeight] = useState<
     | {
         height: string
@@ -50,16 +51,19 @@ const InsightListing = ({
         const contentHeight = contentContainerRef.current.clientHeight
         const newIllustrationHeight = contentHeight + 32
         setIllustrationHeight({ height: `${newIllustrationHeight}px` })
+      } else if (illustrationContainerRef?.current) {
+        illustrationContainerRef.current.style.height = 'auto'
       }
     }, 350)
 
     return () => clearTimeout(setHeight)
-  }, [contentContainerRef, width])
+  }, [contentContainerRef, illustrationContainerRef, width])
 
   return (
     <article className="InsightListing mb-16">
       <Link className="InsightListing-container" to={`/${slug}`}>
         <div
+          ref={illustrationContainerRef}
           className="InsightListing-illustration"
           style={illustrationHeight && illustrationHeight}
         >
