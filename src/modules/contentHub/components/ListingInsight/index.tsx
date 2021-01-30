@@ -23,7 +23,7 @@ interface Props extends WithClassName {
 
 const TABLET_WINDOW_SIZE = 768
 
-const InsightListing = ({
+const ListingInsight = ({
   insight: { title, illustration, slug, topics, type }
 }: Props) => {
   const { width } = useWindowSize()
@@ -37,9 +37,6 @@ const InsightListing = ({
   >()
 
   const { name: typeName, icon: TypeIcon } = insightTypeIconConfig[type]
-  const illustrationSrc = illustration?.file?.url
-    ? illustration?.file?.url
-    : illustration?.url
 
   useEffect(() => {
     const setHeight = setTimeout(() => {
@@ -60,27 +57,27 @@ const InsightListing = ({
   }, [contentContainerRef, illustrationContainerRef, width])
 
   return (
-    <article className="InsightListing mb-16">
-      <Link className="InsightListing-container" to={`/${slug}`}>
+    <article className="ListingInsight mb-16">
+      <Link className="ListingInsight-container" to={`/${slug}`}>
         <div
           ref={illustrationContainerRef}
-          className="InsightListing-illustration"
+          className="ListingInsight-illustration"
           style={illustrationHeight && illustrationHeight}
         >
           <img
             alt="listing illustration"
             className="mb-6 md:mb-0 w-full"
-            data-testid="insightListingIllustration"
-            src={illustrationSrc || listingDefaultSrc}
+            data-testid="listingInsightIllustration"
+            src={illustration?.file.url || listingDefaultSrc}
           />
         </div>
 
-        <div ref={contentContainerRef} className="InsightListing-content">
-          <div className="InsightListing-tags">
-            <div className="InsightListing-type">
+        <div ref={contentContainerRef} className="ListingInsight-content">
+          <div className="ListingInsight-tags">
+            <div className="ListingInsight-type">
               <TypeIcon
                 className="mr-2 w-5"
-                data-testid="insightListingTypeIcon"
+                data-testid="listingInsightTypeIcon"
               />
               <p className="text-caption font-extrabold uppercase">
                 {typeName}
@@ -88,7 +85,7 @@ const InsightListing = ({
             </div>
 
             {topics && topics.length > 0 && (
-              <div className="InsightListing-topics">
+              <div className="ListingInsight-topics">
                 {topics.map((topic) => {
                   const {
                     icon: TopicIcon,
@@ -101,7 +98,7 @@ const InsightListing = ({
                     >
                       <TopicIcon
                         className="text-electricViolet mr-2 w-5"
-                        data-testid="insightListingTopicIcon"
+                        data-testid="listingInsightTopicIcon"
                       />
                       <p className="inline-block mr-3 text-tag text-electricViolet capitalize whitespace-nowrap">
                         {topicName}
@@ -119,4 +116,4 @@ const InsightListing = ({
   )
 }
 
-export default InsightListing
+export default ListingInsight

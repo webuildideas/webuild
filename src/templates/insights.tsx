@@ -4,17 +4,27 @@ import React from 'react'
 import { useRecoilValue } from 'recoil'
 
 // Common
-import { TypeInsight } from '@common/types/Insight'
+import { InsightTopic, InsightType, TypeInsight } from '@common/types/Insight'
 import { filteredPostsAtom } from '@common/store/insights/atoms'
 import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
 
 // Components
 import Meta from '@components/Meta'
 import Filters from '@components/Insights/Filters'
-import InsightListing from '@components/Insights/InsightListing'
+import ListingInsight from '@modules/contentHub/components/ListingInsight'
+import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
 
 interface Props {
   data: {
+    contentfulContentHub: {
+      featuredInsight: {
+        type: InsightType
+        topics: InsightTopic[]
+        title: string
+        slug: string
+        illustration?: TypeGatsbyImageFluid
+      }
+    }
     allContentfulInsight: {
       nodes: TypeInsight[]
     }
@@ -26,10 +36,13 @@ interface Props {
 
 const Insights = ({
   data: {
+    contentfulContentHub: { featuredInsight },
     allContentfulInsight: { nodes: insights }
   },
   pageContext: { topics }
 }: Props) => {
+  // eslint-disable-next-line no-console
+  console.log('Featured Insight', featuredInsight)
   const {
     items: filteredItems,
     loading: filterLoading,
@@ -53,13 +66,13 @@ const Insights = ({
             <p>Loading...</p>
           ) : filteredItems.length > 0 ? (
             filteredItems.map((insight) => (
-              <InsightListing key={`item-${insight.slug}`} insight={insight} />
+              <ListingInsight key={`item-${insight.slug}`} insight={insight} />
             ))
           ) : filterFetched ? (
             <p>No Items found</p>
           ) : (
             insights.map((insight) => (
-              <InsightListing key={`item-${insight.slug}`} insight={insight} />
+              <ListingInsight key={`item-${insight.slug}`} insight={insight} />
             ))
           )}
         </div>
@@ -70,6 +83,19 @@ const Insights = ({
 
 export const INSIGHTS_QUERY = graphql`
   query insightsQuery {
+    contentfulContentHub(pageTitle: { eq: "Content Hub" }) {
+      featuredInsight {
+        type
+        topics
+        title
+        slug
+        illustration {
+          fluid(maxWidth: 1100) {
+            ...GatsbyContentfulFluid_withWebp_noBase64
+          }
+        }
+      }
+    }
     allContentfulInsight {
       nodes {
         slug

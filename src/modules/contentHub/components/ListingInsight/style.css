@@ -1,4 +1,4 @@
-.InsightListing-container {
+.ListingInsight-container {
   @apply block;
   @screen md {
     @apply grid;
@@ -7,7 +7,7 @@
   }
 }
 
-.InsightListing-content {
+.ListingInsight-content {
   @apply bg-white;
   @screen md {
     @apply p-6;
@@ -15,7 +15,7 @@
   }
 }
 
-.InsightListing-illustration {
+.ListingInsight-illustration {
   width: 100%;
   @apply flex;
   @apply items-center;
@@ -25,20 +25,20 @@
   }
 }
 
-.InsightListing-tags {
+.ListingInsight-tags {
   @apply flex;
   @apply flex-wrap;
   @apply items-center;
   @apply gap-y-3;
 }
 
-.InsightListing-type {
+.ListingInsight-type {
   @apply flex;
   @apply items-center;
   @apply mr-4;
 }
 
-.InsightListing-topics {
+.ListingInsight-topics {
   @apply flex;
   @apply items-center;
 }
