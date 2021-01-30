@@ -1,0 +1,44 @@
+.InsightListing-container {
+  @apply block;
+  @screen md {
+    @apply grid;
+    @apply grid-cols-2;
+    @apply items-center;
+  }
+}
+
+.InsightListing-content {
+  @apply bg-white;
+  @screen md {
+    @apply p-6;
+    @apply pr-0;
+  }
+}
+
+.InsightListing-illustration {
+  width: 100%;
+  @apply flex;
+  @apply items-center;
+  @screen md {
+    @apply bg-gray-200;
+    min-width: 462px;
+  }
+}
+
+.InsightListing-tags {
+  @apply flex;
+  @apply flex-wrap;
+  @apply items-center;
+  @apply gap-y-3;
+}
+
+.InsightListing-type {
+  @apply flex;
+  @apply items-center;
+  @apply mr-4;
+}
+
+.InsightListing-topics {
+  @apply flex;
+  @apply items-center;
+}

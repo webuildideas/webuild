@@ -95,7 +95,8 @@ module.exports = {
       alias: [
         ['@common', './src/common'],
         ['@components', './src/components'],
-        ['@static', './src/static']
+        ['@static', './src/static'],
+        ['@exampleData', './src/exampleData']
       ]
     }
   }

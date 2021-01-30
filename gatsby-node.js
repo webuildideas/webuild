@@ -73,7 +73,8 @@ export const onCreateWebpackConfig = ({ actions }) => {
       alias: {
         '@common': path.resolve(__dirname, 'src/common'),
         '@components': path.resolve(__dirname, 'src/components'),
-        '@static': path.resolve(__dirname, 'src/static')
+        '@static': path.resolve(__dirname, 'src/static'),
+        '@exampleData': path.resolve(__dirname, 'src/exampleData')
       }
     }
   })

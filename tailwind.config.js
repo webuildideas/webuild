@@ -111,12 +111,16 @@ module.exports = {
     },
 
     screens: {
-      xs: { max: '425px' },
-      sm: { min: '426px', max: '767px' },
+      sm: '425px',
       md: '768px',
       lg: '1024px',
-      xl: '1280px',
-      '2xl': '1536px'
+      xl: '1440px',
+      '2xl': '1536px',
+      maxSm: { max: '425px' },
+      maxMd: { min: '426px', max: '768px' },
+      maxLg: { min: '769px', max: '1024px' },
+      maxXl: { min: '1025px', max: '1440px' },
+      max2xl: { min: '1441px', max: '1536px' }
     },
 
     spacing: {

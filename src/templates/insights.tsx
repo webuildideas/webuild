@@ -44,11 +44,11 @@ const Insights = ({
         A collection of thoughts we are most proud of, from all faces of our
         diverse team.
       </p>
-      <div className="grid grid-cols-12 gap-8">
-        <aside className="col-span-12 md:col-span-3">
+      <div className="grid grid-cols-12 lg:gap-8">
+        <aside className="col-span-12 lg:col-span-3">
           <Filters topics={topics} />
         </aside>
-        <div className="col-span-12 md:col-span-8">
+        <div className="col-span-12 lg:col-span-8">
           {filterLoading ? (
             <p>Loading...</p>
           ) : filteredItems.length > 0 ? (
