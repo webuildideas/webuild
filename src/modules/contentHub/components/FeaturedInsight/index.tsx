@@ -1,12 +1,17 @@
 // Packages
 import React from 'react'
 
-const FeaturedInsight = () => {
-  const test = 'test'
+// Common
+import { TypeInsight } from '@common/types/Insight'
 
+interface Props {
+  insight: TypeInsight
+}
+
+const FeaturedInsight = ({ insight }: Props) => {
   return (
     <div>
-      <h1 className="text-h1">{test}</h1>
+      <h1 className="text-h1">{insight.title}</h1>
     </div>
   )
 }

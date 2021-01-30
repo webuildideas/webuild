@@ -4,27 +4,20 @@ import React from 'react'
 import { useRecoilValue } from 'recoil'
 
 // Common
-import { InsightTopic, InsightType, TypeInsight } from '@common/types/Insight'
+import { TypeInsight } from '@common/types/Insight'
 import { filteredPostsAtom } from '@common/store/insights/atoms'
 import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
 
 // Components
 import Meta from '@components/Meta'
 import Filters from '@components/Insights/Filters'
-import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
 import ListingInsight from '@modules/contentHub/components/ListingInsight'
 import FeaturedInsight from '@modules/contentHub/components/FeaturedInsight'
 
 interface Props {
   data: {
     contentfulContentHub: {
-      featuredInsight: {
-        type: InsightType
-        topics: InsightTopic[]
-        title: string
-        slug: string
-        illustration?: TypeGatsbyImageFluid
-      }
+      featuredInsight: TypeInsight
     }
     allContentfulInsight: {
       nodes: TypeInsight[]
@@ -58,7 +51,7 @@ const Insights = ({
         A collection of thoughts we are most proud of, from all faces of our
         diverse team.
       </p>
-      {featuredInsight ? <FeaturedInsight /> : null}
+      {featuredInsight ? <FeaturedInsight insight={featuredInsight} /> : null}
       <div className="grid grid-cols-12 lg:gap-8">
         <aside className="col-span-12 lg:col-span-3">
           <Filters topics={topics} />

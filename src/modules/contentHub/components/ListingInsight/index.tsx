@@ -12,7 +12,7 @@ import useWindowSize from '@common/hooks/useWindowSize'
 import listingDefaultSrc from '@static/svgs/insights/default-insight-listing.svg'
 
 // Components
-import { insightTypeIconConfig, insightTopicIconConfig } from './config'
+import { TypeInsightTypeIconConfig, TypeInsightTopicIconConfig } from './config'
 
 // Styles
 import './style.css'
@@ -36,7 +36,7 @@ const ListingInsight = ({
     | undefined
   >()
 
-  const { name: typeName, icon: TypeIcon } = insightTypeIconConfig[type]
+  const { name: typeName, icon: TypeIcon } = TypeInsightTypeIconConfig[type]
 
   useEffect(() => {
     const setHeight = setTimeout(() => {
@@ -77,7 +77,7 @@ const ListingInsight = ({
             <div className="ListingInsight-type">
               <TypeIcon
                 className="mr-2 w-5"
-                data-testid="listingInsightTypeIcon"
+                data-testid="listingTypeInsightTypeIcon"
               />
               <p className="text-caption font-extrabold uppercase">
                 {typeName}
@@ -90,7 +90,7 @@ const ListingInsight = ({
                   const {
                     icon: TopicIcon,
                     name: topicName
-                  } = insightTopicIconConfig[topic]
+                  } = TypeInsightTopicIconConfig[topic]
                   return (
                     <div
                       key={`topic-${kebabCase(topicName)}`}
@@ -98,7 +98,7 @@ const ListingInsight = ({
                     >
                       <TopicIcon
                         className="text-electricViolet mr-2 w-5"
-                        data-testid="listingInsightTopicIcon"
+                        data-testid="listingTypeInsightTopicIcon"
                       />
                       <p className="inline-block mr-3 text-tag text-electricViolet capitalize whitespace-nowrap">
                         {topicName}
