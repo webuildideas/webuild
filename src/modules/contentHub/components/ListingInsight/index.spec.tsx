@@ -5,14 +5,18 @@ import ListingInsight from '.'
 
 describe('<ListingInsight />', () => {
   it('renders correctly', () => {
-    const { getByTestId, getByText } = render(
+    const { getByTestId, getAllByTestId, getByText } = render(
       <ListingInsight insight={INSIGHT_ARTICLE} />
     )
 
     const title = getByText('Amazing article about design')
     const illustration = getByTestId('listingInsightIllustration')
+    const typeIcon = getByTestId('insightTagsTypeIcon')
+    const topicIcon = getAllByTestId('insightTagsTopicIcon')
 
     expect(title).toBeTruthy()
     expect(illustration).toBeTruthy()
+    expect(typeIcon).toBeTruthy()
+    expect(topicIcon).toHaveLength(1)
   })
 })

@@ -1,18 +1,17 @@
 // Packages
 import { Link } from 'gatsby'
 import React, { useEffect, useRef, useState } from 'react'
-import { kebabCase } from 'lodash'
 
 // Commons
 import { TypeInsight } from '@common/types/Insight'
 import { WithClassName } from '@common/types/Utilities'
 import useWindowSize from '@common/hooks/useWindowSize'
 
+// Components
+import InsightTags from '@modules/contentHub/components/InsightTags'
+
 // Assets
 import listingDefaultSrc from '@static/svgs/insights/default-insight-listing.svg'
-
-// Components
-import { TypeInsightTypeIconConfig, TypeInsightTopicIconConfig } from './config'
 
 // Styles
 import './style.css'
@@ -35,8 +34,6 @@ const ListingInsight = ({
       }
     | undefined
   >()
-
-  const { name: typeName, icon: TypeIcon } = TypeInsightTypeIconConfig[type]
 
   useEffect(() => {
     const setHeight = setTimeout(() => {
@@ -73,42 +70,7 @@ const ListingInsight = ({
         </div>
 
         <div ref={contentContainerRef} className="ListingInsight-content">
-          <div className="ListingInsight-tags">
-            <div className="ListingInsight-type">
-              <TypeIcon
-                className="mr-2 w-5"
-                data-testid="listingTypeInsightTypeIcon"
-              />
-              <p className="text-caption font-extrabold uppercase">
-                {typeName}
-              </p>
-            </div>
-
-            {topics && topics.length > 0 && (
-              <div className="ListingInsight-topics">
-                {topics.map((topic) => {
-                  const {
-                    icon: TopicIcon,
-                    name: topicName
-                  } = TypeInsightTopicIconConfig[topic]
-                  return (
-                    <div
-                      key={`topic-${kebabCase(topicName)}`}
-                      className="flex items-center"
-                    >
-                      <TopicIcon
-                        className="text-electricViolet mr-2 w-5"
-                        data-testid="listingTypeInsightTopicIcon"
-                      />
-                      <p className="inline-block mr-3 text-tag text-electricViolet capitalize whitespace-nowrap">
-                        {topicName}
-                      </p>
-                    </div>
-                  )
-                })}
-              </div>
-            )}
-          </div>
+          <InsightTags topics={topics} type={type} />
           <h2 className="text-h3 mt-4">{title}</h2>
         </div>
       </Link>

@@ -44,16 +44,20 @@ const Insights = ({
   } = useRecoilValue(filteredPostsAtom)
 
   return (
-    <SiteMaxWidthContainer>
+    <div>
       <Meta title="Insights" />
-      <h1 className="mb-4 text-h1">Insights & Ideas</h1>
-      <p className="text-title-subheading mb-8">
-        A collection of thoughts we are most proud of, from all faces of our
-        diverse team.
-      </p>
-      {featuredInsight ? <FeaturedInsight insight={featuredInsight} /> : null}
-      <div className="grid grid-cols-12 lg:gap-8">
-        <aside className="col-span-12 lg:col-span-3">
+      <div className="px-8">
+        <h1 className="mb-4 text-h1">Insights & Ideas</h1>
+        <p className="text-title-subheading mb-8">
+          A collection of thoughts we are most proud of, from all faces of our
+          diverse team.
+        </p>
+      </div>
+      <div className="pr-8">
+        {featuredInsight ? <FeaturedInsight insight={featuredInsight} /> : null}
+      </div>
+      <div className="grid grid-cols-12 lg:gap-8 px-8 mt-8">
+        <aside className="col-span-12 lg:col-span-3 mb-16">
           <Filters topics={topics} />
         </aside>
         <div className="col-span-12 lg:col-span-8">
@@ -72,7 +76,7 @@ const Insights = ({
           )}
         </div>
       </div>
-    </SiteMaxWidthContainer>
+    </div>
   )
 }
 
@@ -85,8 +89,8 @@ export const INSIGHTS_QUERY = graphql`
         title
         slug
         illustration {
-          fluid(maxWidth: 1100) {
-            ...GatsbyContentfulFluid_withWebp_noBase64
+          file {
+            url
           }
         }
       }

@@ -24,21 +24,3 @@
     min-width: 462px;
   }
 }
-
-.ListingInsight-tags {
-  @apply flex;
-  @apply flex-wrap;
-  @apply items-center;
-  @apply gap-y-3;
-}
-
-.ListingInsight-type {
-  @apply flex;
-  @apply items-center;
-  @apply mr-4;
-}
-
-.ListingInsight-topics {
-  @apply flex;
-  @apply items-center;
-}
