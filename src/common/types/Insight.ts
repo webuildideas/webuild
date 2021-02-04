@@ -6,7 +6,7 @@ import { TypeAuthor } from '@common/types/Author'
 import { TypeCarousel } from '@common/types/Carousel'
 import { TypeContentfulAsset } from '@common/types/Contentful'
 
-export type InsightType =
+export type TypeInsightType =
   | 'Article'
   | 'White Paper'
   | 'Email Course'
@@ -16,7 +16,7 @@ export type InsightType =
   | 'Video'
   | 'Webinar'
 
-export type InsightTopic =
+export type TypeInsightTopic =
   | 'clients'
   | 'design'
   | 'digital'
@@ -29,8 +29,9 @@ export type InsightTopic =
   | 'team'
 
 export interface TypeInsight {
-  type: InsightType
+  type: TypeInsightType
   title: string
+  subtitle?: string
   slug: string
   illustration?: TypeContentfulAsset
   content: RenderRichTextData<TypeCarousel | TypeContentfulAsset>
@@ -38,7 +39,7 @@ export interface TypeInsight {
   readNext?: TypeInsight[]
   author: TypeAuthor
   hashtags?: string[]
-  topics?: InsightTopic[]
+  topics?: TypeInsightTopic[]
   shareQuote?: {
     shareQuote: string
   }

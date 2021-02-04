@@ -2,6 +2,22 @@
 module.exports = {
   purge: ['./src/**/*.js', './src/**/*.jsx', './src/**/*.ts', './src/**/*.tsx'],
   theme: {
+    borderRadius: {
+      px: '1px',
+      0: '0px',
+      0.5: '2px',
+      1: '4px',
+      2: '8px',
+      3: '12px',
+      4: '16px',
+      5: '20px',
+      6: '24px',
+      7: '28px',
+      8: '32px',
+      9: '36px',
+      10: '40px'
+    },
+
     boxShadow: {
       sm: '0px 1px 3px rgba(0, 0, 0, 0.1)',
       DEFAULT: '0px 2px 6px rgba(0, 0, 0, 0.1)',

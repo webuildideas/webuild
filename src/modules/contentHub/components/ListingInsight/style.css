@@ -1,0 +1,26 @@
+.ListingInsight-container {
+  @apply block;
+  @screen md {
+    @apply grid;
+    @apply grid-cols-2;
+    @apply items-center;
+  }
+}
+
+.ListingInsight-content {
+  @apply bg-white;
+  @screen md {
+    @apply p-6;
+    @apply pr-0;
+  }
+}
+
+.ListingInsight-illustration {
+  width: 100%;
+  @apply flex;
+  @apply items-center;
+  @screen md {
+    @apply bg-gray-200;
+    min-width: 462px;
+  }
+}

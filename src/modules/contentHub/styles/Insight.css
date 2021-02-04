@@ -1,0 +1,48 @@
+.Insight-tags {
+  @apply flex;
+  @apply flex-wrap;
+  @apply items-center;
+  @apply gap-y-3;
+}
+
+.Insight-type {
+  @apply flex;
+  @apply items-center;
+  @apply mr-4;
+}
+
+.Insight-type-icon {
+  @apply mr-2;
+  @apply w-5;
+}
+
+.Insight-type-title {
+  @apply text-caption;
+  @apply font-extrabold;
+  @apply uppercase;
+}
+
+.Insight-topics {
+  @apply flex;
+  @apply items-center;
+}
+
+.Insight-topic {
+  @apply flex;
+  @apply items-center;
+}
+
+.Insight-topic-icon {
+  @apply text-electricViolet;
+  @apply mr-2;
+  @apply w-5;
+}
+
+.Insight-topic-title {
+  @apply inline-block;
+  @apply mr-3;
+  @apply text-tag;
+  @apply text-electricViolet;
+  @apply capitalize;
+  @apply whitespace-nowrap;
+}

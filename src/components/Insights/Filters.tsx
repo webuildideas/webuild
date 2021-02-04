@@ -6,7 +6,7 @@ import kebabCase from 'lodash/kebabCase'
 
 // Common
 import { filteredPostsAtom } from '@common/store/insights/atoms'
-import { InsightType } from '@common/types/Insight'
+import { TypeInsightType } from '@common/types/Insight'
 
 const FILTER_INSIGHTS_QUERY = gql`
   query filterInsightsQuery($topics: [String]!, $types: [String]!) {
@@ -31,7 +31,7 @@ interface Props {
   topics: string[]
 }
 
-const types: InsightType[] = ['Article', 'White Paper']
+const types: TypeInsightType[] = ['Article', 'White Paper']
 interface filterState<T> {
   noFilters: boolean
   filters: T[]
@@ -42,7 +42,7 @@ const Filters = ({ topics }: Props) => {
     noFilters: true,
     filters: topics
   })
-  const [typesFilter, setTypesFilter] = useState<filterState<InsightType>>({
+  const [typesFilter, setTypesFilter] = useState<filterState<TypeInsightType>>({
     noFilters: true,
     filters: types
   })
@@ -93,7 +93,7 @@ const Filters = ({ topics }: Props) => {
   )
 
   const createOnTypeClickHandler = useCallback(
-    (name: InsightType) => () => {
+    (name: TypeInsightType) => () => {
       if (typesFilter.noFilters) {
         setTypesFilter({
           filters: [name],

@@ -1,5 +1,5 @@
 // Common
-import { InsightTopic, InsightType } from '@common/types/Insight'
+import { TypeInsightTopic, TypeInsightType } from '@common/types/Insight'
 import { WithClassName } from '@common/types/Utilities'
 
 // Assets
@@ -28,9 +28,9 @@ type IconPayload = {
   name: string
 }
 
-type InsightTypeIconConfig = Record<InsightType, IconPayload>
+type TypeInsightTypeIconConfig = Record<TypeInsightType, IconPayload>
 
-export const insightTypeIconConfig: InsightTypeIconConfig = {
+export const TypeInsightTypeIconConfig: TypeInsightTypeIconConfig = {
   Article: {
     icon: Article,
     name: 'Article'
@@ -65,9 +65,9 @@ export const insightTypeIconConfig: InsightTypeIconConfig = {
   }
 }
 
-type InsightTopicIconConfig = Record<InsightTopic, IconPayload>
+type TypeInsightTopicIconConfig = Record<TypeInsightTopic, IconPayload>
 
-export const insightTopicIconConfig: InsightTopicIconConfig = {
+export const TypeInsightTopicIconConfig: TypeInsightTopicIconConfig = {
   clients: {
     icon: Clients,
     name: 'Client'
