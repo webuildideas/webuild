@@ -31,6 +31,7 @@ export type TypeInsightTopic =
 export interface TypeInsight {
   type: TypeInsightType
   title: string
+  subtitle?: string
   slug: string
   illustration?: TypeContentfulAsset
   content: RenderRichTextData<TypeCarousel | TypeContentfulAsset>

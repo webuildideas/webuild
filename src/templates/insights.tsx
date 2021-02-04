@@ -6,7 +6,6 @@ import { useRecoilValue } from 'recoil'
 // Common
 import { TypeInsight } from '@common/types/Insight'
 import { filteredPostsAtom } from '@common/store/insights/atoms'
-import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
 
 // Components
 import Meta from '@components/Meta'
@@ -46,17 +45,17 @@ const Insights = ({
   return (
     <div>
       <Meta title="Insights" />
-      <div className="px-8">
+      <div className="px-8 lg:px-11">
         <h1 className="mb-4 text-h1">Insights & Ideas</h1>
         <p className="text-title-subheading mb-8">
           A collection of thoughts we are most proud of, from all faces of our
           diverse team.
         </p>
       </div>
-      <div className="pr-8">
+      <div className="pr-8 lg:px-11 mb-8 lg:mb-12">
         {featuredInsight ? <FeaturedInsight insight={featuredInsight} /> : null}
       </div>
-      <div className="grid grid-cols-12 lg:gap-8 px-8 mt-8">
+      <div className="grid grid-cols-12 lg:gap-8 px-8">
         <aside className="col-span-12 lg:col-span-3 mb-16">
           <Filters topics={topics} />
         </aside>
@@ -87,6 +86,7 @@ export const INSIGHTS_QUERY = graphql`
         type
         topics
         title
+        subtitle
         slug
         illustration {
           file {

@@ -4,11 +4,11 @@
     @apply leading-tight;
     @apply font-extrabold;
 
-    @screen maxMd {
+    @media (min-width: 426px) and (max-width: 899px) {
       @apply text-7xl;
     }
 
-    @screen maxSm {
+    @media (max-width: 425px) {
       @apply text-6xl;
     }
   }
@@ -18,11 +18,11 @@
     @apply leading-tight;
     @apply font-normal;
 
-    @screen maxMd {
+    @media (min-width: 426px) and (max-width: 899px) {
       @apply text-5xl;
     }
 
-    @screen maxSm {
+    @media (max-width: 425px) {
       @apply text-4xl;
     }
   }
@@ -32,11 +32,11 @@
     @apply leading-snug;
     @apply font-normal;
 
-    @screen maxMd {
+    @media (min-width: 426px) and (max-width: 899px) {
       @apply text-3xl;
     }
 
-    @screen maxSm {
+    @media (max-width: 425px) {
       @apply text-2xl;
     }
   }
@@ -47,11 +47,11 @@
     @apply font-extrabold;
     @apply uppercase;
 
-    @screen maxMd {
+    @media (min-width: 426px) and (max-width: 899px) {
       @apply text-lg;
     }
 
-    @screen maxSm {
+    @media (max-width: 425px) {
       @apply text-base;
     }
   }
@@ -62,11 +62,11 @@
     @apply font-medium;
     @apply font-secondary;
 
-    @screen maxMd {
+    @media (min-width: 426px) and (max-width: 899px) {
       @apply text-2xl;
     }
 
-    @screen maxSm {
+    @media (max-width: 425px) {
       @apply text-lg;
     }
   }
@@ -76,11 +76,11 @@
     @apply leading-relaxed;
     @apply tracking-wider;
 
-    @screen maxMd {
+    @media (min-width: 426px) and (max-width: 899px) {
       @apply text-lg;
     }
 
-    @screen maxSm {
+    @media (max-width: 425px) {
       @apply text-base;
     }
   }
@@ -90,11 +90,11 @@
     @apply leading-normal;
     @apply tracking-wider;
 
-    @screen maxSm {
+    @media (max-width: 425px) {
       @apply text-sm;
     }
 
-    @screen maxMd {
+    @media (min-width: 426px) and (max-width: 899px) {
       @apply text-tiny;
     }
   }
