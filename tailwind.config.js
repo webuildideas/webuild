@@ -15,7 +15,8 @@ module.exports = {
       7: '28px',
       8: '32px',
       9: '36px',
-      10: '40px'
+      10: '40px',
+      full: '9999px'
     },
 
     boxShadow: {
@@ -195,5 +196,5 @@ module.exports = {
       50: '200px'
     }
   },
-  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')]
+  plugins: [require('@tailwindcss/typography')]
 }

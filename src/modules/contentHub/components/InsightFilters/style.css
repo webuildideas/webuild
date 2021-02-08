@@ -1,0 +1,27 @@
+.Insight-filters-item {
+  @apply cursor-pointer;
+  @apply mb-2;
+  @apply flex;
+  @apply items-center;
+}
+
+.Insight-filters-item::before {
+  content: "";
+  @apply inline-block;
+  @apply rounded-full;
+  @apply mr-3;
+  @apply bg-gray-100;
+  @apply border-gray-300;
+  border-width: 1px;
+  width: 16px;
+  height: 16px;
+}
+
+.Insight-filters-item.is-active::before {
+  @apply bg-lavenderMist;
+  @apply border-lavender;
+}
+
+.Insight-filters-item .text-page-navigation::first-letter {
+  text-transform: capitalize;
+}

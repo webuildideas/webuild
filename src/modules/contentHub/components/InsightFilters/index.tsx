@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/interactive-supports-focus */
 // Packages
 import React, { useCallback, useEffect, useState } from 'react'
 import { gql, useLazyQuery } from '@apollo/client'
@@ -5,8 +7,14 @@ import { useSetRecoilState } from 'recoil'
 import kebabCase from 'lodash/kebabCase'
 
 // Common
-import { filteredPostsAtom } from '@common/store/insights/atoms'
-import { TypeInsightType } from '@common/types/Insight'
+import { TypeInsightTopic, TypeInsightType } from '@common/types/Insight'
+
+// Atoms
+import { filteredPostsAtom } from '@modules/contentHub/store/atoms'
+
+// Styles
+import './style.css'
+import InsightFiltersDropdown from './InsightFiltersDropdown'
 
 const FILTER_INSIGHTS_QUERY = gql`
   query filterInsightsQuery($topics: [String]!, $types: [String]!) {
@@ -28,21 +36,32 @@ const FILTER_INSIGHTS_QUERY = gql`
 `
 
 interface Props {
-  topics: string[]
+  topics: TypeInsightTopic[]
 }
 
-const types: TypeInsightType[] = ['Article', 'White Paper']
-interface filterState<T> {
+const types: TypeInsightType[] = [
+  'Article',
+  'Event',
+  'Email Course',
+  'Podcast',
+  'Publication',
+  'Video',
+  'Webinar',
+  'White Paper'
+]
+export interface FilterState<T> {
   noFilters: boolean
   filters: T[]
 }
 
-const Filters = ({ topics }: Props) => {
-  const [topicsFilter, setTopicsFilter] = useState<filterState<string>>({
+const InsightFilters = ({ topics }: Props) => {
+  const [topicsFilter, setTopicsFilter] = useState<
+    FilterState<TypeInsightTopic>
+  >({
     noFilters: true,
     filters: topics
   })
-  const [typesFilter, setTypesFilter] = useState<filterState<TypeInsightType>>({
+  const [typesFilter, setTypesFilter] = useState<FilterState<TypeInsightType>>({
     noFilters: true,
     filters: types
   })
@@ -58,7 +77,7 @@ const Filters = ({ topics }: Props) => {
   )
 
   const createOnTopicClickHandler = useCallback(
-    (name: string) => () => {
+    (name: TypeInsightTopic) => () => {
       if (topicsFilter.noFilters) {
         setTopicsFilter({
           filters: [name],
@@ -151,44 +170,48 @@ const Filters = ({ topics }: Props) => {
 
   return (
     <>
+      <InsightFiltersDropdown
+        createOnTopicClickHandler={createOnTopicClickHandler}
+        createOnTypeClickHandler={createOnTypeClickHandler}
+        topics={topics}
+        topicsFilter={topicsFilter}
+        types={types}
+        typesFilter={typesFilter}
+      />
       <div>
-        <h5 className="mb-4">Filter by Topic</h5>
+        <h5 className="mb-2 text-body font-extrabold uppercase">Topic</h5>
         {topics.map((topic) => {
           const handleOnClick = createOnTopicClickHandler(topic)
-          const selectedStyle =
+          const isActive =
             !topicsFilter.noFilters && topicsFilter.filters.includes(topic)
-              ? 'text-bisonHide'
-              : ''
           return (
-            <button
+            <div
               key={kebabCase(topic)}
-              className={`border-none block mb-4 ${selectedStyle}`}
+              className={`Insight-filters-item ${isActive && 'is-active'}`}
               onClick={handleOnClick}
-              type="button"
+              role="button"
             >
-              {topic}
-            </button>
+              <span className="text-page-navigation">{topic}</span>
+            </div>
           )
         })}
       </div>
 
       <div className="mt-8">
-        <h5 className="mb-4">Filter by Type</h5>
+        <h5 className="mb-2 text-body font-extrabold uppercase">Type</h5>
         {types.map((type) => {
           const handleOnClick = createOnTypeClickHandler(type)
-          const selectedStyle =
+          const isActive =
             !typesFilter.noFilters && typesFilter.filters.includes(type)
-              ? 'text-bisonHide'
-              : ''
           return (
-            <button
+            <div
               key={kebabCase(type)}
-              className={`border-none block mb-4 ${selectedStyle}`}
+              className={`Insight-filters-item ${isActive && 'is-active'}`}
               onClick={handleOnClick}
-              type="button"
+              role="button"
             >
-              {type}
-            </button>
+              <span className="text-page-navigation">{`${type}s`}</span>
+            </div>
           )
         })}
       </div>
@@ -196,4 +219,4 @@ const Filters = ({ topics }: Props) => {
   )
 }
 
-export default Filters
+export default InsightFilters

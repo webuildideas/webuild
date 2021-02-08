@@ -5,11 +5,13 @@ import { useRecoilValue } from 'recoil'
 
 // Common
 import { TypeInsight } from '@common/types/Insight'
-import { filteredPostsAtom } from '@common/store/insights/atoms'
+
+// Atoms
+import { filteredPostsAtom } from '@modules/contentHub/store/atoms'
 
 // Components
 import Meta from '@components/Meta'
-import Filters from '@components/Insights/Filters'
+import InsightFilters from '@modules/contentHub/components/InsightFilters'
 import ListingInsight from '@modules/contentHub/components/ListingInsight'
 import FeaturedInsight from '@modules/contentHub/components/FeaturedInsight'
 
@@ -34,8 +36,6 @@ const Insights = ({
   },
   pageContext: { topics }
 }: Props) => {
-  // eslint-disable-next-line no-console
-  console.log('Featured Insight', featuredInsight)
   const {
     items: filteredItems,
     loading: filterLoading,
@@ -57,7 +57,7 @@ const Insights = ({
       </div>
       <div className="grid grid-cols-12 lg:gap-8 px-8">
         <aside className="col-span-12 lg:col-span-3 mb-16">
-          <Filters topics={topics} />
+          <InsightFilters topics={topics} />
         </aside>
         <div className="col-span-12 lg:col-span-8">
           {filterLoading ? (

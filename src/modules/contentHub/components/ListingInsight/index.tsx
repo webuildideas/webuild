@@ -11,7 +11,7 @@ import useWindowSize from '@common/hooks/useWindowSize'
 import InsightTags from '@modules/contentHub/components/InsightTags'
 
 // Assets
-import listingDefaultSrc from '@static/svgs/insights/default-insight-listing.svg'
+import listingIllustrationDefaultSrc from '@static/svgs/insights/default-insight-listing.svg'
 
 // Styles
 import './style.css'
@@ -25,6 +25,7 @@ const TABLET_WINDOW_SIZE = 768
 const ListingInsight = ({
   insight: { title, illustration, slug, topics, type }
 }: Props) => {
+  const listingIllustrationSrc = illustration?.file?.url || illustration?.url
   const { width } = useWindowSize()
   const contentContainerRef = useRef<HTMLDivElement>(null)
   const illustrationContainerRef = useRef<HTMLDivElement>(null)
@@ -65,7 +66,7 @@ const ListingInsight = ({
             alt="listing illustration"
             className="mb-6 md:mb-0 w-full"
             data-testid="listingInsightIllustration"
-            src={illustration?.file.url || listingDefaultSrc}
+            src={listingIllustrationSrc || listingIllustrationDefaultSrc}
           />
         </div>
 
