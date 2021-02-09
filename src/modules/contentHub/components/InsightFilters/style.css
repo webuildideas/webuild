@@ -22,6 +22,52 @@
   @apply border-lavender;
 }
 
-.Insight-filters-item .text-page-navigation::first-letter {
-  text-transform: capitalize;
+.Insight-filters-item .text-page-navigation {
+  @apply capitalize;
+}
+
+/* Insight Filters Dropdown */
+.Insight-filters-dropdown {
+  @apply relative;
+  @apply border;
+  @apply border-solid;
+  @apply border-gray-300;
+  width: 50%;
+
+  &:first-of-type {
+    @apply mr-3;
+  }
+
+  &:last-of-type {
+    @apply ml-3;
+  }
+
+  p {
+    @apply flex;
+    @apply items-center;
+    @apply justify-between;
+    @apply font-extrabold;
+    @apply text-gray-600;
+    @apply uppercase;
+    @apply p-2;
+  }
+
+  svg {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+.Insight-filters-dropdown-menu {
+  @apply bg-white;
+  @apply px-2;
+  @apply pt-2;
+  @apply pb-4;
+  @apply absolute;
+  @apply border-l;
+  @apply border-r;
+  @apply border-b;
+  @apply border-solid;
+  @apply border-gray-300;
+  width: 100%;
 }
