@@ -22,6 +22,12 @@ interface Props {
   createOnTypeClickHandler: (name: TypeInsightType) => () => void
 }
 
+const getFilterText = (title: string, arr: string[]) => {
+  return arr.length === 0
+    ? title
+    : `Viewing ${arr.length} ${title}${arr.length > 1 ? 's' : ''}`
+}
+
 const InsightFiltersDropdown = ({
   topics,
   types,
@@ -32,6 +38,9 @@ const InsightFiltersDropdown = ({
 }: Props) => {
   const [isTopicFilterOpen, setIsTopicFilterOpen] = useState(false)
   const [isTypeFilterOpen, setIsTypeFilterOpen] = useState(false)
+
+  const topicFilterText = getFilterText('Topic', topicsFilter.filters)
+  const typeFilterText = getFilterText('Type', typesFilter.filters)
 
   const topicDropdownClasses = classNames({
     'Insight-filters-dropdown': true,
@@ -53,7 +62,7 @@ const InsightFiltersDropdown = ({
     <div className="flex items-center justify-between">
       <div className={topicDropdownClasses}>
         <p className="text-caption" onClick={handleToggleTopicFilter}>
-          <span>Topic</span>
+          <span>{topicFilterText}</span>
           <Arrow className="Insight-filters-dropdown-arrow" />
         </p>
         {isTopicFilterOpen && (
@@ -79,7 +88,7 @@ const InsightFiltersDropdown = ({
 
       <div className={typeDropdownClasses}>
         <p className="text-caption" onClick={handleToggleTypeFilter}>
-          <span>Type</span>
+          <span>{typeFilterText}</span>
           <Arrow className="Insight-filters-dropdown-arrow" />
         </p>
         {isTypeFilterOpen && (

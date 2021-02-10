@@ -71,10 +71,6 @@
   @apply pt-2;
   @apply pb-4;
   @apply absolute;
-  @apply border-l;
-  @apply border-r;
-  @apply border-b;
-  @apply border-solid;
-  @apply border-gray-300;
+  outline: 1px #eeeff0 solid;
   width: 100%;
 }
