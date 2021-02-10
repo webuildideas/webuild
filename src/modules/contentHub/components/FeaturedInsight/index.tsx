@@ -1,5 +1,5 @@
 // Packages
-import React from 'react'
+import React, { memo } from 'react'
 import { Link } from 'gatsby'
 
 // Common
@@ -12,7 +12,7 @@ interface Props {
   insight: TypeInsight
 }
 
-const FeaturedInsight = ({ insight }: Props) => {
+const FeaturedInsight = memo(function FeaturedInsightMemo({ insight }: Props) {
   return (
     <article className="bg-foundation lg:bg-white lg:shadow-md rounded-tr-4">
       <Link className="md:flex md:items-center" to={`/${insight.slug}`}>
@@ -36,6 +36,6 @@ const FeaturedInsight = ({ insight }: Props) => {
       </Link>
     </article>
   )
-}
+})
 
 export default FeaturedInsight

@@ -1,5 +1,5 @@
 // Packages
-import React, { useState } from 'react'
+import React, { memo, useState } from 'react'
 import { kebabCase } from 'lodash'
 
 // Icons
@@ -28,14 +28,14 @@ const getFilterText = (title: string, arr: string[]) => {
     : `Viewing ${arr.length} ${title}${arr.length > 1 ? 's' : ''}`
 }
 
-const InsightFiltersDropdown = ({
+const InsightFiltersDropdown = memo(function InsightFiltersDropdownMemo({
   topics,
   types,
   topicsFilter,
   typesFilter,
   createOnTopicClickHandler,
   createOnTypeClickHandler
-}: Props) => {
+}: Props) {
   const [isTopicFilterOpen, setIsTopicFilterOpen] = useState(false)
   const [isTypeFilterOpen, setIsTypeFilterOpen] = useState(false)
 
@@ -59,7 +59,7 @@ const InsightFiltersDropdown = ({
     setIsTypeFilterOpen((prevState) => !prevState)
 
   return (
-    <div className="flex items-center justify-between xl:hidden">
+    <div className="Insight-filters-dropdown-container mx-auto flex items-center justify-between xl:hidden">
       <div className={topicDropdownClasses}>
         <p className="text-caption" onClick={handleToggleTopicFilter}>
           <span>{topicFilterText}</span>
@@ -113,6 +113,6 @@ const InsightFiltersDropdown = ({
       </div>
     </div>
   )
-}
+})
 
 export default InsightFiltersDropdown
