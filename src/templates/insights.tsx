@@ -4,7 +4,7 @@ import React from 'react'
 import { useRecoilValue } from 'recoil'
 
 // Common
-import { TypeInsight } from '@common/types/Insight'
+import { TypeInsight, TypeInsightTopic } from '@common/types/Insight'
 
 // Atoms
 import { filteredPostsAtom } from '@modules/contentHub/store/atoms'
@@ -25,7 +25,7 @@ interface Props {
     }
   }
   pageContext: {
-    topics: string[]
+    topics: TypeInsightTopic[]
   }
 }
 
@@ -55,11 +55,11 @@ const Insights = ({
       <div className="pr-8 lg:px-11 mb-8 lg:mb-12">
         {featuredInsight ? <FeaturedInsight insight={featuredInsight} /> : null}
       </div>
-      <div className="grid grid-cols-12 lg:gap-8 px-8">
-        <aside className="col-span-12 lg:col-span-3 mb-16">
+      <div className="grid grid-cols-12 xl:gap-8 px-8">
+        <aside className="col-span-12 xl:col-span-3 mb-16">
           <InsightFilters topics={topics} />
         </aside>
-        <div className="col-span-12 lg:col-span-8">
+        <div className="col-span-12 xl:col-span-8">
           {filterLoading ? (
             <p>Loading...</p>
           ) : filteredItems.length > 0 ? (

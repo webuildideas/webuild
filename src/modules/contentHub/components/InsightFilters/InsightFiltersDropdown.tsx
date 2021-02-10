@@ -59,7 +59,7 @@ const InsightFiltersDropdown = ({
     setIsTypeFilterOpen((prevState) => !prevState)
 
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between xl:hidden">
       <div className={topicDropdownClasses}>
         <p className="text-caption" onClick={handleToggleTopicFilter}>
           <span>{topicFilterText}</span>

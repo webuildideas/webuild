@@ -134,10 +134,10 @@ module.exports = {
       xl: '1440px',
       '2xl': '1536px',
       maxSm: { max: '425px' },
-      maxMd: { min: '426px', max: '768px' },
-      maxLg: { min: '769px', max: '1024px' },
-      maxXl: { min: '1025px', max: '1440px' },
-      max2xl: { min: '1441px', max: '1536px' }
+      maxMd: { max: '768px' },
+      maxLg: { max: '1024px' },
+      maxXl: { max: '1440px' },
+      max2xl: { max: '1536px' }
     },
 
     spacing: {

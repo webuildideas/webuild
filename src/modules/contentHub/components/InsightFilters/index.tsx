@@ -178,42 +178,44 @@ const InsightFilters = ({ topics }: Props) => {
         types={types}
         typesFilter={typesFilter}
       />
-      <div>
-        <h5 className="mb-2 text-body font-extrabold uppercase">Topic</h5>
-        {topics.map((topic) => {
-          const handleOnClick = createOnTopicClickHandler(topic)
-          const isActive =
-            !topicsFilter.noFilters && topicsFilter.filters.includes(topic)
-          return (
-            <div
-              key={kebabCase(topic)}
-              className={`Insight-filters-item ${isActive && 'is-active'}`}
-              onClick={handleOnClick}
-              role="button"
-            >
-              <span className="text-page-navigation">{topic}</span>
-            </div>
-          )
-        })}
-      </div>
+      <div className="hidden xl:block">
+        <div>
+          <h5 className="mb-2 text-body font-extrabold uppercase">Topic</h5>
+          {topics.map((topic) => {
+            const handleOnClick = createOnTopicClickHandler(topic)
+            const isActive =
+              !topicsFilter.noFilters && topicsFilter.filters.includes(topic)
+            return (
+              <div
+                key={kebabCase(topic)}
+                className={`Insight-filters-item ${isActive && 'is-active'}`}
+                onClick={handleOnClick}
+                role="button"
+              >
+                <span className="text-page-navigation">{topic}</span>
+              </div>
+            )
+          })}
+        </div>
 
-      <div className="mt-8">
-        <h5 className="mb-2 text-body font-extrabold uppercase">Type</h5>
-        {types.map((type) => {
-          const handleOnClick = createOnTypeClickHandler(type)
-          const isActive =
-            !typesFilter.noFilters && typesFilter.filters.includes(type)
-          return (
-            <div
-              key={kebabCase(type)}
-              className={`Insight-filters-item ${isActive && 'is-active'}`}
-              onClick={handleOnClick}
-              role="button"
-            >
-              <span className="text-page-navigation">{`${type}s`}</span>
-            </div>
-          )
-        })}
+        <div className="mt-8">
+          <h5 className="mb-2 text-body font-extrabold uppercase">Type</h5>
+          {types.map((type) => {
+            const handleOnClick = createOnTypeClickHandler(type)
+            const isActive =
+              !typesFilter.noFilters && typesFilter.filters.includes(type)
+            return (
+              <div
+                key={kebabCase(type)}
+                className={`Insight-filters-item ${isActive && 'is-active'}`}
+                onClick={handleOnClick}
+                role="button"
+              >
+                <span className="text-page-navigation">{`${type}s`}</span>
+              </div>
+            )
+          })}
+        </div>
       </div>
     </>
   )
