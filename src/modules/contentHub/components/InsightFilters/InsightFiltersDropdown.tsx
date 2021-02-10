@@ -7,6 +7,7 @@ import Arrow from '@static/svgs/common/arrow-simple-down.inline.svg'
 
 // Common
 import { TypeInsightTopic, TypeInsightType } from '@common/types/Insight'
+import { classNames } from '@common/utils/classNames'
 import { FilterState } from '.'
 
 // Styles
@@ -32,6 +33,16 @@ const InsightFiltersDropdown = ({
   const [isTopicFilterOpen, setIsTopicFilterOpen] = useState(false)
   const [isTypeFilterOpen, setIsTypeFilterOpen] = useState(false)
 
+  const topicDropdownClasses = classNames({
+    'Insight-filters-dropdown': true,
+    'is-active': isTopicFilterOpen
+  })
+
+  const typeDropdownClasses = classNames({
+    'Insight-filters-dropdown': true,
+    'is-active': isTypeFilterOpen
+  })
+
   const handleToggleTopicFilter = () =>
     setIsTopicFilterOpen((prevState) => !prevState)
 
@@ -40,10 +51,10 @@ const InsightFiltersDropdown = ({
 
   return (
     <div className="flex items-center justify-between">
-      <div className="Insight-filters-dropdown">
+      <div className={topicDropdownClasses}>
         <p className="text-caption" onClick={handleToggleTopicFilter}>
           <span>Topic</span>
-          <Arrow />
+          <Arrow className="Insight-filters-dropdown-arrow" />
         </p>
         {isTopicFilterOpen && (
           <div className="Insight-filters-dropdown-menu">
@@ -66,10 +77,10 @@ const InsightFiltersDropdown = ({
         )}
       </div>
 
-      <div className="Insight-filters-dropdown">
+      <div className={typeDropdownClasses}>
         <p className="text-caption" onClick={handleToggleTypeFilter}>
           <span>Type</span>
-          <Arrow />
+          <Arrow className="Insight-filters-dropdown-arrow" />
         </p>
         {isTypeFilterOpen && (
           <div className="Insight-filters-dropdown-menu">

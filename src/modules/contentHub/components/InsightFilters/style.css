@@ -43,6 +43,7 @@
   }
 
   p {
+    @apply cursor-pointer;
     @apply flex;
     @apply items-center;
     @apply justify-between;
@@ -55,6 +56,12 @@
   svg {
     width: 8px;
     height: 8px;
+  }
+}
+
+.Insight-filters-dropdown.is-active {
+  svg {
+    transform: rotate(180deg);
   }
 }
 
