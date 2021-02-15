@@ -22,10 +22,17 @@ interface Props {
   createOnTypeClickHandler: (name: TypeInsightType) => () => void
 }
 
-const getFilterText = (title: string, arr: string[]) => {
-  return arr.length === 0
+function getFilterText<T>(
+  title: string,
+  { filters, noFilters }: FilterState<T>
+): string {
+  if (noFilters) {
+    return title
+  }
+
+  return filters.length === 0
     ? title
-    : `Viewing ${arr.length} ${title}${arr.length > 1 ? 's' : ''}`
+    : `Viewing ${filters.length} ${title}${filters.length > 1 ? 's' : ''}`
 }
 
 const InsightFiltersDropdown = memo(function InsightFiltersDropdownMemo({
@@ -39,8 +46,8 @@ const InsightFiltersDropdown = memo(function InsightFiltersDropdownMemo({
   const [isTopicFilterOpen, setIsTopicFilterOpen] = useState(false)
   const [isTypeFilterOpen, setIsTypeFilterOpen] = useState(false)
 
-  const topicFilterText = getFilterText('Topic', topicsFilter.filters)
-  const typeFilterText = getFilterText('Type', typesFilter.filters)
+  const topicFilterText = getFilterText<TypeInsightTopic>('Topic', topicsFilter)
+  const typeFilterText = getFilterText<TypeInsightType>('Type', typesFilter)
 
   const topicDropdownClasses = classNames({
     'Insight-filters-dropdown': true,

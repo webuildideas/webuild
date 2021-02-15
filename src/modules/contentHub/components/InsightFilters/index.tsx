@@ -1,39 +1,23 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/interactive-supports-focus */
 // Packages
 import React, { useCallback, useEffect, useState } from 'react'
-import { gql, useLazyQuery } from '@apollo/client'
+import { useLazyQuery } from '@apollo/client'
 import { useSetRecoilState } from 'recoil'
 import kebabCase from 'lodash/kebabCase'
 
 // Common
 import { TypeInsightTopic, TypeInsightType } from '@common/types/Insight'
 
+// GrapQL
+import { FILTER_INSIGHTS_QUERY } from '@modules/contentHub/graphql/queries'
+
 // Atoms
-import { filteredPostsAtom } from '@modules/contentHub/store/atoms'
+import { insightPostsAtom } from '@modules/contentHub/store/atoms'
+
+// Components
+import InsightFiltersDropdown from './InsightFiltersDropdown'
 
 // Styles
 import './style.css'
-import InsightFiltersDropdown from './InsightFiltersDropdown'
-
-const FILTER_INSIGHTS_QUERY = gql`
-  query filterInsightsQuery($topics: [String]!, $types: [String]!) {
-    insightCollection(
-      where: { topics_contains_some: $topics, type_in: $types }
-    ) {
-      items {
-        title
-        topics
-        slug
-        type
-        publishDate
-        illustration {
-          url
-        }
-      }
-    }
-  }
-`
 
 interface Props {
   topics: TypeInsightTopic[]
@@ -49,6 +33,7 @@ const types: TypeInsightType[] = [
   'Webinar',
   'White Paper'
 ]
+
 export interface FilterState<T> {
   noFilters: boolean
   filters: T[]
@@ -65,7 +50,7 @@ const InsightFilters = ({ topics }: Props) => {
     noFilters: true,
     filters: types
   })
-  const setFilteredPosts = useSetRecoilState(filteredPostsAtom)
+  const setInsightPosts = useSetRecoilState(insightPostsAtom)
   const [getFilteredInsights, { data, loading }] = useLazyQuery(
     FILTER_INSIGHTS_QUERY,
     {
@@ -94,7 +79,7 @@ const InsightFilters = ({ topics }: Props) => {
         const hasNoFilters = filterWithTopicRemoved.length === 0
         setTopicsFilter({
           filters: hasNoFilters ? topics : filterWithTopicRemoved,
-          noFilters: !!hasNoFilters
+          noFilters: hasNoFilters
         })
         getFilteredInsights()
         return
@@ -102,8 +87,8 @@ const InsightFilters = ({ topics }: Props) => {
 
       setTopicsFilter((prevState) => {
         return {
-          filters: [...prevState.filters, name],
-          noFilters: prevState.noFilters
+          ...prevState,
+          filters: [...prevState.filters, name]
         }
       })
       getFilteredInsights()
@@ -149,24 +134,24 @@ const InsightFilters = ({ topics }: Props) => {
 
   useEffect(() => {
     if (loading) {
-      setFilteredPosts((prevState) => {
+      setInsightPosts((prevState) => {
         return {
           ...prevState,
           loading
         }
       })
     }
-  }, [loading, setFilteredPosts])
+  }, [loading, setInsightPosts])
 
   useEffect(() => {
     if (data && data?.insightCollection?.items) {
-      setFilteredPosts({
+      setInsightPosts({
         items: data.insightCollection.items,
         loading: false,
-        fetched: true
+        filtersApplied: true
       })
     }
-  }, [data, setFilteredPosts])
+  }, [data, setInsightPosts])
 
   return (
     <>

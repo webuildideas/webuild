@@ -1,13 +1,20 @@
 // Packages
+import React, { useEffect } from 'react'
+import { useQuery } from '@apollo/client'
 import { graphql } from 'gatsby'
-import React from 'react'
-import { useRecoilValue } from 'recoil'
+import { useRecoilState } from 'recoil'
 
 // Common
 import { TypeInsight, TypeInsightTopic } from '@common/types/Insight'
 
+// GraphQL
+import {
+  INSIGHTS_LISTING_QUERY,
+  InsightsListingData
+} from '@modules/contentHub/graphql/queries'
+
 // Atoms
-import { filteredPostsAtom } from '@modules/contentHub/store/atoms'
+import { insightPostsAtom } from '@modules/contentHub/store/atoms'
 
 // Components
 import Meta from '@components/Meta'
@@ -20,9 +27,6 @@ interface Props {
     contentfulContentHub: {
       featuredInsight: TypeInsight
     }
-    allContentfulInsight: {
-      nodes: TypeInsight[]
-    }
   }
   pageContext: {
     topics: TypeInsightTopic[]
@@ -31,16 +35,35 @@ interface Props {
 
 const Insights = ({
   data: {
-    contentfulContentHub: { featuredInsight },
-    allContentfulInsight: { nodes: insights }
+    contentfulContentHub: { featuredInsight }
   },
   pageContext: { topics }
 }: Props) => {
-  const {
-    items: filteredItems,
-    loading: filterLoading,
-    fetched: filterFetched
-  } = useRecoilValue(filteredPostsAtom)
+  const { loading, error, data, refetch } = useQuery<InsightsListingData>(
+    INSIGHTS_LISTING_QUERY
+  )
+  const [
+    {
+      items: insights,
+      loading: insightsLoading,
+      filtersApplied: insightsFetched
+    },
+    setInsightPosts
+  ] = useRecoilState(insightPostsAtom)
+
+  const isLoading = loading || insightsLoading
+  const noFilteredItems = insightsFetched && insights.length === 0
+  const loadingOrNoItems = isLoading || noFilteredItems
+
+  useEffect(() => {
+    if (data && data?.insightCollection?.items) {
+      setInsightPosts({
+        items: data.insightCollection.items,
+        loading: false,
+        filtersApplied: false
+      })
+    }
+  }, [data, setInsightPosts])
 
   return (
     <div>
@@ -60,14 +83,11 @@ const Insights = ({
           <InsightFilters topics={topics} />
         </aside>
         <div className="col-span-12 xl:col-span-8">
-          {filterLoading ? (
-            <p>Loading...</p>
-          ) : filteredItems.length > 0 ? (
-            filteredItems.map((insight) => (
-              <ListingInsight key={`item-${insight.slug}`} insight={insight} />
-            ))
-          ) : filterFetched ? (
-            <p>No Items found</p>
+          {loadingOrNoItems ? (
+            <>
+              {isLoading ? <p>Loading</p> : null}
+              {noFilteredItems ? <p>No Insights found.</p> : null}
+            </>
           ) : (
             insights.map((insight) => (
               <ListingInsight key={`item-${insight.slug}`} insight={insight} />
@@ -79,8 +99,8 @@ const Insights = ({
   )
 }
 
-export const INSIGHTS_QUERY = graphql`
-  query insightsQuery {
+export const CONTENT_HUB_QUERY = graphql`
+  query contentHubQuery {
     contentfulContentHub(pageTitle: { eq: "Content Hub" }) {
       featuredInsight {
         type
@@ -93,20 +113,6 @@ export const INSIGHTS_QUERY = graphql`
             url
           }
         }
-      }
-    }
-    allContentfulInsight {
-      nodes {
-        slug
-        title
-        type
-        illustration {
-          file {
-            url
-          }
-        }
-        publishDate
-        topics
       }
     }
   }

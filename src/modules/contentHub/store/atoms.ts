@@ -4,17 +4,17 @@ import { atom } from 'recoil'
 // Common
 import { TypeInsight } from '@common/types/Insight'
 
-interface FilteredPostsState {
+interface InsightsState {
   items: TypeInsight[]
   loading: boolean
-  fetched: boolean
+  filtersApplied: boolean
 }
 
-export const filteredPostsAtom = atom<FilteredPostsState>({
-  key: 'FilteredPosts',
+export const insightPostsAtom = atom<InsightsState>({
+  key: 'Insights',
   default: {
     items: [],
     loading: false,
-    fetched: false
+    filtersApplied: false
   }
 })
