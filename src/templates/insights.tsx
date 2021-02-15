@@ -1,8 +1,9 @@
 // Packages
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useQuery } from '@apollo/client'
 import { graphql } from 'gatsby'
 import { useRecoilState } from 'recoil'
+import ReactPaginate from 'react-paginate'
 
 // Common
 import { TypeInsight, TypeInsightTopic } from '@common/types/Insight'
@@ -10,6 +11,7 @@ import { TypeInsight, TypeInsightTopic } from '@common/types/Insight'
 // GraphQL
 import {
   INSIGHTS_LISTING_QUERY,
+  InsightsListingArgs,
   InsightsListingData
 } from '@modules/contentHub/graphql/queries'
 
@@ -33,15 +35,25 @@ interface Props {
   }
 }
 
+const PAGINATION_LIMIT = 2
+
 const Insights = ({
   data: {
     contentfulContentHub: { featuredInsight }
   },
   pageContext: { topics }
 }: Props) => {
-  const { loading, error, data } = useQuery<InsightsListingData>(
-    INSIGHTS_LISTING_QUERY
-  )
+  const [skip, setSkip] = useState(0)
+  const [total, setTotal] = useState<number | null>(null)
+  const { loading, error, data, fetchMore } = useQuery<
+    InsightsListingData,
+    InsightsListingArgs
+  >(INSIGHTS_LISTING_QUERY, {
+    variables: {
+      skip,
+      limit: PAGINATION_LIMIT
+    }
+  })
   const [
     {
       items: insights,
@@ -55,8 +67,22 @@ const Insights = ({
   const noFilteredItems = insightsFetched && insights.length === 0
   const loadingOrNoItems = isLoading || noFilteredItems
 
+  const fetchMoreInsights = useCallback(
+    ({ selected }: { selected: number }) => {
+      const newSkip = selected * PAGINATION_LIMIT
+      fetchMore({
+        variables: {
+          skip: newSkip,
+          limit: PAGINATION_LIMIT
+        }
+      }).then(() => setSkip(newSkip))
+    },
+    [fetchMore]
+  )
+
   useEffect(() => {
     if (data && data?.insightCollection?.items) {
+      setTotal(data.insightCollection.total)
       setInsightPosts({
         items: data.insightCollection.items,
         loading: false,
@@ -96,6 +122,26 @@ const Insights = ({
               <ListingInsight key={`item-${insight.slug}`} insight={insight} />
             ))
           )}
+          <div>
+            {total ? (
+              <ReactPaginate
+                activeClassName="active bg-foundation text-electricViolet"
+                breakClassName="break-me"
+                breakLabel="..."
+                containerClassName="pagination flex items-center"
+                marginPagesDisplayed={2}
+                nextClassName="inline-block text-page-navigation"
+                nextLabel="Next"
+                onPageChange={fetchMoreInsights}
+                pageClassName="inline-block text-tag text-gray-700 rounded-1"
+                pageCount={Math.ceil(total / PAGINATION_LIMIT)}
+                pageLinkClassName="p-2 inline-block"
+                pageRangeDisplayed={5}
+                previousClassName="inline-block text-page-navigation"
+                previousLabel="Previous"
+              />
+            ) : null}
+          </div>
         </div>
       </div>
     </div>
