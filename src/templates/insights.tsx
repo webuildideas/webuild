@@ -39,7 +39,7 @@ const Insights = ({
   },
   pageContext: { topics }
 }: Props) => {
-  const { loading, error, data, refetch } = useQuery<InsightsListingData>(
+  const { loading, error, data } = useQuery<InsightsListingData>(
     INSIGHTS_LISTING_QUERY
   )
   const [
@@ -83,10 +83,13 @@ const Insights = ({
           <InsightFilters topics={topics} />
         </aside>
         <div className="col-span-12 xl:col-span-8">
-          {loadingOrNoItems ? (
+          {loadingOrNoItems || error ? (
             <>
               {isLoading ? <p>Loading</p> : null}
               {noFilteredItems ? <p>No Insights found.</p> : null}
+              {error ? (
+                <p>We had trouble fetching posts, please try again.</p>
+              ) : null}
             </>
           ) : (
             insights.map((insight) => (
