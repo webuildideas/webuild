@@ -1,15 +1,24 @@
 // Packages
+import React, { useEffect } from 'react'
+import { useQuery } from '@apollo/client'
 import { graphql } from 'gatsby'
-import React from 'react'
-import { useRecoilValue } from 'recoil'
+import { useRecoilState } from 'recoil'
 
 // Common
-import { TypeInsight } from '@common/types/Insight'
-import { filteredPostsAtom } from '@common/store/insights/atoms'
+import { TypeInsight, TypeInsightTopic } from '@common/types/Insight'
+
+// GraphQL
+import {
+  INSIGHTS_LISTING_QUERY,
+  InsightsListingData
+} from '@modules/contentHub/graphql/queries'
+
+// Atoms
+import { insightPostsAtom } from '@modules/contentHub/store/atoms'
 
 // Components
 import Meta from '@components/Meta'
-import Filters from '@components/Insights/Filters'
+import InsightFilters from '@modules/contentHub/components/InsightFilters'
 import ListingInsight from '@modules/contentHub/components/ListingInsight'
 import FeaturedInsight from '@modules/contentHub/components/FeaturedInsight'
 
@@ -18,29 +27,43 @@ interface Props {
     contentfulContentHub: {
       featuredInsight: TypeInsight
     }
-    allContentfulInsight: {
-      nodes: TypeInsight[]
-    }
   }
   pageContext: {
-    topics: string[]
+    topics: TypeInsightTopic[]
   }
 }
 
 const Insights = ({
   data: {
-    contentfulContentHub: { featuredInsight },
-    allContentfulInsight: { nodes: insights }
+    contentfulContentHub: { featuredInsight }
   },
   pageContext: { topics }
 }: Props) => {
-  // eslint-disable-next-line no-console
-  console.log('Featured Insight', featuredInsight)
-  const {
-    items: filteredItems,
-    loading: filterLoading,
-    fetched: filterFetched
-  } = useRecoilValue(filteredPostsAtom)
+  const { loading, error, data } = useQuery<InsightsListingData>(
+    INSIGHTS_LISTING_QUERY
+  )
+  const [
+    {
+      items: insights,
+      loading: insightsLoading,
+      filtersApplied: insightsFetched
+    },
+    setInsightPosts
+  ] = useRecoilState(insightPostsAtom)
+
+  const isLoading = loading || insightsLoading
+  const noFilteredItems = insightsFetched && insights.length === 0
+  const loadingOrNoItems = isLoading || noFilteredItems
+
+  useEffect(() => {
+    if (data && data?.insightCollection?.items) {
+      setInsightPosts({
+        items: data.insightCollection.items,
+        loading: false,
+        filtersApplied: false
+      })
+    }
+  }, [data, setInsightPosts])
 
   return (
     <div>
@@ -55,19 +78,19 @@ const Insights = ({
       <div className="pr-8 lg:px-11 mb-8 lg:mb-12">
         {featuredInsight ? <FeaturedInsight insight={featuredInsight} /> : null}
       </div>
-      <div className="grid grid-cols-12 lg:gap-8 px-8">
-        <aside className="col-span-12 lg:col-span-3 mb-16">
-          <Filters topics={topics} />
+      <div className="grid grid-cols-12 xl:gap-8 px-8">
+        <aside className="col-span-12 xl:col-span-3 mb-16">
+          <InsightFilters topics={topics} />
         </aside>
-        <div className="col-span-12 lg:col-span-8">
-          {filterLoading ? (
-            <p>Loading...</p>
-          ) : filteredItems.length > 0 ? (
-            filteredItems.map((insight) => (
-              <ListingInsight key={`item-${insight.slug}`} insight={insight} />
-            ))
-          ) : filterFetched ? (
-            <p>No Items found</p>
+        <div className="col-span-12 xl:col-span-8">
+          {loadingOrNoItems || error ? (
+            <>
+              {isLoading ? <p>Loading</p> : null}
+              {noFilteredItems ? <p>No Insights found.</p> : null}
+              {error ? (
+                <p>We had trouble fetching posts, please try again.</p>
+              ) : null}
+            </>
           ) : (
             insights.map((insight) => (
               <ListingInsight key={`item-${insight.slug}`} insight={insight} />
@@ -79,8 +102,8 @@ const Insights = ({
   )
 }
 
-export const INSIGHTS_QUERY = graphql`
-  query insightsQuery {
+export const CONTENT_HUB_QUERY = graphql`
+  query contentHubQuery {
     contentfulContentHub(pageTitle: { eq: "Content Hub" }) {
       featuredInsight {
         type
@@ -93,20 +116,6 @@ export const INSIGHTS_QUERY = graphql`
             url
           }
         }
-      }
-    }
-    allContentfulInsight {
-      nodes {
-        slug
-        title
-        type
-        illustration {
-          file {
-            url
-          }
-        }
-        publishDate
-        topics
       }
     }
   }

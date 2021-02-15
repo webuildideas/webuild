@@ -56,6 +56,9 @@ module.exports = {
     'no-nested-ternary': 0,
     'consistent-return': 0,
     'no-shadow': 'off',
+    'jsx-a11y/interactive-supports-focus': 0,
+    'jsx-a11y/no-noninteractive-element-interactions': 0,
+    'jsx-a11y/click-events-have-key-events': 0,
     '@typescript-eslint/no-shadow': ['error'],
     'react/jsx-filename-extension': [
       1,

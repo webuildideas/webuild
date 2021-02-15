@@ -15,7 +15,8 @@ module.exports = {
       7: '28px',
       8: '32px',
       9: '36px',
-      10: '40px'
+      10: '40px',
+      full: '9999px'
     },
 
     boxShadow: {
@@ -133,10 +134,10 @@ module.exports = {
       xl: '1440px',
       '2xl': '1536px',
       maxSm: { max: '425px' },
-      maxMd: { min: '426px', max: '768px' },
-      maxLg: { min: '769px', max: '1024px' },
-      maxXl: { min: '1025px', max: '1440px' },
-      max2xl: { min: '1441px', max: '1536px' }
+      maxMd: { max: '768px' },
+      maxLg: { max: '1024px' },
+      maxXl: { max: '1440px' },
+      max2xl: { max: '1536px' }
     },
 
     spacing: {
@@ -195,5 +196,5 @@ module.exports = {
       50: '200px'
     }
   },
-  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')]
+  plugins: [require('@tailwindcss/typography')]
 }

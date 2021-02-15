@@ -29,7 +29,11 @@
     "typescriptreact"
   ],
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
   },
-  "prettier.disableLanguages": ["javascript", "javascriptreact", "typescript", "typescriptreact"]
+  "prettier.disableLanguages": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false
 }
