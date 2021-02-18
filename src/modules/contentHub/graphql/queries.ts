@@ -1,9 +1,15 @@
 import { gql, QueryResult } from '@apollo/client'
-import { TypeInsight } from '@common/types/Insight'
+import {
+  TypeInsight,
+  TypeInsightTopic,
+  TypeInsightType
+} from '@common/types/Insight'
 
 export interface InsightsListingArgs {
   skip: number
   limit: number
+  topics: TypeInsightTopic[]
+  types: TypeInsightType[]
 }
 
 export interface InsightsListingData extends QueryResult {
