@@ -84,6 +84,7 @@ const Insights = ({
 
   const noInisights = data?.insightCollection.items.length === 0
   const loadingOrNoItems = loading || noInisights
+  const showPagination = total && total > PAGINATION_LIMIT
 
   const fetchMoreInsights = useCallback(
     ({ selected }: { selected: number }) => {
@@ -149,7 +150,6 @@ const Insights = ({
           filters: [...prevState.filters, name]
         }
       })
-      // TODO: Figure out how to pass prev state here
       fetchMore({
         variables: {
           skip: 0,
@@ -212,7 +212,6 @@ const Insights = ({
           noFilters: prevState.noFilters
         }
       })
-      // TODO: Figure out how to pass prev state here
       fetchMore({
         variables: {
           skip: 0,
@@ -276,7 +275,7 @@ const Insights = ({
             ))
           )}
           <div>
-            {total ? (
+            {showPagination ? (
               <ReactPaginate
                 activeClassName="active bg-foundation text-electricViolet"
                 breakClassName="break-me"
