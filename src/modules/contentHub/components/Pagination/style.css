@@ -1,0 +1,45 @@
+.Pagination {
+  @apply flex;
+  @apply items-center;
+  @apply justify-between;
+}
+
+.Pagination-page {
+  @apply inline-block;
+  @apply rounded-1;
+  @apply text-gray-700;
+  @apply hover:bg-foundation;
+  @apply hover:text-electricViolet;
+  button {
+    @apply border-none;
+    @apply p-2;
+  }
+}
+
+.Pagination-page.is-active {
+  @apply text-electricViolet;
+  @apply bg-foundation;
+  button {
+    @apply font-bold;
+  }
+}
+
+.Pagination-next,
+.Pagination-prev {
+  @apply inline-block;
+  button {
+    @apply border-none;
+  }
+  &:hover {
+    button {
+      @apply text-electricViolet;
+      @apply font-bold;
+    }
+  }
+}
+
+.Pagination-break {
+  button {
+    @apply border-none;
+  }
+}

@@ -2,7 +2,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useQuery } from '@apollo/client'
 import { graphql } from 'gatsby'
-import ReactPaginate from 'react-paginate'
 
 // Common
 import {
@@ -23,6 +22,7 @@ import Meta from '@components/Meta'
 import InsightFilters from '@modules/contentHub/components/InsightFilters'
 import ListingInsight from '@modules/contentHub/components/ListingInsight'
 import FeaturedInsight from '@modules/contentHub/components/FeaturedInsight'
+import Pagination from '@modules/contentHub/components/Pagination'
 
 interface Props {
   data: {
@@ -276,21 +276,12 @@ const Insights = ({
           )}
           <div>
             {showPagination ? (
-              <ReactPaginate
-                activeClassName="active bg-foundation text-electricViolet"
-                breakClassName="break-me"
-                breakLabel="..."
-                containerClassName="pagination flex items-center"
+              <Pagination
                 marginPagesDisplayed={2}
-                nextClassName="inline-block text-page-navigation hover:text-electricViolet"
-                nextLabel="Next"
                 onPageChange={fetchMoreInsights}
-                pageClassName="inline-block text-tag text-gray-700 rounded-1 hover:bg-foundation hover:text-electricViolet"
-                pageCount={Math.ceil(total / PAGINATION_LIMIT)}
-                pageLinkClassName="p-2 inline-block"
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                pageCount={Math.ceil(total! / PAGINATION_LIMIT)}
                 pageRangeDisplayed={5}
-                previousClassName="inline-block text-page-navigation hover:text-electricViolet"
-                previousLabel="Previous"
               />
             ) : null}
           </div>
