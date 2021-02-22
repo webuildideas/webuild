@@ -22,6 +22,7 @@ import {
 import Meta from '@components/Meta'
 import InsightFilters from '@modules/contentHub/components/InsightFilters'
 import ListingInsight from '@modules/contentHub/components/ListingInsight'
+import ListingInsightSkeleton from '@modules/contentHub/components/ListingInsightSkeleton'
 import FeaturedInsight from '@modules/contentHub/components/FeaturedInsight'
 import Pagination from '@modules/contentHub/components/Pagination'
 
@@ -259,7 +260,16 @@ const Insights = ({
         <div className="col-span-12 xl:col-span-8">
           {loadingOrNoItems || error ? (
             <>
-              {loading ? <p>Loading</p> : null}
+              {loading ? (
+                <>
+                  <ListingInsightSkeleton />
+                  <ListingInsightSkeleton />
+                  <ListingInsightSkeleton />
+                  <ListingInsightSkeleton />
+                  <ListingInsightSkeleton />
+                  <ListingInsightSkeleton />
+                </>
+              ) : null}
               {noInisights ? (
                 <p className="text-h3">
                   No insights match that search. Please try again or view all
