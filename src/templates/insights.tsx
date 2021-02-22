@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 // Packages
 import React, { useCallback, useEffect, useState } from 'react'
 import { useQuery } from '@apollo/client'
@@ -277,9 +278,8 @@ const Insights = ({
           <div>
             {showPagination ? (
               <Pagination
-                marginPagesDisplayed={2}
+                marginPagesDisplayed={1}
                 onPageChange={fetchMoreInsights}
-                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                 pageCount={Math.ceil(total! / PAGINATION_LIMIT)}
                 pageRangeDisplayed={5}
               />

@@ -30,6 +30,12 @@
   button {
     @apply border-none;
   }
+  svg {
+    width: 24px;
+    height: 24px;
+    @apply text-gray-500;
+    @apply hover:text-electricViolet;
+  }
   &:hover {
     button {
       @apply text-electricViolet;

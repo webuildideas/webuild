@@ -6,6 +6,8 @@ import React, { useState, useCallback, useEffect } from 'react'
 import { classNames } from '@common/utils/classNames'
 
 // Components
+import ArrowRight from '@static/svgs/common/arrow-simple-right.inline.svg'
+import ArrowLeft from '@static/svgs/common/arrow-simple-left.inline.svg'
 import PageView from './PageView'
 import BreakView from './BreakView'
 
@@ -217,7 +219,8 @@ const Pagination = ({
           onClick={handlePreviousPage}
           type="button"
         >
-          Previous
+          <span className="hidden lg:inline-block">Previous</span>
+          <ArrowLeft className="lg:hidden" />
         </button>
       </div>
 
@@ -229,7 +232,8 @@ const Pagination = ({
           onClick={handleNextPage}
           type="button"
         >
-          Next
+          <span className="hidden lg:inline-block">Next</span>
+          <ArrowRight className="lg:hidden" />
         </button>
       </div>
     </div>
