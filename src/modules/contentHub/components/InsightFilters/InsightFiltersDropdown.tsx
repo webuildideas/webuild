@@ -8,7 +8,7 @@ import Arrow from '@static/svgs/common/arrow-simple-down.inline.svg'
 // Common
 import { TypeInsightTopic, TypeInsightType } from '@common/types/Insight'
 import { classNames } from '@common/utils/classNames'
-import { FilterState } from '.'
+import { FilterState } from '../../../../templates/insights'
 
 // Styles
 import './style.css'
