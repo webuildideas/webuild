@@ -5,6 +5,13 @@
     @apply grid-cols-2;
     @apply items-center;
   }
+  @screen xl {
+    &:hover {
+      .ListingInsight-illustration img {
+        filter: grayscale(0%);
+      }
+    }
+  }
 }
 
 .ListingInsight-content {
@@ -12,6 +19,9 @@
   @screen md {
     @apply p-6;
     @apply pr-0;
+  }
+  @screen xl {
+    @apply z-10;
   }
 }
 
@@ -22,5 +32,11 @@
   @screen md {
     @apply bg-gray-200;
     min-width: 462px;
+  }
+}
+
+.ListingInsight-illustration img {
+  @screen xl {
+    filter: grayscale(100%);
   }
 }

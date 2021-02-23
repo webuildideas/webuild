@@ -10,6 +10,7 @@ import {
   TypeInsightTopic,
   TypeInsightType
 } from '@common/types/Insight'
+import '@common/styles/templates/insights.css'
 
 // GraphQL
 import {
@@ -235,20 +236,23 @@ const Insights = ({
   }, [data])
 
   return (
-    <div>
+    <div className="InsightsPage">
       <Meta title="Insights" />
-      <div className="px-8 lg:px-11">
-        <h1 className="mb-4 text-h1">Insights & Ideas</h1>
-        <p className="text-title-subheading mb-8">
-          A collection of thoughts we are most proud of, from all faces of our
-          diverse team.
-        </p>
+      <div className="InsightsPage-header">
+        <div className="InsightsPage-header-content">
+          <h1 className="mb-4 text-h1">Insights & Ideas</h1>
+          <p className="text-title-subheading">
+            A collection of thoughts we are most proud of, from all faces of our
+            diverse team.
+          </p>
+        </div>
       </div>
-      <div className="pr-8 lg:px-11 mb-8 lg:mb-12">
+      <div className="InsightsPage-feature">
         {featuredInsight ? <FeaturedInsight insight={featuredInsight} /> : null}
       </div>
-      <div className="grid grid-cols-12 xl:gap-8 px-8 pb-30">
-        <aside className="col-span-12 xl:col-span-3 mb-16">
+
+      <div className="InsightsPage-main">
+        <aside className="InsightsPage-filters">
           <InsightFilters
             createOnTopicClickHandler={createOnTopicClickHandler}
             createOnTypeClickHandler={createOnTypeClickHandler}
@@ -258,7 +262,8 @@ const Insights = ({
             typesFilter={typesFilter}
           />
         </aside>
-        <div className="col-span-12 xl:col-span-8">
+
+        <div className="InsightsPage-insights">
           {loadingOrNoItems || error ? (
             <>
               {loading ? (
@@ -286,17 +291,25 @@ const Insights = ({
               <ListingInsight key={`item-${insight.slug}`} insight={insight} />
             ))
           )}
-          <div>
-            {showPagination ? (
-              <Pagination
-                marginPagesDisplayed={1}
-                onPageChange={fetchMoreInsights}
-                pageCount={Math.ceil(total! / PAGINATION_LIMIT)}
-                pageRangeDisplayed={5}
-              />
-            ) : null}
-          </div>
         </div>
+
+        <div className="InsightsPage-pagination">
+          {showPagination ? (
+            <Pagination
+              marginPagesDisplayed={1}
+              onPageChange={fetchMoreInsights}
+              pageCount={Math.ceil(total! / PAGINATION_LIMIT)}
+              pageRangeDisplayed={5}
+            />
+          ) : null}
+        </div>
+
+        <aside className="InsightsPage-ctas">
+          <div className="bg-foundation w-full">
+            <h4>Learn From Us</h4>
+          </div>
+          <div className="bg-gray-300 w-full">Get The Book</div>
+        </aside>
       </div>
       <Footer />
     </div>
