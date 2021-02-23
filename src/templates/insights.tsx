@@ -25,6 +25,7 @@ import ListingInsight from '@modules/contentHub/components/ListingInsight'
 import ListingInsightSkeleton from '@modules/contentHub/components/ListingInsightSkeleton'
 import FeaturedInsight from '@modules/contentHub/components/FeaturedInsight'
 import Pagination from '@modules/contentHub/components/Pagination'
+import Footer from '@components/Footer'
 
 interface Props {
   data: {
@@ -297,6 +298,7 @@ const Insights = ({
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   )
 }
