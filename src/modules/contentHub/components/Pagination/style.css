@@ -10,6 +10,7 @@
   @apply text-gray-700;
   @apply hover:bg-foundation;
   @apply hover:text-electricViolet;
+  @apply mx-1;
   button {
     @apply border-none;
     @apply p-2;

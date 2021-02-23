@@ -3,6 +3,7 @@
   @apply mb-2;
   @apply flex;
   @apply items-center;
+  @apply hover:text-electricViolet;
 }
 
 .Insight-filters-item::before {

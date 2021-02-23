@@ -113,6 +113,14 @@
     }
   }
 
+  .text-button {
+    @apply text-base;
+    @apply leading-normal;
+    @apply font-extrabold;
+    @apply uppercase;
+    @apply text-center;
+  }
+
   .text-tag {
     @apply text-sm;
     @apply leading-normal;
