@@ -195,6 +195,5 @@ module.exports = {
       49: '196px',
       50: '200px'
     }
-  },
-  plugins: [require('@tailwindcss/typography')]
+  }
 }

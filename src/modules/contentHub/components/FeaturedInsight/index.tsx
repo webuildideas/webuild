@@ -6,7 +6,7 @@ import { Link } from 'gatsby'
 import { TypeInsight } from '@common/types/Insight'
 
 // Components
-import InsightTags from '@modules/contentHub/components/InsightTags'
+import InsightTags from '@modules/common/components/InsightTags'
 
 interface Props {
   insight: TypeInsight

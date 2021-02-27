@@ -1,6 +1,5 @@
 // Packages
-import React from 'react'
-import dayjs from 'dayjs'
+import React, { useEffect, useRef, useState } from 'react'
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import { BLOCKS } from '@contentful/rich-text-types'
 import { Options } from '@contentful/rich-text-react-renderer'
@@ -9,12 +8,16 @@ import Img from 'gatsby-image'
 
 // Common
 import { TypeInsight } from '@common/types/Insight'
-import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
 
 // Components
 import Meta from '@components/Meta'
 import SocialShare from '@components/Insight/SocialShare'
 import ReadNext from '@components/Insight/ReadNext'
+import InsightTags from '@modules/common/components/InsightTags'
+import { getEstimatedReadingTime } from '@modules/insight/utils'
+import Author from '@modules/insight/components/Author'
+
+import '@common/styles/templates/insight.css'
 
 interface Props {
   data: {
@@ -29,6 +32,25 @@ const options: Options = {
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
       return <Img durationFadeIn={125} fadeIn fluid={node.data.target.fluid} />
+    },
+    [BLOCKS.HEADING_2]: (_, children) => (
+      <h2 className="Article-h2 text-h2 mb-4">{children}</h2>
+    ),
+    [BLOCKS.HEADING_3]: (_, children) => (
+      <h3 className="Article-h3 text-h3 mb-4">{children}</h3>
+    ),
+    [BLOCKS.HEADING_4]: (_, children) => (
+      <h4 className="Article-h4 text-h4 mb-6">{children}</h4>
+    ),
+    [BLOCKS.PARAGRAPH]: (_, children) => (
+      <p className="Article-paragraph text-body mb-6">{children}</p>
+    ),
+    [BLOCKS.QUOTE]: (node, children) => {
+      return (
+        <blockquote className="Article-blockquote text-h2">
+          {children}
+        </blockquote>
+      )
     }
   }
 }
@@ -39,53 +61,72 @@ const Insight = ({
     allContentfulInsight: { nodes: relatedInsightsByTopic }
   }
 }: Props) => {
+  const [estReadTime, setEstReadTime] = useState<number>()
+  const articleRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (articleRef.current) {
+      const wordCount = articleRef.current.innerText.trim().split(/\s+/).length
+      const readTime = getEstimatedReadingTime(wordCount)
+      setEstReadTime(readTime)
+    }
+  }, [articleRef])
+
   return (
-    <SiteMaxWidthContainer className="grid grid-cols-12 gap-8">
+    <main className="grid grid-cols-12 gap-8">
       <Meta title={insight.title} />
-      <article className="prose mx-auto pt-16 pb-12 md:px-0 col-span-12 md:col-span-8">
-        <h1 className="text-xl lg:mb-0">{insight.title}</h1>
-        <div className="flex items-center">
+      <div className="pt-16 pb-12 col-span-12 md:col-span-8">
+        <div className="px-6 md:px-8">
+          <InsightTags
+            className="mb-6"
+            topics={insight.topics}
+            type={insight.type}
+          />
+          <h1 className="text-h1 mb-4">{insight.title}</h1>
+          {insight.subtitle ? (
+            <h2 className="text-title-subheading">{insight.subtitle}</h2>
+          ) : null}
           {insight.author ? (
-            <>
-              <Img
-                alt={`${insight.author.name} Headshot`}
-                className="rounded-full mr-4 inline-block"
-                durationFadeIn={150}
-                fadeIn
-                fixed={insight.author.headshot.fixed}
-                imgStyle={{ marginTop: 0, marginBottom: 0 }}
-              />
-              <p key={`${insight.author.name}`} className="inline">
-                by {insight.author.name} on{' '}
-                {dayjs(insight.publishDate).format('MMMM DD, YYYY')}
-              </p>
-            </>
+            <Author
+              author={insight.author}
+              estReadTime={estReadTime}
+              publishDate={insight.publishDate}
+            />
           ) : null}
         </div>
-        <SocialShare
-          hashtags={insight.hashtags}
-          shareQuote={insight.shareQuote?.shareQuote}
-          title={insight.title}
-        />
-        {insight.content ? renderRichText(insight.content, options) : null}
-      </article>
+        <article
+          ref={articleRef}
+          className="Article mt-14 px-6 md:px-8"
+          id="article"
+        >
+          {insight.content ? renderRichText(insight.content, options) : null}
+        </article>
+      </div>
+      <SocialShare
+        hashtags={insight.hashtags}
+        shareQuote={insight.shareQuote?.shareQuote}
+        title={insight.title}
+      />
       <ReadNext
         className="col-span-12 md:col-span-3 pb-8 md:pt-16 md:pb-12"
         posts={insight.readNext}
         relatedPostsByTopic={relatedInsightsByTopic}
       />
-    </SiteMaxWidthContainer>
+    </main>
   )
 }
 
 export const query = graphql`
   query insightQuery($slug: String!, $topics: [String]) {
     contentfulInsight(slug: { eq: $slug }) {
+      type
+      topics
       title
+      subtitle
       author {
         name
         headshot {
-          fixed(cropFocus: FACE, height: 50, width: 50) {
+          fixed(cropFocus: FACE, height: 48, width: 48) {
             ...GatsbyContentfulFixed_withWebp_noBase64
           }
         }

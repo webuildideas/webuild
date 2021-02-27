@@ -8,7 +8,7 @@ import { WithClassName } from '@common/types/Utilities'
 import useWindowSize from '@common/hooks/useWindowSize'
 
 // Components
-import InsightTags from '@modules/contentHub/components/InsightTags'
+import InsightTags from '@modules/common/components/InsightTags'
 
 // Assets
 import listingIllustrationDefaultSrc from '@static/svgs/insights/default-insight-listing.svg'
@@ -29,12 +29,9 @@ const ListingInsight = ({
   const { width } = useWindowSize()
   const contentContainerRef = useRef<HTMLDivElement>(null)
   const illustrationContainerRef = useRef<HTMLDivElement>(null)
-  const [illustrationHeight, setIllustrationHeight] = useState<
-    | {
-        height: string
-      }
-    | undefined
-  >()
+  const [illustrationHeight, setIllustrationHeight] = useState<{
+    height: string
+  }>()
 
   useEffect(() => {
     const setHeight = setTimeout(() => {
