@@ -11,8 +11,8 @@ import { TypeInsight } from '@common/types/Insight'
 
 // Components
 import Meta from '@components/Meta'
-import SocialShare from '@components/Insight/SocialShare'
-import ReadNext from '@components/Insight/ReadNext'
+import SocialShare from '@modules/insight/components/SocialShare'
+import ReadNext from '@modules/insight/components/ReadNext'
 import InsightTags from '@modules/common/components/InsightTags'
 import { getEstimatedReadingTime } from '@modules/insight/utils'
 import Author from '@modules/insight/components/Author'
@@ -31,7 +31,14 @@ interface Props {
 const options: Options = {
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
-      return <Img durationFadeIn={125} fadeIn fluid={node.data.target.fluid} />
+      const caption = node.data.target.description
+
+      return (
+        <div>
+          <Img durationFadeIn={125} fadeIn fluid={node.data.target.fluid} />
+          {caption ? <p className="text-caption">{caption}</p> : null}
+        </div>
+      )
     },
     [BLOCKS.HEADING_2]: (_, children) => (
       <h2 className="Article-h2 text-h2 mb-4">{children}</h2>
@@ -102,11 +109,13 @@ const Insight = ({
           {insight.content ? renderRichText(insight.content, options) : null}
         </article>
       </div>
-      <SocialShare
-        hashtags={insight.hashtags}
-        shareQuote={insight.shareQuote?.shareQuote}
-        title={insight.title}
-      />
+      <div className="col-span-12 px-6 pb-8 md:px-8 md:col-span-3 md:pt-16 md:pb-12">
+        <SocialShare
+          hashtags={insight.hashtags}
+          shareQuote={insight.shareQuote?.shareQuote}
+          title={insight.title}
+        />
+      </div>
       <ReadNext
         className="col-span-12 md:col-span-3 pb-8 md:pt-16 md:pb-12"
         posts={insight.readNext}
@@ -138,6 +147,7 @@ export const query = graphql`
           contentful_id
           ... on ContentfulAsset {
             id
+            description
             fluid(maxWidth: 800) {
               ...GatsbyContentfulFluid_withWebp_noBase64
             }

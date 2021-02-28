@@ -6,8 +6,8 @@ import React, { useState, useCallback, useEffect } from 'react'
 import { classNames } from '@common/utils/classNames'
 
 // Components
-import ArrowRight from '@static/svgs/common/arrow-simple-right.inline.svg'
-import ArrowLeft from '@static/svgs/common/arrow-simple-left.inline.svg'
+import ArrowRight from '@static/svgs/common/arrows/arrow-simple-right.inline.svg'
+import ArrowLeft from '@static/svgs/common/arrows/arrow-simple-left.inline.svg'
 import PageView from './PageView'
 import BreakView from './BreakView'
 

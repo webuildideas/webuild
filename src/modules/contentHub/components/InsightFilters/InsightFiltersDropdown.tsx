@@ -3,7 +3,7 @@ import React, { memo, useState } from 'react'
 import { kebabCase } from 'lodash'
 
 // Icons
-import Arrow from '@static/svgs/common/arrow-simple-down.inline.svg'
+import Arrow from '@static/svgs/common/arrows/arrow-simple-down.inline.svg'
 
 // Common
 import { TypeInsightTopic, TypeInsightType } from '@common/types/Insight'
