@@ -8,9 +8,12 @@ import { TypeAuthor } from '@common/types/Author'
 
 interface Props {
   author: TypeAuthor
-  publishDate: string
+  publishDate?: string
   estReadTime?: number
 }
+
+const authorStyle = { width: '50px', height: '50px' }
+const authorImgStyle = { marginTop: 0, marginBottom: 0 }
 
 const Author = ({ author, estReadTime, publishDate }: Props) => {
   return (
@@ -21,16 +24,19 @@ const Author = ({ author, estReadTime, publishDate }: Props) => {
         durationFadeIn={150}
         fadeIn
         fixed={author.headshot.fixed}
-        imgStyle={{ marginTop: 0, marginBottom: 0 }}
+        imgStyle={authorImgStyle}
+        style={authorStyle}
       />
       <div>
         <p key={`${author.name}`} className="text-body">
           {author.name}
         </p>
-        <p className="text-caption">
-          {dayjs(publishDate).format('MMMM DD, YYYY')}{' '}
-          {estReadTime ? <span>| {estReadTime} minute read</span> : null}
-        </p>
+        {publishDate ? (
+          <p className="text-caption">
+            {dayjs(publishDate).format('MMMM DD, YYYY')}{' '}
+            {estReadTime ? <span>| {estReadTime} minute read</span> : null}
+          </p>
+        ) : null}
       </div>
     </div>
   )

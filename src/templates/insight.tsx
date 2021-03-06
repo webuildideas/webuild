@@ -117,7 +117,7 @@ const Insight = ({
         />
       </div>
       <ReadNext
-        className="col-span-12 md:col-span-3 pb-8 md:pt-16 md:pb-12"
+        className="col-span-12 pb-8 pl-6 border-solid border-t border-gray-400 pt-10 md:col-span-3 md:pl-8 md:pt-16 md:pb-12"
         posts={insight.readNext}
         relatedPostsByTopic={relatedInsightsByTopic}
       />
@@ -135,7 +135,7 @@ export const query = graphql`
       author {
         name
         headshot {
-          fixed(cropFocus: FACE, height: 48, width: 48) {
+          fixed(cropFocus: FACE, height: 96, width: 96) {
             ...GatsbyContentfulFixed_withWebp_noBase64
           }
         }
@@ -157,9 +157,17 @@ export const query = graphql`
       publishDate
       hashtags
       readNext {
+        type
         title
         slug
-        topics
+        author {
+          name
+          headshot {
+            fixed(cropFocus: FACE, height: 48, width: 48) {
+              ...GatsbyContentfulFixed_withWebp_noBase64
+            }
+          }
+        }
       }
       shareQuote {
         shareQuote
@@ -170,8 +178,17 @@ export const query = graphql`
       limit: 5
     ) {
       nodes {
+        type
         title
         slug
+        author {
+          name
+          headshot {
+            fixed(cropFocus: FACE, height: 48, width: 48) {
+              ...GatsbyContentfulFixed_withWebp_noBase64
+            }
+          }
+        }
       }
     }
   }
