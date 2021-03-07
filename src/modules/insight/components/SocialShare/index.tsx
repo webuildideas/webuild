@@ -10,8 +10,9 @@ import {
 import FbIcon from '@static/svgs/common/logos/facebook-filled.inline.svg'
 import TwitterIcon from '@static/svgs/common/logos/twitter-filled.inline.svg'
 import LinkedinIcon from '@static/svgs/common/logos/linkedin-filled.inline.svg'
+import { WithClassName } from '@common/types/Utilities'
 
-interface Props {
+interface Props extends WithClassName {
   title: string
   shareUrl?: string
   shareQuote?: string
@@ -24,13 +25,11 @@ const SocialShare = ({
   title,
   shareUrl = 'https://webuild.io/',
   shareQuote,
-  hashtags
+  hashtags,
+  className
 }: Props) => {
   return (
-    <div
-      className="flex justify-between items-center"
-      style={socialContainerStyle}
-    >
+    <div className={className} style={socialContainerStyle}>
       <LinkedinShareButton
         source="webuild"
         summary={shareQuote}

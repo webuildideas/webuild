@@ -9,14 +9,17 @@ import { TypeInsight } from '@common/types/Insight'
 // Components
 import InsightTags from '@modules/common/components/InsightTags'
 
+import './style.css'
+
 const authorStyle = { width: '24px', height: '24px' }
 const authorImgStyle = { marginTop: 0, marginBottom: 0 }
+const insightStyle = { maxWidth: '350px' }
 
 const ReadNextInsight = ({ insight }: { insight: TypeInsight }) => {
   return (
     <Link
-      className="block bg-gray-200 mb-4 p-8 mr-6"
-      style={{ minWidth: '300px' }}
+      className="ReadNextInsight block bg-gray-200 p-8 mr-6"
+      style={insightStyle}
       to={`/${insight.slug}`}
     >
       <InsightTags type={insight.type} />
@@ -33,7 +36,7 @@ const ReadNextInsight = ({ insight }: { insight: TypeInsight }) => {
         <p className="text-caption ml-2">{insight.author.name}</p>
       </div>
       <h2 className="text-h3 mb-6">{insight.title}</h2>
-      <p className="text-electricViolet">Read More</p>
+      <p className="ReadNextInsight-read-more">Read More</p>
     </Link>
   )
 }

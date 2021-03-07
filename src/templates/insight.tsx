@@ -16,6 +16,7 @@ import ReadNext from '@modules/insight/components/ReadNext'
 import InsightTags from '@modules/common/components/InsightTags'
 import { getEstimatedReadingTime } from '@modules/insight/utils'
 import Author from '@modules/insight/components/Author'
+import Footer from '@components/Footer'
 
 import '@common/styles/templates/insight.css'
 
@@ -34,27 +35,29 @@ const options: Options = {
       const caption = node.data.target.description
 
       return (
-        <div>
+        <div className="Article-img">
           <Img durationFadeIn={125} fadeIn fluid={node.data.target.fluid} />
           {caption ? <p className="text-caption">{caption}</p> : null}
         </div>
       )
     },
     [BLOCKS.HEADING_2]: (_, children) => (
-      <h2 className="Article-h2 text-h2 mb-4">{children}</h2>
+      <h2 className="Article-copy Article-h2 text-h2 mb-4">{children}</h2>
     ),
     [BLOCKS.HEADING_3]: (_, children) => (
-      <h3 className="Article-h3 text-h3 mb-4">{children}</h3>
+      <h3 className="Article-copy Article-h3 text-h3 mb-4">{children}</h3>
     ),
     [BLOCKS.HEADING_4]: (_, children) => (
-      <h4 className="Article-h4 text-h4 mb-6">{children}</h4>
+      <h4 className="Article-copy Article-h4 text-h4 mb-6">{children}</h4>
     ),
     [BLOCKS.PARAGRAPH]: (_, children) => (
-      <p className="Article-paragraph text-body mb-6">{children}</p>
+      <p className="Article-copy Article-paragraph text-body mb-6">
+        {children}
+      </p>
     ),
     [BLOCKS.QUOTE]: (node, children) => {
       return (
-        <blockquote className="Article-blockquote text-h2">
+        <blockquote className="Article-copy Article-blockquote text-h2">
           {children}
         </blockquote>
       )
@@ -80,10 +83,10 @@ const Insight = ({
   }, [articleRef])
 
   return (
-    <main className="grid grid-cols-12 gap-8">
-      <Meta title={insight.title} />
-      <div className="pt-16 pb-12 col-span-12 md:col-span-8">
-        <div className="px-6 md:px-8">
+    <>
+      <main className="Article-grid">
+        <Meta title={insight.title} />
+        <div className="Article-header">
           <InsightTags
             className="mb-6"
             topics={insight.topics}
@@ -101,27 +104,34 @@ const Insight = ({
             />
           ) : null}
         </div>
-        <article
-          ref={articleRef}
-          className="Article mt-14 px-6 md:px-8"
-          id="article"
-        >
+        <article ref={articleRef} className="Article" id="article">
           {insight.content ? renderRichText(insight.content, options) : null}
         </article>
-      </div>
-      <div className="col-span-12 px-6 pb-8 md:px-8 md:col-span-3 md:pt-16 md:pb-12">
-        <SocialShare
-          hashtags={insight.hashtags}
-          shareQuote={insight.shareQuote?.shareQuote}
-          title={insight.title}
+        <div className="Article-share">
+          <SocialShare
+            className="Article-share-items"
+            hashtags={insight.hashtags}
+            shareQuote={insight.shareQuote?.shareQuote}
+            title={insight.title}
+          />
+        </div>
+        <ReadNext
+          className="Article-read-next"
+          posts={insight.readNext}
+          relatedPostsByTopic={relatedInsightsByTopic}
         />
-      </div>
-      <ReadNext
-        className="col-span-12 pb-8 pl-6 border-solid border-t border-gray-400 pt-10 md:col-span-3 md:pl-8 md:pt-16 md:pb-12"
-        posts={insight.readNext}
-        relatedPostsByTopic={relatedInsightsByTopic}
-      />
-    </main>
+
+        <div className="Article-ctas">
+          <div className="bg-lavender" style={{ height: '400px' }}>
+            Learn From Us
+          </div>
+          <div className="bg-gray-100" style={{ height: '400px' }}>
+            Get The Book
+          </div>
+        </div>
+      </main>
+      <Footer />
+    </>
   )
 }
 
