@@ -15,22 +15,27 @@ import SelectField from '@modules/common/components/SelectField'
 
 // Style
 import './style.css'
+import { COUNTRIES } from '@common/constants/countries'
+import Checkbox from '@modules/common/components/Checkbox'
 
 interface FormValues {
   'Email Address': string
   Country: string
+  'Privacy Notice': boolean
 }
 
 const initialFormValues: FormValues = {
   'Email Address': '',
-  Country: ''
+  Country: 'United States',
+  'Privacy Notice': false
 }
 
 const formSchema = Yup.object().shape({
   Country: Yup.string().required('This field is required'),
   'Email Address': Yup.string()
     .email('Invalid Email')
-    .required('This field is required')
+    .required('This field is required'),
+  'Privacy Notice': Yup.boolean().required('This field is required')
 })
 
 const EmailSignupForm = () => {
@@ -43,13 +48,16 @@ const EmailSignupForm = () => {
     async (values: FormValues, actions: FormikHelpers<FormValues>) => {
       const formattedSubmissionValues = {
         'Email Address': values['Email Address'],
-        Country: values.Country
+        Country: values.Country,
+        'Privacy Notice': values['Privacy Notice']
       }
+
+      console.log('Values', formattedSubmissionValues)
       actions.setSubmitting(true)
-      await submitToInsightEngine(
-        values['Email Address'],
-        formattedSubmissionValues
-      )
+      // await submitToInsightEngine(
+      //   values['Email Address'],
+      //   formattedSubmissionValues
+      // )
       actions.setSubmitting(false)
     },
     [submitToInsightEngine]
@@ -83,25 +91,31 @@ const EmailSignupForm = () => {
               className="mb-6"
               label="Country *"
               name="Country"
-              options={[
-                { name: 'United States', value: 'united states' },
-                { name: 'Africa', value: 'africa' }
-              ]}
+              options={COUNTRIES}
               placeholder="Country"
             />
 
-            <label>
-              <span className="text-tag block mb-6">
-                We take your privacy seriously. We do not sell or share your
-                data. We use it to enhance your experience with our site and to
-                analyze the performance of our marketing efforts. To learn more,
-                please see our <Link to="/privacy">Privacy Notice</Link>.
-              </span>
-              <Field type="checkbox" />
-              <span>Got It!</span>
-            </label>
-
-            <Button className="block" disabled={isSubmitting} type="submit">
+            <p className="text-tag block mb-6">
+              We take your privacy seriously. We do not sell or share your data.
+              We use it to enhance your experience with our site and to analyze
+              the performance of our marketing efforts. To learn more, please
+              see our{' '}
+              <Link className="text-electricViolet font-bold" to="/privacy">
+                Privacy Notice
+              </Link>
+              .
+            </p>
+            <Checkbox
+              checkboxClassName="mr-2"
+              className="flex items-center"
+              label="Got It!"
+              name="Privacy Notice"
+            />
+            <Button
+              className="block mx-auto"
+              disabled={isSubmitting}
+              type="submit"
+            >
               Sign Up!
             </Button>
           </Form>

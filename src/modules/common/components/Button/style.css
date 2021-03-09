@@ -7,6 +7,7 @@
   @apply bg-black;
   @apply text-white;
   @apply hover:bg-gray-800;
+  @apply border-none;
   &:focus {
     @apply bg-transparent;
     @apply border-solid;
@@ -15,6 +16,7 @@
   }
   &:disabled {
     @apply bg-gray-400;
+    @apply border-none;
   }
 }
 
