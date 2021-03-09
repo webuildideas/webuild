@@ -2,6 +2,8 @@
   @apply grid;
   @apply grid-cols-12;
   @apply gap-4;
+  max-width: 1180px;
+  @apply mx-auto;
   grid-template-rows: auto auto auto auto auto;
   grid-template-areas:
     "header header header header header header header header header header header header"
@@ -31,8 +33,8 @@
 .Article-header {
   max-width: 580px;
   @apply px-6;
-  @apply pt-16;
-  @apply pb-12;
+  @apply mt-16;
+  @apply mb-14;
   @apply md:px-9;
   @apply xl:px-0;
   @apply xl:mx-auto;
@@ -45,7 +47,6 @@
 }
 
 .Article {
-  @apply mt-14;
   @apply px-6;
   @apply md:px-0;
   grid-area: article;
@@ -74,6 +75,9 @@
   @apply items-center;
   @screen xl {
     @apply flex-col;
+    button {
+      @apply mb-6;
+    }
   }
 }
 

@@ -1,0 +1,35 @@
+.Button {
+  @apply px-6;
+  @apply py-4;
+}
+
+.Button-solid {
+  @apply bg-black;
+  @apply text-white;
+  @apply hover:bg-gray-800;
+  &:focus {
+    @apply bg-transparent;
+    @apply border-solid;
+    @apply border-2;
+    @apply text-black;
+  }
+  &:disabled {
+    @apply bg-gray-400;
+  }
+}
+
+.Button-outline {
+  @apply bg-transparent;
+  @apply border-solid;
+  @apply border;
+  @apply hover:bg-black;
+  @apply hover:text-white;
+  &:focus {
+    @apply bg-white;
+    @apply border-solid;
+    @apply border-2;
+  }
+  &:disabled {
+    opacity: "30%";
+  }
+}

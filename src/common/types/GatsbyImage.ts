@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 // Packages
 import { FixedObject, FluidObject } from 'gatsby-image'
 

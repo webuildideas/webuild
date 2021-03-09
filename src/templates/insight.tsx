@@ -19,6 +19,7 @@ import Author from '@modules/insight/components/Author'
 import Footer from '@components/Footer'
 
 import '@common/styles/templates/insight.css'
+import EmailSignupForm from '@modules/forms/EmailSignup'
 
 interface Props {
   data: {
@@ -122,12 +123,7 @@ const Insight = ({
         />
 
         <div className="Article-ctas">
-          <div className="bg-lavender" style={{ height: '400px' }}>
-            Learn From Us
-          </div>
-          <div className="bg-gray-100" style={{ height: '400px' }}>
-            Get The Book
-          </div>
+          <EmailSignupForm />
         </div>
       </main>
       <Footer />

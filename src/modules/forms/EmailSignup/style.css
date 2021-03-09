@@ -1,0 +1,9 @@
+.EmailSignup {
+  .TextInput {
+    width: 100%;
+  }
+
+  .SelectField {
+    width: 100%;
+  }
+}

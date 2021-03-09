@@ -8,7 +8,6 @@
     "@apollo/client": "^3.3.7",
     "@contentful/rich-text-react-renderer": "^14.1.2",
     "@contentful/rich-text-types": "^14.1.2",
-    "@tailwindcss/forms": "^0.2.1",
     "autoprefixer": "^10.2.3",
     "cross-fetch": "^3.0.6",
     "dayjs": "^1.10.3",
