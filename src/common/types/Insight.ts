@@ -17,16 +17,12 @@ export type TypeInsightType =
   | 'Webinar'
 
 export type TypeInsightTopic =
-  | 'clients'
-  | 'design'
-  | 'digital'
-  | 'expertise'
-  | 'growth'
-  | 'management'
-  | 'marketing'
-  | 'processes'
-  | 'roles'
-  | 'team'
+  | 'Design Strategy'
+  | 'Design Systems'
+  | 'Performance'
+  | 'Process'
+  | 'Product Design'
+  | 'Tools & Trends'
 
 export interface TypeInsight {
   type: TypeInsightType

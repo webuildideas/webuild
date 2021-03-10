@@ -12,16 +12,12 @@ import Publication from '@static/svgs/type/publication.inline.svg'
 import Video from '@static/svgs/type/video.inline.svg'
 import Webinar from '@static/svgs/type/webinar.inline.svg'
 
-import Clients from '@static/svgs/topics/clients.inline.svg'
-import Design from '@static/svgs/topics/design.inline.svg'
-import Digital from '@static/svgs/topics/digital.inline.svg'
-import Expertise from '@static/svgs/topics/expertise.inline.svg'
-import Growth from '@static/svgs/topics/growth.inline.svg'
-import Management from '@static/svgs/topics/management.inline.svg'
-import Marketing from '@static/svgs/topics/marketing.inline.svg'
-import Processes from '@static/svgs/topics/processes.inline.svg'
-import Roles from '@static/svgs/topics/roles.inline.svg'
-import Team from '@static/svgs/topics/team.inline.svg'
+import DesignStrategy from '@static/svgs/topics/design-strategy.inline.svg'
+import DesignSystems from '@static/svgs/topics/design-systems.inline.svg'
+import Performance from '@static/svgs/topics/performance.inline.svg'
+import Process from '@static/svgs/topics/process.inline.svg'
+import ProductDesign from '@static/svgs/topics/product-design.inline.svg'
+import ToolsAndTrends from '@static/svgs/topics/tools-and-trends.inline.svg'
 
 type IconPayload = {
   icon: React.FC<WithClassName>
@@ -68,44 +64,28 @@ export const TypeInsightTypeIconConfig: TypeInsightTypeIconConfig = {
 type TypeInsightTopicIconConfig = Record<TypeInsightTopic, IconPayload>
 
 export const TypeInsightTopicIconConfig: TypeInsightTopicIconConfig = {
-  clients: {
-    icon: Clients,
-    name: 'Client'
-  },
-  design: {
-    icon: Design,
-    name: 'Design Systems'
-  },
-  digital: {
-    icon: Digital,
-    name: 'Product Design'
-  },
-  expertise: {
-    icon: Expertise,
+  'Design Strategy': {
+    icon: DesignStrategy,
     name: 'Design Strategy'
   },
-  growth: {
-    icon: Growth,
+  'Design Systems': {
+    icon: DesignSystems,
+    name: 'Design Systems'
+  },
+  Performance: {
+    icon: Performance,
     name: 'Performance'
   },
-  management: {
-    icon: Management,
+  Process: {
+    icon: Process,
+    name: 'Process'
+  },
+  'Product Design': {
+    icon: ProductDesign,
     name: 'Management'
   },
-  marketing: {
-    icon: Marketing,
-    name: 'Marketing'
-  },
-  processes: {
-    icon: Processes,
-    name: 'Processes'
-  },
-  roles: {
-    icon: Roles,
-    name: 'Roles'
-  },
-  team: {
-    icon: Team,
-    name: 'Team'
+  'Tools & Trends': {
+    icon: ToolsAndTrends,
+    name: 'Tools & Trends'
   }
 }
