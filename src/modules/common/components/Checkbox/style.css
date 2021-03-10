@@ -16,7 +16,7 @@
   @apply h-4;
   @apply border;
   @apply border-solid;
-  @apply border-gray-500;
+  @apply border-gray-700;
   @apply text-white;
   border-radius: 2px;
 }

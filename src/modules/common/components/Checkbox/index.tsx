@@ -14,6 +14,7 @@ import './style.css'
 interface Props extends WithClassName, WithFormField {
   checkboxClassName?: string
   labelClassName?: string
+  showError?: boolean
 }
 
 const Checkbox = ({
@@ -21,6 +22,7 @@ const Checkbox = ({
   checkboxClassName,
   labelClassName,
   label,
+  showError = false,
   ...props
 }: Props) => {
   const [field, { touched, error }] = useField(props)
@@ -33,7 +35,7 @@ const Checkbox = ({
       {label ? (
         <span className={`text-caption ${labelClassName}`}>{label}</span>
       ) : null}
-      {touched && error ? (
+      {touched && error && showError ? (
         <div className="text-ui-error-dark text-caption mt-2">{error}</div>
       ) : null}
     </label>

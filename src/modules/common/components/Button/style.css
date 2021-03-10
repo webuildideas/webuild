@@ -15,7 +15,8 @@
     @apply text-black;
   }
   &:disabled {
-    @apply bg-gray-400;
+    opacity: 0.3;
+    @apply cursor-not-allowed;
     @apply border-none;
   }
 }
@@ -32,6 +33,6 @@
     @apply border-2;
   }
   &:disabled {
-    opacity: "30%";
+    opacity: 0.3;
   }
 }

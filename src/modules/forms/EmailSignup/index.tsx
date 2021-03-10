@@ -26,16 +26,18 @@ interface FormValues {
 
 const initialFormValues: FormValues = {
   'Email Address': '',
-  Country: 'United States',
+  Country: '',
   'Privacy Notice': false
 }
 
 const formSchema = Yup.object().shape({
-  Country: Yup.string().required('This field is required'),
+  Country: Yup.string().required('You must select a country to continue.'),
   'Email Address': Yup.string()
-    .email('Invalid Email')
+    .email('Incorrect email format. Please use a valid email address.')
     .required('This field is required'),
-  'Privacy Notice': Yup.boolean().required('This field is required')
+  'Privacy Notice': Yup.boolean().required(
+    'You must accept the privacy notice to continue.'
+  )
 })
 
 const EmailSignupForm = () => {
@@ -72,19 +74,22 @@ const EmailSignupForm = () => {
       <Formik
         initialValues={initialFormValues}
         onSubmit={handleSubmit}
+        validateOnBlur={false}
+        validateOnChange={false}
+        validateOnMount={false}
         validationSchema={formSchema}
       >
-        {({ isSubmitting }: FormikProps<FormValues>) => (
+        {({ isSubmitting, values, errors }: FormikProps<FormValues>) => (
           <Form
             id={NFForms.EmailSignup.actOnId}
             name={NFForms.EmailSignup.name}
           >
+            {console.log('ERRORS', errors)}
             <TextInput
               className="block appearance-none mb-4"
               label="Email *"
               name="Email Address"
-              placeholder="Email Address"
-              type="email"
+              type="text"
             />
 
             <SelectField
@@ -107,13 +112,23 @@ const EmailSignupForm = () => {
             </p>
             <Checkbox
               checkboxClassName="mr-2"
-              className="flex items-center"
+              className="flex items-center justify-center cursor-pointer"
               label="Got It!"
               name="Privacy Notice"
             />
+            {Object.values(errors).map((error, idx) => {
+              return (
+                <p
+                  key={`error-${idx}`}
+                  className="text-tag my-6 text-ui-error-dark"
+                >
+                  {error}
+                </p>
+              )
+            })}
             <Button
-              className="block mx-auto"
-              disabled={isSubmitting}
+              className="block mx-auto mt-4"
+              disabled={isSubmitting || !values['Privacy Notice']}
               type="submit"
             >
               Sign Up!

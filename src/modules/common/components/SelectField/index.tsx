@@ -17,6 +17,7 @@ export interface SelectOption {
 interface Props extends WithClassName, WithFormField {
   options: SelectOption[]
   placeholder?: string
+  showError?: boolean
 }
 
 const SelectField = ({
@@ -24,6 +25,7 @@ const SelectField = ({
   placeholder,
   label,
   options,
+  showError,
   ...props
 }: Props) => {
   const [field, { error, touched }] = useField(props)
@@ -33,7 +35,11 @@ const SelectField = ({
         {label ? (
           <span className="text-tag block text-gray-700 mb-3">{label}</span>
         ) : null}
-        <select {...field} className="SelectField" placeholder={placeholder}>
+        <select
+          {...field}
+          className="SelectField text-caption"
+          placeholder={placeholder}
+        >
           {options.map((option: SelectOption) => {
             return (
               <option key={option.name} value={option.value}>
@@ -43,7 +49,9 @@ const SelectField = ({
           })}
         </select>
       </label>
-      {touched && error ? <div className="error">{error}</div> : null}
+      {touched && error && showError ? (
+        <div className="error">{error}</div>
+      ) : null}
     </div>
   )
 }
