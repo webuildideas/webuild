@@ -18,8 +18,8 @@ import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContaine
 // Components
 import OverlayNav from '@components/OverlayNav'
 import Button from '@components/Button'
-import Logo from '@components/Nav/Logo'
-import MenuIcon from '@components/Nav/MenuIcon'
+import Logo from './Logo'
+import MenuIcon from './MenuIcon'
 
 // Styles
 import * as S from './style'
@@ -99,12 +99,30 @@ const Nav = memo(function NavMemo() {
                 >
                   <AniLink
                     bg="#F3F3F3"
+                    className="text-page-navigation uppercase hover:font-bold"
                     cover
                     direction="right"
                     duration={1.5}
                     to="/who-we-are"
                   >
                     Who We Are
+                  </AniLink>
+                </motion.li>
+                <motion.li
+                  animate={animationControls}
+                  custom={1.5}
+                  initial="hidden"
+                  variants={variants}
+                >
+                  <AniLink
+                    bg="#F3F3F3"
+                    className="text-page-navigation uppercase hover:font-bold"
+                    cover
+                    direction="right"
+                    duration={1.5}
+                    to="/insights"
+                  >
+                    Insights
                   </AniLink>
                 </motion.li>
                 <li>
