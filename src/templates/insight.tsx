@@ -13,6 +13,7 @@ import { TypeInsight } from '@common/types/Insight'
 import Meta from '@components/Meta'
 import SocialShare from '@modules/insight/components/SocialShare'
 import ReadNext from '@modules/insight/components/ReadNext'
+import ReadNextSidebar from '@modules/insight/components/ReadNextSidebar'
 import InsightTags from '@modules/common/components/InsightTags'
 import { getEstimatedReadingTime } from '@modules/insight/utils'
 import Author from '@modules/insight/components/Author'
@@ -142,6 +143,10 @@ const Insight = ({
 
         <div className="Article-ctas">
           <EmailSignupForm location={location.href} />
+          <ReadNextSidebar
+            insights={insight.readNext}
+            relatedInsightsByTopic={relatedInsightsByTopic}
+          />
         </div>
       </main>
       <Footer />
