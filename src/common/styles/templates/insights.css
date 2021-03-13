@@ -97,10 +97,4 @@
   @apply lg:pr-8;
   @apply xl:col-span-3;
   @apply xl:px-0;
-  div {
-    height: 330px;
-    @media (min-width: 1024px) {
-      height: 225px;
-    }
-  }
 }

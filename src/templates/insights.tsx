@@ -27,8 +27,12 @@ import ListingInsightSkeleton from '@modules/contentHub/components/ListingInsigh
 import FeaturedInsight from '@modules/contentHub/components/FeaturedInsight'
 import Pagination from '@modules/contentHub/components/Pagination'
 import Footer from '@components/Footer'
+import EmailSignUpForm from '@modules/forms/EmailSignup'
 
 interface Props {
+  location: {
+    href: string
+  }
   data: {
     contentfulContentHub: {
       featuredInsight: TypeInsight
@@ -57,6 +61,7 @@ const ALL_TYPES: TypeInsightType[] = [
 ]
 
 const Insights = ({
+  location,
   data: {
     contentfulContentHub: { featuredInsight }
   },
@@ -307,10 +312,7 @@ const Insights = ({
         </div>
 
         <aside className="InsightsPage-ctas">
-          <div className="bg-foundation w-full">
-            <h4>Learn From Us</h4>
-          </div>
-          <div className="bg-gray-300 w-full">Get The Book</div>
+          <EmailSignUpForm location={location.href} />
         </aside>
       </div>
       <Footer />
