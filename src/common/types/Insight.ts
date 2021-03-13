@@ -29,7 +29,10 @@ export interface TypeInsight {
   title: string
   subtitle?: string
   slug: string
-  illustration?: TypeContentfulAsset
+  heroIllustration?: TypeContentfulAsset
+  mobileListingIllustration?: TypeContentfulAsset
+  listingIllustration?: TypeContentfulAsset
+  featuredIllustration?: TypeContentfulAsset
   content: RenderRichTextData<TypeCarousel | TypeContentfulAsset>
   publishDate: string
   readNext?: TypeInsight[]

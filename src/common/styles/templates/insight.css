@@ -54,6 +54,7 @@
 }
 
 .Article-share {
+  position: sticky;
   @apply px-6;
   @apply pb-8;
   @apply md:px-8;

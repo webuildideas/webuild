@@ -276,12 +276,14 @@ const Insights = ({
                   <ListingInsightSkeleton />
                 </>
               ) : null}
+
               {noInisights ? (
                 <p className="text-h3">
                   No insights match that search. Please try again or view all
                   insights here.
                 </p>
               ) : null}
+
               {error ? (
                 <p>We had trouble fetching posts, please try again.</p>
               ) : null}
@@ -325,7 +327,7 @@ export const CONTENT_HUB_QUERY = graphql`
         title
         subtitle
         slug
-        illustration {
+        featuredIllustration {
           file {
             url
           }

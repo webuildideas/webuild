@@ -82,7 +82,7 @@ export const TypeInsightTopicIconConfig: TypeInsightTopicIconConfig = {
   },
   'Product Design': {
     icon: ProductDesign,
-    name: 'Management'
+    name: 'Product Design'
   },
   'Tools & Trends': {
     icon: ToolsAndTrends,

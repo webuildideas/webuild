@@ -22,6 +22,9 @@ import '@common/styles/templates/insight.css'
 import EmailSignupForm from '@modules/forms/EmailSignup'
 
 interface Props {
+  location: {
+    href: string
+  }
   data: {
     contentfulInsight: TypeInsight
     allContentfulInsight: {
@@ -70,7 +73,8 @@ const Insight = ({
   data: {
     contentfulInsight: insight,
     allContentfulInsight: { nodes: relatedInsightsByTopic }
-  }
+  },
+  location
 }: Props) => {
   const [estReadTime, setEstReadTime] = useState<number>()
   const articleRef = useRef<HTMLDivElement>(null)
@@ -85,6 +89,20 @@ const Insight = ({
 
   return (
     <>
+      {insight?.heroIllustration?.file?.url ? (
+        <div
+          className="Article-hero"
+          style={{
+            backgroundImage: `url(${insight.heroIllustration.file.url})`,
+            backgroundRepeat: 'no-repeat',
+            backgroundPositionX: 'center',
+            backgroundPositionY: 'center',
+            backgroundSize: '50%',
+            height: '480px'
+            // backgroundColor: 'gray'
+          }}
+        />
+      ) : null}
       <main className="Article-grid">
         <Meta title={insight.title} />
         <div className="Article-header">
@@ -123,7 +141,7 @@ const Insight = ({
         />
 
         <div className="Article-ctas">
-          <EmailSignupForm />
+          <EmailSignupForm location={location.href} />
         </div>
       </main>
       <Footer />
@@ -138,6 +156,11 @@ export const query = graphql`
       topics
       title
       subtitle
+      heroIllustration {
+        file {
+          url
+        }
+      }
       author {
         name
         headshot {

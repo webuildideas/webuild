@@ -19,7 +19,7 @@ const FeaturedInsight = memo(function FeaturedInsightMemo({ insight }: Props) {
         <div className="mb-6 pt-4 pr-6 pl-8 md:pl-5 md:p-0">
           <img
             alt="Article Illustration"
-            src={insight.illustration?.file.url}
+            src={insight.featuredIllustration?.file.url}
           />
         </div>
         <div className="pl-8 pr-6 pb-8 md:pt-8 md:pr-8 md:pb-10 md:pl-4">

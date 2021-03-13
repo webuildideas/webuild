@@ -28,7 +28,12 @@ const Checkbox = ({
   const [field, { touched, error }] = useField(props)
   return (
     <label className={`Checkbox-container ${className}`}>
-      <input className="hidden" type="checkbox" {...field} />
+      <input
+        className="hidden"
+        type="checkbox"
+        {...field}
+        checked={field.value}
+      />
       <span className={`${Checkbox} ${checkboxClassName}`}>
         <Checkmark className="Checkbox-checkmark" />
       </span>

@@ -33,7 +33,10 @@ export const INSIGHTS_LISTING_QUERY = gql`
         slug
         type
         publishDate
-        illustration {
+        mobileListingIllustration {
+          url
+        }
+        listingIllustration {
           url
         }
       }
@@ -63,7 +66,10 @@ export const FILTER_INSIGHTS_QUERY = gql`
         slug
         type
         publishDate
-        illustration {
+        mobileListingIllustration {
+          url
+        }
+        listingIllustration {
           url
         }
       }
