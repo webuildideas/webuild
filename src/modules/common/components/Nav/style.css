@@ -1,0 +1,62 @@
+.Nav {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+  @apply w-full;
+  @apply py-4;
+
+  &.is-pinned {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    @apply bg-white;
+  }
+}
+
+.Nav-container {
+  @apply flex;
+  max-width: 1184px;
+  @apply justify-between;
+  @apply items-center;
+  @apply mx-auto;
+  @apply px-6;
+
+  @screen md {
+    @apply px-8;
+  }
+
+  @screen xl {
+    @apply px-0;
+  }
+
+  .Nav-menu-icon {
+    @apply cursor-pointer;
+    font-size: 26px;
+    @screen md {
+      @apply hidden;
+    }
+  }
+
+  .Nav-logo {
+    transition: 300ms all ease-in;
+    &:hover {
+      transition: 300ms all ease-in;
+      transform: scale(1.025) translate(0, -2px);
+    }
+  }
+}
+
+.Nav-desktop-links {
+  @apply hidden;
+  @apply w-full;
+  @screen md {
+    @apply grid;
+    grid-template-columns: 100px 72px 150px;
+    @apply items-center;
+    @apply gap-6;
+    @apply justify-end;
+  }
+}
+
+.Nav-button {
+  @apply block;
+  @apply py-3;
+  width: 150px;
+}

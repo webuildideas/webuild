@@ -14,7 +14,7 @@ import InsightTags from '@modules/common/components/InsightTags'
 import listingIllustrationDefaultSrc from '@static/svgs/insights/default-insight-listing.svg'
 
 // Styles
-import './style.css'
+import './styles/ListingInsight.css'
 
 interface Props extends WithClassName {
   insight: TypeInsight

@@ -8,10 +8,10 @@ import Arrow from '@static/svgs/common/arrows/arrow-simple-down.inline.svg'
 // Common
 import { TypeInsightTopic, TypeInsightType } from '@common/types/Insight'
 import { classNames } from '@common/utils/classNames'
-import { FilterState } from '../../../../templates/insights'
+import { FilterState } from '../../../templates/insights'
 
 // Styles
-import './style.css'
+import './styles/InsightFilters.css'
 
 interface Props {
   topics: TypeInsightTopic[]

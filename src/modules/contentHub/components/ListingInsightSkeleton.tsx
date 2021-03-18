@@ -2,7 +2,7 @@
 import React from 'react'
 
 // Styles
-import './style.css'
+import './styles/ListingInsightSkeleton.css'
 
 const ListingInsightSkeleton = () => {
   return (

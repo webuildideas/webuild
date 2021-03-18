@@ -98,7 +98,7 @@ const Testimonial = ({
           {children ? (
             <motion.p
               animate={animationControls}
-              className="Testimonial"
+              className="Testimonial text-xl"
               custom={1}
               dangerouslySetInnerHTML={{ __html: renderMarkdownBold(children) }}
               initial="hidden"
@@ -155,7 +155,7 @@ const Testimonial = ({
         {children ? (
           <motion.p
             animate={animationControls}
-            className="Testimonial"
+            className="Testimonial text-xl"
             custom={1}
             dangerouslySetInnerHTML={{ __html: renderMarkdownBold(children) }}
             initial="hidden"

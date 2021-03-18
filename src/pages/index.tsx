@@ -1,5 +1,6 @@
 // Packages
 import React, { useEffect } from 'react'
+import { RenderRichTextData } from 'gatsby-source-contentful/rich-text'
 import { graphql } from 'gatsby'
 import { motion, useAnimation, Variants } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
@@ -20,8 +21,6 @@ import DesignPartner from '@components/DesignPartner'
 import Testimonial from '@components/Testimonial'
 import TestimonialGrid from '@components/TestimonialGrid'
 import Footer from '@components/Footer'
-import TestForm from '@components/Forms/TestForm'
-import { RenderRichTextData } from 'gatsby-source-contentful/rich-text'
 
 export interface HomePageQueryResponse {
   contentfulHomePage: {
@@ -97,7 +96,7 @@ const IndexPage = ({ data, location }: Props) => {
           <div ref={ref} className="mb-16">
             <motion.h1
               animate={animationControls}
-              className="SectionHeading__title"
+              className="text-h4 font-bold mb-4"
               custom={0}
               initial="hidden"
               variants={variants}
@@ -106,7 +105,7 @@ const IndexPage = ({ data, location }: Props) => {
             </motion.h1>
             <motion.h2
               animate={animationControls}
-              className="SectionHeading__subtitle"
+              className="text-h3"
               custom={1}
               initial="hidden"
               variants={variants}
@@ -134,8 +133,6 @@ const IndexPage = ({ data, location }: Props) => {
           </Testimonial>
 
           <TestimonialGrid testimonials={homeData.testimonials} />
-
-          <TestForm />
         </SiteMaxWidthContainer>
       </section>
 

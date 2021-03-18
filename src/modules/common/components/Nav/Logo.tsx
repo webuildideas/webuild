@@ -37,7 +37,7 @@ const Logo = () => {
 
   return (
     <animated.svg
-      className="Logo"
+      className="Nav-logo"
       fill={color}
       height="19"
       onClick={handleCloseOverlayNav}

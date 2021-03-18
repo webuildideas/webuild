@@ -39,7 +39,7 @@ const MenuIcon = () => {
 
   return (
     <animated.svg
-      className="Icon MenuIcon"
+      className="Icon Nav-menu-icon"
       fill={color}
       onClick={handleOnClick}
       viewBox="0 0 44 44"

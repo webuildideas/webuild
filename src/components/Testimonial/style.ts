@@ -16,7 +16,6 @@ export const Testimonial = styled(motion.div)`
   }
 
   .Testimonial {
-    font-size: ${(props) => props.theme.f3};
     line-height: 1.6;
     margin-bottom: ${() => rhythmUnit(1)};
     span {

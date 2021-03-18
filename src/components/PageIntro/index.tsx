@@ -33,7 +33,7 @@ const richTextOptions: Options = {
     [BLOCKS.PARAGRAPH]: (_, copy) => (
       <motion.h1
         animate={headingAnimationConfig}
-        className="text-h1"
+        className="text-h2"
         initial={headingAnimationInitialConfig}
       >
         {copy}

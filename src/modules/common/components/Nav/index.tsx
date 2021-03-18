@@ -8,21 +8,21 @@ import { motion, useAnimation } from 'framer-motion'
 import { useRecoilState, useRecoilValue } from 'recoil'
 
 // Common
+import { classNames } from '@common/utils/classNames'
+import useWindowSize from '@common/hooks/useWindowSize'
 import {
   isOverlayNavOpenAtom,
   isNavPinnedAtom
 } from '@common/store/userInterface/atoms'
-import useWindowSize from '@common/hooks/useWindowSize'
-import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
 
 // Components
 import OverlayNav from '@components/OverlayNav'
-import Button from '@components/Button'
+import Button from '@modules/common/components/Button'
 import Logo from './Logo'
 import MenuIcon from './MenuIcon'
 
 // Styles
-import * as S from './style'
+import './style.css'
 
 const variants = {
   visible: (i = 0) => ({
@@ -39,16 +39,29 @@ const variants = {
   }
 }
 
+const headroomStyles = { transition: 'all 600ms ease-in-out' }
+
 const Nav = memo(function NavMemo() {
   const windowSize = useWindowSize()
   const animationControls = useAnimation()
   const [ref, inView] = useInView({ triggerOnce: true })
   const [isNavPinned, setIsNavPinned] = useRecoilState(isNavPinnedAtom)
   const isOverlayNavOpen = useRecoilValue(isOverlayNavOpenAtom)
+  const helmetAttrs = { class: isOverlayNavOpen ? 'overlayIsOpen' : '' }
 
   const pinNav = useCallback(() => setIsNavPinned(true), [setIsNavPinned])
 
   const unpinNav = useCallback(() => setIsNavPinned(false), [setIsNavPinned])
+
+  const navClasses = classNames({
+    Nav: true,
+    'is-pinned': isNavPinned
+  })
+
+  const navLogoClasses = classNames({
+    'Nav-logo': true,
+    isOpen: isOverlayNavOpen
+  })
 
   useEffect(() => {
     if (inView) {
@@ -56,7 +69,6 @@ const Nav = memo(function NavMemo() {
     }
   }, [animationControls, inView, windowSize])
 
-  const helmetAttrs = { class: isOverlayNavOpen ? 'overlayIsOpen' : '' }
   return (
     <>
       <Helmet bodyAttributes={helmetAttrs} />
@@ -64,14 +76,10 @@ const Nav = memo(function NavMemo() {
         onPin={pinNav}
         onUnfix={unpinNav}
         onUnpin={unpinNav}
-        style={{ transition: 'all 600ms ease-in-out' }}
+        style={headroomStyles}
       >
-        <S.NavContainer
-          ref={ref}
-          className={`NavContainer ${isOverlayNavOpen ? 'overlayIsOpen' : ''}`}
-          isPinned={isNavPinned}
-        >
-          <SiteMaxWidthContainer className="SiteMaxWidthContainer">
+        <header ref={ref} className={navClasses}>
+          <div className="Nav-container">
             <motion.div
               animate={animationControls}
               custom={1}
@@ -80,7 +88,7 @@ const Nav = memo(function NavMemo() {
             >
               <AniLink
                 bg="#0E0E1B"
-                className={`Logo ${isOverlayNavOpen ? 'isOpen' : ''}`}
+                className={navLogoClasses}
                 cover
                 direction="up"
                 duration={1.5}
@@ -89,8 +97,8 @@ const Nav = memo(function NavMemo() {
                 <Logo />
               </AniLink>
             </motion.div>
-            <S.NavDesktopLinks className="NavDesktopLinks">
-              <ul>
+            <div>
+              <ul className="Nav-desktop-links">
                 <motion.li
                   animate={animationControls}
                   custom={1.5}
@@ -99,7 +107,7 @@ const Nav = memo(function NavMemo() {
                 >
                   <AniLink
                     bg="#F3F3F3"
-                    className="text-page-navigation uppercase hover:font-bold"
+                    className="block text-page-navigation text-center uppercase hover:font-bold"
                     cover
                     direction="right"
                     duration={1.5}
@@ -116,7 +124,7 @@ const Nav = memo(function NavMemo() {
                 >
                   <AniLink
                     bg="#F3F3F3"
-                    className="text-page-navigation uppercase hover:font-bold"
+                    className="block text-page-navigation text-center uppercase hover:font-bold"
                     cover
                     direction="right"
                     duration={1.5}
@@ -127,20 +135,20 @@ const Nav = memo(function NavMemo() {
                 </motion.li>
                 <li>
                   <Button
-                    animationDelay={1.2}
-                    className="Button"
+                    className="Nav-button text-page-navigation"
                     href="mailto:hi@webuild.io"
-                    type="primaryButton"
+                    styleType="outline"
+                    type="button"
                   >
                     Get In Touch
                   </Button>
                 </li>
               </ul>
-            </S.NavDesktopLinks>
+            </div>
 
             <MenuIcon />
-          </SiteMaxWidthContainer>
-        </S.NavContainer>
+          </div>
+        </header>
       </Headroom>
 
       <OverlayNav />

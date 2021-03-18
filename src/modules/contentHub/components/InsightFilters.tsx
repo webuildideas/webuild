@@ -7,10 +7,10 @@ import { TypeInsightTopic, TypeInsightType } from '@common/types/Insight'
 
 // Components
 import InsightFiltersDropdown from './InsightFiltersDropdown'
-import { FilterState } from '../../../../templates/insights'
+import { FilterState } from '../../../templates/insights'
 
 // Styles
-import './style.css'
+import './styles/InsightFilters.css'
 
 interface Props {
   topics: TypeInsightTopic[]

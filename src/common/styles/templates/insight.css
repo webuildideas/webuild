@@ -161,15 +161,17 @@
   counter-reset: count;
   @apply mb-6;
 
-  @screen md {
-    max-width: 580px;
-    @apply mx-auto;
-  }
+  @apply pl-4;
 
   li {
     counter-increment: count;
     @apply flex;
     @apply items-start;
+    @apply mb-2;
+
+    b {
+      @apply font-bold;
+    }
     p {
       @apply block;
       @apply mb-2;

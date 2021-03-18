@@ -53,7 +53,7 @@ const DesignPartner = () => {
       <SiteMaxWidthContainer ref={ref}>
         <motion.h1
           animate={animationControls}
-          className="text-h1 mb-5"
+          className="text-h2 font-bold mb-5"
           custom={0}
           data-testid="designPartner-title"
           initial="hidden"
@@ -64,7 +64,7 @@ const DesignPartner = () => {
         </motion.h1>
         <motion.p
           animate={animationControls}
-          className="leading-relaxed mb-16"
+          className="leading-relaxed mb-16 text-xl md:text-2xl"
           custom={1}
           data-testid="designPartner-description"
           initial="hidden"
@@ -88,7 +88,7 @@ const DesignPartner = () => {
             </motion.div>
             <motion.h3
               animate={animationControls}
-              className="uppercase mb-2 text-h3 font-extrabold"
+              className="mb-2 text-h4"
               custom={2}
               initial="hidden"
               variants={variants}
@@ -118,7 +118,7 @@ const DesignPartner = () => {
             </motion.div>
             <motion.h3
               animate={animationControls}
-              className="uppercase mb-2 text-h3 font-extrabold"
+              className="mb-2 text-h4"
               custom={4}
               initial="hidden"
               variants={variants}
@@ -148,7 +148,7 @@ const DesignPartner = () => {
             </motion.div>
             <motion.h3
               animate={animationControls}
-              className="uppercase mb-2 text-h3 font-extrabold"
+              className="mb-2 text-h4"
               custom={6}
               initial="hidden"
               variants={variants}
