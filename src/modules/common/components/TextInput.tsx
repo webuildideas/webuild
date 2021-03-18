@@ -5,10 +5,10 @@ import { useField } from 'formik'
 // Common
 import { WithFormField } from '@common/types/Forms'
 import { WithClassName } from '@common/types/Utilities'
+import { classNames } from '@common/utils/classNames'
 
 // Style
-import './style.css'
-import { classNames } from '@common/utils/classNames'
+import './styles/TextInput.css'
 
 interface Props extends WithClassName, WithFormField {
   showError?: boolean

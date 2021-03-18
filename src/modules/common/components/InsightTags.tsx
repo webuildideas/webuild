@@ -7,7 +7,10 @@ import { TypeInsightTopic, TypeInsightType } from '@common/types/Insight'
 import { WithClassName } from '@common/types/Utilities'
 
 // Config
-import { TypeInsightTypeIconConfig, TypeInsightTopicIconConfig } from './config'
+import {
+  TypeInsightTypeIconConfig,
+  TypeInsightTopicIconConfig
+} from './configs/InsightTags'
 
 interface Props extends WithClassName {
   type: TypeInsightType

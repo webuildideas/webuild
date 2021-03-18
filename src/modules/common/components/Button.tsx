@@ -7,7 +7,7 @@ import { WithChildren, WithClassName } from '@common/types/Utilities'
 import { classNames } from '@common/utils/classNames'
 
 // Styles
-import './style.css'
+import './styles/Button.css'
 
 interface Props extends WithChildren, WithClassName {
   href?: string

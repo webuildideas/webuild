@@ -64,7 +64,9 @@ const TestimonialSlider = ({ testimonials }: Props) => {
           <S.TestimonialSlider>
             {testimonials.map((t: TypeTestimonial, idx: number) => (
               <S.TestimonialSlide key={`t-${t.name}`} index={idx}>
-                <S.Testimonial>“{t.testimonial.testimonial}”</S.Testimonial>
+                <S.Testimonial className="text-h3">
+                  “{t.testimonial.testimonial}”
+                </S.Testimonial>
               </S.TestimonialSlide>
             ))}
           </S.TestimonialSlider>
@@ -80,8 +82,8 @@ const TestimonialSlider = ({ testimonials }: Props) => {
                   />
                 </div>
                 <div className="Testimonial__client-details">
-                  <h5>{t.name}</h5>
-                  <p>{t.role}</p>
+                  <h5 className="text-body font-bold mb-1">{t.name}</h5>
+                  <p className="text-tag">{t.role}</p>
                 </div>
               </S.TestimonialDot>
             ))}

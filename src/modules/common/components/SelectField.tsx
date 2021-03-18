@@ -7,7 +7,7 @@ import { WithFormField } from '@common/types/Forms'
 import { WithClassName } from '@common/types/Utilities'
 
 // Style
-import './style.css'
+import './styles/SelectField.css'
 
 export interface SelectOption {
   name: string

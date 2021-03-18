@@ -6,10 +6,11 @@ import { useField } from 'formik'
 import { WithFormField } from '@common/types/Forms'
 import { WithClassName } from '@common/types/Utilities'
 
+// Assets
 import Checkmark from '@static/svgs/common/checkmark-bold.inline.svg'
 
 // Style
-import './style.css'
+import './styles/Checkbox.css'
 
 interface Props extends WithClassName, WithFormField {
   checkboxClassName?: string

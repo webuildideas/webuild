@@ -10,7 +10,7 @@ import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContaine
 import '@common/styles/SectionHeading.css'
 
 // Components
-import Button from '@components/Button'
+import Button from '@modules/common/components/Button'
 
 interface Props {
   jobs?: TypeJob[]
@@ -51,7 +51,7 @@ const JoinUs = ({ jobs }: Props) => {
         <div>
           <motion.h1
             animate={animationControls}
-            className="SectionHeading__title"
+            className="text-h4 mb-6"
             custom={1}
             data-testid="joinUs-title"
             initial="hidden"
@@ -61,10 +61,11 @@ const JoinUs = ({ jobs }: Props) => {
           </motion.h1>
           <motion.h2
             animate={animationControls}
-            className="SectionHeading__subtitle"
+            className="text-h3"
             custom={2}
             data-testid="joinUs-subtitle"
             initial="hidden"
+            style={{ maxWidth: '790px' }}
             variants={variants}
           >
             We’re always looking for inspiring, down to earth, and talented
@@ -73,7 +74,7 @@ const JoinUs = ({ jobs }: Props) => {
         </div>
         {jobs && jobs.length > 0 ? (
           <div
-            className="grid grid-cols-1 md:grid-cols-3 justify-between gap-3 my-12"
+            className="grid grid-cols-1 md:grid-cols-3 justify-between gap-3 mt-12 mb-16"
             data-testid="joinUs-jobs"
           >
             {jobs.map((job: TypeJob, idx: number) => {
@@ -86,7 +87,7 @@ const JoinUs = ({ jobs }: Props) => {
                 >
                   <motion.h3
                     animate={animationControls}
-                    className="uppercase mb-3"
+                    className="text-h4 mb-4"
                     custom={idx + 2}
                     initial="hidden"
                     variants={variants}
@@ -109,8 +110,9 @@ const JoinUs = ({ jobs }: Props) => {
         <Button
           href="https://webuildideas.bamboohr.com/jobs/"
           rel="noopener noreferrer"
+          styleType="solid"
           target="_blank"
-          type="secondaryOutbound"
+          type="button"
         >
           View Open Positions
         </Button>

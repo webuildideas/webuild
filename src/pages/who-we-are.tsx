@@ -107,6 +107,7 @@ const WhoWeAre = ({ data, location }: Props) => {
         <BioCard>
           <motion.h2
             animate={animationControls}
+            className="text-h4"
             custom={0}
             initial="headingHidden"
             variants={variants}

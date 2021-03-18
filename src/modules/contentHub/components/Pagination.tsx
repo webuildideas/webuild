@@ -8,11 +8,11 @@ import { classNames } from '@common/utils/classNames'
 // Components
 import ArrowRight from '@static/svgs/common/arrows/arrow-simple-right.inline.svg'
 import ArrowLeft from '@static/svgs/common/arrows/arrow-simple-left.inline.svg'
-import PageView from './PageView'
-import BreakView from './BreakView'
+import PaginationPageView from './PaginationPageView'
+import PaginationBreakView from './PaginationBreakView'
 
 // Styles
-import './style.css'
+import './styles/Pagination.css'
 
 interface Props {
   pageCount: number
@@ -97,7 +97,7 @@ const Pagination = ({
   const getPageElement = useCallback(
     (index: number) => {
       return (
-        <PageView
+        <PaginationPageView
           key={index}
           page={index + 1}
           pageSelectedHandler={handlePageSelected.bind(null, index)}
@@ -167,7 +167,7 @@ const Pagination = ({
         // we do nothing (because we don't want to display the page).
         if (items[items.length - 1] !== breakView) {
           breakView = (
-            <BreakView
+            <PaginationBreakView
               key={index}
               breakHandler={handleBreakClick.bind(null, index)}
             />
