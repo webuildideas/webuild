@@ -16,7 +16,7 @@ import '@common/styles/SectionHeading.css'
 // Components
 import Meta from '@components/Meta'
 import PageHeroText from '@modules/common/components/PageHeroText'
-import DesignPartner from '@components/DesignPartner'
+import DesignPartner from '@modules/home/components/DesignPartner'
 import Testimonial from '@components/Testimonial'
 import TestimonialGrid from '@components/TestimonialGrid'
 import Footer from '@components/Footer'

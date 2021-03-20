@@ -30,7 +30,6 @@ const variants = {
   }
 }
 
-const maxWidthTitle = { maxWidth: '530px' }
 const maxWidthDescription = { maxWidth: '800px' }
 const iconWidth = { width: '65px' }
 
@@ -53,18 +52,17 @@ const DesignPartner = () => {
       <SiteMaxWidthContainer ref={ref}>
         <motion.h1
           animate={animationControls}
-          className="text-h2 font-bold mb-5"
+          className="text-h2 font-extrabold mb-6"
           custom={0}
           data-testid="designPartner-title"
           initial="hidden"
-          style={maxWidthTitle}
           variants={variants}
         >
           The only design partner you’ll ever need.
         </motion.h1>
         <motion.p
           animate={animationControls}
-          className="leading-relaxed mb-16 text-xl md:text-2xl"
+          className="text-body mb-16 md:mb-24"
           custom={1}
           data-testid="designPartner-description"
           initial="hidden"
@@ -84,11 +82,14 @@ const DesignPartner = () => {
               initial="hidden"
               variants={variants}
             >
-              <Investigate className="mb-6" style={iconWidth} />
+              <Investigate
+                className="mb-8 text-electricViolet"
+                style={iconWidth}
+              />
             </motion.div>
             <motion.h3
               animate={animationControls}
-              className="mb-2 text-h4"
+              className="mb-4 text-h4"
               custom={2}
               initial="hidden"
               variants={variants}
@@ -97,7 +98,7 @@ const DesignPartner = () => {
             </motion.h3>
             <motion.p
               animate={animationControls}
-              className="leading-relaxed text-base md:text-sm lg:text-base"
+              className="text-body"
               custom={3}
               initial="hidden"
               variants={variants}
@@ -114,11 +115,11 @@ const DesignPartner = () => {
               initial="hidden"
               variants={variants}
             >
-              <Ideate className="mb-6" style={iconWidth} />
+              <Ideate className="mb-8 text-electricViolet" style={iconWidth} />
             </motion.div>
             <motion.h3
               animate={animationControls}
-              className="mb-2 text-h4"
+              className="mb-4 text-h4"
               custom={4}
               initial="hidden"
               variants={variants}
@@ -127,7 +128,7 @@ const DesignPartner = () => {
             </motion.h3>
             <motion.p
               animate={animationControls}
-              className="leading-relaxed text-base md:text-sm lg:text-base"
+              className="text-body"
               custom={5}
               initial="hidden"
               variants={variants}
@@ -144,11 +145,11 @@ const DesignPartner = () => {
               initial="hidden"
               variants={variants}
             >
-              <Iterate className="mb-6" style={iconWidth} />
+              <Iterate className="mb-8 text-electricViolet" style={iconWidth} />
             </motion.div>
             <motion.h3
               animate={animationControls}
-              className="mb-2 text-h4"
+              className="mb-4 text-h4"
               custom={6}
               initial="hidden"
               variants={variants}
@@ -157,7 +158,7 @@ const DesignPartner = () => {
             </motion.h3>
             <motion.p
               animate={animationControls}
-              className="leading-relaxed text-base md:text-sm lg:text-base"
+              className="text-body"
               custom={7}
               initial="hidden"
               variants={variants}
