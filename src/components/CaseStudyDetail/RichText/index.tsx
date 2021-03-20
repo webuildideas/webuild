@@ -71,6 +71,7 @@ const CaseStudyRichText = ({ document }: Props) => {
       [BLOCKS.HEADING_2]: (_, children) => (
         <motion.h2
           animate={animationControls}
+          className="text-h2 font-black"
           custom={1}
           initial="hidden"
           variants={variants}
@@ -81,6 +82,7 @@ const CaseStudyRichText = ({ document }: Props) => {
       [BLOCKS.PARAGRAPH]: (_, children) => (
         <motion.p
           animate={animationControls}
+          className="text-body"
           custom={2}
           initial="hidden"
           variants={variants}
