@@ -15,12 +15,15 @@ import '@common/styles/SectionHeading.css'
 
 // Components
 import Meta from '@components/Meta'
-import CaseStudyListing from '@components/CaseStudyListing'
 import PageHeroText from '@modules/common/components/PageHeroText'
 import DesignPartner from '@components/DesignPartner'
 import Testimonial from '@components/Testimonial'
 import TestimonialGrid from '@components/TestimonialGrid'
 import Footer from '@components/Footer'
+import CaseStudy from '@modules/common/components/CaseStudy'
+
+// Styles
+import '../common/styles/pages/home.css'
 
 export interface HomePageQueryResponse {
   contentfulHomePage: {
@@ -82,11 +85,25 @@ const IndexPage = ({ data, location }: Props) => {
   }, [animationControls, inView])
 
   return (
-    <div>
+    <div className="Home">
       <Meta location={location.href} title="Home" />
       <PageHeroText document={homeData.heroTitle} maxWidth={1040} />
       <CaseStudiesContainer>
-        <CaseStudyListing caseStudies={homeData.caseStudies} />
+        <div className="overflow-hidden">
+          {homeData.caseStudies.map((study: TypeCaseStudy, idx: number) => {
+            const animationThreshold = idx === 0 ? 0.25 : 0.8
+            // Even # items we want image on right.
+            const layout = (idx + 1) % 2 === 0 ? 'left' : 'right'
+            return (
+              <CaseStudy
+                key={study.slug}
+                animationThreshold={animationThreshold}
+                caseStudy={study}
+                layout={layout}
+              />
+            )
+          })}
+        </div>
       </CaseStudiesContainer>
 
       <DesignPartner />

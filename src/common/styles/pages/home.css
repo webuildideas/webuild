@@ -1,0 +1,3 @@
+.Home .CaseStudy-container:not(:last-child) {
+  @apply mb-40;
+}

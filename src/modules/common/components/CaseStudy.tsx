@@ -13,7 +13,9 @@ import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContaine
 import Button from '@components/Button'
 
 // Styles
-import * as S from './style'
+import { classNames } from '@common/utils/classNames'
+import './styles/CaseStudy.css'
+// import * as S from './styles/CaseStudy'
 
 interface Props {
   animationThreshold?: number
@@ -106,11 +108,25 @@ const CaseStudy = ({
       break
   }
 
+  const caseStudyImgClasses = classNames({
+    'CaseStudy-img': true,
+    mobileTextFirst: mobileTextFirst === true,
+    'img-left': layout === 'left',
+    'img-right': layout === 'right'
+  })
+
+  const caseStudyContentClasses = classNames({
+    'CaseStudy-content': true,
+    mobileTextFirst: mobileTextFirst === true,
+    'img-left': layout === 'left',
+    'img-right': layout === 'right'
+  })
+
   return (
-    <SiteMaxWidthContainer className="CaseStudy">
-      <S.CaseStudy ref={ref} layout={layout} mobileTextFirst={mobileTextFirst}>
-        <div className="CaseStudy__content">
-          <div className="CaseStudy__logo">
+    <SiteMaxWidthContainer className="CaseStudy-container">
+      <article ref={ref} className="CaseStudy">
+        <div className={caseStudyContentClasses}>
+          <div className="CaseStudy-logo">
             <AniLink
               bg={bgColor}
               cover
@@ -137,7 +153,7 @@ const CaseStudy = ({
           >
             <motion.h1
               animate={textControls}
-              className="CaseStudy__tagline"
+              className="text-h2 font-extrabold mb-6"
               custom={0}
               initial="hidden"
               variants={variants}
@@ -155,7 +171,7 @@ const CaseStudy = ({
             >
               <motion.p
                 animate={textControls}
-                className="CaseStudy__summary"
+                className="text-body mb-10"
                 custom={1}
                 initial="hidden"
                 variants={variants}
@@ -179,7 +195,7 @@ const CaseStudy = ({
         {caseStudy?.listingImage?.fluid ? (
           <AniLink
             bg={bgColor}
-            className="CaseStudy__img"
+            className={caseStudyImgClasses}
             cover
             direction="top"
             duration={1.25}
@@ -200,7 +216,7 @@ const CaseStudy = ({
             </motion.div>
           </AniLink>
         ) : null}
-      </S.CaseStudy>
+      </article>
     </SiteMaxWidthContainer>
   )
 }
