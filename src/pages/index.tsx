@@ -113,7 +113,7 @@ const IndexPage = ({ data, location }: Props) => {
           <div ref={ref} className="mb-16">
             <motion.h1
               animate={animationControls}
-              className="text-h4 font-bold mb-4"
+              className="text-h4 mb-6"
               custom={0}
               initial="hidden"
               variants={variants}
