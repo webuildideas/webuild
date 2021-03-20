@@ -17,7 +17,7 @@ import '@common/styles/SectionHeading.css'
 import Meta from '@components/Meta'
 import PageHeroText from '@modules/common/components/PageHeroText'
 import DesignPartner from '@modules/home/components/DesignPartner'
-import Testimonial from '@components/Testimonial'
+import Testimonial from '@modules/common/components/Testimonial'
 import TestimonialGrid from '@components/TestimonialGrid'
 import Footer from '@components/Footer'
 import CaseStudy from '@modules/common/components/CaseStudy'
@@ -136,7 +136,7 @@ const IndexPage = ({ data, location }: Props) => {
           </div>
 
           <Testimonial
-            className="mb-6"
+            className="mb-8"
             company={homeData.featuredTestimonial.company}
             companyRole={homeData.featuredTestimonial.role}
             featuredHeadshot={

@@ -9,7 +9,7 @@ import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContaine
 import { TypeTestimonial } from '@common/types/Testimonial'
 
 // Components
-import Testimonial from '@components/Testimonial'
+import Testimonial from '@modules/common/components/Testimonial'
 
 interface Props {
   featuredTestimonial: TypeTestimonial

@@ -37,18 +37,6 @@ export const Testimonial = styled(motion.div)`
     border-radius: 50%;
     overflow: hidden;
   }
-
-  .Testimonial__client-name {
-    font-size: ${(props) => props.theme.f4};
-    font-weight: 700;
-    margin-bottom: ${() => rhythmUnit(0.25)};
-  }
-
-  .Testimonial__client-company {
-    font-size: ${(props) => props.theme.f4};
-    font-weight: 400;
-    line-height: 1.3;
-  }
 `
 
 // Modifier for the large featured Testimonial

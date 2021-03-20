@@ -9,10 +9,14 @@ import { motion, useAnimation } from 'framer-motion'
 import { WithClassName, WithStyle } from '@common/types/Utilities'
 
 // Config
-import { variants, featureHeadshotVariants, headshotVariants } from './config'
+import {
+  variants,
+  featureHeadshotVariants,
+  headshotVariants
+} from './configs/Testimonial'
 
 // Styles
-import * as S from './style'
+import './styles/Testimonial.css'
 
 interface Props extends WithClassName, WithStyle {
   name: string
@@ -26,7 +30,9 @@ interface Props extends WithClassName, WithStyle {
 
 const renderMarkdownBold = (md: string) => {
   const regex = /([__]{2})/
-  const formattedCopy = md.replace(regex, '<span>').replace(regex, '</span>')
+  const formattedCopy = md
+    .replace(regex, '<span class="font-black">')
+    .replace(regex, '</span>')
   return formattedCopy
 }
 
@@ -93,26 +99,30 @@ const Testimonial = ({
 
   const renderFeaturedTestimonial = useCallback(
     () => (
-      <S.FeaturedTestimonial ref={ref} {...props}>
-        <div className="Testimonial__content">
+      <div
+        ref={ref}
+        {...props}
+        className={`FeaturedTestimonial ${props.className}`}
+      >
+        <div className="p-8 md:p-12">
           {children ? (
             <motion.p
               animate={animationControls}
-              className="Testimonial text-xl"
+              className="text-body mb-8"
               custom={1}
               dangerouslySetInnerHTML={{ __html: renderMarkdownBold(children) }}
               initial="hidden"
               variants={variants}
             />
           ) : null}
-          <div className="Testimonial__client">
-            <div className="Testimonial__client-img">
+          <div className="flex items-center">
+            <div className="Testimonial-client-img">
               {renderHeadshot(headshot)}
             </div>
-            <div className="Testimonial__client-details">
+            <div>
               <motion.p
                 animate={animationControls}
-                className="Testimonial__client-name"
+                className="text-caption font-extrabold mb-1"
                 custom={2}
                 initial="hidden"
                 variants={variants}
@@ -121,7 +131,7 @@ const Testimonial = ({
               </motion.p>
               <motion.p
                 animate={animationControls}
-                className="Testimonial__client-company"
+                className="text-caption"
                 custom={3}
                 initial="hidden"
                 variants={variants}
@@ -129,10 +139,10 @@ const Testimonial = ({
             </div>
           </div>
         </div>
-        <div className="Testimonial__client-featured-img">
+        <div className="Testimonial-client-featured-img">
           {featuredHeadshot ? renderFeaturedHeadshot(featuredHeadshot) : null}
         </div>
-      </S.FeaturedTestimonial>
+      </div>
     ),
     [
       children,
@@ -151,25 +161,25 @@ const Testimonial = ({
 
   const renderTestimonial = useCallback(
     () => (
-      <S.Testimonial ref={ref} {...props}>
+      <div ref={ref} {...props} className={`Testimonial ${props.className}`}>
         {children ? (
           <motion.p
             animate={animationControls}
-            className="Testimonial text-xl"
+            className="text-body mb-8"
             custom={1}
             dangerouslySetInnerHTML={{ __html: renderMarkdownBold(children) }}
             initial="hidden"
             variants={variants}
           />
         ) : null}
-        <div className="Testimonial__client">
-          <div className="Testimonial__client-img">
+        <div className="flex items-center">
+          <div className="Testimonial-client-img">
             {renderHeadshot(headshot)}
           </div>
-          <div className="Testimonial__client-details">
+          <div>
             <motion.p
               animate={animationControls}
-              className="Testimonial__client-name"
+              className="text-caption font-extrabold mb-1"
               custom={2}
               initial="hidden"
               variants={variants}
@@ -178,14 +188,14 @@ const Testimonial = ({
             </motion.p>
             <motion.p
               animate={animationControls}
-              className="Testimonial__client-company"
+              className="text-caption"
               custom={3}
               initial="hidden"
               variants={variants}
             >{`${companyRole}, ${company}`}</motion.p>
           </div>
         </div>
-      </S.Testimonial>
+      </div>
     ),
     [
       ref,
