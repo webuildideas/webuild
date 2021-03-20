@@ -16,7 +16,7 @@ import '@common/styles/SectionHeading.css'
 // Components
 import Meta from '@components/Meta'
 import CaseStudyListing from '@components/CaseStudyListing'
-import PageIntro from '@components/PageIntro'
+import PageHeroText from '@modules/common/components/PageHeroText'
 import DesignPartner from '@components/DesignPartner'
 import Testimonial from '@components/Testimonial'
 import TestimonialGrid from '@components/TestimonialGrid'
@@ -84,7 +84,7 @@ const IndexPage = ({ data, location }: Props) => {
   return (
     <div>
       <Meta location={location.href} title="Home" />
-      <PageIntro document={homeData.heroTitle} maxWidth={1040} />
+      <PageHeroText document={homeData.heroTitle} maxWidth={1040} />
       <CaseStudiesContainer>
         <CaseStudyListing caseStudies={homeData.caseStudies} />
       </CaseStudiesContainer>

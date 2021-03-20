@@ -14,7 +14,7 @@ import { TypeJob } from '@common/types/Job'
 
 // Components
 import Meta from '@components/Meta'
-import PageIntro from '@components/PageIntro'
+import PagerHeroText from '@modules/common/components/PageHeroText'
 import TeamMap from '@components/TeamMap'
 import BioCard from '@components/BioCard'
 import JoinUs from '@components/JoinUs'
@@ -92,7 +92,7 @@ const WhoWeAre = ({ data, location }: Props) => {
     <motion.div animate={animateTo} initial={initial}>
       <Meta location={location.href} title="Who We Are" />
 
-      <PageIntro document={aboutPageData.heroTitle} maxWidth={860} />
+      <PagerHeroText document={aboutPageData.heroTitle} maxWidth={860} />
       <PhotoGridContainer>
         <PhotoGrid photos={aboutPageData.photoGrid} />
       </PhotoGridContainer>

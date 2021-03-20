@@ -33,7 +33,7 @@ const richTextOptions: Options = {
     [BLOCKS.PARAGRAPH]: (_, copy) => (
       <motion.h1
         animate={headingAnimationConfig}
-        className="text-h2"
+        className="text-title-subheading"
         initial={headingAnimationInitialConfig}
       >
         {copy}
@@ -42,12 +42,12 @@ const richTextOptions: Options = {
   },
   renderMark: {
     [MARKS.BOLD]: (text: React.ReactNode) => (
-      <span className="font-black">{text}</span>
+      <span className="font-black font-primary text-h1 block mb-6">{text}</span>
     )
   }
 }
 
-const PageIntro = ({ document, maxWidth = 1080 }: Props) => {
+const PageHeroText = ({ document, maxWidth = 1080 }: Props) => {
   const maxWidthStyle = { maxWidth }
   return (
     <section className="pt-16">
@@ -60,4 +60,4 @@ const PageIntro = ({ document, maxWidth = 1080 }: Props) => {
   )
 }
 
-export default PageIntro
+export default PageHeroText
