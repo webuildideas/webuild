@@ -1,6 +1,6 @@
 // Packages
 import React, { memo } from 'react'
-import { Link } from 'gatsby'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 // Common
 import { TypeInsight } from '@common/types/Insight'
@@ -18,7 +18,14 @@ interface Props {
 const FeaturedInsight = memo(function FeaturedInsightMemo({ insight }: Props) {
   return (
     <article className="FeaturedInsight">
-      <Link className="FeaturedInsight-container" to={`/${insight.slug}`}>
+      <AniLink
+        bg="#757588"
+        className="FeaturedInsight-container"
+        cover
+        direction="right"
+        duration={1.25}
+        to={`/${insight.slug}`}
+      >
         <div className="FeaturedInsight-img">
           <img
             alt="Article Illustration"
@@ -36,7 +43,7 @@ const FeaturedInsight = memo(function FeaturedInsightMemo({ insight }: Props) {
             <p className="text-body mb-4 md:mb-0">{insight.subtitle}</p>
           ) : null}
         </div>
-      </Link>
+      </AniLink>
     </article>
   )
 })
