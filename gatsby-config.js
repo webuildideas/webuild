@@ -55,11 +55,11 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-plugin-gtag`,
+      resolve: 'gatsby-plugin-google-tagmanager',
       options: {
-        trackingId: 'UA-60707530-1',
-        head: false,
-        anonymize: false
+        id: 'GTM-NBL93J9',
+        includeInDevelopment: true,
+        defaultDataLayer: { platform: 'gatsby' }
       }
     },
     `gatsby-plugin-postcss`,

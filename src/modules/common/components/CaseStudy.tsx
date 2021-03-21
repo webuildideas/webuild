@@ -10,12 +10,11 @@ import { TypeCaseStudy } from '@common/types/CaseStudy'
 import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
 
 // Components
-import Button from '@components/Button'
+import MotionAniLink from '@modules/common/components/MotionAniLink'
 
 // Styles
 import { classNames } from '@common/utils/classNames'
 import './styles/CaseStudy.css'
-// import * as S from './styles/CaseStudy'
 
 interface Props {
   animationThreshold?: number
@@ -38,6 +37,7 @@ const CaseStudy = ({
   const textControls = useAnimation()
   const logoControls = useAnimation()
   const imageControls = useAnimation()
+  const buttonControls = useAnimation()
 
   const variants = {
     visible: (i: number) => ({
@@ -78,6 +78,19 @@ const CaseStudy = ({
       x: layout === 'right' ? 70 : -70,
       y: 60,
       opacity: 0
+    },
+    buttonVisible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.4,
+        delay: 0.2,
+        ease: 'easeInOut'
+      }
+    },
+    buttonHidden: {
+      y: 20,
+      opacity: 0
     }
   }
 
@@ -86,8 +99,9 @@ const CaseStudy = ({
       textControls.start('visible')
       logoControls.start('logoVisible')
       imageControls.start('imageVisible')
+      buttonControls.start('buttonVisible')
     }
-  }, [textControls, inView, logoControls, imageControls])
+  }, [textControls, inView, buttonControls, logoControls, imageControls])
 
   let bgColor
   switch (caseStudy.name) {
@@ -180,17 +194,19 @@ const CaseStudy = ({
               </motion.p>
             </AniLink>
           )}
-          <Button
-            animationDelay={0.1}
-            bg={bgColor}
+          <MotionAniLink
+            animate={buttonControls}
+            bgColor={bgColor}
             cover
             direction="top"
             duration={1.25}
-            href={`/case-studies/${caseStudy.slug}`}
-            type="primaryLink"
+            initial="buttonHidden"
+            styleType="outline"
+            to={`/case-studies/${caseStudy.slug}`}
+            variants={variants}
           >
             Read Case Study
-          </Button>
+          </MotionAniLink>
         </div>
         {caseStudy?.listingImage?.fluid ? (
           <AniLink

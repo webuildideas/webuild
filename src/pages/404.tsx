@@ -6,7 +6,7 @@ import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContaine
 import '@common/styles/SectionHeading.css'
 
 // Components
-import Button from '@components/Button'
+import Link from '@modules/common/components/Link'
 import Meta from '@components/Meta'
 
 const NotFoundPage = () => {
@@ -21,9 +21,9 @@ const NotFoundPage = () => {
           Looks like this page doesn't exist...
         </h2>
       </div>
-      <Button href="/" type="secondaryLink">
+      <Link styleType="outline" to="/">
         Back To Home
-      </Button>
+      </Link>
     </SiteMaxWidthContainer>
   )
 }

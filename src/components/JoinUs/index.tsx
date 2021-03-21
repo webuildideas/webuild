@@ -1,16 +1,17 @@
 // Packages
 import React, { useEffect } from 'react'
-import { OutboundLink } from 'gatsby-plugin-gtag'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation, Variants } from 'framer-motion'
 
 // Common
 import { TypeJob } from '@common/types/Job'
 import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
-import '@common/styles/SectionHeading.css'
 
 // Components
 import Button from '@modules/common/components/Button'
+
+// Styles
+import '@common/styles/SectionHeading.css'
 
 interface Props {
   jobs?: TypeJob[]
@@ -79,7 +80,7 @@ const JoinUs = ({ jobs }: Props) => {
           >
             {jobs.map((job: TypeJob, idx: number) => {
               return (
-                <OutboundLink
+                <a
                   key={`job-${idx}`}
                   href={job.applicationLink}
                   rel="noopener noreferrer"
@@ -102,13 +103,15 @@ const JoinUs = ({ jobs }: Props) => {
                   >
                     {job.location}
                   </motion.p>
-                </OutboundLink>
+                </a>
               )
             })}
           </div>
         ) : null}
         <Button
           href="https://webuildideas.bamboohr.com/jobs/"
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           rel="noopener noreferrer"
           styleType="solid"
           target="_blank"

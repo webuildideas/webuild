@@ -4,7 +4,6 @@ import { graphql } from 'gatsby'
 import { motion, useAnimation, Variants } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import styled from 'styled-components'
-import { OutboundLink } from 'gatsby-plugin-gtag'
 
 // Common
 import { rhythmUnit } from '@common/utils/typography'
@@ -141,14 +140,14 @@ const WhoWeAre = ({ data, location }: Props) => {
             variants={variants}
           >
             You can find him and connect on{' '}
-            <OutboundLink
+            <a
               className="font-bold"
               href="https://www.linkedin.com/in/evanshoemaker/"
               rel="noopener noreferrer"
               target="_blank"
             >
               LinkedIn
-            </OutboundLink>
+            </a>
           </motion.p>
         </BioCard>
       </div>
