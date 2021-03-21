@@ -8,21 +8,24 @@ import { TypeInsight } from '@common/types/Insight'
 // Components
 import InsightTags from '@modules/common/components/InsightTags'
 
+// Styles
+import './styles/FeaturedInsight.css'
+
 interface Props {
   insight: TypeInsight
 }
 
 const FeaturedInsight = memo(function FeaturedInsightMemo({ insight }: Props) {
   return (
-    <article className="bg-foundation lg:bg-white lg:shadow-md rounded-tr-4">
-      <Link className="md:flex md:items-center" to={`/${insight.slug}`}>
-        <div className="mb-6 pt-4 pr-6 pl-8 md:pl-5 md:p-0">
+    <article className="FeaturedInsight">
+      <Link className="FeaturedInsight-container" to={`/${insight.slug}`}>
+        <div className="FeaturedInsight-img">
           <img
             alt="Article Illustration"
             src={insight.featuredIllustration?.file.url}
           />
         </div>
-        <div className="pl-8 pr-6 pb-8 md:pt-8 md:pr-8 md:pb-10 md:pl-4">
+        <div className="FeaturedInsight-content">
           <InsightTags
             className="mb-4 lg:mb-7"
             topics={insight.topics}
@@ -30,7 +33,7 @@ const FeaturedInsight = memo(function FeaturedInsightMemo({ insight }: Props) {
           />
           <h2 className="text-h2 mb-2">{insight.title}</h2>
           {insight.subtitle ? (
-            <p className="text-body mb-4">{insight.subtitle}</p>
+            <p className="text-body mb-4 md:mb-0">{insight.subtitle}</p>
           ) : null}
         </div>
       </Link>

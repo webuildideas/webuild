@@ -1,0 +1,39 @@
+.FeaturedInsight {
+  @apply bg-foundation;
+  @apply lg:bg-white;
+  @apply lg:shadow-md;
+  @apply rounded-tr-4;
+}
+
+.FeaturedInsight-container {
+  @apply block;
+  @apply pt-4;
+  @apply px-6;
+  @apply pb-8;
+
+  @apply md:flex;
+  @apply md:items-center;
+  @apply md:p-8;
+
+  @apply lg:py-6;
+  @apply lg:pl-12;
+  @apply lg:pr-20;
+
+  @apply xl:py-12;
+  @apply xl:px-25;
+}
+
+.FeaturedInsight-img {
+  @apply mb-6;
+
+  @apply md:mb-0;
+  @apply md:mr-3;
+
+  @apply xl:mr-11;
+}
+
+.FeaturedInsight-content {
+  @apply md:ml-3;
+
+  @apply xl:ml-11;
+}
