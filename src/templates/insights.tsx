@@ -51,13 +51,13 @@ export interface FilterState<T> {
 const PAGINATION_LIMIT = 7
 const ALL_TYPES: TypeInsightType[] = [
   'Article',
-  'White Paper'
-  // 'Event',
-  // 'Email Course',
-  // 'Podcast',
-  // 'Publication',
-  // 'Video',
-  // 'Webinar',
+  'White Paper',
+  'Event',
+  'Email Course',
+  'Podcast',
+  'Publication',
+  'Video',
+  'Webinar'
 ]
 
 const Insights = ({

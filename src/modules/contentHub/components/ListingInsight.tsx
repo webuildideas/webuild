@@ -1,5 +1,5 @@
 // Packages
-import { Link } from 'gatsby'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import React, { useRef, useState, useEffect } from 'react'
 
 // Commons
@@ -65,7 +65,14 @@ const ListingInsight = ({
 
   return (
     <article className="ListingInsight mb-16">
-      <Link className="ListingInsight-container" to={`/${slug}`}>
+      <AniLink
+        bg="#757588"
+        className="ListingInsight-container"
+        cover
+        direction="right"
+        duration={1.25}
+        to={`/${slug}`}
+      >
         <div
           ref={illustrationContainerRef}
           className="ListingInsight-illustration"
@@ -83,7 +90,7 @@ const ListingInsight = ({
           <InsightTags topics={topics} type={type} />
           <h2 className="text-h3 mt-4">{title}</h2>
         </div>
-      </Link>
+      </AniLink>
     </article>
   )
 }
