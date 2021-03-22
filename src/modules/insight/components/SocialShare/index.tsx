@@ -9,7 +9,7 @@ import {
 // Icons
 import FbIcon from '@static/svgs/common/logos/facebook-filled.inline.svg'
 import TwitterIcon from '@static/svgs/common/logos/twitter-filled.inline.svg'
-import LinkedinIcon from '@static/svgs/common/logos/linkedin-filled.inline.svg'
+import LinkedinIcon from '@static/svgs/common/logos/linkedIn-filled.inline.svg'
 import { WithClassName } from '@common/types/Utilities'
 
 interface Props extends WithClassName {
