@@ -16,7 +16,7 @@ import {
 } from '@common/store/userInterface/atoms'
 
 // Components
-import OverlayNav from '@components/OverlayNav'
+import OverlayNav from '@modules/common/components/OverlayNav'
 import Button from '@modules/common/components/Button'
 import Logo from './Logo'
 import MenuIcon from './MenuIcon'
