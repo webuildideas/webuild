@@ -40,29 +40,27 @@ const options: Options = {
       const caption = node.data.target.description
 
       return (
-        <div className="Article-img">
+        <div className="Insight-img">
           <Img durationFadeIn={125} fadeIn fluid={node.data.target.fluid} />
           {caption ? <p className="text-caption">{caption}</p> : null}
         </div>
       )
     },
     [BLOCKS.HEADING_2]: (_, children) => (
-      <h2 className="Article-copy Article-h2 text-h2 mb-4">{children}</h2>
+      <h2 className="Insight-copy Insight-h2 text-h2">{children}</h2>
     ),
     [BLOCKS.HEADING_3]: (_, children) => (
-      <h3 className="Article-copy Article-h3 text-h3 mb-4">{children}</h3>
+      <h3 className="Insight-copy Insight-h3 text-h3">{children}</h3>
     ),
     [BLOCKS.HEADING_4]: (_, children) => (
-      <h4 className="Article-copy Article-h4 text-h4 mb-6">{children}</h4>
+      <h4 className="Insight-copy Insight-h4 text-h4">{children}</h4>
     ),
     [BLOCKS.PARAGRAPH]: (_, children) => (
-      <p className="Article-copy Article-paragraph text-body mb-6">
-        {children}
-      </p>
+      <p className="Insight-copy Insight-paragraph text-body">{children}</p>
     ),
     [BLOCKS.QUOTE]: (node, children) => {
       return (
-        <blockquote className="Article-copy Article-blockquote text-h2">
+        <blockquote className="Insight-copy Insight-blockquote text-h2">
           {children}
         </blockquote>
       )
@@ -91,22 +89,15 @@ const Insight = ({
   return (
     <>
       {insight?.heroIllustration?.file?.url ? (
-        <div
-          className="Article-hero"
-          style={{
-            backgroundImage: `url(${insight.heroIllustration.file.url})`,
-            backgroundRepeat: 'no-repeat',
-            backgroundPositionX: 'center',
-            backgroundPositionY: 'center',
-            backgroundSize: '50%',
-            height: '480px'
-            // backgroundColor: 'gray'
-          }}
+        <img
+          alt="TESTING"
+          src={insight.heroIllustration.file.url}
+          style={{ objectFit: 'cover', width: '100%', height: '480px' }}
         />
       ) : null}
-      <main className="Article-grid">
+      <main className="Insight-grid">
         <Meta title={insight.title} />
-        <div className="Article-header">
+        <div className="Insight-header">
           <InsightTags
             className="mb-6"
             topics={insight.topics}
@@ -124,24 +115,24 @@ const Insight = ({
             />
           ) : null}
         </div>
-        <article ref={articleRef} className="Article" id="article">
+        <article ref={articleRef} className="Insight" id="article">
           {insight.content ? renderRichText(insight.content, options) : null}
         </article>
-        <div className="Article-share">
+        <div className="Insight-share">
           <SocialShare
-            className="Article-share-items"
+            className="Insight-share-items"
             hashtags={insight.hashtags}
             shareQuote={insight.shareQuote?.shareQuote}
             title={insight.title}
           />
         </div>
         <ReadNext
-          className="Article-read-next"
+          className="Insight-read-next"
           posts={insight.readNext}
           relatedPostsByTopic={relatedInsightsByTopic}
         />
 
-        <div className="Article-ctas">
+        <div className="Insight-ctas">
           <EmailSignupForm location={location.href} />
           <ReadNextSidebar
             insights={insight.readNext}
