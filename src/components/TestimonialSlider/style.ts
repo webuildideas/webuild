@@ -35,7 +35,6 @@ export const TestimonialSlide = styled(Slide)`
  * The Actual Testimonial Copy
  */
 export const Testimonial = styled.blockquote`
-  font-size: ${(props) => props.theme.f2};
   line-height: 1.4;
   text-align: center;
   @media (min-width: 1090px) {

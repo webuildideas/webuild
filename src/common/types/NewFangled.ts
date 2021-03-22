@@ -47,6 +47,22 @@ export const NFForms = {
   TestForm: {
     name: 'Test Form',
     actOnId: 'faa1d9d1-8e70-4de8-9f35-02ef47666c7f'
+  },
+  EmailSignup: {
+    name: 'Email Signup',
+    actOnId: 'c4bde8a0-2c73-417c-9bf3-b5c4f5e07dc4'
+  },
+  Opportunity: {
+    name: 'Opportunity Form',
+    actOnId: '4854e7c5-bf7c-46f9-ba29-0d29d1c472e1'
+  },
+  GatedPost: {
+    name: 'Gated Post',
+    actOnId: '3f9d7223-b62d-4dd5-83ea-0cff5a18d615'
+  },
+  ContentUpgrade: {
+    name: 'Content Upgrade',
+    actOnId: 'c7797ee2-36e9-4c02-b215-2189f15ee3c7'
   }
 } as const
 

@@ -1,5 +1,6 @@
 // Packages
 import React, { useEffect } from 'react'
+import { RenderRichTextData } from 'gatsby-source-contentful/rich-text'
 import { graphql } from 'gatsby'
 import { motion, useAnimation, Variants } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
@@ -14,14 +15,15 @@ import '@common/styles/SectionHeading.css'
 
 // Components
 import Meta from '@components/Meta'
-import CaseStudyListing from '@components/CaseStudyListing'
-import PageIntro from '@components/PageIntro'
-import DesignPartner from '@components/DesignPartner'
-import Testimonial from '@components/Testimonial'
+import PageHeroText from '@modules/common/components/PageHeroText'
+import DesignPartner from '@modules/home/components/DesignPartner'
+import Testimonial from '@modules/common/components/Testimonial'
 import TestimonialGrid from '@components/TestimonialGrid'
 import Footer from '@components/Footer'
-import TestForm from '@components/Forms/TestForm'
-import { RenderRichTextData } from 'gatsby-source-contentful/rich-text'
+import CaseStudy from '@modules/common/components/CaseStudy'
+
+// Styles
+import '../common/styles/pages/home.css'
 
 export interface HomePageQueryResponse {
   contentfulHomePage: {
@@ -83,11 +85,25 @@ const IndexPage = ({ data, location }: Props) => {
   }, [animationControls, inView])
 
   return (
-    <div>
+    <div className="Home">
       <Meta location={location.href} title="Home" />
-      <PageIntro document={homeData.heroTitle} maxWidth={1040} />
+      <PageHeroText document={homeData.heroTitle} maxWidth={1040} />
       <CaseStudiesContainer>
-        <CaseStudyListing caseStudies={homeData.caseStudies} />
+        <div className="overflow-hidden">
+          {homeData.caseStudies.map((study: TypeCaseStudy, idx: number) => {
+            const animationThreshold = idx === 0 ? 0.25 : 0.8
+            // Even # items we want image on right.
+            const layout = (idx + 1) % 2 === 0 ? 'left' : 'right'
+            return (
+              <CaseStudy
+                key={study.slug}
+                animationThreshold={animationThreshold}
+                caseStudy={study}
+                layout={layout}
+              />
+            )
+          })}
+        </div>
       </CaseStudiesContainer>
 
       <DesignPartner />
@@ -97,7 +113,7 @@ const IndexPage = ({ data, location }: Props) => {
           <div ref={ref} className="mb-16">
             <motion.h1
               animate={animationControls}
-              className="SectionHeading__title"
+              className="text-h4 mb-6"
               custom={0}
               initial="hidden"
               variants={variants}
@@ -106,7 +122,7 @@ const IndexPage = ({ data, location }: Props) => {
             </motion.h1>
             <motion.h2
               animate={animationControls}
-              className="SectionHeading__subtitle"
+              className="text-h3"
               custom={1}
               initial="hidden"
               variants={variants}
@@ -120,7 +136,7 @@ const IndexPage = ({ data, location }: Props) => {
           </div>
 
           <Testimonial
-            className="mb-6"
+            className="mb-8"
             company={homeData.featuredTestimonial.company}
             companyRole={homeData.featuredTestimonial.role}
             featuredHeadshot={
@@ -134,8 +150,6 @@ const IndexPage = ({ data, location }: Props) => {
           </Testimonial>
 
           <TestimonialGrid testimonials={homeData.testimonials} />
-
-          <TestForm />
         </SiteMaxWidthContainer>
       </section>
 

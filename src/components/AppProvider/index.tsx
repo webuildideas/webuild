@@ -9,8 +9,8 @@ import { styleTheme } from '@common/theme/styleTheme'
 import { GlobalStyle } from '@common/theme/GlobalStyle'
 
 // Components
-import Nav from '@components/Nav'
 import Meta from '@components/Meta'
+import Nav from '@modules/common/components/Nav'
 
 const AppProvider: React.FC = ({ children }) => {
   const setUserConversions = useSetRecoilState(userConversionsAtom)

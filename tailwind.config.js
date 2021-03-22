@@ -1,6 +1,11 @@
 /* eslint-disable global-require */
 module.exports = {
   purge: ['./src/**/*.js', './src/**/*.jsx', './src/**/*.ts', './src/**/*.tsx'],
+  variants: {
+    extend: {
+      fontWeight: ['hover', 'focus']
+    }
+  },
   theme: {
     borderRadius: {
       px: '1px',
@@ -195,6 +200,5 @@ module.exports = {
       49: '196px',
       50: '200px'
     }
-  },
-  plugins: [require('@tailwindcss/typography')]
+  }
 }

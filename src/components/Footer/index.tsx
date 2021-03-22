@@ -64,14 +64,18 @@ const Footer = () => {
         >
           Ready to take your product efforts to the next level? Drop us a line.
         </motion.h2>
-        <a
+        <motion.a
+          animate={controls}
           className="text-button bg-white px-6 py-4 inline-block"
+          custom={2}
           data-testid="footer-button"
           href="mailto:hi@webuild.io"
+          initial="hidden"
           type="primaryButton"
+          variants={variants}
         >
           HI@WEBUILD.IO
-        </a>
+        </motion.a>
 
         <div className="Footer-follow" data-testid="footer-social">
           <motion.p

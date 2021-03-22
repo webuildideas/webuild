@@ -46,6 +46,7 @@ const ChallengeAndSolution = ({ challenge, solution }: Props) => {
         <div>
           <motion.h3
             animate={animationControls}
+            className="text-h4 mb-5"
             custom={1}
             initial="hidden"
             variants={variants}
@@ -55,6 +56,7 @@ const ChallengeAndSolution = ({ challenge, solution }: Props) => {
 
           <motion.p
             animate={animationControls}
+            className="text-body"
             custom={2}
             initial="hidden"
             variants={variants}
@@ -65,6 +67,7 @@ const ChallengeAndSolution = ({ challenge, solution }: Props) => {
         <div>
           <motion.h3
             animate={animationControls}
+            className="text-h4 mb-5"
             custom={3}
             initial="hidden"
             variants={variants}
@@ -74,6 +77,7 @@ const ChallengeAndSolution = ({ challenge, solution }: Props) => {
 
           <motion.p
             animate={animationControls}
+            className="text-body"
             custom={4}
             initial="hidden"
             variants={variants}

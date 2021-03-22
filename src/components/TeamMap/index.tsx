@@ -58,7 +58,7 @@ const TeamMap = () => {
       <div className="mb-20">
         <motion.h1
           animate={animationControls}
-          className="SectionHeading__title"
+          className="text-h4 mb-6"
           custom={0}
           initial="hidden"
           variants={variants}
@@ -67,9 +67,10 @@ const TeamMap = () => {
         </motion.h1>
         <motion.h2
           animate={animationControls}
-          className="SectionHeading__subtitle"
+          className="text-h3"
           custom={1}
           initial="hidden"
+          style={{ maxWidth: '790px' }}
           variants={variants}
         >
           We embrace diversity and learning new things about each other’s

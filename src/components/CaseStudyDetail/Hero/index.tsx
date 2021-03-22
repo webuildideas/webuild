@@ -41,6 +41,7 @@ const CaseStudyHero = ({
       </motion.div>
       <S.CaseStudySuccessSummary
         animate={{ opacity: 1, top: '0px' }}
+        className="text-h2"
         initial={{ opacity: 0, top: '40px' }}
         transition={{ duration: 0.75 }}
       >

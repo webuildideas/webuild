@@ -1,0 +1,22 @@
+.Checkbox-container input:checked {
+  & + .Checkbox {
+    @apply bg-gray-500;
+  }
+  & + .Checkbox .Checkbox-checkmark {
+    @apply block;
+  }
+}
+
+.Checkbox-checkmark {
+  @apply hidden;
+}
+
+.Checkbox {
+  @apply w-4;
+  @apply h-4;
+  @apply border;
+  @apply border-solid;
+  @apply border-gray-700;
+  @apply text-white;
+  border-radius: 2px;
+}

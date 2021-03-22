@@ -4,7 +4,6 @@ import { graphql } from 'gatsby'
 import { motion, useAnimation, Variants } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import styled from 'styled-components'
-import { OutboundLink } from 'gatsby-plugin-gtag'
 
 // Common
 import { rhythmUnit } from '@common/utils/typography'
@@ -14,7 +13,7 @@ import { TypeJob } from '@common/types/Job'
 
 // Components
 import Meta from '@components/Meta'
-import PageIntro from '@components/PageIntro'
+import PagerHeroText from '@modules/common/components/PageHeroText'
 import TeamMap from '@components/TeamMap'
 import BioCard from '@components/BioCard'
 import JoinUs from '@components/JoinUs'
@@ -92,7 +91,7 @@ const WhoWeAre = ({ data, location }: Props) => {
     <motion.div animate={animateTo} initial={initial}>
       <Meta location={location.href} title="Who We Are" />
 
-      <PageIntro document={aboutPageData.heroTitle} maxWidth={860} />
+      <PagerHeroText document={aboutPageData.heroTitle} maxWidth={860} />
       <PhotoGridContainer>
         <PhotoGrid photos={aboutPageData.photoGrid} />
       </PhotoGridContainer>
@@ -107,6 +106,7 @@ const WhoWeAre = ({ data, location }: Props) => {
         <BioCard>
           <motion.h2
             animate={animationControls}
+            className="text-h4"
             custom={0}
             initial="headingHidden"
             variants={variants}
@@ -140,14 +140,14 @@ const WhoWeAre = ({ data, location }: Props) => {
             variants={variants}
           >
             You can find him and connect on{' '}
-            <OutboundLink
+            <a
               className="font-bold"
               href="https://www.linkedin.com/in/evanshoemaker/"
               rel="noopener noreferrer"
               target="_blank"
             >
               LinkedIn
-            </OutboundLink>
+            </a>
           </motion.p>
         </BioCard>
       </div>

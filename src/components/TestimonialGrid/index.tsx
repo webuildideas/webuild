@@ -6,7 +6,7 @@ import Masonry from 'react-masonry-css'
 import { TypeTestimonial } from '@common/types/Testimonial'
 
 // Components
-import Testimonial from '../Testimonial'
+import Testimonial from '@modules/common/components/Testimonial'
 
 // Styles
 import * as S from './style'
