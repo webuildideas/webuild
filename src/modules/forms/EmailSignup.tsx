@@ -3,11 +3,13 @@ import React, { useCallback } from 'react'
 import { Formik, Form, FormikHelpers, FormikProps } from 'formik'
 import * as Yup from 'yup'
 import { Link } from 'gatsby'
+import { useRecoilValue } from 'recoil'
 
 // Common
 import useSubmitNfForm from '@common/hooks/useSubmitNfForm'
 import { NFForms } from '@common/types/NewFangled'
 import { COUNTRIES } from '@common/constants/countries'
+import { userConversionsAtom } from '@common/store/newfangled/atoms'
 
 // Components
 import TextInput from '@modules/common/components/TextInput'
@@ -41,6 +43,8 @@ const formSchema = Yup.object().shape({
 })
 
 const EmailSignupForm = ({ location }: Props) => {
+  const userConversions = useRecoilValue(userConversionsAtom)
+  const userHasCompletedForm = userConversions.includes('Email Signup')
   const initialFormValues: FormValues = {
     'E-mail Address': '',
     Country: '',
@@ -76,7 +80,7 @@ const EmailSignupForm = ({ location }: Props) => {
     [submitToInsightEngine]
   )
 
-  return (
+  return userHasCompletedForm ? null : (
     <div className="EmailSignup px-8 py-14 bg-foundation lg:bg-transparent">
       <h2 className="text-h4 text-center lg:text-left mb-2">Learn From Us</h2>
       <p className="text-body text-center mb-8 lg:hidden">

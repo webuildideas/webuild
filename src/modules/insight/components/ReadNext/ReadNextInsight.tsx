@@ -2,7 +2,6 @@
 import React from 'react'
 import Img from 'gatsby-image'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
-import { Link } from 'gatsby'
 
 // Common
 import { TypeInsight } from '@common/types/Insight'
