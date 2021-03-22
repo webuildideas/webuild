@@ -144,6 +144,7 @@ const EmailSignupForm = ({ location }: Props) => {
               )
             })}
             <Button
+              animate={false}
               className="block mx-auto mt-4 lg:ml-0"
               disabled={isSubmitting || !values['Privacy Notice']}
               type="submit"

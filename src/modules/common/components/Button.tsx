@@ -12,6 +12,7 @@ import { classNames } from '@common/utils/classNames'
 import './styles/Button.css'
 
 interface Props extends WithChildren, WithClassName {
+  animate?: boolean
   href?: string
   onClick?: () => void
   onSubmit?: () => void
@@ -21,6 +22,7 @@ interface Props extends WithChildren, WithClassName {
 }
 
 const Button = ({
+  animate = true,
   children,
   className,
   disabled = false,
@@ -68,10 +70,10 @@ const Button = ({
   return href ? (
     <motion.a
       ref={ref}
-      animate={animationControls}
+      animate={animate ? animationControls : {}}
       className={`${buttonClasses} ${className}`}
       href={href}
-      initial="hidden"
+      initial={animate ? 'hidden' : ''}
       variants={variants}
       {...props}
     >
@@ -80,10 +82,10 @@ const Button = ({
   ) : (
     <motion.button
       ref={ref}
-      animate={animationControls}
+      animate={animate ? animationControls : {}}
       className={`${buttonClasses} ${className}`}
       disabled={disabled}
-      initial="hidden"
+      initial={animate ? 'hidden' : ''}
       onClick={onClick}
       onSubmit={onSubmit}
       type={type}

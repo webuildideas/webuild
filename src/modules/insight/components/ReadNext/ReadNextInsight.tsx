@@ -1,6 +1,7 @@
 // Packages
 import React from 'react'
 import Img from 'gatsby-image'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { Link } from 'gatsby'
 
 // Common
@@ -17,8 +18,11 @@ const insightStyle = { maxWidth: '350px' }
 
 const ReadNextInsight = ({ insight }: { insight: TypeInsight }) => {
   return (
-    <Link
+    <AniLink
       className="ReadNextInsight block bg-gray-200 p-8 mr-6"
+      cover
+      direction="right"
+      duration={1.25}
       style={insightStyle}
       to={`/${insight.slug}`}
     >
@@ -37,7 +41,7 @@ const ReadNextInsight = ({ insight }: { insight: TypeInsight }) => {
       </div>
       <h2 className="text-h3 mb-6">{insight.title}</h2>
       <p className="ReadNextInsight-read-more">Read More</p>
-    </Link>
+    </AniLink>
   )
 }
 
