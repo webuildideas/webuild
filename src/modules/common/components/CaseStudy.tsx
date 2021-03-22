@@ -6,6 +6,7 @@ import { useInView } from 'react-intersection-observer'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 // Common
+import { classNames } from '@common/utils/classNames'
 import { TypeCaseStudy } from '@common/types/CaseStudy'
 import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
 
@@ -13,7 +14,6 @@ import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContaine
 import MotionAniLink from '@modules/common/components/MotionAniLink'
 
 // Styles
-import { classNames } from '@common/utils/classNames'
 import './styles/CaseStudy.css'
 
 interface Props {
