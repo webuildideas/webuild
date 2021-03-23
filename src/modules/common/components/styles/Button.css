@@ -36,3 +36,9 @@
     opacity: 0.3;
   }
 }
+
+.Button-loading {
+  @apply flex;
+  @apply justify-center;
+  min-width: 115px;
+}

@@ -1,5 +1,5 @@
 // Packages
-import React, { useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 import { Formik, Form, FormikHelpers, FormikProps } from 'formik'
 import * as Yup from 'yup'
 import { Link } from 'gatsby'
@@ -42,9 +42,12 @@ const formSchema = Yup.object().shape({
   )
 })
 
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+
 const EmailSignupForm = ({ location }: Props) => {
   const userConversions = useRecoilValue(userConversionsAtom)
   const userHasCompletedForm = userConversions.includes('Email Signup')
+  const [formSubmitted, setFormSubmitted] = useState(false)
   const initialFormValues: FormValues = {
     'E-mail Address': '',
     Country: '',
@@ -60,7 +63,7 @@ const EmailSignupForm = ({ location }: Props) => {
   })
 
   const handleSubmit = useCallback(
-    async (values: FormValues, actions: FormikHelpers<FormValues>) => {
+    async (values: FormValues) => {
       const formattedSubmissionValues = {
         'E-mail Address': values['E-mail Address'],
         Country: values.Country,
@@ -69,18 +72,26 @@ const EmailSignupForm = ({ location }: Props) => {
         'Lead Source': values['Lead Source'],
         'Page URL': values['Page URL']
       }
-
-      actions.setSubmitting(true)
       await submitToInsightEngine(
         values['E-mail Address'],
         formattedSubmissionValues
       )
-      actions.setSubmitting(false)
+
+      await sleep(500)
+
+      setFormSubmitted(true)
     },
     [submitToInsightEngine]
   )
 
-  return userHasCompletedForm ? null : (
+  return userHasCompletedForm || formSubmitted ? (
+    formSubmitted ? (
+      <>
+        <p className="text-h3 mb-8">Thanks for subscribing!</p>
+        <p className="text-h3">We'll see you in your inbox soon.</p>
+      </>
+    ) : null
+  ) : (
     <div className="EmailSignup px-8 py-14 bg-foundation lg:bg-transparent">
       <h2 className="text-h4 text-center lg:text-left mb-2">Learn From Us</h2>
       <p className="text-body text-center mb-8 lg:hidden">
@@ -151,6 +162,7 @@ const EmailSignupForm = ({ location }: Props) => {
               animate={false}
               className="block mx-auto mt-4 lg:ml-0"
               disabled={isSubmitting || !values['Privacy Notice']}
+              loading={isSubmitting}
               type="submit"
             >
               Sign Up!
