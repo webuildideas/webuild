@@ -12,6 +12,9 @@ import {
   TypeInsightTopicIconConfig
 } from './configs/InsightTags'
 
+// Styles
+import './styles/InsightTags.css'
+
 interface Props extends WithClassName {
   type: TypeInsightType
   topics?: TypeInsightTopic[]
@@ -20,14 +23,14 @@ interface Props extends WithClassName {
 const InsightTags = ({ type, topics, className }: Props) => {
   const { name: typeName, icon: TypeIcon } = TypeInsightTypeIconConfig[type]
   return (
-    <div className={`flex flex-wrap items-center gap-y-3 ${className}`}>
-      <div className="flex items-center mr-4">
+    <div className={`InsightTags ${className}`}>
+      <div className="InsightTags-type">
         <TypeIcon className="mr-2 w-5" data-testid="insightTagsTypeIcon" />
         <p className="text-caption font-extrabold uppercase">{typeName}</p>
       </div>
 
       {topics && topics.length > 0 && (
-        <div className="flex items-center">
+        <div className="InsightTags-topics">
           {topics.map((topic) => {
             const {
               icon: TopicIcon,

@@ -10,6 +10,7 @@ import { classNames } from '@common/utils/classNames'
 
 // Styles
 import './styles/Button.css'
+import { useLoading, Oval } from '@agney/react-loading'
 
 interface Props extends WithChildren, WithClassName {
   animate?: boolean
@@ -19,20 +20,26 @@ interface Props extends WithChildren, WithClassName {
   disabled?: boolean
   type?: 'submit' | 'reset' | 'button'
   styleType?: 'solid' | 'outline'
+  loading?: boolean
 }
 
 const Button = ({
   animate = true,
   children,
   className,
-  disabled = false,
   href,
+  disabled = false,
+  loading = false,
   onClick,
   onSubmit,
   styleType = 'solid',
   type = 'button',
   ...props
 }: Props) => {
+  const { indicatorEl } = useLoading({
+    loading: true,
+    indicator: <Oval width={25} />
+  })
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.75
@@ -58,6 +65,7 @@ const Button = ({
     Button: true,
     'Button-solid': styleType === 'solid',
     'Button-outline': styleType === 'outline',
+    'Button-loading': loading,
     'text-button': true
   })
 
@@ -92,7 +100,7 @@ const Button = ({
       variants={variants}
       {...props}
     >
-      {children}
+      {loading ? indicatorEl : children}
     </motion.button>
   )
 }

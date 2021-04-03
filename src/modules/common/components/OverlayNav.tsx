@@ -8,7 +8,7 @@ import { useRecoilState } from 'recoil'
 import { isOverlayNavOpenAtom } from '@common/store/userInterface/atoms'
 
 // Styles
-import { OverlayNavContainer } from './style'
+import { OverlayNavContainer } from './styles/OverlayNav'
 
 interface NavLink {
   title: string
@@ -23,6 +23,10 @@ const navLinks: NavLink[] = [
   {
     title: 'Who we are',
     slug: '/who-we-are'
+  },
+  {
+    title: 'Insights',
+    slug: '/insights'
   },
   {
     title: 'Get in touch',

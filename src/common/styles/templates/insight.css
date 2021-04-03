@@ -2,6 +2,7 @@
   @apply grid;
   @apply grid-cols-12;
   @apply gap-4;
+  @apply bg-white;
   max-width: 1180px;
   @apply mx-auto;
   grid-template-rows: auto auto auto auto auto;
@@ -60,6 +61,31 @@
   @apply md:px-0;
   grid-area: article;
   grid-row: 2;
+}
+
+.Insight-hero {
+  @apply flex;
+  @apply flex-col;
+  @apply justify-end;
+  @apply bg-gray-200;
+  height: 290px;
+
+  @screen md {
+    height: 335px;
+  }
+
+  @screen lg {
+    height: 390px;
+  }
+
+  @screen xl {
+    height: 480px;
+  }
+
+  img {
+    @apply w-full;
+    max-height: 100%;
+  }
 }
 
 .Insight-share {
