@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components'
 import { useSetRecoilState } from 'recoil'
 
 // Common
-import { userConversionsAtom } from '@common/store/newfangled/atoms'
+import { userFormConversionsAtom } from '@modules/common/atoms/userFormConversions'
 import { styleTheme } from '@common/theme/styleTheme'
 import { GlobalStyle } from '@common/theme/GlobalStyle'
 
@@ -13,7 +13,7 @@ import Meta from '@components/Meta'
 import Nav from '@modules/common/components/Nav'
 
 const AppProvider: React.FC = ({ children }) => {
-  const setUserConversions = useSetRecoilState(userConversionsAtom)
+  const setUserConversions = useSetRecoilState(userFormConversionsAtom)
 
   useEffect(() => {
     const setUserConversionsData = setTimeout(() => {
@@ -21,7 +21,6 @@ const AppProvider: React.FC = ({ children }) => {
         ? window.NF.getActivityData().conversions
         : []
 
-      console.log('Conversions', conversions)
       setUserConversions(conversions)
     }, 1000)
 

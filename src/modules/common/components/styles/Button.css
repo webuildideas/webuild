@@ -21,6 +21,24 @@
   }
 }
 
+.Button-solid-purple {
+  @apply bg-deepViolet;
+  @apply text-white;
+  @apply hover:bg-electricViolet;
+  @apply border-none;
+  &:focus {
+    @apply bg-transparent;
+    @apply border-solid;
+    @apply border-2;
+    @apply text-black;
+  }
+  &:disabled {
+    opacity: 0.3;
+    @apply cursor-not-allowed;
+    @apply border-none;
+  }
+}
+
 .Button-outline {
   @apply bg-transparent;
   @apply border-solid;

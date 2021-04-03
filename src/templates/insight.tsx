@@ -18,9 +18,11 @@ import InsightTags from '@modules/common/components/InsightTags'
 import { getEstimatedReadingTime } from '@modules/insight/utils'
 import Author from '@modules/insight/components/Author'
 import Footer from '@components/Footer'
-
-import '@common/styles/templates/insight.css'
 import EmailSignupForm from '@modules/forms/EmailSignup'
+import GatedPostForm from '@modules/forms/GatedPost'
+
+// Styles
+import '@common/styles/templates/insight.css'
 
 interface Props {
   location: {
@@ -118,6 +120,9 @@ const Insight = ({
         </div>
         <article ref={articleRef} className="Insight" id="article">
           {insight.content ? renderRichText(insight.content, options) : null}
+          {insight.isGated ? (
+            <GatedPostForm postId={insight.id} postTitle={insight.title} />
+          ) : null}
         </article>
         <div className="Insight-share">
           <SocialShare
@@ -149,6 +154,8 @@ const Insight = ({
 export const query = graphql`
   query insightQuery($slug: String!, $topics: [String]) {
     contentfulInsight(slug: { eq: $slug }) {
+      id
+      isGated
       type
       topics
       title
