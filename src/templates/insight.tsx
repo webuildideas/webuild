@@ -87,13 +87,14 @@ const Insight = ({
   }, [articleRef])
 
   return (
-    <>
+    <div className="Insight-container">
       {insight?.heroIllustration?.file?.url ? (
-        <img
-          alt="TESTING"
-          src={insight.heroIllustration.file.url}
-          style={{ objectFit: 'cover', width: '100%', height: '480px' }}
-        />
+        <div className="Insight-hero">
+          <img
+            alt="Insight Hero illustration"
+            src={insight.heroIllustration.file.url}
+          />
+        </div>
       ) : null}
       <main className="Insight-grid">
         <Meta title={insight.title} />
@@ -141,7 +142,7 @@ const Insight = ({
         </div>
       </main>
       <Footer />
-    </>
+    </div>
   )
 }
 

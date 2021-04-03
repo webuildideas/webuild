@@ -1,6 +1,6 @@
 // Packages
 import React, { useCallback, useState } from 'react'
-import { Formik, Form, FormikHelpers, FormikProps } from 'formik'
+import { Formik, Form, FormikProps } from 'formik'
 import * as Yup from 'yup'
 import { Link } from 'gatsby'
 import { useRecoilValue } from 'recoil'
