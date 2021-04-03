@@ -104,7 +104,7 @@ const Insight = ({
             topics={insight.topics}
             type={insight.type}
           />
-          <h1 className="text-h1 mb-4">{insight.title}</h1>
+          <h1 className="text-h1 mb-4 mt-6">{insight.title}</h1>
           {insight.subtitle ? (
             <h2 className="text-title-subheading">{insight.subtitle}</h2>
           ) : null}
