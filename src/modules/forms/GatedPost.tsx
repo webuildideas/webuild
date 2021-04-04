@@ -102,7 +102,7 @@ const GatedPostForm = ({ postTitle, postId }: Props) => {
   )
 
   return userHasCompletedForm ? null : (
-    <div className="GatedPost bg-foundation px-6 py-8 rounded-tr-4">
+    <div className="GatedPost bg-foundation px-6 py-8 rounded-tr-4 mt-12">
       <h2 className="text-h3 font-extrabold mb-6">Continue Reading...</h2>
       <Formik
         initialValues={initialFormValues}

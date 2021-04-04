@@ -88,6 +88,22 @@
   }
 }
 
+.Insight-article-locked {
+  @apply relative;
+  @apply overflow-y-hidden;
+  height: 750px;
+
+  &:after {
+    content: "";
+    bottom: 0;
+    @apply absolute;
+    @apply block;
+    @apply w-full;
+    background-image: linear-gradient(to bottom, transparent, white);
+    height: 200px;
+  }
+}
+
 .Insight-share {
   position: sticky;
   @apply px-6;

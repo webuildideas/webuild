@@ -23,6 +23,9 @@ import GatedPostForm from '@modules/forms/GatedPost'
 
 // Styles
 import '@common/styles/templates/insight.css'
+import { classNames } from '@common/utils/classNames'
+import { useRecoilValue } from 'recoil'
+import { userGatedPostConversionsAtom } from '@modules/insight/atoms/userGatedPostConversions'
 
 interface Props {
   location: {
@@ -77,8 +80,15 @@ const Insight = ({
   },
   location
 }: Props) => {
+  const userGatedPostConversions = useRecoilValue(userGatedPostConversionsAtom)
+  const userHasUnlockedPost = userGatedPostConversions.includes(insight.id)
   const [estReadTime, setEstReadTime] = useState<number>()
   const articleRef = useRef<HTMLDivElement>(null)
+
+  const articleClassNames = classNames({
+    'Insight-article': true,
+    'Insight-article-locked': insight.isGated && !userHasUnlockedPost
+  })
 
   useEffect(() => {
     if (articleRef.current) {
@@ -119,7 +129,9 @@ const Insight = ({
           ) : null}
         </div>
         <article ref={articleRef} className="Insight" id="article">
-          {insight.content ? renderRichText(insight.content, options) : null}
+          <div className={articleClassNames}>
+            {insight.content ? renderRichText(insight.content, options) : null}
+          </div>
           {insight.isGated ? (
             <GatedPostForm postId={insight.id} postTitle={insight.title} />
           ) : null}
