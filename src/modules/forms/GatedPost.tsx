@@ -19,9 +19,10 @@ import SelectField from '@modules/common/components/SelectField'
 import { userGatedPostConversionsAtom } from '@modules/insight/atoms/userGatedPostConversions'
 
 // Style
-import './styles/EmailSignup.css'
+import './styles/GatedPost.css'
+import { WithClassName } from '@common/types/Utilities'
 
-interface Props {
+interface Props extends WithClassName {
   postTitle: string
   postId: string
 }
@@ -48,7 +49,7 @@ const formSchema = Yup.object().shape({
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
-const GatedPostForm = ({ postTitle, postId }: Props) => {
+const GatedPostForm = ({ className, postTitle, postId }: Props) => {
   const [
     userGatedPostConversions,
     setUserGatedPostConversions
@@ -102,60 +103,68 @@ const GatedPostForm = ({ postTitle, postId }: Props) => {
   )
 
   return userHasCompletedForm ? null : (
-    <div className="GatedPost bg-foundation px-6 py-8 rounded-tr-4 mt-12">
-      <h2 className="text-h3 font-extrabold mb-6">Continue Reading...</h2>
-      <Formik
-        initialValues={initialFormValues}
-        onSubmit={handleSubmit}
-        validateOnBlur={false}
-        validateOnChange={false}
-        validateOnMount={false}
-        validationSchema={formSchema}
-      >
-        {({ isSubmitting, errors }: FormikProps<FormValues>) => (
-          <Form id={NFForms.GatedPost.actOnId} name={NFForms.GatedPost.name}>
-            <TextInput className="hidden" name="Opt-In" type="text" />
-            <TextInput className="hidden" name="Lead Source" type="text" />
-            <TextInput className="hidden" name="Gated Post Title" type="text" />
+    <div className={`GatedPost ${className}`}>
+      <div className="GatedPost-container">
+        <h2 className="text-h3 font-extrabold mb-6">Continue Reading...</h2>
+        <Formik
+          initialValues={initialFormValues}
+          onSubmit={handleSubmit}
+          validateOnBlur={false}
+          validateOnChange={false}
+          validateOnMount={false}
+          validationSchema={formSchema}
+        >
+          {({ isSubmitting, errors }: FormikProps<FormValues>) => (
+            <Form id={NFForms.GatedPost.actOnId} name={NFForms.GatedPost.name}>
+              <TextInput className="hidden" name="Opt-In" type="text" />
+              <TextInput className="hidden" name="Lead Source" type="text" />
+              <TextInput
+                className="hidden"
+                name="Gated Post Title"
+                type="text"
+              />
 
-            <TextInput
-              className="block appearance-none mb-4"
-              label="Email *"
-              name="E-mail Address"
-              type="text"
-            />
+              <div className="GatedPost-form">
+                <TextInput
+                  className="GatedPost-email block appearance-none mb-4 md:mb-0"
+                  label="Email *"
+                  name="E-mail Address"
+                  type="text"
+                />
 
-            <SelectField
-              className="mb-6"
-              label="Country *"
-              name="Country"
-              options={COUNTRIES}
-              placeholder="Country"
-            />
+                <SelectField
+                  className="GatedPost-country mb-6 md:mb-0"
+                  label="Country *"
+                  name="Country"
+                  options={COUNTRIES}
+                  placeholder="Country"
+                />
 
-            {Object.values(errors).map((error, idx) => {
-              return (
-                <p
-                  key={`error-${idx}`}
-                  className="text-tag my-6 text-ui-error-dark"
+                {Object.values(errors).map((error, idx) => {
+                  return (
+                    <p
+                      key={`error-${idx}`}
+                      className="text-tag my-6 text-ui-error-dark"
+                    >
+                      {error}
+                    </p>
+                  )
+                })}
+                <Button
+                  animate={false}
+                  className="GatedPost-button block mt-8"
+                  disabled={isSubmitting}
+                  loading={isSubmitting}
+                  styleType="solid-purple"
+                  type="submit"
                 >
-                  {error}
-                </p>
-              )
-            })}
-            <Button
-              animate={false}
-              className="block mt-4"
-              disabled={isSubmitting}
-              loading={isSubmitting}
-              styleType="solid-purple"
-              type="submit"
-            >
-              Submit
-            </Button>
-          </Form>
-        )}
-      </Formik>
+                  Submit
+                </Button>
+              </div>
+            </Form>
+          )}
+        </Formik>
+      </div>
     </div>
   )
 }

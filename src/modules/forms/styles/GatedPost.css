@@ -1,0 +1,50 @@
+.GatedPost {
+  @apply bg-foundation;
+  @apply rounded-tr-4;
+
+  @screen xl {
+    max-width: 780px;
+  }
+}
+
+.GatedPost-container {
+  @apply px-6;
+  @apply py-8;
+
+  @apply md:mx-auto;
+  @apply md:px-0;
+
+  @screen md {
+    max-width: 550px;
+  }
+
+  @screen lg {
+    max-width: 580px;
+  }
+
+  @screen xl {
+    max-width: 630px;
+    @apply ml-0;
+    @apply pl-10;
+  }
+}
+
+.GatedPost-form {
+  @apply md:flex;
+  @apply md:items-end;
+  @apply justify-between;
+}
+
+.GatedPost-email {
+  flex: 1;
+  @apply md:mr-5;
+}
+
+.GatedPost-country {
+  flex: 1;
+  @apply md:ml-5;
+}
+
+.GatedPost-button {
+  @apply md:ml-5;
+}

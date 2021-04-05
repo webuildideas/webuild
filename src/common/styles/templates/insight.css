@@ -57,10 +57,29 @@
 }
 
 .Insight {
-  @apply px-6;
-  @apply md:px-0;
   grid-area: article;
   grid-row: 2;
+}
+
+.Insight-article {
+  @apply px-6;
+  @apply md:px-0;
+}
+
+.Insight-article-locked {
+  @apply relative;
+  @apply overflow-hidden;
+  height: 750px;
+
+  &:after {
+    content: "";
+    bottom: 0;
+    @apply absolute;
+    @apply block;
+    @apply w-full;
+    background-image: linear-gradient(to bottom, transparent, white);
+    height: 300px;
+  }
 }
 
 .Insight-hero {
@@ -85,22 +104,6 @@
   img {
     @apply w-full;
     max-height: 100%;
-  }
-}
-
-.Insight-article-locked {
-  @apply relative;
-  @apply overflow-y-hidden;
-  height: 750px;
-
-  &:after {
-    content: "";
-    bottom: 0;
-    @apply absolute;
-    @apply block;
-    @apply w-full;
-    background-image: linear-gradient(to bottom, transparent, white);
-    height: 200px;
   }
 }
 

@@ -3,11 +3,13 @@ import React, { useEffect, useRef, useState } from 'react'
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import { BLOCKS } from '@contentful/rich-text-types'
 import { Options } from '@contentful/rich-text-react-renderer'
+import { useRecoilValue } from 'recoil'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
 // Common
 import { TypeInsight } from '@common/types/Insight'
+import { classNames } from '@common/utils/classNames'
 
 // Components
 import Meta from '@components/Meta'
@@ -21,11 +23,11 @@ import Footer from '@components/Footer'
 import EmailSignupForm from '@modules/forms/EmailSignup'
 import GatedPostForm from '@modules/forms/GatedPost'
 
+// Atoms
+import { userGatedPostConversionsAtom } from '@modules/insight/atoms/userGatedPostConversions'
+
 // Styles
 import '@common/styles/templates/insight.css'
-import { classNames } from '@common/utils/classNames'
-import { useRecoilValue } from 'recoil'
-import { userGatedPostConversionsAtom } from '@modules/insight/atoms/userGatedPostConversions'
 
 interface Props {
   location: {
@@ -133,7 +135,13 @@ const Insight = ({
             {insight.content ? renderRichText(insight.content, options) : null}
           </div>
           {insight.isGated ? (
-            <GatedPostForm postId={insight.id} postTitle={insight.title} />
+            <div className="pr-6 md:pr-8 lg:pr-0">
+              <GatedPostForm
+                className="mt-12 mb-14"
+                postId={insight.id}
+                postTitle={insight.title}
+              />
+            </div>
           ) : null}
         </article>
         <div className="Insight-share">

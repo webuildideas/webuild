@@ -37,7 +37,7 @@ const SelectField = ({
         ) : null}
         <select
           {...field}
-          className="SelectField text-caption"
+          className="SelectField text-caption w-full"
           placeholder={placeholder}
         >
           {options.map((option: SelectOption) => {

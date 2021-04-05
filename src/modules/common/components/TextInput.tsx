@@ -26,11 +26,12 @@ const TextInput = ({
   const inputClasses = classNames({
     TextInput: true,
     'text-caption': true,
+    'w-full': true,
     'has-error': !!error
   })
   return (
     <div className={className}>
-      <label>
+      <label className="block">
         {label ? (
           <span className="text-tag block text-gray-700 mb-3">{label}</span>
         ) : null}
