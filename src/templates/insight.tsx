@@ -3,11 +3,13 @@ import React, { useEffect, useRef, useState } from 'react'
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import { BLOCKS } from '@contentful/rich-text-types'
 import { Options } from '@contentful/rich-text-react-renderer'
+import { useRecoilValue } from 'recoil'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
 // Common
 import { TypeInsight } from '@common/types/Insight'
+import { classNames } from '@common/utils/classNames'
 
 // Components
 import Meta from '@components/Meta'
@@ -18,9 +20,14 @@ import InsightTags from '@modules/common/components/InsightTags'
 import { getEstimatedReadingTime } from '@modules/insight/utils'
 import Author from '@modules/insight/components/Author'
 import Footer from '@components/Footer'
-
-import '@common/styles/templates/insight.css'
 import EmailSignupForm from '@modules/forms/EmailSignup'
+import GatedPostForm from '@modules/forms/GatedPost'
+
+// Atoms
+import { userGatedPostConversionsAtom } from '@modules/insight/atoms/userGatedPostConversions'
+
+// Styles
+import '@common/styles/templates/insight.css'
 
 interface Props {
   location: {
@@ -75,8 +82,16 @@ const Insight = ({
   },
   location
 }: Props) => {
+  const userGatedPostConversions = useRecoilValue(userGatedPostConversionsAtom)
+  const userHasUnlockedPost = userGatedPostConversions.includes(insight.id)
+  const isLocked = insight.isGated && !userHasUnlockedPost
   const [estReadTime, setEstReadTime] = useState<number>()
   const articleRef = useRef<HTMLDivElement>(null)
+
+  const articleClassNames = classNames({
+    'Insight-article': true,
+    'Insight-article-locked': isLocked
+  })
 
   useEffect(() => {
     if (articleRef.current) {
@@ -117,29 +132,44 @@ const Insight = ({
           ) : null}
         </div>
         <article ref={articleRef} className="Insight" id="article">
-          {insight.content ? renderRichText(insight.content, options) : null}
+          <div className={articleClassNames}>
+            {insight.content ? renderRichText(insight.content, options) : null}
+          </div>
+          {insight.isGated ? (
+            <div className="pr-6 md:pr-8 lg:pr-0">
+              <GatedPostForm
+                className="mt-12 mb-14"
+                postId={insight.id}
+                postTitle={insight.title}
+              />
+            </div>
+          ) : null}
         </article>
-        <div className="Insight-share">
-          <SocialShare
-            className="Insight-share-items"
-            hashtags={insight.hashtags}
-            shareQuote={insight.shareQuote?.shareQuote}
-            title={insight.title}
-          />
-        </div>
-        <ReadNext
-          className="Insight-read-next"
-          posts={insight.readNext}
-          relatedPostsByTopic={relatedInsightsByTopic}
-        />
+        {!isLocked ? (
+          <>
+            <div className="Insight-share">
+              <SocialShare
+                className="Insight-share-items"
+                hashtags={insight.hashtags}
+                shareQuote={insight.shareQuote?.shareQuote}
+                title={insight.title}
+              />
+            </div>
+            <ReadNext
+              className="Insight-read-next"
+              posts={insight.readNext}
+              relatedPostsByTopic={relatedInsightsByTopic}
+            />
 
-        <div className="Insight-ctas">
-          <EmailSignupForm location={location.href} />
-          <ReadNextSidebar
-            insights={insight.readNext}
-            relatedInsightsByTopic={relatedInsightsByTopic}
-          />
-        </div>
+            <div className="Insight-ctas">
+              <EmailSignupForm location={location.href} />
+              <ReadNextSidebar
+                insights={insight.readNext}
+                relatedInsightsByTopic={relatedInsightsByTopic}
+              />
+            </div>
+          </>
+        ) : null}
       </main>
       <Footer />
     </div>
@@ -149,6 +179,8 @@ const Insight = ({
 export const query = graphql`
   query insightQuery($slug: String!, $topics: [String]) {
     contentfulInsight(slug: { eq: $slug }) {
+      id
+      isGated
       type
       topics
       title

@@ -19,7 +19,7 @@ interface Props extends WithChildren, WithClassName {
   onSubmit?: () => void
   disabled?: boolean
   type?: 'submit' | 'reset' | 'button'
-  styleType?: 'solid' | 'outline'
+  styleType?: 'solid' | 'solid-purple' | 'outline'
   loading?: boolean
 }
 
@@ -64,6 +64,7 @@ const Button = ({
   const buttonClasses = classNames({
     Button: true,
     'Button-solid': styleType === 'solid',
+    'Button-solid-purple': styleType === 'solid-purple',
     'Button-outline': styleType === 'outline',
     'Button-loading': loading,
     'text-button': true

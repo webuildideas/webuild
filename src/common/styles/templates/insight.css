@@ -57,10 +57,29 @@
 }
 
 .Insight {
-  @apply px-6;
-  @apply md:px-0;
   grid-area: article;
   grid-row: 2;
+}
+
+.Insight-article {
+  @apply px-6;
+  @apply md:px-0;
+}
+
+.Insight-article-locked {
+  @apply relative;
+  @apply overflow-hidden;
+  height: 750px;
+
+  &:after {
+    content: "";
+    bottom: 0;
+    @apply absolute;
+    @apply block;
+    @apply w-full;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), white);
+    height: 300px;
+  }
 }
 
 .Insight-hero {

@@ -9,7 +9,7 @@ import { useRecoilValue } from 'recoil'
 import useSubmitNfForm from '@common/hooks/useSubmitNfForm'
 import { NFForms } from '@common/types/NewFangled'
 import { COUNTRIES } from '@common/constants/countries'
-import { userConversionsAtom } from '@common/store/newfangled/atoms'
+import { userFormConversionsAtom } from '@modules/common/atoms/userFormConversions'
 
 // Components
 import TextInput from '@modules/common/components/TextInput'
@@ -45,8 +45,10 @@ const formSchema = Yup.object().shape({
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
 const EmailSignupForm = ({ location }: Props) => {
-  const userConversions = useRecoilValue(userConversionsAtom)
-  const userHasCompletedForm = userConversions.includes('Email Signup')
+  const userConversions = useRecoilValue(userFormConversionsAtom)
+  const userHasCompletedForm = userConversions.includes(
+    NFForms.EmailSignup.name
+  )
   const [formSubmitted, setFormSubmitted] = useState(false)
   const initialFormValues: FormValues = {
     'E-mail Address': '',

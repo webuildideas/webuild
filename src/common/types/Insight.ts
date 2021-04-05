@@ -25,6 +25,8 @@ export type TypeInsightTopic =
   | 'Tools & Trends'
 
 export interface TypeInsight {
+  id: string
+  isGated: boolean
   type: TypeInsightType
   title: string
   subtitle?: string
