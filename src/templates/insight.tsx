@@ -84,12 +84,13 @@ const Insight = ({
 }: Props) => {
   const userGatedPostConversions = useRecoilValue(userGatedPostConversionsAtom)
   const userHasUnlockedPost = userGatedPostConversions.includes(insight.id)
+  const isLocked = insight.isGated && !userHasUnlockedPost
   const [estReadTime, setEstReadTime] = useState<number>()
   const articleRef = useRef<HTMLDivElement>(null)
 
   const articleClassNames = classNames({
     'Insight-article': true,
-    'Insight-article-locked': insight.isGated && !userHasUnlockedPost
+    'Insight-article-locked': isLocked
   })
 
   useEffect(() => {
@@ -144,27 +145,31 @@ const Insight = ({
             </div>
           ) : null}
         </article>
-        <div className="Insight-share">
-          <SocialShare
-            className="Insight-share-items"
-            hashtags={insight.hashtags}
-            shareQuote={insight.shareQuote?.shareQuote}
-            title={insight.title}
-          />
-        </div>
-        <ReadNext
-          className="Insight-read-next"
-          posts={insight.readNext}
-          relatedPostsByTopic={relatedInsightsByTopic}
-        />
+        {!isLocked ? (
+          <>
+            <div className="Insight-share">
+              <SocialShare
+                className="Insight-share-items"
+                hashtags={insight.hashtags}
+                shareQuote={insight.shareQuote?.shareQuote}
+                title={insight.title}
+              />
+            </div>
+            <ReadNext
+              className="Insight-read-next"
+              posts={insight.readNext}
+              relatedPostsByTopic={relatedInsightsByTopic}
+            />
 
-        <div className="Insight-ctas">
-          <EmailSignupForm location={location.href} />
-          <ReadNextSidebar
-            insights={insight.readNext}
-            relatedInsightsByTopic={relatedInsightsByTopic}
-          />
-        </div>
+            <div className="Insight-ctas">
+              <EmailSignupForm location={location.href} />
+              <ReadNextSidebar
+                insights={insight.readNext}
+                relatedInsightsByTopic={relatedInsightsByTopic}
+              />
+            </div>
+          </>
+        ) : null}
       </main>
       <Footer />
     </div>
