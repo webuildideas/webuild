@@ -1,7 +1,7 @@
 // Packages
 import React from 'react'
 import Helmet, { HelmetProps } from 'react-helmet'
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql, PageProps } from 'gatsby'
 
 // Common
 import useTrackPageView from '@common/hooks/useTrackPageView'
@@ -10,7 +10,7 @@ import { TypeContentfulAsset } from '@common/types/Contentful'
 interface Props extends HelmetProps {
   description?: string
   title?: string
-  location?: string
+  location: PageProps['location']
 }
 
 interface MetaQueryResponse {
@@ -99,7 +99,7 @@ const Meta = ({
     }
   ]
 
-  useTrackPageView(location, metaTitle)
+  useTrackPageView(location?.state === null, location?.href, metaTitle)
 
   return (
     <Helmet

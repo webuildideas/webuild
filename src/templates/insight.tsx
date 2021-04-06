@@ -4,7 +4,7 @@ import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import { BLOCKS } from '@contentful/rich-text-types'
 import { Options } from '@contentful/rich-text-react-renderer'
 import { useRecoilValue } from 'recoil'
-import { graphql } from 'gatsby'
+import { graphql, PageProps } from 'gatsby'
 import Img from 'gatsby-image'
 
 // Common
@@ -30,9 +30,7 @@ import { userGatedPostConversionsAtom } from '@modules/insight/atoms/userGatedPo
 import '@common/styles/templates/insight.css'
 
 interface Props {
-  location: {
-    href: string
-  }
+  location: PageProps['location']
   data: {
     contentfulInsight: TypeInsight
     allContentfulInsight: {
@@ -100,10 +98,9 @@ const Insight = ({
       setEstReadTime(readTime)
     }
   }, [articleRef])
-
   return (
     <>
-      <Meta location={location.href} title={insight.title} />
+      <Meta location={location} title={insight.title} />
       <div className="Insight-container">
         {insight?.heroIllustration?.file?.url ? (
           <div className="Insight-hero">

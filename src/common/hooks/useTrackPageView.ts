@@ -1,12 +1,16 @@
 // Packages
 import { useEffect, useState } from 'react'
 
-const useTrackPageView = (pageUrl?: string, pageTitle?: string) => {
+const useTrackPageView = (
+  initialPageLoaded: boolean,
+  pageUrl?: string,
+  pageTitle?: string
+) => {
   const [initialRender, setInitialRender] = useState(true)
 
   useEffect(() => {
     const trackView = setTimeout(() => {
-      if (initialRender && pageUrl && pageTitle) {
+      if (initialRender && pageUrl && pageTitle && !initialPageLoaded) {
         console.log('Tracking page view')
         const url = pageUrl
         const title = pageTitle
@@ -17,7 +21,7 @@ const useTrackPageView = (pageUrl?: string, pageTitle?: string) => {
     }, 1000)
 
     return () => clearTimeout(trackView)
-  }, [initialRender, pageTitle, pageUrl])
+  }, [initialRender, pageTitle, pageUrl, initialPageLoaded])
 }
 
 export default useTrackPageView

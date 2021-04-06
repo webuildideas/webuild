@@ -1,6 +1,6 @@
 // Packages
 import React, { useEffect } from 'react'
-import { graphql } from 'gatsby'
+import { graphql, PageProps } from 'gatsby'
 import { motion, useAnimation, Variants } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import styled from 'styled-components'
@@ -37,9 +37,7 @@ interface WhoWeAreQueryResponse {
 
 interface Props {
   data: WhoWeAreQueryResponse
-  location: {
-    href: string
-  }
+  location: PageProps['location']
 }
 
 const PhotoGridContainer = styled.div`
@@ -89,7 +87,7 @@ const WhoWeAre = ({ data, location }: Props) => {
 
   return (
     <motion.div animate={animateTo} initial={initial}>
-      <Meta location={location.href} title="Who We Are" />
+      <Meta location={location} title="Who We Are" />
 
       <PagerHeroText document={aboutPageData.heroTitle} maxWidth={860} />
       <PhotoGridContainer>

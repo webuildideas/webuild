@@ -1,7 +1,7 @@
 // Packages
 import React, { useEffect } from 'react'
 import { RenderRichTextData } from 'gatsby-source-contentful/rich-text'
-import { graphql } from 'gatsby'
+import { graphql, PageProps } from 'gatsby'
 import { motion, useAnimation, Variants } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import styled from 'styled-components'
@@ -36,9 +36,7 @@ export interface HomePageQueryResponse {
 
 interface Props {
   data: HomePageQueryResponse
-  location: {
-    href: string
-  }
+  location: PageProps['location']
 }
 
 const variants: Variants = {
@@ -86,7 +84,7 @@ const IndexPage = ({ data, location }: Props) => {
 
   return (
     <div className="Home">
-      <Meta location={location.href} title="Home" />
+      <Meta location={location} title="Home" />
       <PageHeroText document={homeData.heroTitle} maxWidth={1040} />
       <CaseStudiesContainer>
         <div className="overflow-hidden">
