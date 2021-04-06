@@ -1,6 +1,6 @@
 // Packages
 import React, { useState, useEffect } from 'react'
-import { graphql } from 'gatsby'
+import { graphql, PageProps } from 'gatsby'
 import { useInView } from 'react-intersection-observer'
 
 // Common
@@ -23,9 +23,7 @@ interface Props {
   data: {
     contentfulCaseStudy: TypeCaseStudy
   }
-  location: {
-    href: string
-  }
+  location: PageProps['location']
 }
 
 const CaseStudyDetail = ({
@@ -70,7 +68,7 @@ const CaseStudyDetail = ({
     <>
       <Meta
         bodyAttributes={metaBodyAtributes}
-        location={location.href}
+        location={location}
         title={name}
       />
       <S.CaseStudyDetail className={slug}>

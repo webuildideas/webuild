@@ -2,7 +2,7 @@
 // Packages
 import React, { useCallback, useEffect, useState } from 'react'
 import { useQuery } from '@apollo/client'
-import { graphql } from 'gatsby'
+import { graphql, PageProps } from 'gatsby'
 
 // Common
 import {
@@ -30,9 +30,7 @@ import Footer from '@components/Footer'
 import EmailSignUpForm from '@modules/forms/EmailSignup'
 
 interface Props {
-  location: {
-    href: string
-  }
+  location: PageProps['location']
   data: {
     contentfulContentHub: {
       featuredInsight: TypeInsight
@@ -239,10 +237,9 @@ const Insights = ({
       setTotal(data.insightCollection.total)
     }
   }, [data])
-
   return (
     <div className="InsightsPage">
-      <Meta location={location.href} title="Insights" />
+      <Meta location={location} title="Insights" />
       <div className="InsightsPage-header">
         <div className="InsightsPage-header-content">
           <h1 className="mb-4 text-h1">Insights & Ideas</h1>
