@@ -6,9 +6,10 @@ const useTrackPageView = (pageUrl?: string, pageTitle?: string) => {
 
   useEffect(() => {
     const trackView = setTimeout(() => {
-      if (initialRender) {
-        const url = pageUrl || window.location.href
-        const title = pageTitle || document.title
+      if (initialRender && pageUrl && pageTitle) {
+        console.log('Tracking page view')
+        const url = pageUrl
+        const title = pageTitle
         window.NF.recordPageView(url, title)
         window.ActOn.Beacon.track(url, 'page', new Date().getTime())
         setInitialRender(false)
@@ -16,7 +17,7 @@ const useTrackPageView = (pageUrl?: string, pageTitle?: string) => {
     }, 1000)
 
     return () => clearTimeout(trackView)
-  }, [initialRender, pageUrl, pageTitle])
+  }, [initialRender, pageTitle, pageUrl])
 }
 
 export default useTrackPageView

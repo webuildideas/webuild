@@ -242,7 +242,7 @@ const Insights = ({
 
   return (
     <div className="InsightsPage">
-      <Meta title="Insights" />
+      <Meta location={location.href} title="Insights" />
       <div className="InsightsPage-header">
         <div className="InsightsPage-header-content">
           <h1 className="mb-4 text-h1">Insights & Ideas</h1>
