@@ -30,7 +30,6 @@ const Meta = ({
   title,
   location
 }: Props) => {
-  useTrackPageView(location, title)
   const { contentfulSeo } = useStaticQuery<MetaQueryResponse>(
     graphql`
       query SeoQuery {
@@ -99,6 +98,9 @@ const Meta = ({
       content: contentfulSeo.seoShareImage.file.url
     }
   ]
+
+  useTrackPageView(location, metaTitle)
+
   return (
     <Helmet
       bodyAttributes={bodyAttributes}

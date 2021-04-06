@@ -102,77 +102,81 @@ const Insight = ({
   }, [articleRef])
 
   return (
-    <div className="Insight-container">
-      {insight?.heroIllustration?.file?.url ? (
-        <div className="Insight-hero">
-          <img
-            alt="Insight Hero illustration"
-            src={insight.heroIllustration.file.url}
-          />
-        </div>
-      ) : null}
-      <main className="Insight-grid">
-        <Meta title={insight.title} />
-        <div className="Insight-header">
-          <InsightTags
-            className="mb-6"
-            topics={insight.topics}
-            type={insight.type}
-          />
-          <h1 className="text-h1 mb-4 mt-6">{insight.title}</h1>
-          {insight.subtitle ? (
-            <h2 className="text-title-subheading">{insight.subtitle}</h2>
-          ) : null}
-          {insight.author ? (
-            <Author
-              author={insight.author}
-              estReadTime={estReadTime}
-              publishDate={insight.publishDate}
+    <>
+      <Meta location={location.href} title={insight.title} />
+      <div className="Insight-container">
+        {insight?.heroIllustration?.file?.url ? (
+          <div className="Insight-hero">
+            <img
+              alt="Insight Hero illustration"
+              src={insight.heroIllustration.file.url}
             />
-          ) : null}
-        </div>
-        <article ref={articleRef} className="Insight" id="article">
-          <div className={articleClassNames}>
-            {insight.content ? renderRichText(insight.content, options) : null}
           </div>
-          {insight.isGated ? (
-            <div className="pr-6 md:pr-8 lg:pr-0">
-              <GatedPostForm
-                className="mt-12 mb-14"
-                postId={insight.id}
-                postTitle={insight.title}
-              />
-            </div>
-          ) : null}
-        </article>
-        {!isLocked ? (
-          <>
-            <div className="Insight-share">
-              <SocialShare
-                className="Insight-share-items"
-                hashtags={insight.hashtags}
-                shareQuote={insight.shareQuote?.shareQuote}
-                title={insight.title}
-              />
-            </div>
-            <ReadNext
-              className="Insight-read-next"
-              posts={insight.readNext}
-              relatedPostsByTopic={relatedInsightsByTopic}
-            />
-
-            <div className="Insight-ctas">
-              <EmailSignupForm location={location.href} />
-              <ReadNextSidebar
-                insights={insight.readNext}
-                relatedInsightsByTopic={relatedInsightsByTopic}
-              />
-            </div>
-          </>
         ) : null}
-      </main>
-      <Footer />
-    </div>
+        <main className="Insight-grid">
+          <div className="Insight-header">
+            <InsightTags
+              className="mb-6"
+              topics={insight.topics}
+              type={insight.type}
+            />
+            <h1 className="text-h1 mb-4 mt-6">{insight.title}</h1>
+            {insight.subtitle ? (
+              <h2 className="text-title-subheading">{insight.subtitle}</h2>
+            ) : null}
+            {insight.author ? (
+              <Author
+                author={insight.author}
+                estReadTime={estReadTime}
+                publishDate={insight.publishDate}
+              />
+            ) : null}
+          </div>
+          <article ref={articleRef} className="Insight" id="article">
+            <div className={articleClassNames}>
+              {insight.content
+                ? renderRichText(insight.content, options)
+                : null}
+            </div>
+            {insight.isGated ? (
+              <div className="pr-6 md:pr-8 lg:pr-0">
+                <GatedPostForm
+                  className="mt-12 mb-14"
+                  postId={insight.id}
+                  postTitle={insight.title}
+                />
+              </div>
+            ) : null}
+          </article>
+          {!isLocked ? (
+            <>
+              <div className="Insight-share">
+                <SocialShare
+                  className="Insight-share-items"
+                  hashtags={insight.hashtags}
+                  shareQuote={insight.shareQuote?.shareQuote}
+                  title={insight.title}
+                />
+              </div>
+              <ReadNext
+                className="Insight-read-next"
+                posts={insight.readNext}
+                relatedPostsByTopic={relatedInsightsByTopic}
+              />
+
+              <div className="Insight-ctas">
+                <EmailSignupForm location={location.href} />
+                <ReadNextSidebar
+                  insights={insight.readNext}
+                  relatedInsightsByTopic={relatedInsightsByTopic}
+                />
+              </div>
+            </>
+          ) : null}
+        </main>
+        <Footer />
+      </div>
+    </>
   )
 }
 
