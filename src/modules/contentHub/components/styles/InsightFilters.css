@@ -1,4 +1,5 @@
 .Insight-filters-item {
+  @apply relative;
   @apply cursor-pointer;
   @apply mb-2;
   @apply flex;
@@ -11,11 +12,24 @@
   @apply inline-block;
   @apply rounded-full;
   @apply mr-3;
-  @apply bg-gray-100;
-  @apply border-gray-300;
+  @apply bg-white;
+  @apply border-gray-600;
   border-width: 1px;
   width: 16px;
   height: 16px;
+}
+
+.Insight-filters-item.is-active::after {
+  content: "";
+  @apply absolute;
+  @apply inline-block;
+  @apply rounded-full;
+  @apply bg-electricViolet;
+  @apply z-10;
+  left: 3px;
+  border-width: 1px;
+  width: 10px;
+  height: 10px;
 }
 
 .Insight-filters-item.is-active::before {
