@@ -10,6 +10,10 @@
       .ListingInsight-illustration img {
         filter: grayscale(0%);
       }
+
+      .InsightTags-topic {
+        @apply text-electricViolet;
+      }
     }
   }
 }
@@ -36,6 +40,7 @@
 }
 
 .ListingInsight-illustration img {
+  transition: all 300ms ease-in-out;
   @screen xl {
     filter: grayscale(100%);
   }
