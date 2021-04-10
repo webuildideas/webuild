@@ -18,3 +18,7 @@
   @apply items-center;
   @apply mb-3;
 }
+
+.InsightTags-topic {
+  transition: all 400ms ease-in-out;
+}
