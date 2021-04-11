@@ -5,7 +5,11 @@ import { useFormikContext } from 'formik'
 import { Link } from 'gatsby'
 import React from 'react'
 
-const PrivacyOptIn = () => {
+interface Props {
+  showOptIn?: boolean
+}
+
+const PrivacyOptIn = ({ showOptIn = true }: Props) => {
   const { values } = useFormikContext<{ Country?: string }>()
   const showPrivacyOptIn =
     !!values.Country && getCountryRequiresPrivacy(values.Country)
@@ -23,14 +27,21 @@ const PrivacyOptIn = () => {
     block: true,
     'mt-5': true,
     'mb-2': true,
-    hidden: !showPrivacyOptIn
+    hidden: !showPrivacyOptIn || !showOptIn
   })
 
-  const checkboxFieldClasses = classNames({
+  const privacyCheckBox = classNames({
     flex: true,
     'items-center': true,
     'cursor-pointer': true,
     hidden: !showPrivacyOptIn
+  })
+
+  const optInCheckbox = classNames({
+    flex: true,
+    'items-center': true,
+    'cursor-pointer': true,
+    hidden: !showPrivacyOptIn || !showOptIn
   })
 
   return (
@@ -47,7 +58,7 @@ const PrivacyOptIn = () => {
 
       <Checkbox
         checkboxClassName="mr-2"
-        className={checkboxFieldClasses}
+        className={privacyCheckBox}
         label="Got It!*"
         name="Privacy Notice"
       />
@@ -59,7 +70,7 @@ const PrivacyOptIn = () => {
 
       <Checkbox
         checkboxClassName="mr-2"
-        className={checkboxFieldClasses}
+        className={optInCheckbox}
         label="Sounds Good"
         name="Opt-In"
       />

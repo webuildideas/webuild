@@ -2,7 +2,6 @@
 import React, { useCallback, useState } from 'react'
 import { Formik, Form, FormikProps } from 'formik'
 import * as Yup from 'yup'
-import { Link } from 'gatsby'
 import { useRecoilValue } from 'recoil'
 
 // Common
@@ -12,10 +11,10 @@ import { COUNTRIES } from '@common/constants/countries'
 import { userFormConversionsAtom } from '@modules/common/atoms/userFormConversions'
 
 // Components
+import PrivacyOptIn from '@modules/forms/components/PrivacyOptIn'
 import TextInput from '@modules/common/components/TextInput'
 import Button from '@modules/common/components/Button'
 import SelectField from '@modules/common/components/SelectField'
-import Checkbox from '@modules/common/components/Checkbox'
 
 // Style
 import './styles/EmailSignup.css'
@@ -27,7 +26,7 @@ interface FormValues {
   'E-mail Address': string
   Country: string
   'Privacy Notice': boolean
-  'Opt-In': string
+  'Opt-In': boolean
   'Lead Source': 'Web - Email Signup'
   'Page URL': string
 }
@@ -54,7 +53,7 @@ const EmailSignupForm = ({ location }: Props) => {
     'E-mail Address': '',
     Country: '',
     'Privacy Notice': true,
-    'Opt-In': '1',
+    'Opt-In': true,
     'Lead Source': 'Web - Email Signup',
     'Page URL': location
   }
@@ -70,7 +69,7 @@ const EmailSignupForm = ({ location }: Props) => {
         'E-mail Address': values['E-mail Address'],
         Country: values.Country,
         'Privacy Notice': values['Privacy Notice'] ? '1' : '0',
-        'Opt-In': values['Opt-In'],
+        'Opt-In': values['Opt-In'] ? '1' : '0',
         'Lead Source': values['Lead Source'],
         'Page URL': values['Page URL']
       }
@@ -115,7 +114,6 @@ const EmailSignupForm = ({ location }: Props) => {
             id={NFForms.EmailSignup.actOnId}
             name={NFForms.EmailSignup.name}
           >
-            <TextInput className="hidden" name="Opt-In" type="text" />
             <TextInput className="hidden" name="Lead Source" type="text" />
             <TextInput className="hidden" name="Page URL" type="text" />
 
@@ -134,22 +132,8 @@ const EmailSignupForm = ({ location }: Props) => {
               placeholder="Country"
             />
 
-            <p className="text-tag block mb-6 lg:hidden">
-              We take your privacy seriously. We do not sell or share your data.
-              We use it to enhance your experience with our site and to analyze
-              the performance of our marketing efforts. To learn more, please
-              see our{' '}
-              <Link className="text-electricViolet font-bold" to="/privacy">
-                Privacy Notice
-              </Link>
-              .
-            </p>
-            <Checkbox
-              checkboxClassName="mr-2"
-              className="flex items-center justify-center cursor-pointer lg:hidden"
-              label="Got It!"
-              name="Privacy Notice"
-            />
+            <PrivacyOptIn showOptIn={false} />
+
             {Object.values(errors).map((error, idx) => {
               return (
                 <p
