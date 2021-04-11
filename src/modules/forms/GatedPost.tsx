@@ -12,6 +12,7 @@ import { COUNTRIES } from '@common/constants/countries'
 
 // Components
 import TextInput from '@modules/common/components/TextInput'
+import PrivacyOptIn from '@modules/forms/components/PrivacyOptIn'
 import Button from '@modules/common/components/Button'
 import SelectField from '@modules/common/components/SelectField'
 
@@ -35,7 +36,7 @@ interface FormValues {
   Company: string
   Title: string
   'Privacy Notice': boolean
-  'Opt-In': string
+  'Opt-In': boolean
   'Gated Post Title': string
   'Lead Source': 'Web - Gated Post'
 }
@@ -63,7 +64,7 @@ const GatedPostForm = ({ className, postTitle, postId }: Props) => {
     Company: '',
     Title: '',
     'Privacy Notice': true,
-    'Opt-In': '1',
+    'Opt-In': true,
     'Gated Post Title': postTitle,
     'Lead Source': 'Web - Gated Post'
   }
@@ -79,7 +80,7 @@ const GatedPostForm = ({ className, postTitle, postId }: Props) => {
         'E-mail Address': values['E-mail Address'],
         Country: values.Country,
         'Privacy Notice': values['Privacy Notice'] ? '1' : '0',
-        'Opt-In': values['Opt-In'],
+        'Opt-In': values['Opt-In'] ? '1' : 0,
         'Gated Post Title': values['Gated Post Title'],
         'Lead Source': values['Lead Source']
       }
@@ -116,7 +117,6 @@ const GatedPostForm = ({ className, postTitle, postId }: Props) => {
         >
           {({ isSubmitting, errors }: FormikProps<FormValues>) => (
             <Form id={NFForms.GatedPost.actOnId} name={NFForms.GatedPost.name}>
-              <TextInput className="hidden" name="Opt-In" type="text" />
               <TextInput className="hidden" name="Lead Source" type="text" />
               <TextInput
                 className="hidden"
@@ -139,17 +139,6 @@ const GatedPostForm = ({ className, postTitle, postId }: Props) => {
                   options={COUNTRIES}
                   placeholder="Country"
                 />
-
-                {Object.values(errors).map((error, idx) => {
-                  return (
-                    <p
-                      key={`error-${idx}`}
-                      className="text-tag my-6 text-ui-error-dark"
-                    >
-                      {error}
-                    </p>
-                  )
-                })}
                 <Button
                   animate={false}
                   className="GatedPost-button block mt-8"
@@ -161,6 +150,19 @@ const GatedPostForm = ({ className, postTitle, postId }: Props) => {
                   Submit
                 </Button>
               </div>
+
+              <PrivacyOptIn />
+
+              {Object.values(errors).map((error, idx) => {
+                return (
+                  <p
+                    key={`error-${idx}`}
+                    className="text-tag my-6 text-ui-error-dark"
+                  >
+                    {error}
+                  </p>
+                )
+              })}
             </Form>
           )}
         </Formik>

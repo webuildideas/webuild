@@ -6,6 +6,9 @@
     @apply items-center;
   }
   @screen xl {
+    .InsightTags-topic {
+      @apply text-gray-500;
+    }
     &:hover {
       .ListingInsight-illustration img {
         filter: grayscale(0%);

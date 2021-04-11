@@ -39,7 +39,7 @@ const InsightTags = ({ type, topics, className }: Props) => {
             return (
               <div
                 key={`topic-${kebabCase(topicName)}`}
-                className="InsightTags-topic flex items-center text-electricViolet xl:text-gray-500"
+                className="InsightTags-topic flex items-center text-electricViolet"
               >
                 <TopicIcon
                   className="mr-2 w-5"

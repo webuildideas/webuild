@@ -12,6 +12,7 @@ import './styles/SelectField.css'
 export interface SelectOption {
   name: string
   value: string
+  privacyPolicy?: boolean
 }
 
 interface Props extends WithClassName, WithFormField {

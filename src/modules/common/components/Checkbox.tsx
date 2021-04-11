@@ -30,10 +30,10 @@ const Checkbox = ({
   return (
     <label className={`Checkbox-container ${className}`}>
       <input
+        checked={field.value}
         className="hidden"
         type="checkbox"
         {...field}
-        checked={field.value}
       />
       <span className={`${Checkbox} ${checkboxClassName}`}>
         <Checkmark className="Checkbox-checkmark" />
