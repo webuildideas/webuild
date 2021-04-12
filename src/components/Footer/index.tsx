@@ -80,7 +80,7 @@ const Footer = () => {
         <div className="Footer-follow" data-testid="footer-social">
           <motion.p
             animate={controls}
-            className="text-h4 text-gray-700 order-2 md:order-1"
+            className="text-caption font-extrabold uppercase text-gray-700 order-2 md:order-1"
             custom={2}
             initial="hidden"
             variants={variants}
@@ -89,7 +89,7 @@ const Footer = () => {
           </motion.p>
           <motion.p
             animate={controls}
-            className="text-h4 text-gray-700 order-1 mb-6 w-full md:w-auto md:order-2 md:mb-0"
+            className="text-caption font-extrabold uppercase text-gray-700 order-1 mb-6 w-full md:w-auto md:order-2 md:mb-0"
             custom={3}
             initial="hidden"
             variants={variants}
