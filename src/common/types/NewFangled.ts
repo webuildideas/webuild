@@ -48,6 +48,10 @@ export const NFForms = {
     name: 'Test Form',
     actOnId: 'faa1d9d1-8e70-4de8-9f35-02ef47666c7f'
   },
+  Contact: {
+    name: 'Contact',
+    actOnId: '84e15916-aec4-4e5b-bc05-88cc436fc6d7'
+  },
   EmailSignup: {
     name: 'Email Signup',
     actOnId: 'c4bde8a0-2c73-417c-9bf3-b5c4f5e07dc4'
