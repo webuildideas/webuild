@@ -1,6 +1,6 @@
 // Packages
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, PageProps } from 'gatsby'
 
 // Components
 import Meta from '@components/Meta'
@@ -16,15 +16,13 @@ interface Props {
       content: RenderRichTextData<never>
     }
   }
-  location: {
-    href: string
-  }
+  location: PageProps['location']
 }
 
 const PrivacyPage = ({ data, location }: Props) => {
   return (
     <div>
-      <Meta location={location.href} title="Privacy" />
+      <Meta location={location} title="Privacy" />
       <main>
         <h1 className="text-h1 mb-8">Privacy Page</h1>
         {renderRichText(data.contentfulPrivacyPage.content)}
