@@ -20,8 +20,8 @@ import InsightTags from '@modules/common/components/InsightTags'
 import { getEstimatedReadingTime } from '@modules/insight/utils'
 import Author from '@modules/insight/components/Author'
 import Footer from '@components/Footer'
-import EmailSignupForm from '@modules/forms/EmailSignup'
-import GatedPostForm from '@modules/forms/GatedPost'
+import EmailSignupForm from '@modules/forms/EmailSignupForm'
+import GatedPostForm from '@modules/forms/GatedPostForm'
 
 // Atoms
 import { userGatedPostConversionsAtom } from '@modules/insight/atoms/userGatedPostConversions'

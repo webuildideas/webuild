@@ -9,11 +9,11 @@ import { COUNTRIES } from '@common/constants/countries'
 
 // Components
 import PrivacyOptIn from '@modules/forms/components/PrivacyOptIn'
-import TextInput from '@modules/common/components/TextInput'
+import TextInput from '@modules/forms/components/TextInput'
 import Button from '@modules/common/components/Button'
 import SelectField, {
   SelectOption
-} from '@modules/common/components/SelectField'
+} from '@modules/forms/components/SelectField'
 
 import './styles/ContactForm.css'
 import TextAreaField from './components/TextAreaField'
