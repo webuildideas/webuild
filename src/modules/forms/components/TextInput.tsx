@@ -8,7 +8,7 @@ import { WithClassName } from '@common/types/Utilities'
 import { classNames } from '@common/utils/classNames'
 
 // Style
-import './styles/TextInput.css'
+import '../styles/TextInput.css'
 
 interface Props extends WithClassName, WithFormField {
   showError?: boolean

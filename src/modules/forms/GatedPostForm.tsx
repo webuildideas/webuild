@@ -9,19 +9,19 @@ import * as Yup from 'yup'
 import useSubmitNfForm from '@common/hooks/useSubmitNfForm'
 import { NFForms } from '@common/types/NewFangled'
 import { COUNTRIES } from '@common/constants/countries'
+import { WithClassName } from '@common/types/Utilities'
 
 // Components
-import TextInput from '@modules/common/components/TextInput'
+import TextInput from '@modules/forms/components/TextInput'
 import PrivacyOptIn from '@modules/forms/components/PrivacyOptIn'
 import Button from '@modules/common/components/Button'
-import SelectField from '@modules/common/components/SelectField'
+import SelectField from '@modules/forms/components/SelectField'
 
 // Atoms
 import { userGatedPostConversionsAtom } from '@modules/insight/atoms/userGatedPostConversions'
 
 // Style
-import './styles/GatedPost.css'
-import { WithClassName } from '@common/types/Utilities'
+import './styles/GatedPostForm.css'
 
 interface Props extends WithClassName {
   postTitle: string

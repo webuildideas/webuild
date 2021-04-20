@@ -27,7 +27,7 @@ import ListingInsightSkeleton from '@modules/contentHub/components/ListingInsigh
 import FeaturedInsight from '@modules/contentHub/components/FeaturedInsight'
 import Pagination from '@modules/contentHub/components/Pagination'
 import Footer from '@components/Footer'
-import EmailSignUpForm from '@modules/forms/EmailSignup'
+import EmailSignUpForm from '@modules/forms/EmailSignupForm'
 
 interface Props {
   location: PageProps['location']

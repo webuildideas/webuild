@@ -1,4 +1,4 @@
-import { SelectOption } from '@modules/common/components/SelectField'
+import { SelectOption } from '@modules/forms/components/SelectField'
 
 export const COUNTRIES: SelectOption[] = [
   { name: '', value: '' },

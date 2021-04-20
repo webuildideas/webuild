@@ -8,28 +8,30 @@ import { NFForms } from '@common/types/NewFangled'
 import { COUNTRIES } from '@common/constants/countries'
 
 // Components
+import Button from '@modules/common/components/Button'
 import PrivacyOptIn from '@modules/forms/components/PrivacyOptIn'
 import TextInput from '@modules/forms/components/TextInput'
-import Button from '@modules/common/components/Button'
-import SelectField, {
-  SelectOption
-} from '@modules/forms/components/SelectField'
+import TextAreaField from '@modules/forms/components/TextAreaField'
+import SelectField from '@modules/forms/components/SelectField'
 
-import './styles/ContactForm.css'
-import TextAreaField from './components/TextAreaField'
+import './styles/OpportunityForm.css'
+import MotionAniLink from '@modules/common/components/MotionAniLink'
+import useOpportunityFormModal from './hooks/useOpportunityFormModal'
+
+interface Props {
+  location: string
+}
 
 interface FormValues {
   'First Name': string
   'Last Name': string
   'E-mail Address': string
   Country: string
-  'Contact Reason': string
-  'Fundraising Stage': string
   Message: string
-  'Referral Source': string
   'Privacy Notice': boolean
   'Opt-In': boolean
-  'Lead Source': 'Web - Contact'
+  'Lead Source': 'Web - Opportunity'
+  'Page URL': string
 }
 
 const formSchema = Yup.object().shape({
@@ -40,9 +42,6 @@ const formSchema = Yup.object().shape({
   'First Name': Yup.string().required(
     'You must provide your first name to continue.'
   ),
-  'Fundraising Stage': Yup.string().required(
-    'You must select a fundraising stage to continue.'
-  ),
   'Last Name': Yup.string().required(
     'You must provide your first name to continue.'
   ),
@@ -52,124 +51,26 @@ const formSchema = Yup.object().shape({
   )
 })
 
-const contactReasonOptions: SelectOption[] = [
-  {
-    name: '',
-    value: ''
-  },
-  {
-    name: 'Request a quote',
-    value: 'Request a quote'
-  },
-  {
-    name: 'Career Opportunities',
-    value: 'Career Opportunities'
-  },
-  {
-    name: 'Partnership Opportunities',
-    value: 'Partnership Opportunities'
-  },
-  {
-    name: 'Speaking Request',
-    value: 'Speaking Request'
-  },
-  {
-    name: 'Other',
-    value: 'Other'
-  }
-]
-
-const fundraisingStageOptions: SelectOption[] = [
-  {
-    name: '',
-    value: ''
-  },
-  {
-    name: "Haven't raised money",
-    value: "Haven't raised money"
-  },
-  {
-    name: 'Pre-Seed / Accelerator',
-    value: 'Pre-Seed / Accelerator'
-  },
-  {
-    name: 'Seed',
-    value: 'Seed'
-  },
-  {
-    name: 'Series A',
-    value: 'Series A'
-  },
-  {
-    name: 'Series B',
-    value: 'Series B'
-  },
-  {
-    name: 'Series C',
-    value: 'Series C'
-  },
-  {
-    name: 'Series D+',
-    value: 'Series D+'
-  },
-  {
-    name: 'Public Company',
-    value: 'Public Company'
-  }
-]
-
-const referralSourceOptions: SelectOption[] = [
-  {
-    name: '',
-    value: ''
-  },
-  {
-    name: 'Referral',
-    value: 'Referral'
-  },
-  {
-    name: 'Internet Search',
-    value: 'Internet Search'
-  },
-  {
-    name: 'Listing Site (Rocketplace, Clutch)',
-    value: 'Listing Site (Rocketplace, Clutch)'
-  },
-  {
-    name: 'Dribbble',
-    value: 'Dribbble'
-  },
-  {
-    name: 'Social Media',
-    value: 'Social Media'
-  },
-  {
-    name: 'Other',
-    value: 'Other'
-  }
-]
-
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
-const ContactForm = () => {
+const OpportunityForm = ({ location }: Props) => {
   const [formSubmitted, setFormSubmitted] = useState(false)
+  const { closeModal } = useOpportunityFormModal()
   const initialFormValues: FormValues = {
     'First Name': '',
     'Last Name': '',
     'E-mail Address': '',
     Country: '',
-    'Contact Reason': '',
-    'Fundraising Stage': '',
     Message: '',
-    'Referral Source': '',
     'Privacy Notice': true,
     'Opt-In': true,
-    'Lead Source': 'Web - Contact'
+    'Lead Source': 'Web - Opportunity',
+    'Page URL': location
   }
 
   const submitToInsightEngine = useSubmitNfForm({
-    formName: NFForms.Contact.name,
-    actOnFormId: NFForms.Contact.actOnId
+    formName: NFForms.Opportunity.name,
+    actOnFormId: NFForms.Opportunity.actOnId
   })
 
   const handleSubmit = useCallback(
@@ -179,13 +80,11 @@ const ContactForm = () => {
         'Last Name': values['Last Name'],
         'E-mail Address': values['E-mail Address'],
         Country: values.Country,
-        'Contact Reason': values['Contact Reason'],
-        'Fundraising Stage': values['Fundraising Stage'],
         Message: values.Message,
-        'Referral Source': values['Referral Source'],
         'Privacy Notice': values['Privacy Notice'] ? '1' : '0',
         'Opt-In': values['Opt-In'] ? '1' : '0',
-        'Lead Source': values['Lead Source']
+        'Lead Source': values['Lead Source'],
+        'Page URL': values['Page URL']
       }
       await submitToInsightEngine(
         values['E-mail Address'],
@@ -200,11 +99,33 @@ const ContactForm = () => {
   )
 
   return formSubmitted ? (
-    <h1>SUCCESS!!</h1>
+    <div>
+      <h2 className="text-h2 mb-12">Thank you for getting in touch!</h2>
+      <p className="text-h3 mb-35">
+        We’ll get back to you shortly. In the meantime, learn more about{' '}
+        <MotionAniLink
+          className="text-electricViolet"
+          onClick={closeModal}
+          styleType="link"
+          to="/who-we-are"
+        >
+          who we are
+        </MotionAniLink>{' '}
+        or catch up on our{' '}
+        <MotionAniLink
+          className="text-electricViolet"
+          onClick={closeModal}
+          styleType="link"
+          to="/insights"
+        >
+          latest insights.
+        </MotionAniLink>
+      </p>
+    </div>
   ) : (
-    <div className="ContactForm">
+    <div className="OpportunityForm">
       <h2 className="font-extrabold text-h3 mb-8 text-center md:text-left">
-        Contact us—we look forward to connecting.
+        Set up a meeting—we’d love to chat!
       </h2>
       <Formik
         initialValues={initialFormValues}
@@ -215,53 +136,41 @@ const ContactForm = () => {
         validationSchema={formSchema}
       >
         {({ isSubmitting, values, errors }: FormikProps<FormValues>) => (
-          <Form id={NFForms.Contact.actOnId} name={NFForms.Contact.name}>
+          <Form
+            id={NFForms.Opportunity.actOnId}
+            name={NFForms.Opportunity.name}
+          >
             <TextInput className="hidden" name="Lead Source" type="text" />
+            <TextInput className="hidden" name="Page URL" type="text" />
 
-            <div className="ContactForm-row">
+            <div className="OpportunityForm-row">
               <TextInput
-                className="ContactForm-row-item block appearance-none"
+                className="OpportunityForm-row-item block appearance-none"
                 label="First Name *"
                 name="First Name"
                 type="text"
               />
               <TextInput
-                className="ContactForm-row-item block appearance-none"
+                className="OpportunityForm-row-item block appearance-none"
                 label="Last Name *"
                 name="Last Name"
                 type="text"
               />
             </div>
 
-            <div className="ContactForm-row">
+            <div className="OpportunityForm-row">
               <TextInput
-                className="ContactForm-row-item block appearance-none"
+                className="OpportunityForm-row-item block appearance-none"
                 label="Email *"
                 name="E-mail Address"
                 type="text"
               />
 
               <SelectField
-                className="ContactForm-row-item"
+                className="OpportunityForm-row-item"
                 label="Country *"
                 name="Country"
                 options={COUNTRIES}
-              />
-            </div>
-
-            <div className="ContactForm-row">
-              <SelectField
-                className="ContactForm-row-item"
-                label="Contact Reason"
-                name="Contact Reason"
-                options={contactReasonOptions}
-              />
-
-              <SelectField
-                className="ContactForm-row-item"
-                label="Fundraising Stage *"
-                name="Fundraising Stage"
-                options={fundraisingStageOptions}
               />
             </div>
 
@@ -270,13 +179,6 @@ const ContactForm = () => {
               label="Message *"
               name="Message"
               rows={4}
-            />
-
-            <SelectField
-              className="ContactForm-referral"
-              label="How did you hear of us?"
-              name="Referral Source"
-              options={referralSourceOptions}
             />
 
             <PrivacyOptIn />
@@ -308,4 +210,4 @@ const ContactForm = () => {
   )
 }
 
-export default ContactForm
+export default OpportunityForm

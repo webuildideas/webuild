@@ -12,12 +12,12 @@ import { userFormConversionsAtom } from '@modules/common/atoms/userFormConversio
 
 // Components
 import PrivacyOptIn from '@modules/forms/components/PrivacyOptIn'
-import TextInput from '@modules/common/components/TextInput'
+import TextInput from '@modules/forms/components/TextInput'
 import Button from '@modules/common/components/Button'
-import SelectField from '@modules/common/components/SelectField'
+import SelectField from '@modules/forms/components/SelectField'
 
 // Style
-import './styles/EmailSignup.css'
+import './styles/EmailSignupForm.css'
 
 interface Props {
   location: string

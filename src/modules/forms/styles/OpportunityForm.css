@@ -1,5 +1,7 @@
-.ContactForm {
+.OpportunityForm {
   max-width: 784px;
+  @apply bg-foundation;
+  @apply rounded-tr-4;
   @apply mx-auto;
   @apply px-6;
   @apply py-12;
@@ -7,12 +9,12 @@
   @apply md:px-8;
 }
 
-.ContactForm-row {
+.OpportunityForm-row {
   @apply md:flex;
   @apply md:mb-8;
 }
 
-.ContactForm-row-item {
+.OpportunityForm-row-item {
   @apply mb-8;
 
   @apply md:mb-0;
@@ -25,12 +27,5 @@
     &:last-of-type {
       @apply ml-8;
     }
-  }
-}
-
-.ContactForm-referral {
-  @screen md {
-    width: 50%;
-    @apply pr-8;
   }
 }

@@ -14,10 +14,11 @@ import './styles/Button.css'
 interface Props extends WithChildren, WithClassName {
   to: string
   direction?: 'top' | 'bottom' | 'left' | 'right'
-  styleType?: 'solid' | 'outline'
+  styleType?: 'solid' | 'outline' | 'link'
   cover?: boolean
   duration?: number
   bgColor?: string
+  onClick?: () => void
 }
 
 const Link = forwardRef<any, Props>(
@@ -30,18 +31,21 @@ const Link = forwardRef<any, Props>(
       styleType = 'solid',
       cover = true,
       duration = 1.25,
-      bgColor = '#525761'
+      bgColor = '#525761',
+      onClick
     },
     ref
   ) => {
+    const linkStyle = styleType === 'link'
     const buttonClasses = classNames({
-      Button: true,
+      Button: true && !linkStyle,
       'Button-solid': styleType === 'solid',
       'Button-outline': styleType === 'outline',
-      'text-button': true
+      'Button-link': linkStyle,
+      'text-button': true && !linkStyle
     })
     return (
-      <span ref={ref} className="block">
+      <span ref={ref} className={linkStyle ? 'inline-block' : 'block'}>
         <AniLink
           bg={bgColor}
           className={`${buttonClasses} ${className}`}
@@ -49,6 +53,7 @@ const Link = forwardRef<any, Props>(
           direction={direction}
           duration={duration}
           hex={bgColor}
+          onClick={onClick}
           to={to}
         >
           {children}
