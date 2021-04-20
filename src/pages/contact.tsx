@@ -5,7 +5,7 @@ import { PageProps } from 'gatsby'
 // Components
 import Meta from '@components/Meta'
 import ContactForm from '@modules/forms/ContactForm'
-import OpportunityForm from '@modules/forms/OpportunityForm'
+import OpportunityFormModal from '@modules/forms/components/OpportunityFormModal'
 
 interface Props {
   location: PageProps['location']
@@ -18,7 +18,10 @@ const Contact = ({ location }: Props) => {
       <ContactForm />
 
       <div className="mt-30">
-        <OpportunityForm location={location.href} />
+        <OpportunityFormModal
+          location={location.href}
+          onClose={() => console.log('CLOSING')}
+        />
       </div>
     </>
   )

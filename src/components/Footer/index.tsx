@@ -5,8 +5,10 @@ import { motion, useAnimation } from 'framer-motion'
 
 // Styles
 import './style.css'
+import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModal'
 
 const Footer = () => {
+  const { showModal } = useOpportunityFormModal()
   const d = new Date()
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -64,18 +66,18 @@ const Footer = () => {
         >
           Ready to take your product efforts to the next level? Drop us a line.
         </motion.h2>
-        <motion.a
+        <motion.button
           animate={controls}
           className="text-button bg-white px-6 py-4 inline-block"
           custom={2}
           data-testid="footer-button"
-          href="mailto:hi@webuild.io"
           initial="hidden"
-          type="primaryButton"
+          onClick={showModal}
+          type="button"
           variants={variants}
         >
-          HI@WEBUILD.IO
-        </motion.a>
+          Get In Touch
+        </motion.button>
 
         <div className="Footer-follow" data-testid="footer-social">
           <motion.p

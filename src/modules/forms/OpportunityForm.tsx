@@ -15,6 +15,8 @@ import TextAreaField from '@modules/forms/components/TextAreaField'
 import SelectField from '@modules/forms/components/SelectField'
 
 import './styles/OpportunityForm.css'
+import MotionAniLink from '@modules/common/components/MotionAniLink'
+import useOpportunityFormModal from './hooks/useOpportunityFormModal'
 
 interface Props {
   location: string
@@ -53,6 +55,7 @@ const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
 const OpportunityForm = ({ location }: Props) => {
   const [formSubmitted, setFormSubmitted] = useState(false)
+  const { closeModal } = useOpportunityFormModal()
   const initialFormValues: FormValues = {
     'First Name': '',
     'Last Name': '',
@@ -96,7 +99,29 @@ const OpportunityForm = ({ location }: Props) => {
   )
 
   return formSubmitted ? (
-    <h1>SUCCESS!!</h1>
+    <div>
+      <h2 className="text-h2 mb-12">Thank you for getting in touch!</h2>
+      <p className="text-h3 mb-35">
+        We’ll get back to you shortly. In the meantime, learn more about{' '}
+        <MotionAniLink
+          className="text-electricViolet"
+          onClick={closeModal}
+          styleType="link"
+          to="/who-we-are"
+        >
+          who we are
+        </MotionAniLink>{' '}
+        or catch up on our{' '}
+        <MotionAniLink
+          className="text-electricViolet"
+          onClick={closeModal}
+          styleType="link"
+          to="/insights"
+        >
+          latest insights.
+        </MotionAniLink>
+      </p>
+    </div>
   ) : (
     <div className="OpportunityForm">
       <h2 className="font-extrabold text-h3 mb-8 text-center md:text-left">

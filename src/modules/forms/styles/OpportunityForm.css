@@ -11,15 +11,21 @@
 
 .OpportunityForm-row {
   @apply md:flex;
-  @apply mb-8;
+  @apply md:mb-8;
 }
 
 .OpportunityForm-row-item {
-  width: 50%;
-  &:first-of-type {
-    @apply mr-8;
-  }
-  &:last-of-type {
-    @apply ml-8;
+  @apply mb-8;
+
+  @apply md:mb-0;
+
+  @screen md {
+    width: 50%;
+    &:first-of-type {
+      @apply mr-8;
+    }
+    &:last-of-type {
+      @apply ml-8;
+    }
   }
 }
