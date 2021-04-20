@@ -16,6 +16,7 @@ import SelectField, {
 } from '@modules/forms/components/SelectField'
 
 import './styles/ContactForm.css'
+import MotionAniLink from '@modules/common/components/MotionAniLink'
 import TextAreaField from './components/TextAreaField'
 
 interface FormValues {
@@ -200,7 +201,29 @@ const ContactForm = () => {
   )
 
   return formSubmitted ? (
-    <h1>SUCCESS!!</h1>
+    <div className="ContactForm">
+      <h2 className="text-h2 mb-12 pt-15 md:pt-20">
+        Thank you for getting in touch!
+      </h2>
+      <p className="text-h3 mb-35">
+        We’ll get back to you shortly. In the meantime, learn more about{' '}
+        <MotionAniLink
+          className="text-electricViolet"
+          styleType="link"
+          to="/who-we-are"
+        >
+          who we are
+        </MotionAniLink>{' '}
+        or catch up on our{' '}
+        <MotionAniLink
+          className="text-electricViolet"
+          styleType="link"
+          to="/insights"
+        >
+          latest insights.
+        </MotionAniLink>
+      </p>
+    </div>
   ) : (
     <div className="ContactForm">
       <h2 className="font-extrabold text-h3 mb-8 text-center md:text-left">
