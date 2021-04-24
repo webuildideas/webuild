@@ -5,6 +5,7 @@ import { RenderRichTextData } from 'gatsby-source-contentful/rich-text'
 import { TypeAuthor } from '@common/types/Author'
 import { TypeCarousel } from '@common/types/Carousel'
 import { TypeContentfulAsset } from '@common/types/Contentful'
+import { TypeContentUpgrade } from './ContentUpgrade'
 
 export type TypeInsightType =
   | 'Article'
@@ -39,6 +40,7 @@ export interface TypeInsight {
   readNext?: TypeInsight[]
   author: TypeAuthor
   hashtags?: string[]
+  contentUpgrade?: TypeContentUpgrade
   topics?: TypeInsightTopic[]
   shareQuote?: {
     shareQuote: string

@@ -1,0 +1,74 @@
+.ContentUpgrade {
+  max-width: 750px;
+  @apply bg-foundation;
+  @apply rounded-tr-4;
+  @apply mr-8;
+  @apply py-10;
+  @apply px-8;
+
+  @apply md:pr-0;
+  @apply md:mr-0;
+}
+
+.ContentUpgrade-form {
+  @screen md {
+    @apply flex;
+    @apply items-center;
+
+    img {
+      order: 2;
+      width: 400px;
+    }
+
+    .ContentUpgrade-form-fields {
+      order: 1;
+      @apply mr-12;
+    }
+  }
+}
+
+.ContentUpgrade-image {
+  width: 80%;
+  max-width: 350px;
+  @apply mx-auto;
+
+  @screen md {
+    width: auto;
+  }
+}
+
+.ContentUpgrade-button {
+  @apply mt-8;
+}
+
+.ContentUpgrade.simpleForm {
+  @apply md:pr-8;
+
+  img {
+    @apply hidden;
+  }
+
+  .ContentUpgrade-form-fields {
+    @apply md:flex;
+    @apply md:flex-wrap;
+    @apply mr-0;
+
+    .ContentUpgrade-email {
+      flex: 1;
+      @apply md:mr-4;
+    }
+
+    .ContentUpgrade-country {
+      flex: 1;
+      @apply md:ml-4;
+    }
+  }
+
+  .ContentUpgrade-submit {
+    width: 100%;
+  }
+
+  .ContentUpgrade-button {
+    @apply mt-6;
+  }
+}

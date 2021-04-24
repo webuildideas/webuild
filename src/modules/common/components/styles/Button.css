@@ -29,10 +29,7 @@
   @apply hover:bg-electricViolet;
   @apply border-none;
   &:focus {
-    @apply bg-transparent;
-    @apply border-solid;
-    @apply border-2;
-    @apply text-black;
+    @apply bg-electricViolet;
   }
   &:disabled {
     opacity: 0.3;

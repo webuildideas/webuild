@@ -54,7 +54,11 @@ export const FILTER_INSIGHTS_QUERY = gql`
     insightCollection(
       skip: $skip
       limit: $limit
-      where: { topics_contains_some: $topics, type_in: $types }
+      where: {
+        topics_contains_some: $topics
+        type_in: $types
+        title_not: "PLACEHOLDER"
+      }
       order: publishDate_DESC
     ) {
       total
