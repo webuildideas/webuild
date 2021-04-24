@@ -85,7 +85,7 @@
 .Insight-hero {
   @apply flex;
   @apply flex-col;
-  @apply justify-end;
+  @apply justify-center;
   @apply bg-gray-200;
   height: 290px;
 
