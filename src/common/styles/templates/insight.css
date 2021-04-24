@@ -85,7 +85,7 @@
 .Insight-hero {
   @apply flex;
   @apply flex-col;
-  @apply justify-end;
+  @apply justify-center;
   @apply bg-gray-200;
   height: 290px;
 
@@ -285,10 +285,13 @@
 
 .Insight ul {
   list-style-type: disc;
-  max-width: 580px;
+  width: 92.5%;
   @apply mx-auto;
   @apply my-6;
   @apply pl-5;
+  b {
+    @apply font-extrabold;
+  }
   li {
     p {
       @apply mb-2;

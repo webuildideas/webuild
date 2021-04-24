@@ -8,8 +8,8 @@ import { graphql, PageProps } from 'gatsby'
 import Img from 'gatsby-image'
 
 // Common
-import { TypeInsight } from '@common/types/Insight'
 import { classNames } from '@common/utils/classNames'
+import { TypeInsight } from '@common/types/Insight'
 
 // Components
 import Meta from '@components/Meta'
@@ -22,6 +22,7 @@ import Author from '@modules/insight/components/Author'
 import Footer from '@components/Footer'
 import EmailSignupForm from '@modules/forms/EmailSignupForm'
 import GatedPostForm from '@modules/forms/GatedPostForm'
+import ContentUpgradeForm from '@modules/forms/ContentUpgradeForm'
 
 // Atoms
 import { userGatedPostConversionsAtom } from '@modules/insight/atoms/userGatedPostConversions'
@@ -51,11 +52,25 @@ const options: Options = {
         </div>
       )
     },
+    [BLOCKS.EMBEDDED_ENTRY]: (node) => {
+      if (!node.data.target) {
+        return
+      }
+      return (
+        <ContentUpgradeForm
+          className="mt-16 mb-8 md:mb-0"
+          contentUpgrade={node.data.target}
+          isSimple
+        />
+      )
+    },
     [BLOCKS.HEADING_2]: (_, children) => (
       <h2 className="Insight-copy Insight-h2 text-h2">{children}</h2>
     ),
     [BLOCKS.HEADING_3]: (_, children) => (
-      <h3 className="Insight-copy Insight-h3 text-h3">{children}</h3>
+      <h3 className="Insight-copy Insight-h3 text-h3 font-extrabold">
+        {children}
+      </h3>
     ),
     [BLOCKS.HEADING_4]: (_, children) => (
       <h4 className="Insight-copy Insight-h4 text-h4">{children}</h4>
@@ -63,7 +78,7 @@ const options: Options = {
     [BLOCKS.PARAGRAPH]: (_, children) => (
       <p className="Insight-copy Insight-paragraph text-body">{children}</p>
     ),
-    [BLOCKS.QUOTE]: (node, children) => {
+    [BLOCKS.QUOTE]: (_, children) => {
       return (
         <blockquote className="Insight-copy Insight-blockquote text-h2">
           {children}
@@ -144,6 +159,12 @@ const Insight = ({
                 />
               </div>
             ) : null}
+            {insight.contentUpgrade ? (
+              <ContentUpgradeForm
+                className="mt-16 mb-8 md:mb-0"
+                contentUpgrade={insight.contentUpgrade}
+              />
+            ) : null}
           </article>
           {!isLocked ? (
             <>
@@ -155,6 +176,7 @@ const Insight = ({
                   title={insight.title}
                 />
               </div>
+
               <ReadNext
                 className="Insight-read-next"
                 posts={insight.readNext}
@@ -203,12 +225,31 @@ export const query = graphql`
         raw
         references {
           __typename
-          contentful_id
           ... on ContentfulAsset {
+            contentful_id
             id
             description
             fluid(maxWidth: 800) {
               ...GatsbyContentfulFluid_withWebp_noBase64
+            }
+          }
+          ... on ContentfulContentUpgrade {
+            contentful_id
+            id
+            blurb {
+              blurb
+            }
+            formImage {
+              file {
+                url
+              }
+            }
+            simpleFormTitle
+            title
+            upgradeContent {
+              file {
+                url
+              }
             }
           }
         }
@@ -231,9 +272,31 @@ export const query = graphql`
       shareQuote {
         shareQuote
       }
+      contentUpgrade {
+        blurb {
+          blurb
+        }
+        formImage {
+          file {
+            url
+          }
+        }
+        simpleFormTitle
+        title
+        upgradeContent {
+          file {
+            url
+          }
+        }
+      }
     }
+
     allContentfulInsight(
-      filter: { topics: { in: $topics }, slug: { ne: $slug } }
+      filter: {
+        topics: { in: $topics }
+        slug: { ne: $slug }
+        title: { ne: "PLACEHOLDER" }
+      }
       limit: 5
     ) {
       nodes {

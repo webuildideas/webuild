@@ -13,7 +13,7 @@ export const createPages = async ({ graphql, actions }) => {
           }
         }
       }
-      allContentfulInsight {
+      allContentfulInsight(filter: { title: { ne: "PLACEHOLDER" } }) {
         edges {
           node {
             slug

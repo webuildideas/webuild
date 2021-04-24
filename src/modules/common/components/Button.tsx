@@ -21,6 +21,8 @@ interface Props extends WithChildren, WithClassName {
   type?: 'submit' | 'reset' | 'button'
   styleType?: 'solid' | 'solid-purple' | 'outline'
   loading?: boolean
+  download?: boolean
+  target?: string
 }
 
 const Button = ({
@@ -30,6 +32,8 @@ const Button = ({
   href,
   disabled = false,
   loading = false,
+  download = false,
+  target,
   onClick,
   onSubmit,
   styleType = 'solid',
@@ -81,8 +85,10 @@ const Button = ({
       ref={ref}
       animate={animate ? animationControls : {}}
       className={`${buttonClasses} ${className}`}
+      download={download}
       href={href}
       initial={animate ? 'hidden' : ''}
+      target={target}
       variants={variants}
       {...props}
     >
