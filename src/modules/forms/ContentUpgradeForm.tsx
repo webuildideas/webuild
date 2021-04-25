@@ -129,7 +129,7 @@ const ContentUpgradeForm = ({
         <h2 className="text-h3 font-extrabold mb-6">
           {isSimple ? contentUpgrade.simpleFormTitle : contentUpgrade.title}
         </h2>
-        {isSimple && !userHasCompletedForm ? (
+        {contentUpgrade?.blurb?.blurb && isSimple && !userHasCompletedForm ? (
           <p className="text-body mb-6">{contentUpgrade.blurb.blurb}</p>
         ) : null}
         <Formik

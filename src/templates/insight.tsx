@@ -1,7 +1,7 @@
 // Packages
 import React, { useEffect, useRef, useState } from 'react'
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
-import { BLOCKS } from '@contentful/rich-text-types'
+import { BLOCKS, INLINES } from '@contentful/rich-text-types'
 import { Options } from '@contentful/rich-text-react-renderer'
 import { useRecoilValue } from 'recoil'
 import { graphql, PageProps } from 'gatsby'
@@ -56,12 +56,60 @@ const options: Options = {
       if (!node.data.target) {
         return
       }
+
+      if (node.data.target.__typename === 'ContentfulImage') {
+        return (
+          <div className="Insight-img">
+            <Img
+              alt={node.data.target.altText}
+              className={
+                node.data.target.imageType
+                  ? node.data.target.imageType.join(' ')
+                  : undefined
+              }
+              durationFadeIn={125}
+              fadeIn
+              fluid={node.data.target.asset.fluid}
+            />
+            {node.data.target.caption ? (
+              <p className="text-caption">{node.data.target.caption}</p>
+            ) : null}
+          </div>
+        )
+      }
+
+      if (node.data.target.__typename === 'ContentfulContentUpgrade') {
+        return (
+          <ContentUpgradeForm
+            className="mt-16 mb-8 md:mb-0"
+            contentUpgrade={node.data.target}
+            isSimple
+          />
+        )
+      }
+
+      return null
+    },
+    [INLINES.EMBEDDED_ENTRY]: (node) => {
+      if (!node.data.target) {
+        return
+      }
+
       return (
-        <ContentUpgradeForm
-          className="mt-16 mb-8 md:mb-0"
-          contentUpgrade={node.data.target}
-          isSimple
-        />
+        <div className="Insight-img">
+          <img
+            alt={node.data.target.altText}
+            className={`Insight-img-inline ${
+              node.data.target.imageType
+                ? node.data.target.imageType.join(' ')
+                : undefined
+            }`}
+            src={node.data.target.asset.fluid.src}
+          />
+          {node.data.target.caption ? (
+            <p className="text-caption">{node.data.target.caption}</p>
+          ) : null}
+        </div>
       )
     },
     [BLOCKS.HEADING_2]: (_, children) => (
@@ -249,6 +297,18 @@ export const query = graphql`
             upgradeContent {
               file {
                 url
+              }
+            }
+          }
+          ... on ContentfulImage {
+            id
+            contentful_id
+            caption
+            altText
+            imageType
+            asset {
+              fluid(maxWidth: 800) {
+                ...GatsbyContentfulFluid_withWebp_noBase64
               }
             }
           }
