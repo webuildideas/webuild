@@ -30,7 +30,7 @@ const navLinks: NavLink[] = [
   },
   {
     title: 'Get in touch',
-    slug: '/get-in-touch'
+    slug: '/contact'
   }
 ]
 
@@ -65,20 +65,9 @@ const OverlayNav = () => {
     setIsOverlayNavOpen
   ])
 
-  const renderNavLink = useCallback(
-    (link: NavLink) => {
-      if (link.title === 'Get in touch') {
-        return (
-          <a href="mailto:hi@webuild.io" onClick={handleCloseOverlayNav}>
-            {link.title}
-          </a>
-        )
-      }
-
-      return <Link to={link.slug}>{link.title}</Link>
-    },
-    [handleCloseOverlayNav]
-  )
+  const renderNavLink = useCallback((link: NavLink) => {
+    return <Link to={link.slug}>{link.title}</Link>
+  }, [])
 
   return (
     <OverlayNavContainer style={overlaySpring}>

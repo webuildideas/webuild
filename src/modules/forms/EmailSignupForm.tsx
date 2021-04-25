@@ -87,10 +87,10 @@ const EmailSignupForm = ({ location }: Props) => {
 
   return userHasCompletedForm || formSubmitted ? (
     formSubmitted ? (
-      <>
+      <div className="bg-foundation lg:bg-transparent p-8 lg-p-0">
         <p className="text-h3 mb-8">Thanks for subscribing!</p>
         <p className="text-h3">We'll see you in your inbox soon.</p>
-      </>
+      </div>
     ) : null
   ) : (
     <div className="EmailSignup px-8 py-14 bg-foundation lg:bg-transparent">
