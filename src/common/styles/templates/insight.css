@@ -182,6 +182,23 @@
   @screen xl {
     max-width: 750px;
   }
+
+  .text-caption {
+    @apply mt-6;
+  }
+}
+
+.Insight-img {
+  .Image-left picture {
+    width: 200px;
+    object-fit: contain;
+  }
+}
+
+.Insight-img-inline.Image-left {
+  @apply ml-0;
+  max-height: 200px;
+  object-fit: contain;
 }
 
 .Insight-paragraph {
@@ -238,6 +255,7 @@
 .Insight ol {
   list-style: none;
   counter-reset: count;
+  width: 92.5%;
   max-width: 580px;
   @apply my-6;
   @apply mx-auto;
@@ -251,10 +269,13 @@
   counter-increment: count;
   @apply flex;
   @apply items-start;
-  @apply mb-2;
+  @apply mb-8;
 
   b {
     @apply font-bold;
+    @apply mb-4;
+    @apply block;
+    @apply uppercase;
   }
 
   p {
@@ -264,12 +285,14 @@
   }
 
   &:before {
+    height: 100%;
+    content: counter(count) ". ";
+    top: -13px;
+    @apply relative;
     @apply block;
     @apply mr-2;
     @apply font-bold;
-    height: 100%;
-    content: counter(count) ". ";
-    @apply text-xl;
+    @apply text-4xl;
     @apply leading-relaxed;
     @apply tracking-wider;
 
@@ -286,13 +309,25 @@
 .Insight ul {
   list-style-type: disc;
   width: 92.5%;
+  max-width: 580px;
   @apply mx-auto;
   @apply my-6;
   @apply pl-5;
-  b {
-    @apply font-extrabold;
+
+  @screen xl {
+    max-width: 750px;
   }
+
   li {
+    @apply mb-8;
+
+    b {
+      @apply font-extrabold;
+      @apply block;
+      @apply uppercase;
+      @apply mb-4;
+    }
+
     p {
       @apply mb-2;
     }

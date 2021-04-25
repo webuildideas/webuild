@@ -35,6 +35,7 @@ module.exports = {
       }
     ],
     'react/jsx-boolean-value': 0,
+    'no-underscore-dangle': 0,
     'react/jsx-props-no-spreading': 0,
     'react/static-property-placement': 0,
     'import/no-extraneous-dependencies': 0,
