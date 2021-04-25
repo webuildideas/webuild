@@ -222,6 +222,10 @@
 }
 
 .Insight-h4 + .Insight-paragraph {
+  @apply mt-4;
+}
+
+.Insight-paragraph + .Insight-h4 {
   @apply mt-8;
 }
 
