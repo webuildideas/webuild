@@ -291,7 +291,6 @@
   &:before {
     height: 100%;
     content: counter(count) ". ";
-    top: -13px;
     @apply relative;
     @apply block;
     @apply mr-2;
@@ -300,12 +299,17 @@
     @apply leading-relaxed;
     @apply tracking-wider;
 
-    @media (min-width: 426px) and (max-width: 899px) {
-      @apply text-lg;
+    @screen md {
+      top: -16px;
+    }
+
+    @screen lg {
+      top: -13px;
     }
 
     @media (max-width: 425px) {
-      @apply text-base;
+      top: -6px;
+      @apply text-xl;
     }
   }
 }
