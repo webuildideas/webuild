@@ -1,7 +1,8 @@
 // Packages
 import React, { useEffect } from 'react'
 import { ThemeProvider } from 'styled-components'
-import { useSetRecoilState } from 'recoil'
+import { useRecoilState } from 'recoil'
+import uniq from 'lodash/uniq'
 
 // Common
 import { userFormConversionsAtom } from '@modules/common/atoms/userFormConversions'
@@ -9,11 +10,12 @@ import { styleTheme } from '@common/theme/styleTheme'
 import { GlobalStyle } from '@common/theme/GlobalStyle'
 
 // Components
-import Meta from '@components/Meta'
 import Nav from '@modules/common/components/Nav'
 
 const AppProvider: React.FC = ({ children }) => {
-  const setUserConversions = useSetRecoilState(userFormConversionsAtom)
+  const [userConversions, setUserConversions] = useRecoilState(
+    userFormConversionsAtom
+  )
 
   useEffect(() => {
     const setUserConversionsData = setTimeout(() => {
@@ -21,7 +23,7 @@ const AppProvider: React.FC = ({ children }) => {
         ? window.NF.getActivityData().conversions
         : []
 
-      setUserConversions(conversions)
+      setUserConversions(uniq([...userConversions, ...conversions]))
     }, 1000)
 
     return () => clearTimeout(setUserConversionsData)
@@ -29,7 +31,6 @@ const AppProvider: React.FC = ({ children }) => {
 
   return (
     <ThemeProvider theme={styleTheme}>
-      <Meta />
       <GlobalStyle />
       <Nav />
       {children}
