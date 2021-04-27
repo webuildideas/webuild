@@ -1,0 +1,31 @@
+.OpportunityForm {
+  max-width: 784px;
+  @apply bg-foundation;
+  @apply rounded-tr-4;
+  @apply mx-auto;
+  @apply px-6;
+  @apply py-12;
+
+  @apply md:px-8;
+}
+
+.OpportunityForm-row {
+  @apply md:flex;
+  @apply md:mb-8;
+}
+
+.OpportunityForm-row-item {
+  @apply mb-8;
+
+  @apply md:mb-0;
+
+  @screen md {
+    width: 50%;
+    &:first-of-type {
+      @apply mr-8;
+    }
+    &:last-of-type {
+      @apply ml-8;
+    }
+  }
+}

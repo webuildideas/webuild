@@ -1,12 +1,11 @@
 // Packages
 import React from 'react'
-import PropTypes from 'prop-types'
 import Img, { FluidObject } from 'gatsby-image'
 import { motion } from 'framer-motion'
 
-// Commons
+// Common
+import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
 import * as S from './style'
-import SiteMaxWidthContainer from '../../../common/styledComponents/SiteMaxWidthContainer'
 
 interface Props {
   background: string
@@ -42,6 +41,7 @@ const CaseStudyHero = ({
       </motion.div>
       <S.CaseStudySuccessSummary
         animate={{ opacity: 1, top: '0px' }}
+        className="text-h2"
         initial={{ opacity: 0, top: '40px' }}
         transition={{ duration: 0.75 }}
       >
@@ -62,12 +62,5 @@ const CaseStudyHero = ({
     </SiteMaxWidthContainer>
   </S.CaseStudyHero>
 )
-
-CaseStudyHero.propTypes = {
-  background: PropTypes.string,
-  heroImg: PropTypes.object,
-  logo: PropTypes.string,
-  successSummary: PropTypes.string
-}
 
 export default CaseStudyHero

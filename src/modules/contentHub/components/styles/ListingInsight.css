@@ -1,0 +1,50 @@
+.ListingInsight-container {
+  @apply block;
+  @screen md {
+    @apply grid;
+    @apply grid-cols-2;
+    @apply items-center;
+  }
+  @screen xl {
+    .InsightTags-topic {
+      @apply text-gray-500;
+    }
+    &:hover {
+      .ListingInsight-illustration img {
+        filter: grayscale(0%);
+      }
+
+      .InsightTags-topic {
+        @apply text-electricViolet;
+      }
+    }
+  }
+}
+
+.ListingInsight-content {
+  @apply bg-white;
+  @screen md {
+    @apply p-6;
+    @apply pr-0;
+  }
+  @screen xl {
+    @apply z-10;
+  }
+}
+
+.ListingInsight-illustration {
+  width: 100%;
+  @apply flex;
+  @apply items-center;
+  @screen md {
+    @apply bg-gray-200;
+    min-width: 462px;
+  }
+}
+
+.ListingInsight-illustration img {
+  transition: all 300ms ease-in-out;
+  @screen xl {
+    filter: grayscale(100%);
+  }
+}

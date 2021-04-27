@@ -1,26 +1,31 @@
-/* eslint-disable */
 // Packages
-const React = require('react')
+import React from 'react'
+import { RecoilRoot } from 'recoil'
+import { CookiesProvider } from 'react-cookie'
+
+// Commons
+import { callProjectHuddle } from './src/common/utils/projectHuddle'
+import loadPolyfills from './src/common/utils/polyfills'
 
 // Tailwind
-require('./src/common/theme/tailwind.css')
-
-// Utils
-const { callProjectHuddle } = require('./src/common/utils/projectHuddle')
-const loadPolyfills = require('./src/common/utils/polyfills').default
+import './src/common/styles/tailwind.css'
 
 // Components
-const AppProvider = require('./src/components/AppProvider').default
+import AppProvider from './src/components/AppProvider'
 
-exports.wrapPageElement = ({ element, props }) => {
+export const wrapPageElement = ({ element, props }) => {
   return (
-    <AppProvider {...props}>
-      {element}
-    </AppProvider>
+    <CookiesProvider>
+      <RecoilRoot>
+        <AppProvider {...props}>{element}</AppProvider>
+      </RecoilRoot>
+    </CookiesProvider>
   )
 }
 
-exports.onClientEntry = () => {
+export { wrapRootElement } from './src/common/apollo/wrap-root-element'
+
+export const onClientEntry = () => {
   loadPolyfills()
   callProjectHuddle()
 }

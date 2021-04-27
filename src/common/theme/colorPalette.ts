@@ -12,6 +12,7 @@ export const colorPalette = {
   concrete: '#F3F3F3',
   snow: '#F9F9F9',
   white: '#FFF',
+  error: 'red',
 
   // Old Color Palette
   grey: '#7B8D9D'

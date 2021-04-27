@@ -1,8 +1,8 @@
 // Packages
 import styled from 'styled-components'
 
-// utils
-import { rhythmUnit } from '../../../common/utils/typography'
+// Common
+import { rhythmUnit } from '@common/utils/typography'
 
 export const CaseStudyRichText = styled.section`
   max-width: 1100px;
@@ -10,8 +10,8 @@ export const CaseStudyRichText = styled.section`
   margin-right: auto;
   margin-bottom: ${() => rhythmUnit(4)};
   h2 {
-    font-size: ${(props) => props.theme.f1};
-    font-weight: 900;
+    /* font-size: ${(props) => props.theme.f1};
+    font-weight: 900; */
     max-width: 840px;
     margin-bottom: ${() => rhythmUnit(1)};
     padding-left: ${() => rhythmUnit(1)};
@@ -24,10 +24,10 @@ export const CaseStudyRichText = styled.section`
     }
   }
   p {
-    font-size: ${(props) => props.theme.f3};
+    /* font-size: ${(props) => props.theme.f3}; */
     padding-left: ${() => rhythmUnit(1)};
     padding-right: ${() => rhythmUnit(1)};
-    line-height: 1.6;
+    /* line-height: 1.6; */
     max-width: 840px;
     @media (min-width: 904px) {
       padding-right: 0px;

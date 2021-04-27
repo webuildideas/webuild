@@ -1,0 +1,131 @@
+@layer components {
+  .text-h1 {
+    @apply text-8xl;
+    @apply leading-tight;
+    @apply font-extrabold;
+
+    @media (min-width: 426px) and (max-width: 899px) {
+      @apply text-7xl;
+    }
+
+    @media (max-width: 425px) {
+      @apply text-6xl;
+    }
+  }
+
+  .text-h2 {
+    @apply text-6xl;
+    @apply leading-tight;
+    @apply font-normal;
+
+    @media (min-width: 426px) and (max-width: 899px) {
+      @apply text-5xl;
+    }
+
+    @media (max-width: 425px) {
+      @apply text-4xl;
+    }
+  }
+
+  .text-h3 {
+    @apply text-4xl;
+    @apply leading-snug;
+    @apply font-normal;
+
+    @media (min-width: 426px) and (max-width: 899px) {
+      @apply text-3xl;
+    }
+
+    @media (max-width: 425px) {
+      @apply text-2xl;
+    }
+  }
+
+  .text-h4 {
+    @apply text-xl;
+    @apply leading-snug;
+    @apply font-extrabold;
+    @apply uppercase;
+
+    @media (min-width: 426px) and (max-width: 899px) {
+      @apply text-lg;
+    }
+
+    @media (max-width: 425px) {
+      @apply text-base;
+    }
+  }
+
+  .text-title-subheading {
+    @apply text-3xl;
+    @apply leading-snug;
+    @apply font-medium;
+    @apply font-secondary;
+
+    @media (min-width: 426px) and (max-width: 899px) {
+      @apply text-2xl;
+    }
+
+    @media (max-width: 425px) {
+      @apply text-lg;
+    }
+  }
+
+  .text-body {
+    @apply text-xl;
+    @apply leading-relaxed;
+    @apply tracking-wider;
+
+    @media (min-width: 426px) and (max-width: 899px) {
+      @apply text-lg;
+    }
+
+    @media (max-width: 425px) {
+      @apply text-base;
+    }
+  }
+
+  .text-caption {
+    @apply text-base;
+    @apply leading-normal;
+    @apply tracking-wider;
+    @apply font-normal;
+
+    @media (max-width: 425px) {
+      @apply text-sm;
+    }
+
+    @media (min-width: 426px) and (max-width: 899px) {
+      @apply text-tiny;
+    }
+  }
+
+  .text-button {
+    @apply text-base;
+    @apply leading-normal;
+    @apply font-extrabold;
+    @apply uppercase;
+    @apply text-center;
+  }
+
+  .text-page-navigation {
+    @apply text-tiny;
+    @apply leading-loose;
+    @apply tracking-wider;
+    @apply font-normal;
+
+    @media (max-width: 425px) {
+      @apply text-sm;
+    }
+
+    @media (min-width: 426px) and (max-width: 899px) {
+      @apply text-tiny;
+    }
+  }
+
+  .text-tag {
+    @apply text-sm;
+    @apply leading-normal;
+    @apply tracking-wider;
+  }
+}

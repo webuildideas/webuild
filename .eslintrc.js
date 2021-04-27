@@ -27,7 +27,15 @@ module.exports = {
         semi: false
       }
     ],
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': [
+      'warn',
+      {
+        additionalHooks: 'useRecoilCallback'
+      }
+    ],
     'react/jsx-boolean-value': 0,
+    'no-underscore-dangle': 0,
     'react/jsx-props-no-spreading': 0,
     'react/static-property-placement': 0,
     'import/no-extraneous-dependencies': 0,
@@ -48,6 +56,12 @@ module.exports = {
     'react/no-array-index-key': 0,
     'no-nested-ternary': 0,
     'consistent-return': 0,
+    'no-shadow': 'off',
+    'jsx-a11y/interactive-supports-focus': 0,
+    'jsx-a11y/no-noninteractive-element-interactions': 0,
+    'jsx-a11y/click-events-have-key-events': 0,
+    'jsx-a11y/label-has-associated-control': 0,
+    '@typescript-eslint/no-shadow': ['error'],
     'react/jsx-filename-extension': [
       1,
       { extensions: ['.js', '.jsx', '.tsx'] }
@@ -81,6 +95,15 @@ module.exports = {
   settings: {
     react: {
       version: 'detect'
+    },
+    'import/resolver': {
+      alias: [
+        ['@common', './src/common'],
+        ['@modules', './src/modules'],
+        ['@components', './src/components'],
+        ['@static', './src/static'],
+        ['@exampleData', './src/exampleData']
+      ]
     }
   }
 }

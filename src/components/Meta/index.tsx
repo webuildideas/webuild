@@ -1,12 +1,16 @@
+// Packages
 import React from 'react'
-import Helmet from 'react-helmet'
-import { useStaticQuery, graphql } from 'gatsby'
-import { GatsbyImageFile } from '../../common/types/GatsbyImage'
+import Helmet, { HelmetProps } from 'react-helmet'
+import { useStaticQuery, graphql, PageProps } from 'gatsby'
 
-interface Props {
+// Common
+import useTrackPageView from '@common/hooks/useTrackPageView'
+import { TypeContentfulAsset } from '@common/types/Contentful'
+
+interface Props extends HelmetProps {
   description?: string
-  lang?: string
-  title: string
+  title?: string
+  location: PageProps['location']
 }
 
 interface MetaQueryResponse {
@@ -15,11 +19,17 @@ interface MetaQueryResponse {
     seoDescription: {
       seoDescription: string
     }
-    seoShareImage: GatsbyImageFile
+    seoShareImage: TypeContentfulAsset
   }
 }
 
-const Meta = ({ description, lang = 'en', title }: Props) => {
+const Meta = ({
+  bodyAttributes,
+  htmlAttributes,
+  description,
+  title,
+  location
+}: Props) => {
   const { contentfulSeo } = useStaticQuery<MetaQueryResponse>(
     graphql`
       query SeoQuery {
@@ -68,19 +78,32 @@ const Meta = ({ description, lang = 'en', title }: Props) => {
       content: `website`
     },
     {
+      name: `twitter:card`,
+      content: `summary_large_image`
+    },
+    {
+      name: `twitter:site`,
+      content: `@wearewebuild`
+    },
+    {
       name: `twitter:title`,
       content: contentfulSeo.seoTitle
     },
     {
       name: `twitter:description`,
       content: metaDescription
+    },
+    {
+      name: `twitter:image`,
+      content: contentfulSeo.seoShareImage.file.url
     }
   ]
 
-  const htmlAttributes = { lang }
+  useTrackPageView(location?.state === null, location?.href, metaTitle)
 
   return (
     <Helmet
+      bodyAttributes={bodyAttributes}
       htmlAttributes={htmlAttributes}
       meta={metaProperties}
       title={metaTitle}

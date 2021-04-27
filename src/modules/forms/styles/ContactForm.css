@@ -1,0 +1,36 @@
+.ContactForm {
+  max-width: 784px;
+  @apply mx-auto;
+  @apply px-6;
+  @apply py-12;
+
+  @apply md:px-8;
+}
+
+.ContactForm-row {
+  @apply md:flex;
+  @apply md:mb-8;
+}
+
+.ContactForm-row-item {
+  @apply mb-8;
+
+  @apply md:mb-0;
+
+  @screen md {
+    width: 50%;
+    &:first-of-type {
+      @apply mr-8;
+    }
+    &:last-of-type {
+      @apply ml-8;
+    }
+  }
+}
+
+.ContactForm-referral {
+  @screen md {
+    width: 50%;
+    @apply pr-8;
+  }
+}

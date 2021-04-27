@@ -1,0 +1,24 @@
+.InsightTags {
+  @apply flex;
+  @apply flex-wrap;
+  @apply items-center;
+  /** Offset the margin bottom from wrapped flex items **/
+  margin-bottom: -12px;
+}
+
+.InsightTags-type {
+  @apply flex;
+  @apply items-center;
+  @apply mr-4;
+  @apply mb-3;
+}
+
+.InsightTags-topics {
+  @apply flex;
+  @apply items-center;
+  @apply mb-3;
+}
+
+.InsightTags-topic {
+  transition: all 300ms ease-in-out;
+}

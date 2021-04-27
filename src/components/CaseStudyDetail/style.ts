@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
 // utils
-import { rhythmUnit } from '../../common/utils/typography'
+import { rhythmUnit } from '@common/utils/typography'
 
 export const CaseStudyDetail = styled(motion.article)`
   position: absolute;
@@ -14,16 +14,6 @@ export const CaseStudyDetail = styled(motion.article)`
 
 const CaseStudyGrid = styled.div`
   display: grid;
-  h3 {
-    font-size: ${(props) => props.theme.f3};
-    text-transform: uppercase;
-    margin-bottom: ${() => rhythmUnit(0.5)};
-  }
-  p {
-    line-height: 1.6;
-    font-weight: 400;
-    font-size: ${(props) => props.theme.f3};
-  }
 `
 
 export const CaseStudyChallengeSolution = styled(CaseStudyGrid)`

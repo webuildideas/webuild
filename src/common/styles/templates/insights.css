@@ -1,0 +1,100 @@
+.InsightsPage-header {
+  @apply pt-18;
+  @apply px-6;
+  @apply mb-10;
+  @apply ml-auto;
+  @apply mr-auto;
+  @apply md:px-8;
+  @apply md:pt-16;
+  @apply md:mb-14;
+  @apply md:pr-0;
+  @apply xl:px-0;
+  max-width: 1220px;
+}
+
+.InsightsPage-header-content {
+  max-width: 520px;
+  @screen lg {
+    max-width: 635px;
+  }
+
+  @scree xl {
+    max-width: 784px;
+  }
+}
+
+.InsightsPage-feature {
+  @apply pr-6;
+  @apply md:pr-8;
+  @apply mb-11;
+  @apply mr-auto;
+  @apply ml-auto;
+  @apply lg:px-8;
+  @apply lg:mb-10;
+  @apply xl:mb-24;
+  @apply xl:px-0;
+  max-width: 1220px;
+}
+
+.InsightsPage-main {
+  @apply grid;
+  @apply grid-cols-12;
+  @apply gap-6;
+  @apply xl:gap-8;
+  @apply ml-auto;
+  @apply mr-auto;
+  max-width: 1220px;
+}
+
+.InsightsPage-filters {
+  @apply px-6;
+  @apply col-span-12;
+  @apply mb-16;
+  @apply md:px-8;
+  @apply lg:pr-0;
+  @apply xl:col-span-2;
+  @apply xl:px-0;
+}
+
+.InsightsPage-insights {
+  @apply px-6;
+  @apply col-span-12;
+  @apply md:px-8;
+  @apply lg:col-span-9;
+  @apply xl:col-span-7;
+  @apply lg:pr-0;
+  @apply xl:px-0;
+}
+
+.InsightsPage-pagination {
+  @apply px-6;
+  @apply col-span-12;
+  @apply mt-8;
+  @apply mb-18;
+  @apply w-full;
+  @apply ml-auto;
+  @apply mr-auto;
+  @apply md:px-8;
+  @apply md:row-start-3;
+  @apply md:row-end-6;
+
+  @screen md {
+    max-width: 315px;
+  }
+
+  @screen lg {
+    max-width: 675px;
+  }
+
+  @screen xl {
+    max-width: 800px;
+  }
+}
+
+.InsightsPage-ctas {
+  @apply col-span-12;
+  @apply lg:col-span-3;
+  @apply lg:pr-8;
+  @apply xl:col-span-3;
+  @apply xl:px-0;
+}

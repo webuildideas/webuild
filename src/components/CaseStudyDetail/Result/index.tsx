@@ -2,12 +2,15 @@
 import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation, Variants } from 'framer-motion'
-import { BLOCKS, Document } from '@contentful/rich-text-types'
-import { renderRichText } from 'gatsby-source-contentful/rich-text'
+import { BLOCKS } from '@contentful/rich-text-types'
+import {
+  renderRichText,
+  RenderRichTextData
+} from 'gatsby-source-contentful/rich-text'
 import { Options } from '@contentful/rich-text-react-renderer'
 
 interface Props {
-  document: Document
+  document: RenderRichTextData<never>
 }
 
 const variants: Variants = {
@@ -27,8 +30,12 @@ const variants: Variants = {
 
 const renderOptions: Options = {
   renderNode: {
-    [BLOCKS.PARAGRAPH]: (_, children) => <p>{children}</p>,
-    [BLOCKS.HEADING_3]: (_, children) => <h3>{children}</h3>
+    [BLOCKS.PARAGRAPH]: (_, children) => (
+      <p className="text-body">{children}</p>
+    ),
+    [BLOCKS.HEADING_3]: (_, children) => (
+      <h3 className="text-h4 mb-5">{children}</h3>
+    )
   }
 }
 

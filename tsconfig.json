@@ -1,17 +1,31 @@
 {
   "compilerOptions": {
-    "sourceMap": true,
-    "noImplicitAny": true,
     "module": "commonjs",
+    "target": "ES2020",
     "strict": true,
-    "noEmit": true, // you don't need to emit TS files on compile
-    "target": "esnext",
-    "jsx": "react",
-    "allowJs": true,
-    "lib": ["dom", "es2015", "es2017"],
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
     "noImplicitReturns": true,
+    "allowJs": true,
+    "noEmit": true, // you don't need to emit TS files on compile
+    "jsx": "react",
+    "lib": ["dom", "es2015", "es2017"],
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "stripInternal": true,
+    "baseUrl": ".",
+    "paths": {
+      "@common/*":  ["./src/common/*"],
+      "@modules/*":  ["./src/modules/*"],
+      "@components/*":  ["./src/components/*"],
+      "@static/*": ["./src/static/*"],
+      "@exampleData/*": ["./src/exampleData/*"],
+    },
   },
   "exclude": [
     "node_modules",
@@ -22,5 +36,5 @@
     "./gatsby-browser.js",
     "./gatsby-ssr.js"
   ],
-  "include": ["./src/**/**/*"]
+  "include": ["./src/**/*"]
 }

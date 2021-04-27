@@ -1,43 +1,43 @@
 // Packages
 import React, { useEffect } from 'react'
-import { graphql } from 'gatsby'
+import { graphql, PageProps } from 'gatsby'
 import { motion, useAnimation, Variants } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import styled from 'styled-components'
-import { OutboundLink } from 'gatsby-plugin-gtag'
-import { Document } from '@contentful/rich-text-types'
 
-// Commons
-import { rhythmUnit } from '../common/utils/typography'
-import { GatsbyImageFluid } from '../common/types/GatsbyImage'
-import { Testimonials } from '../common/types/Testimonial'
-import { TypeJob } from '../common/types/Job'
+// Common
+import { rhythmUnit } from '@common/utils/typography'
+import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
+import { TypeTestimonial } from '@common/types/Testimonial'
+import { TypeJob } from '@common/types/Job'
 
 // Components
-import Meta from '../components/Meta'
-import PageIntro from '../components/PageIntro'
-import TeamMap from '../components/TeamMap'
-import BioCard from '../components/BioCard'
-import JoinUs from '../components/JoinUs'
-import PhotoGrid from '../components/PhotoGrid'
-import TestimonialSlider from '../components/TestimonialSlider'
-import Footer from '../components/Footer'
+import Meta from '@components/Meta'
+import PagerHeroText from '@modules/common/components/PageHeroText'
+import TeamMap from '@components/TeamMap'
+import BioCard from '@components/BioCard'
+import JoinUs from '@components/JoinUs'
+import PhotoGrid from '@components/PhotoGrid'
+import TestimonialSlider from '@components/TestimonialSlider'
+import Footer from '@components/Footer'
+import { RenderRichTextData } from 'gatsby-source-contentful/rich-text'
 
 interface WhoWeAreQueryResponse {
   contentfulAboutPage: {
-    heroTitle: Document
-    photoGrid: GatsbyImageFluid[]
+    heroTitle: RenderRichTextData<never>
+    photoGrid: TypeGatsbyImageFluid[]
   }
   allContentfulJob: {
     nodes: TypeJob[]
   }
   allContentfulTestimonial: {
-    nodes: Testimonials
+    nodes: TypeTestimonial[]
   }
 }
 
 interface Props {
   data: WhoWeAreQueryResponse
+  location: PageProps['location']
 }
 
 const PhotoGridContainer = styled.div`
@@ -66,7 +66,7 @@ const variants: Variants = {
   }
 }
 
-const WhoWeAre = ({ data }: Props) => {
+const WhoWeAre = ({ data, location }: Props) => {
   const aboutPageData = data.contentfulAboutPage
   const animationControls = useAnimation()
   const { nodes: testimonialData } = data.allContentfulTestimonial
@@ -87,9 +87,9 @@ const WhoWeAre = ({ data }: Props) => {
 
   return (
     <motion.div animate={animateTo} initial={initial}>
-      <Meta title="Who We Are" />
+      <Meta location={location} title="Who We Are" />
 
-      <PageIntro document={aboutPageData.heroTitle} maxWidth={860} />
+      <PagerHeroText document={aboutPageData.heroTitle} maxWidth={860} />
       <PhotoGridContainer>
         <PhotoGrid photos={aboutPageData.photoGrid} />
       </PhotoGridContainer>
@@ -104,6 +104,7 @@ const WhoWeAre = ({ data }: Props) => {
         <BioCard>
           <motion.h2
             animate={animationControls}
+            className="text-h4"
             custom={0}
             initial="headingHidden"
             variants={variants}
@@ -137,14 +138,14 @@ const WhoWeAre = ({ data }: Props) => {
             variants={variants}
           >
             You can find him and connect on{' '}
-            <OutboundLink
+            <a
               className="font-bold"
               href="https://www.linkedin.com/in/evanshoemaker/"
               rel="noopener noreferrer"
               target="_blank"
             >
               LinkedIn
-            </OutboundLink>
+            </a>
           </motion.p>
         </BioCard>
       </div>

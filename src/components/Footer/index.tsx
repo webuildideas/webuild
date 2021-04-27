@@ -3,15 +3,12 @@ import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
 
-// Components
-import Button from '../Button'
-
-// Styled Components
-import * as S from './style'
-import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
-import '../../common/styles/SectionHeading.css'
+// Styles
+import './style.css'
+import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModal'
 
 const Footer = () => {
+  const { showModal } = useOpportunityFormModal()
   const d = new Date()
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -42,52 +39,50 @@ const Footer = () => {
   }, [controls, inView])
 
   return (
-    <S.Footer ref={ref} data-testid="footer">
-      <SiteMaxWidthContainer>
-        <div>
-          <motion.h1
-            animate={controls}
-            className="SectionHeading__title"
-            custom={0}
-            data-testid="footer-title"
-            initial="hidden"
-            variants={variants}
-          >
-            Let's Do Something Bold
-          </motion.h1>
-          <motion.h2
-            animate={controls}
-            className="SectionHeading__subtitle"
-            custom={1}
-            data-testid="footer-subtitle"
-            initial="hidden"
-            style={{ maxWidth: '520px' }}
-            variants={variants}
-          >
-            Ready to take your product to the next level? Drop us a line.
-          </motion.h2>
-        </div>
-        <Button
-          animationDelay={0.1}
-          className="Footer__btn"
-          data-testid="footer-button"
-          href="mailto:hi@webuild.io"
-          type="primaryButton"
+    <footer
+      ref={ref}
+      className="Footer bg-black pt-12 pb-19 px-6 md:pt-24 md:pb-12 md:px-8"
+      data-testid="footer"
+    >
+      <div className="Footer-inner">
+        <motion.h1
+          animate={controls}
+          className="text-h4 mb-4 text-white"
+          custom={0}
+          data-testid="footer-title"
+          initial="hidden"
+          variants={variants}
         >
-          <span
-            aria-label="Waving hand emoji"
-            className="wave-emoji"
-            role="img"
-          >
-            👋
-          </span>
-          HI@WEBUILD.IO
-        </Button>
+          Let's Do Something Bold
+        </motion.h1>
+        <motion.h2
+          animate={controls}
+          className="text-h3 mb-6 text-white md:mb-10"
+          custom={1}
+          data-testid="footer-subtitle"
+          initial="hidden"
+          style={{ maxWidth: '520px' }}
+          variants={variants}
+        >
+          Ready to take your product efforts to the next level? Drop us a line.
+        </motion.h2>
+        <motion.button
+          animate={controls}
+          className="text-button bg-white px-6 py-4 inline-block"
+          custom={2}
+          data-testid="footer-button"
+          initial="hidden"
+          onClick={showModal}
+          type="button"
+          variants={variants}
+        >
+          Get In Touch
+        </motion.button>
 
-        <div className="Footer__follow" data-testid="footer-social">
+        <div className="Footer-follow" data-testid="footer-social">
           <motion.p
             animate={controls}
-            className="Footer__copyright"
+            className="text-caption font-extrabold uppercase text-gray-700 order-2 md:order-1"
             custom={2}
             initial="hidden"
             variants={variants}
@@ -96,13 +91,15 @@ const Footer = () => {
           </motion.p>
           <motion.p
             animate={controls}
-            className="Footer__social"
+            className="text-caption font-extrabold uppercase text-gray-700 order-1 mb-6 w-full md:w-auto md:order-2 md:mb-0"
             custom={3}
             initial="hidden"
             variants={variants}
           >
+            <span className="block md:inline">Follow Us On: </span>
             <motion.a
               animate={controls}
+              className="text-white"
               custom={4}
               href="https://www.dribbble.com/webuild"
               initial="hidden"
@@ -115,6 +112,7 @@ const Footer = () => {
             <span>&amp;</span>{' '}
             <motion.a
               animate={controls}
+              className="text-white"
               custom={5}
               href="https://www.instagram.com/wearewebuild"
               initial="hidden"
@@ -126,8 +124,8 @@ const Footer = () => {
             </motion.a>
           </motion.p>
         </div>
-      </SiteMaxWidthContainer>
-    </S.Footer>
+      </div>
+    </footer>
   )
 }
 

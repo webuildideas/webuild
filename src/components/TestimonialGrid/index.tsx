@@ -2,17 +2,17 @@
 import React from 'react'
 import Masonry from 'react-masonry-css'
 
-// Types
-import { Testimonials } from '../../common/types/Testimonial'
-
-// Styled Components
-import * as S from './style'
+// Common
+import { TypeTestimonial } from '@common/types/Testimonial'
 
 // Components
-import Testimonial from '../Testimonial'
+import Testimonial from '@modules/common/components/Testimonial'
+
+// Styles
+import * as S from './style'
 
 interface Props {
-  testimonials: Testimonials
+  testimonials: TypeTestimonial[]
 }
 
 const TestimonialGrid = ({ testimonials }: Props) => {

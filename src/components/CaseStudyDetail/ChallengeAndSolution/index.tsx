@@ -3,8 +3,8 @@ import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation, Variants } from 'framer-motion'
 
-// Commons
-import SiteMaxWidthContainer from '../../../common/styledComponents/SiteMaxWidthContainer'
+// Common
+import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
 import * as S from '../style'
 
 interface Props {
@@ -46,6 +46,7 @@ const ChallengeAndSolution = ({ challenge, solution }: Props) => {
         <div>
           <motion.h3
             animate={animationControls}
+            className="text-h4 mb-5"
             custom={1}
             initial="hidden"
             variants={variants}
@@ -55,6 +56,7 @@ const ChallengeAndSolution = ({ challenge, solution }: Props) => {
 
           <motion.p
             animate={animationControls}
+            className="text-body"
             custom={2}
             initial="hidden"
             variants={variants}
@@ -65,6 +67,7 @@ const ChallengeAndSolution = ({ challenge, solution }: Props) => {
         <div>
           <motion.h3
             animate={animationControls}
+            className="text-h4 mb-5"
             custom={3}
             initial="hidden"
             variants={variants}
@@ -74,6 +77,7 @@ const ChallengeAndSolution = ({ challenge, solution }: Props) => {
 
           <motion.p
             animate={animationControls}
+            className="text-body"
             custom={4}
             initial="hidden"
             variants={variants}

@@ -1,0 +1,23 @@
+.Checkbox-container input:checked {
+  & + .Checkbox {
+    @apply bg-electricViolet;
+  }
+  & + .Checkbox .Checkbox-checkmark {
+    @apply block;
+  }
+}
+
+.Checkbox-checkmark {
+  @apply hidden;
+}
+
+.Checkbox {
+  @apply w-4;
+  @apply h-4;
+  @apply border;
+  @apply border-solid;
+  @apply border-gray-700;
+  @apply text-white;
+  padding: 2px;
+  border-radius: 2px;
+}

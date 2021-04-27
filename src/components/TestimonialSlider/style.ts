@@ -1,9 +1,9 @@
 // Packages
 import styled from 'styled-components'
-import { Slide, Slider, Dot, DotGroup, DotProps } from 'pure-react-carousel'
+import { Slide, Slider, Dot, DotGroup } from 'pure-react-carousel'
 
-// Utils
-import { rhythmUnit } from '../../common/utils/typography'
+// Common
+import { rhythmUnit } from '@common/utils/typography'
 
 /**
  * The Slides Container
@@ -35,7 +35,6 @@ export const TestimonialSlide = styled(Slide)`
  * The Actual Testimonial Copy
  */
 export const Testimonial = styled.blockquote`
-  font-size: ${(props) => props.theme.f2};
   line-height: 1.4;
   text-align: center;
   @media (min-width: 1090px) {
@@ -58,7 +57,8 @@ export const TestimonialDots = styled.div`
 /**
  * The Actual Large Testimonial dots containing headshot, name, role
  */
-export const TestimonialDot = styled(Dot)<DotProps>`
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const TestimonialDot = styled(Dot)<any>`
   display: none;
   align-items: center;
   text-align: left;

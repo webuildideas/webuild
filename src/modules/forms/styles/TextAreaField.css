@@ -1,0 +1,6 @@
+.TextAreaField {
+  @apply border-b;
+  @apply border-gray-600;
+  @apply pb-1;
+  @apply bg-transparent;
+}

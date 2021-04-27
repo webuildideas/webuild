@@ -1,15 +1,29 @@
-/* eslint-disable */
-
+/* eslint-disable react/no-danger */
+/* eslint-disable no-undef */
 // Packages
-const React = require('react')
+import React from 'react'
+import { RecoilRoot } from 'recoil'
 
 // Components
-const AppProvider = require('./src/components/AppProvider').default
+import AppProvider from './src/components/AppProvider'
 
-exports.wrapPageElement = ({ element, props }) => {
+export const wrapPageElement = ({ element, props }) => {
   return (
-    <AppProvider {...props}>
-      {element}
-    </AppProvider>
+    <RecoilRoot>
+      <AppProvider {...props}>{element}</AppProvider>
+    </RecoilRoot>
   )
+}
+
+export { wrapRootElement } from './src/common/apollo/wrap-root-element'
+
+export const onRenderBody = ({ setPostBodyComponents }) => {
+  setPostBodyComponents([
+    <script
+      key="act-on-beacon"
+      dangerouslySetInnerHTML={{
+        __html: `/*<![CDATA[*/(function(w,a,b,d,s){w[a]=w[a]||{};w[a][b]=w[a][b]||{q:[],track:function(r,e,t){this.q.push({r:r,e:e,t:t||+new Date});}};var e=d.createElement(s);var f=d.getElementsByTagName(s)[0];e.async=1;e.src='https://go.webuild.io/cdnr/forpci2/acton/bn/tracker/43738';f.parentNode.insertBefore(e,f);})(window,'ActOn','Beacon',document,'script');ActOn.Beacon.track();/*]]>*/`
+      }}
+    />
+  ])
 }

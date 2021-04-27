@@ -1,0 +1,9 @@
+.SelectField {
+  @apply appearance-none;
+  @apply bg-transparent;
+  @apply border-b;
+  @apply border-gray-600;
+  @apply pb-1;
+  @apply font-extrabold;
+  @apply text-black;
+}

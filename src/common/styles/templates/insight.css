@@ -1,0 +1,350 @@
+.Insight-grid {
+  @apply grid;
+  @apply grid-cols-12;
+  @apply gap-4;
+  @apply bg-white;
+  max-width: 1180px;
+  @apply mx-auto;
+  grid-template-rows: auto auto auto auto auto;
+  grid-template-areas:
+    "header header header header header header header header header header header header"
+    "article article article article article article article article article article article article"
+    "share share share share share share share share share share share share"
+    "readNext readNext readNext readNext readNext readNext readNext readNext readNext readNext readNext readNext"
+    "ctas ctas ctas ctas ctas ctas ctas ctas ctas ctas ctas ctas";
+
+  @screen lg {
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+      "header header header header header header header header header header . ."
+      "article article article article article article article article article ctas ctas ctas"
+      "share share share share share share share share share share share share"
+      "readNext readNext readNext readNext readNext readNext readNext readNext readNext readNext readNext readNext";
+  }
+
+  @screen xl {
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "header header header header header header header header header header . ."
+      "share article article article article article article article article ctas ctas ctas"
+      "readNext readNext readNext readNext readNext readNext readNext readNext readNext readNext readNext readNext";
+  }
+}
+
+.Insight-header {
+  max-width: 616px;
+  grid-row: 1;
+  grid-area: header;
+  @apply px-6;
+  @apply mt-16;
+  @apply mb-14;
+
+  @apply md:pl-9;
+  @apply md:pr-0;
+
+  @apply lg:pl-11;
+  @apply lg:mb-24;
+  @screen lg {
+    max-width: 824px;
+  }
+
+  @apply xl:px-0;
+  @apply xl:mx-auto;
+  @apply xl:pl-2;
+  @screen xl {
+    max-width: 780px;
+  }
+}
+
+.Insight {
+  grid-area: article;
+  grid-row: 2;
+}
+
+.Insight-article {
+  @apply px-6;
+  @apply md:px-0;
+}
+
+.Insight-article-locked {
+  @apply relative;
+  @apply overflow-hidden;
+  height: 750px;
+
+  &:after {
+    content: "";
+    bottom: 0;
+    @apply absolute;
+    @apply block;
+    @apply w-full;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), white);
+    height: 300px;
+  }
+}
+
+.Insight-hero {
+  @apply flex;
+  @apply flex-col;
+  @apply justify-center;
+  @apply bg-gray-200;
+  height: 290px;
+
+  @screen md {
+    height: 335px;
+  }
+
+  @screen lg {
+    height: 390px;
+  }
+
+  @screen xl {
+    height: 480px;
+  }
+
+  img {
+    @apply w-full;
+    max-height: 100%;
+  }
+}
+
+.Insight-share {
+  position: sticky;
+  @apply px-6;
+  @apply pb-8;
+  @apply md:px-8;
+  @apply md:pt-16;
+  @apply md:pb-12;
+  grid-area: share;
+  @screen lg {
+    grid-row: 3;
+  }
+
+  @screen xl {
+    grid-row: 2;
+  }
+}
+
+.Insight-share-items {
+  @apply flex;
+  @apply justify-between;
+  @apply items-center;
+  @screen xl {
+    @apply flex-col;
+    button {
+      @apply mb-6;
+    }
+  }
+}
+
+.Insight-read-next {
+  grid-area: readNext;
+  grid-row: 4;
+  @apply pb-8;
+  @apply pl-6;
+  @apply pt-10;
+
+  @apply md:pl-8;
+  @apply md:pt-18;
+  @apply md:pb-24;
+
+  @apply xl:mt-24;
+
+  @screen xl {
+    grid-row: 3;
+  }
+}
+
+.Insight-ctas {
+  grid-area: ctas;
+  grid-row: 5;
+  @screen lg {
+    grid-row: 2;
+    @apply mt-50;
+  }
+}
+
+.Insight-copy {
+  max-width: 580px;
+  @apply mx-auto;
+  @screen xl {
+    max-width: 750px;
+  }
+}
+
+.Insight-img {
+  @apply my-12;
+
+  @apply md:px-9;
+
+  @apply xl:mx-auto;
+  @apply xl:px-0;
+
+  @screen xl {
+    max-width: 750px;
+  }
+
+  .text-caption {
+    @apply mt-6;
+  }
+}
+
+.Insight-img {
+  .Image-left picture {
+    width: 200px;
+    object-fit: contain;
+  }
+}
+
+.Insight-img-inline.Image-left {
+  @apply ml-0;
+  max-height: 200px;
+  object-fit: contain;
+}
+
+.Insight-paragraph {
+  @apply mb-6;
+  a {
+    @apply text-electricViolet;
+    @apply hover:underline;
+  }
+}
+
+* + .Insight-h3 {
+  @apply mt-12;
+}
+
+.Insight-h3 + .Insight-h4 {
+  @apply mt-4;
+}
+
+.Insight-h3 + .Insight-paragraph {
+  @apply mt-4;
+}
+
+.Insight-h4 + .Insight-paragraph {
+  @apply mt-4;
+}
+
+.Insight-paragraph + .Insight-h4 {
+  @apply mt-8;
+}
+
+.Insight-blockquote {
+  @apply text-deepViolet;
+  @apply border-solid;
+  @apply border-deepViolet;
+  @apply my-12;
+  @apply border-l-4;
+  @apply pl-6;
+
+  @screen md {
+    max-width: 450px;
+    @apply mx-auto;
+  }
+  p {
+    @apply text-6xl;
+    @apply leading-tight;
+    @apply font-normal;
+
+    @media (min-width: 426px) and (max-width: 899px) {
+      @apply text-5xl;
+    }
+
+    @media (max-width: 425px) {
+      @apply text-4xl;
+    }
+  }
+}
+
+.Insight ol {
+  list-style: none;
+  counter-reset: count;
+  width: 92.5%;
+  max-width: 580px;
+  @apply my-6;
+  @apply mx-auto;
+
+  @screen xl {
+    max-width: 750px;
+  }
+}
+
+.Insight ol li {
+  counter-increment: count;
+  @apply flex;
+  @apply items-start;
+  @apply mb-8;
+
+  b {
+    @apply font-bold;
+    @apply mb-4;
+    @apply block;
+    @apply uppercase;
+  }
+
+  p {
+    @apply block;
+    @apply mb-2;
+    @apply mx-0;
+  }
+
+  &:before {
+    height: 100%;
+    content: counter(count) ". ";
+    top: -13px;
+    @apply relative;
+    @apply block;
+    @apply mr-2;
+    @apply font-bold;
+    @apply text-4xl;
+    @apply leading-relaxed;
+    @apply tracking-wider;
+
+    @media (min-width: 426px) and (max-width: 899px) {
+      @apply text-lg;
+    }
+
+    @media (max-width: 425px) {
+      @apply text-base;
+    }
+  }
+}
+
+.Insight ul {
+  list-style-type: disc;
+  width: 92.5%;
+  max-width: 580px;
+  @apply mx-auto;
+  @apply my-6;
+  @apply pl-5;
+
+  @screen xl {
+    max-width: 750px;
+  }
+
+  li {
+    @apply mb-8;
+
+    b {
+      @apply font-extrabold;
+      @apply block;
+      @apply uppercase;
+      @apply mb-4;
+    }
+
+    p {
+      @apply mb-2;
+    }
+  }
+}
+
+.Insight code {
+  @apply block;
+  @apply bg-gray-100;
+  @apply border-solid;
+  @apply border-gray-500;
+  @apply border;
+  @apply px-6;
+  @apply my-12;
+  @apply rounded-2;
+}

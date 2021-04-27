@@ -1,65 +1,36 @@
-import { Document } from '@contentful/rich-text-types'
-import { GatsbyImageFluid, GatsbyImageFile } from './GatsbyImage'
-import { FeaturedTestimonial } from './Testimonial'
+// Common
+import { TypeTestimonial } from '@common/types/Testimonial'
+import { TypeContentfulAsset } from '@common/types/Contentful'
+import { TypeCarousel } from '@common/types/Carousel'
+import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
+import { RenderRichTextData } from 'gatsby-source-contentful/rich-text'
 
-export type CaseStudy = {
+export interface TypeCaseStudy {
   name: string
-  tagline?: string
-  slug: string
-  heroImage?: GatsbyImageFluid
-  heroBackgroundImage?: GatsbyImageFile
-  whiteLogo?: GatsbyImageFile
-  logo?: GatsbyImageFile
-  listingImage?: GatsbyImageFluid
+  slug?: string
+  logo: TypeContentfulAsset
+  whiteLogo?: TypeContentfulAsset
+  heroBackgroundImage?: TypeContentfulAsset
+  heroImage?: TypeGatsbyImageFluid
+  listingImage: TypeGatsbyImageFluid
+  tagline: string
   successSummary: {
     successSummary: string
-  }
-  solutionSummary?: {
-    solutionSummary: string
   }
   challengeSummary?: {
     challengeSummary: string
   }
-  designSystemCarousel?: {
-    images: GatsbyImageFluid[]
-  }
-  resultOne?: { json: Document }
-  resultTwo?: { json: Document }
-  resultThree?: { json: Document }
-  featuredTestimonial?: FeaturedTestimonial
-  projectChallenge?: { json: Document }
-  projectOutcome?: { json: Document }
-  projectOverview?: { json: Document }
-  projectSolution?: { json: Document }
-}
-
-export type CaseStudyDetail = {
-  name: string
-  tagline?: string
-  slug: string
-  heroImage?: GatsbyImageFluid
-  heroBackgroundImage?: GatsbyImageFile
-  whiteLogo?: GatsbyImageFile
-  logo?: GatsbyImageFile
-  successSummary: {
-    successSummary: string
-  }
   solutionSummary?: {
     solutionSummary: string
   }
-  challengeSummary?: {
-    challengeSummary: string
-  }
-  designSystemCarousel?: {
-    images: GatsbyImageFluid[]
-  }
-  resultOne?: Document
-  resultTwo?: Document
-  resultThree?: Document
-  featuredTestimonial?: FeaturedTestimonial
-  projectChallenge?: Document
-  projectOutcome?: Document
-  projectOverview?: Document
-  projectSolution?: Document
-  nextCaseStudy?: CaseStudy
+  designSystemCarousel?: TypeCarousel
+  resultOne?: RenderRichTextData<never>
+  resultTwo?: RenderRichTextData<never>
+  resultThree?: RenderRichTextData<never>
+  featuredTestimonial?: TypeTestimonial
+  projectOverview?: RenderRichTextData<TypeCarousel | TypeContentfulAsset>
+  projectChallenge?: RenderRichTextData<TypeCarousel | TypeContentfulAsset>
+  projectSolution?: RenderRichTextData<TypeCarousel | TypeContentfulAsset>
+  projectOutcome?: RenderRichTextData<TypeCarousel | TypeContentfulAsset>
+  nextCaseStudy?: TypeCaseStudy
 }

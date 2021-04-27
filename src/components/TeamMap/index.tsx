@@ -1,16 +1,16 @@
 // Packages
 import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
-import { motion, useAnimation } from 'framer-motion'
+import { motion, useAnimation, Variants } from 'framer-motion'
 
-// Commons
-import SiteMaxWidthContainer from '../../common/styledComponents/SiteMaxWidthContainer'
-import '../../common/styles/SectionHeading.css'
+// Common
+import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
+import '@common/styles/SectionHeading.css'
 
-// Svg
-import TeamMapSvg from '../../static/svgs/teamMap.inline.svg'
+// Static Assets
+import TeamMapSvg from '@static/svgs/teamMap.inline.svg'
 
-const variants = {
+const variants: Variants = {
   visible: (i: number) => ({
     y: 0,
     opacity: 1,
@@ -58,7 +58,7 @@ const TeamMap = () => {
       <div className="mb-20">
         <motion.h1
           animate={animationControls}
-          className="SectionHeading__title"
+          className="text-h4 mb-6"
           custom={0}
           initial="hidden"
           variants={variants}
@@ -67,9 +67,10 @@ const TeamMap = () => {
         </motion.h1>
         <motion.h2
           animate={animationControls}
-          className="SectionHeading__subtitle"
+          className="text-h3"
           custom={1}
           initial="hidden"
+          style={{ maxWidth: '790px' }}
           variants={variants}
         >
           We embrace diversity and learning new things about each other’s

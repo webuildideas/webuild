@@ -45,17 +45,21 @@ module.exports = {
             {
               family: `Overpass`,
               variants: [`400`, `800`, `900`]
+            },
+            {
+              family: `Noto Serif SC`,
+              variants: [`500`]
             }
           ]
         }
       }
     },
     {
-      resolve: `gatsby-plugin-gtag`,
+      resolve: 'gatsby-plugin-google-tagmanager',
       options: {
-        trackingId: 'UA-60707530-1',
-        head: false,
-        anonymize: false
+        id: 'GTM-NBL93J9',
+        includeInDevelopment: false,
+        defaultDataLayer: { platform: 'gatsby' }
       }
     },
     `gatsby-plugin-postcss`,
@@ -157,6 +161,20 @@ module.exports = {
             type: `image/png`
           }
         ]
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-load-script',
+      options: {
+        src: `https://insight-engine.newfangled.com/api/v1/${process.env.GATSBY_NEWFANGLED_KEY}/beacon`,
+        crossorigin: 'anonymous'
+      }
+    },
+    {
+      resolve: `gatsby-plugin-netlify`,
+      options: {
+        mergeLinkHeaders: false,
+        mergeCachingHeaders: false
       }
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

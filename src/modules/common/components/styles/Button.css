@@ -1,0 +1,64 @@
+.Button {
+  @apply px-6;
+  @apply py-4;
+
+  transition: all 300ms ease-in-out;
+}
+
+.Button-solid {
+  @apply bg-black;
+  @apply text-white;
+  @apply hover:bg-gray-800;
+  @apply border-none;
+  &:focus {
+    @apply bg-transparent;
+    @apply border-solid;
+    @apply border-2;
+    @apply text-black;
+  }
+  &:disabled {
+    opacity: 0.3;
+    @apply cursor-not-allowed;
+    @apply border-none;
+  }
+}
+
+.Button-solid-purple {
+  @apply bg-deepViolet;
+  @apply text-white;
+  @apply hover:bg-electricViolet;
+  @apply border-none;
+  &:focus {
+    @apply bg-electricViolet;
+  }
+  &:disabled {
+    opacity: 0.3;
+    @apply cursor-not-allowed;
+    @apply border-none;
+  }
+}
+
+.Button-outline {
+  @apply bg-transparent;
+  @apply border-solid;
+  @apply border;
+
+  @apply hover:bg-black;
+  @apply hover:text-white;
+
+  &:focus {
+    @apply bg-black;
+    @apply border-solid;
+    @apply border-2;
+  }
+
+  &:disabled {
+    opacity: 0.3;
+  }
+}
+
+.Button-loading {
+  @apply flex;
+  @apply justify-center;
+  min-width: 115px;
+}
