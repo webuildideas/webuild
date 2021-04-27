@@ -2,7 +2,8 @@
 import React, { useCallback, useState } from 'react'
 import { Formik, Form, FormikProps } from 'formik'
 import * as Yup from 'yup'
-import { useRecoilValue } from 'recoil'
+import { useRecoilState } from 'recoil'
+import uniq from 'lodash/uniq'
 
 // Common
 import useSubmitNfForm from '@common/hooks/useSubmitNfForm'
@@ -44,7 +45,9 @@ const formSchema = Yup.object().shape({
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
 const EmailSignupForm = ({ location }: Props) => {
-  const userConversions = useRecoilValue(userFormConversionsAtom)
+  const [userConversions, setUserConversions] = useRecoilState(
+    userFormConversionsAtom
+  )
   const userHasCompletedForm = userConversions.includes(
     NFForms.EmailSignup.name
   )
@@ -80,9 +83,10 @@ const EmailSignupForm = ({ location }: Props) => {
 
       await sleep(500)
 
+      setUserConversions(uniq([...userConversions, NFForms.EmailSignup.name]))
       setFormSubmitted(true)
     },
-    [submitToInsightEngine]
+    [setUserConversions, submitToInsightEngine, userConversions]
   )
 
   return userHasCompletedForm || formSubmitted ? (
