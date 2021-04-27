@@ -38,6 +38,7 @@ interface Props {
   }
   pageContext: {
     topics: TypeInsightTopic[]
+    types: TypeInsightType[]
   }
 }
 
@@ -47,23 +48,13 @@ export interface FilterState<T> {
 }
 
 const PAGINATION_LIMIT = 7
-const ALL_TYPES: TypeInsightType[] = [
-  'Article',
-  'White Paper',
-  'Event',
-  'Email Course',
-  'Podcast',
-  'Publication',
-  'Video',
-  'Webinar'
-]
 
 const Insights = ({
   location,
   data: {
     contentfulContentHub: { featuredInsight }
   },
-  pageContext: { topics }
+  pageContext: { topics, types }
 }: Props) => {
   const [skip, setSkip] = useState(0)
   const [total, setTotal] = useState<number | null>(null)
@@ -75,7 +66,7 @@ const Insights = ({
   })
   const [typesFilter, setTypesFilter] = useState<FilterState<TypeInsightType>>({
     noFilters: true,
-    filters: ALL_TYPES
+    filters: types
   })
   const { loading, error, data, fetchMore } = useQuery<
     InsightsListingData,
@@ -196,7 +187,7 @@ const Insights = ({
         )
         const hasNotFilters = filterWithTypeRemoved.length === 0
         setTypesFilter({
-          filters: hasNotFilters ? ALL_TYPES : filterWithTypeRemoved,
+          filters: hasNotFilters ? types : filterWithTypeRemoved,
           noFilters: !!hasNotFilters
         })
 
@@ -204,7 +195,7 @@ const Insights = ({
           variables: {
             skip: 0,
             limit: PAGINATION_LIMIT,
-            types: hasNotFilters ? ALL_TYPES : filterWithTypeRemoved
+            types: hasNotFilters ? types : filterWithTypeRemoved
           }
         }).then((response) => {
           setSkip(0)
@@ -229,7 +220,7 @@ const Insights = ({
         setTotal(response.data.insightCollection.total)
       })
     },
-    [typesFilter, fetchMore, setTypesFilter]
+    [typesFilter, fetchMore, setTypesFilter, types]
   )
 
   useEffect(() => {
@@ -260,7 +251,7 @@ const Insights = ({
             createOnTypeClickHandler={createOnTypeClickHandler}
             topics={topics}
             topicsFilter={topicsFilter}
-            types={ALL_TYPES}
+            types={types}
             typesFilter={typesFilter}
           />
         </aside>

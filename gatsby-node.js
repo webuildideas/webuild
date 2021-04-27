@@ -1,5 +1,6 @@
 import path from 'path'
 import uniq from 'lodash/uniq'
+import orderBy from 'lodash/orderBy'
 
 export const createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
@@ -18,6 +19,7 @@ export const createPages = async ({ graphql, actions }) => {
           node {
             slug
             topics
+            type
           }
         }
       }
@@ -40,18 +42,24 @@ export const createPages = async ({ graphql, actions }) => {
   })
 
   const topics = []
+  const types = []
   insights.edges.map((edge) => {
-    if (!edge.node.topics) {
-      return
+    if (edge.node.topics) {
+      topics.push(...edge.node.topics)
     }
-    return topics.push(...edge.node.topics)
+
+    if (edge.node.type) {
+      types.push(edge.node.type)
+    }
+    return true
   })
 
   createPage({
     path: '/insights',
     component: path.resolve('./src/templates/insights.tsx'),
     context: {
-      topics: uniq(topics)
+      topics: uniq(topics),
+      types: orderBy(uniq(types))
     }
   })
 
