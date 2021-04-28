@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import CloseIcon from '@static/svgs/closeIcon.inline.svg'
 import OpportunityForm from '../OpportunityForm'
 
@@ -9,7 +9,9 @@ interface Props {
   location: string
 }
 
-const OpportunityFormModal = ({ location }: Props) => {
+const OpportunityFormModal = memo(function OpportunityFormModalMemo({
+  location
+}: Props) {
   const { isVisible, closeModal } = useOpportunityFormModal()
 
   return isVisible ? (
@@ -23,6 +25,6 @@ const OpportunityFormModal = ({ location }: Props) => {
       </div>
     </div>
   ) : null
-}
+})
 
 export default OpportunityFormModal
