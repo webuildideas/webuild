@@ -1,5 +1,5 @@
 // Packages
-import React, { useEffect } from 'react'
+import React, { memo, useEffect } from 'react'
 import { ThemeProvider } from 'styled-components'
 import { useRecoilState } from 'recoil'
 import uniq from 'lodash/uniq'
@@ -11,8 +11,17 @@ import { GlobalStyle } from '@common/theme/GlobalStyle'
 
 // Components
 import Nav from '@modules/common/components/Nav'
+import { WithChildren } from '@common/types/Utilities'
+import { PageProps } from 'gatsby'
 
-const AppProvider: React.FC = ({ children }) => {
+interface Props extends WithChildren {
+  location: PageProps['location']
+}
+
+const AppProvider = memo(function AppProviderMemo({
+  children,
+  location
+}: Props) {
   const [userConversions, setUserConversions] = useRecoilState(
     userFormConversionsAtom
   )
@@ -32,10 +41,10 @@ const AppProvider: React.FC = ({ children }) => {
   return (
     <ThemeProvider theme={styleTheme}>
       <GlobalStyle />
-      <Nav />
+      <Nav location={location.href} />
       {children}
     </ThemeProvider>
   )
-}
+})
 
 export default AppProvider

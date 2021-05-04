@@ -96,7 +96,7 @@ const options: Options = {
       }
 
       return (
-        <div className="Insight-img">
+        <span className="Insight-img-inline mt-12 md:mt-18 block">
           <img
             alt={node.data.target.altText}
             className={`Insight-img-inline ${
@@ -109,7 +109,7 @@ const options: Options = {
           {node.data.target.caption ? (
             <p className="text-caption">{node.data.target.caption}</p>
           ) : null}
-        </div>
+        </span>
       )
     },
     [BLOCKS.HEADING_2]: (_, children) => (

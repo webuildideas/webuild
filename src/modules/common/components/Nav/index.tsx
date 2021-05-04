@@ -43,7 +43,7 @@ const variants = {
 
 const headroomStyles = { transition: 'all 600ms ease-in-out' }
 
-const Nav = memo(function NavMemo() {
+const Nav = memo(function NavMemo({ location }: { location: string }) {
   const windowSize = useWindowSize()
   const animationControls = useAnimation()
   const [ref, inView] = useInView({ triggerOnce: true })
@@ -79,7 +79,7 @@ const Nav = memo(function NavMemo() {
 
   return (
     <>
-      <OpportunityFormModal location="cool" />
+      <OpportunityFormModal location={location} />
       <Helmet bodyAttributes={helmetAttrs} />
       <Headroom
         onPin={pinNav}
