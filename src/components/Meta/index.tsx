@@ -11,6 +11,7 @@ interface Props extends HelmetProps {
   description?: string
   title?: string
   location: PageProps['location']
+  shareImage?: string
 }
 
 interface MetaQueryResponse {
@@ -28,6 +29,7 @@ const Meta = ({
   htmlAttributes,
   description,
   title,
+  shareImage,
   location
 }: Props) => {
   const { contentfulSeo } = useStaticQuery<MetaQueryResponse>(
@@ -53,6 +55,8 @@ const Meta = ({
       ? 'webuild - product design for startups'
       : `${title} | webuild - product design for startups`
 
+  const image = shareImage || contentfulSeo.seoShareImage.file.url
+
   const metaDescription =
     description || contentfulSeo.seoDescription.seoDescription
 
@@ -67,7 +71,7 @@ const Meta = ({
     },
     {
       property: `og:image`,
-      content: contentfulSeo.seoShareImage.file.url
+      content: image
     },
     {
       property: `og:description`,
@@ -95,7 +99,7 @@ const Meta = ({
     },
     {
       name: `twitter:image`,
-      content: contentfulSeo.seoShareImage.file.url
+      content: image
     }
   ]
 

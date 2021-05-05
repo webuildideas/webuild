@@ -6,6 +6,7 @@ import { TypeAuthor } from '@common/types/Author'
 import { TypeCarousel } from '@common/types/Carousel'
 import { TypeContentfulAsset } from '@common/types/Contentful'
 import { TypeContentUpgrade } from './ContentUpgrade'
+import { TypeGatsbyImageFixed } from './GatsbyImage'
 
 export type TypeInsightType =
   | 'Article'
@@ -42,6 +43,7 @@ export interface TypeInsight {
   hashtags?: string[]
   contentUpgrade?: TypeContentUpgrade
   topics?: TypeInsightTopic[]
+  shareImage?: TypeGatsbyImageFixed
   shareQuote?: {
     shareQuote: string
   }
