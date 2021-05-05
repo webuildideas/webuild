@@ -167,6 +167,7 @@ const Insight = ({
         description={insight.shareQuote?.shareQuote}
         location={location}
         shareImage={insight.shareImage?.fixed.src}
+        shareTitle={insight.title}
         title={insight.title}
       />
       <div className="Insight-container">
