@@ -163,7 +163,12 @@ const Insight = ({
   }, [articleRef])
   return (
     <>
-      <Meta location={location} title={insight.title} />
+      <Meta
+        description={insight.shareQuote?.shareQuote}
+        location={location}
+        shareImage={insight.shareImage?.fixed.src}
+        title={insight.title}
+      />
       <div className="Insight-container">
         {insight?.heroIllustration?.file?.url ? (
           <div className="Insight-hero">
@@ -331,6 +336,11 @@ export const query = graphql`
       }
       shareQuote {
         shareQuote
+      }
+      shareImage {
+        fixed(width: 1200, height: 630) {
+          src
+        }
       }
       contentUpgrade {
         blurb {
