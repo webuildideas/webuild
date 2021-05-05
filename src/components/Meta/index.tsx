@@ -55,7 +55,7 @@ const Meta = ({
       ? 'webuild - product design for startups'
       : `${title} | webuild - product design for startups`
 
-  const image = shareImage || contentfulSeo.seoShareImage.file.url
+  const image = `https:${shareImage}` || contentfulSeo.seoShareImage.file.url
 
   const metaDescription =
     description || contentfulSeo.seoDescription.seoDescription
