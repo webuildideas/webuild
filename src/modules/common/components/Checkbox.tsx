@@ -35,7 +35,7 @@ const Checkbox = ({
         type="checkbox"
         {...field}
       />
-      <span className={`${Checkbox} ${checkboxClassName}`}>
+      <span className={`Checkbox ${checkboxClassName}`}>
         <Checkmark className="Checkbox-checkmark" />
       </span>
       {label ? (
