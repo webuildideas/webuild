@@ -4,7 +4,6 @@ import { RecoilRoot } from 'recoil'
 import { CookiesProvider } from 'react-cookie'
 
 // Commons
-import { callProjectHuddle } from './src/common/utils/projectHuddle'
 import loadPolyfills from './src/common/utils/polyfills'
 
 // Tailwind
@@ -27,5 +26,4 @@ export { wrapRootElement } from './src/common/apollo/wrap-root-element'
 
 export const onClientEntry = () => {
   loadPolyfills()
-  callProjectHuddle()
 }
