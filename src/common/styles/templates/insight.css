@@ -352,3 +352,23 @@
   @apply my-12;
   @apply rounded-2;
 }
+
+/* Type Specific Styles */
+
+.Insight-E-Book {
+  .ContentUpgrade-bottom {
+    @apply mb-8;
+    @apply md:mb-16;
+  }
+  .Insight-share {
+    @apply hidden;
+  }
+
+  .Insight-read-next {
+    @apply hidden;
+  }
+
+  .Insight-ctas {
+    @apply hidden;
+  }
+}

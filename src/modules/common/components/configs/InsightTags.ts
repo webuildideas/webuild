@@ -39,6 +39,10 @@ export const TypeInsightTypeIconConfig: TypeInsightTypeIconConfig = {
     icon: EmailCourse,
     name: 'Email Course'
   },
+  'E-Book': {
+    icon: Article,
+    name: 'E-Book'
+  },
   Event: {
     icon: Event,
     name: 'Event'
