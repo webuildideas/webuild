@@ -1,3 +1,6 @@
+// Packages
+import { RenderRichTextData } from 'gatsby-source-contentful/rich-text'
+
 // Common
 import {
   TypeGatsbyImageFixed,
@@ -14,4 +17,5 @@ export interface TypeTestimonial {
   testimonial: {
     testimonial: string
   }
+  quote: RenderRichTextData<never>
 }
