@@ -170,7 +170,7 @@ const Insight = ({
         shareTitle={insight.title}
         title={insight.title}
       />
-      <div className="Insight-container">
+      <div className={`Insight-container Insight-${insight.type}`}>
         {insight?.heroIllustration?.file?.url ? (
           <div className="Insight-hero">
             <img
@@ -215,7 +215,7 @@ const Insight = ({
             ) : null}
             {insight.contentUpgrade ? (
               <ContentUpgradeForm
-                className="mt-16 mb-8 md:mb-0"
+                className="mt-16 mb-8 md:mb-0 ContentUpgrade-bottom"
                 contentUpgrade={insight.contentUpgrade}
               />
             ) : null}
