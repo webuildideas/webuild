@@ -1,4 +1,5 @@
 // Common
+import React from 'react'
 import { TypeInsightTopic, TypeInsightType } from '@common/types/Insight'
 import { WithClassName } from '@common/types/Utilities'
 
@@ -39,9 +40,9 @@ export const TypeInsightTypeIconConfig: TypeInsightTypeIconConfig = {
     icon: EmailCourse,
     name: 'Email Course'
   },
-  'E-Book': {
+  eBook: {
     icon: Article,
-    name: 'E-Book'
+    name: 'eBook'
   },
   Event: {
     icon: Event,

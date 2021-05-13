@@ -355,7 +355,7 @@
 
 /* Type Specific Styles */
 
-.Insight-E-Book {
+.Insight-eBook {
   .ContentUpgrade-bottom {
     @apply mb-8;
     @apply md:mb-16;

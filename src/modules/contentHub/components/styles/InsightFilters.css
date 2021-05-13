@@ -37,10 +37,6 @@
   @apply border-lavender;
 }
 
-.Insight-filters-item .text-page-navigation {
-  @apply capitalize;
-}
-
 /* Insight Filters Dropdown */
 .Insight-filters-dropdown-container {
   max-width: 620px;
