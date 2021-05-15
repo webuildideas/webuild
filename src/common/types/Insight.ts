@@ -11,6 +11,7 @@ import { TypeGatsbyImageFixed } from './GatsbyImage'
 export type TypeInsightType =
   | 'Article'
   | 'White Paper'
+  | 'eBook'
   | 'Email Course'
   | 'Event'
   | 'Podcast'
