@@ -286,6 +286,7 @@
     @apply block;
     @apply mb-2;
     @apply mx-0;
+    white-space: pre-wrap;
   }
 
   &:before {
@@ -338,6 +339,7 @@
 
     p {
       @apply mb-2;
+      white-space: pre-wrap;
     }
   }
 }
