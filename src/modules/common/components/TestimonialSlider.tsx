@@ -44,10 +44,7 @@ const testimonialSliderVariants: Variants = {
 
 const richTextOptions: Options = {
   renderNode: {
-    [BLOCKS.PARAGRAPH]: (_, children) => <p className="inline">{children}</p>,
-    [BLOCKS.QUOTE]: (_, children) => {
-      return <blockquote className="text-h3">“{children}”</blockquote>
-    }
+    [BLOCKS.PARAGRAPH]: (_, children) => <p className="inline">{children}</p>
   },
   renderMark: {
     [MARKS.BOLD]: (text: React.ReactNode) => (

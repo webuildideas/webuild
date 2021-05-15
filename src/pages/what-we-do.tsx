@@ -1,29 +1,27 @@
+// Packages
 import React from 'react'
 import { graphql } from 'gatsby'
-import { TypeService } from '@common/types/Service'
-import { TypeTestimonial } from '@common/types/Testimonial'
 
+// Common
+import { TypeTestimonial } from '@common/types/Testimonial'
+import { TypeService } from '@common/types/Service'
+
+// Components
 import TestimonialSlider from '@modules/common/components/TestimonialSlider'
+import ServiceListing from '@modules/service/components/ServiceListing'
 
 interface Props {
   data: {
-    contentfulServices: {
+    contentfulServicesPage: {
+      services: TypeService[]
       testimonials: TypeTestimonial[]
-    }
-    allContentfulService: {
-      nodes: TypeService[]
     }
   }
 }
 
-const WhatWeDo = ({
-  data: {
-    contentfulServices: page,
-    allContentfulService: { nodes: services }
-  }
-}: Props) => {
-  console.log('PAge', page.testimonials)
-  console.log(services)
+const WhatWeDo = ({ data: { contentfulServicesPage: page } }: Props) => {
+  // eslint-disable-next-line no-console
+  console.log('Page', page.testimonials)
   return (
     <>
       <main className="pt-8 px-6">
@@ -81,6 +79,12 @@ const WhatWeDo = ({
         <div>
           <TestimonialSlider testimonials={page.testimonials} />
         </div>
+
+        <div>
+          {page.services.map((service) => (
+            <ServiceListing key={service.slug} service={service} />
+          ))}
+        </div>
       </main>
     </>
   )
@@ -88,11 +92,20 @@ const WhatWeDo = ({
 
 export const WHAT_WE_DO_QUERY = graphql`
   query whatWeDoQuery {
-    contentfulServices(title: { eq: "What we do" }) {
+    contentfulServicesPage(title: { eq: "What we do" }) {
+      services {
+        title
+        subtitle
+        tagline
+        slug
+      }
       testimonials {
         company
         name
         role
+        quote {
+          raw
+        }
         featuredHeadshot {
           fluid(maxWidth: 500) {
             ...GatsbyContentfulFluid_withWebp_noBase64
@@ -103,16 +116,6 @@ export const WHAT_WE_DO_QUERY = graphql`
             ...GatsbyContentfulFixed_withWebp_noBase64
           }
         }
-        quote {
-          raw
-        }
-      }
-    }
-    allContentfulService {
-      nodes {
-        title
-        subtitle
-        tagline
       }
     }
   }
