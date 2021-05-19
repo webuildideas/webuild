@@ -1,0 +1,31 @@
+.ProcessSteps {
+  @apply grid;
+  @apply grid-cols-1;
+  @apply gap-12;
+  @apply text-center;
+
+  @apply md:text-left;
+
+  @apply xl:grid-cols-3;
+  @apply xl:gap-16;
+}
+
+.ProcessSteps-icon {
+  @apply mb-4;
+  @apply text-electricViolet;
+  @apply mx-auto;
+  width: 56px;
+
+  @apply md:ml-0;
+  @apply md:mr-8;
+
+  @apply xl:mr-0;
+  @apply xl:mb-11;
+}
+
+.ProcessSteps-step {
+  @apply md:flex;
+  @apply md:items-start;
+
+  @apply xl:block;
+}

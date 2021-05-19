@@ -1,13 +1,7 @@
 /* eslint-disable react/no-children-prop */
 // Packages
 import React, { useEffect, useState } from 'react'
-import {
-  CarouselProvider,
-  Slide,
-  Slider,
-  Dot,
-  DotGroup
-} from 'pure-react-carousel'
+import { CarouselProvider, Slide, Slider, Dot } from 'pure-react-carousel'
 import Img from 'gatsby-image'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation, Variants } from 'framer-motion'
@@ -20,7 +14,6 @@ import { TypeTestimonial } from '@common/types/Testimonial'
 
 // Styles
 import 'pure-react-carousel/dist/react-carousel.es.css'
-
 import './styles/TestimonialSlider.css'
 
 interface Props {
@@ -70,7 +63,6 @@ const TestimonialDot = ({
 }
 
 const TestimonialSlider = ({ testimonials }: Props) => {
-  console.log('component', testimonials)
   const animationControls = useAnimation()
   const [shouldAutoplay, setAutoPlay] = useState(false)
   const [ref, inView] = useInView({
@@ -118,9 +110,13 @@ const TestimonialSlider = ({ testimonials }: Props) => {
                       </div>
                     </div>
                   ) : null}
-                  <div className="TestimonialSlider-quote">
+                  <blockquote className="TestimonialSlider-quote text-h3">
                     {renderRichText(t.quote, richTextOptions)}
-                  </div>
+                    <cite className="block mt-12 md:hidden">
+                      <h5 className="text-caption font-extrabold">{t.name}</h5>
+                      <p className="text-caption">{`${t.role}, ${t.company}`}</p>
+                    </cite>
+                  </blockquote>
                 </div>
               </Slide>
             ))}
@@ -136,8 +132,6 @@ const TestimonialSlider = ({ testimonials }: Props) => {
               />
             ))}
           </div>
-
-          <DotGroup />
         </CarouselProvider>
       </motion.div>
     </div>

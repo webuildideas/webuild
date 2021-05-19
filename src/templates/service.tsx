@@ -11,6 +11,8 @@ interface Props {
 }
 
 const Service = ({ data: { contentfulService: service } }: Props) => {
+  // eslint-disable-next-line no-console
+  console.log(service.illustration)
   return (
     <>
       <h1 className="text-h1 mb-4">{service.title}</h1>
@@ -25,6 +27,16 @@ export const SERVICE_PAGE_QUERY = graphql`
       title
       subtitle
       tagline
+      illustration {
+        file {
+          url
+        }
+      }
+      otherServicesIllustration {
+        file {
+          url
+        }
+      }
     }
   }
 `

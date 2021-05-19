@@ -1,0 +1,127 @@
+.ServicesPage {
+  @apply pt-8;
+  @apply px-6;
+
+  @apply md:pt-16;
+  @apply md:px-8;
+
+  @apply lg:px-10;
+}
+
+.ServicesPage-intro {
+  @apply mb-16;
+  @apply mx-auto;
+  max-width: 1184px;
+
+  @apply lg:mb-28;
+
+  @apply xl:mb-32;
+}
+
+.ServicesPage-intro-inner {
+  @screen xl {
+    max-width: 984px;
+  }
+}
+
+.ServicesPage-sticky-links {
+  width: 144px;
+  @apply hidden;
+
+  @apply lg:block;
+}
+
+.ServicePages-sticky-links-inner {
+  position: sticky;
+  top: 25px;
+}
+
+.ServicesPage-content-body {
+  @screen lg {
+    width: 776px;
+  }
+
+  @screen xl {
+    width: 784px;
+  }
+}
+
+.ServicesPage-content {
+  max-width: 584px;
+  @apply mx-auto;
+  @apply mb-24;
+
+  @apply lg:flex;
+  @apply lg:justify-between;
+
+  @screen lg {
+    max-width: 984px;
+  }
+}
+
+.ServicesPage-testimonials {
+  @apply mb-24;
+  @apply mx-auto;
+
+  @screen xl {
+    max-width: 984px;
+  }
+}
+
+.ServicesPage-services {
+  max-width: 784px;
+  @apply mx-auto;
+
+  @apply mb-24;
+
+  .ServicesPage-services-title {
+    @apply text-center;
+    @apply mb-6;
+    @apply font-extrabold;
+
+    @apply md:text-left;
+    @apply md:mb-8;
+  }
+}
+
+.ServicesPage-process {
+  max-width: 584px;
+  @apply mx-auto;
+  @apply mb-24;
+
+  @screen xl {
+    max-width: 100%;
+  }
+
+  .ServicesPage-process-copy {
+    @screen xl {
+      @apply mx-auto;
+      max-width: 784px;
+    }
+  }
+
+  .ServicesPage-process-title {
+    @apply font-extrabold;
+    @apply mb-4;
+    @apply text-center;
+
+    @apply md:text-left;
+  }
+
+  .ServicesPage-process-description {
+    @apply mb-12;
+  }
+
+  .ServicesPage-process-steps {
+    @screen xl {
+      max-width: 984px;
+      @apply mx-auto;
+    }
+  }
+}
+
+.ServicesPage-opportunity-form {
+  @apply lg:mb-20;
+
+  @apply xl:mb-40;
+}

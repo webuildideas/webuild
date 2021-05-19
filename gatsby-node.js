@@ -47,7 +47,7 @@ export const createPages = async ({ graphql, actions }) => {
 
   services.nodes.forEach((node) => {
     createPage({
-      path: `/services/${node.slug}`,
+      path: `/what-we-do/${node.slug}`,
       component: path.resolve('./src/templates/service.tsx'),
       context: {
         slug: node.slug
