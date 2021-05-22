@@ -48,7 +48,7 @@
   @apply w-full;
   @screen md {
     @apply grid;
-    grid-template-columns: 100px 72px 150px;
+    grid-template-columns: 100px 100px 72px 150px;
     @apply items-center;
     @apply gap-6;
     @apply justify-end;

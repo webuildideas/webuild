@@ -1,0 +1,87 @@
+.Service-header {
+  @apply mt-8;
+  @apply px-6;
+  @apply mb-16;
+}
+
+.Service-intro {
+  @apply py-12;
+  @apply px-6;
+  @apply mr-6;
+  @apply mb-20;
+  @apply bg-foundation;
+  @apply rounded-tr-3;
+
+  p:not(:last-of-type) {
+    @apply mb-8;
+  }
+}
+
+.Service-h3 + ul {
+  @apply mt-4;
+}
+
+.Service-h3 + .Service-h4 {
+  @apply mt-2;
+}
+
+.Service-h4 + .Service-copy {
+  @apply mt-1;
+}
+
+.Service-h3 + .Service-h4 + .Service-copy {
+  @apply mt-4;
+}
+
+.Service-copy + .Service-copy {
+  @apply mt-8;
+}
+
+.Service-copy + .Service-h4 {
+  @apply mt-8;
+}
+
+.Service-copy + .Service-h3 {
+  @apply mt-12;
+}
+
+.Service-content-block + .ServiceTestimonial {
+  @apply mt-24;
+}
+
+.Service-content-block {
+  @apply px-6;
+}
+
+.Service-content-block ul {
+  list-style-type: disc;
+  width: 92.5%;
+  max-width: 580px;
+  @apply mx-auto;
+  @apply mb-6;
+  @apply pl-5;
+
+  @screen xl {
+    max-width: 750px;
+  }
+
+  li {
+    @apply mb-2;
+
+    b {
+      @apply font-extrabold;
+      @apply block;
+      @apply uppercase;
+      @apply mb-4;
+    }
+
+    p {
+      @apply mb-2;
+      white-space: pre-wrap;
+    }
+  }
+}
+
+.Service-opportunity-form {
+  @apply mt-26;
+}

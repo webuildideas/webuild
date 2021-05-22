@@ -1,0 +1,31 @@
+.ServiceTestimonial-quote {
+  @apply pl-6;
+  @apply border-l-4;
+  @apply border-electricViolet;
+  @apply border-solid;
+  @apply mb-8;
+  @apply mx-6;
+}
+
+.ServiceTestimonial-cite {
+  @apply relative;
+  @apply bg-foundation;
+  @apply p-6;
+  @apply ml-6;
+  @apply rounded-tl-2;
+  @apply rounded-bl-2;
+  height: 225px;
+}
+
+.ServiceTestimonial-cite-image {
+  @apply block;
+  @apply absolute;
+  @apply bottom-0;
+  @apply right-0;
+  width: 55%;
+
+  .gatsby-image-wrapper {
+    width: 100%;
+    overflow: visible !important;
+  }
+}

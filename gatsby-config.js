@@ -48,7 +48,7 @@ module.exports = {
             },
             {
               family: `Noto Serif SC`,
-              variants: [`500`]
+              variants: [`500`, `700`, `800`]
             }
           ]
         }
