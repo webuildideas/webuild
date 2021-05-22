@@ -174,6 +174,7 @@ export const SERVICE_PAGE_QUERY = graphql`
     allContentfulService(filter: { slug: { ne: $slug } }) {
       nodes {
         shortTitle
+        slug
         otherServicesIllustration {
           file {
             url
