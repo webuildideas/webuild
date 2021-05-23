@@ -135,17 +135,9 @@ const IndexPage = ({ data, location }: Props) => {
 
           <Testimonial
             className="mb-8"
-            company={homeData.featuredTestimonial.company}
-            companyRole={homeData.featuredTestimonial.role}
-            featuredHeadshot={
-              homeData.featuredTestimonial?.featuredHeadshot?.fluid
-            }
-            headshot={homeData.featuredTestimonial.headshot.fixed}
             isFeatured={true}
-            name={homeData.featuredTestimonial.name}
-          >
-            {homeData.featuredTestimonial.testimonial.testimonial}
-          </Testimonial>
+            testimonial={homeData.featuredTestimonial}
+          />
 
           <TestimonialGrid testimonials={homeData.testimonials} />
         </SiteMaxWidthContainer>
@@ -185,8 +177,8 @@ export const HOMEPAGE_QUERY = graphql`
         company
         name
         role
-        testimonial {
-          testimonial
+        quote {
+          raw
         }
         featuredHeadshot {
           fluid(maxWidth: 500) {
@@ -204,8 +196,8 @@ export const HOMEPAGE_QUERY = graphql`
         company
         name
         role
-        testimonial {
-          testimonial
+        quote {
+          raw
         }
         headshot {
           fixed(cropFocus: FACE, height: 50, width: 50) {

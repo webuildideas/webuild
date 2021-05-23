@@ -1,9 +1,12 @@
-/* eslint-disable react/no-danger */
 // Packages
-import React, { useCallback, useEffect } from 'react'
-import Img, { FixedObject, FluidObject } from 'gatsby-image'
+import React, { useCallback, useEffect, useMemo } from 'react'
+import Img from 'gatsby-image'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
+import { Options } from '@contentful/rich-text-react-renderer'
+import { BLOCKS, MARKS } from '@contentful/rich-text-types'
+import { TypeTestimonial } from '@common/types/Testimonial'
+import { renderRichText } from 'gatsby-source-contentful/rich-text'
 
 // Common
 import { WithClassName, WithStyle } from '@common/types/Utilities'
@@ -19,33 +22,11 @@ import {
 import './styles/Testimonial.css'
 
 interface Props extends WithClassName, WithStyle {
-  name: string
-  children: string
-  headshot: FixedObject
-  featuredHeadshot?: FluidObject
-  companyRole: string
-  company: string
+  testimonial: TypeTestimonial
   isFeatured?: boolean
 }
 
-const renderMarkdownBold = (md: string) => {
-  const regex = /([__]{2})/
-  const formattedCopy = md
-    .replace(regex, '<span class="font-black">')
-    .replace(regex, '</span>')
-  return formattedCopy
-}
-
-const Testimonial = ({
-  children,
-  name,
-  headshot,
-  featuredHeadshot,
-  companyRole,
-  company,
-  isFeatured = false,
-  ...props
-}: Props) => {
+const Testimonial = ({ isFeatured = false, testimonial, ...props }: Props) => {
   const animationControls = useAnimation()
   const featuredAnimationControls = useAnimation()
   const headshotAnimationControls = useAnimation()
@@ -54,48 +35,68 @@ const Testimonial = ({
     triggerOnce: true
   })
 
-  const renderFeaturedHeadshot = useCallback(
-    (featuredImage: FluidObject) => {
-      return (
-        <div className="overflow-container">
-          <motion.div
-            animate={featuredAnimationControls}
-            className="img-container"
+  const richTextOptions: Options = useMemo(
+    () => ({
+      renderNode: {
+        [BLOCKS.PARAGRAPH]: (_, c) => (
+          <motion.p
+            animate={animationControls}
+            className="text-body mb-8"
+            custom={1}
             initial="hidden"
-            variants={featureHeadshotVariants}
+            variants={variants}
           >
-            <Img
-              alt={`${name} Headshot`}
-              durationFadeIn={100}
-              fadeIn
-              fluid={featuredImage}
-            />
-          </motion.div>
-        </div>
-      )
-    },
-    [featuredAnimationControls, name]
+            {c}
+          </motion.p>
+        )
+      },
+      renderMark: {
+        [MARKS.BOLD]: (text) => <span className="font-extrabold">{text}</span>
+      }
+    }),
+    [animationControls]
   )
 
-  const renderHeadshot = useCallback(
-    (headshotImage: FixedObject) => {
-      return (
+  const renderFeaturedHeadshot = useCallback(() => {
+    return testimonial.featuredHeadshot ? (
+      <div className="overflow-container">
         <motion.div
-          animate={headshotAnimationControls}
+          animate={featuredAnimationControls}
+          className="img-container"
           initial="hidden"
-          variants={headshotVariants}
+          variants={featureHeadshotVariants}
         >
           <Img
-            alt={`${name} Headshot`}
-            durationFadeIn={350}
+            alt={`${testimonial.name} Headshot`}
+            durationFadeIn={100}
             fadeIn
-            fixed={headshotImage}
+            fluid={testimonial?.featuredHeadshot?.fluid}
           />
         </motion.div>
-      )
-    },
-    [headshotAnimationControls, name]
-  )
+      </div>
+    ) : null
+  }, [
+    featuredAnimationControls,
+    testimonial.name,
+    testimonial?.featuredHeadshot
+  ])
+
+  const renderHeadshot = useCallback(() => {
+    return (
+      <motion.div
+        animate={headshotAnimationControls}
+        initial="hidden"
+        variants={headshotVariants}
+      >
+        <Img
+          alt={`${testimonial.name} Headshot`}
+          durationFadeIn={350}
+          fadeIn
+          fixed={testimonial?.headshot.fixed}
+        />
+      </motion.div>
+    )
+  }, [headshotAnimationControls, testimonial.name, testimonial.headshot])
 
   const renderFeaturedTestimonial = useCallback(
     () => (
@@ -105,20 +106,9 @@ const Testimonial = ({
         className={`FeaturedTestimonial ${props.className}`}
       >
         <div className="p-8 md:p-12">
-          {children ? (
-            <motion.p
-              animate={animationControls}
-              className="text-body mb-8"
-              custom={1}
-              dangerouslySetInnerHTML={{ __html: renderMarkdownBold(children) }}
-              initial="hidden"
-              variants={variants}
-            />
-          ) : null}
+          {renderRichText(testimonial.quote, richTextOptions)}
           <div className="flex items-center">
-            <div className="Testimonial-client-img">
-              {renderHeadshot(headshot)}
-            </div>
+            <div className="Testimonial-client-img">{renderHeadshot()}</div>
             <div>
               <motion.p
                 animate={animationControls}
@@ -127,7 +117,7 @@ const Testimonial = ({
                 initial="hidden"
                 variants={variants}
               >
-                {name}
+                {testimonial.name}
               </motion.p>
               <motion.p
                 animate={animationControls}
@@ -135,23 +125,22 @@ const Testimonial = ({
                 custom={3}
                 initial="hidden"
                 variants={variants}
-              >{`${companyRole}, ${company}`}</motion.p>
+              >{`${testimonial.role}, ${testimonial.company}`}</motion.p>
             </div>
           </div>
         </div>
         <div className="Testimonial-client-featured-img">
-          {featuredHeadshot ? renderFeaturedHeadshot(featuredHeadshot) : null}
+          {renderFeaturedHeadshot()}
         </div>
       </div>
     ),
     [
-      children,
-      companyRole,
-      company,
+      richTextOptions,
       animationControls,
-      featuredHeadshot,
-      headshot,
-      name,
+      testimonial.name,
+      testimonial.role,
+      testimonial.company,
+      testimonial.quote,
       props,
       ref,
       renderFeaturedHeadshot,
@@ -162,20 +151,9 @@ const Testimonial = ({
   const renderTestimonial = useCallback(
     () => (
       <div ref={ref} {...props} className={`Testimonial ${props.className}`}>
-        {children ? (
-          <motion.p
-            animate={animationControls}
-            className="text-body mb-8"
-            custom={1}
-            dangerouslySetInnerHTML={{ __html: renderMarkdownBold(children) }}
-            initial="hidden"
-            variants={variants}
-          />
-        ) : null}
+        {renderRichText(testimonial.quote, richTextOptions)}
         <div className="flex items-center">
-          <div className="Testimonial-client-img">
-            {renderHeadshot(headshot)}
-          </div>
+          <div className="Testimonial-client-img">{renderHeadshot()}</div>
           <div>
             <motion.p
               animate={animationControls}
@@ -184,7 +162,7 @@ const Testimonial = ({
               initial="hidden"
               variants={variants}
             >
-              {name}
+              {testimonial.name}
             </motion.p>
             <motion.p
               animate={animationControls}
@@ -192,20 +170,20 @@ const Testimonial = ({
               custom={3}
               initial="hidden"
               variants={variants}
-            >{`${companyRole}, ${company}`}</motion.p>
+            >{`${testimonial.role}, ${testimonial.company}`}</motion.p>
           </div>
         </div>
       </div>
     ),
     [
       ref,
+      richTextOptions,
       props,
       animationControls,
-      children,
-      headshot,
-      companyRole,
-      company,
-      name,
+      testimonial.name,
+      testimonial.company,
+      testimonial.role,
+      testimonial.quote,
       renderHeadshot
     ]
   )

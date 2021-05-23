@@ -30,16 +30,8 @@ const TestimonialGrid = ({ testimonials }: Props) => {
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column"
       >
-        {testimonials.map((t) => (
-          <Testimonial
-            key={t.name}
-            company={t.company}
-            companyRole={t.role}
-            headshot={t.headshot.fixed}
-            name={t.name}
-          >
-            {t.testimonial.testimonial}
-          </Testimonial>
+        {testimonials.map((testimonial) => (
+          <Testimonial key={testimonial.name} testimonial={testimonial} />
         ))}
       </Masonry>
     </S.TestimonialGrid>

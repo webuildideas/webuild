@@ -1,3 +1,15 @@
+.ServiceTestimonial {
+  @apply md:flex;
+  @apply md:mx-8;
+
+  @apply lg:mx-10;
+
+  @screen xl {
+    max-width: 984px;
+    @apply mx-auto;
+  }
+}
+
 .ServiceTestimonial-quote {
   @apply pl-6;
   @apply border-l-4;
@@ -5,6 +17,10 @@
   @apply border-solid;
   @apply mb-8;
   @apply mx-6;
+
+  @apply md:order-2;
+  @apply md:border-l-0;
+  @apply md:mx-0;
 }
 
 .ServiceTestimonial-cite {
@@ -15,6 +31,32 @@
   @apply rounded-tl-2;
   @apply rounded-bl-2;
   height: 225px;
+
+  @apply md:order-1;
+  @apply md:bg-white;
+  @apply md:h-auto;
+  @apply md:rounded-tl-0;
+  @apply md:rounded-bl-0;
+  @apply md:flex;
+  @apply md:flex-col;
+  @apply md:ml-0;
+  @apply md:p-0;
+  @apply md:border-r-4;
+  @apply md:border-electricViolet;
+  @apply md:border-solid;
+  @screen md {
+    top: -22px;
+  }
+}
+
+.ServiceTestimonial-cite-copy {
+  @apply md:order-2;
+  @apply pr-3;
+  width: 150px;
+
+  @screen md {
+    width: auto;
+  }
 }
 
 .ServiceTestimonial-cite-image {
@@ -22,10 +64,41 @@
   @apply absolute;
   @apply bottom-0;
   @apply right-0;
-  width: 55%;
+  width: 80%;
+
+  @apply md:relative;
+  @apply md:order-1;
+  @apply md:mb-4;
+  @apply md:z-10;
+  @apply md:overflow-x-hidden;
+  @apply md:rounded-bl-2;
+
+  @screen md {
+    width: 208px;
+    @apply right-0;
+
+    &:after {
+      content: '';
+      height: 90%;
+      @apply absolute;
+      @apply bottom-0;
+      @apply left-0;
+      @apply bg-foundation;
+      @apply rounded-tl-2;
+      @apply rounded-bl-2;
+      @apply z-0;
+      @apply w-full;
+    }
+  }
 
   .gatsby-image-wrapper {
     width: 100%;
-    overflow: visible !important;
+    @apply z-10;
+
+    @apply md:rounded-bl-2;
+    @screen md {
+      width: 130%;
+      right:10%;
+    }
   }
 }

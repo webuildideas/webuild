@@ -1,7 +1,35 @@
+.Service {
+  @apply overflow-hidden;
+}
+
 .Service-header {
   @apply mt-8;
   @apply px-6;
   @apply mb-16;
+
+  @apply md:mb-20;
+  @apply md:px-8;
+
+  @apply lg:mb-26;
+  @apply lg:px-10;
+  @screen lg {
+    max-width: 1184px;
+  }
+
+  @apply xl:px-0;
+  @screen xl {
+    @apply mx-auto;
+  }
+}
+
+.Service-header-all {
+  @apply flex;
+  @apply items-center;
+
+  .Service-header-icon {
+    width: 8px;
+    @apply mr-2;
+  }
 }
 
 .Service-intro {
@@ -15,8 +43,101 @@
   p:not(:last-of-type) {
     @apply mb-8;
   }
+
+  @apply md:flex;
+  @apply md:items-center;
+  @apply md:mb-24;
+  @apply md:mr-8;
+
+  @apply md:mr-10;
+
+  @screen lg {
+    max-width: 1184px;
+  }
+
+  @screen xl {
+    @apply mx-auto;
+  }
 }
 
+.Service-intro-img {
+  @apply mb-13;
+
+  @apply md:mb-0;
+  @apply md:mr-6;
+
+  @screen md {
+    width: 266px;
+  }
+
+  @apply lg:mr-8;
+  @screen lg {
+    width: 369px;
+  }
+
+  @apply xl:mr-13;
+  @screen xl {
+    width: 384px;
+  }
+
+  img {
+    @apply w-full;
+  }
+}
+
+.Service-intro-copy {
+  flex: 1;
+}
+
+.Service-case-studies {
+  @apply mt-24;
+  @apply mb-32;
+
+  .CaseStudy-container + .CaseStudy-container {
+    @apply mt-32;
+  }
+}
+
+.Service-content-block {
+  @apply px-6;
+  @apply mx-auto;
+  max-width: 584px;
+
+  @apply md:px-0;
+
+  @screen lg {
+    max-width: 776px;
+  }
+}
+
+.Service-content-block ul {
+  list-style-type: disc;
+  @apply mb-6;
+  @apply ml-3;
+  @apply pl-5;
+
+  li {
+    @apply mb-2;
+
+    b {
+      @apply font-extrabold;
+      @apply block;
+      @apply uppercase;
+      @apply mb-4;
+    }
+
+    p {
+      @apply mb-2;
+      white-space: pre-wrap;
+    }
+  }
+}
+
+.Service-opportunity-form {
+  @apply mt-26;
+}
+
+/* Text element spacing */
 .Service-h3 + ul {
   @apply mt-4;
 }
@@ -46,42 +167,9 @@
 }
 
 .Service-content-block + .ServiceTestimonial {
-  @apply mt-24;
+  @apply my-24;
+
+  @apply md:my-32;
 }
+/* END Text element spacing */
 
-.Service-content-block {
-  @apply px-6;
-}
-
-.Service-content-block ul {
-  list-style-type: disc;
-  width: 92.5%;
-  max-width: 580px;
-  @apply mx-auto;
-  @apply mb-6;
-  @apply pl-5;
-
-  @screen xl {
-    max-width: 750px;
-  }
-
-  li {
-    @apply mb-2;
-
-    b {
-      @apply font-extrabold;
-      @apply block;
-      @apply uppercase;
-      @apply mb-4;
-    }
-
-    p {
-      @apply mb-2;
-      white-space: pre-wrap;
-    }
-  }
-}
-
-.Service-opportunity-form {
-  @apply mt-26;
-}

@@ -1,17 +1,23 @@
 // Package
 import React from 'react'
 import { graphql, Link, PageProps } from 'gatsby'
-import { TypeService } from '@common/types/Service'
-
-// Styles
-import '@common/styles/templates/service.css'
-import OtherServices from '@modules/service/components/OtherServices'
-import Footer from '@components/Footer'
-import OpportunityForm from '@modules/forms/OpportunityForm'
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import { Options } from '@contentful/rich-text-react-renderer'
 import { BLOCKS, MARKS } from '@contentful/rich-text-types'
+
+// Common
+import { TypeService } from '@common/types/Service'
+
+// Components
+import OtherServices from '@modules/service/components/OtherServices'
+import Footer from '@components/Footer'
+import OpportunityForm from '@modules/forms/OpportunityForm'
 import ServiceTestimonial from '@modules/service/components/ServiceTestimonial'
+import CaseStudy from '@modules/common/components/CaseStudy'
+import SimpleArrowLeft from '@static/svgs/common/arrows/arrow-simple-left.inline.svg'
+
+// Styles
+import '@common/styles/templates/service.css'
 
 interface Props {
   data: {
@@ -58,21 +64,20 @@ const Service = ({
   },
   location
 }: Props) => {
-  // eslint-disable-next-line no-console
-  console.log(service.illustration)
   return (
     <>
-      <main>
+      <main className="Service">
         <div className="Service-header">
-          <Link className="block mb-8" to="/what-we-do">
-            All Services
+          <Link className="Service-header-all block mb-8" to="/what-we-do">
+            <SimpleArrowLeft className="Service-header-icon" />
+            <span>All Services</span>
           </Link>
           <h1 className="text-h1 mb-4">{service.title}</h1>
           <h2 className="text-h2 font-extrabold">{service.subtitle}</h2>
         </div>
 
         <div className="Service-intro">
-          <div className="Service-intro-img mb-13">
+          <div className="Service-intro-img">
             <img
               alt={`${service.title} illustration`}
               src={service.illustration.file.url}
@@ -104,8 +109,16 @@ const Service = ({
           </div>
         ) : null}
 
+        {service.caseStudies.length > 0 ? (
+          <div className="Service-case-studies">
+            {service.caseStudies.map((study) => (
+              <CaseStudy key={study.slug} caseStudy={study} layout="left" />
+            ))}
+          </div>
+        ) : null}
+
         <div className="Service-opportunity-form">
-          <OpportunityForm location={location.href} />
+          <OpportunityForm buttonText="Let's Meet" location={location.href} />
         </div>
         <OtherServices services={otherServices} />
       </main>
