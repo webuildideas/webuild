@@ -14,6 +14,7 @@ export interface TypeCaseStudy {
   heroImage?: TypeGatsbyImageFluid
   listingImage: TypeGatsbyImageFluid
   tagline: string
+  taglineRichText?: string
   successSummary: {
     successSummary: string
   }

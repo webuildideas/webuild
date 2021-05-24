@@ -14,7 +14,7 @@ import './styles/Button.css'
 interface Props extends WithChildren, WithClassName {
   to: string
   direction?: 'top' | 'bottom' | 'left' | 'right'
-  styleType?: 'solid' | 'outline' | 'link'
+  styleType?: 'solid' | 'solid-purple' | 'outline' | 'link'
   cover?: boolean
   duration?: number
   bgColor?: string
@@ -38,11 +38,12 @@ const Link = forwardRef<any, Props>(
   ) => {
     const linkStyle = styleType === 'link'
     const buttonClasses = classNames({
-      Button: true && !linkStyle,
+      Button: !linkStyle,
       'Button-solid': styleType === 'solid',
       'Button-outline': styleType === 'outline',
+      'Button-solid-purple': styleType === 'solid-purple',
       'Button-link': linkStyle,
-      'text-button': true && !linkStyle
+      'text-button': !linkStyle
     })
     return (
       <span ref={ref} className={linkStyle ? 'inline-block' : 'block'}>

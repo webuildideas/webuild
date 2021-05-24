@@ -16,7 +16,6 @@ interface Props {
 }
 
 const ServiceListing = ({ service }: Props) => {
-  console.log('service', service)
   return (
     <Link className="ServiceListing" to={`/what-we-do/${service.slug}`}>
       <div className="ServiceListing-img">

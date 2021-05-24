@@ -1,6 +1,6 @@
 // Packages
 import React from 'react'
-import { graphql, Link, PageProps } from 'gatsby'
+import { graphql, PageProps } from 'gatsby'
 
 // Common
 import { TypeTestimonial } from '@common/types/Testimonial'
@@ -11,10 +11,11 @@ import TestimonialSlider from '@modules/common/components/TestimonialSlider'
 import ServiceListing from '@modules/service/components/ServiceListing'
 import ProcessSteps from '@modules/common/components/ProcessSteps'
 import OpportunityForm from '@modules/forms/OpportunityForm'
+import Footer from '@components/Footer'
 
 // styles
 import '@common/styles/pages/what-we-do.css'
-import Footer from '@components/Footer'
+import ServicesStickyNav from '@modules/service/components/ServicesStickyNav'
 
 interface Props {
   data: {
@@ -47,20 +48,7 @@ const WhatWeDo = ({
         </div>
 
         <div className="ServicesPage-content">
-          <div className="ServicesPage-sticky-links">
-            <div className="ServicePages-sticky-links-inner">
-              <h4 className="text-button text-left mb-3">All Services</h4>
-              {page.services.map((service) => (
-                <Link
-                  key={service.slug}
-                  className="block mb-3 text-page-navigation hover:text-electricViolet"
-                  to={`/what-we-do/${service.slug}`}
-                >
-                  {service.shortTitle}
-                </Link>
-              ))}
-            </div>
-          </div>
+          <ServicesStickyNav services={page.services} />
           <div className="ServicesPage-content-body">
             <h3 className="text-h3 font-extrabold mb-4">
               Are you winning the game when it comes to your digital product? Or

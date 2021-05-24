@@ -24,17 +24,6 @@
   }
 }
 
-.ServicesPage-sticky-links {
-  width: 144px;
-  @apply hidden;
-
-  @apply lg:block;
-}
-
-.ServicePages-sticky-links-inner {
-  position: sticky;
-  top: 25px;
-}
 
 .ServicesPage-content-body {
   @screen lg {

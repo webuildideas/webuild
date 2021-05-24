@@ -10,6 +10,7 @@ import { TypeService } from '@common/types/Service'
 
 // Components
 import OtherServices from '@modules/service/components/OtherServices'
+import ServicesStickyNav from '@modules/service/components/ServicesStickyNav'
 import Footer from '@components/Footer'
 import OpportunityForm from '@modules/forms/OpportunityForm'
 import ServiceTestimonial from '@modules/service/components/ServiceTestimonial'
@@ -88,8 +89,11 @@ const Service = ({
           </div>
         </div>
 
-        <div className="Service-content-block">
-          {renderRichText(service.firstContentBlock, contentBlockOptions)}
+        <div className="Service-content-block first-content-block">
+          <ServicesStickyNav services={otherServices} />
+          <div className="content">
+            {renderRichText(service.firstContentBlock, contentBlockOptions)}
+          </div>
         </div>
 
         {service.testimonials
@@ -111,9 +115,12 @@ const Service = ({
 
         {service.caseStudies.length > 0 ? (
           <div className="Service-case-studies">
-            {service.caseStudies.map((study) => (
-              <CaseStudy key={study.slug} caseStudy={study} layout="left" />
-            ))}
+            {service.caseStudies.map((study, idx: number) => {
+              const layout = (idx + 1) % 2 === 0 ? 'right' : 'left'
+              return (
+                <CaseStudy key={study.slug} caseStudy={study} layout={layout} />
+              )
+            })}
           </div>
         ) : null}
 
@@ -155,6 +162,9 @@ export const SERVICE_PAGE_QUERY = graphql`
       caseStudies {
         name
         tagline
+        taglineRichText {
+          raw
+        }
         slug
         successSummary {
           successSummary

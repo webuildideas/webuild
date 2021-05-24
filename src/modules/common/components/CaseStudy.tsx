@@ -201,7 +201,7 @@ const CaseStudy = ({
             direction="top"
             duration={1.25}
             initial="buttonHidden"
-            styleType="outline"
+            styleType="solid-purple"
             to={`/case-studies/${caseStudy.slug}`}
             variants={variants}
           >

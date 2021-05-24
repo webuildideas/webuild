@@ -62,6 +62,8 @@
 
 .Service-intro-img {
   @apply mb-13;
+  @apply mx-auto;
+  max-width:300px;
 
   @apply md:mb-0;
   @apply md:mr-6;
@@ -72,6 +74,7 @@
 
   @apply lg:mr-8;
   @screen lg {
+    max-width: 100%;
     width: 369px;
   }
 
@@ -98,6 +101,7 @@
   }
 }
 
+
 .Service-content-block {
   @apply px-6;
   @apply mx-auto;
@@ -107,6 +111,26 @@
 
   @screen lg {
     max-width: 776px;
+  }
+
+  &.first-content-block {
+    @screen lg {
+      @apply flex;
+      @apply items-start;
+      max-width: 944px;
+      @apply mx-auto;
+
+      .content {
+        max-width: 776px;
+        @apply ml-6;
+      }
+    }
+
+    @screen xl {
+      .content {
+        @apply ml-14;
+      }
+    }
   }
 }
 

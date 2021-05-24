@@ -19,7 +19,10 @@ const OtherServices = ({ services }: Props) => {
       <div className="OtherServices-inner">
         <div className="OtherServices-header">
           <h3 className="text-h3 font-extrabold text-center">Other Services</h3>
-          <AniLink className="OtherServices-button Button Button-outline hidden md:inline-block">
+          <AniLink
+            className="OtherServices-button Button Button-outline hidden md:inline-block"
+            to="/what-we-do"
+          >
             See All Services
           </AniLink>
         </div>
@@ -47,7 +50,10 @@ const OtherServices = ({ services }: Props) => {
             </AniLink>
           ))}
         </div>
-        <AniLink className="OtherServices-button Button Button-outline inline-block md:hidden mt-8">
+        <AniLink
+          className="OtherServices-button Button Button-outline inline-block md:hidden mt-8"
+          to="/what-we-do"
+        >
           See All Services
         </AniLink>
       </div>

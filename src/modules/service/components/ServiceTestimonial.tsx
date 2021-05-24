@@ -29,8 +29,10 @@ const ServiceTestimonial = ({ testimonial }: Props) => {
       </blockquote>
       <div className="ServiceTestimonial-cite">
         <div className="ServiceTestimonial-cite-copy">
-          <h5 className="text-caption font-extrabold">{testimonial.name}</h5>
-          <p className="text-caption">
+          <h5 className="text-caption text-base font-extrabold">
+            {testimonial.name}
+          </h5>
+          <p className="text-caption text-base">
             {testimonial.role}, <span>{testimonial.company}</span>
           </p>
         </div>
