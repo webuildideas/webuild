@@ -11,6 +11,9 @@ import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContaine
 
 // Styles
 import 'pure-react-carousel/dist/react-carousel.es.css'
+import { Options } from '@contentful/rich-text-react-renderer'
+import { BLOCKS, MARKS } from '@contentful/rich-text-types'
+import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import * as S from './style'
 
 interface Props {
@@ -29,6 +32,17 @@ const testimonialSliderVariants: Variants = {
   hidden: {
     y: 35,
     opacity: 0
+  }
+}
+
+const richTextOptions: Options = {
+  renderNode: {
+    [BLOCKS.PARAGRAPH]: (_, children) => <p className="inline">{children}</p>
+  },
+  renderMark: {
+    [MARKS.BOLD]: (text: React.ReactNode) => (
+      <span className="font-extrabold">{text}</span>
+    )
   }
 }
 
@@ -65,7 +79,7 @@ const TestimonialSlider = ({ testimonials }: Props) => {
             {testimonials.map((t: TypeTestimonial, idx: number) => (
               <S.TestimonialSlide key={`t-${t.name}`} index={idx}>
                 <S.Testimonial className="text-h3">
-                  “{t.testimonial.testimonial}”
+                  {renderRichText(t.quote, richTextOptions)}
                 </S.Testimonial>
               </S.TestimonialSlide>
             ))}
