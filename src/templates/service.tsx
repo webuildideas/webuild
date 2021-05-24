@@ -118,7 +118,12 @@ const Service = ({
             {service.caseStudies.map((study, idx: number) => {
               const layout = (idx + 1) % 2 === 0 ? 'right' : 'left'
               return (
-                <CaseStudy key={study.slug} caseStudy={study} layout={layout} />
+                <CaseStudy
+                  key={study.slug}
+                  caseStudy={study}
+                  layout={layout}
+                  taglineRichText
+                />
               )
             })}
           </div>

@@ -1,9 +1,10 @@
 // Packages
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import Img from 'gatsby-image'
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import { Options } from '@contentful/rich-text-react-renderer'
 
 // Common
 import { classNames } from '@common/utils/classNames'
@@ -15,19 +16,23 @@ import MotionAniLink from '@modules/common/components/MotionAniLink'
 
 // Styles
 import './styles/CaseStudy.css'
+import { BLOCKS, MARKS } from '@contentful/rich-text-types'
+import { renderRichText } from 'gatsby-source-contentful/rich-text'
 
 interface Props {
   animationThreshold?: number
   caseStudy: TypeCaseStudy
   layout: 'right' | 'left'
   mobileTextFirst?: boolean
+  taglineRichText?: boolean
 }
 
 const CaseStudy = ({
   animationThreshold = 0.75,
   caseStudy,
   layout,
-  mobileTextFirst
+  mobileTextFirst,
+  taglineRichText = false
 }: Props) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -93,6 +98,30 @@ const CaseStudy = ({
       opacity: 0
     }
   }
+
+  const richTextOptions: Options = useMemo(
+    () => ({
+      renderNode: {
+        [BLOCKS.PARAGRAPH]: (_, c) => (
+          <motion.h1
+            animate={textControls}
+            className="text-h3 font-extrabold mb-6"
+            custom={0}
+            initial="hidden"
+            variants={variants}
+          >
+            {c}
+          </motion.h1>
+        )
+      },
+      renderMark: {
+        [MARKS.BOLD]: (text) => (
+          <span className="text-h2 font-extrabold">{text}</span>
+        )
+      }
+    }),
+    [textControls]
+  )
 
   useEffect(() => {
     if (inView) {
@@ -165,15 +194,19 @@ const CaseStudy = ({
             duration={1.25}
             to={`/case-studies/${caseStudy.slug}`}
           >
-            <motion.h1
-              animate={textControls}
-              className="text-h2 font-extrabold mb-6"
-              custom={0}
-              initial="hidden"
-              variants={variants}
-            >
-              {caseStudy.tagline}
-            </motion.h1>
+            {taglineRichText && caseStudy.taglineRichText ? (
+              renderRichText(caseStudy.taglineRichText, richTextOptions)
+            ) : (
+              <motion.h1
+                animate={textControls}
+                className="text-h2 font-extrabold mb-6"
+                custom={0}
+                initial="hidden"
+                variants={variants}
+              >
+                {caseStudy.tagline}
+              </motion.h1>
+            )}
           </AniLink>
           {caseStudy.successSummary && (
             <AniLink
