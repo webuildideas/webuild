@@ -159,6 +159,14 @@
 
 .Service-opportunity-form {
   @apply mt-26;
+
+  @apply md:mt-18;
+
+  @apply lg:mt-24;
+  @apply lg:mb-20;
+
+  @apply xl:mt-32;
+  @apply xl:mb-30;
 }
 
 /* Text element spacing */
@@ -178,7 +186,15 @@
   @apply mt-4;
 }
 
+.Service-h3 + .Service-copy {
+  @apply mt-4;
+}
+
 .Service-copy + .Service-copy {
+  @apply mt-8;
+}
+
+.Service-content-block ul + .Service-copy {
   @apply mt-8;
 }
 
@@ -188,12 +204,36 @@
 
 .Service-copy + .Service-h3 {
   @apply mt-12;
+
+  @apply xl:mt-16;
 }
 
 .Service-content-block + .ServiceTestimonial {
-  @apply my-24;
+  @apply mt-24;
 
-  @apply md:my-32;
+  @apply md:mt-32;
+
+  @apply lg:mt-35;
+
+  @apply xl:mt-50;
+}
+
+.ServiceTestimonial + .Service-content-block {
+  @apply mt-24;
+
+  @apply md:mt-32;
+
+  @apply lg:mt-35;
+
+  @apply xl:mt-45;
+}
+
+.Service-testimonial + .Service-case-studies {
+  @apply md:mt-34;
+
+  @apply lg:mt-36;
+
+  @apply xl:mt-43;
 }
 /* END Text element spacing */
 

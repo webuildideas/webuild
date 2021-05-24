@@ -25,6 +25,10 @@ const navLinks: NavLink[] = [
     slug: '/who-we-are'
   },
   {
+    title: 'What we do',
+    slug: '/what-we-do'
+  },
+  {
     title: 'Insights',
     slug: '/insights'
   },
@@ -79,6 +83,8 @@ const OverlayNav = () => {
             onClick={handleCloseOverlayNav}
             style={{
               ...rest,
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
               transform: y.interpolate(
                 (yVal: number) => `translate3d(0,${yVal}px,0)`
               )
