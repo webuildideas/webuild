@@ -120,6 +120,7 @@ const Service = ({
               return (
                 <CaseStudy
                   key={study.slug}
+                  buttonStyleType="solid-purple"
                   caseStudy={study}
                   layout={layout}
                   taglineRichText

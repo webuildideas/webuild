@@ -25,6 +25,7 @@ interface Props {
   layout: 'right' | 'left'
   mobileTextFirst?: boolean
   taglineRichText?: boolean
+  buttonStyleType?: 'solid' | 'solid-purple' | 'outline'
 }
 
 const CaseStudy = ({
@@ -32,7 +33,8 @@ const CaseStudy = ({
   caseStudy,
   layout,
   mobileTextFirst,
-  taglineRichText = false
+  taglineRichText = false,
+  buttonStyleType = 'solid'
 }: Props) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -234,7 +236,7 @@ const CaseStudy = ({
             direction="top"
             duration={1.25}
             initial="buttonHidden"
-            styleType="solid-purple"
+            styleType={buttonStyleType}
             to={`/case-studies/${caseStudy.slug}`}
             variants={variants}
           >
