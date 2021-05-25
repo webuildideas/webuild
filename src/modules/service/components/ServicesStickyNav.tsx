@@ -1,9 +1,11 @@
 // Packages
 import React from 'react'
-import { Link } from 'gatsby'
 
 // Common
 import { TypeService } from '@common/types/Service'
+
+// Components
+import MotionAniLink from '@modules/common/components/MotionAniLink'
 
 // Styles
 import './styles/ServicesStickyNav.css'
@@ -18,13 +20,17 @@ const ServicesStickyNav = ({ services }: Props) => {
       <div className="ServicesStickyNav-inner">
         <h4 className="text-button text-left mb-3">All Services</h4>
         {services.map((service) => (
-          <Link
+          <MotionAniLink
             key={service.slug}
+            bgColor="#286AFF"
             className="ServicesStickyNav-link block mb-3 text-page-navigation hover:text-electricViolet"
+            direction="top"
+            duration={1.25}
+            styleType="link"
             to={`/what-we-do/${service.slug}`}
           >
             <span>{service.shortTitle}</span>
-          </Link>
+          </MotionAniLink>
         ))}
       </div>
     </div>

@@ -1,6 +1,6 @@
 // Packages
 import React from 'react'
-import { Link } from 'gatsby'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 // Common
 import { TypeService } from '@common/types/Service'
@@ -17,7 +17,14 @@ interface Props {
 
 const ServiceListing = ({ service }: Props) => {
   return (
-    <Link className="ServiceListing" to={`/what-we-do/${service.slug}`}>
+    <AniLink
+      bg="#286AFF"
+      className="ServiceListing"
+      cover={true}
+      direction="right"
+      duration={1.25}
+      to={`/what-we-do/${service.slug}`}
+    >
       <div className="ServiceListing-img">
         <img
           alt={`${service.title} illustration`}
@@ -40,7 +47,7 @@ const ServiceListing = ({ service }: Props) => {
           <ArrowRight className="arrow-icon" />
         </p>
       </div>
-    </Link>
+    </AniLink>
   )
 }
 

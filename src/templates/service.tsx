@@ -1,9 +1,10 @@
 // Package
 import React from 'react'
-import { graphql, Link, PageProps } from 'gatsby'
+import { graphql, PageProps } from 'gatsby'
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import { Options } from '@contentful/rich-text-react-renderer'
 import { BLOCKS, MARKS } from '@contentful/rich-text-types'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 // Common
 import { TypeService } from '@common/types/Service'
@@ -69,10 +70,17 @@ const Service = ({
     <>
       <main className="Service">
         <div className="Service-header">
-          <Link className="Service-header-all block mb-8" to="/what-we-do">
+          <AniLink
+            bg="#286AFF"
+            className="Service-header-all block mb-8 hover:text-electricViolet"
+            cover={true}
+            direction="left"
+            duration={1.25}
+            to="/what-we-do"
+          >
             <SimpleArrowLeft className="Service-header-icon" />
             <span>All Services</span>
-          </Link>
+          </AniLink>
           <h1 className="text-h1 mb-4">{service.title}</h1>
           <h2 className="text-h2 font-extrabold">{service.subtitle}</h2>
         </div>
