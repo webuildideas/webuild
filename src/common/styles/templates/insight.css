@@ -95,6 +95,7 @@
 
   @screen lg {
     height: 390px;
+    @apply py-8;
   }
 
   @screen xl {
