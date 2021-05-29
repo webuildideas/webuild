@@ -7,7 +7,7 @@ import { TypeTestimonial } from '@common/types/Testimonial'
 import { TypeService } from '@common/types/Service'
 
 // Components
-import TestimonialSlider from '@modules/common/components/TestimonialSlider'
+import TestimonialSlider from '@modules/common/components/TestimonialSliderV2'
 import ServiceListing from '@modules/service/components/ServiceListing'
 import ProcessSteps from '@modules/common/components/ProcessSteps'
 import OpportunityForm from '@modules/forms/OpportunityForm'
@@ -160,7 +160,12 @@ export const WHAT_WE_DO_QUERY = graphql`
           }
         }
         headshot {
-          fixed(cropFocus: FACE, height: 50, width: 50) {
+          fixed(cropFocus: FACE, height: 150, width: 150) {
+            ...GatsbyContentfulFixed_withWebp_noBase64
+          }
+        }
+        purpleHeadshot {
+          fixed(cropFocus: FACE, height: 150, width: 150) {
             ...GatsbyContentfulFixed_withWebp_noBase64
           }
         }

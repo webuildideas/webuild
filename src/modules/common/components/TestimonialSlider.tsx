@@ -8,11 +8,13 @@ import { motion, useAnimation, Variants } from 'framer-motion'
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import { Options } from '@contentful/rich-text-react-renderer'
 import { BLOCKS, MARKS } from '@contentful/rich-text-types'
+import { Carousel } from 'react-responsive-carousel'
 
 // Common
 import { TypeTestimonial } from '@common/types/Testimonial'
 
 // Styles
+import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
 import 'pure-react-carousel/dist/react-carousel.es.css'
 import './styles/TestimonialSlider.css'
 
@@ -73,7 +75,7 @@ const TestimonialSlider = ({ testimonials }: Props) => {
   useEffect(() => {
     if (inView) {
       animationControls.start('visible')
-      setAutoPlay(true)
+      setAutoPlay(false)
     }
   }, [animationControls, inView])
 
@@ -86,9 +88,10 @@ const TestimonialSlider = ({ testimonials }: Props) => {
       >
         <CarouselProvider
           infinite={true}
+          isIntrinsicHeight={true}
           isPlaying={shouldAutoplay}
-          naturalSlideHeight={20}
-          naturalSlideWidth={10}
+          naturalSlideHeight={0}
+          naturalSlideWidth={0}
           totalSlides={testimonials.length}
         >
           <Slider className="TestimonialSlider-slides">

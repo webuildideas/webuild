@@ -1,6 +1,19 @@
-.TestimonialSlider-slides {
-  max-height: 480px;
+.TestimonialSlider {
+  @apply relative;
+  @screen md {
+    &:before {
+      content: '';
+      width: 4px;
+      @apply bg-electricViolet;
+      height: 100%;
+      @apply z-50;
+      @apply absolute;
+      left: 220px;
+      top: 0;
+    }
+  }
 }
+
 
 .TestimonialSlider-slide {
   @apply flex;
@@ -52,15 +65,48 @@
   @apply border-electricViolet;
 }
 
+.TestimonialSlider-controls {
+  @apply flex;
+  @apply items-center;
+  @apply mt-6;
+  @screen md{
+    margin-left:220px;
+    @apply pl-6;
+  }
+}
+
 .TestimonialSlider-control {
+  @apply cursor-pointer;
+  @apply inline-block;
   @apply relative;
   @apply rounded-full;
   @apply overflow-hidden;
   @apply mr-4;
   @apply border-none;
 
+  &.is-selected {
+    @apply border-solid;
+    border-width: 3px;
+    @apply border-electricViolet;
+  }
+
   .Testimonial__client-headshot {
     width: 48px;
     height: 48px;
   }
+}
+
+.TestimonialSlider-control-arrow {
+  @apply inline-block;
+  width: 16px;
+  @apply cursor-pointer;
+  &.left {
+    @apply mr-4;
+  }
+}
+
+/* Package Overrides */
+.TestimonialSlider .carousel .slide {
+  @apply bg-white;
+  text-align: inherit;
 }

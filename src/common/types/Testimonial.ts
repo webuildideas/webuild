@@ -11,6 +11,7 @@ export interface TypeTestimonial {
   type?: 'Client' | 'Team Member'
   name: string
   headshot: TypeGatsbyImageFixed
+  purpleHeadshot: TypeGatsbyImageFixed
   featuredHeadshot?: TypeGatsbyImageFluid
   role: string
   company: string
