@@ -13,10 +13,12 @@ export interface TypeTestimonial {
   headshot: TypeGatsbyImageFixed
   purpleHeadshot: TypeGatsbyImageFixed
   featuredHeadshot?: TypeGatsbyImageFluid
+  mainHeadshot?: TypeGatsbyImageFluid
   role: string
   company: string
   testimonial: {
     testimonial: string
   }
   quote: RenderRichTextData<never>
+  quoteShort?: RenderRichTextData<never>
 }

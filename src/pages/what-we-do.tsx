@@ -7,7 +7,7 @@ import { TypeTestimonial } from '@common/types/Testimonial'
 import { TypeService } from '@common/types/Service'
 
 // Components
-import TestimonialSlider from '@modules/common/components/TestimonialSliderV2'
+import TestimonialSlider from '@modules/common/components/TestimonialSlider'
 import ServiceListing from '@modules/service/components/ServiceListing'
 import ProcessSteps from '@modules/common/components/ProcessSteps'
 import OpportunityForm from '@modules/forms/OpportunityForm'
@@ -151,10 +151,10 @@ export const WHAT_WE_DO_QUERY = graphql`
         company
         name
         role
-        quote {
+        quoteShort {
           raw
         }
-        featuredHeadshot {
+        mainHeadshot {
           fluid(maxWidth: 500) {
             ...GatsbyContentfulFluid_withWebp_noBase64
           }

@@ -1,21 +1,22 @@
-/* eslint-disable react/no-children-prop */
 // Packages
-import React, { useEffect, useState } from 'react'
-import { CarouselProvider, Slide, Slider, Dot } from 'pure-react-carousel'
+import React, { useCallback, useEffect, useState } from 'react'
 import Img from 'gatsby-image'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation, Variants } from 'framer-motion'
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import { Options } from '@contentful/rich-text-react-renderer'
 import { BLOCKS, MARKS } from '@contentful/rich-text-types'
-import { Carousel } from 'react-responsive-carousel'
+import Carousel, { CarouselProps } from 'nuka-carousel'
 
 // Common
 import { TypeTestimonial } from '@common/types/Testimonial'
+import { classNames } from '@common/utils/classNames'
+
+// SVGs
+import SimpleArrowRight from '@static/svgs/common/arrows/arrow-simple-right.inline.svg'
+import SimpleArrowLeft from '@static/svgs/common/arrows/arrow-simple-left.inline.svg'
 
 // Styles
-import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
-import 'pure-react-carousel/dist/react-carousel.es.css'
 import './styles/TestimonialSlider.css'
 
 interface Props {
@@ -49,33 +50,80 @@ const richTextOptions: Options = {
 }
 
 const TestimonialDot = ({
-  testimonial: t
+  testimonial: t,
+  onClick,
+  selected
 }: {
   testimonial: TypeTestimonial
+  onClick: () => void
+  selected: boolean
 }) => {
+  const dotClasses = classNames({
+    'TestimonialSlider-control': true,
+    'is-selected': selected
+  })
   return (
-    <div className="Testimonial__client-headshot">
-      <Img
-        alt={`${t.name} headshot`}
-        fixed={t.headshot.fixed}
-        style={{ width: '100%', height: '100%' }}
-      />
+    <div className={dotClasses} onClick={onClick} role="button">
+      <div className="Testimonial__client-headshot">
+        {selected ? (
+          <Img
+            alt={`${t.name} headshot`}
+            fixed={t.headshot.fixed}
+            style={{ width: '100%', height: '100%' }}
+          />
+        ) : (
+          <Img
+            alt={`${t.name} headshot`}
+            fixed={t.purpleHeadshot.fixed}
+            style={{ width: '100%', height: '100%' }}
+          />
+        )}
+      </div>
     </div>
   )
 }
 
 const TestimonialSlider = ({ testimonials }: Props) => {
   const animationControls = useAnimation()
-  const [shouldAutoplay, setAutoPlay] = useState(false)
+  const [currentSlide, setCurrentSlide] = useState(0)
   const [ref, inView] = useInView({
     threshold: 0.9,
     triggerOnce: true
   })
 
+  const createControlClickHandler = useCallback(
+    (slide: number) => () => {
+      setCurrentSlide(slide)
+    },
+    []
+  )
+
+  const onRightArrowClick = useCallback(() => {
+    setCurrentSlide((prev) => {
+      if (prev + 1 > testimonials.length - 1) {
+        return 0
+      }
+
+      return prev + 1
+    })
+  }, [testimonials])
+
+  const onLeftArrowClick = useCallback(() => {
+    setCurrentSlide((prev) => {
+      if (prev - 1 < 0) {
+        return testimonials.length - 1
+      }
+
+      return prev - 1
+    })
+  }, [testimonials])
+
+  const handleAfterSlide: CarouselProps['afterSlide'] = (slideIndex: number) =>
+    setCurrentSlide(slideIndex)
+
   useEffect(() => {
     if (inView) {
       animationControls.start('visible')
-      setAutoPlay(false)
     }
   }, [animationControls, inView])
 
@@ -86,56 +134,73 @@ const TestimonialSlider = ({ testimonials }: Props) => {
         initial="visible"
         variants={testimonialSliderVariants}
       >
-        <CarouselProvider
-          infinite={true}
-          isIntrinsicHeight={true}
-          isPlaying={shouldAutoplay}
-          naturalSlideHeight={0}
-          naturalSlideWidth={0}
-          totalSlides={testimonials.length}
+        <Carousel
+          afterSlide={handleAfterSlide}
+          autoplay
+          autoplayInterval={5000}
+          heightMode="current"
+          slideIndex={currentSlide}
+          transitionMode="fade"
+          withoutControls
+          wrapAround
         >
-          <Slider className="TestimonialSlider-slides">
-            {testimonials.map((t: TypeTestimonial, idx: number) => (
-              <Slide key={`t-${t.name}`} index={idx}>
-                <div className="TestimonialSlider-slide">
-                  {t.featuredHeadshot?.fluid ? (
-                    <div className="TestimonialSlider-featured-headshot">
-                      <Img
-                        className="headshot"
-                        fluid={t.featuredHeadshot?.fluid}
-                      />
-                      <div className="mt-4">
-                        <h5 className="text-caption font-extrabold">
-                          {t.name}
-                        </h5>
-                        <p className="text-caption">{t.role}</p>
-                        <p className="text-caption">{t.company}</p>
-                      </div>
+          {testimonials.map((testimonial) => {
+            return (
+              <motion.div
+                key={`slide-${testimonial.name}`}
+                className="TestimonialSlider-slide"
+              >
+                {testimonial.mainHeadshot?.fluid ? (
+                  <div className="TestimonialSlider-featured-headshot">
+                    <Img
+                      className="headshot"
+                      fluid={testimonial.mainHeadshot?.fluid}
+                    />
+                    <div className="mt-4">
+                      <h5 className="text-caption font-extrabold">
+                        {testimonial.name}
+                      </h5>
+                      <p className="text-caption">{testimonial.role}</p>
+                      <p className="text-caption">{testimonial.company}</p>
                     </div>
-                  ) : null}
-                  <blockquote className="TestimonialSlider-quote text-h3">
-                    {renderRichText(t.quote, richTextOptions)}
-                    <cite className="block mt-12 md:hidden">
-                      <h5 className="text-caption font-extrabold">{t.name}</h5>
-                      <p className="text-caption">{`${t.role}, ${t.company}`}</p>
-                    </cite>
-                  </blockquote>
-                </div>
-              </Slide>
-            ))}
-          </Slider>
-
-          <div className="TestimonialSlider-controls">
-            {testimonials.map((t: TypeTestimonial, idx: number) => (
-              <Dot
-                children={<TestimonialDot testimonial={t} />}
-                key={`tdot-${t.name}`}
-                className="TestimonialSlider-control"
-                slide={idx}
+                  </div>
+                ) : null}
+                <blockquote className="TestimonialSlider-quote text-h3 block">
+                  {testimonial.quoteShort
+                    ? renderRichText(testimonial.quoteShort, richTextOptions)
+                    : null}
+                  <cite className="block mt-12 md:hidden">
+                    <h5 className="text-caption font-extrabold">
+                      {testimonial.name}
+                    </h5>
+                    <p className="text-caption">{`${testimonial.role}, ${testimonial.company}`}</p>
+                  </cite>
+                </blockquote>
+              </motion.div>
+            )
+          })}
+        </Carousel>
+        <div className="TestimonialSlider-controls">
+          <SimpleArrowLeft
+            className="TestimonialSlider-control-arrow left"
+            onClick={onLeftArrowClick}
+          />
+          {testimonials.map((t: TypeTestimonial, idx: number) => {
+            const onClick = createControlClickHandler(idx)
+            return (
+              <TestimonialDot
+                key={`dot-${idx}`}
+                onClick={onClick}
+                selected={currentSlide === idx}
+                testimonial={t}
               />
-            ))}
-          </div>
-        </CarouselProvider>
+            )
+          })}
+          <SimpleArrowRight
+            className="TestimonialSlider-control-arrow right"
+            onClick={onRightArrowClick}
+          />
+        </div>
       </motion.div>
     </div>
   )
