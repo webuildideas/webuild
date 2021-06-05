@@ -13,9 +13,11 @@
   @apply mx-auto;
   max-width: 1184px;
 
+  @apply md:mb-26;
+
   @apply lg:mb-28;
 
-  @apply xl:mb-32;
+  @apply xl:mb-36;
 }
 
 .ServicesPage-intro-inner {
@@ -23,7 +25,6 @@
     max-width: 984px;
   }
 }
-
 
 .ServicesPage-content-body {
   @screen lg {
@@ -40,20 +41,30 @@
   @apply mx-auto;
   @apply mb-24;
 
+  @apply md:mb-26;
+
   @apply lg:flex;
   @apply lg:justify-between;
+  @apply lg:mb-30;
 
   @screen lg {
     max-width: 984px;
   }
+
+  @apply xl:mb-43;
 }
 
 .ServicesPage-testimonials {
   @apply mb-24;
   @apply mx-auto;
 
+  @apply md:mb-32;
+
+  @apply lg:mb-36;
+
   @screen xl {
     max-width: 984px;
+    margin-bottom: 244px;
   }
 }
 
@@ -62,6 +73,12 @@
   @apply mx-auto;
 
   @apply mb-24;
+
+  @apply md:mb-36;
+
+  @apply lg:mb-44;
+
+  @apply xl:mb-46;
 
   .ServicesPage-services-title {
     @apply text-center;
@@ -78,11 +95,21 @@
   @apply mx-auto;
   @apply mb-24;
 
+  @apply md:mb-26;
+
+  @apply xl:mb-36;
+
   @screen xl {
     max-width: 100%;
   }
 
   .ServicesPage-process-copy {
+    @apply md:mb-12;
+
+    @apply lg:mb-14;
+
+    @apply xl:mb-16;
+
     @screen xl {
       @apply mx-auto;
       max-width: 784px;
@@ -112,5 +139,5 @@
 .ServicesPage-opportunity-form {
   @apply lg:mb-20;
 
-  @apply xl:mb-40;
+  @apply xl:mb-30;
 }

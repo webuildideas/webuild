@@ -2,7 +2,7 @@
   @apply relative;
   @screen md {
     &:before {
-      content: '';
+      content: "";
       width: 4px;
       @apply bg-electricViolet;
       height: 100%;
@@ -14,17 +14,9 @@
   }
 }
 
-
 .TestimonialSlider-slide {
   @apply flex;
-  @apply items-center;
   cursor: grab;
-
-  .TestimonialSlider-featured-headshot {
-  }
-
-  .TestimonialSlider-quote {
-  }
 }
 
 .TestimonialSlider-featured-headshot {
@@ -63,14 +55,16 @@
   @apply border-solid;
   @apply border-l-4;
   @apply border-electricViolet;
+  @apply pt-16;
 }
 
 .TestimonialSlider-controls {
   @apply flex;
   @apply items-center;
   @apply mt-6;
-  @screen md{
-    margin-left:220px;
+  @screen md {
+    margin-left: 220px;
+    @apply mt-0;
     @apply pl-6;
   }
 }
