@@ -136,8 +136,8 @@ const TestimonialSlider = ({ testimonials }: Props) => {
       >
         <Carousel
           afterSlide={handleAfterSlide}
-          autoplay={false}
-          autoplayInterval={5000}
+          autoplay={true}
+          autoplayInterval={7000}
           heightMode="current"
           slideIndex={currentSlide}
           transitionMode="fade"
