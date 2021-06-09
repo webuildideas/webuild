@@ -57,13 +57,13 @@
 .ServicesPage-testimonials {
   @apply mb-24;
   @apply mx-auto;
+  max-width: 984px;
 
   @apply md:mb-32;
 
   @apply lg:mb-36;
 
   @screen xl {
-    max-width: 984px;
     margin-bottom: 244px;
   }
 }

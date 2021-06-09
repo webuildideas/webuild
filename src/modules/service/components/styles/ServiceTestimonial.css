@@ -1,13 +1,15 @@
 .ServiceTestimonial {
+  max-width: 984px;
+  @apply mx-auto;
+
   @apply md:flex;
   @apply md:items-center;
-  @apply md:mx-8;
+  @apply md:px-8;
 
-  @apply lg:mx-10;
+  @apply lg:px-10;
 
   @screen xl {
-    max-width: 984px;
-    @apply mx-auto;
+    @apply px-0;
   }
 }
 
