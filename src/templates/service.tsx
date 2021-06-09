@@ -167,6 +167,11 @@ export const SERVICE_PAGE_QUERY = graphql`
         quote {
           raw
         }
+        mainHeadshot {
+          fluid(maxWidth: 500) {
+            ...GatsbyContentfulFluid_withWebp_noBase64
+          }
+        }
         featuredHeadshot {
           fluid(maxWidth: 500) {
             ...GatsbyContentfulFluid_withWebp_noBase64

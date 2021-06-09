@@ -36,8 +36,18 @@ const ServiceTestimonial = ({ testimonial }: Props) => {
             {testimonial.role}, <span>{testimonial.company}</span>
           </p>
         </div>
+        {testimonial.mainHeadshot?.fluid ? (
+          <div className="ServiceTestimonial-cite-image hidden md:block">
+            <Img
+              alt={`${testimonial.name} Headshot`}
+              durationFadeIn={100}
+              fadeIn
+              fluid={testimonial.mainHeadshot?.fluid}
+            />
+          </div>
+        ) : null}
         {testimonial.featuredHeadshot?.fluid ? (
-          <div className="ServiceTestimonial-cite-image">
+          <div className="ServiceTestimonial-cite-image md:hidden">
             <Img
               alt={`${testimonial.name} Headshot`}
               durationFadeIn={100}

@@ -1,5 +1,6 @@
 .ServiceTestimonial {
   @apply md:flex;
+  @apply md:items-center;
   @apply md:mx-8;
 
   @apply lg:mx-10;
@@ -17,10 +18,16 @@
   @apply border-solid;
   @apply mb-8;
   @apply mx-6;
+  @apply py-4;
 
   @apply md:order-2;
-  @apply md:border-l-0;
   @apply md:mx-0;
+  @apply md:mb-0;
+  @apply md:py-6;
+
+  @apply lg:py-14;
+
+  @apply xl:py-8;
 }
 
 .ServiceTestimonial-cite {
@@ -41,12 +48,6 @@
   @apply md:flex-col;
   @apply md:ml-0;
   @apply md:p-0;
-  @apply md:border-r-4;
-  @apply md:border-electricViolet;
-  @apply md:border-solid;
-  @screen md {
-    top: -22px;
-  }
 }
 
 .ServiceTestimonial-cite-copy {
@@ -60,7 +61,6 @@
 }
 
 .ServiceTestimonial-cite-image {
-  @apply block;
   @apply absolute;
   @apply bottom-0;
   @apply right-0;
@@ -75,18 +75,18 @@
   @apply md:rounded-bl-2;
 
   @screen md {
-    width: 208px;
+    width: 228px;
     @apply right-0;
 
     &:after {
-      content: '';
+      content: "";
       height: 90%;
       @apply absolute;
       @apply bottom-0;
       @apply left-0;
       @apply bg-foundation;
-      @apply rounded-tl-2;
-      @apply rounded-bl-2;
+      @apply rounded-tl-4;
+      @apply rounded-bl-4;
       @apply z-0;
       @apply w-full;
     }
@@ -94,12 +94,6 @@
 
   .gatsby-image-wrapper {
     width: 100%;
-    @apply z-10;
-
-    @apply md:rounded-bl-2;
-    @screen md {
-      width: 130%;
-      right:10%;
-    }
+    z-index: 1;
   }
 }
