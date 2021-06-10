@@ -41,7 +41,7 @@ export const GlobalStyle = createGlobalStyle<StyleProps>`
     font-family: ${(props) => props.theme.primaryFontFamily};
     color: ${(props) => props.theme.vulcan};
     font-size: 100%;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
   }
 
   *, *:before, *:after {
@@ -93,7 +93,6 @@ export const GlobalStyle = createGlobalStyle<StyleProps>`
 
   .Icon {
     position: relative;
-    display: none;
     display: inline-flex;
     align-self: center;
     width: 1em;
@@ -105,7 +104,7 @@ export const GlobalStyle = createGlobalStyle<StyleProps>`
   }
 
   .headroom {
-    z-index: 5 !important;
+    z-index: 25 !important;
   }
 
 
@@ -143,5 +142,9 @@ export const GlobalStyle = createGlobalStyle<StyleProps>`
 
   .tl-wrapper {
     position: static !important;
+  }
+  
+  .tl-edges {
+    overflow: visible;
   }
 `

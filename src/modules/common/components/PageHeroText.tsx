@@ -8,11 +8,9 @@ import {
 } from 'gatsby-source-contentful/rich-text'
 import { Options } from '@contentful/rich-text-react-renderer'
 
-// Common
-import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
+import './styles/PageHeroText.css'
 
 interface Props {
-  maxWidth?: number
   document: RenderRichTextData<never>
 }
 
@@ -47,15 +45,12 @@ const richTextOptions: Options = {
   }
 }
 
-const PageHeroText = ({ document, maxWidth = 1080 }: Props) => {
-  const maxWidthStyle = { maxWidth }
+const PageHeroText = ({ document }: Props) => {
   return (
-    <section className="pt-16">
-      <SiteMaxWidthContainer>
-        <div style={maxWidthStyle}>
-          {renderRichText(document, richTextOptions)}
-        </div>
-      </SiteMaxWidthContainer>
+    <section className="PageHeroText">
+      <div className="PageHeroText-inner">
+        {renderRichText(document, richTextOptions)}
+      </div>
     </section>
   )
 }

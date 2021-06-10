@@ -1,0 +1,101 @@
+.ServiceTestimonial {
+  max-width: 984px;
+  @apply mx-auto;
+
+  @apply md:flex;
+  @apply md:items-center;
+  @apply md:px-8;
+
+  @apply lg:px-10;
+
+  @screen xl {
+    @apply px-0;
+  }
+}
+
+.ServiceTestimonial-quote {
+  @apply pl-6;
+  @apply border-l-4;
+  @apply border-electricViolet;
+  @apply border-solid;
+  @apply mb-8;
+  @apply mx-6;
+  @apply py-4;
+
+  @apply md:order-2;
+  @apply md:mx-0;
+  @apply md:mb-0;
+  @apply md:py-6;
+
+  @apply lg:py-14;
+
+  @apply xl:py-8;
+}
+
+.ServiceTestimonial-cite {
+  @apply relative;
+  @apply bg-foundation;
+  @apply p-6;
+  @apply ml-6;
+  @apply rounded-tl-2;
+  @apply rounded-bl-2;
+  height: 225px;
+
+  @apply md:order-1;
+  @apply md:bg-white;
+  @apply md:h-auto;
+  @apply md:rounded-tl-0;
+  @apply md:rounded-bl-0;
+  @apply md:flex;
+  @apply md:flex-col;
+  @apply md:ml-0;
+  @apply md:p-0;
+}
+
+.ServiceTestimonial-cite-copy {
+  @apply md:order-2;
+  @apply pr-3;
+  width: 150px;
+
+  @screen md {
+    width: auto;
+  }
+}
+
+.ServiceTestimonial-cite-image {
+  @apply absolute;
+  @apply bottom-0;
+  @apply right-0;
+  width: 80%;
+  max-width: 250px;
+
+  @apply md:relative;
+  @apply md:order-1;
+  @apply md:mb-4;
+  @apply md:z-10;
+  @apply md:overflow-x-hidden;
+  @apply md:rounded-bl-2;
+
+  @screen md {
+    width: 228px;
+    @apply right-0;
+
+    &:after {
+      content: "";
+      height: 90%;
+      @apply absolute;
+      @apply bottom-0;
+      @apply left-0;
+      @apply bg-foundation;
+      @apply rounded-tl-4;
+      @apply rounded-bl-4;
+      @apply z-0;
+      @apply w-full;
+    }
+  }
+
+  .gatsby-image-wrapper {
+    width: 100%;
+    z-index: 1;
+  }
+}

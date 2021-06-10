@@ -8,19 +8,22 @@ export const createPages = async ({ graphql, actions }) => {
   const result = await graphql(`
     {
       allContentfulCaseStudy {
-        edges {
-          node {
-            slug
-          }
+        nodes {
+          slug
         }
       }
+
+      allContentfulService {
+        nodes {
+          slug
+        }
+      }
+
       allContentfulInsight(filter: { title: { ne: "PLACEHOLDER" } }) {
-        edges {
-          node {
-            slug
-            topics
-            type
-          }
+        nodes {
+          slug
+          topics
+          type
         }
       }
     }
@@ -28,10 +31,11 @@ export const createPages = async ({ graphql, actions }) => {
 
   const {
     allContentfulCaseStudy: caseStudies,
+    allContentfulService: services,
     allContentfulInsight: insights
   } = result.data
 
-  caseStudies.edges.forEach(({ node }) => {
+  caseStudies.nodes.forEach((node) => {
     createPage({
       path: `/case-studies/${node.slug}`,
       component: path.resolve('./src/templates/case-study.tsx'),
@@ -41,15 +45,25 @@ export const createPages = async ({ graphql, actions }) => {
     })
   })
 
+  services.nodes.forEach((node) => {
+    createPage({
+      path: `/what-we-do/${node.slug}`,
+      component: path.resolve('./src/templates/service.tsx'),
+      context: {
+        slug: node.slug
+      }
+    })
+  })
+
   const topics = []
   const types = []
-  insights.edges.map((edge) => {
-    if (edge.node.topics) {
-      topics.push(...edge.node.topics)
+  insights.nodes.map((node) => {
+    if (node.topics) {
+      topics.push(...node.topics)
     }
 
-    if (edge.node.type) {
-      types.push(edge.node.type)
+    if (node.type) {
+      types.push(node.type)
     }
     return true
   })
@@ -63,7 +77,7 @@ export const createPages = async ({ graphql, actions }) => {
     }
   })
 
-  insights.edges.forEach(({ node }) => {
+  insights.nodes.forEach((node) => {
     createPage({
       path: `/${node.slug}`,
       component: path.resolve('./src/templates/insight.tsx'),

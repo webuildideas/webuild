@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 import { INSIGHT_ARTICLE } from '@exampleData/Insight'
-import ListingInsight from '.'
+import ListingInsight from '../ListingInsight'
 
 describe('<ListingInsight />', () => {
   it('renders correctly', () => {

@@ -19,6 +19,8 @@ import MotionAniLink from '@modules/common/components/MotionAniLink'
 import useOpportunityFormModal from './hooks/useOpportunityFormModal'
 
 interface Props {
+  title?: string
+  buttonText?: string
   location: string
 }
 
@@ -53,7 +55,11 @@ const formSchema = Yup.object().shape({
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
-const OpportunityForm = ({ location }: Props) => {
+const OpportunityForm = ({
+  location,
+  title = 'Set up a meeting—we’d love to chat!',
+  buttonText = 'Send'
+}: Props) => {
   const [formSubmitted, setFormSubmitted] = useState(false)
   const { closeModal } = useOpportunityFormModal()
   const initialFormValues: FormValues = {
@@ -125,7 +131,7 @@ const OpportunityForm = ({ location }: Props) => {
   ) : (
     <div className="OpportunityForm">
       <h2 className="font-extrabold text-h3 mb-8 text-center md:text-left">
-        Set up a meeting—we’d love to chat!
+        {title}
       </h2>
       <Formik
         initialValues={initialFormValues}
@@ -201,7 +207,7 @@ const OpportunityForm = ({ location }: Props) => {
               styleType="solid-purple"
               type="submit"
             >
-              Send
+              {buttonText}
             </Button>
           </Form>
         )}

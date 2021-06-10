@@ -10,4 +10,4 @@
   GATSBY_CONTENTFUL_ENVIRONMENT = 'staging'
 
 [context.branch-deploy.environment]
-  GATSBY_CONTENTFUL_ENVIRONMENT = 'staging'
+  GATSBY_CONTENTFUL_ENVIRONMENT = 'feature-services'

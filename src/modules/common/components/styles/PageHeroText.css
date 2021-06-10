@@ -1,0 +1,14 @@
+.PageHeroText {
+  max-width: 1184px;
+  @apply pt-16;
+  @apply mx-auto;
+  @apply px-6;
+
+  @apply md:px-8;
+
+  @apply xl:px-0;
+}
+
+.PageHeroText-inner {
+  max-width: 984px;
+}

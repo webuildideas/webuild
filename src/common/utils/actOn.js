@@ -97,6 +97,7 @@ export function actOnProcessForm(formId, formName, payload) {
           if (name != null && name !== '') {
             names.push(name)
             values.push(el.value)
+            // eslint-disable-next-line no-console
             console.log(`Element name: ${el.name} / Element value: ${el.value}`)
             params[name] = el.value
           }
@@ -124,9 +125,11 @@ export function actOnProcessForm(formId, formName, payload) {
         bi(idform).submit()
 
         const dTargetFrame = bi(idifr)
+        // eslint-disable-next-line func-names
         dTargetFrame.onload = function () {
           isLoaded = true
         }
+        // eslint-disable-next-line func-names
         const waitForSubmit = function () {
           this.count = ''
           if (!(isLoaded || dTargetFrame.readyState === 'complete')) {
@@ -142,6 +145,7 @@ export function actOnProcessForm(formId, formName, payload) {
         st(waitForSubmit, 100)
       }
     } else {
+      // eslint-disable-next-line no-console
       console.log('payload property missing')
     }
   }

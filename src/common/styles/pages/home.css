@@ -1,3 +1,14 @@
 .Home .CaseStudy-container:not(:last-child) {
   @apply mb-40;
 }
+
+.Home-learn-how {
+  max-width: 1184px;
+  @apply mx-auto;
+  @apply mt-10;
+  @apply px-6;
+
+  @apply md:px-8;
+
+  @apply xl:px-0;
+}

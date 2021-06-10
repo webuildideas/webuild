@@ -1,0 +1,150 @@
+.ServicesPage {
+  @apply pt-8;
+  @apply px-6;
+
+  @apply md:pt-16;
+  @apply md:px-8;
+
+  @apply lg:px-10;
+}
+
+.ServicesPage-intro {
+  @apply mb-16;
+  @apply mx-auto;
+  max-width: 1184px;
+
+  @apply md:mb-26;
+
+  @apply lg:mb-28;
+
+  @apply xl:mb-36;
+}
+
+.ServicesPage-intro-inner {
+  @screen xl {
+    max-width: 984px;
+  }
+}
+
+.ServicesPage-content-body {
+  @screen lg {
+    width: 776px;
+  }
+
+  @screen xl {
+    width: 784px;
+  }
+}
+
+.ServicesPage-content {
+  max-width: 584px;
+  @apply mx-auto;
+  @apply mb-24;
+
+  @apply md:mb-26;
+
+  @apply lg:flex;
+  @apply lg:justify-between;
+  @apply lg:mb-30;
+
+  @screen lg {
+    max-width: 984px;
+  }
+
+  @apply xl:mb-43;
+}
+
+.ServicesPage-testimonials {
+  @apply mb-24;
+  @apply mx-auto;
+  max-width: 984px;
+
+  @apply md:mb-32;
+
+  @apply lg:mb-36;
+
+  @screen xl {
+    margin-bottom: 244px;
+  }
+}
+
+.ServicesPage-services {
+  max-width: 784px;
+  @apply mx-auto;
+
+  @apply mb-24;
+
+  @apply md:mb-36;
+
+  @apply lg:mb-44;
+
+  @apply xl:mb-46;
+
+  .ServicesPage-services-title {
+    @apply text-center;
+    @apply mb-6;
+    @apply font-extrabold;
+
+    @apply md:text-left;
+    @apply md:mb-8;
+  }
+}
+
+.ServicesPage-process {
+  max-width: 584px;
+  @apply mx-auto;
+  @apply mb-24;
+
+  @apply md:mb-26;
+
+  @apply xl:mb-36;
+
+  @screen xl {
+    max-width: 100%;
+  }
+
+  .ServicesPage-process-copy {
+    @apply md:mb-12;
+
+    @apply lg:mb-14;
+
+    @apply xl:mb-16;
+
+    @screen xl {
+      @apply mx-auto;
+      max-width: 784px;
+    }
+  }
+
+  .ServicesPage-process-title {
+    @apply font-extrabold;
+    @apply mb-4;
+    @apply text-center;
+
+    @apply md:text-left;
+  }
+
+  .ServicesPage-process-description {
+    @apply mb-12;
+  }
+
+  .ServicesPage-process-steps {
+    @screen xl {
+      max-width: 984px;
+      @apply mx-auto;
+    }
+  }
+}
+
+.ServicesPage-opportunity-form {
+  .OpportunityForm {
+    max-width: 100%;
+
+    @screen lg {
+      max-width: 784px;
+    }
+  }
+  @apply lg:mb-20;
+
+  @apply xl:mb-30;
+}

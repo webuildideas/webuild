@@ -4,15 +4,10 @@ import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 
 // Common
-import useWindowSize from '@common/hooks/useWindowSize'
 import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
 
-// Icons
-import Investigate from '@static/svgs/investigate.inline.svg'
-import Ideate from '@static/svgs/ideate.inline.svg'
-import Iterate from '@static/svgs/iterate.inline.svg'
-
-const getThreshold = (width: number): number => (width > 500 ? 0.85 : 0.25)
+// Components
+import ProcessSteps from '@modules/common/components/ProcessSteps'
 
 const variants = {
   visible: (i: number) => ({
@@ -31,14 +26,12 @@ const variants = {
 }
 
 const maxWidthDescription = { maxWidth: '800px' }
-const iconWidth = { width: '65px' }
 
 const DesignPartner = () => {
   const animationControls = useAnimation()
-  const { width } = useWindowSize()
   const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: width ? getThreshold(width) : 0.25
+    threshold: 0.25,
+    triggerOnce: true
   })
 
   useEffect(() => {
@@ -48,8 +41,8 @@ const DesignPartner = () => {
   }, [animationControls, inView])
 
   return (
-    <section className="pt-24 pb-20" data-testid="designPartner">
-      <SiteMaxWidthContainer ref={ref}>
+    <section ref={ref} className="pt-24 pb-20" data-testid="designPartner">
+      <SiteMaxWidthContainer>
         <motion.h1
           animate={animationControls}
           className="text-h2 font-extrabold mb-6"
@@ -74,101 +67,7 @@ const DesignPartner = () => {
           discover opportunities and combine strategy with tactical product
           design to deliver results.
         </motion.p>
-        <div className="grid grid-cols-1 gap-12 md:gap-6 md:grid-cols-3 lg:gap-12 xl:gap-16">
-          <div data-testid="designPartner-investigate">
-            <motion.div
-              animate={animationControls}
-              custom={1.75}
-              initial="hidden"
-              variants={variants}
-            >
-              <Investigate
-                className="mb-8 text-electricViolet"
-                style={iconWidth}
-              />
-            </motion.div>
-            <motion.h3
-              animate={animationControls}
-              className="mb-4 text-h4"
-              custom={2}
-              initial="hidden"
-              variants={variants}
-            >
-              Investigate
-            </motion.h3>
-            <motion.p
-              animate={animationControls}
-              className="text-body"
-              custom={3}
-              initial="hidden"
-              variants={variants}
-            >
-              We don’t immediately jump into design and try to dazzle you with
-              cool concepts. We start by understanding your goals, your market,
-              your users and what’s next for your business.
-            </motion.p>
-          </div>
-          <div data-testid="designPartner-ideate">
-            <motion.div
-              animate={animationControls}
-              custom={1.75}
-              initial="hidden"
-              variants={variants}
-            >
-              <Ideate className="mb-8 text-electricViolet" style={iconWidth} />
-            </motion.div>
-            <motion.h3
-              animate={animationControls}
-              className="mb-4 text-h4"
-              custom={4}
-              initial="hidden"
-              variants={variants}
-            >
-              Ideate
-            </motion.h3>
-            <motion.p
-              animate={animationControls}
-              className="text-body"
-              custom={5}
-              initial="hidden"
-              variants={variants}
-            >
-              Every design decision starts with the user in mind. Whether you
-              need design for your new app or need strategic direction, our
-              talented team of UX/UI product designers will help you level up.
-            </motion.p>
-          </div>
-          <div data-testid="designPartner-iterate">
-            <motion.div
-              animate={animationControls}
-              custom={1.75}
-              initial="hidden"
-              variants={variants}
-            >
-              <Iterate className="mb-8 text-electricViolet" style={iconWidth} />
-            </motion.div>
-            <motion.h3
-              animate={animationControls}
-              className="mb-4 text-h4"
-              custom={6}
-              initial="hidden"
-              variants={variants}
-            >
-              Iterate
-            </motion.h3>
-            <motion.p
-              animate={animationControls}
-              className="text-body"
-              custom={7}
-              initial="hidden"
-              variants={variants}
-            >
-              No design ends with a deliverable. We constantly learn and
-              optimize our designs, leveraging analytics to surface user
-              behavior while running A/B tests to drive performance.
-            </motion.p>
-          </div>
-        </div>
+        <ProcessSteps />
       </SiteMaxWidthContainer>
     </section>
   )

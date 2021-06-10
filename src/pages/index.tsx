@@ -15,6 +15,7 @@ import '@common/styles/SectionHeading.css'
 
 // Components
 import Meta from '@components/Meta'
+import MotionAniLink from '@modules/common/components/MotionAniLink'
 import PageHeroText from '@modules/common/components/PageHeroText'
 import DesignPartner from '@modules/home/components/DesignPartner'
 import Testimonial from '@modules/common/components/Testimonial'
@@ -85,7 +86,19 @@ const IndexPage = ({ data, location }: Props) => {
   return (
     <div className="Home">
       <Meta location={location} title="Home" />
-      <PageHeroText document={homeData.heroTitle} maxWidth={1040} />
+      <PageHeroText document={homeData.heroTitle} />
+      <div className="Home-learn-how">
+        <MotionAniLink
+          bgColor="#286AFF"
+          className="inline-block"
+          direction="top"
+          duration={1.25}
+          styleType="solid"
+          to="/what-we-do"
+        >
+          Learn How
+        </MotionAniLink>
+      </div>
       <CaseStudiesContainer>
         <div className="overflow-hidden">
           {homeData.caseStudies.map((study: TypeCaseStudy, idx: number) => {
@@ -135,17 +148,9 @@ const IndexPage = ({ data, location }: Props) => {
 
           <Testimonial
             className="mb-8"
-            company={homeData.featuredTestimonial.company}
-            companyRole={homeData.featuredTestimonial.role}
-            featuredHeadshot={
-              homeData.featuredTestimonial?.featuredHeadshot?.fluid
-            }
-            headshot={homeData.featuredTestimonial.headshot.fixed}
             isFeatured={true}
-            name={homeData.featuredTestimonial.name}
-          >
-            {homeData.featuredTestimonial.testimonial.testimonial}
-          </Testimonial>
+            testimonial={homeData.featuredTestimonial}
+          />
 
           <TestimonialGrid testimonials={homeData.testimonials} />
         </SiteMaxWidthContainer>
@@ -185,8 +190,8 @@ export const HOMEPAGE_QUERY = graphql`
         company
         name
         role
-        testimonial {
-          testimonial
+        quote {
+          raw
         }
         featuredHeadshot {
           fluid(maxWidth: 500) {
@@ -204,8 +209,8 @@ export const HOMEPAGE_QUERY = graphql`
         company
         name
         role
-        testimonial {
-          testimonial
+        quote {
+          raw
         }
         headshot {
           fixed(cropFocus: FACE, height: 50, width: 50) {

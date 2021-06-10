@@ -14,6 +14,7 @@ export interface TypeCaseStudy {
   heroImage?: TypeGatsbyImageFluid
   listingImage: TypeGatsbyImageFluid
   tagline: string
+  taglineRichText?: RenderRichTextData<never>
   successSummary: {
     successSummary: string
   }

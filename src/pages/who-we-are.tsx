@@ -186,8 +186,8 @@ export const WHO_WE_ARE_QUERY = graphql`
       nodes {
         name
         role
-        testimonial {
-          testimonial
+        quote {
+          raw
         }
         headshot {
           fixed(cropFocus: FACE, height: 60, width: 60) {

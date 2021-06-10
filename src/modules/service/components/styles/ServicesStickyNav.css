@@ -1,0 +1,23 @@
+.ServicesStickyNav-links {
+  flex-grow: 0;
+  flex-shrink:0;
+  flex-basis: 144px;
+  @apply hidden;
+
+  @apply lg:block;
+}
+
+.ServicesStickyNav-link {
+  @apply flex;
+  @apply items-center;
+
+  .icon {
+    width: 8px;
+    @apply mr-3;
+  }
+}
+
+.ServicesStickyNav-inner {
+  position: sticky;
+  top: 25px;
+}

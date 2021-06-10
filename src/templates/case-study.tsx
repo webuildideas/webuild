@@ -185,8 +185,8 @@ export const query = graphql`
         company
         name
         role
-        testimonial {
-          testimonial
+        quote {
+          raw
         }
         featuredHeadshot {
           fluid(maxWidth: 500) {

@@ -1,6 +1,7 @@
 .Nav {
   position: relative;
   background-color: rgba(0, 0, 0, 0);
+  @apply z-20;
   @apply w-full;
   @apply py-4;
 
@@ -48,7 +49,7 @@
   @apply w-full;
   @screen md {
     @apply grid;
-    grid-template-columns: 100px 72px 150px;
+    grid-template-columns: 100px 100px 72px 150px;
     @apply items-center;
     @apply gap-6;
     @apply justify-end;

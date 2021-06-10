@@ -1,0 +1,239 @@
+.Service {
+  @apply overflow-hidden;
+}
+
+.Service-header {
+  @apply mt-8;
+  @apply px-6;
+  @apply mb-16;
+
+  @apply md:mb-20;
+  @apply md:px-8;
+
+  @apply lg:mb-26;
+  @apply lg:px-10;
+  @screen lg {
+    max-width: 1184px;
+  }
+
+  @apply xl:px-0;
+  @screen xl {
+    @apply mx-auto;
+  }
+}
+
+.Service-header-all {
+  @apply flex;
+  @apply items-center;
+
+  .Service-header-icon {
+    width: 8px;
+    @apply mr-2;
+  }
+}
+
+.Service-intro {
+  @apply py-12;
+  @apply px-6;
+  @apply mr-6;
+  @apply mb-20;
+  @apply bg-foundation;
+  @apply rounded-tr-3;
+
+  p:not(:last-of-type) {
+    @apply mb-8;
+  }
+
+  @apply md:flex;
+  @apply md:items-center;
+  @apply md:mb-24;
+  @apply md:mr-8;
+
+  @apply md:mr-10;
+
+  @screen lg {
+    max-width: 1184px;
+  }
+
+  @screen xl {
+    @apply mx-auto;
+  }
+}
+
+.Service-intro-img {
+  @apply mb-13;
+  @apply mx-auto;
+  max-width:300px;
+
+  @apply md:mb-0;
+  @apply md:mr-6;
+
+  @screen md {
+    width: 266px;
+  }
+
+  @apply lg:mr-8;
+  @screen lg {
+    max-width: 100%;
+    width: 369px;
+  }
+
+  @apply xl:mr-13;
+  @screen xl {
+    width: 384px;
+  }
+
+  img {
+    @apply w-full;
+  }
+}
+
+.Service-intro-copy {
+  flex: 1;
+}
+
+.Service-case-studies {
+  @apply mt-24;
+  @apply mb-32;
+
+  .CaseStudy-container + .CaseStudy-container {
+    @apply mt-32;
+  }
+}
+
+
+.Service-content-block {
+  @apply px-6;
+  @apply mx-auto;
+  max-width: 584px;
+
+  @apply md:px-0;
+
+  @screen lg {
+    max-width: 776px;
+  }
+
+  &.first-content-block {
+    @screen lg {
+      @apply flex;
+      @apply items-start;
+      max-width: 944px;
+      @apply mx-auto;
+
+      .content {
+        max-width: 776px;
+        @apply ml-6;
+      }
+    }
+
+    @screen xl {
+      .content {
+        @apply ml-14;
+      }
+    }
+  }
+}
+
+.Service-content-block ul {
+  list-style-type: disc;
+  @apply mb-6;
+  @apply ml-3;
+  @apply pl-5;
+
+  li {
+    @apply mb-2;
+
+    b {
+      @apply font-extrabold;
+      @apply block;
+      @apply uppercase;
+      @apply mb-4;
+    }
+
+    p {
+      @apply mb-2;
+      white-space: pre-wrap;
+    }
+  }
+}
+
+.Service-opportunity-form {
+  @apply mt-26;
+
+  @apply md:mt-18;
+
+  @apply lg:mt-24;
+  @apply lg:mb-20;
+
+  @apply xl:mt-32;
+  @apply xl:mb-30;
+}
+
+/* Text element spacing */
+.Service-h3 + ul {
+  @apply mt-4;
+}
+
+.Service-h3 + .Service-h4 {
+  @apply mt-2;
+}
+
+.Service-h4 + .Service-copy {
+  @apply mt-1;
+}
+
+.Service-h3 + .Service-h4 + .Service-copy {
+  @apply mt-4;
+}
+
+.Service-h3 + .Service-copy {
+  @apply mt-4;
+}
+
+.Service-copy + .Service-copy {
+  @apply mt-8;
+}
+
+.Service-content-block ul + .Service-copy {
+  @apply mt-8;
+}
+
+.Service-copy + .Service-h4 {
+  @apply mt-8;
+}
+
+.Service-copy + .Service-h3 {
+  @apply mt-12;
+
+  @apply xl:mt-16;
+}
+
+.Service-content-block + .ServiceTestimonial {
+  @apply mt-24;
+
+  @apply md:mt-32;
+
+  @apply lg:mt-35;
+
+  @apply xl:mt-50;
+}
+
+.ServiceTestimonial + .Service-content-block {
+  @apply mt-24;
+
+  @apply md:mt-32;
+
+  @apply lg:mt-35;
+
+  @apply xl:mt-45;
+}
+
+.Service-testimonial + .Service-case-studies {
+  @apply md:mt-34;
+
+  @apply lg:mt-36;
+
+  @apply xl:mt-43;
+}
+/* END Text element spacing */
+

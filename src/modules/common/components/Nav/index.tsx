@@ -137,6 +137,23 @@ const Nav = memo(function NavMemo({ location }: { location: string }) {
                     cover
                     direction="right"
                     duration={1.5}
+                    to="/what-we-do"
+                  >
+                    What We Do
+                  </AniLink>
+                </motion.li>
+                <motion.li
+                  animate={animationControls}
+                  custom={1.5}
+                  initial="hidden"
+                  variants={variants}
+                >
+                  <AniLink
+                    bg="#F3F3F3"
+                    className="block text-page-navigation text-center uppercase hover:font-bold"
+                    cover
+                    direction="right"
+                    duration={1.5}
                     to="/insights"
                   >
                     Insights

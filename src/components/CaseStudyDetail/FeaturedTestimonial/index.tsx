@@ -68,16 +68,7 @@ const CaseStudyFeaturedTestimonial = ({ featuredTestimonial }: Props) => {
         variants={variants}
       />
       <SiteMaxWidthContainer>
-        <Testimonial
-          company={featuredTestimonial.company}
-          companyRole={featuredTestimonial.role}
-          featuredHeadshot={featuredTestimonial?.featuredHeadshot?.fluid}
-          headshot={featuredTestimonial.headshot.fixed}
-          isFeatured={true}
-          name={featuredTestimonial.name}
-        >
-          {featuredTestimonial.testimonial.testimonial}
-        </Testimonial>
+        <Testimonial isFeatured={true} testimonial={featuredTestimonial} />
       </SiteMaxWidthContainer>
     </div>
   )
