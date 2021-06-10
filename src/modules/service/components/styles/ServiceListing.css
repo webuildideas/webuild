@@ -78,6 +78,11 @@
   @apply items-center;
   @apply text-electricViolet;
 
+  span {
+    display: inline-block;
+    width: 87px;
+  }
+
   .arrow-icon {
     @apply ml-3;
   }
