@@ -30,7 +30,7 @@ const variants: Variants = {
 const ProcessSteps = () => {
   const animationControls = useAnimation()
   const [ref, inView] = useInView({
-    threshold: 1,
+    threshold: 0.25,
     triggerOnce: true
   })
 

@@ -4,13 +4,10 @@ import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 
 // Common
-import useWindowSize from '@common/hooks/useWindowSize'
 import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
 
 // Components
 import ProcessSteps from '@modules/common/components/ProcessSteps'
-
-const getThreshold = (width: number): number => (width > 500 ? 0.85 : 0.25)
 
 const variants = {
   visible: (i: number) => ({
@@ -32,10 +29,9 @@ const maxWidthDescription = { maxWidth: '800px' }
 
 const DesignPartner = () => {
   const animationControls = useAnimation()
-  const { width } = useWindowSize()
   const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: width ? getThreshold(width) : 0.25
+    threshold: 0.25,
+    triggerOnce: true
   })
 
   useEffect(() => {
@@ -45,8 +41,8 @@ const DesignPartner = () => {
   }, [animationControls, inView])
 
   return (
-    <section className="pt-24 pb-20" data-testid="designPartner">
-      <SiteMaxWidthContainer ref={ref}>
+    <section ref={ref} className="pt-24 pb-20" data-testid="designPartner">
+      <SiteMaxWidthContainer>
         <motion.h1
           animate={animationControls}
           className="text-h2 font-extrabold mb-6"
