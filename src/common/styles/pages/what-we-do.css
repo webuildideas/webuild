@@ -137,6 +137,13 @@
 }
 
 .ServicesPage-opportunity-form {
+  .OpportunityForm {
+    max-width: 100%;
+
+    @screen lg {
+      max-width: 784px;
+    }
+  }
   @apply lg:mb-20;
 
   @apply xl:mb-30;
