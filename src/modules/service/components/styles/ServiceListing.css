@@ -3,16 +3,17 @@
   @apply flex-col;
   @apply justify-center;
   @apply px-4;
-  @apply py-6;
+  @apply pt-0;
+  @apply pb-8;
   @apply mb-10;
   @apply text-center;
   @apply bg-foundation;
   @apply hover:bg-lavenderMist;
 
   @apply md:flex-row;
-  @apply md:items-stretch;
+  @apply md:items-center;
   @apply md:text-left;
-  @apply p-8;
+  @apply md:p-8;
 
   &:hover {
     .ServiceListing-learn-more {
@@ -35,6 +36,7 @@
   @apply relative;
   @apply block;
   width: 180px;
+  height: 180px;
   @apply self-center;
 
   @apply md:mr-12;
@@ -43,7 +45,6 @@
 
   img {
     @apply w-full;
-    @apply h-full;
   }
 
   .ServiceListing-animated-gif {
@@ -59,7 +60,6 @@
       left: 0;
       @apply z-10;
       @apply w-full;
-      @apply h-full;
     }
 
     .ServiceListing-static-img {
@@ -69,7 +69,6 @@
       top: 0;
       left: 0;
       @apply w-full;
-      @apply h-full;
     }
   }
 }
