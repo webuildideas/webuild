@@ -168,7 +168,7 @@ const Insight = ({
         location={location}
         shareImage={insight.shareImage?.fixed.src}
         shareTitle={insight.title}
-        title={insight.title}
+        title={insight.seoTitle ?? insight.title}
       />
       <div className={`Insight-container Insight-${insight.type}`}>
         {insight?.heroIllustration?.file?.url ? (
@@ -360,6 +360,7 @@ export const query = graphql`
           }
         }
       }
+      seoTitle
     }
 
     allContentfulInsight(

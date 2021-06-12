@@ -48,4 +48,5 @@ export interface TypeInsight {
   shareQuote?: {
     shareQuote: string
   }
+  seoTitle?: string
 }
