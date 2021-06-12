@@ -279,14 +279,6 @@ export const query = graphql`
         raw
         references {
           __typename
-          ... on ContentfulAsset {
-            contentful_id
-            id
-            description
-            fluid(maxWidth: 800) {
-              ...GatsbyContentfulFluid_withWebp_noBase64
-            }
-          }
           ... on ContentfulContentUpgrade {
             contentful_id
             id
