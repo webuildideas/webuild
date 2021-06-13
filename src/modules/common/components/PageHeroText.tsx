@@ -8,31 +8,23 @@ import {
 } from 'gatsby-source-contentful/rich-text'
 import { Options } from '@contentful/rich-text-react-renderer'
 
+// Common
+import fadeInUpVariants from '@modules/common/animation/variants/fadeInUp'
+
 import './styles/PageHeroText.css'
 
 interface Props {
   document: RenderRichTextData<never>
 }
 
-const headingAnimationInitialConfig = {
-  y: 30,
-  opacity: 0.1
-}
-
-const headingAnimationConfig = {
-  y: 0,
-  opacity: 1,
-  transition: {
-    type: 'spring'
-  }
-}
 const richTextOptions: Options = {
   renderNode: {
     [BLOCKS.PARAGRAPH]: (_, copy) => (
       <motion.h1
-        animate={headingAnimationConfig}
+        animate="visible"
         className="text-title-subheading"
-        initial={headingAnimationInitialConfig}
+        initial="hidden"
+        variants={fadeInUpVariants}
       >
         {copy}
       </motion.h1>

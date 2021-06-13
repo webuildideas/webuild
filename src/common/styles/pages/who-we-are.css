@@ -1,0 +1,33 @@
+.WhoWeAre-intro {
+  max-width: 1184px;
+  @apply mx-auto;
+  @apply px-6;
+
+  @apply md:px-8;
+
+  @apply lg:px-10;
+
+  @apply xl:px-0;
+}
+
+.WhoWeAre-title {
+  max-width: 984px;
+  @apply my-8;
+
+  @apply md:my-16;
+
+  @apply lg:my-16;
+
+  @apply xl:my-30;
+}
+
+.WhoWeAre-copy {
+  max-width: 584px;
+  @apply mx-auto;
+  @apply mb-8;
+
+  @apply md:mb-10;
+  @screen md {
+    max-width: 784px;
+  }
+}

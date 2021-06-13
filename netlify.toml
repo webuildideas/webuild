@@ -7,7 +7,7 @@
 
 
 [context.deploy-preview.environment]
-  GATSBY_CONTENTFUL_ENVIRONMENT = 'staging'
+  GATSBY_CONTENTFUL_ENVIRONMENT = 'feature-employees'
 
 [context.branch-deploy.environment]
-  GATSBY_CONTENTFUL_ENVIRONMENT = 'feature-services'
+  GATSBY_CONTENTFUL_ENVIRONMENT = 'feature-employees'
