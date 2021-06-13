@@ -21,6 +21,16 @@
   @apply xl:my-30;
 }
 
+.WhoWeAre-intro-copy {
+  @apply mb-24;
+
+  @apply md:mb-32;
+
+  @apply lg:mb-32;
+
+  @apply xl:mb-48;
+}
+
 .WhoWeAre-copy {
   max-width: 584px;
   @apply mx-auto;

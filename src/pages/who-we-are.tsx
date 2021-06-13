@@ -63,7 +63,8 @@ const WhoWeAre = ({ data, location }: Props) => {
             We’re webuild—the design agency that seamlessly becomes a part of
             your team.
           </motion.h1>
-          <div>
+
+          <div className="WhoWeAre-intro-copy">
             <motion.p
               animate="visible"
               className="WhoWeAre-copy text-h3"
@@ -106,6 +107,13 @@ const WhoWeAre = ({ data, location }: Props) => {
               And while we love what we do at work, we love our lives away from
               the computer, too. We’re all about that work/life balance.
             </motion.p>
+          </div>
+
+          <div className="WhoWeAre-values">
+            <h2 className="WhoWeAre-values-title text-h2 text-center">
+              <span className="block text-h4 mb-2">Behind the Design</span>
+              <span className="font-extrabold">Our Values</span>
+            </h2>
           </div>
         </div>
 
