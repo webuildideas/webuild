@@ -41,3 +41,101 @@
     max-width: 784px;
   }
 }
+
+.WhoWeAre-values-title {
+  @apply mb-6;
+
+  @apply md:mb-8;
+
+  @apply lg:mb-10;
+
+  @apply xl:mb-20;
+}
+
+.WhoWeAre-values-inner {
+  @apply flex;
+  @apply flex-wrap;
+  @apply justify-between;
+}
+
+.WhoWeAre-value {
+  @apply text-center;
+
+  svg {
+    @apply mx-auto;
+  }
+
+  p {
+    @apply inline-block;
+    @apply mt-2;
+    @apply text-center;
+    @apply mx-auto;
+  }
+}
+
+.WhoWeAre-value.promises {
+  width: 136px;
+  @apply mb-4;
+
+  @screen md {
+    @apply order-1;
+    width: 50%;
+
+    p {
+      width: 136px;
+    }
+  }
+}
+
+.WhoWeAre-value.initiate {
+  width: 161px;
+  @apply mb-4;
+
+  @screen md {
+    @apply order-2;
+    width: 50%;
+
+    p {
+      width: 119px;
+    }
+  }
+}
+
+.WhoWeAre-value.iterate {
+  width: 191px;
+  @apply mx-auto;
+  @apply mb-4;
+
+  @apply md:mx-0;
+
+  @screen md {
+    @apply order-4;
+    p {
+      width: 130px;
+    }
+  }
+}
+
+.WhoWeAre-value.details {
+  width: 143px;
+  @apply mb-4;
+
+  @screen md {
+    @apply order-3;
+    p {
+      width: 143px;
+    }
+  }
+}
+
+.WhoWeAre-value.support {
+  width: 136px;
+  @apply mb-4;
+
+  @screen md {
+    @apply order-5;
+    p {
+      width: 136px;
+    }
+  }
+}

@@ -16,6 +16,13 @@ import Meta from '@components/Meta'
 import PhotoGrid from '@components/PhotoGrid'
 import Footer from '@components/Footer'
 
+// SVGs
+import Promises from '@static/svgs/who-we-are/promises.inline.svg'
+import Details from '@static/svgs/who-we-are/details.inline.svg'
+import Initiate from '@static/svgs/who-we-are/initiate.inline.svg'
+import Iterate from '@static/svgs/who-we-are/iterate.inline.svg'
+import Support from '@static/svgs/who-we-are/support.inline.svg'
+
 // Styles
 import '@common/styles/pages/who-we-are.css'
 
@@ -114,6 +121,28 @@ const WhoWeAre = ({ data, location }: Props) => {
               <span className="block text-h4 mb-2">Behind the Design</span>
               <span className="font-extrabold">Our Values</span>
             </h2>
+            <div className="WhoWeAre-values-inner">
+              <div className="WhoWeAre-value promises">
+                <Promises />
+                <p className="text-body">We keep our promises</p>
+              </div>
+              <div className="WhoWeAre-value initiate">
+                <Initiate />
+                <p className="text-body">We initiate "wow"</p>
+              </div>
+              <div className="WhoWeAre-value iterate">
+                <Iterate />
+                <p className="text-body">We iterate untill it's great</p>
+              </div>
+              <div className="WhoWeAre-value details">
+                <Details />
+                <p className="text-body">We obsess over the details</p>
+              </div>
+              <div className="WhoWeAre-value support">
+                <Support />
+                <p className="text-body">We support each other</p>
+              </div>
+            </div>
           </div>
         </div>
 
