@@ -53,9 +53,19 @@
 }
 
 .WhoWeAre-values-inner {
+  max-width: 1024px;
   @apply flex;
   @apply flex-wrap;
   @apply justify-between;
+  @apply mx-auto;
+
+  @screen lg {
+    @apply flex-nowrap;
+  }
+
+  @screen xl {
+    max-width: 1184px;
+  }
 }
 
 .WhoWeAre-value {
@@ -80,10 +90,20 @@
   @screen md {
     @apply order-1;
     width: 50%;
-
-    p {
+    svg {
       width: 136px;
     }
+  }
+
+  @screen lg {
+    width: 136px;
+    svg {
+      @apply w-full;
+    }
+  }
+
+  @screen xl {
+    width: 184px;
   }
 }
 
@@ -94,9 +114,28 @@
   @screen md {
     @apply order-2;
     width: 50%;
+    svg {
+      width: 161px;
+    }
 
     p {
       width: 119px;
+    }
+  }
+
+  @screen lg {
+    width: 161px;
+    @apply mt-14;
+    svg {
+      @apply w-full;
+    }
+  }
+
+  @screen xl {
+    width: 218px;
+    @apply mt-20;
+    p {
+      width: 171px;
     }
   }
 }
@@ -114,6 +153,21 @@
       width: 130px;
     }
   }
+
+  @screen lg {
+    width: 191px;
+    @apply order-3;
+    p {
+      @apply w-full;
+    }
+  }
+
+  @screen xl {
+    width: 259px;
+    p {
+      width: 184px;
+    }
+  }
 }
 
 .WhoWeAre-value.details {
@@ -126,6 +180,29 @@
       width: 143px;
     }
   }
+
+  @screen lg {
+    width: 172px;
+    @apply order-4;
+    @apply mt-14;
+    svg {
+      width: 143px;
+    }
+    p {
+      @apply w-full;
+    }
+  }
+
+  @screen xl {
+    width: 194px;
+    @apply mt-20;
+    svg {
+      @apply w-full;
+    }
+    p {
+      width: 184px;
+    }
+  }
 }
 
 .WhoWeAre-value.support {
@@ -135,7 +212,11 @@
   @screen md {
     @apply order-5;
     p {
-      width: 136px;
+      @apply w-full;
     }
+  }
+
+  @screen xl {
+    width: 184px;
   }
 }
