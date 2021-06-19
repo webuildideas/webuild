@@ -1,8 +1,7 @@
 // Packages
-import React, { useEffect } from 'react'
+import React from 'react'
 import { graphql, PageProps } from 'gatsby'
-import { motion, useAnimation, Variants } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
+import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
 // Common
@@ -10,21 +9,25 @@ import { rhythmUnit } from '@common/utils/typography'
 import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
 import { TypeTestimonial } from '@common/types/Testimonial'
 import { TypeJob } from '@common/types/Job'
+import fadeInUpVariants from '@modules/common/animation/variants/fadeInUp'
 
 // Components
 import Meta from '@components/Meta'
-import PagerHeroText from '@modules/common/components/PageHeroText'
-import TeamMap from '@components/TeamMap'
-import BioCard from '@components/BioCard'
-import JoinUs from '@components/JoinUs'
 import PhotoGrid from '@components/PhotoGrid'
-import TestimonialSlider from '@components/TestimonialSlider'
 import Footer from '@components/Footer'
-import { RenderRichTextData } from 'gatsby-source-contentful/rich-text'
+
+// SVGs
+import Promises from '@static/svgs/who-we-are/promises.inline.svg'
+import Details from '@static/svgs/who-we-are/details.inline.svg'
+import Initiate from '@static/svgs/who-we-are/initiate.inline.svg'
+import Iterate from '@static/svgs/who-we-are/iterate.inline.svg'
+import Support from '@static/svgs/who-we-are/support.inline.svg'
+
+// Styles
+import '@common/styles/pages/who-we-are.css'
 
 interface WhoWeAreQueryResponse {
   contentfulAboutPage: {
-    heroTitle: RenderRichTextData<never>
     photoGrid: TypeGatsbyImageFluid[]
   }
   allContentfulJob: {
@@ -46,153 +49,119 @@ const PhotoGridContainer = styled.div`
     padding-top: ${() => rhythmUnit(7)};
   }
 `
-const variants: Variants = {
-  visible: (i: number) => ({
-    y: 0,
-    x: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.9,
-      delay: i * 0.252
-    }
-  }),
-  headingHidden: {
-    y: -25,
-    opacity: 0
-  },
-  textHidden: {
-    x: -25,
-    opacity: 0
-  }
-}
 
 const WhoWeAre = ({ data, location }: Props) => {
   const aboutPageData = data.contentfulAboutPage
-  const animationControls = useAnimation()
-  const { nodes: testimonialData } = data.allContentfulTestimonial
-  const { nodes: jobs } = data.allContentfulJob
-  const [ref, inView] = useInView({
-    threshold: 0.7,
-    triggerOnce: true
-  })
-
-  useEffect(() => {
-    if (inView) {
-      animationControls.start('visible')
-    }
-  }, [animationControls, inView])
 
   const initial = { opacity: 0 }
   const animateTo = { opacity: 1 }
 
   return (
-    <motion.div animate={animateTo} initial={initial}>
+    <>
       <Meta location={location} title="Who We Are" />
-
-      <PagerHeroText document={aboutPageData.heroTitle} maxWidth={860} />
-      <PhotoGridContainer>
-        <PhotoGrid photos={aboutPageData.photoGrid} />
-      </PhotoGridContainer>
-
-      <TeamMap />
-
-      <div className="mb-20">
-        <TestimonialSlider testimonials={testimonialData} />
-      </div>
-
-      <div ref={ref} className="py-20 bg-snow">
-        <BioCard>
-          <motion.h2
-            animate={animationControls}
-            className="text-h4"
-            custom={0}
-            initial="headingHidden"
-            variants={variants}
+      <motion.main animate={animateTo} className="WhoWeAre" initial={initial}>
+        <div className="WhoWeAre-intro">
+          <motion.h1
+            animate="visible"
+            className="text-h1 font-black WhoWeAre-title"
+            initial="hidden"
+            variants={fadeInUpVariants}
           >
-            We've Been There, Too.
-          </motion.h2>
-          <motion.p
-            animate={animationControls}
-            custom={1}
-            initial="textHidden"
-            variants={variants}
-          >
-            Meet our founder, Evan Shoemaker. He has bootstrapped and co-founded
-            multiple companies, all while traveling to 35 countries across 4
-            continents.
-          </motion.p>
-          <motion.p
-            animate={animationControls}
-            custom={2}
-            initial="textHidden"
-            variants={variants}
-          >
-            Given his experience co-founding and growing startups, Evan has
-            intimate experience with building products that get results, and
-            he’s committed to helping other founders do the same.
-          </motion.p>
-          <motion.p
-            animate={animationControls}
-            custom={3}
-            initial="textHidden"
-            variants={variants}
-          >
-            You can find him and connect on{' '}
-            <a
-              className="font-bold"
-              href="https://www.linkedin.com/in/evanshoemaker/"
-              rel="noopener noreferrer"
-              target="_blank"
+            We’re webuild—the design agency that seamlessly becomes a part of
+            your team.
+          </motion.h1>
+
+          <div className="WhoWeAre-intro-copy">
+            <motion.p
+              animate="visible"
+              className="WhoWeAre-copy text-h3"
+              initial="hidden"
+              variants={fadeInUpVariants}
             >
-              LinkedIn
-            </a>
-          </motion.p>
-        </BioCard>
-      </div>
+              We're a global team of makers and thinkers. We love what we do. We
+              nurture growth and champion possibility.
+            </motion.p>
 
-      <div className="py-20">
-        <JoinUs jobs={jobs} />
-      </div>
-      <Footer />
-    </motion.div>
+            <motion.p
+              animate="visible"
+              className="WhoWeAre-copy text-h3"
+              initial="hidden"
+              variants={fadeInUpVariants}
+            >
+              Driven, but laid back. Confident, but humble. Talented, but not
+              pretentious. We’re a friendly group of designers, strategists, and
+              product managers. And we are all passionate about product design.
+              And tacos. (Extra guac!)
+            </motion.p>
+
+            <motion.p
+              animate="visible"
+              className="WhoWeAre-copy text-h3"
+              initial="hidden"
+              variants={fadeInUpVariants}
+            >
+              We’ve worked remotely since before it was cool — and it’s never
+              stifled our team spirit. We embrace and celebrate diversity and
+              enjoy learning about each other's cultures.
+            </motion.p>
+
+            <motion.p
+              animate="visible"
+              className="WhoWeAre-copy text-h3"
+              initial="hidden"
+              variants={fadeInUpVariants}
+            >
+              And while we love what we do at work, we love our lives away from
+              the computer, too. We’re all about that work/life balance.
+            </motion.p>
+          </div>
+
+          <div className="WhoWeAre-values">
+            <h2 className="WhoWeAre-values-title text-h2 text-center">
+              <span className="block text-h4 mb-2">Behind the Design</span>
+              <span className="font-extrabold">Our Values</span>
+            </h2>
+            <div className="WhoWeAre-values-inner">
+              <div className="WhoWeAre-value promises">
+                <Promises />
+                <p className="text-body">We keep our promises</p>
+              </div>
+              <div className="WhoWeAre-value initiate">
+                <Initiate />
+                <p className="text-body">We initiate "wow"</p>
+              </div>
+              <div className="WhoWeAre-value iterate">
+                <Iterate />
+                <p className="text-body">We iterate untill it's great</p>
+              </div>
+              <div className="WhoWeAre-value details">
+                <Details />
+                <p className="text-body">We obsess over the details</p>
+              </div>
+              <div className="WhoWeAre-value support">
+                <Support />
+                <p className="text-body">We support each other</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <PhotoGridContainer>
+          <PhotoGrid photos={aboutPageData.photoGrid} />
+        </PhotoGridContainer>
+
+        <Footer />
+      </motion.main>
+    </>
   )
 }
 
 export const WHO_WE_ARE_QUERY = graphql`
   query whoWeAreQuery {
     contentfulAboutPage(pageTitle: { eq: "Who We Are" }) {
-      heroTitle {
-        raw
-      }
       photoGrid {
         fluid(maxWidth: 1000) {
           ...GatsbyContentfulFluid_withWebp_noBase64
-        }
-      }
-    }
-    allContentfulJob(filter: { isOpen: { eq: true } }) {
-      nodes {
-        isOpen
-        location
-        title
-        applicationLink
-      }
-    }
-    allContentfulTestimonial(
-      filter: { type: { eq: "Team Member" } }
-      limit: 4
-      sort: { fields: createdAt, order: ASC }
-    ) {
-      nodes {
-        name
-        role
-        quote {
-          raw
-        }
-        headshot {
-          fixed(cropFocus: FACE, height: 60, width: 60) {
-            ...GatsbyContentfulFixed_withWebp_noBase64
-          }
         }
       }
     }

@@ -1,0 +1,222 @@
+.WhoWeAre-intro {
+  max-width: 1184px;
+  @apply mx-auto;
+  @apply px-6;
+
+  @apply md:px-8;
+
+  @apply lg:px-10;
+
+  @apply xl:px-0;
+}
+
+.WhoWeAre-title {
+  max-width: 984px;
+  @apply my-8;
+
+  @apply md:my-16;
+
+  @apply lg:my-16;
+
+  @apply xl:my-30;
+}
+
+.WhoWeAre-intro-copy {
+  @apply mb-24;
+
+  @apply md:mb-32;
+
+  @apply lg:mb-32;
+
+  @apply xl:mb-48;
+}
+
+.WhoWeAre-copy {
+  max-width: 584px;
+  @apply mx-auto;
+  @apply mb-8;
+
+  @apply md:mb-10;
+  @screen md {
+    max-width: 784px;
+  }
+}
+
+.WhoWeAre-values-title {
+  @apply mb-6;
+
+  @apply md:mb-8;
+
+  @apply lg:mb-10;
+
+  @apply xl:mb-20;
+}
+
+.WhoWeAre-values-inner {
+  max-width: 1024px;
+  @apply flex;
+  @apply flex-wrap;
+  @apply justify-between;
+  @apply mx-auto;
+
+  @screen lg {
+    @apply flex-nowrap;
+  }
+
+  @screen xl {
+    max-width: 1184px;
+  }
+}
+
+.WhoWeAre-value {
+  @apply text-center;
+
+  svg {
+    @apply mx-auto;
+  }
+
+  p {
+    @apply inline-block;
+    @apply mt-2;
+    @apply text-center;
+    @apply mx-auto;
+  }
+}
+
+.WhoWeAre-value.promises {
+  width: 136px;
+  @apply mb-4;
+
+  @screen md {
+    @apply order-1;
+    width: 50%;
+    svg {
+      width: 136px;
+    }
+  }
+
+  @screen lg {
+    width: 136px;
+    svg {
+      @apply w-full;
+    }
+  }
+
+  @screen xl {
+    width: 184px;
+  }
+}
+
+.WhoWeAre-value.initiate {
+  width: 161px;
+  @apply mb-4;
+
+  @screen md {
+    @apply order-2;
+    width: 50%;
+    svg {
+      width: 161px;
+    }
+
+    p {
+      width: 119px;
+    }
+  }
+
+  @screen lg {
+    width: 161px;
+    @apply mt-14;
+    svg {
+      @apply w-full;
+    }
+  }
+
+  @screen xl {
+    width: 218px;
+    @apply mt-20;
+    p {
+      width: 171px;
+    }
+  }
+}
+
+.WhoWeAre-value.iterate {
+  width: 191px;
+  @apply mx-auto;
+  @apply mb-4;
+
+  @apply md:mx-0;
+
+  @screen md {
+    @apply order-4;
+    p {
+      width: 130px;
+    }
+  }
+
+  @screen lg {
+    width: 191px;
+    @apply order-3;
+    p {
+      @apply w-full;
+    }
+  }
+
+  @screen xl {
+    width: 259px;
+    p {
+      width: 184px;
+    }
+  }
+}
+
+.WhoWeAre-value.details {
+  width: 143px;
+  @apply mb-4;
+
+  @screen md {
+    @apply order-3;
+    p {
+      width: 143px;
+    }
+  }
+
+  @screen lg {
+    width: 172px;
+    @apply order-4;
+    @apply mt-14;
+    svg {
+      width: 143px;
+    }
+    p {
+      @apply w-full;
+    }
+  }
+
+  @screen xl {
+    width: 194px;
+    @apply mt-20;
+    svg {
+      @apply w-full;
+    }
+    p {
+      width: 184px;
+    }
+  }
+}
+
+.WhoWeAre-value.support {
+  width: 136px;
+  @apply mb-4;
+
+  @screen md {
+    @apply order-5;
+    p {
+      @apply w-full;
+    }
+  }
+
+  @screen xl {
+    width: 184px;
+  }
+}
