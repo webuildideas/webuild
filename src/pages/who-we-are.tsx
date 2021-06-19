@@ -7,8 +7,7 @@ import styled from 'styled-components'
 // Common
 import { rhythmUnit } from '@common/utils/typography'
 import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
-import { TypeTestimonial } from '@common/types/Testimonial'
-import { TypeJob } from '@common/types/Job'
+import { TypeEmployee } from '@common/types/Employee'
 import fadeInUpVariants from '@modules/common/animation/variants/fadeInUp'
 
 // Components
@@ -29,12 +28,7 @@ import '@common/styles/pages/who-we-are.css'
 interface WhoWeAreQueryResponse {
   contentfulAboutPage: {
     photoGrid: TypeGatsbyImageFluid[]
-  }
-  allContentfulJob: {
-    nodes: TypeJob[]
-  }
-  allContentfulTestimonial: {
-    nodes: TypeTestimonial[]
+    meetTheTeam: TypeEmployee[]
   }
 }
 
@@ -51,7 +45,7 @@ const PhotoGridContainer = styled.div`
 `
 
 const WhoWeAre = ({ data, location }: Props) => {
-  const aboutPageData = data.contentfulAboutPage
+  const { photoGrid, meetTheTeam } = data.contentfulAboutPage
 
   const initial = { opacity: 0 }
   const animateTo = { opacity: 1 }
@@ -117,7 +111,7 @@ const WhoWeAre = ({ data, location }: Props) => {
           </div>
 
           <div className="WhoWeAre-values">
-            <h2 className="WhoWeAre-values-title text-h2 text-center">
+            <h2 className="WhoWeAre-section-title text-h2 text-center">
               <span className="block text-h4 mb-2">Behind the Design</span>
               <span className="font-extrabold">Our Values</span>
             </h2>
@@ -147,8 +141,45 @@ const WhoWeAre = ({ data, location }: Props) => {
         </div>
 
         <PhotoGridContainer>
-          <PhotoGrid photos={aboutPageData.photoGrid} />
+          <PhotoGrid photos={photoGrid} />
         </PhotoGridContainer>
+
+        <div className="WhoWeAre-team">
+          <h2 className="WhoWeAre-section-title text-h2 text-center">
+            <span className="block text-h4 mb-2">Who's Who</span>
+            <span className="font-extrabold">Meet the Team</span>
+          </h2>
+          <div className="WhoWeAre-team-grid">
+            {meetTheTeam.map((employee) => {
+              return (
+                <div
+                  key={`employee-${employee.name}`}
+                  className="WhoWeAre-team-member"
+                >
+                  <div className="WhoWeAre-team-photo">
+                    <div>
+                      <img
+                        alt={`Illustration of ${employee.name}`}
+                        className="WhoWeAre-team-illustration"
+                        src={employee.illustration.file.url}
+                      />
+
+                      <img
+                        alt={`${employee.name} Headshot`}
+                        className="WhoWeAre-team-headshot"
+                        src={employee.headshot.file.url}
+                      />
+                    </div>
+                  </div>
+                  <div className="WhoWeAre-team-info text-center">
+                    <h3 className="text-h3">{employee.name}</h3>
+                    <p className="text-body">{employee.role}</p>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
 
         <Footer />
       </motion.main>
@@ -162,6 +193,22 @@ export const WHO_WE_ARE_QUERY = graphql`
       photoGrid {
         fluid(maxWidth: 1000) {
           ...GatsbyContentfulFluid_withWebp_noBase64
+        }
+      }
+
+      meetTheTeam {
+        name
+        role
+        illustration {
+          file {
+            url
+          }
+        }
+
+        headshot {
+          file {
+            url
+          }
         }
       }
     }

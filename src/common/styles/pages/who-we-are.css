@@ -42,7 +42,7 @@
   }
 }
 
-.WhoWeAre-values-title {
+.WhoWeAre-section-title {
   @apply mb-6;
 
   @apply md:mb-8;
@@ -219,4 +219,70 @@
   @screen xl {
     width: 184px;
   }
+}
+
+.WhoWeAre-team {
+  @apply mt-24;
+
+  @apply md:mt-32;
+
+  @apply lg:mt-36;
+
+  @apply xl:mt-48;
+}
+
+.WhoWeAre-team-grid {
+  @apply grid;
+  @apply gap-y-16;
+  grid-template-columns: 1fr;
+
+  @screen md {
+    grid-template-columns: 1fr 1fr;
+    @apply gap-y-20;
+  }
+
+  @screen lg {
+    @apply gap-y-22;
+  }
+
+  @screen xl {
+    grid-template-columns: 1fr 1fr 1fr;
+    @apply gap-y-36;
+  }
+}
+
+.WhoWeAre-team-photo {
+  @apply relative;
+  @apply bg-foundation;
+  @apply pt-4;
+  @apply px-20;
+
+  @apply lg:px-24;
+  &:hover {
+    .WhoWeAre-team-illustration {
+      @apply opacity-0;
+    }
+
+    .WhoWeAre-team-headshot {
+      @apply opacity-100;
+    }
+  }
+}
+
+.WhoWeAre-team-illustration {
+  @apply opacity-100;
+  @apply w-full;
+  transition: opacity 300ms ease;
+}
+
+.WhoWeAre-team-headshot {
+  @apply opacity-0;
+  position: absolute !important;
+  @apply bottom-0;
+  @apply w-full;
+  max-height: 95%;
+  width: auto;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 300ms ease;
 }
