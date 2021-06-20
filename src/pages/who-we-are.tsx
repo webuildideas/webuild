@@ -149,35 +149,37 @@ const WhoWeAre = ({ data, location }: Props) => {
             <span className="block text-h4 mb-2">Who's Who</span>
             <span className="font-extrabold">Meet the Team</span>
           </h2>
-          <div className="WhoWeAre-team-grid">
-            {meetTheTeam.map((employee) => {
-              return (
-                <div
-                  key={`employee-${employee.name}`}
-                  className="WhoWeAre-team-member"
-                >
-                  <div className="WhoWeAre-team-photo">
-                    <div>
-                      <img
-                        alt={`Illustration of ${employee.name}`}
-                        className="WhoWeAre-team-illustration"
-                        src={employee.illustration.file.url}
-                      />
+          <div className="bg-foundation overflow-x-hidden">
+            <div className="WhoWeAre-team-grid">
+              {meetTheTeam.map((employee) => {
+                return (
+                  <div
+                    key={`employee-${employee.name}`}
+                    className="WhoWeAre-team-member"
+                  >
+                    <div className="WhoWeAre-team-photo">
+                      <div>
+                        <img
+                          alt={`Illustration of ${employee.name}`}
+                          className="WhoWeAre-team-illustration"
+                          src={employee.illustration.file.url}
+                        />
 
-                      <img
-                        alt={`${employee.name} Headshot`}
-                        className="WhoWeAre-team-headshot"
-                        src={employee.headshot.file.url}
-                      />
+                        <img
+                          alt={`${employee.name} Headshot`}
+                          className="WhoWeAre-team-headshot"
+                          src={employee.headshot.file.url}
+                        />
+                      </div>
+                    </div>
+                    <div className="WhoWeAre-team-info text-center">
+                      <h3 className="text-h3">{employee.name}</h3>
+                      <p className="text-body">{employee.role}</p>
                     </div>
                   </div>
-                  <div className="WhoWeAre-team-info text-center">
-                    <h3 className="text-h3">{employee.name}</h3>
-                    <p className="text-body">{employee.role}</p>
-                  </div>
-                </div>
-              )
-            })}
+                )
+              })}
+            </div>
           </div>
         </div>
 

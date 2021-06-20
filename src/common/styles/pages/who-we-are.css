@@ -232,32 +232,31 @@
 }
 
 .WhoWeAre-team-grid {
+  max-width: 1970px;
+  @apply mx-auto;
   @apply grid;
-  @apply gap-y-16;
   grid-template-columns: 1fr;
 
   @screen md {
     grid-template-columns: 1fr 1fr;
-    @apply gap-y-20;
-  }
-
-  @screen lg {
-    @apply gap-y-22;
   }
 
   @screen xl {
     grid-template-columns: 1fr 1fr 1fr;
-    @apply gap-y-36;
   }
+}
+
+.WhoWeAre-team-member {
+  @apply bg-white;
 }
 
 .WhoWeAre-team-photo {
   @apply relative;
   @apply bg-foundation;
   @apply pt-4;
-  @apply px-20;
 
-  @apply lg:px-24;
+  @apply 2xl:pt-10;
+
   &:hover {
     .WhoWeAre-team-illustration {
       @apply opacity-0;
@@ -270,8 +269,20 @@
 }
 
 .WhoWeAre-team-illustration {
+  width: 215px;
+  @apply mx-auto;
+
+  @screen lg {
+    width: 284px;
+  }
+
+  @screen 2xl {
+    width: 380px;
+  }
+}
+
+.WhoWeAre-team-illustration {
   @apply opacity-100;
-  @apply w-full;
   transition: opacity 300ms ease;
 }
 
@@ -285,4 +296,63 @@
   left: 50%;
   transform: translateX(-50%);
   transition: opacity 300ms ease;
+}
+
+.WhoWeAre-team-info {
+  @apply relative;
+  @apply pt-6;
+  @apply pb-16;
+
+  @apply md:pt-4;
+  @apply md:pb-20;
+
+  @apply lg:pb-22;
+
+  @apply xl:pb-36;
+}
+
+.WhoWeAre-team-member:nth-child(1),
+.WhoWeAre-team-member:nth-child(4),
+.WhoWeAre-team-member:nth-child(7) {
+  @screen xl {
+    .WhoWeAre-team-info {
+      @apply relative;
+      z-index: 5;
+    }
+    .WhoWeAre-team-info:before {
+      content: "";
+      @apply block;
+      @apply absolute;
+      @apply bg-white;
+      @apply top-0;
+      @apply right-0;
+      @apply bottom-0;
+      height: 100%;
+      width: 5000%;
+      z-index: -1;
+    }
+  }
+}
+
+.WhoWeAre-team-member:nth-child(3),
+.WhoWeAre-team-member:nth-child(6),
+.WhoWeAre-team-member:nth-child(8) {
+  @screen xl {
+    .WhoWeAre-team-info {
+      @apply relative;
+      z-index: 5;
+    }
+    .WhoWeAre-team-info:after {
+      content: "";
+      @apply block;
+      @apply absolute;
+      @apply bg-white;
+      @apply top-0;
+      @apply left-0;
+      @apply bottom-0;
+      height: 100%;
+      width: 5000%;
+      z-index: -1;
+    }
+  }
 }

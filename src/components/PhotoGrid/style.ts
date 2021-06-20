@@ -13,7 +13,7 @@ export const PhotoGrid = styled.div`
   align-items: start;
   justify-items: center;
   grid-gap: 20px;
-  max-width: 1100px;
+  max-width: 1184px;
   margin-left: auto;
   margin-right: auto;
 `
