@@ -13,7 +13,7 @@ import fadeInUpVariants from '@modules/common/animation/variants/fadeInUp'
 
 // Components
 import Meta from '@components/Meta'
-import PhotoGrid from '@components/PhotoGrid'
+import PhotoGrid from '@modules/common/components/PhotoGrid'
 import Button from '@modules/common/components/Button'
 import OtherServices from '@modules/service/components/OtherServices'
 import Footer from '@components/Footer'

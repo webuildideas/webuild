@@ -292,7 +292,7 @@
   @apply opacity-0;
   position: absolute !important;
   @apply bottom-0;
-  max-height: 90%;
+  max-height: 92%;
   width: auto;
   left: 50%;
   transform: translateX(-50%);
