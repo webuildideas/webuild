@@ -51,7 +51,6 @@ const PhotoGridContainer = styled.div`
 `
 
 const WhoWeAre = ({ data, location }: Props) => {
-  console.log('DATA', data)
   const { photoGrid, meetTheTeam } = data.contentfulAboutPage
   const { nodes: services } = data.allContentfulService
 
