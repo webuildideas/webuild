@@ -27,6 +27,7 @@ import Support from '@static/svgs/who-we-are/support.inline.svg'
 
 // Styles
 import '@common/styles/pages/who-we-are.css'
+import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModal'
 
 interface WhoWeAreQueryResponse {
   contentfulAboutPage: {
@@ -51,6 +52,7 @@ const PhotoGridContainer = styled.div`
 `
 
 const WhoWeAre = ({ data, location }: Props) => {
+  const { showModal } = useOpportunityFormModal()
   const { photoGrid, meetTheTeam } = data.contentfulAboutPage
   const { nodes: services } = data.allContentfulService
 
@@ -195,7 +197,9 @@ const WhoWeAre = ({ data, location }: Props) => {
             We’re always looking for talented, kind, and ready-for-anything
             people to join our remote team.
           </h3>
-          <Button styleType="solid-purple">Introduce Yourself</Button>
+          <Button onClick={showModal} styleType="solid-purple">
+            Introduce Yourself
+          </Button>
         </div>
         <OtherServices services={services} />
         <Footer />
