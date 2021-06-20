@@ -257,13 +257,15 @@
 
   @apply 2xl:pt-10;
 
-  &:hover {
-    .WhoWeAre-team-illustration {
-      @apply opacity-0;
-    }
+  @screen xl {
+    &:hover {
+      .WhoWeAre-team-illustration {
+        @apply opacity-0;
+      }
 
-    .WhoWeAre-team-headshot {
-      @apply opacity-100;
+      .WhoWeAre-team-headshot {
+        @apply opacity-100;
+      }
     }
   }
 }
