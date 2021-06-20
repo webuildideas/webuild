@@ -8,11 +8,14 @@ import styled from 'styled-components'
 import { rhythmUnit } from '@common/utils/typography'
 import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
 import { TypeEmployee } from '@common/types/Employee'
+import { TypeService } from '@common/types/Service'
 import fadeInUpVariants from '@modules/common/animation/variants/fadeInUp'
 
 // Components
 import Meta from '@components/Meta'
 import PhotoGrid from '@components/PhotoGrid'
+import Button from '@modules/common/components/Button'
+import OtherServices from '@modules/service/components/OtherServices'
 import Footer from '@components/Footer'
 
 // SVGs
@@ -30,6 +33,9 @@ interface WhoWeAreQueryResponse {
     photoGrid: TypeGatsbyImageFluid[]
     meetTheTeam: TypeEmployee[]
   }
+  allContentfulService: {
+    nodes: TypeService[]
+  }
 }
 
 interface Props {
@@ -45,7 +51,9 @@ const PhotoGridContainer = styled.div`
 `
 
 const WhoWeAre = ({ data, location }: Props) => {
+  console.log('DATA', data)
   const { photoGrid, meetTheTeam } = data.contentfulAboutPage
+  const { nodes: services } = data.allContentfulService
 
   const initial = { opacity: 0 }
   const animateTo = { opacity: 1 }
@@ -183,6 +191,14 @@ const WhoWeAre = ({ data, location }: Props) => {
           </div>
         </div>
 
+        <div className="WhoWeAre-introduce text-center">
+          <h3 className="text-h3 mb-10 md:mb-12">
+            We’re always looking for talented, kind, and ready-for-anything
+            people to join our remote team.
+          </h3>
+          <Button styleType="solid-purple">Introduce Yourself</Button>
+        </div>
+        <OtherServices services={services} />
         <Footer />
       </motion.main>
     </>
@@ -208,6 +224,17 @@ export const WHO_WE_ARE_QUERY = graphql`
         }
 
         headshot {
+          file {
+            url
+          }
+        }
+      }
+    }
+    allContentfulService {
+      nodes {
+        shortTitle
+        slug
+        otherServicesIllustration {
           file {
             url
           }
