@@ -137,12 +137,12 @@ module.exports = {
       md: '768px',
       lg: '1024px',
       xl: '1440px',
-      '2xl': '1536px',
+      '2xl': '2560px',
       maxSm: { max: '425px' },
       maxMd: { max: '768px' },
       maxLg: { max: '1024px' },
       maxXl: { max: '1440px' },
-      max2xl: { max: '1536px' }
+      max2xl: { max: '2560px' }
     },
 
     spacing: {
@@ -198,7 +198,17 @@ module.exports = {
       47: '188px',
       48: '192px',
       49: '196px',
-      50: '200px'
+      50: '200px',
+      51: '204px',
+      52: '208px',
+      53: '212px',
+      54: '216px',
+      55: '220px',
+      56: '224px',
+      57: '228px',
+      58: '232px',
+      59: '236px',
+      60: '240px'
     }
   }
 }

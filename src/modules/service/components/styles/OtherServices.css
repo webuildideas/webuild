@@ -36,21 +36,18 @@
 }
 
 .OtherServices-services {
-  @apply grid;
-  @apply grid-cols-2;
-  @apply gap-x-11;
+  @apply flex;
+  @apply items-start;
+  @apply flex-wrap;
+  @apply justify-between;
   @apply gap-y-8;
   @apply text-center;
   @apply mx-auto;
   width: 215px;
 
-  @apply md:grid-cols-4;
-  @apply md:gap-x-21;
   @screen md {
     width: 600px;
   }
-
-  @apply lg:gap-x-29;
 
   @screen lg {
     width: 744px;
@@ -60,7 +57,6 @@
 .OtherServices-service {
   @apply flex;
   @apply flex-col;
-
 
   img {
     @apply mb-4;

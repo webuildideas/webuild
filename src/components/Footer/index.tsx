@@ -3,9 +3,11 @@ import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
 
+// Forms
+import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModal'
+
 // Styles
 import './style.css'
-import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModal'
 
 const Footer = () => {
   const { showModal } = useOpportunityFormModal()
