@@ -1,14 +1,14 @@
 // Packages
 import React, { useEffect } from 'react'
 import Img from 'gatsby-image'
-import { useAnimation, Variants } from 'framer-motion'
+import { useAnimation, Variants, motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 
 // Common
 import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
 
 // Styles
-import * as S from './style'
+import './styles/PhotoGrid.css'
 
 interface Props {
   photos: TypeGatsbyImageFluid[]
@@ -79,11 +79,12 @@ const PhotoGrid = ({ photos }: Props) => {
   })
 
   return (
-    <S.PhotoGrid ref={ref}>
+    <div ref={ref} className="PhotoGrid">
       {photos.map((photo, idx) => (
-        <S.PhotoItem
+        <motion.div
           key={`photo-${idx}`}
           animate={animationControls}
+          className="PhotoGrid-item"
           custom={idx + 2}
           data-photo={idx + 1}
           initial={`image${idx + 1}Hidden`}
@@ -95,9 +96,9 @@ const PhotoGrid = ({ photos }: Props) => {
             fadeIn
             fluid={photo.fluid}
           />
-        </S.PhotoItem>
+        </motion.div>
       ))}
-    </S.PhotoGrid>
+    </div>
   )
 }
 

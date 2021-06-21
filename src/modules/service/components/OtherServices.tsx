@@ -11,14 +11,15 @@ import './styles/OtherServices.css'
 
 interface Props {
   services: TypeService[]
+  title?: string
 }
 
-const OtherServices = ({ services }: Props) => {
+const OtherServices = ({ services, title = 'Other Services' }: Props) => {
   return (
     <div className="OtherServices">
       <div className="OtherServices-inner">
         <div className="OtherServices-header">
-          <h3 className="text-h3 font-extrabold text-center">Other Services</h3>
+          <h3 className="text-h3 font-extrabold text-center">{title}</h3>
           <AniLink
             className="OtherServices-button Button Button-outline hidden md:inline-block"
             to="/what-we-do"
