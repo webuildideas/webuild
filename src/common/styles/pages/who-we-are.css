@@ -141,21 +141,29 @@
 }
 
 .WhoWeAre-value.iterate {
-  width: 191px;
-  @apply mx-auto;
+  flex-basis: 100%;
   @apply mb-4;
+
+  svg,
+  p {
+    width: 191px;
+  }
 
   @apply md:mx-0;
 
   @screen md {
+    flex-basis: 191px;
     @apply order-4;
+    svg {
+      width: 100%;
+    }
     p {
       width: 130px;
     }
   }
 
   @screen lg {
-    width: 191px;
+    flex-basis: 191px;
     @apply order-3;
     p {
       @apply w-full;
@@ -163,7 +171,7 @@
   }
 
   @screen xl {
-    width: 259px;
+    flex-basis: 259px;
     p {
       width: 184px;
     }
@@ -231,18 +239,23 @@
   @apply xl:mt-48;
 }
 
+.WhoWeAre-team-inner {
+  @apply overflow-x-hidden;
+}
+
 .WhoWeAre-team-grid {
   max-width: 1970px;
+  width: 100%;
   @apply mx-auto;
   @apply grid;
-  grid-template-columns: 1fr;
+  @apply grid-cols-1;
 
   @screen md {
-    grid-template-columns: 1fr 1fr;
+    @apply grid-cols-2;
   }
 
   @screen xl {
-    grid-template-columns: 1fr 1fr 1fr;
+    @apply grid-cols-3;
   }
 }
 
@@ -306,6 +319,7 @@
 
   @apply md:pt-4;
   @apply md:pb-20;
+  @apply px-8;
 
   @apply lg:pb-22;
 

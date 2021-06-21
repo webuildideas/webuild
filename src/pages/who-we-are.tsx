@@ -119,7 +119,7 @@ const WhoWeAre = ({ data, location }: Props) => {
             </motion.p>
           </div>
 
-          <div className="WhoWeAre-values">
+          <div className="WhoWeAre-values w-full">
             <h2 className="WhoWeAre-section-title text-h2 text-center">
               <span className="block text-h4 mb-2">Behind the Design</span>
               <span className="font-extrabold">Our Values</span>
@@ -158,7 +158,7 @@ const WhoWeAre = ({ data, location }: Props) => {
             <span className="block text-h4 mb-2">Who's Who</span>
             <span className="font-extrabold">Meet the Team</span>
           </h2>
-          <div className="bg-foundation overflow-x-hidden">
+          <div className="WhoWeAre-team-inner bg-foundation">
             <div className="WhoWeAre-team-grid">
               {meetTheTeam.map((employee) => {
                 return (
@@ -201,7 +201,7 @@ const WhoWeAre = ({ data, location }: Props) => {
             Introduce Yourself
           </Button>
         </div>
-        <OtherServices services={services} />
+        <OtherServices services={services} title="What We Do" />
         <Footer />
       </motion.main>
     </>

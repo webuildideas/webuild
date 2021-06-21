@@ -1,37 +1,39 @@
 .PhotoGrid {
+  max-width: 1184px;
+  width: 100%;
   @apply grid;
   @apply items-start;
   @apply justify-center;
-  @apply mx-auto;
+  @apply grid-cols-6;
+  grid-template-rows: repeat(4, 160px);
   @apply gap-x-5;
   @apply gap-y-3;
+  @apply mx-auto;
   @apply px-6;
 
   @apply md:px-8;
-  @apply md:gap-x-3;
-  @apply md:gap-y-3;
-
-  @apply lg:px-10;
   @apply md:gap-x-5;
   @apply md:gap-y-5;
+  @screen md {
+    @apply grid-cols-12;
+    grid-template-rows: repeat(12, 40px);
+  }
 
+  @apply lg:px-10;
   @apply lg:gap-x-6;
   @apply lg:gap-y-6;
+  @screen lg {
+    grid-template-rows: repeat(12, 30px);
+  }
 
+  @screen xl {
+    grid-template-rows: repeat(12, 40px);
+  }
   @apply xl:px-0;
-
-  max-width: 1184px;
 
   @screen 2xl {
     max-width: 1970px;
-  }
-
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(4, 12vh);
-
-  @screen md {
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(3, 20vh);
+    grid-template-rows: repeat(12, 75px);
   }
 }
 
@@ -46,54 +48,147 @@
     height: 100%;
   }
 
+  &[data-photo="1"] {
+    @apply col-span-3;
+  }
+
+  &[data-photo="2"] {
+    @apply col-span-3;
+  }
+
   &[data-photo="3"] {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    grid-row-start: 2;
-    grid-row-end: 3;
+    @apply col-span-full;
+  }
+
+  &[data-photo="4"] {
+    @apply col-span-3;
+  }
+
+  &[data-photo="5"] {
+    @apply col-span-3;
+  }
+
+  &[data-photo="6"] {
+    @apply col-span-3;
+  }
+
+  &[data-photo="7"] {
+    @apply col-span-3;
   }
 
   @screen md {
+    /* Team At Desk*/
     &[data-photo="1"] {
-      grid-column-start: 1;
-      grid-column-end: 2;
-      grid-row-start: 1;
-      grid-row-end: 2;
+      @apply col-start-1;
+      @apply col-end-5;
+      @apply row-start-1;
+      @apply row-end-6;
     }
 
-    &[data-photo="2"] {
-      grid-column-start: 2;
-      grid-column-end: 4;
-      grid-row-start: 1;
-      grid-row-end: 3;
-    }
-
+    /* Team Aerial Desk */
     &[data-photo="3"] {
-      grid-column-start: 4;
-      grid-column-end: 6;
-      grid-row-start: 1;
-      grid-row-end: 2;
+      @apply col-start-5;
+      @apply col-end-13;
+      @apply row-start-1;
+      @apply row-end-4;
     }
 
+    /* Dogs */
     &[data-photo="4"] {
-      grid-column-start: 1;
-      grid-column-end: 2;
-      grid-row-start: 2;
-      grid-row-end: 3;
+      @apply col-start-1;
+      @apply col-end-5;
+      @apply row-start-6;
+      grid-row-end: 10;
     }
 
-    &[data-photo="5"] {
-      grid-column-start: 4;
-      grid-column-end: 6;
-      grid-row-start: 2;
-      grid-row-end: 4;
+    /* Norton + Cam at desk */
+    &[data-photo="2"] {
+      @apply col-start-5;
+      @apply col-end-9;
+      @apply row-start-4;
+      grid-row-end: 8;
     }
 
+    /* Laptop */
     &[data-photo="6"] {
-      grid-column-start: 1;
-      grid-column-end: 3;
-      grid-row-start: 3;
-      grid-row-end: 4;
+      @apply col-start-9;
+      @apply col-end-13;
+      @apply row-start-4;
+      grid-row-end: 8;
+    }
+
+    /* Evan Counter */
+    &[data-photo="5"] {
+      @apply col-start-1;
+      @apply col-end-5;
+      grid-row-start: 10;
+      grid-row-end: 13;
+    }
+
+    /* Desktop */
+    &[data-photo="7"] {
+      @apply col-start-5;
+      @apply col-end-13;
+      grid-row-start: 8;
+      grid-row-end: 13;
+    }
+  }
+
+  @screen lg {
+    /* Team At Desk*/
+    &[data-photo="1"] {
+      @apply col-start-1;
+      @apply col-end-4;
+      @apply row-start-1;
+      @apply row-end-6;
+    }
+
+    /* Team Aerial Desk */
+    &[data-photo="3"] {
+      @apply col-start-9;
+      @apply col-end-13;
+      @apply row-start-1;
+      @apply row-end-6;
+    }
+
+    /* Dogs */
+    &[data-photo="4"] {
+      @apply col-start-1;
+      @apply col-end-4;
+      @apply row-start-6;
+      grid-row-end: 10;
+    }
+
+    /* Norton + Cam at desk */
+    &[data-photo="2"] {
+      @apply col-start-4;
+      @apply col-end-9;
+      @apply row-start-1;
+      grid-row-end: 10;
+    }
+
+    /* Laptop */
+    &[data-photo="6"] {
+      @apply col-start-7;
+      @apply col-end-9;
+      grid-row-start: 10;
+      grid-row-end: 13;
+    }
+
+    /* Evan Counter */
+    &[data-photo="5"] {
+      @apply col-start-9;
+      @apply col-end-13;
+      grid-row-start: 6;
+      grid-row-end: 13;
+    }
+
+    /* Desktop */
+    &[data-photo="7"] {
+      @apply col-start-1;
+      @apply col-end-7;
+      grid-row-start: 10;
+      grid-row-end: 13;
     }
   }
 }
