@@ -135,7 +135,7 @@ const WhoWeAre = ({ data, location }: Props) => {
               </div>
               <div className="WhoWeAre-value iterate">
                 <Iterate />
-                <p className="text-body">We iterate untill it's great</p>
+                <p className="text-body">We iterate until it's great</p>
               </div>
               <div className="WhoWeAre-value details">
                 <Details />
