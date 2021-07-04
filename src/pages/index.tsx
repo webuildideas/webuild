@@ -45,24 +45,28 @@ const IndexPage = ({ data, location }: Props) => {
   return (
     <div className="Home">
       <Meta location={location} title="Home" />
-      <h1 className="text-h1">
-        Supercharge your business with results-driven strategy & design.
-      </h1>
-      <h2 className="text-title-subheading">
-        We ideate, design, and optimize winning digital products for
-        fast-growing Fintech and B2B SaaS startups.
-      </h2>
-      <div className="Home-learn-how">
-        <MotionAniLink
-          bgColor="#286AFF"
-          className="inline-block"
-          direction="top"
-          duration={1.25}
-          styleType="solid"
-          to="/what-we-do"
-        >
-          What we do
-        </MotionAniLink>
+      <div className="Home-hero">
+        <div className="Home-hero-text">
+          <h1 className="text-h1">
+            Supercharge your business with results-driven strategy & design.
+          </h1>
+          <h2 className="text-title-subheading">
+            We ideate, design, and optimize winning digital products for
+            fast-growing Fintech and B2B SaaS startups.
+          </h2>
+          <div className="Home-learn-how">
+            <MotionAniLink
+              bgColor="#286AFF"
+              className="inline-block"
+              direction="top"
+              duration={1.25}
+              styleType="solid"
+              to="/what-we-do"
+            >
+              What we do
+            </MotionAniLink>
+          </div>
+        </div>
       </div>
       <CaseStudiesContainer>
         <div className="overflow-hidden">
