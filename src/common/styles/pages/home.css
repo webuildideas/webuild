@@ -2,13 +2,62 @@
   @apply mb-40;
 }
 
+.Home-hero {
+  @apply pt-10;
+  @apply pb-14;
+  @apply px-6;
+  background-image: url("../../../static/images/home/homepage-hero-mobile.jpg");
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: cover;
+
+  @apply md:pt-26;
+  @apply md:pb-26;
+  @screen md {
+    background-image: url("../../../static/images/home/homepage-hero-tablet.jpg");
+  }
+
+  @screen lg {
+    background-image: url("../../../static/images/home/homepage-hero-large-tablet.jpg");
+  }
+
+  @apply xl:pt-36;
+  @apply xl:pb-36;
+  @screen xl {
+    background-image: url("../../../static/images/home/homepage-hero-desktop.jpg");
+  }
+
+  @screen 2xl {
+    background-image: url("../../../static/images/home/homepage-hero-large-device.jpg");
+  }
+}
+
+.Home-hero-text {
+  max-width: 1184px;
+  @apply mx-auto;
+
+  h1 {
+    max-width: 984px;
+    @apply mb-6;
+
+    @apply md:mb-4;
+
+    @apply lg:mb-6;
+  }
+
+  h2 {
+    max-width: 860px;
+    @apply mb-10;
+
+    @apply md:mb-8;
+
+    @apply lg:mb-10;
+  }
+}
+
 .Home-learn-how {
   max-width: 1184px;
   @apply mx-auto;
-  @apply mt-10;
-  @apply px-6;
-
-  @apply md:px-8;
 
   @apply xl:px-0;
 }
