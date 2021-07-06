@@ -61,3 +61,94 @@
 
   @apply xl:px-0;
 }
+
+.Home-testimonials {
+  @apply mb-24;
+  @apply mx-auto;
+  max-width: 984px;
+
+  @apply md:mb-32;
+
+  @apply lg:mb-36;
+
+  @screen xl {
+    margin-bottom: 244px;
+  }
+}
+
+.Home-work {
+  @apply px-6;
+  @apply py-16;
+  @apply mx-auto;
+  max-width: 584px;
+
+  @apply md:px-0;
+  @apply md:py-24;
+
+  @apply lg:pt-30;
+  @apply lg:pb-24;
+  @screen lg {
+    max-width: 784px;
+  }
+
+  @apply xl:pt-36;
+  @apply xl:pb-36;
+  @apply xl:flex;
+  @apply xl:items-center;
+  @apply xl:justify-between;
+  @screen xl {
+    max-width: 1184px;
+  }
+}
+
+.Home-work-img {
+  @apply mb-8;
+
+  @apply md:mb-14;
+
+  @apply xl:mb-0;
+  @apply xl:flex-shrink-0;
+  @apply xl:flex-1;
+  @screen xl {
+    max-width: 560px;
+  }
+}
+
+.Home-work-content {
+  @apply xl:flex-shrink-0;
+  @apply xl:flex-1;
+  @screen xl {
+    max-width: 584px;
+  }
+}
+
+.Home-work-title {
+  @apply mb-4;
+}
+
+.Home-work-copy {
+  @apply mb-6;
+}
+
+.Home-work-border {
+  @apply block;
+  @apply mx-auto;
+  @apply my-6;
+  @apply bg-gray-400;
+  width: 215px;
+  height: 2px;
+
+  @apply my-8;
+  @screen md {
+    width: 584px;
+  }
+
+  @apply my-10;
+  @screen lg {
+    width: 784px;
+  }
+
+  @screen xl {
+    width: 984px;
+  }
+}

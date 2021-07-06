@@ -1,21 +1,17 @@
 // Packages
 import React from 'react'
 import { graphql, PageProps } from 'gatsby'
-import styled from 'styled-components'
+import Img from 'gatsby-image'
 
 // Common
-import { rhythmUnit } from '@common/utils/typography'
-import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
 import { TypeCaseStudy } from '@common/types/CaseStudy'
 import { TypeTestimonial } from '@common/types/Testimonial'
-import '@common/styles/SectionHeading.css'
 
 // Components
+import TestimonialSlider from '@modules/common/components/TestimonialSlider'
 import Meta from '@components/Meta'
 import MotionAniLink from '@modules/common/components/MotionAniLink'
-import TestimonialGrid from '@components/TestimonialGrid'
 import Footer from '@components/Footer'
-import CaseStudy from '@modules/common/components/CaseStudy'
 
 // Styles
 import '../common/styles/pages/home.css'
@@ -25,6 +21,11 @@ export interface HomePageQueryResponse {
     caseStudies: TypeCaseStudy[]
     testimonials: TypeTestimonial[]
   }
+  file: {
+    childImageSharp: {
+      fluid: any
+    }
+  }
 }
 
 interface Props {
@@ -32,15 +33,9 @@ interface Props {
   location: PageProps['location']
 }
 
-const CaseStudiesContainer = styled.div`
-  padding-top: ${() => rhythmUnit(5)};
-  @media (min-width: 768px) {
-    padding-top: ${() => rhythmUnit(6)};
-  }
-`
-
 const IndexPage = ({ data, location }: Props) => {
   const homeData = data.contentfulHomePage
+  const howWeWorkImage = data.file.childImageSharp.fluid
 
   return (
     <div className="Home">
@@ -68,29 +63,38 @@ const IndexPage = ({ data, location }: Props) => {
           </div>
         </div>
       </div>
-      <CaseStudiesContainer>
-        <div className="overflow-hidden">
-          {homeData.caseStudies.map((study: TypeCaseStudy, idx: number) => {
-            const animationThreshold = idx === 0 ? 0.25 : 0.8
-            // Even # items we want image on right.
-            const layout = (idx + 1) % 2 === 0 ? 'left' : 'right'
-            return (
-              <CaseStudy
-                key={study.slug}
-                animationThreshold={animationThreshold}
-                caseStudy={study}
-                layout={layout}
-              />
-            )
-          })}
-        </div>
-      </CaseStudiesContainer>
 
-      <section className="bg-snow">
-        <SiteMaxWidthContainer className="pt-20 pb-24">
-          <TestimonialGrid testimonials={homeData.testimonials} />
-        </SiteMaxWidthContainer>
-      </section>
+      <div className="Home-testimonials">
+        <TestimonialSlider testimonials={homeData.testimonials} />
+      </div>
+
+      <div className="Home-work">
+        <div className="Home-work-img">
+          <Img fluid={howWeWorkImage} />
+        </div>
+        <div className="Home-work-content">
+          <h2 className="Home-work-title text-h2 font-extrabold">
+            How we work
+          </h2>
+          <p className="Home-work-copy text-body">
+            From the infancy of your product to its series B round, we’re ready
+            to seamlessly get to work designing the best product for your
+            company — and everything that comes along with it. When we put our
+            heads together, good gets better.
+          </p>
+          <MotionAniLink
+            bgColor="#286AFF"
+            className="inline-block"
+            direction="top"
+            duration={1.25}
+            styleType="solid"
+            to="/what-we-do"
+          >
+            Learn More
+          </MotionAniLink>
+        </div>
+      </div>
+      <hr className="Home-work-border" />
 
       <Footer />
     </div>
@@ -123,13 +127,33 @@ export const HOMEPAGE_QUERY = graphql`
         company
         name
         role
-        quote {
+        quoteShort {
           raw
         }
+        mainHeadshot {
+          fluid(maxWidth: 500) {
+            ...GatsbyContentfulFluid_withWebp_noBase64
+          }
+        }
         headshot {
-          fixed(cropFocus: FACE, height: 50, width: 50) {
+          fixed(cropFocus: FACE, height: 150, width: 150) {
             ...GatsbyContentfulFixed_withWebp_noBase64
           }
+        }
+        purpleHeadshot {
+          fixed(cropFocus: FACE, height: 150, width: 150) {
+            ...GatsbyContentfulFixed_withWebp_noBase64
+          }
+        }
+      }
+    }
+    file(
+      relativePath: { eq: "home/how-we-work.png" }
+      sourceInstanceName: { eq: "images" }
+    ) {
+      childImageSharp {
+        fluid(maxWidth: 1000) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
         }
       }
     }
