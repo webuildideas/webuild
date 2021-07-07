@@ -63,17 +63,23 @@
 }
 
 .Home-testimonials {
-  @apply mb-24;
+  @apply bg-gray-100;
+  @apply py-15;
+  @apply px-6;
+
+  @apply md:px-8;
+  @apply md:py-20;
+
+  @apply lg:py-24;
+  @apply lg:px-10;
+
+  @apply xl:py-36;
+  @apply xl:px-0;
+}
+
+.Home-testimonials-inner {
   @apply mx-auto;
   max-width: 984px;
-
-  @apply md:mb-32;
-
-  @apply lg:mb-36;
-
-  @screen xl {
-    margin-bottom: 244px;
-  }
 }
 
 .Home-work {
@@ -88,7 +94,7 @@
   @apply lg:pt-30;
   @apply lg:pb-24;
   @screen lg {
-    max-width: 784px;
+    max-width: 624px;
   }
 
   @apply xl:pt-36;
@@ -160,12 +166,13 @@
   max-width: 584px;
 
   @apply md:px-0;
-  @apply md:py-24;
+  @apply md:pt-24;
+  @apply md:pb-30;
 
   @apply lg:pt-30;
   @apply lg:pb-24;
   @screen lg {
-    max-width: 784px;
+    max-width: 624px;
   }
 
   @apply xl:pt-36;

@@ -66,7 +66,9 @@ const IndexPage = ({ data, location }: Props) => {
       </div>
 
       <div className="Home-testimonials">
-        <TestimonialSlider testimonials={homeData.testimonials} />
+        <div className="Home-testimonials-inner">
+          <TestimonialSlider testimonials={homeData.testimonials} />
+        </div>
       </div>
 
       <div className="Home-work">
