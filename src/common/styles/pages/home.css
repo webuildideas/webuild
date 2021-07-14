@@ -2,6 +2,8 @@
   @apply mb-40;
 }
 
+/* Home Hero */
+
 .Home-hero {
   @apply pt-10;
   @apply pb-14;
@@ -55,12 +57,60 @@
   }
 }
 
-.Home-learn-how {
-  max-width: 1184px;
+/* Case Studies Carousel */
+
+.Home-case-studies {
+  @apply py-16;
+  @apply bg-foundation;
+}
+
+.Home-case-studies-inner {
+}
+
+.Home-case-studies-intro {
   @apply mx-auto;
+  max-width: 1184px;
+
+  @apply px-6;
+  @apply mb-8;
+
+  @apply md:flex;
+  @apply md:items-end;
+  @apply md:justify-between;
+  @apply md:px-8;
+  @apply md:mb-20;
+
+  @apply lg:px-10;
 
   @apply xl:px-0;
 }
+
+.Home-case-studies-intro-content {
+  @apply md:order-1;
+
+  @screen xl {
+    max-width: 584px;
+  }
+}
+
+.Home-case-studies-intro-img {
+  width: 215px;
+  @apply mx-auto;
+  @apply mb-6;
+
+  @apply md:order-2;
+  @apply md:flex-shrink-0;
+  @apply md:mb-0;
+  @screen md {
+    width: 344px;
+  }
+
+  @screen lg {
+    width: 388px;
+  }
+}
+
+/* Testimonials */
 
 .Home-testimonials {
   @apply bg-gray-100;
@@ -81,6 +131,8 @@
   @apply mx-auto;
   max-width: 984px;
 }
+
+/* How We Work Section */
 
 .Home-work {
   @apply px-6;
@@ -158,6 +210,8 @@
     width: 984px;
   }
 }
+
+/* When we connect section */
 
 .Home-connect {
   @apply px-6;
