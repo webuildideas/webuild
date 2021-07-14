@@ -29,6 +29,9 @@ export interface HomePageQueryResponse {
     testimonials: TypeTestimonial[]
     insights: TypeInsight[]
   }
+  allContentfulInsight: {
+    nodes: TypeInsight[]
+  }
   file: {
     childImageSharp: {
       fluid: any
@@ -43,6 +46,7 @@ interface Props {
 
 const IndexPage = ({ data, location }: Props) => {
   const homeData = data.contentfulHomePage
+  const defaultInsights = data.allContentfulInsight.nodes
   const connectImage = data.file.childImageSharp.fluid
 
   return (
@@ -163,7 +167,13 @@ const IndexPage = ({ data, location }: Props) => {
               From The Blog
             </h2>
           </div>
-          <InsightCarousel insights={homeData.insights} />
+          <InsightCarousel
+            insights={
+              homeData.insights && homeData.insights.length > 0
+                ? homeData.insights
+                : defaultInsights
+            }
+          />
         </div>
       </div>
 
@@ -219,6 +229,21 @@ export const HOMEPAGE_QUERY = graphql`
       }
 
       insights {
+        type
+        topics
+        title
+        subtitle
+        slug
+        featuredIllustration {
+          file {
+            url
+          }
+        }
+      }
+    }
+
+    allContentfulInsight(limit: 7, sort: { order: DESC, fields: publishDate }) {
+      nodes {
         type
         topics
         title

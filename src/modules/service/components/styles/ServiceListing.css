@@ -85,5 +85,6 @@
 
   .arrow-icon {
     @apply ml-3;
+    width: 20px;
   }
 }
