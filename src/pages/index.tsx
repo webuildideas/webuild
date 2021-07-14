@@ -20,11 +20,17 @@ import CaseStudies from '@static/svgs/home/case-studies.inline.svg'
 
 // Styles
 import '../common/styles/pages/home.css'
+import InsightCarousel from '@modules/home/components/InsightCarousel'
+import { TypeInsight } from '@common/types/Insight'
 
 export interface HomePageQueryResponse {
   contentfulHomePage: {
     caseStudies: TypeCaseStudy[]
     testimonials: TypeTestimonial[]
+    insights: TypeInsight[]
+  }
+  allContentfulInsight: {
+    nodes: TypeInsight[]
   }
   file: {
     childImageSharp: {
@@ -40,6 +46,7 @@ interface Props {
 
 const IndexPage = ({ data, location }: Props) => {
   const homeData = data.contentfulHomePage
+  const defaultInsights = data.allContentfulInsight.nodes
   const connectImage = data.file.childImageSharp.fluid
 
   return (
@@ -153,6 +160,23 @@ const IndexPage = ({ data, location }: Props) => {
         </div>
       </div>
 
+      <div className="Home-insights mx-auto py-20">
+        <div className="Home-insights-inner">
+          <div className="Home-insights-content">
+            <h2 className="Home-insights-title text-h2 font-extrabold mb-4">
+              From The Blog
+            </h2>
+          </div>
+          <InsightCarousel
+            insights={
+              homeData.insights && homeData.insights.length > 0
+                ? homeData.insights
+                : defaultInsights
+            }
+          />
+        </div>
+      </div>
+
       <Footer />
     </div>
   )
@@ -203,7 +227,36 @@ export const HOMEPAGE_QUERY = graphql`
           }
         }
       }
+
+      insights {
+        type
+        topics
+        title
+        subtitle
+        slug
+        featuredIllustration {
+          file {
+            url
+          }
+        }
+      }
     }
+
+    allContentfulInsight(limit: 7, sort: { order: DESC, fields: publishDate }) {
+      nodes {
+        type
+        topics
+        title
+        subtitle
+        slug
+        featuredIllustration {
+          file {
+            url
+          }
+        }
+      }
+    }
+
     file(
       relativePath: { eq: "home/homepage-connect.png" }
       sourceInstanceName: { eq: "images" }
