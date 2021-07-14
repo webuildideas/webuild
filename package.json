@@ -46,6 +46,7 @@
     "react-helmet": "^6.1.0",
     "react-intersection-observer": "^8.31.0",
     "react-masonry-css": "^1.0.14",
+    "react-multi-carousel": "^2.6.3",
     "react-paginate": "^7.1.0",
     "react-share": "^4.3.1",
     "react-spring": "^8.0.27",

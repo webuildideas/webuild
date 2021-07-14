@@ -12,7 +12,11 @@ import TestimonialSlider from '@modules/common/components/TestimonialSlider'
 import Meta from '@components/Meta'
 import MotionAniLink from '@modules/common/components/MotionAniLink'
 import Footer from '@components/Footer'
+import CaseStudyCarousel from '@modules/home/components/CaseStudyCarousel'
+
+// SVGS
 import HowWeWork from '@static/svgs/home/how-we-work.inline.svg'
+import CaseStudies from '@static/svgs/home/case-studies.inline.svg'
 
 // Styles
 import '../common/styles/pages/home.css'
@@ -50,18 +54,37 @@ const IndexPage = ({ data, location }: Props) => {
             We ideate, design, and optimize winning digital products for
             fast-growing Fintech and B2B SaaS startups.
           </h2>
-          <div className="Home-learn-how">
-            <MotionAniLink
-              bgColor="#286AFF"
-              className="inline-block"
-              direction="top"
-              duration={1.25}
-              styleType="solid"
-              to="/what-we-do"
-            >
-              What we do
-            </MotionAniLink>
+          <MotionAniLink
+            bgColor="#286AFF"
+            className="inline-block"
+            direction="top"
+            duration={1.25}
+            styleType="solid"
+            to="/what-we-do"
+          >
+            What we do
+          </MotionAniLink>
+        </div>
+      </div>
+
+      <div className="Home-case-studies mx-auto py-20">
+        <div className="Home-case-studies-inner">
+          <div className="Home-case-studies-intro">
+            <div className="Home-case-studies-intro-img">
+              <CaseStudies />
+            </div>
+            <div className="Home-case-studies-intro-content">
+              <h2 className="text-h2 font-extrabold mb-4">
+                Results you can get behind
+              </h2>
+              <p className="text-body">
+                How does 5x revenue sound? What about 250% growth? We made it
+                possible through our obsession with optimization and our
+                tailored design systems.
+              </p>
+            </div>
           </div>
+          <CaseStudyCarousel caseStudies={homeData.caseStudies} />
         </div>
       </div>
 
@@ -151,7 +174,7 @@ export const HOMEPAGE_QUERY = graphql`
           }
         }
         listingImage {
-          fluid(maxWidth: 625) {
+          fluid(maxWidth: 450) {
             ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
