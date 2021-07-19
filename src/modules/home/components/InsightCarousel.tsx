@@ -62,46 +62,43 @@ const InsightCarousel = ({ insights }: Props) => {
         <Carousel
           heightMode="max"
           slideIndex={currentSlide}
-          slideWidth={1}
           transitionMode="fade"
           withoutControls
           wrapAround
         >
           {insights.map((insight) => (
-            <article
+            <AniLink
               key={`insight-${insight.slug}`}
+              bg="#757588"
               className="InsightCarousel-slide"
+              cover
+              direction="right"
+              duration={1.25}
+              to={`/${insight.slug}`}
             >
-              <AniLink
-                bg="#757588"
-                className="InsightCarousel-slide-inner"
-                cover
-                direction="right"
-                duration={1.25}
-                to={`/${insight.slug}`}
-              >
-                <div className="InsightCarousel-slide-img">
-                  <img
-                    alt="Article Illustration"
-                    src={insight.featuredIllustration?.file.url}
-                  />
-                </div>
-                <div className="InsightCarousel-slide-content">
-                  <InsightTags topics={insight.topics} type={insight.type} />
-                  <h2 className="InsightCarousel-slide-title text-h3 mb-2 mt-4 lg:mt-7">
-                    {insight.title}
-                  </h2>
-                  {insight.subtitle ? (
-                    <p className="text-body mb-4 md:mb-0">{insight.subtitle}</p>
-                  ) : null}
-
-                  <p className="InsightCarousel-read-link text-button">
-                    <span>Read More</span>
-                    <ArrowRight className="arrow-icon" />
+              <div className="InsightCarousel-slide-img">
+                <img
+                  alt="Article Illustration"
+                  src={insight.featuredIllustration?.file.url}
+                />
+              </div>
+              <div className="InsightCarousel-slide-content">
+                <InsightTags topics={insight.topics} type={insight.type} />
+                <h2 className="InsightCarousel-slide-title text-h3 mb-2 mt-4 lg:mt-7">
+                  {insight.title}
+                </h2>
+                {insight?.metaDescription?.metaDescription ? (
+                  <p className="text-body mb-4 md:mb-0">
+                    {insight.metaDescription.metaDescription}
                   </p>
-                </div>
-              </AniLink>
-            </article>
+                ) : null}
+
+                <p className="InsightCarousel-read-link text-tag">
+                  <span>Read More</span>
+                  <ArrowRight className="arrow-icon" />
+                </p>
+              </div>
+            </AniLink>
           ))}
         </Carousel>
       </div>

@@ -232,8 +232,10 @@ export const HOMEPAGE_QUERY = graphql`
         type
         topics
         title
-        subtitle
         slug
+        metaDescription {
+          metaDescription
+        }
         featuredIllustration {
           file {
             url
@@ -247,8 +249,11 @@ export const HOMEPAGE_QUERY = graphql`
         type
         topics
         title
-        subtitle
         slug
+        subtitle
+        metaDescription {
+          metaDescription
+        }
         featuredIllustration {
           file {
             url

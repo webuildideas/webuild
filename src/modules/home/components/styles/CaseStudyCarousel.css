@@ -9,7 +9,7 @@
   @apply mx-auto;
   @apply px-6;
 
-  @apply md:px-8;
+  @apply md:px-0;
   @screen md {
     max-width: 464px;
   }
@@ -32,14 +32,29 @@
   @apply bg-white;
   @apply mx-auto;
   @apply p-6;
+  @apply items-center;
 
   @apply md:p-10;
+  @screen md {
+    height: 664px;
+  }
 
   @apply lg:p-12;
   @apply lg:flex-row;
-  @apply lg:items-center;
+  @screen lg {
+    height: 524px;
+  }
 
   @apply xl:p-16;
+  @screen xl {
+    height: 450px;
+  }
+
+  &:hover {
+    .CaseStudyCarousel-read-link {
+      @apply font-extrabold;
+    }
+  }
 }
 
 .CaseStudyCarousel-content {
@@ -99,11 +114,12 @@
 
   span {
     display: inline-block;
-    width: 150px;
+    width: 110px;
+    transition: all 300ms ease;
   }
 
   .arrow-icon {
-    @apply ml-3;
+    @apply ml-2;
     width: 20px;
   }
 }
@@ -115,12 +131,17 @@
   width: 32px;
   height: 32px;
   @apply z-20;
+  transition: opacity 250ms ease;
+
+  &:hover {
+    opacity: 80%;
+  }
 
   @screen md {
     width: 42px;
     height: 42px;
     transform: translateY(-50%);
-    top: 40%;
+    top: 50%;
   }
 
   @screen lg {
