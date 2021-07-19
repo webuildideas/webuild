@@ -55,18 +55,24 @@
   @apply border-solid;
   @apply border-l-4;
   @apply border-electricViolet;
-  @apply pt-16;
+  @apply pt-4;
+  @apply md:pt-12;
+  @apply lg:pt-16;
+  @apply xl:pt-12;
 }
 
 .TestimonialSlider-controls {
   @apply flex;
   @apply items-center;
   @apply mt-6;
+
+  @apply md:pl-6;
+  @apply md:mt-12;
   @screen md {
     margin-left: 220px;
-    @apply mt-0;
-    @apply pl-6;
   }
+
+  @apply lg:mt-0;
 }
 
 .TestimonialSlider-control {
