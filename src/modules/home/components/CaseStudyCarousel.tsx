@@ -96,7 +96,7 @@ const CaseStudyCarousel = ({ caseStudies }: Props) => {
                 <p className="text-body CaseStudyCarousel-slide-copy">
                   {caseStudy.successSummary.successSummary}
                 </p>
-                <p className="CaseStudyCarousel-read-link text-button">
+                <p className="CaseStudyCarousel-read-link text-tag">
                   <span>Read Case Study</span>
                   <ArrowRight className="arrow-icon" />
                 </p>

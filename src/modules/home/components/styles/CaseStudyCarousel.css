@@ -37,9 +37,14 @@
 
   @apply lg:p-12;
   @apply lg:flex-row;
-  @apply lg:items-center;
 
   @apply xl:p-16;
+
+  &:hover {
+    .CaseStudyCarousel-read-link {
+      @apply font-extrabold;
+    }
+  }
 }
 
 .CaseStudyCarousel-content {
@@ -99,11 +104,12 @@
 
   span {
     display: inline-block;
-    width: 150px;
+    width: 110px;
+    transition: all 300ms ease;
   }
 
   .arrow-icon {
-    @apply ml-3;
+    @apply ml-2;
     width: 20px;
   }
 }
@@ -115,6 +121,11 @@
   width: 32px;
   height: 32px;
   @apply z-20;
+  transition: opacity 250ms ease;
+
+  &:hover {
+    opacity: 80%;
+  }
 
   @screen md {
     width: 42px;
