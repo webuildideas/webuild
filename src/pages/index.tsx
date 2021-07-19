@@ -1,11 +1,11 @@
 // Packages
 import React from 'react'
 import { graphql, PageProps } from 'gatsby'
-import Img from 'gatsby-image'
 
 // Common
 import { TypeCaseStudy } from '@common/types/CaseStudy'
 import { TypeTestimonial } from '@common/types/Testimonial'
+import { TypeInsight } from '@common/types/Insight'
 
 // Components
 import TestimonialSlider from '@modules/common/components/TestimonialSlider'
@@ -13,15 +13,15 @@ import Meta from '@components/Meta'
 import MotionAniLink from '@modules/common/components/MotionAniLink'
 import Footer from '@components/Footer'
 import CaseStudyCarousel from '@modules/home/components/CaseStudyCarousel'
+import InsightCarousel from '@modules/home/components/InsightCarousel'
 
 // SVGS
 import HowWeWork from '@static/svgs/home/how-we-work.inline.svg'
 import CaseStudies from '@static/svgs/home/case-studies.inline.svg'
+import Connect from '@static/svgs/home/connect.inline.svg'
 
 // Styles
 import '../common/styles/pages/home.css'
-import InsightCarousel from '@modules/home/components/InsightCarousel'
-import { TypeInsight } from '@common/types/Insight'
 
 export interface HomePageQueryResponse {
   contentfulHomePage: {
@@ -31,11 +31,6 @@ export interface HomePageQueryResponse {
   }
   allContentfulInsight: {
     nodes: TypeInsight[]
-  }
-  file: {
-    childImageSharp: {
-      fluid: any
-    }
   }
 }
 
@@ -47,7 +42,6 @@ interface Props {
 const IndexPage = ({ data, location }: Props) => {
   const homeData = data.contentfulHomePage
   const defaultInsights = data.allContentfulInsight.nodes
-  const connectImage = data.file.childImageSharp.fluid
 
   return (
     <div className="Home">
@@ -130,7 +124,7 @@ const IndexPage = ({ data, location }: Props) => {
 
       <div className="Home-connect">
         <div className="Home-connect-img">
-          <Img fluid={connectImage} />
+          <Connect />
         </div>
         <div className="Home-connect-content">
           <h2 className="Home-connect-title text-h2 font-extrabold">
@@ -258,17 +252,6 @@ export const HOMEPAGE_QUERY = graphql`
           file {
             url
           }
-        }
-      }
-    }
-
-    file(
-      relativePath: { eq: "home/homepage-connect.png" }
-      sourceInstanceName: { eq: "images" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 1000) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
         }
       }
     }
