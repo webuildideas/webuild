@@ -81,9 +81,6 @@
   @apply lg:mb-2;
 }
 
-.InsightCarousel-slide-content {
-}
-
 .InsightCarousel-read-link {
   @apply inline-flex;
   @apply items-center;

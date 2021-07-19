@@ -9,7 +9,7 @@
   @apply mx-auto;
   @apply px-6;
 
-  @apply md:px-8;
+  @apply md:px-0;
   @screen md {
     max-width: 464px;
   }
@@ -32,13 +32,23 @@
   @apply bg-white;
   @apply mx-auto;
   @apply p-6;
+  @apply items-center;
 
   @apply md:p-10;
+  @screen md {
+    height: 664px;
+  }
 
   @apply lg:p-12;
   @apply lg:flex-row;
+  @screen lg {
+    height: 524px;
+  }
 
   @apply xl:p-16;
+  @screen xl {
+    height: 450px;
+  }
 
   &:hover {
     .CaseStudyCarousel-read-link {
@@ -131,7 +141,7 @@
     width: 42px;
     height: 42px;
     transform: translateY(-50%);
-    top: 40%;
+    top: 50%;
   }
 
   @screen lg {
