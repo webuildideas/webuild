@@ -1,3 +1,10 @@
+.Home {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
 .Home .CaseStudy-container:not(:last-child) {
   @apply mb-40;
 }
@@ -5,7 +12,7 @@
 /* Home Hero */
 
 .Home-hero {
-  @apply pt-10;
+  @apply pt-30;
   @apply pb-14;
   @apply px-6;
   background-image: url("../../../static/images/home/homepage-hero-mobile.jpg");
@@ -13,7 +20,7 @@
   background-position: bottom center;
   background-size: cover;
 
-  @apply md:pt-26;
+  @apply md:pt-46;
   @apply md:pb-26;
   @screen md {
     background-image: url("../../../static/images/home/homepage-hero-tablet.jpg");
@@ -23,7 +30,7 @@
     background-image: url("../../../static/images/home/homepage-hero-large-tablet.jpg");
   }
 
-  @apply xl:pt-36;
+  @apply xl:pt-56;
   @apply xl:pb-36;
   @screen xl {
     background-image: url("../../../static/images/home/homepage-hero-desktop.jpg");

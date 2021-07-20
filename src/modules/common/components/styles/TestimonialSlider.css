@@ -83,11 +83,15 @@
   @apply overflow-hidden;
   @apply mr-4;
   @apply border-none;
+  width: 48px;
+  height: 48px;
 
   &.is-selected {
     @apply border-solid;
     border-width: 3px;
     @apply border-electricViolet;
+    width: 51px;
+    height: 51px;
   }
 
   .Testimonial__client-headshot {
