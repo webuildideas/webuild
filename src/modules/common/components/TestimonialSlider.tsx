@@ -118,8 +118,10 @@ const TestimonialSlider = ({ testimonials }: Props) => {
     })
   }, [testimonials])
 
-  const handleAfterSlide: CarouselProps['afterSlide'] = (slideIndex: number) =>
-    setCurrentSlide(slideIndex)
+  const handleAfterSlide: CarouselProps['beforeSlide'] = (
+    _currentSlide: number,
+    endSlide: number
+  ) => setCurrentSlide(endSlide)
 
   useEffect(() => {
     if (inView) {
@@ -135,9 +137,9 @@ const TestimonialSlider = ({ testimonials }: Props) => {
         variants={testimonialSliderVariants}
       >
         <Carousel
-          afterSlide={handleAfterSlide}
           autoplay={true}
           autoplayInterval={7000}
+          beforeSlide={handleAfterSlide}
           heightMode="current"
           slideIndex={currentSlide}
           transitionMode="fade"

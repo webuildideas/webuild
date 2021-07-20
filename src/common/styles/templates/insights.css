@@ -13,14 +13,7 @@
 }
 
 .InsightsPage-header-content {
-  max-width: 520px;
-  @screen lg {
-    max-width: 635px;
-  }
-
-  @scree xl {
-    max-width: 784px;
-  }
+  max-width: 984px;
 }
 
 .InsightsPage-feature {
