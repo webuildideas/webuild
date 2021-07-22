@@ -64,6 +64,8 @@
 .Insight-article {
   @apply px-6;
   @apply md:px-0;
+  max-width: 748px;
+  @apply mx-auto;
 }
 
 .Insight-article-locked {
@@ -186,6 +188,15 @@
 
   .text-caption {
     @apply mt-6;
+  }
+}
+
+.Insight-img .Image-full-width {
+  max-width: 327px;
+  @apply mx-auto;
+
+  @screen md {
+    max-width: 540px;
   }
 }
 
