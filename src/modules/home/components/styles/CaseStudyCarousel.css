@@ -33,6 +33,7 @@
   @apply mx-auto;
   @apply p-6;
   @apply items-center;
+  height: 460px;
 
   @apply md:p-10;
   @screen md {
@@ -78,11 +79,13 @@
 
 .CaseStudyCarousel-slide-img {
   width: 164px;
+  height: 132px;
   @apply mb-6;
 
   @apply md:mb-8;
   @screen md {
     width: 296px;
+    height: auto;
   }
 
   @apply lg:order-2;
@@ -127,7 +130,7 @@
 .CaseStudyCarousel-arrow {
   @apply absolute;
   @apply border-none;
-  bottom: -20px;
+  bottom: -48px;
   width: 32px;
   height: 32px;
   @apply z-20;
