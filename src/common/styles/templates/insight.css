@@ -191,6 +191,15 @@
   }
 }
 
+.Insight-img .Image-full-width {
+  max-width: 327px;
+  @apply mx-auto;
+
+  @screen md {
+    max-width: 540px;
+  }
+}
+
 .Insight-img {
   .Image-left picture {
     width: 200px;
