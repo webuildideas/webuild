@@ -81,17 +81,20 @@
   @apply relative;
   @apply rounded-full;
   @apply overflow-hidden;
-  @apply mr-4;
+  @apply mr-2;
   @apply border-none;
   width: 48px;
   height: 48px;
+  flex-shrink: 0;
+
+  @apply md:mr-4;
 
   &.is-selected {
     @apply border-solid;
-    border-width: 3px;
+    border-width: 2px;
     @apply border-electricViolet;
-    width: 51px;
-    height: 51px;
+    width: 50px;
+    height: 50px;
   }
 
   .Testimonial__client-headshot {
@@ -105,7 +108,8 @@
   width: 16px;
   @apply cursor-pointer;
   &.left {
-    @apply mr-4;
+    @apply mr-2;
+    @apply md:mr-4;
   }
 }
 
