@@ -64,6 +64,8 @@
 .Insight-article {
   @apply px-6;
   @apply md:px-0;
+  max-width: 748px;
+  @apply mx-auto;
 }
 
 .Insight-article-locked {
