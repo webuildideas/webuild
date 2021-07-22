@@ -111,7 +111,7 @@ export const GlobalStyle = createGlobalStyle<StyleProps>`
   .CaseStudyDetail .headroom--unfixed .NavContainer,
   .CaseStudyDetail .headroom--unpinned .NavContainer {
     color: #fff;
-    .Logo {
+    .Nav-Logo {
       fill: #fff;
     }
 

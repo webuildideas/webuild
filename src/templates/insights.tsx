@@ -235,8 +235,7 @@ const Insights = ({
         <div className="InsightsPage-header-content">
           <h1 className="mb-4 text-h1">Insights & Ideas</h1>
           <p className="text-title-subheading">
-            A collection of thoughts we are most proud of, from all faces of our
-            diverse team.
+            Dive into our thoughts and expertise on product strategy & design.
           </p>
         </div>
       </div>

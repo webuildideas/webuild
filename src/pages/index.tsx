@@ -1,37 +1,36 @@
 // Packages
-import React, { useEffect } from 'react'
-import { RenderRichTextData } from 'gatsby-source-contentful/rich-text'
+import React from 'react'
 import { graphql, PageProps } from 'gatsby'
-import { motion, useAnimation, Variants } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
-import styled from 'styled-components'
 
 // Common
-import { rhythmUnit } from '@common/utils/typography'
-import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContainer'
 import { TypeCaseStudy } from '@common/types/CaseStudy'
 import { TypeTestimonial } from '@common/types/Testimonial'
-import '@common/styles/SectionHeading.css'
+import { TypeInsight } from '@common/types/Insight'
 
 // Components
+import TestimonialSlider from '@modules/common/components/TestimonialSlider'
 import Meta from '@components/Meta'
 import MotionAniLink from '@modules/common/components/MotionAniLink'
-import PageHeroText from '@modules/common/components/PageHeroText'
-import DesignPartner from '@modules/home/components/DesignPartner'
-import Testimonial from '@modules/common/components/Testimonial'
-import TestimonialGrid from '@components/TestimonialGrid'
 import Footer from '@components/Footer'
-import CaseStudy from '@modules/common/components/CaseStudy'
+import CaseStudyCarousel from '@modules/home/components/CaseStudyCarousel'
+import InsightCarousel from '@modules/home/components/InsightCarousel'
+
+// SVGS
+import HowWeWork from '@static/svgs/home/how-we-work.inline.svg'
+import CaseStudies from '@static/svgs/home/case-studies.inline.svg'
+import Connect from '@static/svgs/home/connect.inline.svg'
 
 // Styles
 import '../common/styles/pages/home.css'
 
 export interface HomePageQueryResponse {
   contentfulHomePage: {
-    heroTitle: RenderRichTextData<never>
     caseStudies: TypeCaseStudy[]
-    featuredTestimonial: TypeTestimonial
     testimonials: TypeTestimonial[]
+    insights: TypeInsight[]
+  }
+  allContentfulInsight: {
+    nodes: TypeInsight[]
   }
 }
 
@@ -40,121 +39,137 @@ interface Props {
   location: PageProps['location']
 }
 
-const variants: Variants = {
-  visible: (i: number) => ({
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.65,
-      delay: i * 0.3
-    }
-  }),
-  hidden: {
-    y: 25,
-    opacity: 0
-  }
-}
-
-const CaseStudiesContainer = styled.div`
-  padding-top: ${() => rhythmUnit(5)};
-  @media (min-width: 768px) {
-    padding-top: ${() => rhythmUnit(6)};
-  }
-`
-
-const MobileBreak = styled.span`
-  display: inline;
-  @media (min-width: 768px) {
-    display: block;
-  }
-`
-
 const IndexPage = ({ data, location }: Props) => {
   const homeData = data.contentfulHomePage
-  const animationControls = useAnimation()
-  const [ref, inView] = useInView({
-    threshold: 1,
-    triggerOnce: true
-  })
-
-  useEffect(() => {
-    if (inView) {
-      animationControls.start('visible')
-    }
-  }, [animationControls, inView])
+  const defaultInsights = data.allContentfulInsight.nodes
 
   return (
     <div className="Home">
       <Meta location={location} title="Home" />
-      <PageHeroText document={homeData.heroTitle} />
-      <div className="Home-learn-how">
-        <MotionAniLink
-          bgColor="#286AFF"
-          className="inline-block"
-          direction="top"
-          duration={1.25}
-          styleType="solid"
-          to="/what-we-do"
-        >
-          Learn How
-        </MotionAniLink>
-      </div>
-      <CaseStudiesContainer>
-        <div className="overflow-hidden">
-          {homeData.caseStudies.map((study: TypeCaseStudy, idx: number) => {
-            const animationThreshold = idx === 0 ? 0.25 : 0.8
-            // Even # items we want image on right.
-            const layout = (idx + 1) % 2 === 0 ? 'left' : 'right'
-            return (
-              <CaseStudy
-                key={study.slug}
-                animationThreshold={animationThreshold}
-                caseStudy={study}
-                layout={layout}
-              />
-            )
-          })}
+      <div className="Home-hero">
+        <div className="Home-hero-text">
+          <h1 className="text-h1">
+            Supercharge your business with results-driven strategy & design.
+          </h1>
+          <h2 className="text-title-subheading">
+            We ideate, design, and optimize winning digital products for
+            fast-growing Fintech and B2B SaaS startups.
+          </h2>
+          <MotionAniLink
+            bgColor="#286AFF"
+            className="inline-block"
+            direction="top"
+            duration={1.25}
+            styleType="solid"
+            to="/what-we-do"
+          >
+            What we do
+          </MotionAniLink>
         </div>
-      </CaseStudiesContainer>
+      </div>
 
-      <DesignPartner />
-
-      <section className="bg-snow">
-        <SiteMaxWidthContainer className="pt-20 pb-24">
-          <div ref={ref} className="mb-16">
-            <motion.h1
-              animate={animationControls}
-              className="text-h4 mb-6"
-              custom={0}
-              initial="hidden"
-              variants={variants}
-            >
-              Our Partners Love Us
-            </motion.h1>
-            <motion.h2
-              animate={animationControls}
-              className="text-h3"
-              custom={1}
-              initial="hidden"
-              variants={variants}
-            >
-              When smart collaboration and remarkable
-              <MobileBreak>
-                {' '}
-                expertise come together, magic happens.
-              </MobileBreak>
-            </motion.h2>
+      <div className="Home-case-studies mx-auto py-20">
+        <div className="Home-case-studies-inner">
+          <div className="Home-case-studies-intro">
+            <div className="Home-case-studies-intro-img">
+              <CaseStudies />
+            </div>
+            <div className="Home-case-studies-intro-content">
+              <h2 className="text-h2 font-extrabold mb-4">
+                Results you can get behind
+              </h2>
+              <p className="text-body">
+                How does 5x revenue sound? What about 250% growth? We made it
+                possible through our obsession with optimization and our
+                tailored design systems.
+              </p>
+            </div>
           </div>
+          <CaseStudyCarousel caseStudies={homeData.caseStudies} />
+        </div>
+      </div>
 
-          <Testimonial
-            className="mb-8"
-            isFeatured={true}
-            testimonial={homeData.featuredTestimonial}
+      <div className="Home-testimonials">
+        <div className="Home-testimonials-inner">
+          <TestimonialSlider testimonials={homeData.testimonials} />
+        </div>
+      </div>
+
+      <div className="Home-work">
+        <div className="Home-work-img">
+          <HowWeWork />
+        </div>
+        <div className="Home-work-content">
+          <h2 className="Home-work-title text-h2 font-extrabold">
+            How we work
+          </h2>
+          <p className="Home-work-copy text-body">
+            From the infancy of your product to its series B round, we’re ready
+            to seamlessly get to work designing the best product for your
+            company — and everything that comes along with it. When we put our
+            heads together, good gets better.
+          </p>
+          <MotionAniLink
+            className="inline-block"
+            direction="top"
+            duration={1.25}
+            styleType="solid"
+            to="/what-we-do"
+          >
+            Learn More
+          </MotionAniLink>
+        </div>
+      </div>
+      <hr className="Home-work-border" />
+
+      <div className="Home-connect">
+        <div className="Home-connect-img">
+          <Connect />
+        </div>
+        <div className="Home-connect-content">
+          <h2 className="Home-connect-title text-h2 font-extrabold">
+            We believe more is possible when we connect
+          </h2>
+          <p className="Home-connect-copy text-body">
+            That’s why we have a team passionate about crafting the perfect
+            user-driven design for your product. We're here to enhance
+            everything that goes into your product, down to the last pixel. And
+            we do it fast. Because you have a business to build. You don’t need
+            anyone slowing you down.
+          </p>
+          <p className="Home-connect-copy text-body">
+            No lengthy contracts. No scope limits. Just one friendly, capable,
+            and efficient team. Working with webuild means empowerment to build
+            the best product—and sharing it with the world.
+          </p>
+          <MotionAniLink
+            className="inline-block"
+            direction="top"
+            duration={1.25}
+            styleType="solid"
+            to="/contact"
+          >
+            We're ready when you are
+          </MotionAniLink>
+        </div>
+      </div>
+
+      <div className="Home-insights mx-auto py-20">
+        <div className="Home-insights-inner">
+          <div className="Home-insights-content">
+            <h2 className="Home-insights-title text-h2 font-extrabold mb-4">
+              From The Blog
+            </h2>
+          </div>
+          <InsightCarousel
+            insights={
+              homeData.insights && homeData.insights.length > 0
+                ? homeData.insights
+                : defaultInsights
+            }
           />
-
-          <TestimonialGrid testimonials={homeData.testimonials} />
-        </SiteMaxWidthContainer>
-      </section>
+        </div>
+      </div>
 
       <Footer />
     </div>
@@ -164,9 +179,6 @@ const IndexPage = ({ data, location }: Props) => {
 export const HOMEPAGE_QUERY = graphql`
   query homepageQuery {
     contentfulHomePage(pageTitle: { eq: "Home" }) {
-      heroTitle {
-        raw
-      }
       caseStudies {
         name
         tagline
@@ -180,27 +192,8 @@ export const HOMEPAGE_QUERY = graphql`
           }
         }
         listingImage {
-          fluid(maxWidth: 625) {
+          fluid(maxWidth: 450) {
             ...GatsbyContentfulFluid_withWebp_noBase64
-          }
-        }
-      }
-
-      featuredTestimonial {
-        company
-        name
-        role
-        quote {
-          raw
-        }
-        featuredHeadshot {
-          fluid(maxWidth: 500) {
-            ...GatsbyContentfulFluid_withWebp_noBase64
-          }
-        }
-        headshot {
-          fixed(cropFocus: FACE, height: 50, width: 50) {
-            ...GatsbyContentfulFixed_withWebp_noBase64
           }
         }
       }
@@ -209,12 +202,55 @@ export const HOMEPAGE_QUERY = graphql`
         company
         name
         role
-        quote {
+        quoteShort {
           raw
         }
+        mainHeadshot {
+          fluid(maxWidth: 500) {
+            ...GatsbyContentfulFluid_withWebp_noBase64
+          }
+        }
         headshot {
-          fixed(cropFocus: FACE, height: 50, width: 50) {
+          fixed(cropFocus: FACE, height: 150, width: 150) {
             ...GatsbyContentfulFixed_withWebp_noBase64
+          }
+        }
+        purpleHeadshot {
+          fixed(cropFocus: FACE, height: 150, width: 150) {
+            ...GatsbyContentfulFixed_withWebp_noBase64
+          }
+        }
+      }
+
+      insights {
+        type
+        topics
+        title
+        slug
+        metaDescription {
+          metaDescription
+        }
+        featuredIllustration {
+          file {
+            url
+          }
+        }
+      }
+    }
+
+    allContentfulInsight(limit: 7, sort: { order: DESC, fields: publishDate }) {
+      nodes {
+        type
+        topics
+        title
+        slug
+        subtitle
+        metaDescription {
+          metaDescription
+        }
+        featuredIllustration {
+          file {
+            url
           }
         }
       }

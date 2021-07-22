@@ -126,7 +126,7 @@ const ContentUpgradeForm = ({
   return (
     <div className={formClassNames}>
       <div className="ContentUpgrade-container">
-        <h2 className="text-h3 font-extrabold mb-6">
+        <h2 className="ContentUpgrade-title text-h3 font-extrabold mb-6">
           {isSimple ? contentUpgrade.simpleFormTitle : contentUpgrade.title}
         </h2>
         {contentUpgrade?.blurb?.blurb && isSimple && !userHasCompletedForm ? (

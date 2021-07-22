@@ -1,0 +1,178 @@
+.CaseStudyCarousel {
+  .slider-frame {
+    overflow: visible !important;
+  }
+}
+
+.CaseStudyCarousel-inner {
+  @apply relative;
+  @apply mx-auto;
+  @apply px-6;
+
+  @apply md:px-0;
+  @screen md {
+    max-width: 464px;
+  }
+
+  @apply lg:px-0;
+  @screen lg {
+    max-width: 784px;
+  }
+
+  @screen xl {
+    max-width: 1032px;
+  }
+}
+
+.CaseStudyCarousel-slide {
+  box-shadow: 0px 11px 15px rgba(108, 0, 201, 0.08);
+
+  @apply flex;
+  @apply flex-col;
+  @apply bg-white;
+  @apply mx-auto;
+  @apply p-6;
+  @apply items-center;
+  height: 460px;
+
+  @apply md:p-10;
+  @screen md {
+    height: 664px;
+  }
+
+  @apply lg:p-12;
+  @apply lg:flex-row;
+  @screen lg {
+    height: 524px;
+  }
+
+  @apply xl:p-16;
+  @screen xl {
+    height: 450px;
+  }
+
+  &:hover {
+    .CaseStudyCarousel-read-link {
+      @apply font-extrabold;
+    }
+  }
+}
+
+.CaseStudyCarousel-content {
+  @apply flex;
+  @apply flex-col;
+  @apply items-start;
+
+  @apply lg:order-1;
+}
+
+.CaseStudyCarousel-slide-logo {
+  @apply mb-4;
+  width: 80px;
+
+  @screen md {
+    width: 112px;
+  }
+
+  @apply lg:mb-6;
+}
+
+.CaseStudyCarousel-slide-img {
+  width: 164px;
+  height: 132px;
+  @apply mb-6;
+
+  @apply md:mb-8;
+  @screen md {
+    width: 296px;
+    height: auto;
+  }
+
+  @apply lg:order-2;
+  @apply lg:flex-shrink-0;
+  @apply lg:ml-10;
+  @screen lg {
+    width: 344px;
+  }
+
+  @screen xl {
+    width: 398px;
+  }
+}
+
+.CaseStudyCarousel-slide-title {
+  @apply font-extrabold;
+  @apply mb-2;
+
+  @apply md:mb-4;
+}
+
+.CaseStudyCarousel-read-link {
+  @apply inline-flex;
+  @apply items-center;
+  @apply text-electricViolet;
+  @apply mt-6;
+
+  @apply lg:mt-8;
+
+  span {
+    display: inline-block;
+    width: 110px;
+    transition: all 300ms ease;
+  }
+
+  .arrow-icon {
+    @apply ml-2;
+    width: 20px;
+  }
+}
+
+.CaseStudyCarousel-arrow {
+  @apply absolute;
+  @apply border-none;
+  bottom: -48px;
+  width: 32px;
+  height: 32px;
+  @apply z-20;
+  transition: opacity 250ms ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  @screen md {
+    width: 42px;
+    height: 42px;
+    transform: translateY(-50%);
+    top: 50%;
+  }
+
+  @screen lg {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.CaseStudyCarousel-arrow-right {
+  right: 40%;
+
+  @screen md {
+    right: -60px;
+  }
+
+  @screen lg {
+    right: -72px;
+  }
+}
+
+.CaseStudyCarousel-arrow-left {
+  left: 40%;
+
+  @screen md {
+    left: -60px;
+  }
+
+  @screen lg {
+    left: -72px;
+  }
+}

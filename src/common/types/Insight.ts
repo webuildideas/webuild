@@ -45,6 +45,9 @@ export interface TypeInsight {
   contentUpgrade?: TypeContentUpgrade
   topics?: TypeInsightTopic[]
   shareImage?: TypeGatsbyImageFixed
+  metaDescription?: {
+    metaDescription: string
+  }
   shareQuote?: {
     shareQuote: string
   }

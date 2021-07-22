@@ -55,18 +55,24 @@
   @apply border-solid;
   @apply border-l-4;
   @apply border-electricViolet;
-  @apply pt-16;
+  @apply pt-4;
+  @apply md:pt-12;
+  @apply lg:pt-16;
+  @apply xl:pt-12;
 }
 
 .TestimonialSlider-controls {
   @apply flex;
   @apply items-center;
   @apply mt-6;
+
+  @apply md:pl-6;
+  @apply md:mt-12;
   @screen md {
     margin-left: 220px;
-    @apply mt-0;
-    @apply pl-6;
   }
+
+  @apply lg:mt-0;
 }
 
 .TestimonialSlider-control {
@@ -75,13 +81,20 @@
   @apply relative;
   @apply rounded-full;
   @apply overflow-hidden;
-  @apply mr-4;
+  @apply mr-2;
   @apply border-none;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+
+  @apply md:mr-4;
 
   &.is-selected {
     @apply border-solid;
-    border-width: 3px;
+    border-width: 2px;
     @apply border-electricViolet;
+    width: 50px;
+    height: 50px;
   }
 
   .Testimonial__client-headshot {
@@ -95,7 +108,8 @@
   width: 16px;
   @apply cursor-pointer;
   &.left {
-    @apply mr-4;
+    @apply mr-2;
+    @apply md:mr-4;
   }
 }
 

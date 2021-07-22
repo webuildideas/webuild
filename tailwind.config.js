@@ -50,6 +50,7 @@ module.exports = {
       // Secondary Colors
       blueRibbon: '#2250FF',
       electricIndigo: '#5F00FF',
+      peach: '#FFF6F0',
 
       // Gray Scale
       gray: {
