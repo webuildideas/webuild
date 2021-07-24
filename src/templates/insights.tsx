@@ -316,6 +316,9 @@ export const CONTENT_HUB_QUERY = graphql`
         title
         subtitle
         slug
+        metaDescription {
+          metaDescription
+        }
         featuredIllustration {
           file {
             url

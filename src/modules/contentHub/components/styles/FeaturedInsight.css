@@ -15,10 +15,6 @@
   @apply md:items-center;
   @apply md:p-8;
 
-  @apply lg:py-6;
-  @apply lg:pl-12;
-  @apply lg:pr-20;
-
   @apply xl:py-12;
   @apply xl:px-25;
 }
@@ -27,13 +23,16 @@
   @apply mb-6;
 
   @apply md:mb-0;
-  @apply md:mr-3;
+  @apply md:mr-6;
+  @apply md:flex-shrink-0;
+  @screen md {
+    width: 298px;
+  }
 
-  @apply xl:mr-11;
-}
+  @apply lg:mr-14;
+  @screen lg {
+    width: 408px;
+  }
 
-.FeaturedInsight-content {
-  @apply md:ml-3;
-
-  @apply xl:ml-11;
+  @apply xl:mr-22;
 }
