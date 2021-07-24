@@ -35,8 +35,10 @@ const FeaturedInsight = memo(function FeaturedInsightMemo({ insight }: Props) {
         <div className="FeaturedInsight-content">
           <InsightTags topics={insight.topics} type={insight.type} />
           <h2 className="text-h2 mb-2 mt-4 lg:mt-7">{insight.title}</h2>
-          {insight.subtitle ? (
-            <p className="text-body mb-4 md:mb-0">{insight.subtitle}</p>
+          {insight?.metaDescription?.metaDescription ? (
+            <p className="text-body mb-4 md:mb-0">
+              {insight.metaDescription.metaDescription}
+            </p>
           ) : null}
         </div>
       </AniLink>
