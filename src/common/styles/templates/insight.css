@@ -1,3 +1,10 @@
+.Insight-container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
 .Insight-grid {
   @apply grid;
   @apply grid-cols-12;
@@ -89,8 +96,10 @@
   @apply flex-col;
   @apply justify-center;
   @apply bg-gray-200;
+  @apply pt-15;
   height: 290px;
 
+  @apply md:pt-20;
   @screen md {
     height: 335px;
   }
@@ -98,6 +107,7 @@
   @screen lg {
     height: 390px;
     @apply py-8;
+    @apply pt-20;
   }
 
   @screen xl {
