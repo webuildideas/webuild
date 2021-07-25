@@ -85,17 +85,20 @@ const CaseStudyCarousel = ({ caseStudies }: Props) => {
                 />
               </div>
               <div className="CaseStudyCarousel-content">
-                <img
-                  alt={`${caseStudy.name}-logo`}
-                  className="CaseStudyCarousel-slide-logo"
-                  src={caseStudy.logo?.file?.url}
-                />
-                <h3 className="text-h3 CaseStudyCarousel-slide-title">
-                  {caseStudy.tagline}
-                </h3>
-                <p className="text-body CaseStudyCarousel-slide-copy">
-                  {caseStudy.successSummary.successSummary}
-                </p>
+                <div>
+                  <img
+                    alt={`${caseStudy.name}-logo`}
+                    className="CaseStudyCarousel-slide-logo"
+                    src={caseStudy.logo?.file?.url}
+                  />
+                  <h3 className="text-h3 CaseStudyCarousel-slide-title">
+                    {caseStudy.tagline}
+                  </h3>
+                  <p className="text-body CaseStudyCarousel-slide-copy">
+                    {caseStudy.successSummary.successSummary}
+                  </p>
+                </div>
+
                 <p className="CaseStudyCarousel-read-link text-tag">
                   <span>Read Case Study</span>
                   <ArrowRight className="arrow-icon" />

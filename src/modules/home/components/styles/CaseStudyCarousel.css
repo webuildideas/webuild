@@ -61,7 +61,9 @@
 .CaseStudyCarousel-content {
   @apply flex;
   @apply flex-col;
-  @apply items-start;
+  @apply flex-grow;
+  @apply justify-between;
+  @apply self-stretch;
 
   @apply lg:order-1;
 }
