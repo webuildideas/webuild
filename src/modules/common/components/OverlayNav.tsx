@@ -8,7 +8,8 @@ import { useRecoilState } from 'recoil'
 import { isOverlayNavOpenAtom } from '@common/store/userInterface/atoms'
 
 // Styles
-import { OverlayNavContainer } from './styles/OverlayNav'
+// import { OverlayNavContainer } from './styles/OverlayNav'
+import './styles/OverlayNav.css'
 
 interface NavLink {
   title: string
@@ -74,49 +75,53 @@ const OverlayNav = () => {
   }, [])
 
   return (
-    <OverlayNavContainer style={overlaySpring}>
-      <ul className="OverlayNavList">
-        {linkTrail.map(({ y, ...rest }, index: number) => (
-          <animated.li
-            key={`navLink-${index}`}
-            className="OverlayNavLink"
-            onClick={handleCloseOverlayNav}
-            style={{
-              ...rest,
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // @ts-ignore
-              transform: y.interpolate(
-                (yVal: number) => `translate3d(0,${yVal}px,0)`
-              )
-            }}
-          >
-            {renderNavLink(navLinks[index])}
-          </animated.li>
-        ))}
-      </ul>
+    <animated.nav className="OverlayNav" style={overlaySpring}>
+      <div className="OverlayNav-inner">
+        <ul className="OverlayNav-list">
+          {linkTrail.map(({ y, ...rest }, index: number) => (
+            <animated.li
+              key={`navLink-${index}`}
+              className="OverlayNav-link text-h2"
+              onClick={handleCloseOverlayNav}
+              style={{
+                ...rest,
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                transform: y.interpolate(
+                  (yVal: number) => `translate3d(0,${yVal}px,0)`
+                )
+              }}
+            >
+              {renderNavLink(navLinks[index])}
+            </animated.li>
+          ))}
+        </ul>
 
-      <div className="OverlayNav__social">
-        <animated.p style={fadeInSpring}>Follow Us On</animated.p>
-        <animated.a
-          className="OverlayNavLink"
-          href="https://www.dribbble.com/webuild/"
-          rel="noopener noreferrer"
-          style={fadeInSpring}
-          target="_blank"
-        >
-          Dribbble
-        </animated.a>
-        <animated.a
-          className="OverlayNavLink"
-          href="https://www.instagram.com/wearewebuild/"
-          rel="noopener noreferrer"
-          style={fadeInSpring}
-          target="_blank"
-        >
-          Instagram
-        </animated.a>
+        <div className="OverlayNav-social">
+          <animated.p className="text-h4" style={fadeInSpring}>
+            Follow Us On
+          </animated.p>
+          <animated.a
+            className="OverlayNav-link text-h2"
+            href="https://www.dribbble.com/webuild/"
+            rel="noopener noreferrer"
+            style={fadeInSpring}
+            target="_blank"
+          >
+            Dribbble
+          </animated.a>
+          <animated.a
+            className="OverlayNav-link text-h2"
+            href="https://www.instagram.com/wearewebuild/"
+            rel="noopener noreferrer"
+            style={fadeInSpring}
+            target="_blank"
+          >
+            Instagram
+          </animated.a>
+        </div>
       </div>
-    </OverlayNavContainer>
+    </animated.nav>
   )
 }
 

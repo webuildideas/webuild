@@ -1,7 +1,7 @@
 .Nav {
   position: relative;
   background-color: rgba(0, 0, 0, 0);
-  @apply z-20;
+  @apply z-50;
   @apply w-full;
   @apply py-4;
 

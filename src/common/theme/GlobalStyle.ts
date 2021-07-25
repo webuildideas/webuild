@@ -104,7 +104,7 @@ export const GlobalStyle = createGlobalStyle<StyleProps>`
   }
 
   .headroom {
-    z-index: 25 !important;
+    z-index: 50 !important;
   }
 
 
