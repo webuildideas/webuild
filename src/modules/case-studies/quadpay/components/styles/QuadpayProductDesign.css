@@ -40,3 +40,27 @@
     width: 1844px;
   }
 }
+
+.QuadpayProductDesign-testimonial {
+  @apply mt-16;
+
+  @apply lg:mt-20;
+
+  @apply xl:mt-31;
+
+  @apply 2xl:mt-54;
+
+  .ServiceTestimonial {
+    @screen 2xl {
+      width: 1176px;
+      max-width: 100%;
+    }
+  }
+
+  .ServiceTestimonial-quote {
+    border-color: #0058ff;
+  }
+  .ServiceTestimonial-cite-image:after {
+    background-color: rgba(0, 88, 255, 0.12);
+  }
+}

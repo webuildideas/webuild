@@ -12,7 +12,8 @@ const QuadpayProductDesign = () => {
   const {
     prodDesignMobileImg,
     prodDesignImg,
-    prodDesignXlImg
+    prodDesignXlImg,
+    bradHeadshot
   } = useStaticQuery(graphql`
     query {
       prodDesignMobileImg: file(
@@ -41,6 +42,16 @@ const QuadpayProductDesign = () => {
         relativePath: {
           eq: "case-studies/quadpay/quadpay-product-design-2xl.png"
         }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 1000) {
+            ...GatsbyImageSharpFluid_withWebp_noBase64
+          }
+        }
+      }
+
+      bradHeadshot: file(
+        relativePath: { eq: "case-studies/quadpay/brad-l-headshot.png" }
       ) {
         childImageSharp {
           fluid(maxWidth: 1000) {
@@ -92,6 +103,46 @@ const QuadpayProductDesign = () => {
           className="QuadpayProductDesign-img xl hidden 2xl:block"
           fluid={prodDesignXlImg.childImageSharp.fluid}
         />
+      </div>
+
+      <div className="QuadpayProductDesign-testimonial">
+        <div className="ServiceTestimonial">
+          <blockquote className="ServiceTestimonial-quote text-h3">
+            <p>
+              We have been blown away by the capability and experience of the
+              webuild team. We started off with a small project and over time
+              webuild has become an extension of our team taking ownership of
+              all product and UX design requirements of Quadpay.
+              <span className="font-extrabold">
+                They have excellent vision for product design and are reliable,
+                attentive, and above all, produce exceptionally high-quality
+                work quickly that is immediately usable by our developers.
+              </span>
+            </p>
+          </blockquote>
+          <div className="ServiceTestimonial-cite">
+            <div className="ServiceTestimonial-cite-copy">
+              <h5 className="text-caption text-base font-extrabold">
+                Brad Lindenberg
+              </h5>
+              <p className="text-caption text-base">
+                CEO/Co-Founder, <span>Quadpay</span>
+              </p>
+            </div>
+            <div className="ServiceTestimonial-cite-image hidden md:block">
+              <Img
+                className="headshot"
+                fluid={bradHeadshot.childImageSharp.fluid}
+              />
+            </div>
+            <div className="ServiceTestimonial-cite-image md:hidden">
+              <Img
+                className="headshot"
+                fluid={bradHeadshot.childImageSharp.fluid}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </>
   )
