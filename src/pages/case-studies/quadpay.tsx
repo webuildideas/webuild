@@ -15,6 +15,7 @@ import Marketing from '@static/svgs/service/circle/marketing-circle.inline.svg'
 
 // Styles
 import '../../common/styles/pages/quadpay.css'
+import QuadpayProductDesign from '@modules/case-studies/quadpay/components/QuadpayProductDesign'
 
 interface QuadpayQueryResponse {
   introImg: TypeGatsbyChildImageSharpFluid
@@ -152,6 +153,8 @@ const QuadPay = ({
       </div>
 
       <QuadpayDesignSystems />
+
+      <QuadpayProductDesign />
     </main>
   )
 }

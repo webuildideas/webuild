@@ -1,0 +1,42 @@
+.QuadpayProductDesign {
+  @apply mt-16;
+  @apply px-6;
+
+  @apply md:px-0;
+
+  @apply lg:mt-20;
+
+  @apply 2xl:mt-36;
+}
+
+.QuadpayProductDesign-content {
+  @apply relative;
+  @apply md:mx-auto;
+  @screen md {
+    width: 584px;
+  }
+
+  @screen lg {
+    width: 784px;
+  }
+
+  @screen 2xl {
+    width: 1176px;
+
+    p {
+      width: 977px;
+    }
+  }
+}
+
+.QuadpayProductDesign-product-img {
+  @apply mt-16;
+
+  @apply lg:mt-20;
+
+  @apply 2xl:mt-54;
+  @apply 2xl:mx-auto;
+  @screen 2xl {
+    width: 1844px;
+  }
+}
