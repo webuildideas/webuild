@@ -4,11 +4,14 @@ import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import { TypeGatsbyChildImageSharpFluid } from '@common/types/GatsbyImage'
 
+// Components
+import QuadpayIntro from '@modules/case-studies/quadpay/components/QuadpayIntro'
+import QuadpayDesignSystems from '@modules/case-studies/quadpay/components/QuadpayDesignSystems'
+
 // SVGs
-import HeroIllustration from '@static/svgs/case-studies/quadpay/quadpay-hero.inline.svg'
 import ChallengeIcon from '@static/svgs/case-studies/quadpay/quadpay-challenge.inline.svg'
 import SolutionIcon from '@static/svgs/case-studies/quadpay/quadpay-solution.inline.svg'
-import Marketing from '@static/svgs/case-studies/quadpay/quadpay-marketing.inline.svg'
+import Marketing from '@static/svgs/service/circle/marketing-circle.inline.svg'
 
 // Styles
 import '../../common/styles/pages/quadpay.css'
@@ -29,8 +32,6 @@ interface Props {
 
 const QuadPay = ({
   data: {
-    introImg,
-    logo,
     metricsMobile,
     metrics,
     marketingPhoneTabDesktop,
@@ -40,25 +41,7 @@ const QuadPay = ({
 }: Props) => {
   return (
     <main className="quadpay">
-      <div className="quadpay-hero">
-        <HeroIllustration className="quadpay-hero-illustration" />
-      </div>
-      <div className="quadpay-intro">
-        <Img className="quadpay-logo" fluid={logo.childImageSharp.fluid} />
-        <h1 className="text-h1 mb-4 md:mb-6">
-          How UX/UI Upgrades & Brand Strategy Took This FinTech App From Startup
-          to Acquisition
-        </h1>
-        <h2 className="text-h3 font-extrabold">
-          4.8 App Star rating & 2+ million users thanks to stand-alone strategy
-          and design
-        </h2>
-      </div>
-
-      <Img
-        className="quadpay-intro-img"
-        fluid={introImg.childImageSharp.fluid}
-      />
+      <QuadpayIntro />
 
       <div className="quadpay-challenge-solution">
         <div className="quadpay-challenge-solution-summary">
@@ -167,30 +150,14 @@ const QuadPay = ({
           </p>
         </div>
       </div>
+
+      <QuadpayDesignSystems />
     </main>
   )
 }
 
 export const QUADPAY_QUERY = graphql`
   query quadpayQuery {
-    logo: file(relativePath: { eq: "case-studies/quadpay/quadpay-logo.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
-
-    introImg: file(
-      relativePath: { eq: "case-studies/quadpay/quadpay-intro.jpg" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 2000) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
-
     metrics: file(
       relativePath: { eq: "case-studies/quadpay/quadpay-intro-metrics.png" }
     ) {
