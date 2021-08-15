@@ -20,6 +20,7 @@ interface QuadpayQueryResponse {
   metrics: TypeGatsbyChildImageSharpFluid
   marketingPhoneTabDesktop: TypeGatsbyChildImageSharpFluid
   marketingSketch: TypeGatsbyChildImageSharpFluid
+  marketingDesign: TypeGatsbyChildImageSharpFluid
 }
 
 interface Props {
@@ -33,7 +34,8 @@ const QuadPay = ({
     metricsMobile,
     metrics,
     marketingPhoneTabDesktop,
-    marketingSketch
+    marketingSketch,
+    marketingDesign
   }
 }: Props) => {
   return (
@@ -127,29 +129,42 @@ const QuadPay = ({
           </div>
         </div>
 
-        <div className="quadpay-marketing-design-content">
-          <div className="quadpay-marketing-design-copy">
-            <h3 className="text-h3 font-extrabold mb-4 md:mb-2 lg:mb-4">
-              Lifestyle Optimizers
-            </h3>
-            <p className="text-body">
-              We started working on the brand (inherited from another agency)
-              and figuring out the visual style / overall brand aesthetic of the
-              website.
-            </p>
-          </div>
+        <div className="quadpay-marketing-design-copy">
+          <h3 className="text-h3 font-extrabold mb-4 md:mb-2 lg:mb-4">
+            Lifestyle Optimizers
+          </h3>
+          <p className="text-body">
+            We started working on the brand (inherited from another agency) and
+            figuring out the visual style / overall brand aesthetic of the
+            website.
+          </p>
+        </div>
 
-          <div className="quadpay-marketing-design-mobile-images">
-            <Img
-              className="quadpay-marketing-ptd"
-              fluid={marketingPhoneTabDesktop.childImageSharp.fluid}
-            />
+        <div className="quadpay-marketing-design-images">
+          <Img
+            className="quadpay-marketing-ptd"
+            fluid={marketingPhoneTabDesktop.childImageSharp.fluid}
+          />
 
-            <Img
-              className="quadpay-marketing-sketch"
-              fluid={marketingSketch.childImageSharp.fluid}
-            />
-          </div>
+          <Img
+            className="quadpay-marketing-sketch"
+            fluid={marketingSketch.childImageSharp.fluid}
+          />
+        </div>
+      </div>
+
+      <div className="quadpay-marketing-banner">
+        <div className="quadpay-marketing-container">
+          <Img
+            className="quadpay-marketing-img block"
+            fluid={marketingDesign.childImageSharp.fluid}
+          />
+        </div>
+
+        <div className="quadpay-marketing-caption">
+          <p className="quadpay-marketing-copy text-caption text-gray-600 mt-2 ">
+            Marketing website homepage and satellite pages.
+          </p>
         </div>
       </div>
     </main>
@@ -215,6 +230,16 @@ export const QUADPAY_QUERY = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 600) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+
+    marketingDesign: file(
+      relativePath: { eq: "case-studies/quadpay/quadpay-marketing-design.png" }
+    ) {
+      childImageSharp {
+        fluid(maxWidth: 3500) {
           ...GatsbyImageSharpFluid_withWebp_noBase64
         }
       }

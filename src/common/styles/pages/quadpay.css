@@ -307,7 +307,7 @@
   }
 }
 
-.quadpay-marketing-design-mobile-images {
+.quadpay-marketing-design-images {
   @apply flex;
   @apply items-center;
 }
@@ -352,5 +352,97 @@
     width: 284px;
     right: -90px;
     top: -160px;
+  }
+}
+
+.quadpay-marketing-banner {
+  @apply relative;
+  @apply flex;
+  @apply flex-col;
+  @apply overflow-x-hidden;
+  @apply mt-16;
+}
+
+.quadpay-marketing-container {
+  @apply relative;
+
+  @apply md:order-2;
+
+  &:after {
+    content: "";
+    @apply absolute;
+    left: 0;
+    bottom: 0;
+    @apply z-0;
+    @apply w-full;
+    @apply bg-foundation;
+    height: 85%;
+  }
+
+  @screen 2xl {
+    &:after {
+      @apply hidden;
+    }
+  }
+}
+
+.quadpay-marketing-img {
+  @apply relative;
+  @apply z-10;
+  width: 120%;
+
+  @screen md {
+    width: 150%;
+    left: -20px;
+  }
+
+  @screen lg {
+    width: 137%;
+  }
+
+  @screen xl {
+    width: 1250px;
+    @apply mx-auto;
+    left: 0;
+  }
+
+  @screen 2xl {
+    width: 1320px;
+  }
+}
+
+.quadpay-marketing-caption {
+  @apply px-6;
+
+  @apply md:order-1;
+  @apply md:mx-auto;
+  @apply md:px-0;
+  @screen md {
+    width: 584px;
+    .quadpay-marketing-copy {
+      @apply absolute;
+      top: 45px;
+    }
+  }
+
+  @screen lg {
+    width: 884px;
+    .quadpay-marketing-copy {
+      top: 60px;
+    }
+  }
+
+  @screen xl {
+    width: 915px;
+    .quadpay-marketing-copy {
+      top: 45px;
+    }
+  }
+
+  @screen 2xl {
+    width: 1235px;
+    .quadpay-marketing-copy {
+      top: 80px;
+    }
   }
 }
