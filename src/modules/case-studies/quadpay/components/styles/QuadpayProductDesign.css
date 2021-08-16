@@ -1,0 +1,116 @@
+.QuadpayProductDesign {
+  @apply mt-16;
+  @apply px-6;
+
+  @apply md:px-0;
+
+  @apply lg:mt-20;
+
+  @apply 2xl:mt-36;
+}
+
+.QuadpayProductDesign-content {
+  @apply relative;
+  @apply md:mx-auto;
+  @screen md {
+    width: 584px;
+  }
+
+  @screen lg {
+    width: 784px;
+  }
+
+  @screen 2xl {
+    width: 1176px;
+
+    p {
+      width: 977px;
+    }
+  }
+}
+
+.QuadpayProductDesign-product-img {
+  @apply mt-16;
+
+  @apply lg:mt-20;
+
+  @apply 2xl:mt-54;
+  @apply 2xl:mx-auto;
+  @screen 2xl {
+    width: 1844px;
+  }
+}
+
+.QuadpayProductDesign-testimonial {
+  @apply mt-16;
+
+  @apply lg:mt-20;
+
+  @apply xl:mt-31;
+
+  @apply 2xl:mt-54;
+
+  .ServiceTestimonial {
+    @screen 2xl {
+      width: 1176px;
+      max-width: 100%;
+    }
+  }
+
+  .ServiceTestimonial-quote {
+    border-color: #0058ff;
+  }
+  .ServiceTestimonial-cite-image:after {
+    background-color: rgba(0, 88, 255, 0.12);
+  }
+}
+
+.Quadpay-ios-app {
+  @apply mt-16;
+
+  @apply lg:mt-18;
+
+  @apply xl:mt-31;
+
+  @apply 2xl:mt-30;
+}
+
+.Quadpay-product-design-copy {
+  @apply px-6;
+  @apply mt-16;
+
+  @apply md:px-0;
+  @apply md:mx-auto;
+  @screen md {
+    width: 584px;
+  }
+
+  @apply lg:mt-20;
+  @screen lg {
+    width: 784px;
+  }
+
+  @apply xl:mt-24;
+  @screen xl {
+    width: 792px;
+  }
+
+  @screen 2xl {
+    width: 1187px;
+  }
+
+  span {
+    @apply block;
+    @apply px-1;
+    @apply bg-lavenderMist;
+    width: 216px;
+
+    @screen md {
+      width: 240px;
+    }
+
+    @screen lg {
+      width: 262px;
+    }
+  }
+}

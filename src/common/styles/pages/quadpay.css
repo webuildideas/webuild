@@ -13,83 +13,6 @@
   @apply lg:pt-26;
 }
 
-.quadpay-hero-illustration {
-  @screen md {
-    width: 500px;
-    @apply mx-auto;
-  }
-
-  @screen lg {
-    width: 624px;
-  }
-
-  @screen xl {
-    width: 784px;
-  }
-
-  @screen 2xl {
-    width: 1374px;
-  }
-}
-
-.quadpay-intro {
-  @apply px-6;
-  @apply mb-16;
-  @apply mt-8;
-
-  @apply md:mt-16;
-  @apply md:mb-16;
-  @apply md:mx-auto;
-  @apply md:px-0;
-  @screen md {
-    width: 584px;
-  }
-
-  @apply lg:mt-20;
-  @apply lg:mb-20;
-  @screen lg {
-    width: 700px;
-  }
-
-  @apply xl:mt-24;
-  @apply xl:mb-24;
-
-  @apply 2xl:mb-36;
-  @screen 2xl {
-    width: 1176px;
-  }
-}
-
-.quadpay-logo {
-  width: 104px;
-  @apply mb-4;
-
-  @apply md:mb-6;
-  @screen md {
-    width: 142px;
-  }
-}
-
-.quadpay-intro-img {
-  @apply mx-auto;
-
-  @screen md {
-    width: 664px;
-  }
-
-  @screen lg {
-    width: 944px;
-  }
-
-  @screen xl {
-    width: 984px;
-  }
-
-  @screen 2xl {
-    width: 1176px;
-  }
-}
-
 .quadpay-challenge-solution {
   @apply mt-16;
   @apply px-6;
@@ -256,6 +179,10 @@
   @screen xl {
     width: 884px;
   }
+
+  @screen 2xl {
+    width: 1176px;
+  }
 }
 
 .quadpay-marketing-design-copy {
@@ -275,7 +202,11 @@
 .quadpay-service-buttons {
   @screen xl {
     @apply absolute;
+    @apply flex;
+    @apply flex-col;
+    width: 150px;
     left: -202px;
+    @apply mr-13;
   }
 }
 
@@ -295,7 +226,7 @@
 
   @apply lg:mb-6;
 
-  @apply xl:mr-13;
+  @apply xl:w-full;
 
   .text-tag {
     @apply block;
@@ -305,6 +236,12 @@
     width: 22px;
     @apply mr-2;
   }
+}
+
+.quadpay-service-button + .quadpay-service-button {
+  @apply ml-2;
+
+  @apply xl:ml-0;
 }
 
 .quadpay-marketing-design-images {
