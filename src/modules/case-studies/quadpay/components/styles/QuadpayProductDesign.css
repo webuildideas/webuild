@@ -64,3 +64,53 @@
     background-color: rgba(0, 88, 255, 0.12);
   }
 }
+
+.Quadpay-ios-app {
+  @apply mt-16;
+
+  @apply lg:mt-18;
+
+  @apply xl:mt-31;
+
+  @apply 2xl:mt-30;
+}
+
+.Quadpay-product-design-copy {
+  @apply px-6;
+  @apply mt-16;
+
+  @apply md:px-0;
+  @apply md:mx-auto;
+  @screen md {
+    width: 584px;
+  }
+
+  @apply lg:mt-20;
+  @screen lg {
+    width: 784px;
+  }
+
+  @apply xl:mt-24;
+  @screen xl {
+    width: 792px;
+  }
+
+  @screen 2xl {
+    width: 1187px;
+  }
+
+  span {
+    @apply block;
+    @apply px-1;
+    @apply bg-lavenderMist;
+    width: 216px;
+
+    @screen md {
+      width: 240px;
+    }
+
+    @screen lg {
+      width: 262px;
+    }
+  }
+}

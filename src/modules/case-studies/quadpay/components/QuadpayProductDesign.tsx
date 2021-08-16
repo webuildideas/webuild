@@ -13,7 +13,12 @@ const QuadpayProductDesign = () => {
     prodDesignMobileImg,
     prodDesignImg,
     prodDesignXlImg,
-    bradHeadshot
+    bradHeadshot,
+    iosMobile,
+    iosMd,
+    iosLg,
+    iosXl,
+    ios2xl
   } = useStaticQuery(graphql`
     query {
       prodDesignMobileImg: file(
@@ -32,7 +37,7 @@ const QuadpayProductDesign = () => {
         relativePath: { eq: "case-studies/quadpay/quadpay-product-design.png" }
       ) {
         childImageSharp {
-          fluid(maxWidth: 1000) {
+          fluid(maxWidth: 3000) {
             ...GatsbyImageSharpFluid_withWebp_noBase64
           }
         }
@@ -44,7 +49,7 @@ const QuadpayProductDesign = () => {
         }
       ) {
         childImageSharp {
-          fluid(maxWidth: 1000) {
+          fluid(maxWidth: 6500) {
             ...GatsbyImageSharpFluid_withWebp_noBase64
           }
         }
@@ -55,6 +60,56 @@ const QuadpayProductDesign = () => {
       ) {
         childImageSharp {
           fluid(maxWidth: 1000) {
+            ...GatsbyImageSharpFluid_withWebp_noBase64
+          }
+        }
+      }
+
+      iosMobile: file(
+        relativePath: { eq: "case-studies/quadpay/quadpay-ios-app-mobile.jpg" }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 1000) {
+            ...GatsbyImageSharpFluid_withWebp_noBase64
+          }
+        }
+      }
+
+      iosMd: file(
+        relativePath: { eq: "case-studies/quadpay/quadpay-ios-app-md.jpg" }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 1200) {
+            ...GatsbyImageSharpFluid_withWebp_noBase64
+          }
+        }
+      }
+
+      iosLg: file(
+        relativePath: { eq: "case-studies/quadpay/quadpay-ios-app-lg.jpg" }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 3200) {
+            ...GatsbyImageSharpFluid_withWebp_noBase64
+          }
+        }
+      }
+
+      iosXl: file(
+        relativePath: { eq: "case-studies/quadpay/quadpay-ios-app-xl.jpg" }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 4000) {
+            ...GatsbyImageSharpFluid_withWebp_noBase64
+          }
+        }
+      }
+
+      ios2xl: file(
+        relativePath: { eq: "case-studies/quadpay/quadpay-ios-app-2xl.jpg" }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 6500) {
             ...GatsbyImageSharpFluid_withWebp_noBase64
           }
         }
@@ -97,10 +152,14 @@ const QuadpayProductDesign = () => {
         />
         <Img
           className="QuadpayProductDesign-img hidden md:block 2xl:hidden"
+          durationFadeIn={150}
+          fadeIn
           fluid={prodDesignImg.childImageSharp.fluid}
         />
         <Img
           className="QuadpayProductDesign-img xl hidden 2xl:block"
+          durationFadeIn={150}
+          fadeIn
           fluid={prodDesignXlImg.childImageSharp.fluid}
         />
       </div>
@@ -132,18 +191,62 @@ const QuadpayProductDesign = () => {
             <div className="ServiceTestimonial-cite-image hidden md:block">
               <Img
                 className="headshot"
+                durationFadeIn={150}
+                fadeIn
                 fluid={bradHeadshot.childImageSharp.fluid}
               />
             </div>
             <div className="ServiceTestimonial-cite-image md:hidden">
               <Img
                 className="headshot"
+                durationFadeIn={150}
+                fadeIn
                 fluid={bradHeadshot.childImageSharp.fluid}
               />
             </div>
           </div>
         </div>
       </div>
+
+      <div className="Quadpay-ios-app">
+        <Img
+          className="Quadpay-ios-app-img md:hidden"
+          durationFadeIn={150}
+          fadeIn
+          fluid={iosMobile.childImageSharp.fluid}
+        />
+        <Img
+          className="Quadpay-ios-app-img hidden md:block lg:hidden"
+          durationFadeIn={150}
+          fadeIn
+          fluid={iosMd.childImageSharp.fluid}
+        />
+        <Img
+          className="Quadpay-ios-app-img hidden lg:block xl:hidden"
+          durationFadeIn={150}
+          fadeIn
+          fluid={iosLg.childImageSharp.fluid}
+        />
+        <Img
+          className="Quadpay-ios-app-img hidden xl:block 2xl:hidden"
+          durationFadeIn={150}
+          fadeIn
+          fluid={iosXl.childImageSharp.fluid}
+        />
+        <Img
+          className="Quadpay-ios-app-img hidden 2xl:block"
+          durationFadeIn={150}
+          fadeIn
+          fluid={ios2xl.childImageSharp.fluid}
+        />
+      </div>
+
+      <p className="text-body Quadpay-product-design-copy">
+        We utilized and leveraged data to help them shape and define what these
+        new features would do, then helped release them into the world. Our
+        tried-and-true method was applied: test, learn, and rapidly iterate and
+        optimize. <span>And we had fun doing it. 💪</span>
+      </p>
     </>
   )
 }
