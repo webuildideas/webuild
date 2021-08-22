@@ -152,7 +152,7 @@
   @apply md:px-0;
   @screen md {
     width: 584px;
-    .quadpay-marketing-copy {
+    .QuadpayMarektingDesign-copy {
       @apply absolute;
       top: 45px;
     }
@@ -160,21 +160,21 @@
 
   @screen lg {
     width: 884px;
-    .quadpay-marketing-copy {
+    .QuadpayMarektingDesign-copy {
       top: 60px;
     }
   }
 
   @screen xl {
     width: 915px;
-    .quadpay-marketing-copy {
+    .QuadpayMarektingDesign-copy {
       top: 45px;
     }
   }
 
   @screen 2xl {
     width: 1235px;
-    .quadpay-marketing-copy {
+    .QuadpayMarektingDesign-copy {
       top: 80px;
     }
   }
