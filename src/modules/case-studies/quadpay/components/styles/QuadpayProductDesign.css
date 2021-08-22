@@ -63,6 +63,11 @@
   .ServiceTestimonial-quote {
     border-color: #0058ff;
   }
+
+  .ServiceTestimonial-cite {
+    background-color: rgba(0, 88, 255, 0.12);
+    @apply md:bg-transparent;
+  }
   .ServiceTestimonial-cite-image:after {
     background-color: rgba(0, 88, 255, 0.12);
   }
@@ -105,11 +110,11 @@
     @apply bg-lavenderMist;
     width: 216px;
 
-    @screen md {
-      width: 240px;
+    @media (min-width: 426px) {
+      width: 245px;
     }
 
-    @screen lg {
+    @media (min-width: 450px) {
       width: 262px;
     }
   }

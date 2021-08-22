@@ -57,3 +57,16 @@
 
   @apply xl:ml-0;
 }
+
+.quadpay .OtherServices {
+  @apply bg-transparent;
+  @apply mt-8;
+
+  @apply md:mt-16;
+
+  @apply lg:mt-20;
+
+  @apply xl:mt-24;
+
+  @apply 2xl:mt-30;
+}
