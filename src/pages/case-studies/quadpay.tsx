@@ -1,12 +1,13 @@
 // Packages
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, PageProps } from 'gatsby'
 import Img from 'gatsby-image'
 import { TypeGatsbyChildImageSharpFluid } from '@common/types/GatsbyImage'
 
 // Components
 import QuadpayIntro from '@modules/case-studies/quadpay/components/QuadpayIntro'
 import QuadpayDesignSystems from '@modules/case-studies/quadpay/components/QuadpayDesignSystems'
+import QuadpayConclusion from '@modules/case-studies/quadpay/components/QuadpayConclusion'
 import Footer from '@components/Footer'
 import OtherServices from '@modules/service/components/OtherServices'
 
@@ -19,6 +20,7 @@ import Marketing from '@static/svgs/service/circle/marketing-circle.inline.svg'
 import '../../common/styles/pages/quadpay.css'
 import QuadpayProductDesign from '@modules/case-studies/quadpay/components/QuadpayProductDesign'
 import { TypeService } from '@common/types/Service'
+import OpportunityForm from '@modules/forms/OpportunityForm'
 
 interface QuadpayQueryResponse {
   introImg: TypeGatsbyChildImageSharpFluid
@@ -35,6 +37,7 @@ interface QuadpayQueryResponse {
 
 interface Props {
   data: QuadpayQueryResponse
+  location: PageProps['location']
 }
 
 const QuadPay = ({
@@ -45,7 +48,8 @@ const QuadPay = ({
     marketingSketch,
     marketingDesign,
     allContentfulService
-  }
+  },
+  location
 }: Props) => {
   const { nodes: services } = allContentfulService
   return (
@@ -165,7 +169,14 @@ const QuadPay = ({
         <QuadpayDesignSystems />
 
         <QuadpayProductDesign />
+
+        <QuadpayConclusion />
       </main>
+      <OpportunityForm
+        buttonText="Let's Meet"
+        location={location.href}
+        title="Set up a meeting - we'd love to chat"
+      />
       <OtherServices services={services} title="How We Got There" />
       <Footer />
     </div>
