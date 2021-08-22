@@ -27,7 +27,7 @@
 
   @screen xl {
     width: 54%;
-    max-width: 852px;
+    max-width: 1176px;
   }
 }
 
@@ -52,7 +52,7 @@
 
   @screen xl {
     width: 68%;
-    max-width: 852px;
+    max-width: 1176px;
   }
 }
 
@@ -75,7 +75,7 @@
 
   @screen xl {
     width: 68%;
-    max-width: 852px;
+    max-width: 1176px;
   }
 }
 
@@ -108,6 +108,6 @@
 
   @screen xl {
     width: 54%;
-    max-width: 852px;
+    max-width: 1176px;
   }
 }

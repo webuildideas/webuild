@@ -13,11 +13,12 @@
   @apply relative;
   @apply md:mx-auto;
   @screen md {
-    width: 584px;
+    width: 76%;
   }
 
-  @screen lg {
-    width: 784px;
+  @screen xl {
+    width: 54%;
+    max-width: 977px;
   }
 
   @screen 2xl {
@@ -33,6 +34,8 @@
   @apply mt-16;
 
   @apply lg:mt-20;
+
+  @apply xl:mt-24;
 
   @apply 2xl:mt-54;
   @apply 2xl:mx-auto;
@@ -82,17 +85,14 @@
   @apply md:px-0;
   @apply md:mx-auto;
   @screen md {
-    width: 584px;
+    width: 76%;
   }
 
   @apply lg:mt-20;
-  @screen lg {
-    width: 784px;
-  }
 
   @apply xl:mt-24;
   @screen xl {
-    width: 792px;
+    width: 54%;
   }
 
   @screen 2xl {
