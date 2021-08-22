@@ -1,20 +1,24 @@
-.quadpay-marketing-design {
-  @apply relative;
-  @apply px-6;
+.QuadpayMarketingDesign {
   @apply mt-16;
-
-  @apply md:mt-26;
-  @apply md:mx-auto;
-  @apply md:px-0;
-  @screen md {
-    width: 76%;
-  }
 
   @apply lg:mt-24;
 
   @apply xl:mt-36;
+}
+
+.QuadpayMarektingDesign-content {
+  @apply relative;
+  @apply px-6;
+
+  @apply md:px-0;
+  @apply md:mt-26;
+  @apply md:mx-auto;
+  @screen md {
+    width: 76%;
+  }
+
   @screen xl {
-    width: 884px;
+    width: 54%;
   }
 
   @screen 2xl {
@@ -22,7 +26,7 @@
   }
 }
 
-.quadpay-marketing-design-copy {
+.QuadpayMarektingDesign-copy {
   @screen md {
     p {
       width: 464px;
@@ -36,12 +40,12 @@
   }
 }
 
-.quadpay-marketing-design-images {
+.QuadpayMarektingDesign-images {
   @apply flex;
   @apply items-center;
 }
 
-.quadpay-marketing-ptd {
+.QuadpayMarektingDesign-ptd {
   @apply block;
   width: 65%;
 
@@ -58,7 +62,7 @@
   }
 }
 
-.quadpay-marketing-sketch {
+.QuadpayMarektingDesign-sketch {
   @apply block;
   @apply ml-4;
   width: 35%;
@@ -84,7 +88,7 @@
   }
 }
 
-.quadpay-marketing-banner {
+.QuadpayMarektingDesign-banner {
   @apply relative;
   @apply flex;
   @apply flex-col;
@@ -92,7 +96,7 @@
   @apply mt-16;
 }
 
-.quadpay-marketing-container {
+.QuadpayMarektingDesign-container {
   @apply relative;
 
   @apply md:order-2;
@@ -115,7 +119,7 @@
   }
 }
 
-.quadpay-marketing-img {
+.QuadpayMarektingDesign-img {
   @apply relative;
   @apply z-10;
   width: 120%;
@@ -140,7 +144,7 @@
   }
 }
 
-.quadpay-marketing-caption {
+.QuadpayMarektingDesign-caption {
   @apply px-6;
 
   @apply md:order-1;

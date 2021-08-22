@@ -54,8 +54,8 @@ const QuadpayMarketingDesign = () => {
   `)
 
   return (
-    <div>
-      <div className="quadpay-marketing-design">
+    <div className="QuadpayMarketingDesign">
+      <div className="QuadpayMarektingDesign-content">
         <div className="quadpay-service-buttons">
           <div className="quadpay-service-button">
             <Marketing className="quadpay-service-icon" />
@@ -63,7 +63,7 @@ const QuadpayMarketingDesign = () => {
           </div>
         </div>
 
-        <div className="quadpay-marketing-design-copy">
+        <div className="QuadpayMarektingDesign-copy">
           <h3 className="text-h3 font-extrabold mb-4 md:mb-2 lg:mb-4">
             Lifestyle Optimizers
           </h3>
@@ -74,29 +74,29 @@ const QuadpayMarketingDesign = () => {
           </p>
         </div>
 
-        <div className="quadpay-marketing-design-images">
+        <div className="QuadpayMarektingDesign-images">
           <Img
-            className="quadpay-marketing-ptd"
+            className="QuadpayMarektingDesign-ptd"
             fluid={marketingPhoneTabDesktop.childImageSharp.fluid}
           />
 
           <Img
-            className="quadpay-marketing-sketch"
+            className="QuadpayMarektingDesign-sketch"
             fluid={marketingSketch.childImageSharp.fluid}
           />
         </div>
       </div>
 
-      <div className="quadpay-marketing-banner">
-        <div className="quadpay-marketing-container">
+      <div className="QuadpayMarektingDesign-banner">
+        <div className="QuadpayMarektingDesign-container">
           <Img
-            className="quadpay-marketing-img block"
+            className="QuadpayMarektingDesign-img block"
             fluid={marketingDesign.childImageSharp.fluid}
           />
         </div>
 
-        <div className="quadpay-marketing-caption">
-          <p className="quadpay-marketing-copy text-caption text-gray-600 mt-2 ">
+        <div className="QuadpayMarektingDesign-caption">
+          <p className="QuadpayMarektingDesign-copy text-caption text-gray-600 mt-2 ">
             Marketing website homepage and satellite pages.
           </p>
         </div>
