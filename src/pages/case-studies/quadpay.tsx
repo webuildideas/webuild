@@ -16,8 +16,15 @@ import { TypeService } from '@common/types/Service'
 import OpportunityForm from '@modules/forms/OpportunityForm'
 import QuadpayMarketingDesign from '@modules/case-studies/quadpay/components/QuadpayMarketingDesign'
 import QuadpayChallengeSolution from '@modules/case-studies/quadpay/components/QuadpayChallengeSolution'
+import Meta from '@components/Meta'
 
 interface QuadpayQueryResponse {
+  contentfulCaseStudy: {
+    seoTitle: string
+    metaDescription: {
+      metaDescription: string
+    }
+  }
   allContentfulService: {
     nodes: TypeService[]
   }
@@ -28,36 +35,56 @@ interface Props {
   location: PageProps['location']
 }
 
-const QuadPay = ({ data: { allContentfulService }, location }: Props) => {
+const QuadPay = ({
+  data: { allContentfulService, contentfulCaseStudy },
+  location
+}: Props) => {
+  const {
+    seoTitle,
+    metaDescription: { metaDescription }
+  } = contentfulCaseStudy
   const { nodes: services } = allContentfulService
   return (
-    <div className="quadpay">
-      <main>
-        <QuadpayIntro />
-
-        <QuadpayChallengeSolution />
-
-        <QuadpayMarketingDesign />
-
-        <QuadpayDesignSystems />
-
-        <QuadpayProductDesign />
-
-        <QuadpayConclusion />
-      </main>
-      <OpportunityForm
-        buttonText="Let's Meet"
-        location={location.href}
-        title="Set up a meeting - we'd love to chat"
+    <>
+      <Meta
+        description={metaDescription}
+        location={location}
+        title={seoTitle}
       />
-      <OtherServices services={services} title="How We Got There" />
-      <Footer />
-    </div>
+      <div className="quadpay">
+        <main>
+          <QuadpayIntro />
+
+          <QuadpayChallengeSolution />
+
+          <QuadpayMarketingDesign />
+
+          <QuadpayDesignSystems />
+
+          <QuadpayProductDesign />
+
+          <QuadpayConclusion />
+        </main>
+        <OpportunityForm
+          buttonText="Let's Meet"
+          location={location.href}
+          title="Set up a meeting - we'd love to chat"
+        />
+        <OtherServices services={services} title="How We Got There" />
+        <Footer />
+      </div>
+    </>
   )
 }
 
 export const QUADPAY_QUERY = graphql`
   query quadpayQuery {
+    contentfulCaseStudy(name: { eq: "Quadpay" }) {
+      metaDescription {
+        metaDescription
+      }
+      seoTitle
+    }
     allContentfulService {
       nodes {
         shortTitle
