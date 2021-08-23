@@ -8,30 +8,36 @@ import { RenderRichTextData } from 'gatsby-source-contentful/rich-text'
 export interface TypeCaseStudy {
   name: string
   slug?: string
-  logo: TypeContentfulAsset
-  whiteLogo?: TypeContentfulAsset
-  heroBackgroundImage?: TypeContentfulAsset
-  heroImage?: TypeGatsbyImageFluid
   listingImage: TypeGatsbyImageFluid
   tagline: string
   taglineRichText?: RenderRichTextData<never>
+  seoTitle: string
+  metaDescription: string
+  nextCaseStudies: TypeCaseStudy[]
+  logo: TypeContentfulAsset // Deprecated
+  whiteLogo?: TypeContentfulAsset // Deprecated
+  heroBackgroundImage?: TypeContentfulAsset // Deprecated
+  heroImage?: TypeGatsbyImageFluid // Deprecated
   successSummary: {
+    // Deprecated
     successSummary: string
   }
   challengeSummary?: {
+    // Deprecated
     challengeSummary: string
   }
   solutionSummary?: {
+    // Deprecated
     solutionSummary: string
   }
-  designSystemCarousel?: TypeCarousel
-  resultOne?: RenderRichTextData<never>
-  resultTwo?: RenderRichTextData<never>
-  resultThree?: RenderRichTextData<never>
-  featuredTestimonial?: TypeTestimonial
-  projectOverview?: RenderRichTextData<TypeCarousel | TypeContentfulAsset>
-  projectChallenge?: RenderRichTextData<TypeCarousel | TypeContentfulAsset>
-  projectSolution?: RenderRichTextData<TypeCarousel | TypeContentfulAsset>
-  projectOutcome?: RenderRichTextData<TypeCarousel | TypeContentfulAsset>
-  nextCaseStudy?: TypeCaseStudy
+  designSystemCarousel?: TypeCarousel // Deprecated
+  resultOne?: RenderRichTextData<never> // Deprecated
+  resultTwo?: RenderRichTextData<never> // Deprecated
+  resultThree?: RenderRichTextData<never> // Deprecated
+  featuredTestimonial?: TypeTestimonial // Deprecated
+  projectOverview?: RenderRichTextData<TypeCarousel | TypeContentfulAsset> // Deprecated
+  projectChallenge?: RenderRichTextData<TypeCarousel | TypeContentfulAsset> // Deprecated
+  projectSolution?: RenderRichTextData<TypeCarousel | TypeContentfulAsset> // Deprecated
+  projectOutcome?: RenderRichTextData<TypeCarousel | TypeContentfulAsset> // Deprecated
+  nextCaseStudy?: TypeCaseStudy // Deprecated
 }

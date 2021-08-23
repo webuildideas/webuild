@@ -1,0 +1,113 @@
+.QuadpayConclusion {
+  @apply mt-16;
+  @apply px-6;
+
+  @apply my-20;
+  @apply md:px-0;
+
+  @apply lg:my-24;
+
+  @apply xl:mb-34;
+
+  .react-player__play-icon,
+  .react-player__shadow {
+    display: none !important;
+  }
+}
+
+.QuadpayConclusion-list-container {
+  @apply mb-16;
+
+  @apply md:mx-auto;
+  @screen md {
+    width: 76%;
+  }
+
+  @apply lg:mb-24;
+
+  @screen xl {
+    width: 54%;
+    max-width: 1176px;
+  }
+}
+
+.QuadpayConclusion-list {
+  @apply list-disc;
+  @apply ml-6;
+
+  li {
+    @apply mb-1;
+  }
+}
+
+.QuadpayConclusion-video-container {
+  @apply md:mx-auto;
+  @screen md {
+    width: 76%;
+  }
+
+  @screen lg {
+    width: 92%;
+  }
+
+  @screen xl {
+    width: 68%;
+    max-width: 1176px;
+  }
+}
+
+.QuadpayConclusion-video {
+  @apply relative;
+  padding-top: 56.25%;
+}
+
+.QuadpayConclusion-video-caption {
+  @apply mt-8;
+
+  @apply md:mx-auto;
+  @screen md {
+    width: 76%;
+  }
+
+  @screen lg {
+    width: 92%;
+  }
+
+  @screen xl {
+    width: 68%;
+    max-width: 1176px;
+  }
+}
+
+.react-player {
+  @apply absolute;
+  @apply top-0;
+  @apply left-0;
+  @apply z-0;
+  filter: drop-shadow(0px 24px 38px rgba(0, 0, 0, 0.06))
+    drop-shadow(0px 9px 46px rgba(0, 0, 0, 0.08))
+    drop-shadow(0px 11px 15px rgba(0, 0, 0, 0.1));
+}
+
+.QuadpayConclusion-video-cover {
+  position: absolute !important;
+  @apply top-0;
+  @apply left-0;
+  @apply z-10;
+  @apply w-full;
+}
+
+.QuadpayConclusion-outro {
+  @apply mt-16;
+
+  @apply md:mx-auto;
+  @apply mt-20;
+  @screen md {
+    width: 76%;
+  }
+
+  @screen xl {
+    width: 54%;
+    max-width: 1176px;
+  }
+}

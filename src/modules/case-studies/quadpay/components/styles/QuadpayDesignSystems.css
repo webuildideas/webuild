@@ -4,30 +4,24 @@
   @apply px-6;
 
   @apply md:px-0;
-  @apply md:mx-auto;
-  @screen md {
-    width: 584px;
-  }
 
   @apply lg:mt-20;
-  @screen lg {
-    width: 784px;
-  }
 
   @apply xl:mt-24;
-  @screen xl {
-    width: 884px;
-  }
 
   @apply 2xl:mt-36;
-  @screen 2xl {
-    width: 1176px;
-  }
 }
 
 .QuadpayDesignSystems-content {
-  @screen lg {
-    width: 784px;
+  @apply relative;
+  @apply md:mx-auto;
+  @screen md {
+    width: 76%;
+  }
+
+  @screen xl {
+    width: 54%;
+    max-width: 1176px;
   }
 
   @screen 2xl {

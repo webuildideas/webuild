@@ -1,0 +1,147 @@
+.QuadpayChallengeSolution {
+  @apply mt-16;
+  @apply px-6;
+
+  @apply md:px-0;
+
+  @apply lg:mt-20;
+
+  @apply xl:mt-24;
+
+  @apply 2xl:mt-36;
+}
+
+.QuadpayChallengeSolution-summary {
+  @apply relative;
+
+  @apply md:flex;
+  @apply md:items-center;
+  @apply md:ml-auto;
+  @apply md:pr-8;
+  @screen md {
+    width: 88%;
+  }
+
+  @apply lg:mx-auto;
+  @apply lg:pr-0;
+  @screen lg {
+    width: 76%;
+  }
+
+  @screen xl {
+    width: 61%;
+    padding-left: 56px;
+  }
+
+  @screen 2xl {
+    padding-left: 0;
+    width: 1176px;
+  }
+}
+
+.QuadpayChallengeSolution-metrics-img-mobile {
+  @apply mt-2;
+  @apply ml-4;
+  @apply float-right;
+  width: 112px;
+
+  @apply md:hidden;
+}
+
+.QuadpayChallengeSolution-metrics-img {
+  @apply hidden;
+
+  @apply md:block;
+  @apply md:flex-shrink-0;
+  @apply md:ml-17;
+  @screen md {
+    width: 172px;
+  }
+
+  @apply lg:ml-13;
+  @screen lg {
+    width: 188px;
+  }
+
+  @apply xl:ml-28;
+}
+
+.QuadpayChallengeSolution-container {
+  @apply lg:mt-32;
+  @apply mx-auto;
+  @screen lg {
+    width: 76%;
+  }
+
+  @apply xl:mx-auto;
+  @apply xl:mt-36;
+  @screen xl {
+    width: 54%;
+    max-width: 1176px;
+  }
+
+  @apply 2xl:mt-48;
+}
+
+.QuadpayChallengeSolution-container-inner {
+  @apply lg:mx-auto;
+  @apply lg:flex;
+  @apply lg:justify-between;
+  @apply lg:items-start;
+
+  @apply xl:ml-0;
+
+  @apply 2xl:w-full;
+}
+
+.QuadpayChallengeSolution-challenge-icon {
+  width: 64px;
+  @apply mb-4;
+
+  @apply lg:mb-6;
+}
+
+.QuadpayChallengeSolution-challenge {
+  @apply mt-16;
+  @apply mb-14;
+
+  @apply md:mx-auto;
+  @apply md:mt-20;
+  @apply md:mb-16;
+  @screen md {
+    width: 76%;
+  }
+
+  @apply lg:my-0;
+  @apply lg:mx-0;
+  @screen lg {
+    width: 45%;
+  }
+
+  @screen 2xl {
+    width: 560px;
+  }
+}
+
+.QuadpayChallengeSolution-solution-icon {
+  width: 64px;
+  @apply mb-4;
+
+  @apply lg:mb-6;
+}
+
+.QuadpayChallengeSolution-solution {
+  @apply md:mx-auto;
+  @screen md {
+    width: 76%;
+  }
+
+  @apply lg:mx-0;
+  @screen lg {
+    width: 45%;
+  }
+
+  @screen 2xl {
+    width: 560px;
+  }
+}
