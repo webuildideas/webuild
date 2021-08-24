@@ -8,23 +8,22 @@ import QuadpayDesignSystems from '@modules/case-studies/quadpay/components/Quadp
 import QuadpayConclusion from '@modules/case-studies/quadpay/components/QuadpayConclusion'
 import Footer from '@components/Footer'
 import OtherServices from '@modules/service/components/OtherServices'
-
-// Styles
-import '../../common/styles/pages/quadpay.css'
 import QuadpayProductDesign from '@modules/case-studies/quadpay/components/QuadpayProductDesign'
-import { TypeService } from '@common/types/Service'
 import OpportunityForm from '@modules/forms/OpportunityForm'
 import QuadpayMarketingDesign from '@modules/case-studies/quadpay/components/QuadpayMarketingDesign'
 import QuadpayChallengeSolution from '@modules/case-studies/quadpay/components/QuadpayChallengeSolution'
 import Meta from '@components/Meta'
 
+// Commons
+import { TypeService } from '@common/types/Service'
+
+// Styles
+import '../../common/styles/pages/quadpay.css'
+import RelatedCaseStudies from '@modules/case-studies/components/NextCaseStudies'
+import { TypeCaseStudy } from '@common/types/CaseStudy'
+
 interface QuadpayQueryResponse {
-  contentfulCaseStudy: {
-    seoTitle: string
-    metaDescription: {
-      metaDescription: string
-    }
-  }
+  contentfulCaseStudy: TypeCaseStudy
   allContentfulService: {
     nodes: TypeService[]
   }
@@ -40,6 +39,7 @@ const QuadPay = ({
   location
 }: Props) => {
   const {
+    nextCaseStudies,
     seoTitle,
     metaDescription: { metaDescription }
   } = contentfulCaseStudy
@@ -65,12 +65,16 @@ const QuadPay = ({
 
           <QuadpayConclusion />
         </main>
-        <OpportunityForm
-          buttonText="Let's Meet"
-          location={location.href}
-          title="Set up a meeting - we'd love to chat"
-        />
+        <div className="Quadpay-opportunity-form">
+          <OpportunityForm
+            buttonText="Let's Meet"
+            location={location.href}
+            title="Set up a meeting - we'd love to chat"
+          />
+        </div>
+
         <OtherServices services={services} title="How We Got There" />
+        <RelatedCaseStudies caseStudies={nextCaseStudies} />
         <Footer />
       </div>
     </>
@@ -80,11 +84,23 @@ const QuadPay = ({
 export const QUADPAY_QUERY = graphql`
   query quadpayQuery {
     contentfulCaseStudy(name: { eq: "Quadpay" }) {
+      nextCaseStudies {
+        logo {
+          file {
+            url
+          }
+        }
+        name
+        slug
+        tagline
+      }
+
       metaDescription {
         metaDescription
       }
       seoTitle
     }
+
     allContentfulService {
       nodes {
         shortTitle
