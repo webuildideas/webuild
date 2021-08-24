@@ -12,7 +12,9 @@ export interface TypeCaseStudy {
   tagline: string
   taglineRichText?: RenderRichTextData<never>
   seoTitle: string
-  metaDescription: string
+  metaDescription: {
+    metaDescription: string
+  }
   nextCaseStudies: TypeCaseStudy[]
   logo: TypeContentfulAsset // Deprecated
   whiteLogo?: TypeContentfulAsset // Deprecated

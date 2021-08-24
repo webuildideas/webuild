@@ -5,6 +5,11 @@
   overflow: hidden;
 }
 
+.Quadpay-opportunity-form {
+  max-width: 820px;
+  @apply mx-auto;
+}
+
 .quadpay-hero {
   @apply bg-gray-200;
   @apply px-6;
