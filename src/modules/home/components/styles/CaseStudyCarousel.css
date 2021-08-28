@@ -33,11 +33,11 @@
   @apply mx-auto;
   @apply p-6;
   @apply items-center;
-  height: 460px;
+  height: 500px;
 
   @apply md:p-10;
   @screen md {
-    height: 664px;
+    height: 720px;
   }
 
   @apply lg:p-12;

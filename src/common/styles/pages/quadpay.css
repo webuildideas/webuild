@@ -1,0 +1,77 @@
+.quadpay {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.Quadpay-opportunity-form {
+  max-width: 820px;
+  @apply mx-auto;
+}
+
+.quadpay-hero {
+  @apply bg-gray-200;
+  @apply px-6;
+  @apply pt-22;
+
+  @apply lg:pt-26;
+}
+
+.quadpay-service-buttons {
+  @screen xl {
+    @apply absolute;
+    @apply flex;
+    @apply flex-col;
+    width: 150px;
+    left: -202px;
+    @apply mr-13;
+  }
+}
+
+.quadpay-service-button {
+  @apply p-2;
+  @apply inline-flex;
+  @apply flex-row;
+  @apply items-center;
+  @apply bg-foundation;
+  @apply border-lavender;
+  @apply border-solid;
+  border-width: 1px;
+  border-radius: 4px;
+  @apply mb-6;
+
+  @apply md:mb-4;
+
+  @apply lg:mb-6;
+
+  @apply xl:w-full;
+
+  .text-tag {
+    @apply block;
+  }
+
+  .quadpay-service-icon {
+    width: 22px;
+    @apply mr-2;
+  }
+}
+
+.quadpay-service-button + .quadpay-service-button {
+  @apply ml-2;
+
+  @apply xl:ml-0;
+}
+
+.quadpay .OtherServices {
+  @apply bg-transparent;
+  @apply mt-8;
+
+  @apply md:mt-16;
+
+  @apply lg:mt-20;
+
+  @apply xl:mt-24;
+
+  @apply 2xl:mt-30;
+}

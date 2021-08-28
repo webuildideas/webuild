@@ -20,6 +20,7 @@ import SimpleArrowLeft from '@static/svgs/common/arrows/arrow-simple-left.inline
 
 // Styles
 import '@common/styles/templates/service.css'
+import Meta from '@components/Meta'
 
 interface Props {
   data: {
@@ -68,6 +69,11 @@ const Service = ({
 }: Props) => {
   return (
     <>
+      <Meta
+        description={service.seo?.seoDescription?.seoDescription}
+        location={location}
+        title={service.seo?.seoTitle}
+      />
       <main className="Service">
         <div className="Service-header">
           <AniLink
@@ -210,6 +216,12 @@ export const SERVICE_PAGE_QUERY = graphql`
       otherServicesIllustration {
         file {
           url
+        }
+      }
+      seo {
+        seoTitle
+        seoDescription {
+          seoDescription
         }
       }
     }

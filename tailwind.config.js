@@ -137,12 +137,12 @@ module.exports = {
       sm: '425px',
       md: '768px',
       lg: '1024px',
-      xl: '1440px',
+      xl: '1280px',
       '2xl': '2560px',
       maxSm: { max: '425px' },
       maxMd: { max: '768px' },
       maxLg: { max: '1024px' },
-      maxXl: { max: '1440px' },
+      maxXl: { max: '1280px' },
       max2xl: { max: '2560px' }
     },
 

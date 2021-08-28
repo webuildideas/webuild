@@ -1,0 +1,181 @@
+.QuadpayMarketingDesign {
+  @apply mt-16;
+
+  @apply lg:mt-24;
+
+  @apply xl:mt-36;
+}
+
+.QuadpayMarektingDesign-content {
+  @apply relative;
+  @apply px-6;
+
+  @apply md:px-0;
+  @apply md:mt-26;
+  @apply md:mx-auto;
+  @screen md {
+    width: 76%;
+  }
+
+  @screen xl {
+    width: 54%;
+  }
+
+  @screen 2xl {
+    width: 1176px;
+  }
+}
+
+.QuadpayMarektingDesign-copy {
+  @screen md {
+    p {
+      width: 464px;
+    }
+  }
+
+  @screen lg {
+    p {
+      width: 584px;
+    }
+  }
+}
+
+.QuadpayMarektingDesign-images {
+  @apply flex;
+  @apply items-center;
+}
+
+.QuadpayMarektingDesign-ptd {
+  @apply block;
+  width: 65%;
+
+  @screen md {
+    width: 368px;
+  }
+
+  @screen lg {
+    width: 480px;
+  }
+
+  @screen xl {
+    width: 484px;
+  }
+}
+
+.QuadpayMarektingDesign-sketch {
+  @apply block;
+  @apply ml-4;
+  width: 35%;
+
+  @apply md:float-right;
+  @screen md {
+    @apply relative;
+    top: -70px;
+    right: -40px;
+    width: 216px;
+    z-index: -1;
+  }
+
+  @screen lg {
+    width: 244px;
+    top: -60px;
+  }
+
+  @screen xl {
+    width: 284px;
+    right: -90px;
+    top: -160px;
+  }
+}
+
+.QuadpayMarektingDesign-banner {
+  @apply relative;
+  @apply flex;
+  @apply flex-col;
+  @apply overflow-x-hidden;
+  @apply mt-16;
+}
+
+.QuadpayMarektingDesign-container {
+  @apply relative;
+
+  @apply md:order-2;
+
+  &:after {
+    content: "";
+    @apply absolute;
+    left: 0;
+    bottom: 0;
+    @apply z-0;
+    @apply w-full;
+    @apply bg-foundation;
+    height: 85%;
+  }
+
+  @screen 2xl {
+    &:after {
+      @apply hidden;
+    }
+  }
+}
+
+.QuadpayMarektingDesign-img {
+  @apply relative;
+  @apply z-10;
+  width: 120%;
+
+  @screen md {
+    width: 150%;
+    left: -20px;
+  }
+
+  @screen lg {
+    width: 137%;
+  }
+
+  @screen xl {
+    width: 1250px;
+    @apply mx-auto;
+    left: 0;
+  }
+
+  @screen 2xl {
+    width: 1320px;
+  }
+}
+
+.QuadpayMarektingDesign-caption {
+  @apply px-6;
+
+  @apply md:order-1;
+  @apply md:mx-auto;
+  @apply md:px-0;
+  @screen md {
+    width: 584px;
+    .QuadpayMarektingDesign-copy {
+      @apply absolute;
+      top: 45px;
+    }
+  }
+
+  @screen lg {
+    width: 884px;
+    .QuadpayMarektingDesign-copy {
+      top: 60px;
+    }
+  }
+
+  @screen xl {
+    width: 915px;
+    .QuadpayMarektingDesign-copy {
+      top: 45px;
+    }
+  }
+
+  @screen 2xl {
+    width: 1235px;
+    .QuadpayMarektingDesign-copy {
+      top: 80px;
+    }
+  }
+}

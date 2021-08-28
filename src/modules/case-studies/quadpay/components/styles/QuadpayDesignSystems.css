@@ -1,0 +1,52 @@
+.QuadpayDesignSystems {
+  @apply relative;
+  @apply mt-16;
+  @apply px-6;
+
+  @apply md:px-0;
+
+  @apply lg:mt-20;
+
+  @apply xl:mt-24;
+
+  @apply 2xl:mt-36;
+}
+
+.QuadpayDesignSystems-content {
+  @apply relative;
+  @apply md:mx-auto;
+  @screen md {
+    width: 76%;
+  }
+
+  @screen xl {
+    width: 54%;
+    max-width: 1176px;
+  }
+
+  @screen 2xl {
+    width: 977px;
+  }
+}
+
+.QuadpayDesignSystems-img.mobile {
+  max-width: 425px;
+  @apply mx-auto;
+}
+
+.QuadpayDesignSystems-img {
+  @apply mt-16;
+
+  @apply lg:mt-20;
+
+  @apply xl:mx-auto;
+  @apply xl:mt-24;
+  @screen xl {
+    width: 1312px;
+  }
+
+  @apply 2xl:mt-30;
+  @screen 2xl {
+    width: 1574px;
+  }
+}

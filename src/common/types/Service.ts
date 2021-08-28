@@ -2,6 +2,7 @@ import { TypeContentfulAsset } from '@common/types/Contentful'
 import { RenderRichTextData } from 'gatsby-source-contentful/rich-text'
 import { TypeTestimonial } from '@common/types/Testimonial'
 import { TypeCaseStudy } from '@common/types/CaseStudy'
+import { TypeSEO } from './SEO'
 
 export interface TypeService {
   slug: string
@@ -18,4 +19,5 @@ export interface TypeService {
   listingIllustration: TypeContentfulAsset
   listingIllustrationGif: TypeContentfulAsset
   otherServicesIllustration: TypeContentfulAsset
+  seo?: TypeSEO
 }

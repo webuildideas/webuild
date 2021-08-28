@@ -1,0 +1,82 @@
+.NextCaseStudies {
+  @apply md:flex;
+  @apply items-stretch;
+}
+
+.NextCaseStudy {
+  @apply flex;
+  @apply flex-wrap;
+  @apply px-6;
+  @apply py-4;
+  @apply bg-gray-200;
+  @apply hover:bg-foundation;
+
+  @apply md:p-8;
+
+  @apply lg:py-8;
+  @apply lg:px-10;
+
+  @screen md {
+    width: 50%;
+  }
+
+  transition: all 300ms ease;
+
+  &:hover {
+    .NextCaseStudy-arrow,
+    .NextCaseStudy-header p {
+      transition: all 450ms ease;
+      @apply text-electricViolet;
+    }
+  }
+
+  &:first-of-type {
+    @apply mb-2;
+
+    @apply md:mb-0;
+    @apply md:mr-1;
+
+    .NextCaseStudy-content {
+      @apply ml-auto;
+    }
+  }
+
+  &:last-of-type {
+    @apply md:ml-1;
+
+    .NextCaseStudy-content {
+      @apply mr-auto;
+    }
+  }
+}
+
+.NextCaseStudy-content {
+  max-width: 500px;
+}
+
+.NextCaseStudy-header {
+  @apply flex;
+  @apply items-start;
+  @apply justify-between;
+  @apply mb-4;
+  @apply w-full;
+}
+
+.NextCaseStudy-footer {
+  @apply flex;
+  @apply items-end;
+  @apply justify-between;
+  @apply w-full;
+
+  p {
+    width: 59%;
+  }
+}
+
+.NextCaseStudy-logo {
+  width: 80px;
+}
+
+.NextCaseStudy-arrow {
+  width: 24px;
+}
