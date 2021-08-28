@@ -16,6 +16,7 @@ import Footer from '@components/Footer'
 // styles
 import '@common/styles/pages/what-we-do.css'
 import ServicesStickyNav from '@modules/service/components/ServicesStickyNav'
+import Meta from '@components/Meta'
 
 interface Props {
   data: {
@@ -33,6 +34,7 @@ const WhatWeDo = ({
 }: Props) => {
   return (
     <>
+      <Meta location={location} title="What We Do" />
       <main className="ServicesPage">
         <div className="ServicesPage-intro">
           <div className="ServicesPage-intro-inner">

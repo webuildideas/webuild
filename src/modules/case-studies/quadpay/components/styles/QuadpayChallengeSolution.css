@@ -48,7 +48,7 @@
   @apply md:hidden;
 }
 
-.QuadpayChallengeSolution-metrics-img {
+.QuadpayChallengeSolution-metrics-img-tablet {
   @apply hidden;
 
   @apply md:block;
@@ -58,7 +58,15 @@
     width: 172px;
   }
 
+  @apply lg:hidden;
+}
+
+.QuadpayChallengeSolution-metrics-img {
+  @apply hidden;
+
+  @apply lg:block;
   @apply lg:ml-13;
+  @apply lg:flex-shrink-0;
   @screen lg {
     width: 188px;
   }

@@ -10,10 +10,12 @@ import SolutionIcon from '@static/svgs/case-studies/quadpay/quadpay-solution.inl
 import './styles/QuadpayChallengeSolution.css'
 
 const QuadpayChallengeSolution = () => {
-  const { metrics, metricsMobile } = useStaticQuery(graphql`
+  const { metrics, metricsMobile, metricsTablet } = useStaticQuery(graphql`
     query {
-      metrics: file(
-        relativePath: { eq: "case-studies/quadpay/quadpay-intro-metrics.png" }
+      metricsMobile: file(
+        relativePath: {
+          eq: "case-studies/quadpay/quadpay-intro-metrics-mobile.png"
+        }
       ) {
         childImageSharp {
           fluid(maxWidth: 600) {
@@ -21,11 +23,19 @@ const QuadpayChallengeSolution = () => {
           }
         }
       }
-
-      metricsMobile: file(
+      metricsTablet: file(
         relativePath: {
-          eq: "case-studies/quadpay/quadpay-intro-metrics-mobile.png"
+          eq: "case-studies/quadpay/quadpay-intro-metrics-tablet.png"
         }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 600) {
+            ...GatsbyImageSharpFluid_withWebp_noBase64
+          }
+        }
+      }
+      metrics: file(
+        relativePath: { eq: "case-studies/quadpay/quadpay-intro-metrics.png" }
       ) {
         childImageSharp {
           fluid(maxWidth: 600) {
@@ -59,6 +69,11 @@ const QuadpayChallengeSolution = () => {
             service. As economic concerns loom, the number grows.{' '}
           </p>
         </div>
+
+        <Img
+          className="QuadpayChallengeSolution-metrics-img-tablet"
+          fluid={metricsTablet.childImageSharp.fluid}
+        />
 
         <Img
           className="QuadpayChallengeSolution-metrics-img"
