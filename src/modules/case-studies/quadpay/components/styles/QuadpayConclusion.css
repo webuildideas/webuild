@@ -54,6 +54,11 @@
     width: 68%;
     max-width: 1176px;
   }
+
+  .react-player__preview,
+  iframe {
+    border-radius: 8px;
+  }
 }
 
 .QuadpayConclusion-video {
