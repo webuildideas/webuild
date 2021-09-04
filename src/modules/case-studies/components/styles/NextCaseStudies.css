@@ -29,29 +29,40 @@
       @apply text-electricViolet;
     }
   }
+}
 
-  &:first-of-type {
-    @apply mb-2;
+.NextCaseStudy:first-of-type {
+  @apply mb-2;
 
-    @apply md:mb-0;
-    @apply md:mr-1;
+  @apply md:mb-0;
+  @apply md:mr-1;
 
-    .NextCaseStudy-content {
-      @apply ml-auto;
-    }
+  .NextCaseStudy-content {
+    @apply mr-auto;
+    @apply ml-auto;
+
+    @apply md:ml-auto;
+    @apply md:mr-0;
   }
+}
 
-  &:last-of-type {
-    @apply md:ml-1;
+.NextCaseStudy:last-of-type {
+  @apply md:ml-1;
 
-    .NextCaseStudy-content {
-      @apply mr-auto;
-    }
+  .NextCaseStudy-content {
+    @apply mr-auto;
+    @apply ml-auto;
+
+    @apply md:mr-auto;
+    @apply md:ml-0;
   }
 }
 
 .NextCaseStudy-content {
+  width: 100%;
   max-width: 500px;
+
+  @apply md:w-auto;
 }
 
 .NextCaseStudy-header {
@@ -67,9 +78,10 @@
   @apply items-end;
   @apply justify-between;
   @apply w-full;
+  height: auto;
 
   p {
-    width: 59%;
+    width: 65%;
   }
 }
 
