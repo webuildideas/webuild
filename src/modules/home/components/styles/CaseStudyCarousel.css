@@ -33,7 +33,7 @@
   @apply mx-auto;
   @apply p-6;
   @apply items-center;
-  height: 500px;
+  height: 520px;
 
   @apply md:p-10;
   @screen md {
