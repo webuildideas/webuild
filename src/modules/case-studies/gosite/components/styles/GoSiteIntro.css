@@ -1,0 +1,73 @@
+.gosite-hero {
+  @apply bg-gray-200;
+  @apply px-6;
+  @apply pt-22;
+
+  @apply lg:pt-26;
+}
+
+.gosite-hero-illustration {
+  @screen md {
+    width: 500px;
+    @apply mx-auto;
+  }
+
+  @screen lg {
+    width: 624px;
+  }
+
+  @screen xl {
+    width: 784px;
+  }
+
+  @screen 2xl {
+    width: 1374px;
+  }
+}
+
+.gosite-intro {
+  @apply px-6;
+  @apply mb-16;
+  @apply mt-8;
+
+  @apply md:mt-16;
+  @apply md:mb-16;
+  @apply md:mx-auto;
+  @apply md:px-0;
+  @screen md {
+    width: 584px;
+  }
+
+  @apply lg:mt-20;
+  @apply lg:mb-20;
+  @screen lg {
+    width: 700px;
+  }
+
+  @apply xl:mt-24;
+  @apply xl:mb-24;
+
+  @apply 2xl:mb-36;
+  @screen 2xl {
+    width: 1176px;
+  }
+}
+
+.gosite-logo {
+  width: 104px;
+  @apply mb-4;
+
+  @apply md:mb-6;
+  @screen md {
+    width: 142px;
+  }
+}
+
+.gosite-intro-img {
+  @apply mx-auto;
+  @apply w-full;
+
+  @screen 2xl {
+    width: 1970px;
+  }
+}
