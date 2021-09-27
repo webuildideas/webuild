@@ -1,11 +1,18 @@
 .GoSiteSummary {
   @apply mt-14;
-  @apply px-6;
 
-  @apply md:px-8;
   @apply md:mt-20;
 
   @apply lg:mt-34;
+
+  @apply xl:mt-40;
+}
+
+.GoSiteSummary-business-owner {
+  @apply px-6;
+
+  @apply md:px-8;
+
   @apply lg:px-10;
   @apply lg:flex;
   @apply lg:flex-row;
@@ -13,7 +20,6 @@
   @apply lg:items-center;
   @apply lg:gap-18;
 
-  @apply xl:mt-40;
   @apply xl:gap-28;
   @apply xl:mx-auto;
   @apply xl:px-0;
@@ -87,5 +93,46 @@
   @screen lg {
     width: 116px;
     height: 116px;
+  }
+}
+
+.GoSiteSummary-product-img {
+  @apply mt-16;
+
+  @apply md:mt-20;
+
+  @apply lg:mt-30;
+
+  @apply 2xl:mt-48;
+}
+
+.GoSitesummary-summary-content {
+  @apply mt-16;
+  @apply px-6;
+
+  @apply md:px-0;
+  @apply md:mx-auto;
+  @screen md {
+    width: 76%;
+  }
+
+  @apply lg:mt-20;
+
+  @apply xl:mt-12;
+  @screen xl {
+    width: 61%;
+  }
+
+  max-width: 1176px;
+}
+
+.GoSiteSummary-process-img {
+  @apply mt-8;
+  @apply mx-auto;
+  max-width: 984px;
+
+  @apply 2xl:mt-12;
+  @screen xl {
+    max-width: 1176px;
   }
 }
