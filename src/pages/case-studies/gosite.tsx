@@ -8,6 +8,7 @@ import GoSiteChallengeSolution from '@modules/case-studies/gosite/components/GoS
 
 // Styles
 import '@common/styles/pages/gosite.css'
+import GoSiteDesignSystems from '@modules/case-studies/gosite/components/GoSiteDesignSystems'
 
 const GoSite = () => {
   return (
@@ -17,6 +18,8 @@ const GoSite = () => {
       <GoSiteSummary />
 
       <GoSiteChallengeSolution />
+
+      <GoSiteDesignSystems />
     </div>
   )
 }
