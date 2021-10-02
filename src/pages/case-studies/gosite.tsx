@@ -3,10 +3,11 @@ import React from 'react'
 
 // Components
 import GoSiteIntro from '@modules/case-studies/gosite/components/GoSiteIntro'
+import GoSiteSummary from '@modules/case-studies/gosite/components/GoSiteSummary'
+import GoSiteChallengeSolution from '@modules/case-studies/gosite/components/GoSiteChallengeSolution'
 
 // Styles
 import '@common/styles/pages/gosite.css'
-import GoSiteSummary from '@modules/case-studies/gosite/components/GoSiteSummary'
 
 const GoSite = () => {
   return (
@@ -14,6 +15,8 @@ const GoSite = () => {
       <GoSiteIntro />
 
       <GoSiteSummary />
+
+      <GoSiteChallengeSolution />
     </div>
   )
 }
