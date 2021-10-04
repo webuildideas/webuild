@@ -1,6 +1,28 @@
-.gosite {
+.GoSite {
   position: absolute;
   top: 0;
   width: 100%;
   overflow: hidden;
+}
+
+.GoSite-opportunity-form {
+  @apply mt-22;
+
+  @apply md:mt-20;
+
+  @apply lg:mt-30;
+
+  @apply xl:mt-20;
+
+  @apply 2xl:mt-25;
+
+  @screen 2xl {
+    .OpportunityForm {
+      max-width: 1176px;
+    }
+  }
+}
+
+.GoSite .OtherServices {
+  @apply bg-white;
 }

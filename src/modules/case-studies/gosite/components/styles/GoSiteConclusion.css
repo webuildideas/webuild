@@ -1,0 +1,45 @@
+.GoSiteConclusion-list-container {
+  @apply mx-auto;
+  @apply mt-16;
+  @apply mb-22;
+
+  @apply md:mt-20;
+  @apply md:mb-20;
+  @screen md {
+    width: 76%;
+  }
+
+  @apply lg:mb-30;
+  @apply lg:mt-32;
+
+  @apply xl:mb-20;
+  @screen xl {
+    width: 54%;
+    max-width: 1176px;
+    margin-top: 260px;
+  }
+
+  @apply 2xl:mt-36;
+  @apply 2xl:mb-25;
+}
+
+.GoSiteConclusion-list {
+  @apply list-disc;
+  @apply ml-6;
+
+  li {
+    @apply mb-1;
+  }
+}
+
+.GoSiteConclusion-outro {
+  @apply mx-auto;
+  @screen md {
+    width: 76%;
+  }
+
+  @screen xl {
+    max-width: 1176px;
+    width: 54%;
+  }
+}
