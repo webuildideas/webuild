@@ -8,7 +8,7 @@ export const createPages = async ({ graphql, actions }) => {
   const result = await graphql(`
     {
       allContentfulCaseStudy(
-        filter: { name: { nin: ["Quadpay", "PLACEHOLDER"] } }
+        filter: { name: { nin: ["GoSite", "Quadpay", "PLACEHOLDER"] } }
       ) {
         nodes {
           slug

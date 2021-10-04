@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 128 99">
+  <path fill="#F2F0FF" fill-rule="evenodd" d="M16.172 51.96c0 24.596 19.914 44.534 44.48 44.534 24.566 0 44.48-19.938 44.48-44.534 0-24.595-19.914-44.534-44.48-44.534-24.566 0-44.48 19.94-44.48 44.534Z" clip-rule="evenodd"/>
+  <mask id="metrics-growth-a" width="90" height="90" x="16" y="7" maskUnits="userSpaceOnUse" style="mask-type:alpha">
+    <path fill="#fff" d="M16.18 51.96c0 24.597 19.914 44.535 44.478 44.535 24.566 0 44.48-19.938 44.48-44.534 0-24.595-19.914-44.533-44.48-44.533-24.564 0-44.478 19.938-44.478 44.533Z"/>
+  </mask>
+  <g clip-rule="evenodd" mask="url(#metrics-growth-a)">
+    <path fill="#2250FF" fill-rule="evenodd" d="M85.438 127.607h20.05V40.642h-20.05v86.965Z"/>
+    <path stroke="#340096" stroke-width="1.5" d="M85.438 127.607h20.05V40.642h-20.05v86.965Z"/>
+    <path fill="#E6E2FF" fill-rule="evenodd" d="M65.375 127.607h20.05V47.43h-20.05v80.177Z"/>
+    <path stroke="#340096" stroke-width="1.5" d="M65.375 127.607h20.05V47.43h-20.05v80.177Z"/>
+    <path fill="#2250FF" fill-rule="evenodd" d="M45.352 127.607H65.4V36.854H45.35v90.753Z"/>
+    <path stroke="#340096" stroke-width="1.5" d="M45.352 127.607H65.4V36.854H45.35v90.753Z"/>
+    <path fill="#FFD8BA" fill-rule="evenodd" d="M26.164 127.607h19.194V58.032H26.164v69.575Z"/>
+    <path stroke="#340096" stroke-width="1.5" d="M26.164 127.607h19.194V58.032H26.164v69.575Z"/>
+    <path fill="#BC99FF" fill-rule="evenodd" d="M6.04 122.299h20.048V65.704H6.04V122.3Z"/>
+    <path stroke="#340096" stroke-width="1.5" d="M6.04 122.299h20.048V65.704H6.04V122.3Z"/>
+  </g>
+  <path stroke="#340096" stroke-width="1.5" d="M16.172 51.96c0 24.596 19.914 44.534 44.48 44.534 24.566 0 44.48-19.938 44.48-44.534 0-24.595-19.914-44.534-44.48-44.534-24.566 0-44.48 19.94-44.48 44.534Z" clip-rule="evenodd"/>
+  <mask id="metrics-growth-b" width="92" height="92" x="15" y="6" maskUnits="userSpaceOnUse" style="mask-type:alpha">
+    <path fill="#C4C4C4" d="M15.063 6.171h91.608v91.718H15.063z"/>
+  </mask>
+  <g mask="url(#metrics-growth-b)">
+    <mask id="metrics-growth-c" width="92" height="131" x="16" y="-34" maskUnits="userSpaceOnUse" style="mask-type:alpha">
+      <path fill="#fff" d="M92.018-33.464c-24.567 0-75.838 60.83-75.838 85.424 0 24.596 19.914 44.534 44.478 44.534 24.566 0 44.48-19.938 44.48-44.534 0-24.594 11.445-85.424-13.12-85.424Z"/>
+    </mask>
+    <g mask="url(#metrics-growth-c)">
+      <path fill="#D5BFFF" fill-rule="evenodd" d="m85.438 11.638 19.418-.633V97.43l-19.418.632V11.638Z" clip-rule="evenodd"/>
+    </g>
+    <mask id="metrics-growth-d" width="92" height="131" x="16" y="-34" maskUnits="userSpaceOnUse" style="mask-type:alpha">
+      <path fill="#fff" d="M92.018-33.464c-24.567 0-75.838 60.83-75.838 85.424 0 24.596 19.914 44.534 44.478 44.534 24.566 0 44.48-19.938 44.48-44.534 0-24.594 11.445-85.424-13.12-85.424Z"/>
+    </mask>
+    <g mask="url(#metrics-growth-d)">
+      <path stroke="#340096" stroke-width="1.5" d="m85.438 11.638 19.418-.633V97.43l-19.418.632V11.638Z" clip-rule="evenodd"/>
+    </g>
+  </g>
+  <path stroke="#340096" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M126.236 41.177c-1.087-1.628-3.851-9.03-1.824-14.398-4.118 3.41-7.72 6.14-13.803 6.15"/>
+  <path stroke="#340096" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M2.281 72.366s14.296-10.553 43.377-6.849c36.885 4.7 63.394-3.21 76.637-35.613"/>
+  <path stroke="#340096" stroke-width="1.5" d="M16.172 51.96c0 24.596 19.914 44.534 44.48 44.534 24.566 0 44.48-19.938 44.48-44.534"/>
+</svg>
