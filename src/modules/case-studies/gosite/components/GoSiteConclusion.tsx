@@ -1,15 +1,42 @@
 // Packages
-import React from 'react'
+import React, { useState } from 'react'
+import ReactPlayer from 'react-player/file'
+import { useStaticQuery, graphql } from 'gatsby'
 
-import '@modules/case-studies/gosite/components/styles/GoSiteConclusion.css'
-import { TypeTestimonial } from '@common/types/Testimonial'
+// Components
 import ServiceTestimonial from '@modules/service/components/ServiceTestimonial'
+
+// Commons
+import { TypeTestimonial } from '@common/types/Testimonial'
+
+// Video
+import videoSrc from '@static/videos/gosite-promo.mp4'
+
+// Styles
+import '@modules/case-studies/gosite/components/styles/GoSiteConclusion.css'
 
 interface Props {
   testimonial?: TypeTestimonial
 }
 
 const GoSiteConclusion = ({ testimonial }: Props) => {
+  const [isPlaying, setIsPlaying] = useState(false)
+
+  const { videoCover } = useStaticQuery(graphql`
+    query {
+      videoCover: file(
+        relativePath: { eq: "case-studies/gosite/gosite-video-cover.png" }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 3000) {
+            ...GatsbyImageSharpFluid_withWebp_noBase64
+          }
+        }
+      }
+    }
+  `)
+
+  const handlePlay = () => setIsPlaying((playing) => !playing)
   return (
     <div className="GoSiteConclusion">
       {testimonial ? (
@@ -17,6 +44,29 @@ const GoSiteConclusion = ({ testimonial }: Props) => {
           <ServiceTestimonial testimonial={testimonial} />
         </div>
       ) : null}
+
+      <div className="GoSiteConclusion-video-container">
+        <div
+          className="GoSiteConclusion-video"
+          onClick={handlePlay}
+          role="button"
+        >
+          <ReactPlayer
+            className="react-player"
+            controls={true}
+            height="100%"
+            light={videoCover.childImageSharp.fluid.src}
+            playing={isPlaying}
+            playsinline={true}
+            url={videoSrc}
+            width="100%"
+          />
+        </div>
+      </div>
+      <p className="GoSiteConclusion-video-caption text-caption text-gray-600">
+        GoSite app promotional video
+      </p>
+
       <div className="GoSiteConclusion-list-container">
         <h3 className="text-h3 font-extrabold mb-4">In short, we:</h3>
         <ul className="GoSiteConclusion-list">
