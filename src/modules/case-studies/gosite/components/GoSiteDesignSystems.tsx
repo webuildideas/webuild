@@ -294,7 +294,12 @@ const GoSiteDesignSystems = () => {
           </p>
         </div>
       </div>
-      <Img className="GoSiteDesignSystems-img" fluid={designSystemSources} />
+      <Img
+        className="GoSiteDesignSystems-img"
+        durationFadeIn={150}
+        fadeIn
+        fluid={designSystemSources}
+      />
       <p className="GoSiteDesignSystems-copy text-body">
         Next, we worked on decreasing churn by making enhancements and
         optimizations to their UX based on continuous user testing. After all,
@@ -307,6 +312,8 @@ const GoSiteDesignSystems = () => {
       </p>
       <Img
         className="GoSiteDesignSystems-decisions-img"
+        durationFadeIn={150}
+        fadeIn
         fluid={designDecisionsSources}
       />
       <p className="GoSiteDesignSystems-copy text-body mb-4 md:mb-6 lg:mb-8">
@@ -327,7 +334,12 @@ const GoSiteDesignSystems = () => {
         that champions the service-based small business owner.
       </p>
 
-      <Img className="GoSiteDesignSystems-webApp-img" fluid={webAppSources} />
+      <Img
+        className="GoSiteDesignSystems-webApp-img"
+        durationFadeIn={150}
+        fadeIn
+        fluid={webAppSources}
+      />
     </div>
   )
 }

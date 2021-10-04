@@ -15,10 +15,11 @@ import Footer from '@components/Footer'
 import OtherServices from '@modules/service/components/OtherServices'
 import OpportunityForm from '@modules/forms/OpportunityForm'
 import GoSiteDesignSystems from '@modules/case-studies/gosite/components/GoSiteDesignSystems'
+import GoSiteConclusion from '@modules/case-studies/gosite/components/GoSiteConclusion'
+import Meta from '@components/Meta'
 
 // Styles
 import '@common/styles/pages/gosite.css'
-import GoSiteConclusion from '@modules/case-studies/gosite/components/GoSiteConclusion'
 
 interface GoSiteQueryResponse {
   contentfulCaseStudy: TypeCaseStudy
@@ -35,32 +36,44 @@ const GoSite = ({
   data: { allContentfulService, contentfulCaseStudy },
   location
 }: Props) => {
-  const { nextCaseStudies, featuredTestimonial } = contentfulCaseStudy
+  const {
+    nextCaseStudies,
+    featuredTestimonial,
+    seoTitle,
+    metaDescription: { metaDescription }
+  } = contentfulCaseStudy
   const { nodes: services } = allContentfulService
   return (
-    <div className="GoSite">
-      <main>
-        <GoSiteIntro />
+    <>
+      <Meta
+        description={metaDescription}
+        location={location}
+        title={seoTitle}
+      />
+      <div className="GoSite">
+        <main>
+          <GoSiteIntro />
 
-        <GoSiteSummary />
+          <GoSiteSummary />
 
-        <GoSiteChallengeSolution />
+          <GoSiteChallengeSolution />
 
-        <GoSiteDesignSystems />
+          <GoSiteDesignSystems />
 
-        <GoSiteConclusion testimonial={featuredTestimonial} />
-      </main>
-      <div className="GoSite-opportunity-form">
-        <OpportunityForm
-          buttonText="Let's Meet"
-          location={location.href}
-          title="Set up a meeting - we'd love to chat"
-        />
+          <GoSiteConclusion testimonial={featuredTestimonial} />
+        </main>
+        <div className="GoSite-opportunity-form">
+          <OpportunityForm
+            buttonText="Let's Meet"
+            location={location.href}
+            title="Set up a meeting - we'd love to chat"
+          />
+        </div>
+        <OtherServices services={services} title="How We Got There" />
+        <RelatedCaseStudies caseStudies={nextCaseStudies} />
+        <Footer />
       </div>
-      <OtherServices services={services} title="How We Got There" />
-      <RelatedCaseStudies caseStudies={nextCaseStudies} />
-      <Footer />
-    </div>
+    </>
   )
 }
 

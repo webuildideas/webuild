@@ -23,6 +23,31 @@
   }
 }
 
+.GoSite-opportunity-form .OpportunityForm-success {
+  @apply px-6;
+  @apply mx-auto;
+
+  @apply mt-22;
+
+  @apply md:mt-20;
+
+  @apply lg:mt-30;
+
+  @apply xl:mt-20;
+
+  @apply 2xl:mt-25;
+
+  @apply md:px-0;
+  @screen md {
+    width: 76%;
+    max-width: 784px;
+  }
+
+  @screen 2xl {
+    max-width: 1176px;
+  }
+}
+
 .GoSite .OtherServices {
   @apply bg-white;
 }

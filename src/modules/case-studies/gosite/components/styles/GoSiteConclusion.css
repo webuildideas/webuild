@@ -1,18 +1,16 @@
 .GoSiteConclusion-list-container {
+  @apply px-6;
   @apply mx-auto;
   @apply mt-16;
-  @apply mb-22;
 
+  @apply md:px-0;
   @apply md:mt-20;
-  @apply md:mb-20;
   @screen md {
     width: 76%;
   }
 
-  @apply lg:mb-30;
   @apply lg:mt-32;
 
-  @apply xl:mb-20;
   @screen xl {
     width: 54%;
     max-width: 1176px;
@@ -20,7 +18,6 @@
   }
 
   @apply 2xl:mt-36;
-  @apply 2xl:mb-25;
 }
 
 .GoSiteConclusion-list {
@@ -34,10 +31,17 @@
 
 .GoSiteConclusion-outro {
   @apply mx-auto;
+  @apply px-6;
+  @apply mt-8;
+  
+  @apply md:px-0;
   @screen md {
     width: 76%;
   }
 
+  @apply lg:mt-10;
+
+  @apply xl:mt-12;
   @screen xl {
     max-width: 1176px;
     width: 54%;
@@ -73,10 +77,11 @@
 }
 
 .GoSiteConclusion-video-container {
+  @apply px-6;
   @apply md:mx-auto;
   @apply mt-20;
 
-
+  @apply md:px-0;
   @apply md:mt-26;
   @screen md {
     width: 76%;
@@ -114,7 +119,9 @@
 
 .GoSiteConclusion-video-caption {
   @apply mt-8;
+  @apply px-6;
 
+  @apply md:px-0;
   @apply md:mx-auto;
   @screen md {
     width: 76%;

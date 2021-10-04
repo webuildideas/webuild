@@ -2,6 +2,10 @@
 import React from 'react'
 import { graphql, PageProps } from 'gatsby'
 
+// Commons
+import { TypeService } from '@common/types/Service'
+import { TypeCaseStudy } from '@common/types/CaseStudy'
+
 // Components
 import QuadpayIntro from '@modules/case-studies/quadpay/components/QuadpayIntro'
 import QuadpayDesignSystems from '@modules/case-studies/quadpay/components/QuadpayDesignSystems'
@@ -13,14 +17,10 @@ import OpportunityForm from '@modules/forms/OpportunityForm'
 import QuadpayMarketingDesign from '@modules/case-studies/quadpay/components/QuadpayMarketingDesign'
 import QuadpayChallengeSolution from '@modules/case-studies/quadpay/components/QuadpayChallengeSolution'
 import Meta from '@components/Meta'
-
-// Commons
-import { TypeService } from '@common/types/Service'
+import RelatedCaseStudies from '@modules/case-studies/components/NextCaseStudies'
 
 // Styles
 import '../../common/styles/pages/quadpay.css'
-import RelatedCaseStudies from '@modules/case-studies/components/NextCaseStudies'
-import { TypeCaseStudy } from '@common/types/CaseStudy'
 
 interface QuadpayQueryResponse {
   contentfulCaseStudy: TypeCaseStudy

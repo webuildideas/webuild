@@ -116,11 +116,9 @@
 }
 
 .GoSiteDesignSystems-decisions-img {
-  @apply my-8;
+  @apply my-16;
   @apply mx-auto;
   max-width: 1970px;
-
-  @apply md:my-16;
 
   @apply lg:my-30;
 

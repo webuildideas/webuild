@@ -178,6 +178,8 @@ const GoSiteSummary = () => {
       </div>
       <Img
         className="GoSiteSummary-product-img"
+        durationFadeIn={150}
+        fadeIn
         fluid={productFeatureSources}
       />
 
@@ -203,6 +205,8 @@ const GoSiteSummary = () => {
 
       <Img
         className="GoSiteSummary-process-img"
+        durationFadeIn={150}
+        fadeIn
         fluid={process.childImageSharp.fluid}
       />
     </div>
