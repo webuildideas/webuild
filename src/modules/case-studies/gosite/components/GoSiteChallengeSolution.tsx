@@ -22,7 +22,7 @@ const Solution = () => (
 
 const GoSiteChallengeSolution = () => {
   return (
-    <div className="GoSiteChallengeSolution">
+    <div className="GoSiteChallengeSolution px-6 md:px-0">
       <ChallengeSolution challenge={<Challenge />} solution={<Solution />} />
     </div>
   )

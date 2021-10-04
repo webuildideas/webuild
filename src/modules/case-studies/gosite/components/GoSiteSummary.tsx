@@ -157,10 +157,19 @@ const GoSiteSummary = () => {
           </p>
 
           <p className="text-body">
-            Enter: GoSite. An all-in-one platform to help small businesses get
-            more done with fewer hurdles. With GoSite, service-based small
-            businesses can seamlessly provide a platform for their customers to
-            find, book, and pay for appointments online.
+            Enter:{' '}
+            <a
+              className="text-electricViolet"
+              href="https://gosite.com"
+              rel="noreferrer"
+              target="_blank"
+            >
+              GoSite
+            </a>
+            . An all-in-one platform to help small businesses get more done with
+            fewer hurdles. With GoSite, service-based small businesses can
+            seamlessly provide a platform for their customers to find, book, and
+            pay for appointments online.
           </p>
         </div>
         <div className="GoSiteSummary-metrics grid grid-cols-1 md:grid-cols-3 lg:grid-cols-1 gap-4 md:gap-6">
@@ -178,6 +187,8 @@ const GoSiteSummary = () => {
       </div>
       <Img
         className="GoSiteSummary-product-img"
+        durationFadeIn={150}
+        fadeIn
         fluid={productFeatureSources}
       />
 
@@ -203,6 +214,8 @@ const GoSiteSummary = () => {
 
       <Img
         className="GoSiteSummary-process-img"
+        durationFadeIn={150}
+        fadeIn
         fluid={process.childImageSharp.fluid}
       />
     </div>

@@ -117,7 +117,12 @@ const GoSiteIntro = () => {
           attention.
         </h2>
       </div>
-      <Img className="gosite-intro-img" fluid={bannerSources} />
+      <Img
+        className="gosite-intro-img"
+        durationFadeIn={150}
+        fadeIn
+        fluid={bannerSources}
+      />
     </>
   )
 }

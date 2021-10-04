@@ -105,7 +105,7 @@ const OpportunityForm = ({
   )
 
   return formSubmitted ? (
-    <div>
+    <div className="OpportunityForm-success">
       <h2 className="text-h2 mb-12">Thank you for getting in touch!</h2>
       <p className="text-h3 mb-35">
         We’ll get back to you shortly. In the meantime, learn more about{' '}
