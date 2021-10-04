@@ -43,3 +43,31 @@
     width: 54%;
   }
 }
+
+.GoSiteConclusion .ServiceTestimonial {
+  @apply mt-20;
+
+  @apply md:mt-16;
+
+  @apply lg:mt-30;
+
+  @apply xl:mt-28;
+
+  @apply 2xl:mt-54;
+  @screen 2xl {
+    width: 1176px;
+    max-width: 100%;
+  }
+
+  .ServiceTestimonial-quote {
+    border-color: #0058ff;
+  }
+
+  .ServiceTestimonial-cite {
+    background-color: rgba(0, 88, 255, 0.12);
+    @apply md:bg-transparent;
+  }
+  .ServiceTestimonial-cite-image:after {
+    background-color: rgba(0, 88, 255, 0.12);
+  }
+}

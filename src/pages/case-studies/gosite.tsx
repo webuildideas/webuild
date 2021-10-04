@@ -35,7 +35,7 @@ const GoSite = ({
   data: { allContentfulService, contentfulCaseStudy },
   location
 }: Props) => {
-  const { nextCaseStudies } = contentfulCaseStudy
+  const { nextCaseStudies, featuredTestimonial } = contentfulCaseStudy
   const { nodes: services } = allContentfulService
   return (
     <div className="GoSite">
@@ -48,7 +48,7 @@ const GoSite = ({
 
         <GoSiteDesignSystems />
 
-        <GoSiteConclusion />
+        <GoSiteConclusion testimonial={featuredTestimonial} />
       </main>
       <div className="GoSite-opportunity-form">
         <OpportunityForm
@@ -67,6 +67,24 @@ const GoSite = ({
 export const GOSITE_QUERY = graphql`
   query gositeQuery {
     contentfulCaseStudy(name: { eq: "GoSite" }) {
+      featuredTestimonial {
+        company
+        name
+        role
+        quote {
+          raw
+        }
+        mainHeadshot {
+          fluid(maxWidth: 500) {
+            ...GatsbyContentfulFluid_withWebp_noBase64
+          }
+        }
+        featuredHeadshot {
+          fluid(maxWidth: 500) {
+            ...GatsbyContentfulFluid_withWebp_noBase64
+          }
+        }
+      }
       nextCaseStudies {
         logo {
           file {

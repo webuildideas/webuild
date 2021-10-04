@@ -2,10 +2,21 @@
 import React from 'react'
 
 import '@modules/case-studies/gosite/components/styles/GoSiteConclusion.css'
+import { TypeTestimonial } from '@common/types/Testimonial'
+import ServiceTestimonial from '@modules/service/components/ServiceTestimonial'
 
-const GoSiteConclusion = () => {
+interface Props {
+  testimonial?: TypeTestimonial
+}
+
+const GoSiteConclusion = ({ testimonial }: Props) => {
   return (
     <div className="GoSiteConclusion">
+      {testimonial ? (
+        <div className="GoSiteConclusion-testimonial">
+          <ServiceTestimonial testimonial={testimonial} />
+        </div>
+      ) : null}
       <div className="GoSiteConclusion-list-container">
         <h3 className="text-h3 font-extrabold mb-4">In short, we:</h3>
         <ul className="GoSiteConclusion-list">
