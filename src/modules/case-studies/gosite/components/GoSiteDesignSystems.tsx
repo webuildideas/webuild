@@ -8,6 +8,7 @@ import DesignSystems from '@static/svgs/service/circle/design-systems-circle.inl
 
 // Styles
 import '@modules/case-studies/gosite/components/styles/GoSiteDesignSystems.css'
+import MotionAniLink from '@modules/common/components/MotionAniLink'
 
 const GoSiteDesignSystems = () => {
   const {
@@ -288,9 +289,17 @@ const GoSiteDesignSystems = () => {
             We discovered that there was a jarring disconnect between the
             website and the product in terms of design. That disconnect was not
             an asset to their brand — so we tackled all things branding first.
-            We created a robust design system that could be repeated, reused,
-            and optimized across all channels. The end result was a cohesive
-            brand aesthetic that caught the eye of investors.
+            We{' '}
+            <MotionAniLink
+              className="text-electricViolet"
+              styleType="link"
+              to="/design-system-digital-brand-benefits"
+            >
+              created a robust design system
+            </MotionAniLink>{' '}
+            that could be repeated, reused, and optimized across all channels.
+            The end result was a cohesive brand aesthetic that caught the eye of
+            investors.
           </p>
         </div>
       </div>
@@ -301,14 +310,21 @@ const GoSiteDesignSystems = () => {
         fluid={designSystemSources}
       />
       <p className="GoSiteDesignSystems-copy text-body">
-        Next, we worked on decreasing churn by making enhancements and
-        optimizations to their UX based on continuous user testing. After all,
-        it’s hard to know what’s working and what’s not — and why — until you
-        get down to the nitty-gritty. Armed with user feedback, we tackled
-        GoSite's free trial onboarding, improved first-time user experience, and
-        launched a new instant website builder. We're relentlessly and rapidly
-        enhancing core features product-by-product as we continue to listen to
-        user observations.
+        Next, we worked on{' '}
+        <MotionAniLink
+          className="text-electricViolet"
+          styleType="link"
+          to="/reduce-customer-churn-rate-for-saas-startups"
+        >
+          decreasing churn
+        </MotionAniLink>{' '}
+        by making enhancements and optimizations to their UX based on continuous
+        user testing. After all, it’s hard to know what’s working and what’s not
+        — and why — until you get down to the nitty-gritty. Armed with user
+        feedback, we tackled GoSite's free trial onboarding, improved first-time
+        user experience, and launched a new instant website builder. We're
+        relentlessly and rapidly enhancing core features product-by-product as
+        we continue to listen to user observations.
       </p>
       <Img
         className="GoSiteDesignSystems-decisions-img"
