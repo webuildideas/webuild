@@ -1,0 +1,68 @@
+.MonthlyNewsletter-pixel-anchor {
+  @apply absolute;
+  width:10px;
+  height: 10px;
+  background-color: red;
+  left: 0;
+  top: 2000px;
+}
+
+.MonthlyNewsletter {
+  @apply fixed;
+  @apply bottom-6;
+  @apply right-6;
+  @apply bg-champagnePink;
+  @apply p-6;
+  @apply rounded-2;
+
+  width: calc(100% - 48px);
+  max-width: 450px;
+
+  @screen md {
+    width: 264px;
+  }
+
+  @apply lg:bottom-8;
+  @apply lg:right-8;
+}
+
+.MonthlyNewsletter-close {
+  @apply text-santaFe;
+  @apply absolute;
+  @apply right-4;
+  @apply top-4;
+  @apply cursor-pointer;
+}
+
+.MonthlyNewsletter-checkmark {
+  @apply text-santaFe;
+  @apply w-10;
+  @apply mb-3;
+}
+
+.MonthlyNewsletter-icon {
+  @apply w-10;
+  @apply text-santaFe;
+  @apply mb-3;
+}
+
+.MonthlyNewsletter-email {
+  @apply block;
+  @apply appearance-none;
+  @apply mb-6;
+  & * {
+    @apply text-black;
+  }
+}
+
+.MonthlyNewsletter-select * {
+  @apply text-black !important;
+  @apply border-black !important;
+}
+
+.MonthlyNewsletter-submit,
+.MonthlyNewsletter-close-btn {
+  @apply block;
+  @apply text-champagnePink;
+  @apply mt-10;
+}

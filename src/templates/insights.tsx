@@ -28,6 +28,7 @@ import FeaturedInsight from '@modules/contentHub/components/FeaturedInsight'
 import Pagination from '@modules/contentHub/components/Pagination'
 import Footer from '@components/Footer'
 import EmailSignUpForm from '@modules/forms/EmailSignupForm'
+import MonthlyNewsletterForm from '@modules/forms/MonthlyNewsletterForm'
 
 interface Props {
   location: PageProps['location']
@@ -228,6 +229,7 @@ const Insights = ({
       setTotal(data.insightCollection.total)
     }
   }, [data])
+
   return (
     <div className="InsightsPage">
       <Meta location={location} title="Insights" />
@@ -300,6 +302,7 @@ const Insights = ({
 
         <aside className="InsightsPage-ctas">
           <EmailSignUpForm location={location.href} />
+          <MonthlyNewsletterForm location={location.href} />
         </aside>
       </div>
       <Footer />
