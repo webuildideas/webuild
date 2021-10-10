@@ -53,18 +53,18 @@ const formSchema = Yup.object().shape({
 
 const variants: Variants = {
   visible: {
-    opacity: [0.5, 0.6, 0.7, 1],
-    bottom: '2%',
+    opacity: 1,
+    bottom: 32,
     transition: {
-      duration: 0.8,
+      duration: 0.6,
       ease: 'easeInOut'
     }
   },
   hidden: {
-    opacity: 0,
-    bottom: '-110%',
+    opacity: 0.25,
+    bottom: -500,
     transition: {
-      duration: 0.8,
+      duration: 0.6,
       ease: 'easeInOut'
     }
   }
@@ -73,6 +73,7 @@ const variants: Variants = {
 const MonthlyNewsletterForm = ({ location }: Props) => {
   const [formSubmitted, setFormSubmitted] = useState(false)
   const [formClosed, setFormClosed] = useState(false)
+  const [anchorPosition, setAnchorPosition] = useState(2000)
   const animationControls = useAnimation()
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -123,6 +124,13 @@ const MonthlyNewsletterForm = ({ location }: Props) => {
 
   const handleCloseForm = () => setFormClosed(true)
 
+  const handleSetPosition = useCallback(async () => {
+    await sleep(2000)
+    setAnchorPosition(
+      Math.ceil(document.documentElement.getBoundingClientRect().height * 0.4)
+    )
+  }, [])
+
   useEffect(() => {
     if (inView) {
       animationControls.start('visible')
@@ -135,9 +143,17 @@ const MonthlyNewsletterForm = ({ location }: Props) => {
     }
   }, [formClosed, animationControls])
 
+  useEffect(() => {
+    handleSetPosition()
+  }, [handleSetPosition])
+
   return userHasCompletedForm && !formSubmitted ? null : (
     <>
-      <div ref={ref} className="MonthlyNewsletter-pixel-anchor" />
+      <div
+        ref={ref}
+        className="MonthlyNewsletter-pixel-anchor"
+        style={{ top: `${anchorPosition}px` }}
+      />
       <motion.div
         animate={animationControls}
         className="MonthlyNewsletter"
