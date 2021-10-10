@@ -23,6 +23,7 @@ import Footer from '@components/Footer'
 import EmailSignupForm from '@modules/forms/EmailSignupForm'
 import GatedPostForm from '@modules/forms/GatedPostForm'
 import ContentUpgradeForm from '@modules/forms/ContentUpgradeForm'
+import MonthlyNewsletterForm from '@modules/forms/MonthlyNewsletterForm'
 
 // Atoms
 import { userGatedPostConversionsAtom } from '@modules/insight/atoms/userGatedPostConversions'
@@ -170,7 +171,10 @@ const Insight = ({
         shareTitle={insight.title}
         title={insight.seoTitle ?? insight.title}
       />
-      <div className={`Insight-container Insight-${insight.type}`}>
+      <div
+        className={`Insight-container Insight-${insight.type}`}
+        id="insight-container"
+      >
         {insight?.heroIllustration?.file?.url ? (
           <div className="Insight-hero">
             <img
@@ -239,6 +243,11 @@ const Insight = ({
 
               <div className="Insight-ctas">
                 <EmailSignupForm location={location.href} />
+                <MonthlyNewsletterForm
+                  containerId="insight-container"
+                  location={location.href}
+                  percentTrigger={0.3}
+                />
                 <ReadNextSidebar
                   insights={insight.readNext}
                   relatedInsightsByTopic={relatedInsightsByTopic}

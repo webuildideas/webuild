@@ -18,6 +18,7 @@ import FeaturedTestimonial from '@components/CaseStudyDetail/FeaturedTestimonial
 import CaseStudy from '@modules/common/components/CaseStudy'
 import Footer from '@components/Footer'
 import Meta from '@components/Meta'
+import MonthlyNewsletterForm from '@modules/forms/MonthlyNewsletterForm'
 
 interface Props {
   data: {
@@ -71,7 +72,7 @@ const CaseStudyDetail = ({
         location={location}
         title={name}
       />
-      <S.CaseStudyDetail className={slug}>
+      <S.CaseStudyDetail className={slug} id="case-study-container">
         {heroBackgroundImage && heroImage && whiteLogo && successSummary ? (
           <Hero
             background={heroBackgroundImage.file.url}
@@ -131,6 +132,11 @@ const CaseStudyDetail = ({
         ) : null}
 
         <Footer />
+        <MonthlyNewsletterForm
+          containerId="case-study-container"
+          location={location.href}
+          percentTrigger={0.3}
+        />
       </S.CaseStudyDetail>
     </>
   )

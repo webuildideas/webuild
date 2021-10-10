@@ -77,11 +77,15 @@ const QuadpayMarketingDesign = () => {
         <div className="QuadpayMarektingDesign-images">
           <Img
             className="QuadpayMarektingDesign-ptd"
+            durationFadeIn={150}
+            fadeIn
             fluid={marketingPhoneTabDesktop.childImageSharp.fluid}
           />
 
           <Img
             className="QuadpayMarektingDesign-sketch"
+            durationFadeIn={150}
+            fadeIn
             fluid={marketingSketch.childImageSharp.fluid}
           />
         </div>
@@ -91,6 +95,8 @@ const QuadpayMarketingDesign = () => {
         <div className="QuadpayMarektingDesign-container">
           <Img
             className="QuadpayMarektingDesign-img block"
+            durationFadeIn={150}
+            fadeIn
             fluid={marketingDesign.childImageSharp.fluid}
           />
         </div>

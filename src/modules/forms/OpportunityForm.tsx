@@ -3,7 +3,7 @@ import { Formik, Form, FormikProps } from 'formik'
 import * as Yup from 'yup'
 
 // Common
-import useSubmitNfForm from '@common/hooks/useSubmitNfForm'
+import useSubmitNfForm from '@modules/forms/hooks/useSubmitNfForm'
 import { NFForms } from '@common/types/NewFangled'
 import { COUNTRIES } from '@common/constants/countries'
 
