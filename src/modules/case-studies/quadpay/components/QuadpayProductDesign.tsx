@@ -116,6 +116,26 @@ const QuadpayProductDesign = () => {
       }
     }
   `)
+
+  const iosAppSources = [
+    iosMobile.childImageSharp.fluid,
+    {
+      ...ios2xl.childImageSharp.fluid,
+      media: `(min-width: 2560px)`
+    },
+    {
+      ...iosXl.childImageSharp.fluid,
+      media: `(min-width: 1280px)`
+    },
+    {
+      ...iosLg.childImageSharp.fluid,
+      media: `(min-width: 1024px)`
+    },
+    {
+      ...iosMd.childImageSharp.fluid,
+      media: `(min-width: 768px)`
+    }
+  ]
   return (
     <>
       <div className="QuadpayProductDesign">
@@ -148,6 +168,8 @@ const QuadpayProductDesign = () => {
       <div className="QuadpayProductDesign-product-img">
         <Img
           className="QuadpayProductDesign-img mobile md:hidden"
+          durationFadeIn={150}
+          fadeIn
           fluid={prodDesignMobileImg.childImageSharp.fluid}
         />
         <Img
@@ -210,34 +232,10 @@ const QuadpayProductDesign = () => {
 
       <div className="Quadpay-ios-app">
         <Img
-          className="Quadpay-ios-app-img md:hidden"
+          className="Quadpay-ios-app-img"
           durationFadeIn={150}
           fadeIn
-          fluid={iosMobile.childImageSharp.fluid}
-        />
-        <Img
-          className="Quadpay-ios-app-img hidden md:block lg:hidden"
-          durationFadeIn={150}
-          fadeIn
-          fluid={iosMd.childImageSharp.fluid}
-        />
-        <Img
-          className="Quadpay-ios-app-img hidden lg:block xl:hidden"
-          durationFadeIn={150}
-          fadeIn
-          fluid={iosLg.childImageSharp.fluid}
-        />
-        <Img
-          className="Quadpay-ios-app-img hidden xl:block 2xl:hidden"
-          durationFadeIn={150}
-          fadeIn
-          fluid={iosXl.childImageSharp.fluid}
-        />
-        <Img
-          className="Quadpay-ios-app-img hidden 2xl:block"
-          durationFadeIn={150}
-          fadeIn
-          fluid={ios2xl.childImageSharp.fluid}
+          fluid={iosAppSources}
         />
       </div>
 

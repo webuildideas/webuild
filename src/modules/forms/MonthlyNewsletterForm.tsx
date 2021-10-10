@@ -29,7 +29,21 @@ import Checkmark from '@static/svgs/common/checkmark-handrawn.inline.svg'
 import '@modules/forms/styles/MonthlyNewsletter.css'
 
 interface Props {
+  /**
+   * The href from the location object
+   */
   location: string
+  /**
+   * The ID of the container element the form is on
+   * this is needed because we cannot just use the HTML element
+   * since a lot of pages are absolutely positioned.
+   */
+  containerId: string
+  /**
+   * The percentage of the screen you want a user to
+   * scroll down before the form appears
+   */
+  percentTrigger?: number
 }
 
 interface FormValues {
@@ -70,10 +84,14 @@ const variants: Variants = {
   }
 }
 
-const MonthlyNewsletterForm = ({ location }: Props) => {
+const MonthlyNewsletterForm = ({
+  location,
+  containerId,
+  percentTrigger = 0.5
+}: Props) => {
   const [formSubmitted, setFormSubmitted] = useState(false)
   const [formClosed, setFormClosed] = useState(false)
-  const [anchorPosition, setAnchorPosition] = useState(2000)
+  const [anchorPosition, setAnchorPosition] = useState(5000)
   const animationControls = useAnimation()
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -124,12 +142,26 @@ const MonthlyNewsletterForm = ({ location }: Props) => {
 
   const handleCloseForm = () => setFormClosed(true)
 
-  const handleSetPosition = useCallback(async () => {
-    await sleep(2000)
+  /**
+   * Set the position of the anchor element based off the
+   * height of the passed container id. This anchor element is needed
+   * because we want to trigger the form to animate when a user has scrolled
+   * a percentage down the page and since the form is position fixed it is
+   * always in view so if animation was based of its position it would animate
+   * in right whent the page loads.
+   */
+  const handleSetAnchorPosition = useCallback(async () => {
+    const containerElement = document.getElementById(containerId)
+    if (!containerElement) {
+      return
+    }
+    await sleep(2100)
     setAnchorPosition(
-      Math.ceil(document.documentElement.getBoundingClientRect().height * 0.4)
+      Math.ceil(
+        containerElement.getBoundingClientRect().height * percentTrigger
+      )
     )
-  }, [])
+  }, [containerId, percentTrigger])
 
   useEffect(() => {
     if (inView) {
@@ -144,8 +176,8 @@ const MonthlyNewsletterForm = ({ location }: Props) => {
   }, [formClosed, animationControls])
 
   useEffect(() => {
-    handleSetPosition()
-  }, [handleSetPosition])
+    handleSetAnchorPosition()
+  }, [handleSetAnchorPosition])
 
   return userHasCompletedForm && !formSubmitted ? null : (
     <>

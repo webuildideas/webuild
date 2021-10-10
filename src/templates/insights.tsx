@@ -231,7 +231,7 @@ const Insights = ({
   }, [data])
 
   return (
-    <div className="InsightsPage">
+    <div className="InsightsPage" id="insights-container">
       <Meta location={location} title="Insights" />
       <div className="InsightsPage-header">
         <div className="InsightsPage-header-content">
@@ -302,7 +302,10 @@ const Insights = ({
 
         <aside className="InsightsPage-ctas">
           <EmailSignUpForm location={location.href} />
-          <MonthlyNewsletterForm location={location.href} />
+          <MonthlyNewsletterForm
+            containerId="insights-container"
+            location={location.href}
+          />
         </aside>
       </div>
       <Footer />

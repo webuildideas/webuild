@@ -1,7 +1,9 @@
+// Packages
 import React, { useState } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import ReactPlayer from 'react-player/youtube'
 
+// Styles
 import './styles/QuadpayConclusion.css'
 
 const QuadpayConclusion = () => {
