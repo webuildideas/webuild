@@ -229,6 +229,10 @@
     @apply text-electricViolet;
     @apply hover:underline;
   }
+
+  i {
+    @apply italic;
+  }
 }
 
 * + .Insight-h3 {
