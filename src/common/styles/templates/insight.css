@@ -235,6 +235,14 @@
   }
 }
 
+.Insight-h3 i {
+  @apply italic;
+}
+
+.Insight-h4 i {
+  @apply italic;
+}
+
 * + .Insight-h3 {
   @apply mt-12;
 }
