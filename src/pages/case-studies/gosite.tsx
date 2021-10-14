@@ -17,6 +17,7 @@ import OpportunityForm from '@modules/forms/OpportunityForm'
 import GoSiteDesignSystems from '@modules/case-studies/gosite/components/GoSiteDesignSystems'
 import GoSiteConclusion from '@modules/case-studies/gosite/components/GoSiteConclusion'
 import Meta from '@components/Meta'
+import MonthlyNewsletterForm from '@modules/forms/MonthlyNewsletterForm'
 
 // Styles
 import '@common/styles/pages/gosite.css'
@@ -50,7 +51,7 @@ const GoSite = ({
         location={location}
         title={seoTitle}
       />
-      <div className="GoSite">
+      <div className="GoSite" id="gosite-container">
         <main>
           <GoSiteIntro />
 
@@ -72,6 +73,11 @@ const GoSite = ({
         <OtherServices services={services} title="How We Got There" />
         <RelatedCaseStudies caseStudies={nextCaseStudies} />
         <Footer />
+        <MonthlyNewsletterForm
+          containerId="gosite-container"
+          location={location.href}
+          percentTrigger={0.35}
+        />
       </div>
     </>
   )

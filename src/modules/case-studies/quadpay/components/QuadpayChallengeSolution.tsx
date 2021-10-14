@@ -2,10 +2,6 @@ import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 
-// SVGs
-import ChallengeIcon from '@static/svgs/case-studies/challenge.inline.svg'
-import SolutionIcon from '@static/svgs/case-studies/solution.inline.svg'
-
 // Styles
 import './styles/QuadpayChallengeSolution.css'
 import ChallengeSolution from '@modules/case-studies/components/ChallengeSolution'
@@ -77,6 +73,8 @@ const QuadpayChallengeSolution = () => {
           </h3>
           <Img
             className="QuadpayChallengeSolution-metrics-img-mobile"
+            durationFadeIn={150}
+            fadeIn
             fluid={metricsMobile.childImageSharp.fluid}
           />
           <p className="text-body mb-4 md:mb-6 lg:mb-8">
@@ -94,11 +92,15 @@ const QuadpayChallengeSolution = () => {
 
         <Img
           className="QuadpayChallengeSolution-metrics-img-tablet"
+          durationFadeIn={150}
+          fadeIn
           fluid={metricsTablet.childImageSharp.fluid}
         />
 
         <Img
           className="QuadpayChallengeSolution-metrics-img"
+          durationFadeIn={150}
+          fadeIn
           fluid={metrics.childImageSharp.fluid}
         />
       </div>

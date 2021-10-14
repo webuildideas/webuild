@@ -1,3 +1,4 @@
+// Packages
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
@@ -74,11 +75,15 @@ const QuadpayDesignSystems = () => {
 
       <Img
         className="QuadpayDesignSystems-img mobile md:hidden"
+        durationFadeIn={150}
+        fadeIn
         fluid={designSystemMobileImg.childImageSharp.fluid}
       />
 
       <Img
         className="QuadpayDesignSystems-img hidden md:block"
+        durationFadeIn={150}
+        fadeIn
         fluid={designSystemImg.childImageSharp.fluid}
       />
     </div>

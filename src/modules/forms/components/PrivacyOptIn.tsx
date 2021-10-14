@@ -1,6 +1,6 @@
 import { classNames } from '@common/utils/classNames'
 import Checkbox from '@modules/common/components/Checkbox'
-import getCountryRequiresPrivacy from '@modules/common/utils/getCountryRequiresPrivacy'
+import getCountryRequiresPrivacy from '@modules/forms/utils/getCountryRequiresPrivacy'
 import { useFormikContext } from 'formik'
 import { Link } from 'gatsby'
 import React from 'react'

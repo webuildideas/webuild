@@ -41,7 +41,12 @@ const QuadpayIntro = () => {
         <HeroIllustration className="quadpay-hero-illustration" />
       </div>
       <div className="quadpay-intro">
-        <Img className="quadpay-logo" fluid={logo.childImageSharp.fluid} />
+        <Img
+          className="quadpay-logo"
+          durationFadeIn={150}
+          fadeIn
+          fluid={logo.childImageSharp.fluid}
+        />
         <h1 className="text-h1 mb-4 md:mb-6">
           How UX/UI Upgrades & Brand Strategy Took This FinTech App From Startup
           to Acquisition
@@ -54,6 +59,8 @@ const QuadpayIntro = () => {
 
       <Img
         className="quadpay-intro-img"
+        durationFadeIn={150}
+        fadeIn
         fluid={introImg.childImageSharp.fluid}
       />
     </>
