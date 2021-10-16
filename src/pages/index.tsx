@@ -22,7 +22,6 @@ import Connect from '@static/svgs/home/connect.inline.svg'
 
 // Styles
 import '../common/styles/pages/home.css'
-import MonthlyNewsletterForm from '@modules/forms/MonthlyNewsletterForm'
 
 export interface HomePageQueryResponse {
   contentfulHomePage: {
@@ -173,11 +172,6 @@ const IndexPage = ({ data, location }: Props) => {
       </div>
 
       <Footer />
-      <MonthlyNewsletterForm
-        containerId="home-container"
-        location={location.href}
-        percentTrigger={0.4}
-      />
     </div>
   )
 }

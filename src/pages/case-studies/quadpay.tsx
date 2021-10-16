@@ -18,7 +18,6 @@ import QuadpayMarketingDesign from '@modules/case-studies/quadpay/components/Qua
 import QuadpayChallengeSolution from '@modules/case-studies/quadpay/components/QuadpayChallengeSolution'
 import Meta from '@components/Meta'
 import RelatedCaseStudies from '@modules/case-studies/components/NextCaseStudies'
-import MonthlyNewsletterForm from '@modules/forms/MonthlyNewsletterForm'
 
 // Styles
 import '../../common/styles/pages/quadpay.css'
@@ -77,11 +76,6 @@ const QuadPay = ({
         <OtherServices services={services} title="How We Got There" />
         <RelatedCaseStudies caseStudies={nextCaseStudies} />
         <Footer />
-        <MonthlyNewsletterForm
-          containerId="quadpay-container"
-          location={location.href}
-          percentTrigger={0.35}
-        />
       </div>
     </>
   )

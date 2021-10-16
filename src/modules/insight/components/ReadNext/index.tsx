@@ -18,6 +18,7 @@ const ReadNext = ({ posts, relatedPostsByTopic, className }: Props) => {
   const hasRelated = relatedPostsByTopic && relatedPostsByTopic.length > 0
   return hasPosts || hasRelated ? (
     <div className={`ReadNext ${className}`}>
+      <h3 className="text-h3 font-extrabold mb-6">More From The Blog</h3>
       <div className="flex flex-row flex-nowrap overflow-x-scroll">
         {posts && posts.length > 0
           ? posts.map((post: TypeInsight) => {

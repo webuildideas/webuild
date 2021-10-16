@@ -303,10 +303,11 @@
   }
 }
 
-.Insight ol li {
+.Insight ol > li {
   counter-increment: count;
   @apply flex;
   @apply items-start;
+  @apply flex-wrap;
   @apply mb-8;
 
   b {
@@ -323,9 +324,24 @@
     white-space: pre-wrap;
   }
 
-  &:before {
-    height: 100%;
+  p:first-of-type {
+    width: calc(98% - 30px);
+  }
+
+  ul {
+    @apply flex-shrink-0;
+    @apply mb-0;
+  }
+
+  ol {
+    @apply flex-shrink-0;
+  }
+
+  &:before {    
     content: counter(count) ". ";
+    height: 100%;
+    width: 30px;
+    @apply flex-shrink-0;
     @apply relative;
     @apply block;
     @apply mr-2;
@@ -407,4 +423,8 @@
   .Insight-ctas {
     @apply hidden;
   }
+}
+
+.Insight .ContentUpgrade.simpleForm + p {
+  @apply mt-16;
 }
