@@ -23,7 +23,7 @@ const ReadNextSidebar = ({ insights, relatedInsightsByTopic }: Props) => {
               return (
                 <Link
                   key={insight.slug}
-                  className="block mb-6 text-caption hover:text-electricViolet hover:font-bold"
+                  className="block mb-6 text-caption hover:text-electricViolet"
                   to={`/${insight.slug}`}
                 >
                   {insight.title}
@@ -34,7 +34,7 @@ const ReadNextSidebar = ({ insights, relatedInsightsByTopic }: Props) => {
               return (
                 <Link
                   key={insight.slug}
-                  className="block mb-6 text-caption hover:text-electricViolet hover:font-bold"
+                  className="block mb-6 text-caption hover:text-electricViolet"
                   to={`/${insight.slug}`}
                 >
                   {insight.title}

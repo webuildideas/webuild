@@ -188,7 +188,7 @@ const ContentUpgradeForm = ({
                           styleType="solid-purple"
                           type="submit"
                         >
-                          Submit
+                          Submit For Download
                         </Button>
                       </div>
                     </div>

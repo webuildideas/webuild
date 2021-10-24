@@ -6,6 +6,9 @@ import { useField } from 'formik'
 import { WithFormField } from '@common/types/Forms'
 import { WithClassName } from '@common/types/Utilities'
 
+// Svgs
+import SimpleDownArrow from '@static/svgs/common/arrows/arrow-simple-down.inline.svg'
+
 // Style
 import '../styles/SelectField.css'
 
@@ -36,19 +39,22 @@ const SelectField = ({
         {label ? (
           <span className="text-tag block text-black mb-3">{label}</span>
         ) : null}
-        <select
-          {...field}
-          className="SelectField text-caption w-full"
-          placeholder={placeholder}
-        >
-          {options.map((option: SelectOption) => {
-            return (
-              <option key={option.name} value={option.value}>
-                {option.name}
-              </option>
-            )
-          })}
-        </select>
+        <div className="SelectField-container">
+          <SimpleDownArrow className="SelectField-arrow" />
+          <select
+            {...field}
+            className="SelectField text-caption w-full"
+            placeholder={placeholder}
+          >
+            {options.map((option: SelectOption) => {
+              return (
+                <option key={option.name} value={option.value}>
+                  {option.name}
+                </option>
+              )
+            })}
+          </select>
+        </div>
       </label>
       {touched && error && showError ? (
         <div className="error">{error}</div>
