@@ -121,7 +121,6 @@
 }
 
 .Insight-share {
-  position: sticky;
   @apply px-6;
   @apply pb-8;
   @apply md:px-8;
@@ -132,6 +131,8 @@
     grid-row: 3;
   }
 
+  @apply xl:pt-0;
+  @apply xl:top-0;
   @screen xl {
     grid-row: 2;
   }

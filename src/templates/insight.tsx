@@ -5,6 +5,7 @@ import { BLOCKS, INLINES } from '@contentful/rich-text-types'
 import { Options } from '@contentful/rich-text-react-renderer'
 import { useRecoilValue } from 'recoil'
 import { graphql, PageProps } from 'gatsby'
+import Sticky from 'react-stickynode'
 import Img from 'gatsby-image'
 
 // Common
@@ -227,12 +228,14 @@ const Insight = ({
           {!isLocked ? (
             <>
               <div className="Insight-share">
-                <SocialShare
-                  className="Insight-share-items"
-                  hashtags={insight.hashtags}
-                  shareQuote={insight.shareQuote?.shareQuote}
-                  title={insight.title}
-                />
+                <Sticky bottomBoundary="#article" enabled={true} top={150}>
+                  <SocialShare
+                    className="Insight-share-items"
+                    hashtags={insight.hashtags}
+                    shareQuote={insight.shareQuote?.shareQuote}
+                    title={insight.title}
+                  />
+                </Sticky>
               </div>
 
               <ReadNext
