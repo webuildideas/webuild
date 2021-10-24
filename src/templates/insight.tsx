@@ -96,7 +96,6 @@ const options: Options = {
       if (!node.data.target) {
         return
       }
-
       return (
         <span className="Insight-img-inline mt-12 md:mt-18 block">
           <img
