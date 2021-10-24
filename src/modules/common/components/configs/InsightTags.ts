@@ -5,6 +5,7 @@ import { WithClassName } from '@common/types/Utilities'
 
 // Assets
 import Article from '@static/svgs/type/article.inline.svg'
+import Ebook from '@static/svgs/type/ebook.inline.svg'
 import WhitePaper from '@static/svgs/type/white-paper.inline.svg'
 import EmailCourse from '@static/svgs/type/email-course.inline.svg'
 import Event from '@static/svgs/type/event.inline.svg'
@@ -41,7 +42,7 @@ export const TypeInsightTypeIconConfig: TypeInsightTypeIconConfig = {
     name: 'Email Course'
   },
   eBook: {
-    icon: Article,
+    icon: Ebook,
     name: 'eBook'
   },
   Event: {

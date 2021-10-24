@@ -17,6 +17,9 @@ import TextInput from '@modules/forms/components/TextInput'
 import Button from '@modules/common/components/Button'
 import SelectField from '@modules/forms/components/SelectField'
 
+// Icons
+import Checkmark from '@static/svgs/common/checkmark-handrawn.inline.svg'
+
 // Style
 import './styles/EmailSignupForm.css'
 
@@ -92,8 +95,11 @@ const EmailSignupForm = ({ location }: Props) => {
   return userHasCompletedForm || formSubmitted ? (
     formSubmitted ? (
       <div className="bg-foundation lg:bg-transparent p-8 lg-p-0">
-        <p className="text-h3 mb-8">Thanks for subscribing!</p>
-        <p className="text-h3">We'll see you in your inbox soon.</p>
+        <Checkmark className="text-electricViolet mb-3 w-6" />
+        <p className="text-h4 mb-2">Thanks for subscribing!</p>
+        <p className="text-caption">
+          We'll see you in <br /> your inbox soon.
+        </p>
       </div>
     ) : null
   ) : (

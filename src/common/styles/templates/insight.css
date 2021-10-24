@@ -121,7 +121,6 @@
 }
 
 .Insight-share {
-  position: sticky;
   @apply px-6;
   @apply pb-8;
   @apply md:px-8;
@@ -132,6 +131,8 @@
     grid-row: 3;
   }
 
+  @apply xl:pt-0;
+  @apply xl:top-0;
   @screen xl {
     grid-row: 2;
   }
@@ -184,6 +185,7 @@
   }
 }
 
+/* Image Styles*/
 .Insight-img {
   @apply my-12;
 
@@ -222,6 +224,26 @@
   max-height: 200px;
   object-fit: contain;
 }
+
+.Image-numbered-list.Image-numbered-list {
+  @apply mx-auto;
+
+  @apply md:ml-0;
+
+  max-height: 200px;
+  object-fit: contain;
+}
+
+p .Insight-img-inline.Image-numbered-list {
+  @apply md:ml-14;
+}
+
+li .Insight-img-inline.Image-numbered-list {
+  @apply md:ml-0;
+}
+
+/* End Image Styles*/
+
 
 .Insight-paragraph {
   @apply mb-6;

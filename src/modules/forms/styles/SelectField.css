@@ -7,3 +7,15 @@
   @apply font-extrabold;
   @apply text-black;
 }
+
+.SelectField-container {
+  @apply relative;
+}
+
+.SelectField-arrow {
+  @apply absolute;
+  @apply bottom-4;
+  @apply right-0;
+  @apply w-2;
+  @apply text-gray-800;
+}
