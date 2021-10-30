@@ -16,10 +16,12 @@ import TextInput from '@modules/forms/components/TextInput'
 import TextAreaField from '@modules/forms/components/TextAreaField'
 import Button from '@modules/common/components/Button'
 import SelectField from '@modules/forms/components/SelectField'
-import sleep from '@modules/common/utils/sleep'
-import useSubmitNfForm from './hooks/useSubmitNfForm'
 
 // Utils
+import sleep from '@modules/common/utils/sleep'
+
+// Hooks
+import useSubmitNfForm from './hooks/useSubmitNfForm'
 
 // Styles
 import './styles/BookACallForm.css'
@@ -117,7 +119,7 @@ const BookACallForm = ({ location }: Props) => {
             initialValues={initialFormValues}
             onSubmit={handleSubmit}
             validateOnBlur={false}
-            validateOnChnge={false}
+            validateOnChange={false}
             validateOnMount={false}
             validationSchema={formSchema}
           >
@@ -126,56 +128,62 @@ const BookACallForm = ({ location }: Props) => {
                 id={NFForms.BookACall.actOnId}
                 name={NFForms.BookACall.name}
               >
+                <h3 className="text-h3 mb-6">Book a call</h3>
+
                 <TextInput className="hidden" name="Lead Source" type="text" />
                 <TextInput className="hidden" name="Page URL" type="text" />
 
-                <TextInput
-                  className="BookACall-fname"
-                  label="First Name *"
-                  name="First Name"
-                  type="text"
-                />
-                <TextInput
-                  className="BookACall-lname"
-                  label="Last Name *"
-                  name="Last Name"
-                  type="text"
-                />
+                <div className="BookACall-row mb-6">
+                  <TextInput
+                    className="BookACall-fname"
+                    label="First Name *"
+                    name="First Name"
+                    type="text"
+                  />
+                  <TextInput
+                    className="BookACall-lname"
+                    label="Last Name *"
+                    name="Last Name"
+                    type="text"
+                  />
+                </div>
 
                 <TextInput
-                  className="BookACall-email"
+                  className="BookACall-email mb-6"
                   label="Email *"
                   name="E-mail Address"
                   type="text"
                 />
 
                 <TextInput
-                  className="BookACall-company"
+                  className="BookACall-company mb-6"
                   label="Company Name *"
                   name="Company Name"
                   type="text"
                 />
 
-                <SelectField
-                  className="BookACall-select mb-6"
-                  label="Country *"
-                  name="Country"
-                  options={COUNTRIES}
-                  placeholder="Country"
-                />
+                <div className="BookACall-row mb-6">
+                  <SelectField
+                    className="BookACall-country"
+                    label="Country *"
+                    name="Country"
+                    options={COUNTRIES}
+                    placeholder="Country"
+                  />
 
-                <TextInput
-                  className="BookACall-phone"
-                  label="Phone Number *"
-                  name="Phone Number"
-                  type="text"
-                />
+                  <TextInput
+                    className="BookACall-phone"
+                    label="Phone Number *"
+                    name="Phone Number"
+                    type="text"
+                  />
+                </div>
 
                 <TextAreaField
                   className="mb-8"
-                  label="Message *"
+                  label="Message"
                   name="Message"
-                  rows={4}
+                  rows={3}
                 />
 
                 <PrivacyOptIn />
@@ -193,7 +201,7 @@ const BookACallForm = ({ location }: Props) => {
 
                 <Button
                   animate={false}
-                  className="block mx-auto mt-12 lg:ml-0"
+                  className="block mx-auto mt-10 lg:ml-0"
                   disabled={isSubmitting || !values['Privacy Notice']}
                   loading={isSubmitting}
                   styleType="solid-purple"

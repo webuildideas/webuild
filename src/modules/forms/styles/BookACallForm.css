@@ -1,0 +1,27 @@
+.BookACall {
+  @apply px-10;
+  @apply pt-8;
+  @apply pb-14;
+  @apply shadow-lg;
+  max-width: 482px;
+}
+
+.BookACall-row {
+  @apply flex;
+  @apply items-center;
+  @apply justify-between;
+  @apply flex-nowrap;
+}
+
+.BookACall-fname, .BookACall-lname, .BookACall-country, .BookACall-phone {
+  width: 50%;
+  @apply flex-shrink-0;
+}
+
+.BookACall-fname, .BookACall-country {
+  @apply pr-3;
+}
+
+.BookACall-lname, .BookACall-phone {
+  @apply pl-3;
+}
