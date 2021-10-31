@@ -6,6 +6,7 @@ import { graphql, PageProps } from 'gatsby'
 import Meta from '@components/Meta'
 import Button from '@modules/common/components/Button'
 import BookACallForm from '@modules/forms/BookACallForm'
+import TestimonialSlider from '@modules/common/components/TestimonialSlider'
 
 // Common
 import { TypeSEO } from '@common/types/SEO'
@@ -19,15 +20,25 @@ import Reliability from '@static/svgs/landing-pages/fintech/fintech-reliability.
 
 // styles
 import '@common/styles/pages/fintech.css'
+import { TypeTestimonial } from '@common/types/Testimonial'
 
 interface Props {
   data: {
     contentfulSeo: TypeSEO
+    allContentfulTestimonial: {
+      nodes: TypeTestimonial[]
+    }
   }
   location: PageProps['location']
 }
 
-const Fintech = ({ data: { contentfulSeo }, location }: Props) => {
+const Fintech = ({
+  data: {
+    contentfulSeo,
+    allContentfulTestimonial: { nodes: testimonials }
+  },
+  location
+}: Props) => {
   return (
     <>
       <Meta
@@ -118,7 +129,9 @@ const Fintech = ({ data: { contentfulSeo }, location }: Props) => {
         </div>
 
         <div className="Fintech-testimonials">
-          <h2 className="text-h2">Testimonials</h2>
+          <div className="Fintech-testimonials-inner">
+            <TestimonialSlider testimonials={testimonials} />
+          </div>
         </div>
 
         <div className="Fintech-services">
@@ -143,6 +156,43 @@ export const FINTECH_PAGE_QUERY = graphql`
       seoTitle
       seoDescription {
         seoDescription
+      }
+    }
+    allContentfulTestimonial(
+      filter: {
+        name: {
+          in: [
+            "Alex Goode"
+            "Brad Lindenberg"
+            "Brian Johnson"
+            "Ian Yamey"
+            "Andrew Josuweit"
+          ]
+        }
+      }
+    ) {
+      nodes {
+        company
+        name
+        role
+        quoteShort {
+          raw
+        }
+        mainHeadshot {
+          fluid(maxWidth: 500) {
+            ...GatsbyContentfulFluid_withWebp_noBase64
+          }
+        }
+        headshot {
+          fixed(cropFocus: FACE, height: 150, width: 150) {
+            ...GatsbyContentfulFixed_withWebp_noBase64
+          }
+        }
+        purpleHeadshot {
+          fixed(cropFocus: FACE, height: 150, width: 150) {
+            ...GatsbyContentfulFixed_withWebp_noBase64
+          }
+        }
       }
     }
   }

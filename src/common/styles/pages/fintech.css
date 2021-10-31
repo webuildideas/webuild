@@ -115,6 +115,16 @@
 }
 
 /** Testimonials **/
+.Fintech-testimonials {
+  @apply py-31;
+  @apply bg-foundation;
+}
+
+.Fintech-testimonials-inner {
+  @apply mx-auto;
+  width: 68%;
+  max-width: 984px;
+}
 
 /** Services **/
 
