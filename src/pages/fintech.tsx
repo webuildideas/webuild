@@ -29,9 +29,11 @@ const Fintech = ({ location }: Props) => {
       </div>
 
       <div className="Fintech-call-cta">
-        <h3 className="text-h3">
+        <h3 className="Fintech-call-cta-title text-h3">
           We combine our deep expertise in product design and strategy to
-          accelerate business growth for fast-growing Fintech startups.
+          <span>
+            accelerate business growth for fast-growing Fintech startups.
+          </span>
         </h3>
         <Button>Book a call</Button>
       </div>
