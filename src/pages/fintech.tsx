@@ -7,6 +7,7 @@ import Meta from '@components/Meta'
 import Button from '@modules/common/components/Button'
 import BookACallForm from '@modules/forms/BookACallForm'
 import TestimonialSlider from '@modules/common/components/TestimonialSlider'
+import OtherServices from '@modules/service/components/OtherServices'
 
 // Common
 import { TypeSEO } from '@common/types/SEO'
@@ -17,16 +18,24 @@ import DreamBig from '@static/svgs/landing-pages/fintech/fintech-dream-big.inlin
 import ExpandResources from '@static/svgs/landing-pages/fintech/fintech-expand-resources.inline.svg'
 import IncreaseVelocity from '@static/svgs/landing-pages/fintech/fintech-velocity.inline.svg'
 import Reliability from '@static/svgs/landing-pages/fintech/fintech-reliability.inline.svg'
+import Logo from '@static/svgs/logo.inline.svg'
+import Dribbble from '@static/svgs/common/social/dribbble.inline.svg'
+import Instagram from '@static/svgs/common/social/instagram.inline.svg'
+import LinkedIn from '@static/svgs/common/social/linkedin.inline.svg'
 
 // styles
 import '@common/styles/pages/fintech.css'
 import { TypeTestimonial } from '@common/types/Testimonial'
+import { TypeService } from '@common/types/Service'
 
 interface Props {
   data: {
     contentfulSeo: TypeSEO
     allContentfulTestimonial: {
       nodes: TypeTestimonial[]
+    }
+    allContentfulService: {
+      nodes: TypeService[]
     }
   }
   location: PageProps['location']
@@ -35,7 +44,8 @@ interface Props {
 const Fintech = ({
   data: {
     contentfulSeo,
-    allContentfulTestimonial: { nodes: testimonials }
+    allContentfulTestimonial: { nodes: testimonials },
+    allContentfulService: { nodes: services }
   },
   location
 }: Props) => {
@@ -135,15 +145,36 @@ const Fintech = ({
         </div>
 
         <div className="Fintech-services">
-          <h2>What we do ( very ) well</h2>
+          <OtherServices
+            services={services}
+            showButton={false}
+            title="What we do (very) well"
+          />
         </div>
 
         <div className="Fintech-footer">
-          <h3 className="text-h3 font-extrabold">
-            Let's do something <span className="text-electricViolet">bold</span>{' '}
-            together!
-          </h3>
-          <Button>Let's Meet</Button>
+          <div className="Fintech-footer-content">
+            <h3 className="text-h3 Fintech-footer-title">
+              Let's do something <span className="text-lilac">bold</span>{' '}
+              together!
+            </h3>
+            <Button className="Fintech-footer-button" styleType="outline">
+              Let's Meet
+            </Button>
+          </div>
+          <div className="Fintech-footer-contact">
+            <div className="Fintech-footer-social">
+              <Dribbble className="Fintech-footer-social-icon" />
+              <Instagram className="Fintech-footer-social-icon" />
+              <LinkedIn className="Fintech-footer-social-icon" />
+            </div>
+            <div className="Fintech-footer-logo">
+              <Logo />
+            </div>
+            <div className="Fintech-footer-copyright">
+              All rights reserved &copy; webuild {new Date().getFullYear()}
+            </div>
+          </div>
         </div>
       </main>
     </>
@@ -158,6 +189,7 @@ export const FINTECH_PAGE_QUERY = graphql`
         seoDescription
       }
     }
+
     allContentfulTestimonial(
       filter: {
         name: {
@@ -191,6 +223,18 @@ export const FINTECH_PAGE_QUERY = graphql`
         purpleHeadshot {
           fixed(cropFocus: FACE, height: 150, width: 150) {
             ...GatsbyContentfulFixed_withWebp_noBase64
+          }
+        }
+      }
+    }
+
+    allContentfulService {
+      nodes {
+        shortTitle
+        slug
+        otherServicesIllustration {
+          file {
+            url
           }
         }
       }

@@ -11,21 +11,28 @@ import './styles/OtherServices.css'
 
 interface Props {
   services: TypeService[]
+  showButton?: boolean
   title?: string
 }
 
-const OtherServices = ({ services, title = 'Other Services' }: Props) => {
+const OtherServices = ({
+  services,
+  title = 'Other Services',
+  showButton = true
+}: Props) => {
   return (
     <div className="OtherServices">
       <div className="OtherServices-inner">
         <div className="OtherServices-header">
           <h3 className="text-h3 font-extrabold text-center">{title}</h3>
-          <AniLink
-            className="OtherServices-button Button Button-outline hidden md:inline-block"
-            to="/what-we-do"
-          >
-            See All Services
-          </AniLink>
+          {showButton ? (
+            <AniLink
+              className="OtherServices-button Button Button-outline hidden md:inline-block"
+              to="/what-we-do"
+            >
+              See All Services
+            </AniLink>
+          ) : null}
         </div>
         <div className="OtherServices-services">
           {services.map((service) => (
@@ -51,12 +58,14 @@ const OtherServices = ({ services, title = 'Other Services' }: Props) => {
             </AniLink>
           ))}
         </div>
-        <AniLink
-          className="OtherServices-button Button Button-outline inline-block md:hidden mt-8"
-          to="/what-we-do"
-        >
-          See All Services
-        </AniLink>
+        {showButton ? (
+          <AniLink
+            className="OtherServices-button Button Button-outline inline-block md:hidden mt-8"
+            to="/what-we-do"
+          >
+            See All Services
+          </AniLink>
+        ) : null}
       </div>
     </div>
   )
