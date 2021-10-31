@@ -63,8 +63,56 @@
 }
 
 /** Latest Work **/
+.Fintech-latest-work-title {
+  @apply mt-30;
+  @apply mb-16;
+  @apply text-center;
+  @apply font-extrabold;
+}
 
 /** Webuild Works **/
+.Fintech-works-title {
+  @apply mt-46;
+  @apply text-center;
+  @apply font-extrabold;
+  @apply mb-20;
+}
+
+.Fintech-work {
+  @apply flex;
+  @apply justify-between;
+  @apply items-center;
+  @apply mb-30;
+  @apply mx-auto;
+  width: 68%;
+  max-width: 984px;
+}
+
+.Fintech-work-content {
+  max-width: 484px;
+  h3 {
+    @apply mb-3;
+  }
+  p {
+    @apply mb-8;
+  }
+}
+
+.Fintech-work-illustration.resources {
+  max-width: 444px;
+}
+
+.Fintech-work-illustration.velocity {
+  max-width: 484px;
+}
+
+.Fintech-work-illustration.reliability {
+  max-width: 402px;
+}
+
+.Fintech-work-illustration.dream {
+  max-width: 484px;
+}
 
 /** Testimonials **/
 
