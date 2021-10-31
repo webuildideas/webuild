@@ -3,6 +3,12 @@ import Button from '@modules/common/components/Button'
 import BookACallForm from '@modules/forms/BookACallForm'
 import React from 'react'
 
+// Svgs
+import HeroIllustration from '@static/svgs/landing-pages/fintech/fintech-hero.inline.svg'
+
+// styles
+import '@common/styles/pages/fintech.css'
+
 interface Props {
   location: string
 }
@@ -11,10 +17,15 @@ const Fintech = ({ location }: Props) => {
   return (
     <main className="Fintech">
       <div className="Fintech-hero">
-        <h1 className="text-h1">
-          Boost your fintech startup with thoughtful & informed design.
-        </h1>
-        <BookACallForm location={location} />
+        <div className="Fintech-hero-illustration-container">
+          <HeroIllustration className="Fintech-hero-illustration" />
+        </div>
+        <div className="Fintech-hero-inner">
+          <h1 className="Fintech-title text-h1">
+            Boost your fintech startup with thoughtful & informed design.
+          </h1>
+          <BookACallForm location={location} />
+        </div>
       </div>
 
       <div className="Fintech-call-cta">

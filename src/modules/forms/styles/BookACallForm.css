@@ -4,6 +4,8 @@
   @apply pb-14;
   @apply shadow-lg;
   max-width: 482px;
+  @apply flex-shrink-0;
+  @apply bg-white;
 }
 
 .BookACall-row {

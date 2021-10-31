@@ -1,0 +1,44 @@
+.Fintech-hero {
+  @apply relative;
+  @apply pt-25;
+  @apply overflow-y-hidden;
+}
+
+.Fintech-hero-illustration-container {
+  height: 100%;
+  width: 100%;
+  @apply top-0;
+  @apply left-0;
+  @apply overflow-hidden;
+  @apply absolute;
+  @apply justify-end;
+  @apply z-0;
+}
+
+.Fintech-hero-illustration {
+  @apply relative;
+  top: 8%;
+  right: -30%;
+  width: 60%;
+}
+
+.Fintech-hero-inner {
+  @apply relative;
+  @apply z-10;
+  @apply flex;
+  @apply items-start;
+  @apply justify-between;
+  width: 82%;
+  max-width: 1184px;
+  @apply mx-auto;
+}
+
+.Fintech-title {
+  @apply mt-6;
+  max-width: 580px;
+}
+
+.Fintech-call-cta {
+  @apply py-20;
+  @apply bg-gray-100;
+}
