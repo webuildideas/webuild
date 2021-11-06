@@ -105,7 +105,8 @@ const Fintech = ({
             </div>
           </div>
 
-          <div className="Fintech-work">
+          <div className="Fintech-work illustration-right">
+            <IncreaseVelocity className="Fintech-work-illustration velocity" />
             <div className="Fintech-work-content">
               <h3 className="text-h3 font-extrabold">Increase Velocity</h3>
               <p className="text-body">
@@ -114,7 +115,6 @@ const Fintech = ({
               </p>
               <Button styleType="solid-purple">Learn More</Button>
             </div>
-            <IncreaseVelocity className="Fintech-work-illustration velocity" />
           </div>
 
           <div className="Fintech-work">
@@ -130,7 +130,8 @@ const Fintech = ({
             </div>
           </div>
 
-          <div className="Fintech-work">
+          <div className="Fintech-work illustration-right">
+            <DreamBig className="Fintech-work-illustration dream" />
             <div className="Fintech-work-content">
               <h3 className="text-h3 font-extrabold">Dream Big</h3>
               <p className="text-body">
@@ -139,7 +140,6 @@ const Fintech = ({
               </p>
               <Button styleType="solid-purple">Learn More</Button>
             </div>
-            <DreamBig className="Fintech-work-illustration dream" />
           </div>
         </div>
 
