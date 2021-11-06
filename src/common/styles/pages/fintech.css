@@ -107,19 +107,35 @@
 /** Call CTA **/
 
 .Fintech-call-cta {
-  @apply py-20;
+  @apply py-12;
+  @apply px-6;
   @apply bg-gray-100;
   @apply text-center;
+
+  @apply md:px-0;
+  @apply md:py-16;
+
+  @apply lg:py-20;
 }
 
 .Fintech-call-cta-title {
   @apply mb-10;
   @apply mx-auto;
   max-width: 984px;
+
+  @screen md {
+    width: 82%
+  }
 }
 
-.Fintech-call-cta-title span {
-  @apply block;
+.Fintech-call-cta-title span.regular {
+  @apply bg-gray-100;
+  @apply px-2;
+}
+
+.Fintech-call-cta-title span.highlight {
+  @apply inline;
+  @apply px-1;
   @apply text-electricViolet;
   @apply bg-champagnePink;
   max-width: 900px;

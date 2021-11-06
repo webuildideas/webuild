@@ -74,8 +74,10 @@ const Fintech = ({
 
         <div className="Fintech-call-cta">
           <h3 className="Fintech-call-cta-title text-h3">
-            We combine our deep expertise in product design and strategy to
-            <span>
+            <span className="regular">
+              We combine our deep expertise in product design and strategy to
+            </span>
+            <span className="highlight">
               accelerate business growth for fast-growing Fintech startups.
             </span>
           </h3>
