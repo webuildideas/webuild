@@ -1,5 +1,6 @@
 .BookACall {
   @apply bg-white;
+  transition: background-color ease-in 250ms;
   @apply flex-shrink-0;
   @apply pt-6;
   @apply px-6;
@@ -13,6 +14,19 @@
   @apply xl:px-10;
   @apply xl:pt-8;
   @apply xl:pb-14;
+}
+
+.BookACall.BookACall-success {
+  min-height: 610px;
+  @apply py-45;
+  @apply bg-foundation;
+  @apply text-center;
+}
+
+.BookACall-success-icon {
+  width: 45px;
+  @apply mb-12;
+  @apply mx-auto;
 }
 
 .BookACall-row {

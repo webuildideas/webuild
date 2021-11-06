@@ -22,7 +22,10 @@ import SelectField from '@modules/forms/components/SelectField'
 import sleep from '@modules/common/utils/sleep'
 
 // Hooks
+import PurpleCheckmark from '@static/svgs/common/purple-circle-checkmark.inline.svg'
 import useSubmitNfForm from './hooks/useSubmitNfForm'
+
+// SVGs
 
 // Styles
 import './styles/BookACallForm.css'
@@ -84,7 +87,8 @@ const BookACallForm = ({ location, className = '' }: Props) => {
   }
 
   const formClasses = classNames({
-    [className]: className.length > 0
+    [className]: className.length > 0,
+    'BookACall-success': formSubmitted || userHasCompletedForm
   })
 
   const handleSubmit = async (values: FormValues) => {
@@ -113,114 +117,113 @@ const BookACallForm = ({ location, className = '' }: Props) => {
     setFormSubmitted(true)
   }
 
-  return userHasCompletedForm && !formSubmitted ? null : (
-    <>
-      <div className={`BookACall ${formClasses}`}>
-        {formSubmitted ? (
-          <div className="BookACall-success">
-            <h2 className="text-h2">Thank you!</h2>
-          </div>
-        ) : (
-          <Formik
-            initialValues={initialFormValues}
-            onSubmit={handleSubmit}
-            validateOnBlur={false}
-            validateOnChange={false}
-            validateOnMount={false}
-            validationSchema={formSchema}
-          >
-            {({ isSubmitting, values, errors }: FormikProps<FormValues>) => (
-              <Form
-                id={NFForms.BookACall.actOnId}
-                name={NFForms.BookACall.name}
+  return (
+    <div className={`BookACall ${formClasses}`}>
+      {formSubmitted || userHasCompletedForm ? (
+        <div className="BookACall-success">
+          <PurpleCheckmark className="BookACall-success-icon" />
+          <h3 className="text-h3 mb-6">Thank you for booking a call.</h3>
+          <p className="text-body">
+            We look forward to chatting with you about your project!
+          </p>
+        </div>
+      ) : (
+        <Formik
+          initialValues={initialFormValues}
+          onSubmit={handleSubmit}
+          validateOnBlur={false}
+          validateOnChange={false}
+          validateOnMount={false}
+          validationSchema={formSchema}
+        >
+          {({ isSubmitting, values, errors }: FormikProps<FormValues>) => (
+            <Form id={NFForms.BookACall.actOnId} name={NFForms.BookACall.name}>
+              <h3 className="text-h3 mb-6">Book a call</h3>
+
+              <TextInput className="hidden" name="Lead Source" type="text" />
+              <TextInput className="hidden" name="Page URL" type="text" />
+
+              <div className="BookACall-row mb-6">
+                <TextInput
+                  className="BookACall-fname"
+                  label="First Name *"
+                  name="First Name"
+                  type="text"
+                />
+                <TextInput
+                  className="BookACall-lname"
+                  label="Last Name *"
+                  name="Last Name"
+                  type="text"
+                />
+              </div>
+
+              <TextInput
+                className="BookACall-email mb-6"
+                label="Email *"
+                name="E-mail Address"
+                type="text"
+              />
+
+              <TextInput
+                className="BookACall-company mb-6"
+                label="Company Name *"
+                name="Company Name"
+                type="text"
+              />
+
+              <div className="BookACall-row mb-6">
+                <SelectField
+                  className="BookACall-country"
+                  label="Country *"
+                  name="Country"
+                  options={COUNTRIES}
+                  placeholder="Country"
+                />
+
+                <TextInput
+                  className="BookACall-phone"
+                  label="Phone Number *"
+                  name="Phone Number"
+                  type="text"
+                />
+              </div>
+
+              <TextAreaField
+                className="mb-8"
+                label="Message"
+                name="Message"
+                rows={3}
+              />
+
+              <PrivacyOptIn />
+
+              {Object.values(errors).map((error, idx) => {
+                return (
+                  <p
+                    key={`error-${idx}`}
+                    className="text-tag my-6 text-ui-error-dark"
+                  >
+                    {error}
+                  </p>
+                )
+              })}
+
+              <Button
+                animate={false}
+                className="block mx-auto mt-10 lg:ml-0"
+                disabled={isSubmitting || !values['Privacy Notice']}
+                loading={isSubmitting}
+                styleType="solid-purple"
+                type="submit"
               >
-                <h3 className="text-h3 mb-6">Book a call</h3>
-
-                <TextInput className="hidden" name="Lead Source" type="text" />
-                <TextInput className="hidden" name="Page URL" type="text" />
-
-                <div className="BookACall-row mb-6">
-                  <TextInput
-                    className="BookACall-fname"
-                    label="First Name *"
-                    name="First Name"
-                    type="text"
-                  />
-                  <TextInput
-                    className="BookACall-lname"
-                    label="Last Name *"
-                    name="Last Name"
-                    type="text"
-                  />
-                </div>
-
-                <TextInput
-                  className="BookACall-email mb-6"
-                  label="Email *"
-                  name="E-mail Address"
-                  type="text"
-                />
-
-                <TextInput
-                  className="BookACall-company mb-6"
-                  label="Company Name *"
-                  name="Company Name"
-                  type="text"
-                />
-
-                <div className="BookACall-row mb-6">
-                  <SelectField
-                    className="BookACall-country"
-                    label="Country *"
-                    name="Country"
-                    options={COUNTRIES}
-                    placeholder="Country"
-                  />
-
-                  <TextInput
-                    className="BookACall-phone"
-                    label="Phone Number *"
-                    name="Phone Number"
-                    type="text"
-                  />
-                </div>
-
-                <TextAreaField
-                  className="mb-8"
-                  label="Message"
-                  name="Message"
-                  rows={3}
-                />
-
-                <PrivacyOptIn />
-
-                {Object.values(errors).map((error, idx) => {
-                  return (
-                    <p
-                      key={`error-${idx}`}
-                      className="text-tag my-6 text-ui-error-dark"
-                    >
-                      {error}
-                    </p>
-                  )
-                })}
-
-                <Button
-                  animate={false}
-                  className="block mx-auto mt-10 lg:ml-0"
-                  disabled={isSubmitting || !values['Privacy Notice']}
-                  loading={isSubmitting}
-                  styleType="solid-purple"
-                  type="submit"
-                >
-                  Let's Talk
-                </Button>
-              </Form>
-            )}
-          </Formik>
-        )}
-      </div>
-    </>
+                Let's Talk
+              </Button>
+            </Form>
+          )}
+        </Formik>
+      )}
+    </div>
   )
 }
 
