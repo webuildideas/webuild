@@ -11,6 +11,8 @@ import OtherServices from '@modules/service/components/OtherServices'
 
 // Common
 import { TypeSEO } from '@common/types/SEO'
+import { TypeService } from '@common/types/Service'
+import { TypeTestimonial } from '@common/types/Testimonial'
 
 // Svgs
 import HeroIllustration from '@static/svgs/landing-pages/fintech/fintech-hero.inline.svg'
@@ -23,10 +25,8 @@ import Dribbble from '@static/svgs/common/social/dribbble.inline.svg'
 import Instagram from '@static/svgs/common/social/instagram.inline.svg'
 import LinkedIn from '@static/svgs/common/social/linkedin.inline.svg'
 
-// styles
+// Styles
 import '@common/styles/pages/fintech.css'
-import { TypeTestimonial } from '@common/types/Testimonial'
-import { TypeService } from '@common/types/Service'
 
 interface Props {
   data: {
@@ -65,7 +65,10 @@ const Fintech = ({
             <h1 className="Fintech-title text-h1">
               Boost your fintech startup with thoughtful & informed design.
             </h1>
-            <BookACallForm location={location.href} />
+            <BookACallForm
+              className="Fintech-hero-form"
+              location={location.href}
+            />
           </div>
         </div>
 

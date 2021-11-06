@@ -1,11 +1,18 @@
 .BookACall {
-  @apply px-10;
-  @apply pt-8;
-  @apply pb-14;
-  @apply shadow-lg;
-  max-width: 482px;
-  @apply flex-shrink-0;
   @apply bg-white;
+  @apply flex-shrink-0;
+  @apply pt-6;
+  @apply px-6;
+  @apply pb-12;
+  
+  @apply md:shadow-lg;
+  @apply md:px-10;
+  @apply md:pt-8;
+  @apply md:pb-14;
+  
+  @apply xl:px-10;
+  @apply xl:pt-8;
+  @apply xl:pb-14;
 }
 
 .BookACall-row {

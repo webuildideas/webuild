@@ -9,6 +9,7 @@ import uniq from 'lodash/uniq'
 import { NFForms } from '@common/types/NewFangled'
 import { COUNTRIES } from '@common/constants/countries'
 import { userFormConversionsAtom } from '@modules/common/atoms/userFormConversions'
+import { classNames } from '@common/utils/classNames'
 
 // Components
 import PrivacyOptIn from '@modules/forms/components/PrivacyOptIn'
@@ -28,6 +29,7 @@ import './styles/BookACallForm.css'
 
 interface Props {
   location: string
+  className?: string
 }
 
 interface FormValues {
@@ -53,7 +55,7 @@ const formSchema = Yup.object().shape({
   'Phone Number': Yup.string().required('Phone Number is required')
 })
 
-const BookACallForm = ({ location }: Props) => {
+const BookACallForm = ({ location, className = '' }: Props) => {
   const [formSubmitted, setFormSubmitted] = useState(false)
   const [userConversions, setUserConversions] = useRecoilState(
     userFormConversionsAtom
@@ -80,6 +82,10 @@ const BookACallForm = ({ location }: Props) => {
     'Lead Source': 'Web - Book a Call',
     'Page URL': location
   }
+
+  const formClasses = classNames({
+    [className]: className.length > 0
+  })
 
   const handleSubmit = async (values: FormValues) => {
     const formattedSubmissionValues = {
@@ -109,7 +115,7 @@ const BookACallForm = ({ location }: Props) => {
 
   return userHasCompletedForm && !formSubmitted ? null : (
     <>
-      <div className="BookACall">
+      <div className={`BookACall ${formClasses}`}>
         {formSubmitted ? (
           <div className="BookACall-success">
             <h2 className="text-h2">Thank you!</h2>
