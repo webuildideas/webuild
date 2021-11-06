@@ -254,13 +254,25 @@
 
 /** Testimonials **/
 .Fintech-testimonials {
-  @apply py-31;
   @apply bg-foundation;
+  @apply py-15;
+
+  @apply md:py-16;
+
+  @apply lg:py-18;
+
+  @apply xl:py-31;
 }
 
 .Fintech-testimonials-inner {
   @apply mx-auto;
-  width: 68%;
+  @apply px-6;
+
+  @apply md:px-0;
+  @screen md {
+    width: 92%;
+  }
+  
   max-width: 984px;
 }
 
