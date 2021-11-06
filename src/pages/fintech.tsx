@@ -41,6 +41,11 @@ interface Props {
   location: PageProps['location']
 }
 
+// TODO: Launch opportunity Modal from footer button
+// TODO: Launch New schedule call form modal from schedule call button
+// TODO: Hook up links of social icons
+// TODO: Hook up learn more links to go to what we do
+// TODO: Latest work section
 const Fintech = ({
   data: {
     contentfulSeo,

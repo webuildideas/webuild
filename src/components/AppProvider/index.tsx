@@ -13,6 +13,7 @@ import { GlobalStyle } from '@common/theme/GlobalStyle'
 
 // Components
 import Nav from '@modules/common/components/Nav'
+import LandingPageNav from '@modules/common/components/LandingPageNav'
 
 interface Props extends WithChildren {
   location: PageProps['location']
@@ -41,7 +42,14 @@ const AppProvider = memo(function AppProviderMemo({
   return (
     <ThemeProvider theme={styleTheme}>
       <GlobalStyle />
-      <Nav location={location.href} />
+      {location.pathname === '/fintech' ? (
+        <LandingPageNav
+          location={location.href}
+          tagline="Results-drive Fintech design"
+        />
+      ) : (
+        <Nav location={location.href} />
+      )}
       {children}
     </ThemeProvider>
   )
