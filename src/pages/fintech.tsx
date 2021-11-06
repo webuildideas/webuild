@@ -167,6 +167,7 @@ const Fintech = ({
               Let's Meet
             </Button>
           </div>
+
           <div className="Fintech-footer-contact">
             <div className="Fintech-footer-social">
               <Dribbble className="Fintech-footer-social-icon" />
@@ -177,7 +178,9 @@ const Fintech = ({
               <Logo />
             </div>
             <div className="Fintech-footer-copyright">
-              All rights reserved &copy; webuild {new Date().getFullYear()}
+              <p className="text-caption">
+                All rights reserved &copy; webuild {new Date().getFullYear()}
+              </p>
             </div>
           </div>
         </div>

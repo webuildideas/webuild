@@ -303,8 +303,16 @@
 
 .Fintech-footer-content {
   @apply text-center;
-  @apply pt-32;
-  @apply pb-60;
+  @apply py-20;
+  @apply px-6;
+
+  @apply md:py-30;
+  @apply md:px-0;
+
+  @apply lg:pb-35;
+
+  @apply xl:pt-32;
+  @apply xl:pb-39;
 }
 
 .Fintech-footer-title {
@@ -314,18 +322,33 @@
 
 .Fintech-footer-contact {
   @apply relative;
-  @apply flex;
-  @apply flex-nowrap;
-  @apply justify-between;
-  @apply pb-10;
-  max-width: 1184px;
   @apply mx-auto;
+  @apply py-10;
+  @apply flex;
+  @apply flex-col;
+  @apply items-center;
+
+  @apply lg:flex-row;
+  @apply lg:flex-nowrap;
+  @apply lg:justify-between;
+  @screen lg {
+    width: 92%;
+  }
+
+  max-width: 1184px;
 }
 
 .Fintech-footer-logo {
-  @apply absolute;
-  left:50%;
-  transform: translateX(-50%)
+  @apply my-6;
+
+  @apply md:my-8;
+  
+  @apply lg:my-0;
+  @screen lg {
+    @apply absolute;
+    left:50%;
+    transform: translateX(-50%)
+  }
 }
 
 .Fintech-footer-social {
