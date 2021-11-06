@@ -279,9 +279,15 @@
 /** Services **/
 .Fintech-services {
   .OtherServices {
-    @apply pt-18;
-    @apply pb-24;
     @apply mt-0;
+    @apply pt-10;
+    @apply pb-14;
+
+    @apply md:pt-12;
+    @apply md:pb-16;
+    
+    @apply xl:pt-18;
+    @apply xl:pb-24;
   }
   
   .OtherServices-header {
