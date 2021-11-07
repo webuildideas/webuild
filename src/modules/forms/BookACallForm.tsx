@@ -138,7 +138,7 @@ const BookACallForm = ({ location, className = '' }: Props) => {
         >
           {({ isSubmitting, values, errors }: FormikProps<FormValues>) => (
             <Form id={NFForms.BookACall.actOnId} name={NFForms.BookACall.name}>
-              <h3 className="text-h3 mb-6">Book a call</h3>
+              <h3 className="BookACallForm-title text-h3 mb-6">Book a call</h3>
 
               <TextInput className="hidden" name="Lead Source" type="text" />
               <TextInput className="hidden" name="Page URL" type="text" />

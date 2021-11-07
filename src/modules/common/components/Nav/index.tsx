@@ -18,7 +18,6 @@ import {
 // Components
 import OverlayNav from '@modules/common/components/OverlayNav'
 import Button from '@modules/common/components/Button'
-import OpportunityFormModal from '@modules/forms/components/OpportunityFormModal'
 import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModal'
 import Logo from './Logo'
 import MenuIcon from './MenuIcon'
@@ -43,7 +42,7 @@ const variants = {
 
 const headroomStyles = { transition: 'all 600ms ease-in-out' }
 
-const Nav = memo(function NavMemo({ location }: { location: string }) {
+const Nav = memo(function NavMemo() {
   const windowSize = useWindowSize()
   const animationControls = useAnimation()
   const [ref, inView] = useInView({ triggerOnce: true })
@@ -79,7 +78,6 @@ const Nav = memo(function NavMemo({ location }: { location: string }) {
 
   return (
     <>
-      <OpportunityFormModal location={location} />
       <Helmet bodyAttributes={helmetAttrs} />
       <Headroom
         onPin={pinNav}

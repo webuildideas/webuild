@@ -14,6 +14,8 @@ import { GlobalStyle } from '@common/theme/GlobalStyle'
 // Components
 import Nav from '@modules/common/components/Nav'
 import LandingPageNav from '@modules/common/components/LandingPageNav'
+import OpportunityFormModal from '@modules/forms/components/OpportunityFormModal'
+import BookACallFormModal from '@modules/forms/components/BookACallFormModal'
 
 interface Props extends WithChildren {
   location: PageProps['location']
@@ -42,13 +44,12 @@ const AppProvider = memo(function AppProviderMemo({
   return (
     <ThemeProvider theme={styleTheme}>
       <GlobalStyle />
-      {location.pathname === '/fintech' ? (
-        <LandingPageNav
-          location={location.href}
-          tagline="Results-drive Fintech design"
-        />
+      <OpportunityFormModal location={location.href} />
+      <BookACallFormModal location={location.href} />
+      {location.pathname === '/fintech' || location.pathname === '/fintech/' ? (
+        <LandingPageNav tagline="Results-drive Fintech design" />
       ) : (
-        <Nav location={location.href} />
+        <Nav />
       )}
       {children}
     </ThemeProvider>

@@ -6,7 +6,7 @@
       width: 4px;
       @apply bg-electricViolet;
       height: 100%;
-      @apply z-50;
+      @apply z-40;
       @apply absolute;
       left: 220px;
       top: 0;

@@ -4,6 +4,7 @@ import { graphql, PageProps } from 'gatsby'
 
 // Components
 import Meta from '@components/Meta'
+import MotionAniLink from '@modules/common/components/MotionAniLink'
 import Button from '@modules/common/components/Button'
 import BookACallForm from '@modules/forms/BookACallForm'
 import TestimonialSlider from '@modules/common/components/TestimonialSlider'
@@ -13,6 +14,10 @@ import OtherServices from '@modules/service/components/OtherServices'
 import { TypeSEO } from '@common/types/SEO'
 import { TypeService } from '@common/types/Service'
 import { TypeTestimonial } from '@common/types/Testimonial'
+
+// Hooks
+import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModal'
+import useBookACallFormModal from '@modules/forms/hooks/useBookACallFormModal'
 
 // Svgs
 import HeroIllustration from '@static/svgs/landing-pages/fintech/fintech-hero.inline.svg'
@@ -41,10 +46,6 @@ interface Props {
   location: PageProps['location']
 }
 
-// TODO: Launch opportunity Modal from footer button
-// TODO: Launch New schedule call form modal from schedule call button
-// TODO: Hook up links of social icons
-// TODO: Hook up learn more links to go to what we do
 // TODO: Latest work section
 const Fintech = ({
   data: {
@@ -54,6 +55,8 @@ const Fintech = ({
   },
   location
 }: Props) => {
+  const { showModal } = useOpportunityFormModal()
+  const { showModal: showBookACallModal } = useBookACallFormModal()
   return (
     <>
       <Meta
@@ -86,7 +89,7 @@ const Fintech = ({
               accelerate business growth for fast-growing Fintech startups.
             </span>
           </h3>
-          <Button>Book a call</Button>
+          <Button onClick={showBookACallModal}>Book a call</Button>
         </div>
 
         <div className="Fintech-latest-work">
@@ -106,7 +109,9 @@ const Fintech = ({
                 the time at a reasonable cost. We plug in and get to work
                 immediately.
               </p>
-              <Button styleType="solid-purple">Schedule A Call</Button>
+              <Button onClick={showBookACallModal} styleType="solid-purple">
+                Schedule A Call
+              </Button>
             </div>
           </div>
 
@@ -118,7 +123,9 @@ const Fintech = ({
                 We work fast, iterate often, and gather informed feedback along
                 the way to deliver effective solutions.
               </p>
-              <Button styleType="solid-purple">Learn More</Button>
+              <MotionAniLink styleType="solid-purple" to="/what-we-do/">
+                Learn More
+              </MotionAniLink>
             </div>
           </div>
 
@@ -131,7 +138,9 @@ const Fintech = ({
                 experience with product. We deliver results with minimal
                 oversight.
               </p>
-              <Button styleType="solid-purple">Schedule A Call</Button>
+              <Button onClick={showBookACallModal} styleType="solid-purple">
+                Schedule A Call
+              </Button>
             </div>
           </div>
 
@@ -143,7 +152,9 @@ const Fintech = ({
                 We’re strategically minded and hyper-focused on helping you get
                 your business to the next level.
               </p>
-              <Button styleType="solid-purple">Learn More</Button>
+              <MotionAniLink styleType="solid-purple" to="/what-we-do/">
+                Learn More
+              </MotionAniLink>
             </div>
           </div>
         </div>
@@ -168,16 +179,38 @@ const Fintech = ({
               Let's do something <span className="text-lilac">bold</span>{' '}
               together!
             </h3>
-            <Button className="Fintech-footer-button" styleType="outline">
+            <Button
+              className="Fintech-footer-button"
+              onClick={showModal}
+              styleType="outline"
+            >
               Let's Meet
             </Button>
           </div>
 
           <div className="Fintech-footer-contact">
             <div className="Fintech-footer-social">
-              <Dribbble className="Fintech-footer-social-icon" />
-              <Instagram className="Fintech-footer-social-icon" />
-              <LinkedIn className="Fintech-footer-social-icon" />
+              <a
+                href="https://www.dribbble.com/webuild/"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <Dribbble className="Fintech-footer-social-icon" />
+              </a>
+              <a
+                href="https://www.instagram.com/wearewebuild/"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <Instagram className="Fintech-footer-social-icon" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/wearewebuild/"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <LinkedIn className="Fintech-footer-social-icon" />
+              </a>
             </div>
             <div className="Fintech-footer-logo">
               <Logo />
