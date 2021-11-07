@@ -1,5 +1,6 @@
 // Packages
 import React from 'react'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 // Components
 import Button from '@modules/common/components/Button'
@@ -22,12 +23,19 @@ const LandingPageNav = ({ tagline }: Props) => {
     <>
       <nav className="LandingPageNav">
         <div className="LandingPageNav-inner">
-          <div className="LandingPageNav-logo">
-            <Logo />{' '}
+          <AniLink
+            bg="#0E0E1B"
+            className="LandingPageNav-logo Nav-logo"
+            cover
+            direction="up"
+            duration={1.5}
+            to="/"
+          >
+            <Logo />
             <span className="text-tag LandingPageNav-tagline">
               {tagline || null}
             </span>
-          </div>
+          </AniLink>
           <div className="LandingPageNav-cta">
             <Button onClick={showModal} styleType="outline">
               Get In Touch
