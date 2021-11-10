@@ -1,6 +1,7 @@
 // Packages
 import React from 'react'
 import { graphql, PageProps } from 'gatsby'
+import Img from 'gatsby-image'
 
 // Components
 import Meta from '@components/Meta'
@@ -32,6 +33,7 @@ import LinkedIn from '@static/svgs/common/social/linkedin.inline.svg'
 
 // Styles
 import '@common/styles/pages/fintech.css'
+import { TypeGatsbyChildImageSharpFluid } from '@common/types/GatsbyImage'
 
 interface Props {
   data: {
@@ -42,6 +44,16 @@ interface Props {
     allContentfulService: {
       nodes: TypeService[]
     }
+    image1: TypeGatsbyChildImageSharpFluid
+    image2: TypeGatsbyChildImageSharpFluid
+    image3: TypeGatsbyChildImageSharpFluid
+    image4: TypeGatsbyChildImageSharpFluid
+    image5: TypeGatsbyChildImageSharpFluid
+    image6: TypeGatsbyChildImageSharpFluid
+    image7: TypeGatsbyChildImageSharpFluid
+    image8: TypeGatsbyChildImageSharpFluid
+    image9: TypeGatsbyChildImageSharpFluid
+    image10: TypeGatsbyChildImageSharpFluid
   }
   location: PageProps['location']
 }
@@ -51,12 +63,23 @@ const Fintech = ({
   data: {
     contentfulSeo,
     allContentfulTestimonial: { nodes: testimonials },
-    allContentfulService: { nodes: services }
+    allContentfulService: { nodes: services },
+    image1,
+    image2,
+    image3,
+    image4,
+    image5,
+    image6,
+    image7,
+    image8,
+    image9,
+    image10
   },
   location
 }: Props) => {
   const { showModal } = useOpportunityFormModal()
   const { showModal: showBookACallModal } = useBookACallFormModal()
+
   return (
     <>
       <Meta
@@ -96,6 +119,88 @@ const Fintech = ({
           <h2 className="Fintech-latest-work-title text-h2">
             Our Latest Work in Fintech
           </h2>
+          <div className="Fintech-latest-work-gallery">
+            {/* <figure className="Fintech-latest-work-gallery-item one">
+              <Img
+                className=""
+                durationFadeIn={150}
+                fadeIn
+                fluid={image1.childImageSharp.fluid}
+              />
+            </figure>
+            <figure className="Fintech-latest-work-gallery-item two">
+              <Img
+                className=""
+                durationFadeIn={150}
+                fadeIn
+                fluid={image2.childImageSharp.fluid}
+              />
+            </figure>
+            <figure className="Fintech-latest-work-gallery-item three">
+              <Img
+                className=""
+                durationFadeIn={150}
+                fadeIn
+                fluid={image3.childImageSharp.fluid}
+              />
+            </figure>
+            <figure className="Fintech-latest-work-gallery-item four">
+              <Img
+                className=""
+                durationFadeIn={150}
+                fadeIn
+                fluid={image4.childImageSharp.fluid}
+              />
+            </figure>
+            <figure className="Fintech-latest-work-gallery-item five">
+              <Img
+                className=""
+                durationFadeIn={150}
+                fadeIn
+                fluid={image5.childImageSharp.fluid}
+              />
+            </figure>
+            <figure className="Fintech-latest-work-gallery-item six">
+              <Img
+                className=""
+                durationFadeIn={150}
+                fadeIn
+                fluid={image6.childImageSharp.fluid}
+              />
+            </figure>
+            <figure className="Fintech-latest-work-gallery-item seven">
+              <Img
+                className=""
+                durationFadeIn={150}
+                fadeIn
+                fluid={image7.childImageSharp.fluid}
+              />
+            </figure>
+            <figure className="Fintech-latest-work-gallery-item eight">
+              <Img
+                className=""
+                durationFadeIn={150}
+                fadeIn
+                fluid={image8.childImageSharp.fluid}
+              />
+            </figure>
+            <figure className="Fintech-latest-work-gallery-item nine">
+              <Img
+                className=""
+                durationFadeIn={150}
+                fadeIn
+                fluid={image9.childImageSharp.fluid}
+              />
+            </figure>
+            <figure className="Fintech-latest-work-gallery-item ten">
+              <Img
+                className=""
+                durationFadeIn={150}
+                fadeIn
+                fluid={image10.childImageSharp.fluid}
+              />
+            </figure> */}
+          </div>
         </div>
 
         <div className="Fintech-works">
@@ -233,6 +338,79 @@ export const FINTECH_PAGE_QUERY = graphql`
       seoTitle
       seoDescription {
         seoDescription
+      }
+    }
+
+    image1: file(relativePath: { eq: "landing-pages/fintech/fintech-1.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 900) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+    image2: file(relativePath: { eq: "landing-pages/fintech/fintech-2.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 900) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+    image3: file(relativePath: { eq: "landing-pages/fintech/fintech-3.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 900) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+    image4: file(relativePath: { eq: "landing-pages/fintech/fintech-4.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 900) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+    image5: file(relativePath: { eq: "landing-pages/fintech/fintech-5.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 900) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+    image6: file(relativePath: { eq: "landing-pages/fintech/fintech-6.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 900) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+    image7: file(relativePath: { eq: "landing-pages/fintech/fintech-7.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 900) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+    image8: file(relativePath: { eq: "landing-pages/fintech/fintech-8.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 900) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+    image9: file(relativePath: { eq: "landing-pages/fintech/fintech-9.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 900) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+    image10: file(
+      relativePath: { eq: "landing-pages/fintech/fintech-10.png" }
+    ) {
+      childImageSharp {
+        fluid(maxWidth: 900) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
       }
     }
 

@@ -150,6 +150,101 @@
   @apply font-extrabold;
 }
 
+.Fintech-latest-work-gallery {
+  @apply mx-auto;
+  max-width: 1184px;
+  /* @apply grid;
+  @apply grid-cols-12;
+  grid-template-rows: 232px 288px 397px 338px;
+  grid-gap: 8px */
+}
+
+.Fintech-latest-work-gallery-item {
+  width: 100%;
+  height: 100%;
+  
+  .gatsby-image-wrapper {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+    img {
+      width: 100 !important;
+      object-fit: contain !important;
+    }
+  }
+}
+
+.Fintech-latest-work-gallery-item.one {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+.Fintech-latest-work-gallery-item.two {
+  grid-column-start: 5;
+  grid-column-end: 10;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+.Fintech-latest-work-gallery-item.three {
+  @apply hidden;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+.Fintech-latest-work-gallery-item.four {
+  @apply hidden;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+.Fintech-latest-work-gallery-item.five {
+  @apply hidden;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+.Fintech-latest-work-gallery-item.six {
+  @apply hidden;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+.Fintech-latest-work-gallery-item.seven {
+  @apply hidden;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+.Fintech-latest-work-gallery-item.eight {
+  @apply hidden;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+.Fintech-latest-work-gallery-item.nine {
+  @apply hidden;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+.Fintech-latest-work-gallery-item.ten {
+  @apply hidden;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+
 /** Webuild Works **/
 .Fintech-works-title {
   @apply text-center;
