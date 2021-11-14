@@ -1,0 +1,29 @@
+.LandingPageNav-inner {
+  @apply flex;
+  @apply flex-nowrap;
+  @apply items-center;
+  @apply justify-between;
+  @apply mx-auto;
+  @apply py-4;
+  @apply px-6;
+  max-width: 1184px;
+
+  @apply md:px-0;
+  @screen md {
+    width: 92%;
+  }
+}
+
+.LandingPageNav-logo {
+  @apply md:flex;
+  @apply md:flex-nowrap;
+  @apply md:justify-start;
+  @apply items-end;
+}
+
+.LandingPageNav-tagline {
+  @apply hidden;
+  @apply md:block;
+  @apply ml-3;
+  line-height: .75;
+}

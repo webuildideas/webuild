@@ -67,6 +67,10 @@ export const NFForms = {
   ContentUpgrade: {
     name: 'Content Upgrade',
     actOnId: 'c7797ee2-36e9-4c02-b215-2189f15ee3c7'
+  },
+  BookACall: {
+    name: 'Book a Call',
+    actOnId: 'e0b30f41-4e99-43b7-b770-71da8a88560d'
   }
 } as const
 

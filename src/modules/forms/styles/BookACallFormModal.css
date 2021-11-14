@@ -1,0 +1,46 @@
+.BookACallFormModal {
+  @apply fixed;
+  @apply z-50;
+  @apply flex;
+  @apply justify-center;
+  @apply items-start;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  
+  @apply md:items-center;
+}
+
+.form {
+  @apply bg-transparent;
+  box-shadow: none;
+  max-width: 100%;
+
+  .BookACallForm-title {
+    @apply font-extrabold;
+  }
+}
+
+.BookACallFormModal-form {
+  @apply bg-white;
+  @apply p-6;
+  max-height: 95%;
+  max-width: 750px;
+  @apply overflow-y-scroll;
+  
+  @apply md:rounded-tr-4;
+  @screen md {
+    width: 95%;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.BookACallFormModal-close {
+  @apply cursor-pointer;
+  @apply ml-auto;
+}
