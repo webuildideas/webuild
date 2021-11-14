@@ -66,10 +66,6 @@ const Fintech = ({
   const { showModal } = useOpportunityFormModal()
   const { showModal: showBookACallModal } = useBookACallFormModal()
 
-  console.log('M', galleryMobile)
-  console.log('MD', galleryMd)
-  console.log('Lg', galleryLg)
-
   const gallerySources = [
     galleryMobile.childImageSharp.fluid,
     {
@@ -95,9 +91,19 @@ const Fintech = ({
             <HeroIllustration className="Fintech-hero-illustration" />
           </div>
           <div className="Fintech-hero-inner">
-            <h1 className="Fintech-title text-h1">
-              Boost your fintech startup with thoughtful & informed design.
-            </h1>
+            <div className="Fintech-title-container">
+              <h1 className="Fintech-title text-h1">
+                Boost your fintech startup with thoughtful & informed design.
+              </h1>
+
+              <Button
+                className="xl:hidden"
+                onClick={showBookACallModal}
+                styleType="solid-purple"
+              >
+                Book a call
+              </Button>
+            </div>
             <BookACallForm
               className="Fintech-hero-form"
               location={location.href}

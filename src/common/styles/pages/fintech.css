@@ -14,8 +14,7 @@
 
 .Fintech-hero-illustration-container {
   width: 100%;
-  height: 50%;
-  max-height: 300px;
+  height: 100%;
   @apply top-0;
   @apply left-0;
   @apply overflow-hidden;
@@ -38,19 +37,21 @@
   @apply absolute;
 
   width: 100%;
-  right: -70%;
-  bottom: -30%;
+  right: -50%;
+  bottom: -20%;
+  max-width: 600px;
 
   @screen md {
-    width: 100%;
-    right: 0%;
-    bottom: -15%;
+    width: auto;
+    right: -60%;
+    bottom: -55%;
+    max-width: 900px;
   }
 
   @screen lg {
-    width: 95%;
-    right: 5%;
-    bottom: -18%;
+    right: -57%;
+    bottom: -74%;
+    max-width: 1024px;
   }
 
   @screen xl {
@@ -77,31 +78,41 @@
   }
 }
 
-.Fintech-title {
-  @apply mb-6;
+.Fintech-title-container {
   @apply px-6;
-  
-  @apply md:mb-16;
+  @apply pb-12;
+
   @apply md:px-8;
-  
-  @apply lg:mb-20;
+  @apply md:pb-20;
+
   @apply lg:px-10;
-  
-  @apply xl:mt-6;
+
   @apply xl:px-0;
-  @apply xl:mb-0;
+
   @screen xl {
     max-width: 580px;
   }
 }
 
-.Fintech-hero-form {
-  @apply md:self-center;
-  @apply w-full;
+.Fintech-title {
+  @apply mb-6;
   
+  @apply md:mb-12;
+  
+  @apply xl:mt-6;
+  @apply xl:mb-0;
+}
+
+.Fintech-hero-form {
+  @apply w-full;
+  @apply hidden; 
+
+  @apply md:self-center;
   @screen md {
     max-width: 482px;
   }
+
+  @apply xl:block;
 }
 
 /** Call CTA **/
