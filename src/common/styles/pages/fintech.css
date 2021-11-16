@@ -95,10 +95,6 @@
 }
 
 .Fintech-title {
-  @apply mb-6;
-  
-  @apply md:mb-12;
-  
   @apply xl:mt-6;
   @apply xl:mb-0;
 }

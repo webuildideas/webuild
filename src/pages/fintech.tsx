@@ -95,14 +95,6 @@ const Fintech = ({
               <h1 className="Fintech-title text-h1">
                 Boost your fintech startup with thoughtful & informed design.
               </h1>
-
-              <Button
-                className="xl:hidden"
-                onClick={showBookACallModal}
-                styleType="solid-purple"
-              >
-                Book a call
-              </Button>
             </div>
             <BookACallForm
               className="Fintech-hero-form"
