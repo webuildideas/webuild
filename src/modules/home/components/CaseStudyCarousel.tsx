@@ -73,7 +73,7 @@ const CaseStudyCarousel = ({ caseStudies }: Props) => {
               direction="right"
               duration={1.25}
               hex="#525761"
-              to={`/case-studies/${caseStudy.slug}`}
+              to={`/case-studies/${caseStudy.slug}/`}
             >
               <div className="CaseStudyCarousel-slide-img">
                 <Img

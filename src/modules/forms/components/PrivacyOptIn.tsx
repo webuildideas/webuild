@@ -50,7 +50,7 @@ const PrivacyOptIn = ({ showOptIn = true }: Props) => {
         We take your privacy seriously. We do not sell or share your data. We
         use it to enhance your experience with our site and to analyze the
         performance of our marketing efforts. To learn more, please see our{' '}
-        <Link className="text-electricViolet font-bold" to="/privacy">
+        <Link className="text-electricViolet font-bold" to="/privacy/">
           Privacy Notice
         </Link>
         .

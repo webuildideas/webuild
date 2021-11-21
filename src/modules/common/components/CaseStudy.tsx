@@ -177,7 +177,7 @@ const CaseStudy = ({
               cover
               direction="top"
               duration={1.25}
-              to={`/case-studies/${caseStudy.slug}`}
+              to={`/case-studies/${caseStudy.slug}/`}
             >
               <motion.img
                 alt={`${caseStudy.name} logo`}
@@ -194,7 +194,7 @@ const CaseStudy = ({
             cover
             direction="top"
             duration={1.25}
-            to={`/case-studies/${caseStudy.slug}`}
+            to={`/case-studies/${caseStudy.slug}/`}
           >
             {taglineRichText && caseStudy.taglineRichText ? (
               renderRichText(caseStudy.taglineRichText, richTextOptions)
@@ -216,7 +216,7 @@ const CaseStudy = ({
               cover
               direction="top"
               duration={1.25}
-              to={`/case-studies/${caseStudy.slug}`}
+              to={`/case-studies/${caseStudy.slug}/`}
             >
               <motion.p
                 animate={textControls}
@@ -237,7 +237,7 @@ const CaseStudy = ({
             duration={1.25}
             initial="buttonHidden"
             styleType={buttonStyleType}
-            to={`/case-studies/${caseStudy.slug}`}
+            to={`/case-studies/${caseStudy.slug}/`}
             variants={variants}
           >
             Read Case Study
@@ -250,7 +250,7 @@ const CaseStudy = ({
             cover
             direction="top"
             duration={1.25}
-            to={`/case-studies/${caseStudy.slug}`}
+            to={`/case-studies/${caseStudy.slug}/`}
           >
             <motion.div
               animate={imageControls}

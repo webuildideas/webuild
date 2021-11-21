@@ -24,7 +24,7 @@ const FeaturedInsight = memo(function FeaturedInsightMemo({ insight }: Props) {
         cover
         direction="right"
         duration={1.25}
-        to={`/${insight.slug}`}
+        to={`/${insight.slug}/`}
       >
         <div className="FeaturedInsight-img">
           <img

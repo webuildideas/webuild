@@ -28,7 +28,7 @@ const OtherServices = ({
           {showButton ? (
             <AniLink
               className="OtherServices-button Button Button-outline hidden md:inline-block"
-              to="/what-we-do"
+              to="/what-we-do/"
             >
               See All Services
             </AniLink>
@@ -43,7 +43,7 @@ const OtherServices = ({
               cover
               direction="bottom"
               duration={1.5}
-              to={`/what-we-do/${service.slug}`}
+              to={`/what-we-do/${service.slug}/`}
             >
               <img
                 alt={`${service.title} illustration`}
@@ -61,7 +61,7 @@ const OtherServices = ({
         {showButton ? (
           <AniLink
             className="OtherServices-button Button Button-outline inline-block md:hidden mt-8"
-            to="/what-we-do"
+            to="/what-we-do/"
           >
             See All Services
           </AniLink>

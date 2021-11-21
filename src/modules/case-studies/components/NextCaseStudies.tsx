@@ -22,7 +22,7 @@ const NextCaseStudies = ({ caseStudies }: Props) => {
           cover
           direction="top"
           duration={1.25}
-          to={`/case-studies/${study.slug}`}
+          to={`/case-studies/${study.slug}/`}
         >
           <div className="NextCaseStudy-content">
             <div className="NextCaseStudy-header ">

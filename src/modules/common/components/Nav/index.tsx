@@ -118,7 +118,7 @@ const Nav = memo(function NavMemo() {
                     cover
                     direction="right"
                     duration={1.5}
-                    to="/who-we-are"
+                    to="/who-we-are/"
                   >
                     Who We Are
                   </AniLink>
@@ -135,7 +135,7 @@ const Nav = memo(function NavMemo() {
                     cover
                     direction="right"
                     duration={1.5}
-                    to="/what-we-do"
+                    to="/what-we-do/"
                   >
                     What We Do
                   </AniLink>
@@ -152,7 +152,7 @@ const Nav = memo(function NavMemo() {
                     cover
                     direction="right"
                     duration={1.5}
-                    to="/insights"
+                    to="/insights/"
                   >
                     Insights
                   </AniLink>

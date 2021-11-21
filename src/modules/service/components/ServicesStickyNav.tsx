@@ -27,7 +27,7 @@ const ServicesStickyNav = ({ services }: Props) => {
             direction="top"
             duration={1.25}
             styleType="link"
-            to={`/what-we-do/${service.slug}`}
+            to={`/what-we-do/${service.slug}/`}
           >
             <span>{service.shortTitle}</span>
           </MotionAniLink>

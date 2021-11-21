@@ -23,7 +23,7 @@ const ServiceListing = ({ service }: Props) => {
       cover={true}
       direction="right"
       duration={1.25}
-      to={`/what-we-do/${service.slug}`}
+      to={`/what-we-do/${service.slug}/`}
     >
       <div className="ServiceListing-img">
         <img

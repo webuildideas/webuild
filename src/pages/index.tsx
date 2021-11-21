@@ -56,12 +56,12 @@ const IndexPage = ({ data, location }: Props) => {
             fast-growing Fintech and B2B SaaS startups.
           </h2>
           <MotionAniLink
-            bgColor="#286AFF"
+            bgColor="#0E0E1B"
             className="inline-block"
             direction="top"
             duration={1.25}
             styleType="solid"
-            to="/what-we-do"
+            to="/what-we-do/"
           >
             What we do
           </MotionAniLink>
@@ -110,11 +110,12 @@ const IndexPage = ({ data, location }: Props) => {
             heads together, good gets better.
           </p>
           <MotionAniLink
+            bgColor="#0E0E1B"
             className="inline-block"
             direction="top"
             duration={1.25}
             styleType="solid"
-            to="/what-we-do"
+            to="/what-we-do/"
           >
             Learn More
           </MotionAniLink>
@@ -147,7 +148,7 @@ const IndexPage = ({ data, location }: Props) => {
             direction="top"
             duration={1.25}
             styleType="solid"
-            to="/contact"
+            to="/contact/"
           >
             We're ready when you are
           </MotionAniLink>

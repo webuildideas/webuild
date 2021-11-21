@@ -23,19 +23,19 @@ const navLinks: NavLink[] = [
   },
   {
     title: 'Who we are',
-    slug: '/who-we-are'
+    slug: '/who-we-are/'
   },
   {
     title: 'What we do',
-    slug: '/what-we-do'
+    slug: '/what-we-do/'
   },
   {
     title: 'Insights',
-    slug: '/insights'
+    slug: '/insights/'
   },
   {
     title: 'Get in touch',
-    slug: '/contact'
+    slug: '/contact/'
   }
 ]
 
