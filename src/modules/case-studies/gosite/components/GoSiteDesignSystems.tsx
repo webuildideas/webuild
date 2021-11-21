@@ -293,7 +293,7 @@ const GoSiteDesignSystems = () => {
             <MotionAniLink
               className="text-electricViolet"
               styleType="link"
-              to="/design-system-digital-brand-benefits"
+              to="/design-system-digital-brand-benefits/"
             >
               created a robust design system
             </MotionAniLink>{' '}
@@ -314,7 +314,7 @@ const GoSiteDesignSystems = () => {
         <MotionAniLink
           className="text-electricViolet"
           styleType="link"
-          to="/reduce-customer-churn-rate-for-saas-startups"
+          to="/reduce-customer-churn-rate-for-saas-startups/"
         >
           decreasing churn
         </MotionAniLink>{' '}

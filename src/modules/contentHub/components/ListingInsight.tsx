@@ -71,7 +71,7 @@ const ListingInsight = ({
         cover
         direction="right"
         duration={1.25}
-        to={`/${slug}`}
+        to={`/${slug}/`}
       >
         <div
           ref={illustrationContainerRef}

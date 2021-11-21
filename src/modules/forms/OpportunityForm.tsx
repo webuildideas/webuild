@@ -113,7 +113,7 @@ const OpportunityForm = ({
           className="text-electricViolet"
           onClick={closeModal}
           styleType="link"
-          to="/who-we-are"
+          to="/who-we-are/"
         >
           who we are
         </MotionAniLink>{' '}
@@ -122,7 +122,7 @@ const OpportunityForm = ({
           className="text-electricViolet"
           onClick={closeModal}
           styleType="link"
-          to="/insights"
+          to="/insights/"
         >
           latest insights.
         </MotionAniLink>

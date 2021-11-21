@@ -23,7 +23,7 @@ const ReadNextInsight = ({ insight }: { insight: TypeInsight }) => {
       direction="right"
       duration={1.25}
       style={insightStyle}
-      to={`/${insight.slug}`}
+      to={`/${insight.slug}/`}
     >
       <InsightTags type={insight.type} />
       <div className="flex items-center mt-5 mb-6">

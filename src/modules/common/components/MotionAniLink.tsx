@@ -31,7 +31,7 @@ const Link = forwardRef<any, Props>(
       styleType = 'solid',
       cover = true,
       duration = 1.25,
-      bgColor = '#525761',
+      bgColor = '#0E0E1B',
       onClick
     },
     ref

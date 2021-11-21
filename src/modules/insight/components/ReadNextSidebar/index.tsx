@@ -24,7 +24,7 @@ const ReadNextSidebar = ({ insights, relatedInsightsByTopic }: Props) => {
                 <Link
                   key={insight.slug}
                   className="block mb-6 text-caption hover:text-electricViolet"
-                  to={`/${insight.slug}`}
+                  to={`/${insight.slug}/`}
                 >
                   {insight.title}
                 </Link>
@@ -35,7 +35,7 @@ const ReadNextSidebar = ({ insights, relatedInsightsByTopic }: Props) => {
                 <Link
                   key={insight.slug}
                   className="block mb-6 text-caption hover:text-electricViolet"
-                  to={`/${insight.slug}`}
+                  to={`/${insight.slug}/`}
                 >
                   {insight.title}
                 </Link>

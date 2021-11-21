@@ -210,7 +210,7 @@ const ContactForm = () => {
         <MotionAniLink
           className="text-electricViolet"
           styleType="link"
-          to="/who-we-are"
+          to="/who-we-are/"
         >
           who we are
         </MotionAniLink>{' '}
@@ -218,7 +218,7 @@ const ContactForm = () => {
         <MotionAniLink
           className="text-electricViolet"
           styleType="link"
-          to="/insights"
+          to="/insights/"
         >
           latest insights.
         </MotionAniLink>

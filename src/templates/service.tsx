@@ -82,7 +82,7 @@ const Service = ({
             cover={true}
             direction="left"
             duration={1.25}
-            to="/what-we-do"
+            to="/what-we-do/"
           >
             <SimpleArrowLeft className="Service-header-icon" />
             <span>All Services</span>

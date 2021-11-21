@@ -74,7 +74,7 @@ const InsightCarousel = ({ insights }: Props) => {
               cover
               direction="right"
               duration={1.25}
-              to={`/${insight.slug}`}
+              to={`/${insight.slug}/`}
             >
               <div className="mb-6 md:hidden">
                 <InsightTags topics={insight.topics} type={insight.type} />
