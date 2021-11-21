@@ -63,9 +63,6 @@ const BookACallForm = ({ location, className = '' }: Props) => {
   const [userConversions, setUserConversions] = useRecoilState(
     userFormConversionsAtom
   )
-  const userHasCompletedForm = userConversions.includes(
-    NFForms.EmailSignup.name
-  )
 
   const submitToInsightEngine = useSubmitNfForm({
     formName: NFForms.BookACall.name,
@@ -88,7 +85,7 @@ const BookACallForm = ({ location, className = '' }: Props) => {
 
   const formClasses = classNames({
     [className]: className.length > 0,
-    'BookACall-success': formSubmitted || userHasCompletedForm
+    'BookACall-success': formSubmitted
   })
 
   const handleSubmit = async (values: FormValues) => {
@@ -119,8 +116,8 @@ const BookACallForm = ({ location, className = '' }: Props) => {
 
   return (
     <div className={`BookACall ${formClasses}`}>
-      {formSubmitted || userHasCompletedForm ? (
-        <div className="BookACall-success">
+      {formSubmitted ? (
+        <div className="BookACall-success-container">
           <PurpleCheckmark className="BookACall-success-icon" />
           <h3 className="text-h3 mb-6">Thank you for booking a call.</h3>
           <p className="text-body">

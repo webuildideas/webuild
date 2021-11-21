@@ -51,7 +51,6 @@ interface Props {
   location: PageProps['location']
 }
 
-// TODO: Latest work section
 const Fintech = ({
   data: {
     contentfulSeo,
