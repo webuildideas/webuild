@@ -1,0 +1,22 @@
+.CaseStudies-title {
+  @apply p-6;
+  @apply mb-20;
+
+  @apply md:px-8;
+  @apply md:pt-16;
+  @apply md:mb-28;
+
+  @apply lg:px-10;
+  @apply lg:mb-34;
+  @screen lg {
+    @apply mx-auto;
+    max-width: 1184px;
+    h1, h3 {
+      max-width: 984px;
+    }
+  }
+
+  @apply xl:pt-24;
+  @apply xl:px-0;
+  @apply xl:mb-36;
+}
