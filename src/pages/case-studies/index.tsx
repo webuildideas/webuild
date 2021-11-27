@@ -9,11 +9,13 @@ import { graphql, PageProps } from 'gatsby'
 import Footer from '@components/Footer'
 import Meta from '@components/Meta'
 import TestimonialSlider from '@modules/common/components/TestimonialSlider'
+import ProcessSteps from '@modules/common/components/ProcessSteps'
 import CaseStudy from '@modules/common/components/CaseStudy'
 
 // Common
 import { TypeCaseStudy } from '@common/types/CaseStudy'
 import { TypeTestimonial } from '@common/types/Testimonial'
+import OpportunityForm from '@modules/forms/OpportunityForm'
 
 interface Props {
   data: {
@@ -48,30 +50,46 @@ const CaseStudies = ({
           </h3>
         </div>
 
-        <div>
-          <div className="CaseStudies-items">
-            {caseStudies.map((caseStudy, idx: number) => {
-              const layout = (idx + 1) % 2 === 0 ? 'right' : 'left'
-              return (
-                <>
-                  <CaseStudy
-                    key={caseStudy.slug}
-                    buttonStyleType="solid-purple"
-                    caseStudy={caseStudy}
-                    layout={layout}
-                    taglineRichText
-                  />
-                  {idx === 1 ? (
-                    <div className="CaseStudies-testimonials">
-                      <div className="CaseStudies-testimonials-inner">
-                        <TestimonialSlider testimonials={testimonials} />
-                      </div>
+        <div className="CaseStudies-items">
+          {caseStudies.map((caseStudy, idx: number) => {
+            const layout = (idx + 1) % 2 === 0 ? 'right' : 'left'
+            return (
+              <>
+                <CaseStudy
+                  key={caseStudy.slug}
+                  buttonStyleType="solid-purple"
+                  caseStudy={caseStudy}
+                  layout={layout}
+                  taglineRichText
+                />
+                {idx === 1 ? (
+                  <div className="CaseStudies-testimonials">
+                    <div className="CaseStudies-testimonials-inner">
+                      <TestimonialSlider testimonials={testimonials} />
                     </div>
-                  ) : null}
-                </>
-              )
-            })}
-          </div>
+                  </div>
+                ) : null}
+              </>
+            )
+          })}
+        </div>
+
+        <div className="CaseStudies-process">
+          <h3 className="text-h3 font-extrabold">A Tried & True Approach</h3>
+          <p className="text-body">
+            Our powerful three-step process allows us to get to market
+            efficiently, allowing us to iterate & optimize quickly to deliver
+            optimal results.
+          </p>
+          <ProcessSteps />
+        </div>
+
+        <div className="CaseStudies-opportunity-form">
+          <OpportunityForm
+            buttonText="Let's Meet"
+            location={location.href}
+            title="Set up a meeting — we’d love to chat"
+          />
         </div>
       </main>
       <Footer />
