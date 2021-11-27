@@ -20,3 +20,29 @@
   @apply xl:px-0;
   @apply xl:mb-36;
 }
+
+
+.CaseStudies-testimonials {
+  @apply py-27;
+
+  @apply md:py-34;
+
+  @apply lg:py-36;
+
+  @screen xl {
+    padding-top:252px;
+    padding-bottom: 252px;
+  }
+}
+
+.CaseStudies-testimonials-inner {
+  @apply mx-auto;
+  @apply px-6;
+
+  @apply md:px-0;
+  @screen md {
+    width: 92%;
+  }
+  
+  max-width: 984px;
+}

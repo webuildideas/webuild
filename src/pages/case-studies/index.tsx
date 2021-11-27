@@ -35,7 +35,7 @@ const CaseStudies = ({
     <>
       <Meta location={location} title="Case Studies" />
       <main className="CaseStudies">
-        <div className="CaseStudies-title px-6 md:px-8 lg:px-10 xl:px-0">
+        <div className="CaseStudies-title">
           <h1 className="text-h1 mb-4 lg:mb-6">
             No smoke and mirrors. Design that makes magic for Fintech and B2B
             startups.
@@ -53,18 +53,24 @@ const CaseStudies = ({
             {caseStudies.map((caseStudy, idx: number) => {
               const layout = (idx + 1) % 2 === 0 ? 'right' : 'left'
               return (
-                <CaseStudy
-                  key={caseStudy.slug}
-                  buttonStyleType="solid-purple"
-                  caseStudy={caseStudy}
-                  layout={layout}
-                  taglineRichText
-                />
+                <>
+                  <CaseStudy
+                    key={caseStudy.slug}
+                    buttonStyleType="solid-purple"
+                    caseStudy={caseStudy}
+                    layout={layout}
+                    taglineRichText
+                  />
+                  {idx === 1 ? (
+                    <div className="CaseStudies-testimonials">
+                      <div className="CaseStudies-testimonials-inner">
+                        <TestimonialSlider testimonials={testimonials} />
+                      </div>
+                    </div>
+                  ) : null}
+                </>
               )
             })}
-            <div className="CaseStudies-testimonials-inner">
-              <TestimonialSlider testimonials={testimonials} />
-            </div>
           </div>
         </div>
       </main>
