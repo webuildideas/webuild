@@ -55,13 +55,15 @@ const CaseStudies = ({
             const layout = (idx + 1) % 2 === 0 ? 'right' : 'left'
             return (
               <>
-                <CaseStudy
-                  key={caseStudy.slug}
-                  buttonStyleType="solid-purple"
-                  caseStudy={caseStudy}
-                  layout={layout}
-                  taglineRichText
-                />
+                <div className={`CaseStudy-item CaseStudy-item-${idx + 1}`}>
+                  <CaseStudy
+                    key={caseStudy.slug}
+                    buttonStyleType="solid-purple"
+                    caseStudy={caseStudy}
+                    layout={layout}
+                    taglineRichText
+                  />
+                </div>
                 {idx === 1 ? (
                   <div className="CaseStudies-testimonials">
                     <div className="CaseStudies-testimonials-inner">
