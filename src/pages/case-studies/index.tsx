@@ -16,6 +16,7 @@ import CaseStudy from '@modules/common/components/CaseStudy'
 import { TypeCaseStudy } from '@common/types/CaseStudy'
 import { TypeTestimonial } from '@common/types/Testimonial'
 import OpportunityForm from '@modules/forms/OpportunityForm'
+import MotionAniLink from '@modules/common/components/MotionAniLink'
 
 interface Props {
   data: {
@@ -77,13 +78,25 @@ const CaseStudies = ({
         </div>
 
         <div className="CaseStudies-process">
-          <h3 className="text-h3 font-extrabold">A Tried & True Approach</h3>
-          <p className="text-body">
+          <h3 className="text-h3 font-extrabold mb-4">
+            A Tried & True Approach
+          </h3>
+          <p className="text-body mb-12 lg:mb-14 xl:mb-16">
             Our powerful three-step process allows us to get to market
             efficiently, allowing us to iterate & optimize quickly to deliver
             optimal results.
           </p>
           <ProcessSteps />
+
+          <div className="CaseStudies-process-button">
+            <MotionAniLink
+              className="inline-block"
+              styleType="solid-purple"
+              to="/what-we-do/"
+            >
+              Discover What We Do
+            </MotionAniLink>
+          </div>
         </div>
 
         <div className="CaseStudies-opportunity-form">

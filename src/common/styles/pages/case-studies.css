@@ -1,3 +1,7 @@
+.CaseStudies {
+  overflow-x: hidden;
+}
+
 .CaseStudies-title {
   @apply p-6;
   @apply mb-20;
@@ -57,6 +61,61 @@
   }
 }
 
+.CaseStudy-item:last-of-type {
+  @apply mb-0;
+}
+
 .CaseStudy-item-2 {
   @apply mb-0;
+}
+
+.CaseStudies-process {
+  @apply px-6;
+  @apply mb-22;
+  @apply mt-30;
+
+  @apply md:mb-42;
+  @apply md:mt-44;
+  @apply md:px-0;
+  @apply md:mx-auto;
+  @screen md {
+    width: 76%;
+    max-width: 784px;
+  }
+
+  @apply lg:mb-26;
+
+  @apply xl:mb-36;
+  @apply xl:mt-48;
+}
+
+.CaseStudies-process .ProcessSteps {
+  @apply grid-cols-1;
+  @apply gap-12;
+
+  .ProcessSteps-step {
+    @apply flex;
+  }
+
+  .ProcessSteps-icon {
+    @apply xl:mr-8;
+    @apply xl:mb-0;
+  }
+}
+
+.CaseStudies-process-button {
+  @apply text-center;
+  @apply mt-12;
+
+  @apply md:text-left;
+
+  @apply lg:mt-14;
+
+  @apply xl:mt-16;
+}
+
+.CaseStudies-opportunity-form {
+  @apply lg:mb-32;
+
+  @apply xl:mb-40;
 }
