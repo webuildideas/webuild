@@ -118,4 +118,15 @@
   @apply lg:mb-32;
 
   @apply xl:mb-40;
+
+  .OpportunityForm-success {
+    @apply px-6;
+
+    @apply md:mx-auto;
+    @apply md:px-0;
+    @screen md {
+      width: 76%;
+      max-width: 784px;
+    }
+  }
 }
