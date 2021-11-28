@@ -46,7 +46,7 @@
   @apply mx-auto;
 
   h1 {
-    max-width: 984px;
+    max-width: 1000px;
     @apply mb-6;
 
     @apply md:mb-4;
