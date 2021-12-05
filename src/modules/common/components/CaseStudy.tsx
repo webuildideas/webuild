@@ -1,3 +1,5 @@
+import './styles/CaseStudy.css'
+
 // Packages
 import React, { useEffect, useMemo } from 'react'
 import Img from 'gatsby-image'
@@ -5,6 +7,8 @@ import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { Options } from '@contentful/rich-text-react-renderer'
+import { renderRichText } from 'gatsby-source-contentful/rich-text'
+import { BLOCKS, MARKS } from '@contentful/rich-text-types'
 
 // Common
 import { classNames } from '@common/utils/classNames'
@@ -13,11 +17,6 @@ import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContaine
 
 // Components
 import MotionAniLink from '@modules/common/components/MotionAniLink'
-
-// Styles
-import './styles/CaseStudy.css'
-import { BLOCKS, MARKS } from '@contentful/rich-text-types'
-import { renderRichText } from 'gatsby-source-contentful/rich-text'
 
 interface Props {
   animationThreshold?: number

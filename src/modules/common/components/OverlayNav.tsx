@@ -18,8 +18,8 @@ interface NavLink {
 
 const navLinks: NavLink[] = [
   {
-    title: 'Work',
-    slug: '/'
+    title: 'Our Work',
+    slug: '/case-studies/'
   },
   {
     title: 'Who we are',

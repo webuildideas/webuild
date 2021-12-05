@@ -30,7 +30,7 @@
   .Nav-menu-icon {
     @apply cursor-pointer;
     font-size: 26px;
-    @screen md {
+    @screen lg {
       @apply hidden;
     }
   }
@@ -47,9 +47,9 @@
 .Nav-desktop-links {
   @apply hidden;
   @apply w-full;
-  @screen md {
+  @screen lg {
     @apply grid;
-    grid-template-columns: 100px 100px 72px 150px;
+    grid-template-columns: 100px 100px 79px 72px 150px;
     @apply items-center;
     @apply gap-6;
     @apply justify-end;

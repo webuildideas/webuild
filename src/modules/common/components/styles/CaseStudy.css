@@ -4,10 +4,9 @@
   @apply flex-wrap;
   @apply pb-1;
 
-  @media (min-width: 900px) {
-    @apply flex-nowrap;
-    @apply items-center;
-  }
+  @apply md:flex-nowrap;
+  @apply md:items-center;
+  @apply md:justify-between;
 }
 
 .CaseStudy-logo {
@@ -37,8 +36,7 @@
     max-width: 650px;
   }
 
-  @media (min-width: 900px) {
-    min-width: 400px;
+  @screen md {
     max-width: 100%;
     @apply ml-0;
     @apply mr-0;
@@ -51,14 +49,14 @@
 }
 
 .CaseStudy-img.img-left {
-  @media (min-width: 900px) {
+  @screen md {
     left: -100px;
     order: 1;
   }
 }
 
 .CaseStudy-img.img-right {
-  @media (min-width: 900px) {
+  @screen md {
     right: -100px;
     order: 2;
   }
@@ -68,9 +66,10 @@
   @apply mb-0;
   order: 2;
 
-  @media (min-width: 900px) {
-    order: 1;
-    min-width: 440px;
+  @apply md:order-1;
+  @apply md:flex-shrink-0;
+  @screen md {
+    width: 48%;
     max-width: 475px;
   }
 }
@@ -81,13 +80,13 @@
 }
 
 .CaseStudy-content.img-right {
-  @media (min-width: 900px) {
+  @screen md {
     order: 1;
   }
 }
 
 .CaseStudy-content.img-left {
-  @media (min-width: 900px) {
+  @screen md {
     order: 2;
   }
 }
