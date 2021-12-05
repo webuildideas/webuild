@@ -118,11 +118,12 @@ const Nav = memo(function NavMemo() {
                     cover
                     direction="right"
                     duration={1.5}
-                    to="/who-we-are/"
+                    to="/what-we-do/"
                   >
-                    Who We Are
+                    What We Do
                   </AniLink>
                 </motion.li>
+
                 <motion.li
                   animate={animationControls}
                   custom={1.5}
@@ -135,11 +136,30 @@ const Nav = memo(function NavMemo() {
                     cover
                     direction="right"
                     duration={1.5}
-                    to="/what-we-do/"
+                    to="/who-we-are/"
                   >
-                    What We Do
+                    Who We Are
                   </AniLink>
                 </motion.li>
+
+                <motion.li
+                  animate={animationControls}
+                  custom={1.5}
+                  initial="hidden"
+                  variants={variants}
+                >
+                  <AniLink
+                    bg="#F3F3F3"
+                    className="block text-page-navigation text-center uppercase hover:font-bold"
+                    cover
+                    direction="right"
+                    duration={1.5}
+                    to="/case-studies/"
+                  >
+                    Our Work
+                  </AniLink>
+                </motion.li>
+
                 <motion.li
                   animate={animationControls}
                   custom={1.5}

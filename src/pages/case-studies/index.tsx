@@ -59,6 +59,7 @@ const CaseStudies = ({
                 <div className={`CaseStudy-item CaseStudy-item-${idx + 1}`}>
                   <CaseStudy
                     key={caseStudy.slug}
+                    animationThreshold={idx === 0 ? 0 : 0.75}
                     buttonStyleType="solid-purple"
                     caseStudy={caseStudy}
                     layout={layout}

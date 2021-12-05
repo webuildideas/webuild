@@ -15,7 +15,8 @@
   @screen lg {
     @apply mx-auto;
     max-width: 1184px;
-    h1, h3 {
+    h1,
+    h3 {
       max-width: 984px;
     }
   }
@@ -25,7 +26,6 @@
   @apply xl:mb-36;
 }
 
-
 .CaseStudies-testimonials {
   @apply py-27;
 
@@ -34,7 +34,7 @@
   @apply lg:py-36;
 
   @screen xl {
-    padding-top:252px;
+    padding-top: 252px;
     padding-bottom: 252px;
   }
 }
@@ -47,7 +47,7 @@
   @screen md {
     width: 92%;
   }
-  
+
   max-width: 984px;
 }
 
@@ -94,7 +94,7 @@
   @apply gap-12;
 
   .ProcessSteps-step {
-    @apply flex;
+    @apply md:flex;
   }
 
   .ProcessSteps-icon {
