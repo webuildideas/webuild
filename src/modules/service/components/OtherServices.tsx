@@ -45,10 +45,20 @@ const OtherServices = ({
               duration={1.5}
               to={`/what-we-do/${service.slug}/`}
             >
-              <img
-                alt={`${service.title} illustration`}
-                src={service.otherServicesIllustration.file.url}
-              />
+              <div className="OtherServices-service-illustrations">
+                <img
+                  alt={`${service.title} illustration`}
+                  className="OtherServices-service-illustration"
+                  src={service.otherServicesIllustration.file.url}
+                />
+                {service.otherServicesGif?.file?.url ? (
+                  <img
+                    alt={`${service.title} illustration`}
+                    className="OtherServices-service-animated-gif"
+                    src={service.otherServicesGif.file.url}
+                  />
+                ) : null}
+              </div>
               <h5
                 className="text-tag"
                 dangerouslySetInnerHTML={{

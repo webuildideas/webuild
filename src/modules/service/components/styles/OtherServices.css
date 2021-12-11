@@ -57,17 +57,35 @@
 .OtherServices-service {
   @apply flex;
   @apply flex-col;
+  &:hover {
+    @screen md {
+      .OtherServices-service-animated-gif {
+        @apply block;
+      }
+
+      .OtherServices-service-illustration {
+        @apply hidden;
+      }
+    }
+  }
+}
+
+.OtherServices-service-illustrations {
+  @apply relative;
+  @apply mb-4;
+  width: 100px;
+  height: 100px;
 
   img {
-    @apply mb-4;
-    height: 80px;
+    @apply absolute;
+    @apply z-10;
+    @apply block;
+    @apply w-full;
+    top: 0;
+    left: 0;
+  }
 
-    @screen md {
-      height: 85px;
-    }
-
-    @screen lg {
-      height: 95px;
-    }
+  .OtherServices-service-animated-gif {
+    @apply hidden;
   }
 }
