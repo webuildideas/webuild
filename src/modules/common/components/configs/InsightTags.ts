@@ -20,6 +20,7 @@ import Performance from '@static/svgs/topics/performance.inline.svg'
 import Process from '@static/svgs/topics/process.inline.svg'
 import ProductDesign from '@static/svgs/topics/product-design.inline.svg'
 import ToolsAndTrends from '@static/svgs/topics/tools-and-trends.inline.svg'
+import ProductMarketing from '@static/svgs/topics/product-marketing.inline.svg'
 
 type IconPayload = {
   icon: React.FC<WithClassName>
@@ -93,5 +94,9 @@ export const TypeInsightTopicIconConfig: TypeInsightTopicIconConfig = {
   'Tools & Trends': {
     icon: ToolsAndTrends,
     name: 'Tools & Trends'
+  },
+  'Product Marketing': {
+    icon: ProductMarketing,
+    name: 'Product Marketing'
   }
 }

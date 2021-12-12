@@ -1,9 +1,13 @@
-import { classNames } from '@common/utils/classNames'
-import Checkbox from '@modules/common/components/Checkbox'
-import getCountryRequiresPrivacy from '@modules/forms/utils/getCountryRequiresPrivacy'
-import { useFormikContext } from 'formik'
-import { Link } from 'gatsby'
+// Packages
 import React from 'react'
+import { useFormikContext } from 'formik'
+
+// Commons
+import { classNames } from '@common/utils/classNames'
+import getCountryRequiresPrivacy from '@modules/forms/utils/getCountryRequiresPrivacy'
+
+// Components
+import Checkbox from '@modules/common/components/Checkbox'
 
 interface Props {
   showOptIn?: boolean
@@ -50,9 +54,13 @@ const PrivacyOptIn = ({ showOptIn = true }: Props) => {
         We take your privacy seriously. We do not sell or share your data. We
         use it to enhance your experience with our site and to analyze the
         performance of our marketing efforts. To learn more, please see our{' '}
-        <Link className="text-electricViolet font-bold" to="/privacy/">
+        <a
+          className="text-electricViolet font-bold"
+          href="/privacy/"
+          target="_blank"
+        >
           Privacy Notice
-        </Link>
+        </a>
         .
       </p>
 
