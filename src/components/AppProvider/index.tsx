@@ -47,7 +47,7 @@ const AppProvider = memo(function AppProviderMemo({
       <OpportunityFormModal location={location.href} />
       <BookACallFormModal location={location.href} />
       {location.pathname === '/fintech' || location.pathname === '/fintech/' ? (
-        <LandingPageNav tagline="Results-drive Fintech design" />
+        <LandingPageNav tagline="Results-driven Fintech design" />
       ) : (
         <Nav />
       )}
