@@ -48,7 +48,7 @@ const BookACallFormModal = memo(function BookACallFormModalMemo({
       onClick={handleBackgroundPress}
       role="button"
     >
-      <div ref={formRef} className="BookACallFormModal-form bg-foundation">
+      <div ref={formRef} className="BookACallFormModal-form">
         <CloseIcon
           className="BookACallFormModal-close text-gray-800"
           onClick={closeModal}

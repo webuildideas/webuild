@@ -111,7 +111,7 @@
   @apply xl:block;
 }
 
-.Fintech-hero-form  {
+.Fintech-hero-form.BookACall-success {
   @apply text-center;
   @apply bg-foundation;
 

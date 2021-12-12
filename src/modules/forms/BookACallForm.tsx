@@ -124,7 +124,7 @@ const BookACallForm = ({
 
   return (
     <div className={`BookACall ${formClasses}`}>
-      {!formSubmitted ? (
+      {formSubmitted ? (
         <div className="BookACall-success-container">
           <PurpleCheckmark className="BookACall-success-icon" />
           <h3 className="BookACall-success-title text-h3 mb-6">
