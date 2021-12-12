@@ -29,6 +29,11 @@
   @apply mx-auto;
 }
 
+.BookACall-success-button {
+  @apply inline-block;
+  @apply mt-10;
+}
+
 .BookACall-row {
   @apply flex;
   @apply items-center;

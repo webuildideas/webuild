@@ -98,6 +98,8 @@ const Fintech = ({
             <BookACallForm
               className="Fintech-hero-form"
               location={location.href}
+              successButtonText="Go Home"
+              successButtonTo="/"
             />
           </div>
         </div>

@@ -15,10 +15,14 @@ import '../styles/BookACallFormModal.css'
 
 interface Props {
   location: string
+  successButtonText?: string
+  successButtonTo?: string
 }
 
 const BookACallFormModal = memo(function BookACallFormModalMemo({
-  location
+  location,
+  successButtonText,
+  successButtonTo
 }: Props) {
   const formRef = useRef<HTMLDivElement>(null)
   const { isVisible, closeModal } = useBookACallFormModal()
@@ -49,7 +53,12 @@ const BookACallFormModal = memo(function BookACallFormModalMemo({
           className="BookACallFormModal-close text-gray-800"
           onClick={closeModal}
         />
-        <BookACallForm className="form" location={location} />
+        <BookACallForm
+          className="form"
+          location={location}
+          successButtonText={successButtonText}
+          successButtonTo={successButtonTo}
+        />
       </div>
     </div>
   ) : null

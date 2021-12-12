@@ -111,6 +111,16 @@
   @apply xl:block;
 }
 
+.Fintech-hero-form  {
+  @apply text-center;
+  @apply bg-foundation;
+
+  .BookACall-success-title {
+    max-width: 250px;
+    @apply mx-auto;
+  }
+}
+
 /** Call CTA **/
 
 .Fintech-call-cta {
