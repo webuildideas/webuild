@@ -82,8 +82,11 @@ const Fintech = ({
       <Meta
         description={contentfulSeo.seoDescription?.seoDescription}
         location={location}
+        shareImage={contentfulSeo.seoShareImage?.file.url}
+        shareTitle={contentfulSeo.seoTitle}
         title={contentfulSeo.seoTitle}
       />
+
       <main className="Fintech">
         <div className="Fintech-hero">
           <div className="Fintech-hero-illustration-container">
