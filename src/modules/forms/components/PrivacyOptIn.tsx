@@ -1,9 +1,13 @@
-import { classNames } from '@common/utils/classNames'
-import Checkbox from '@modules/common/components/Checkbox'
-import getCountryRequiresPrivacy from '@modules/forms/utils/getCountryRequiresPrivacy'
-import { useFormikContext } from 'formik'
-import { Link } from 'gatsby'
+// Packages
 import React from 'react'
+import { useFormikContext } from 'formik'
+
+// Commons
+import { classNames } from '@common/utils/classNames'
+import getCountryRequiresPrivacy from '@modules/forms/utils/getCountryRequiresPrivacy'
+
+// Components
+import Checkbox from '@modules/common/components/Checkbox'
 
 interface Props {
   showOptIn?: boolean
