@@ -1,7 +1,8 @@
 // Packages
-import React from 'react'
+import React, { useEffect } from 'react'
 import { graphql, PageProps } from 'gatsby'
 import Img from 'gatsby-image'
+import { useAnimation, Variants, motion } from 'framer-motion'
 
 // Components
 import Meta from '@components/Meta'
@@ -34,6 +35,7 @@ import LinkedIn from '@static/svgs/common/social/linkedin.inline.svg'
 // Styles
 import '@common/styles/pages/fintech.css'
 import { TypeGatsbyChildImageSharpFluid } from '@common/types/GatsbyImage'
+import { useInView } from 'react-intersection-observer'
 
 interface Props {
   data: {
@@ -44,11 +46,86 @@ interface Props {
     allContentfulService: {
       nodes: TypeService[]
     }
-    galleryMobile: TypeGatsbyChildImageSharpFluid
-    galleryMd: TypeGatsbyChildImageSharpFluid
-    galleryLg: TypeGatsbyChildImageSharpFluid
+    mobileGallery: TypeGatsbyChildImageSharpFluid
+    row11: TypeGatsbyChildImageSharpFluid
+    row12: TypeGatsbyChildImageSharpFluid
+    row13: TypeGatsbyChildImageSharpFluid
+    row21: TypeGatsbyChildImageSharpFluid
+    row22: TypeGatsbyChildImageSharpFluid
+    row23: TypeGatsbyChildImageSharpFluid
+    row24: TypeGatsbyChildImageSharpFluid
+    row25: TypeGatsbyChildImageSharpFluid
+    row31: TypeGatsbyChildImageSharpFluid
+    row32: TypeGatsbyChildImageSharpFluid
   }
   location: PageProps['location']
+}
+
+const variants: Variants = {
+  visible: (i: number) => ({
+    opacity: 1,
+    x: 0,
+    y: 0,
+    transition: {
+      duration: 0.65,
+      delay: i * 0.3
+    }
+  }),
+
+  image1Hidden: {
+    opacity: 0,
+    x: -15,
+    y: -20
+  },
+
+  image2Hidden: {
+    opacity: 0,
+    y: -35
+  },
+
+  image3Hidden: {
+    opacity: 0,
+    x: 35,
+    y: 10
+  },
+
+  image4Hidden: {
+    opacity: 0,
+    x: -25,
+    y: 20
+  },
+
+  image5Hidden: {
+    opacity: 0,
+    x: 35,
+    y: 20
+  },
+
+  image6Hidden: {
+    opacity: 0,
+    x: -25,
+    y: 40
+  },
+
+  image7Hidden: {
+    opacity: 0,
+    y: 40
+  },
+
+  image8Hidden: {
+    opacity: 0,
+    y: 40
+  },
+
+  image9Hidden: {
+    opacity: 0,
+    y: 40
+  },
+
+  image10Hidden: {
+    opacity: 0,
+    y: 40
+  }
 }
 
 const Fintech = ({
@@ -56,27 +133,32 @@ const Fintech = ({
     contentfulSeo,
     allContentfulTestimonial: { nodes: testimonials },
     allContentfulService: { nodes: services },
-    galleryMobile,
-    galleryMd,
-    galleryLg
+    mobileGallery,
+    row11,
+    row12,
+    row13,
+    row21,
+    row22,
+    row23,
+    row24,
+    row25,
+    row31,
+    row32
   },
   location
 }: Props) => {
+  const animationControls = useAnimation()
   const { showModal } = useOpportunityFormModal()
   const { showModal: showBookACallModal } = useBookACallFormModal()
+  const [ref, inView] = useInView({
+    triggerOnce: true
+  })
 
-  const gallerySources = [
-    galleryMobile.childImageSharp.fluid,
-    {
-      ...galleryLg.childImageSharp.fluid,
-      media: `(min-width: 1024px)`
-    },
-    {
-      ...galleryMd.childImageSharp.fluid,
-      media: `(min-width: 768px)`
+  useEffect(() => {
+    if (inView) {
+      animationControls.start('visible')
     }
-  ]
-
+  })
   return (
     <>
       <Meta
@@ -123,13 +205,185 @@ const Fintech = ({
           <h2 className="Fintech-latest-work-title text-h2">
             Our Latest Work in Fintech
           </h2>
-          <div className="Fintech-latest-work-gallery">
-            <Img
-              className="GoSiteDesignSystems-img"
-              durationFadeIn={150}
-              fadeIn
-              fluid={gallerySources}
+
+          <div className="Fintech-mobile-gallery">
+            <div
+              className="Fintech-mobile-gallery-sliding"
+              style={{
+                backgroundImage: `url(${mobileGallery.childImageSharp.fluid.src})`
+              }}
             />
+          </div>
+          <div ref={ref} className="Fintech-latest-work-gallery">
+            <motion.div
+              key="photo-0"
+              animate={animationControls}
+              className="Fintech-gallery-img row11"
+              custom={2}
+              data-photo={1}
+              initial="image1Hidden"
+              variants={variants}
+            >
+              <Img
+                durationFadeIn={150}
+                fadeIn
+                fluid={row11.childImageSharp.fluid}
+                imgStyle={{ objectFit: 'cover' }}
+              />
+            </motion.div>
+
+            <motion.div
+              key="photo-1"
+              animate={animationControls}
+              className="Fintech-gallery-img row12"
+              custom={3}
+              data-photo={2}
+              initial="image2Hidden"
+              variants={variants}
+            >
+              <Img
+                durationFadeIn={150}
+                fadeIn
+                fluid={row12.childImageSharp.fluid}
+                imgStyle={{ objectFit: 'cover' }}
+              />
+            </motion.div>
+
+            <motion.div
+              key="photo-2"
+              animate={animationControls}
+              className="Fintech-gallery-img row13"
+              custom={4}
+              data-photo={3}
+              initial="image3Hidden"
+              variants={variants}
+            >
+              <Img
+                durationFadeIn={150}
+                fadeIn
+                fluid={row13.childImageSharp.fluid}
+                imgStyle={{ objectFit: 'cover' }}
+              />
+            </motion.div>
+
+            <motion.div
+              key="photo-3"
+              animate={animationControls}
+              className="Fintech-gallery-img row21"
+              custom={5}
+              data-photo={4}
+              initial="image4Hidden"
+              variants={variants}
+            >
+              <Img
+                durationFadeIn={150}
+                fadeIn
+                fluid={row21.childImageSharp.fluid}
+                imgStyle={{ objectFit: 'cover' }}
+              />
+            </motion.div>
+
+            <motion.div
+              key="photo-4"
+              animate={animationControls}
+              className="Fintech-gallery-img row22"
+              custom={6}
+              data-photo={5}
+              initial="image5Hidden"
+              variants={variants}
+            >
+              <Img
+                durationFadeIn={150}
+                fadeIn
+                fluid={row22.childImageSharp.fluid}
+                imgStyle={{ objectFit: 'cover' }}
+              />
+            </motion.div>
+
+            <motion.div
+              key="photo-5"
+              animate={animationControls}
+              className="Fintech-gallery-img row23"
+              custom={7}
+              data-photo={6}
+              initial="image6Hidden"
+              variants={variants}
+            >
+              <Img
+                durationFadeIn={150}
+                fadeIn
+                fluid={row23.childImageSharp.fluid}
+                imgStyle={{ objectFit: 'cover' }}
+              />
+            </motion.div>
+
+            <motion.div
+              key="photo-6"
+              animate={animationControls}
+              className="Fintech-gallery-img row24"
+              custom={8}
+              data-photo={7}
+              initial="image7Hidden"
+              variants={variants}
+            >
+              <Img
+                durationFadeIn={150}
+                fadeIn
+                fluid={row24.childImageSharp.fluid}
+                imgStyle={{ objectFit: 'cover' }}
+              />
+            </motion.div>
+
+            <motion.div
+              key="photo-7"
+              animate={animationControls}
+              className="Fintech-gallery-img row25"
+              custom={9}
+              data-photo={8}
+              initial="image8Hidden"
+              variants={variants}
+            >
+              <Img
+                durationFadeIn={150}
+                fadeIn
+                fluid={row25.childImageSharp.fluid}
+                imgStyle={{ objectFit: 'cover' }}
+              />
+            </motion.div>
+
+            <motion.div
+              key="photo-8"
+              animate={animationControls}
+              className="Fintech-gallery-img row31"
+              custom={10}
+              data-photo={9}
+              initial="image9Hidden"
+              variants={variants}
+            >
+              <Img
+                durationFadeIn={150}
+                fadeIn
+                fluid={row31.childImageSharp.fluid}
+                imgStyle={{ objectFit: 'cover' }}
+              />
+            </motion.div>
+
+            <motion.div
+              key="photo-9"
+              animate={animationControls}
+              className="Fintech-gallery-img row32"
+              custom={11}
+              data-photo={20}
+              initial="image10Hidden"
+              variants={variants}
+            >
+              <Img
+                durationFadeIn={150}
+                fadeIn
+                fluid={row32.childImageSharp.fluid}
+                imgStyle={{ objectFit: 'cover' }}
+              />
+            </motion.div>
           </div>
         </div>
 
@@ -271,29 +525,91 @@ export const FINTECH_PAGE_QUERY = graphql`
       }
     }
 
-    galleryMobile: file(
-      relativePath: { eq: "landing-pages/fintech/fintech-gallery-mobile.png" }
+    mobileGallery: file(
+      relativePath: { eq: "landing-pages/fintech/mobile-gallery.jpg" }
     ) {
       childImageSharp {
-        fluid(maxWidth: 1500) {
+        fluid(maxWidth: 3000, quality: 100) {
           ...GatsbyImageSharpFluid_withWebp_noBase64
         }
       }
     }
-    galleryMd: file(
-      relativePath: { eq: "landing-pages/fintech/fintech-gallery-md.png" }
-    ) {
+
+    row11: file(relativePath: { eq: "landing-pages/fintech/row-1-1.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 2000) {
           ...GatsbyImageSharpFluid_withWebp_noBase64
         }
       }
     }
-    galleryLg: file(
-      relativePath: { eq: "landing-pages/fintech/fintech-gallery-lg.png" }
-    ) {
+
+    row12: file(relativePath: { eq: "landing-pages/fintech/row-1-2.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 2700) {
+        fluid(maxWidth: 2000) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+
+    row13: file(relativePath: { eq: "landing-pages/fintech/row-1-3.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 2000) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+
+    row21: file(relativePath: { eq: "landing-pages/fintech/row-2-1.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 2000) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+
+    row22: file(relativePath: { eq: "landing-pages/fintech/row-2-2.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 2000) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+
+    row23: file(relativePath: { eq: "landing-pages/fintech/row-2-3.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 2000) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+
+    row24: file(relativePath: { eq: "landing-pages/fintech/row-2-4.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 2000) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+
+    row25: file(relativePath: { eq: "landing-pages/fintech/row-2-5.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 2000) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+
+    row31: file(relativePath: { eq: "landing-pages/fintech/row-3-1.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 2000) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+
+    row32: file(relativePath: { eq: "landing-pages/fintech/row-3-2.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 2000) {
           ...GatsbyImageSharpFluid_withWebp_noBase64
         }
       }
