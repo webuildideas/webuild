@@ -17,12 +17,14 @@ import { TypeCaseStudy } from '@common/types/CaseStudy'
 import { TypeTestimonial } from '@common/types/Testimonial'
 import OpportunityForm from '@modules/forms/OpportunityForm'
 import MotionAniLink from '@modules/common/components/MotionAniLink'
+import { TypeSEO } from '@common/types/SEO'
 
 interface Props {
   data: {
     contentfulCaseStudies: {
       caseStudies: TypeCaseStudy[]
       testimonials: TypeTestimonial[]
+      seo: TypeSEO
     }
   }
   location: PageProps['location']
@@ -30,13 +32,19 @@ interface Props {
 
 const CaseStudies = ({
   data: {
-    contentfulCaseStudies: { caseStudies, testimonials }
+    contentfulCaseStudies: { caseStudies, testimonials, seo }
   },
   location
 }: Props) => {
   return (
     <>
       <Meta location={location} title="Case Studies" />
+      <Meta
+        description={seo.seoDescription?.seoDescription}
+        location={location}
+        shareImage={seo.seoShareImage?.file?.url}
+        title={seo.seoTitle}
+      />
       <main className="CaseStudies">
         <div className="CaseStudies-title">
           <h1 className="text-h1 mb-4 lg:mb-6">
@@ -160,6 +168,18 @@ export const CASE_STUDIES_PAGE_QUERY = graphql`
         purpleHeadshot {
           fixed(cropFocus: FACE, height: 150, width: 150) {
             ...GatsbyContentfulFixed_withWebp_noBase64
+          }
+        }
+      }
+
+      seo {
+        seoTitle
+        seoDescription {
+          seoDescription
+        }
+        seoShareImage {
+          file {
+            url
           }
         }
       }
