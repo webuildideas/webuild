@@ -26,6 +26,7 @@ export type TypeInsightTopic =
   | 'Process'
   | 'Product Design'
   | 'Tools & Trends'
+  | 'Product Marketing'
 
 export interface TypeInsight {
   id: string
@@ -36,6 +37,7 @@ export interface TypeInsight {
   slug: string
   heroIllustration?: TypeContentfulAsset
   listingIllustration?: TypeContentfulAsset
+  mobileListingIllustration?: TypeContentfulAsset
   featuredIllustration?: TypeContentfulAsset
   content: RenderRichTextData<TypeCarousel | TypeContentfulAsset>
   publishDate: string
