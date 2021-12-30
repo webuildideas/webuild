@@ -86,6 +86,6 @@
   }
 
   .OtherServices-service-animated-gif {
-    @apply hidden;
+    /* @apply hidden; */
   }
 }
