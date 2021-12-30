@@ -1,8 +1,11 @@
+import '@common/styles/pages/fintech.css'
+
 // Packages
 import React, { useEffect } from 'react'
 import { graphql, PageProps } from 'gatsby'
 import Img from 'gatsby-image'
 import { useAnimation, Variants, motion } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
 
 // Components
 import Meta from '@components/Meta'
@@ -33,9 +36,7 @@ import Instagram from '@static/svgs/common/social/instagram.inline.svg'
 import LinkedIn from '@static/svgs/common/social/linkedin.inline.svg'
 
 // Styles
-import '@common/styles/pages/fintech.css'
 import { TypeGatsbyChildImageSharpFluid } from '@common/types/GatsbyImage'
-import { useInView } from 'react-intersection-observer'
 
 interface Props {
   data: {
