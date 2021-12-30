@@ -186,7 +186,7 @@
   background-repeat: repeat-x;
   background-size: contain;
   height: 400px;
-  width: 5076px;
+  width: 9000px;
   animation: slide 45s linear infinite;
 
   @screen md {

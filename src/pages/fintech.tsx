@@ -526,7 +526,7 @@ export const FINTECH_PAGE_QUERY = graphql`
     }
 
     mobileGallery: file(
-      relativePath: { eq: "landing-pages/fintech/mobile-gallery.jpg" }
+      relativePath: { eq: "landing-pages/fintech/mobile-gallery.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 3000, quality: 100) {
