@@ -45,9 +45,15 @@ const AppProvider = memo(function AppProviderMemo({
     <ThemeProvider theme={styleTheme}>
       <GlobalStyle />
       <OpportunityFormModal location={location.href} />
-      <BookACallFormModal location={location.href} />
       {location.pathname === '/fintech' || location.pathname === '/fintech/' ? (
-        <LandingPageNav tagline="Results-drive Fintech design" />
+        <>
+          <BookACallFormModal
+            location={location.href}
+            successButtonText="Go Home"
+            successButtonTo="/"
+          />
+          <LandingPageNav tagline="Results-driven Fintech design" />
+        </>
       ) : (
         <Nav />
       )}

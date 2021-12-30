@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, useCallback, useRef } from 'react'
 import CloseIcon from '@static/svgs/closeIcon.inline.svg'
 import OpportunityForm from '../OpportunityForm'
 
@@ -12,11 +12,31 @@ interface Props {
 const OpportunityFormModal = memo(function OpportunityFormModalMemo({
   location
 }: Props) {
+  const formRef = useRef<HTMLDivElement>(null)
   const { isVisible, closeModal } = useOpportunityFormModal()
 
+  const handleBackgroundPress = useCallback(
+    (event) => {
+      if (
+        isVisible &&
+        formRef.current &&
+        formRef.current.contains(event.target)
+      ) {
+        return
+      }
+
+      closeModal()
+    },
+    [isVisible, formRef, closeModal]
+  )
+
   return isVisible ? (
-    <div className="OpportunityFormModal">
-      <div className="OpportunityFormModal-form bg-foundation">
+    <div
+      className="OpportunityFormModal"
+      onClick={handleBackgroundPress}
+      role="button"
+    >
+      <div ref={formRef} className="OpportunityFormModal-form bg-foundation">
         <CloseIcon
           className="OpportunityFormModal-close text-gray-800"
           onClick={closeModal}
