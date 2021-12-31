@@ -11,7 +11,6 @@ import { useInView } from 'react-intersection-observer'
 import Meta from '@components/Meta'
 import MotionAniLink from '@modules/common/components/MotionAniLink'
 import Button from '@modules/common/components/Button'
-import BookACallForm from '@modules/forms/BookACallForm'
 import TestimonialSlider from '@modules/common/components/TestimonialSlider'
 import OtherServices from '@modules/service/components/OtherServices'
 
@@ -170,7 +169,7 @@ const Fintech = ({
         title={contentfulSeo.seoTitle}
       />
 
-      <main className="Fintech">
+      <main className="Fintech Fintech-alt">
         <div className="Fintech-hero">
           <div className="Fintech-hero-illustration-container">
             <HeroIllustration className="Fintech-hero-illustration" />
@@ -181,12 +180,6 @@ const Fintech = ({
                 Boost your fintech startup with thoughtful & informed design.
               </h1>
             </div>
-            <BookACallForm
-              className="Fintech-hero-form"
-              location={location.href}
-              successButtonText="Go Home"
-              successButtonTo="/"
-            />
           </div>
         </div>
 
@@ -517,8 +510,8 @@ const Fintech = ({
   )
 }
 
-export const FINTECH_PAGE_QUERY = graphql`
-  query FintechPageQuery {
+export const FINTECH_ALT_PAGE_QUERY = graphql`
+  query FintechAltPageQuery {
     contentfulSeo(title: { eq: "Landing Page - Fintech" }) {
       seoTitle
       seoDescription {

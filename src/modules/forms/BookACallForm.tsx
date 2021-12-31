@@ -17,6 +17,7 @@ import TextInput from '@modules/forms/components/TextInput'
 import TextAreaField from '@modules/forms/components/TextAreaField'
 import Button from '@modules/common/components/Button'
 import SelectField from '@modules/forms/components/SelectField'
+import MotionAniLink from '@modules/common/components/MotionAniLink'
 
 // Utils
 import sleep from '@modules/common/utils/sleep'
@@ -33,6 +34,8 @@ import './styles/BookACallForm.css'
 interface Props {
   location: string
   className?: string
+  successButtonText?: string
+  successButtonTo?: string
 }
 
 interface FormValues {
@@ -58,7 +61,12 @@ const formSchema = Yup.object().shape({
   'Phone Number': Yup.string().required('Phone Number is required')
 })
 
-const BookACallForm = ({ location, className = '' }: Props) => {
+const BookACallForm = ({
+  location,
+  className = '',
+  successButtonText,
+  successButtonTo
+}: Props) => {
   const [formSubmitted, setFormSubmitted] = useState(false)
   const [userConversions, setUserConversions] = useRecoilState(
     userFormConversionsAtom
@@ -119,10 +127,21 @@ const BookACallForm = ({ location, className = '' }: Props) => {
       {formSubmitted ? (
         <div className="BookACall-success-container">
           <PurpleCheckmark className="BookACall-success-icon" />
-          <h3 className="text-h3 mb-6">Thank you for booking a call.</h3>
+          <h3 className="BookACall-success-title text-h3 mb-6">
+            Thank you for booking a call.
+          </h3>
           <p className="text-body">
             We look forward to chatting with you about your project!
           </p>
+          {successButtonText && successButtonTo ? (
+            <MotionAniLink
+              className="BookACall-success-button"
+              styleType="solid-purple"
+              to={successButtonTo}
+            >
+              {successButtonText}
+            </MotionAniLink>
+          ) : null}
         </div>
       ) : (
         <Formik

@@ -2,6 +2,7 @@
 // Packages
 import React from 'react'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import { kebabCase } from 'lodash'
 
 // Common
 import { TypeService } from '@common/types/Service'
@@ -48,7 +49,9 @@ const OtherServices = ({
               <div className="OtherServices-service-illustrations">
                 <img
                   alt={`${service.title} illustration`}
-                  className="OtherServices-service-illustration"
+                  className={`OtherServices-service-illustration ${kebabCase(
+                    service.shortTitle
+                  )}-other-service`}
                   src={service.otherServicesIllustration.file.url}
                 />
                 {service.otherServicesGif?.file?.url ? (

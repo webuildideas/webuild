@@ -36,14 +36,38 @@
 }
 
 .OtherServices-services {
-  @apply flex;
-  @apply items-start;
-  @apply flex-wrap;
-  @apply justify-between;
+  @apply grid;
+  @apply grid-cols-6;
   @apply gap-y-8;
   @apply text-center;
   @apply mx-auto;
-  width: 215px;
+  width: 350px;
+
+
+  .OtherServices-service {
+    grid-column: span 2;
+  }
+
+  .OtherServices-service:first-child {
+    grid-column: span 2;
+    grid-column-start: 2;
+    grid-column-end: 4;
+  }
+
+  .OtherServices-service:nth-child(2) {
+    grid-column: span 2;
+    grid-column-start: 4;
+    grid-column-end: 6;
+  }
+
+
+  @screen md {
+    @apply flex;
+    @apply items-start;
+    @apply flex-wrap;
+    @apply justify-between;
+    @apply gap-y-8;
+  }
 
   @screen md {
     width: 600px;

@@ -20,6 +20,7 @@ import BookACallFormModal from '@modules/forms/components/BookACallFormModal'
 interface Props extends WithChildren {
   location: PageProps['location']
 }
+const bookACallUrls = ['/fintech', '/fintech/', '/fintech-2', '/fintech-2/']
 
 const AppProvider = memo(function AppProviderMemo({
   children,
@@ -45,9 +46,15 @@ const AppProvider = memo(function AppProviderMemo({
     <ThemeProvider theme={styleTheme}>
       <GlobalStyle />
       <OpportunityFormModal location={location.href} />
-      <BookACallFormModal location={location.href} />
-      {location.pathname === '/fintech' || location.pathname === '/fintech/' ? (
-        <LandingPageNav tagline="Results-drive Fintech design" />
+      {bookACallUrls.includes(location.pathname) ? (
+        <>
+          <BookACallFormModal
+            location={location.href}
+            successButtonText="Go Home"
+            successButtonTo="/"
+          />
+          <LandingPageNav tagline="Results-driven Fintech design" />
+        </>
       ) : (
         <Nav />
       )}

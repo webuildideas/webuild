@@ -44,3 +44,7 @@
   @apply cursor-pointer;
   @apply ml-auto;
 }
+
+.BookACallFormModal-form .form.BookACall-success {
+  @apply bg-white;
+}
