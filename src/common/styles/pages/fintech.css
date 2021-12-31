@@ -62,6 +62,7 @@
   }
 }
 
+
 .Fintech-hero-inner {
   @apply relative;
   @apply z-10;
@@ -98,6 +99,65 @@
   @apply xl:mt-6;
   @apply xl:mb-0;
 }
+
+
+/** ALT Layout **/
+.Fintech-alt .Fintech-hero {
+  @apply lg:pt-20;
+  
+  @apply xl:pt-30;
+
+  h1 {
+    @apply lg:text-7xl;
+  }
+}
+
+.Fintech-alt .Fintech-hero-illustration {
+  right: -32%;
+  bottom: -13%;
+  width: 70%;
+  max-width: 600px;
+
+  @screen md {
+    width: auto;
+    right: -44%;
+    bottom: -52%;
+    width: 90%;
+    max-width: 900px;
+  }
+
+  @screen lg {
+    right: -40%;
+    bottom: -79%;
+    width: 75%;
+    max-width: 1024px;
+  }
+
+  @screen xl {
+    right: -32%;
+    bottom: -55%;
+    width: 60%;
+    max-width: 1440px;
+  }
+
+  @screen 2xl {
+    right: -32%;
+    bottom: -45%;
+    width: 70%;
+    max-width: 1440px;
+  }
+}
+
+.Fintech-alt .Fintech-title-container {
+  @apply lg:pb-30;
+  
+  @apply xl:pb-35;
+  @screen xl {
+    max-width: 1024px;
+  }
+}
+
+/** END ALT Layout **/
 
 .Fintech-hero-form {
   @apply w-full;
