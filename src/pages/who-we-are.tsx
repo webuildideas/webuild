@@ -242,6 +242,11 @@ export const WHO_WE_ARE_QUERY = graphql`
             url
           }
         }
+        otherServicesGif {
+          file {
+            url
+          }
+        }
       }
     }
   }

@@ -19,5 +19,6 @@ export interface TypeService {
   listingIllustration: TypeContentfulAsset
   listingIllustrationGif: TypeContentfulAsset
   otherServicesIllustration: TypeContentfulAsset
+  otherServicesGif: TypeContentfulAsset
   seo?: TypeSEO
 }

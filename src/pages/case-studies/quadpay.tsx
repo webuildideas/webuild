@@ -110,6 +110,11 @@ export const QUADPAY_QUERY = graphql`
             url
           }
         }
+        otherServicesGif {
+          file {
+            url
+          }
+        }
       }
     }
   }

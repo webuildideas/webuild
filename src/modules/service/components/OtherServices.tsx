@@ -46,11 +46,26 @@ const OtherServices = ({
               duration={1.5}
               to={`/what-we-do/${service.slug}/`}
             >
-              <img
-                alt={`${service.title} illustration`}
-                className={`${kebabCase(service.shortTitle)}-other-service`}
-                src={service.otherServicesIllustration.file.url}
-              />
+              <div
+                className={`OtherServices-service-illustrations ${kebabCase(
+                  service.shortTitle
+                )}-illustrations`}
+              >
+                <img
+                  alt={`${service.title} illustration`}
+                  className={`OtherServices-service-illustration ${kebabCase(
+                    service.shortTitle
+                  )}-other-service`}
+                  src={service.otherServicesIllustration.file.url}
+                />
+                {service.otherServicesGif?.file?.url ? (
+                  <img
+                    alt={`${service.title} illustration`}
+                    className="OtherServices-service-animated-gif"
+                    src={service.otherServicesGif.file.url}
+                  />
+                ) : null}
+              </div>
               <h5
                 className="text-tag"
                 dangerouslySetInnerHTML={{
