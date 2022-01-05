@@ -234,6 +234,11 @@ export const SERVICE_PAGE_QUERY = graphql`
             url
           }
         }
+        otherServicesGif {
+          file {
+            url
+          }
+        }
       }
     }
   }

@@ -663,6 +663,11 @@ export const FINTECH_PAGE_QUERY = graphql`
             url
           }
         }
+        otherServicesGif {
+          file {
+            url
+          }
+        }
       }
     }
   }

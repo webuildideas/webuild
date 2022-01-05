@@ -124,6 +124,11 @@ export const GOSITE_QUERY = graphql`
             url
           }
         }
+        otherServicesGif {
+          file {
+            url
+          }
+        }
       }
     }
   }

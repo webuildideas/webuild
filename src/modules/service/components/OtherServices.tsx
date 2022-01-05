@@ -46,7 +46,11 @@ const OtherServices = ({
               duration={1.5}
               to={`/what-we-do/${service.slug}/`}
             >
-              <div className="OtherServices-service-illustrations">
+              <div
+                className={`OtherServices-service-illustrations ${kebabCase(
+                  service.shortTitle
+                )}-illustrations`}
+              >
                 <img
                   alt={`${service.title} illustration`}
                   className={`OtherServices-service-illustration ${kebabCase(
