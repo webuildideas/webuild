@@ -52,7 +52,9 @@ const CaseStudyDetail = ({
     projectOverview,
     projectChallenge,
     projectSolution,
-    projectOutcome
+    projectOutcome,
+    seoTitle,
+    metaDescription: { metaDescription }
   } = caseStudy
 
   useEffect(() => {
@@ -68,8 +70,9 @@ const CaseStudyDetail = ({
     <>
       <Meta
         bodyAttributes={metaBodyAtributes}
+        description={metaDescription}
         location={location}
-        title={name}
+        title={seoTitle}
       />
       <S.CaseStudyDetail className={slug} id="case-study-container">
         {heroBackgroundImage && heroImage && whiteLogo && successSummary ? (
@@ -140,6 +143,10 @@ export const query = graphql`
   query caseStudyQuery($slug: String!) {
     contentfulCaseStudy(slug: { eq: $slug }) {
       name
+      metaDescription {
+        metaDescription
+      }
+      seoTitle
       successSummary {
         successSummary
       }
