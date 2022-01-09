@@ -6,7 +6,7 @@ import React from 'react'
 import { graphql, PageProps } from 'gatsby'
 
 // Components
-import Footer from '@components/Footer'
+import Footer from '@modules/common/components/Footer'
 import Meta from '@components/Meta'
 import TestimonialSlider from '@modules/common/components/TestimonialSlider'
 import ProcessSteps from '@modules/common/components/ProcessSteps'
