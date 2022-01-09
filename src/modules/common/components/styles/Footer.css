@@ -1,20 +1,72 @@
+.Footer {
+  @apply bg-black;
+  @apply pt-12;
+  @apply pb-18;
+  @apply px-6;
+}
+
 .Footer-inner {
   max-width: 1180px;
   @apply ml-auto;
   @apply mr-auto;
 }
 
+.Footer-copy {
+  @apply mb-26;
+}
+
+.Footer-cta-button {
+  @apply bg-white;
+  @apply px-6;
+  @apply py-4;
+  @apply inline-block;
+  
+  @apply hover:bg-transparent;
+  @apply hover:text-white;
+}
+
 .Footer-follow {
+  @apply grid;
+  @apply grid-cols-1;
+}
+
+.Footer-copyright-privacy {
   @apply flex;
-  @apply flex-wrap;
-  @apply justify-between;
   @apply items-center;
-  @apply border-t;
-  @apply border-solid;
-  @apply border-gray-800;
-  @apply pt-8;
-  @apply md:border-none;
-  @apply md:pt-0;
-  @apply mt-18;
-  @apply md:mt-29;
+  @apply mb-8;
+  @apply text-gray-500;
+}
+
+.Footer-copyright {
+  @apply relative;
+  top:2px;
+  @apply inline-block;
+  @apply font-extrabold;
+  @apply ml-2;
+}
+
+.Footer-privacy {
+  @apply inline-block;
+  @apply relative;
+  top:2px;
+  @apply font-extrabold;
+  @apply uppercase;
+  @apply ml-6;
+}
+
+.Footer-logo {
+  @apply inline-block;
+  @apply text-white;
+  @apply w-30;
+}
+
+.Footer-social {
+  @apply grid;
+  grid-template-columns: repeat(3, minmax(0, 24px));
+  @apply gap-x-6;
+}
+
+.Footer-social-icon {
+  @apply w-6;
+  @apply text-gray-500;
 }

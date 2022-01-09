@@ -4,9 +4,16 @@ import './styles/Footer.css'
 import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
+import { Link } from 'gatsby'
 
 // Forms
 import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModal'
+
+// Svgs
+import Logo from '@static/svgs/logo.inline.svg'
+import Dribbble from '@static/svgs/common/social/dribbble.inline.svg'
+import Instagram from '@static/svgs/common/social/instagram.inline.svg'
+import Linkedin from '@static/svgs/common/social/linkedin.inline.svg'
 
 const Footer = () => {
   const { showModal } = useOpportunityFormModal()
@@ -40,90 +47,108 @@ const Footer = () => {
   }, [controls, inView])
 
   return (
-    <footer
-      ref={ref}
-      className="Footer bg-black pt-12 pb-19 px-6 md:pt-24 md:pb-12 md:px-8"
-      data-testid="footer"
-    >
+    <footer ref={ref} className="Footer" data-testid="footer">
       <div className="Footer-inner">
-        <motion.h1
-          animate={controls}
-          className="text-h4 mb-4 text-white"
-          custom={0}
-          data-testid="footer-title"
-          initial="hidden"
-          variants={variants}
-        >
-          Let's Do Something Bold
-        </motion.h1>
-        <motion.h2
-          animate={controls}
-          className="text-h3 mb-6 text-white md:mb-10"
-          custom={1}
-          data-testid="footer-subtitle"
-          initial="hidden"
-          style={{ maxWidth: '520px' }}
-          variants={variants}
-        >
-          Ready to take your product efforts to the next level? Drop us a line.
-        </motion.h2>
-        <motion.button
-          animate={controls}
-          className="text-button bg-white px-6 py-4 inline-block"
-          custom={2}
-          data-testid="footer-button"
-          initial="hidden"
-          onClick={showModal}
-          type="button"
-          variants={variants}
-        >
-          Get In Touch
-        </motion.button>
+        <div className="Footer-copy">
+          <motion.h1
+            animate={controls}
+            className="text-h4 mb-4 text-white"
+            custom={0}
+            data-testid="footer-title"
+            initial="hidden"
+            variants={variants}
+          >
+            Let's Do Something Bold
+          </motion.h1>
+          <motion.h2
+            animate={controls}
+            className="text-h3 text-white mb-8 md:mb-10"
+            custom={1}
+            data-testid="footer-subtitle"
+            initial="hidden"
+            style={{ maxWidth: '520px' }}
+            variants={variants}
+          >
+            Ready to take your product efforts to the next level? Drop us a
+            line.
+          </motion.h2>
+          <motion.button
+            animate={controls}
+            className="Footer-cta-button text-button"
+            custom={2}
+            data-testid="footer-button"
+            initial="hidden"
+            onClick={showModal}
+            type="button"
+            variants={variants}
+          >
+            Get In Touch
+          </motion.button>
+        </div>
 
         <div className="Footer-follow" data-testid="footer-social">
-          <motion.p
+          <motion.div
             animate={controls}
-            className="text-caption font-extrabold uppercase text-gray-700 order-2 md:order-1"
+            className="Footer-copyright-privacy"
             custom={2}
             initial="hidden"
             variants={variants}
           >
-            &copy; WEBUILD {d.getFullYear()}
-          </motion.p>
-          <motion.p
+            <div>
+              <Logo className="Footer-logo" />
+              <span className="Footer-copyright">&copy; {d.getFullYear()}</span>
+            </div>
+            <Link className="Footer-privacy text-caption" to="/privacy/">
+              Privacy
+            </Link>
+          </motion.div>
+
+          <motion.div
             animate={controls}
-            className="text-caption font-extrabold uppercase text-gray-700 order-1 mb-6 w-full md:w-auto md:order-2 md:mb-0"
+            className="Footer-social"
             custom={3}
             initial="hidden"
             variants={variants}
           >
-            <span className="block md:inline">Follow Us On: </span>
             <motion.a
               animate={controls}
-              className="text-white"
+              className="Footer-social-link"
               custom={4}
-              href="https://www.dribbble.com/webuild"
+              href="https://www.dribbble.com/webuild/"
               initial="hidden"
               rel="noopener noreferrer"
               target="_blank"
               variants={variants}
             >
-              Dribbble
-            </motion.a>{' '}
-            <span>&amp;</span>{' '}
+              <Dribbble className="Footer-social-icon" />
+            </motion.a>
+
             <motion.a
               animate={controls}
-              className="text-white"
+              className="Footer-social-link"
               custom={5}
-              href="https://www.instagram.com/wearewebuild"
+              href="https://www.instagram.com/wearewebuild/"
               initial="hidden"
               rel="noopener noreferrer"
               target="_blank"
               variants={variants}
             >
-              Instagram
+              <Instagram className="Footer-social-icon" />
             </motion.a>
-          </motion.p>
+
+            <motion.a
+              animate={controls}
+              className="Footer-social-link"
+              custom={6}
+              href="https://www.linkedin.com/company/wearewebuild/"
+              initial="hidden"
+              rel="noopener noreferrer"
+              target="_blank"
+              variants={variants}
+            >
+              <Linkedin className="Footer-social-icon" />
+            </motion.a>
+          </motion.div>
         </div>
       </div>
     </footer>
