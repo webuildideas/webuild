@@ -3,16 +3,32 @@
   @apply pt-12;
   @apply pb-18;
   @apply px-6;
+
+  @apply md:pt-24;
+  @apply md:pb-12;
+  @apply md:px-8;
+
+  @apply lg:px-10;
+
+  @apply xl:pt-30;
+  @apply xl:pb-18;
+  @apply xl:px-0;
 }
 
 .Footer-inner {
-  max-width: 1180px;
+  max-width: 1184px;
   @apply ml-auto;
   @apply mr-auto;
 }
 
 .Footer-copy {
   @apply mb-26;
+
+  @apply md:mb-28;
+
+  @apply lg:mb-35;
+
+  @apply xl:mb-30;
 }
 
 .Footer-cta-button {
@@ -28,6 +44,8 @@
 .Footer-follow {
   @apply grid;
   @apply grid-cols-1;
+
+  @apply md:grid-cols-2;
 }
 
 .Footer-copyright-privacy {
@@ -35,6 +53,9 @@
   @apply items-center;
   @apply mb-8;
   @apply text-gray-500;
+
+  @apply md:justify-self-start;
+  @apply md:mb-0;
 }
 
 .Footer-copyright {
@@ -64,6 +85,8 @@
   @apply grid;
   grid-template-columns: repeat(3, minmax(0, 24px));
   @apply gap-x-6;
+
+  @apply md:justify-self-end;
 }
 
 .Footer-social-icon {
