@@ -16,7 +16,7 @@ import Meta from '@components/Meta'
 import PhotoGrid from '@modules/common/components/PhotoGrid'
 import Button from '@modules/common/components/Button'
 import OtherServices from '@modules/service/components/OtherServices'
-import Footer from '@components/Footer'
+import Footer from '@modules/common/components/Footer'
 
 // SVGs
 import Promises from '@static/svgs/who-we-are/promises.inline.svg'

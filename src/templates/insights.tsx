@@ -26,7 +26,7 @@ import ListingInsight from '@modules/contentHub/components/ListingInsight'
 import ListingInsightSkeleton from '@modules/contentHub/components/ListingInsightSkeleton'
 import FeaturedInsight from '@modules/contentHub/components/FeaturedInsight'
 import Pagination from '@modules/contentHub/components/Pagination'
-import Footer from '@components/Footer'
+import Footer from '@modules/common/components/Footer'
 import EmailSignUpForm from '@modules/forms/EmailSignupForm'
 import MonthlyNewsletterForm from '@modules/forms/MonthlyNewsletterForm'
 

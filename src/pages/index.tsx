@@ -11,7 +11,7 @@ import { TypeInsight } from '@common/types/Insight'
 import TestimonialSlider from '@modules/common/components/TestimonialSlider'
 import Meta from '@components/Meta'
 import MotionAniLink from '@modules/common/components/MotionAniLink'
-import Footer from '@components/Footer'
+import Footer from '@modules/common/components/Footer'
 import CaseStudyCarousel from '@modules/home/components/CaseStudyCarousel'
 import InsightCarousel from '@modules/home/components/InsightCarousel'
 

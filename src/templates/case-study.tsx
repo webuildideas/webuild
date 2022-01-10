@@ -16,7 +16,7 @@ import RichText from '@components/CaseStudyDetail/RichText'
 import ChallengeAndSolution from '@components/CaseStudyDetail/ChallengeAndSolution'
 import FeaturedTestimonial from '@components/CaseStudyDetail/FeaturedTestimonial'
 import CaseStudy from '@modules/common/components/CaseStudy'
-import Footer from '@components/Footer'
+import Footer from '@modules/common/components/Footer'
 import Meta from '@components/Meta'
 
 interface Props {
@@ -35,7 +35,6 @@ const CaseStudyDetail = ({
     triggerOnce: true
   })
   const {
-    name,
     slug,
     heroBackgroundImage,
     heroImage,

@@ -12,7 +12,7 @@ import { TypeService } from '@common/types/Service'
 // Components
 import OtherServices from '@modules/service/components/OtherServices'
 import ServicesStickyNav from '@modules/service/components/ServicesStickyNav'
-import Footer from '@components/Footer'
+import Footer from '@modules/common/components/Footer'
 import OpportunityForm from '@modules/forms/OpportunityForm'
 import ServiceTestimonial from '@modules/service/components/ServiceTestimonial'
 import CaseStudy from '@modules/common/components/CaseStudy'

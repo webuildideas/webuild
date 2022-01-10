@@ -4,7 +4,7 @@ import { PageProps } from 'gatsby'
 
 // Components
 import Meta from '@components/Meta'
-import Footer from '@components/Footer'
+import Footer from '@modules/common/components/Footer'
 
 interface Props {
   location: PageProps['location']

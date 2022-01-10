@@ -11,7 +11,7 @@ import TestimonialSlider from '@modules/common/components/TestimonialSlider'
 import ServiceListing from '@modules/service/components/ServiceListing'
 import ProcessSteps from '@modules/common/components/ProcessSteps'
 import OpportunityForm from '@modules/forms/OpportunityForm'
-import Footer from '@components/Footer'
+import Footer from '@modules/common/components/Footer'
 
 // styles
 import '@common/styles/pages/what-we-do.css'
