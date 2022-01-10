@@ -13,6 +13,7 @@ import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModa
 import Logo from '@static/svgs/logo.inline.svg'
 import Dribbble from '@static/svgs/common/social/dribbble.inline.svg'
 import Instagram from '@static/svgs/common/social/instagram.inline.svg'
+import InstagramGradient from '@static/svgs/common/social/instagram-gradient.inline.svg'
 import Linkedin from '@static/svgs/common/social/linkedin.inline.svg'
 
 const Footer = () => {
@@ -112,7 +113,7 @@ const Footer = () => {
           >
             <motion.a
               animate={controls}
-              className="Footer-social-link"
+              className="Footer-social-link dribbble"
               custom={4}
               href="https://www.dribbble.com/webuild/"
               initial="hidden"
@@ -125,7 +126,7 @@ const Footer = () => {
 
             <motion.a
               animate={controls}
-              className="Footer-social-link"
+              className="Footer-social-link ig"
               custom={5}
               href="https://www.instagram.com/wearewebuild/"
               initial="hidden"
@@ -133,12 +134,13 @@ const Footer = () => {
               target="_blank"
               variants={variants}
             >
-              <Instagram className="Footer-social-icon" />
+              <Instagram className="Footer-social-icon ig" />
+              <InstagramGradient className="Footer-social-icon ig-gradient" />
             </motion.a>
 
             <motion.a
               animate={controls}
-              className="Footer-social-link"
+              className="Footer-social-link linkedin"
               custom={6}
               href="https://www.linkedin.com/company/wearewebuild/"
               initial="hidden"

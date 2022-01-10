@@ -93,3 +93,30 @@
   @apply w-6;
   @apply text-gray-500;
 }
+
+.Footer-social-link.linkedin:hover .Footer-social-icon {
+  @screen lg {
+    color: #1579E0;
+  }
+}
+
+.Footer-social-link.dribbble:hover .Footer-social-icon {
+  @screen lg {
+    color: #EA4C89;
+  }
+}
+
+.Footer-social-icon.ig-gradient {
+  @apply hidden;
+}
+
+.Footer-social-link.ig:hover {
+  @screen lg {
+    .ig {
+      @apply hidden;
+    }
+    .ig-gradient {
+      @apply block;
+    }
+  }
+}
