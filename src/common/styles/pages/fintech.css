@@ -112,6 +112,12 @@
   }
 }
 
+.Fintech-alt .Fintech-hero-illustration-container {
+  @screen xl {
+    max-width: 100%;
+  }
+}
+
 .Fintech-alt .Fintech-hero-illustration {
   right: -32%;
   bottom: -13%;
@@ -137,14 +143,17 @@
     right: -32%;
     bottom: -55%;
     width: 60%;
-    max-width: 1440px;
+    max-width: 1025px;
+  }
+
+  @media (min-width: 2000px) {
+    right: -20%;
   }
 
   @screen 2xl {
-    right: -32%;
-    bottom: -45%;
+    right: -15%;
+    bottom: -65%;
     width: 70%;
-    max-width: 1440px;
   }
 }
 
@@ -607,12 +616,14 @@
 
 .Fintech-footer-logo {
   @apply my-6;
+  @apply w-25;
 
   @apply md:my-8;
   
   @apply lg:my-0;
   @screen lg {
     @apply absolute;
+    @apply z-10;
     left:50%;
     transform: translateX(-50%)
   }
