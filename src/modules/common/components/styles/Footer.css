@@ -73,6 +73,8 @@
   @apply font-extrabold;
   @apply uppercase;
   @apply ml-6;
+  @apply hover:text-white;
+  transform: color 0.2s ease-in-out;
 }
 
 .Footer-logo {
