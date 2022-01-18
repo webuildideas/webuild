@@ -607,12 +607,14 @@
 
 .Fintech-footer-logo {
   @apply my-6;
+  @apply w-25;
 
   @apply md:my-8;
   
   @apply lg:my-0;
   @screen lg {
     @apply absolute;
+    @apply z-10;
     left:50%;
     transform: translateX(-50%)
   }
