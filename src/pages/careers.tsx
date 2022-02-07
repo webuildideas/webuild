@@ -12,6 +12,14 @@ import Footer from '@modules/common/components/Footer'
 import Meta from '@components/Meta'
 import Button from '@modules/common/components/Button'
 
+// SVGs
+import PerkComputer from '@static/svgs/careers/perks/perks-computer.inline.svg'
+import PerkFuture from '@static/svgs/careers/perks/perks-future-forward.inline.svg'
+import PerkHappyHealthy from '@static/svgs/careers/perks/perks-happy-healthy.inline.svg'
+import PerkPersonalGrowth from '@static/svgs/careers/perks/perks-personal-growth.inline.svg'
+import PerkTeam from '@static/svgs/careers/perks/perks-team.inline.svg'
+import PerkWorkLife from '@static/svgs/careers/perks/perks-work-life.inline.svg'
+
 interface Props {
   location: PageProps['location']
   data: {
@@ -67,6 +75,7 @@ const Careers = ({
           <h3 className="text-h2 Careers-perks__title">Perks!</h3>
           <div className="Careers-perks__grid">
             <div className="Careers-perks__item">
+              <PerkComputer className="Careers-perks__item-icon" />
               <h4 className="text-h4 Careers-perks__item-title">
                 An Apple A Day
               </h4>
@@ -77,6 +86,7 @@ const Careers = ({
             </div>
 
             <div className="Careers-perks__item">
+              <PerkPersonalGrowth className="Careers-perks__item-icon" />
               <h4 className="text-h4 Careers-perks__item-title">
                 Personal Growth
               </h4>
@@ -87,6 +97,7 @@ const Careers = ({
             </div>
 
             <div className="Careers-perks__item">
+              <PerkWorkLife className="Careers-perks__item-icon" />
               <h4 className="text-h4 Careers-perks__item-title">
                 Work Life Balance (But Really)
               </h4>
@@ -98,6 +109,7 @@ const Careers = ({
             </div>
 
             <div className="Careers-perks__item">
+              <PerkHappyHealthy className="Careers-perks__item-icon" />
               <h4 className="text-h4 Careers-perks__item-title">
                 Healthy = Happy
               </h4>
@@ -108,6 +120,7 @@ const Careers = ({
             </div>
 
             <div className="Careers-perks__item">
+              <PerkFuture className="Careers-perks__item-icon" />
               <h4 className="text-h4 Careers-perks__item-title">
                 Future Forward
               </h4>
@@ -118,6 +131,7 @@ const Careers = ({
             </div>
 
             <div className="Careers-perks__item">
+              <PerkTeam className="Careers-perks__item-icon" />
               <h4 className="text-h4 Careers-perks__item-title">
                 Tight-Knit Team
               </h4>

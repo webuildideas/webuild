@@ -38,15 +38,52 @@
   @apply mt-26;
   @apply px-6;
   @apply py-14;
+
+  @apply md:px-8;
+  @apply md:py-16;
+
+  @apply lg:px-10;
+  @apply lg:py-20;
+
+  @apply xl:px-0;
+  @apply xl:py-24;
 }
 
 .Careers-perks__title {
   @apply mb-14;
   @apply font-extrabold;
+
+  @apply md:mb-16;
+
+  @apply xl:mx-auto;
+  @screen xl {
+    max-width: 1184px;
+  }
 }
 
-.Careers-perks__item {
-  @apply mb-10;
+.Careers-perks__grid {
+  @apply grid;
+  @apply grid-cols-1;
+  @apply gap-y-10;
+
+  @apply md:grid-cols-2;
+  @apply md:gap-y-10;
+  @apply md:gap-x-10;
+
+  @apply lg:grid-cols-3;
+  @apply lg:gap-x-13;
+  @apply lg:gap-y-12;
+
+  @apply xl:mx-auto;
+  @screen xl {
+    max-width: 1184px;
+  }
+}
+
+
+.Careers-perks__item-icon {
+  width: 50px;
+  @apply mb-8;
 }
 
 .Careers-perks__item-title {
