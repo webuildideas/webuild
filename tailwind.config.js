@@ -49,8 +49,10 @@ module.exports = {
 
       // Secondary Colors
       blueRibbon: '#2250FF',
-      electricIndigo: '#5F00FF',
+      salmon: '#FFA578',
+      peachy: '#FFD8BA',
       champagnePink: '#FFEBDE',
+      electricIndigo: '#5F00FF',
       peach: '#FFF6F0',
       santaFe: '#A96C54',
 

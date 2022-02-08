@@ -19,6 +19,11 @@ import PerkHappyHealthy from '@static/svgs/careers/perks/perks-happy-healthy.inl
 import PerkPersonalGrowth from '@static/svgs/careers/perks/perks-personal-growth.inline.svg'
 import PerkTeam from '@static/svgs/careers/perks/perks-team.inline.svg'
 import PerkWorkLife from '@static/svgs/careers/perks/perks-work-life.inline.svg'
+import Dribbble from '@static/svgs/common/social/dribbble.inline.svg'
+import DribbbleCtaBg from '@static/svgs/careers/ctas/cta-dribbble-mobile.inline.svg'
+import DribbbleCtaMd from '@static/svgs/careers/ctas/cta-dribbble-md.inline.svg'
+import DribbbleCtaLg from '@static/svgs/careers/ctas/cta-dribbble-lg.inline.svg'
+import DribbbleCtaXl from '@static/svgs/careers/ctas/cta-dribbble-xl.inline.svg'
 
 interface Props {
   location: PageProps['location']
@@ -54,11 +59,19 @@ const Careers = ({
         </div>
 
         <div className="Careers-cta dribbble">
+          <DribbbleCtaBg className="Careers-cta__bg mobile" />
+          <DribbbleCtaMd className="Careers-cta__bg md" />
+          <DribbbleCtaLg className="Careers-cta__bg lg" />
+          <DribbbleCtaXl className="Careers-cta__bg xl" />
           <div className="Careers-cta__content">
             <h4 className="text-h4 Careers-cta__title">Like What You See?</h4>
             <h3 className="text-h3 Careers-cta__subtitle">
               Click below to see more of our work
             </h3>
+            <Button className="Careers-cta__button" styleType="solid-salmon">
+              <Dribbble className="Careers-cta__button-icon" />
+              <span>Dribbble</span>
+            </Button>
           </div>
         </div>
 

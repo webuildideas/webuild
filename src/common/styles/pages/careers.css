@@ -8,23 +8,77 @@
 }
 
 .Careers-cta.dribbble {
-  @apply mt-16;
+  @apply relative;
+  @apply mt-28;
   @apply px-6;
+
+
+  .Careers-cta__bg {
+    @apply absolute;
+    @apply left-0;
+    @apply z-0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+  }
+
+  .Careers-cta__bg.mobile {
+    @apply md:hidden;
+  }
+
+  .Careers-cta__bg.md {
+    @apply hidden;
+    @apply md:block;
+    @apply lg:hidden;
+  }
+  
+  .Careers-cta__bg.lg {
+    @apply hidden;
+    @apply lg:block;
+    @apply xl:hidden;
+  }
+  
+  .Careers-cta__bg.xl {
+    @apply hidden;
+    @apply xl:block;
+    @apply 2xl:hidden;
+  }
+
 }
 
 .Careers-cta__content {
+  @apply relative;
   @apply bg-champagnePink;
   @apply text-center;
   @apply py-12;
   @apply px-18;
+  @apply z-10;
+}
+
+.Careers-cta.dribbble .Careers-cta__content {
+  max-width: 1288px;
+  @apply mx-auto;
 }
 
 .Careers-cta__title {
   @apply mb-6;
 }
 
+.Careers-cta__button {
+  @apply flex;
+  @apply flex-nowrap;
+  @apply items-center;
+  @apply mx-auto;
+  @apply mt-4;
+}
+
+.Careers-cta__button-icon {
+  @apply w-5;
+  @apply mr-2;
+}
+
 .Careers-team {
-  @apply mt-16;
+  @apply mt-28;
   @apply px-6;
 }
 
@@ -59,6 +113,10 @@
   @screen xl {
     max-width: 1184px;
   }
+
+  @screen 2xl {
+    max-width: 1374px;
+  }
 }
 
 .Careers-perks__grid {
@@ -77,6 +135,10 @@
   @apply xl:mx-auto;
   @screen xl {
     max-width: 1184px;
+  }
+
+  @screen 2xl {
+    max-width: 1374px;
   }
 }
 

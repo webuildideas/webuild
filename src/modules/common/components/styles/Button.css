@@ -38,6 +38,21 @@
   }
 }
 
+.Button-solid-salmon {
+  @apply bg-salmon;
+  @apply text-white;
+  @apply hover:bg-peachy;
+  @apply border-none;
+  &:focus {
+    @apply bg-peachy;
+  }
+  &:disabled {
+    opacity: 0.3;
+    @apply cursor-not-allowed;
+    @apply border-none;
+  }
+}
+
 .Button-outline {
   @apply bg-transparent;
   @apply border-solid;

@@ -1,3 +1,5 @@
+import './styles/Button.css'
+
 /* eslint-disable react/button-has-type */
 // Packages
 import React, { useEffect } from 'react'
@@ -9,7 +11,6 @@ import { WithChildren, WithClassName } from '@common/types/Utilities'
 import { classNames } from '@common/utils/classNames'
 
 // Styles
-import './styles/Button.css'
 import { useLoading, Oval } from '@agney/react-loading'
 
 interface Props extends WithChildren, WithClassName {
@@ -19,7 +20,7 @@ interface Props extends WithChildren, WithClassName {
   onSubmit?: () => void
   disabled?: boolean
   type?: 'submit' | 'reset' | 'button'
-  styleType?: 'solid' | 'solid-purple' | 'outline'
+  styleType?: 'solid' | 'solid-purple' | 'outline' | 'solid-salmon'
   loading?: boolean
   download?: boolean
   target?: string
@@ -69,6 +70,7 @@ const Button = ({
     Button: true,
     'Button-solid': styleType === 'solid',
     'Button-solid-purple': styleType === 'solid-purple',
+    'Button-solid-salmon': styleType === 'solid-salmon',
     'Button-outline': styleType === 'outline',
     'Button-loading': loading,
     'text-button': true
