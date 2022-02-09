@@ -6,6 +6,7 @@ import { graphql, PageProps } from 'gatsby'
 
 // Commons
 import { TypeJob } from '@common/types/Job'
+import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModal'
 
 // Components
 import Footer from '@modules/common/components/Footer'
@@ -40,22 +41,25 @@ const Careers = ({
   },
   location
 }: Props) => {
+  const { showModal } = useOpportunityFormModal()
   return (
     <>
       <Meta location={location} title="Careers" />
 
       <div className="Careers">
         <div className="Careers-hero">
-          <h1 className="text-h1 Careers-hero__title">
-            Join our global team of makers and thinkers
-          </h1>
-          <Button
-            className="inline-block"
-            href="#career-positions"
-            styleType="solid-purple"
-          >
-            See Current Openings
-          </Button>
+          <div className="Careers-hero__content">
+            <h1 className="text-h1 Careers-hero__title">
+              Join our global team of makers and thinkers
+            </h1>
+            <Button
+              className="Careers-hero__button"
+              href="#career-positions"
+              styleType="solid-purple"
+            >
+              See Current Openings
+            </Button>
+          </div>
         </div>
 
         <div className="Careers-cta dribbble">
@@ -186,14 +190,23 @@ const Careers = ({
         </div>
 
         <div className="Careers-cta form">
-          <h3 className="text-h3 Careers-cta__title">
-            We're always looking for talented, kind, and ready-for-anything
-            people to join our remote team.
-          </h3>
-          <p className="text-body Careers-cta__subtitle">
-            We're actively invested in diversity and inclusion and focused on
-            hiring more women and minorities.
-          </p>
+          <div className="Careers-cta__wrapper">
+            <h3 className="text-h3 Careers-cta__title">
+              We're always looking for talented, kind, and ready-for-anything
+              people to join our remote team.
+            </h3>
+            <p className="text-body Careers-cta__subtitle">
+              We're actively invested in diversity and inclusion and focused on
+              hiring more women and minorities.
+            </p>
+            <Button
+              className="Careers-cta__button"
+              onClick={showModal}
+              styleType="solid-salmon"
+            >
+              Introduce Yourself
+            </Button>
+          </div>
         </div>
 
         <Footer />
