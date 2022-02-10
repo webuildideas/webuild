@@ -3,6 +3,7 @@ import '@common/styles/pages/careers.css'
 // Packages
 import React from 'react'
 import { graphql, PageProps } from 'gatsby'
+import Img from 'gatsby-image'
 
 // Commons
 import { TypeJob } from '@common/types/Job'
@@ -14,17 +15,18 @@ import Meta from '@components/Meta'
 import Button from '@modules/common/components/Button'
 
 // SVGs
-import PerkComputer from '@static/svgs/careers/perks/perks-computer.inline.svg'
-import PerkFuture from '@static/svgs/careers/perks/perks-future-forward.inline.svg'
-import PerkHappyHealthy from '@static/svgs/careers/perks/perks-happy-healthy.inline.svg'
-import PerkPersonalGrowth from '@static/svgs/careers/perks/perks-personal-growth.inline.svg'
-import PerkTeam from '@static/svgs/careers/perks/perks-team.inline.svg'
-import PerkWorkLife from '@static/svgs/careers/perks/perks-work-life.inline.svg'
+import PerkComputer from '@static/svgs/careers/perks-computer.inline.svg'
+import PerkFuture from '@static/svgs/careers/perks-future-forward.inline.svg'
+import PerkHappyHealthy from '@static/svgs/careers/perks-happy-healthy.inline.svg'
+import PerkPersonalGrowth from '@static/svgs/careers/perks-personal-growth.inline.svg'
+import PerkTeam from '@static/svgs/careers/perks-team.inline.svg'
+import PerkWorkLife from '@static/svgs/careers/perks-work-life.inline.svg'
+import DribbbleCtaBg from '@static/svgs/careers/cta-dribbble-mobile.inline.svg'
+import DribbbleCtaMd from '@static/svgs/careers/cta-dribbble-md.inline.svg'
+import DribbbleCtaLg from '@static/svgs/careers/cta-dribbble-lg.inline.svg'
+import DribbbleCtaXl from '@static/svgs/careers/cta-dribbble-xl.inline.svg'
 import Dribbble from '@static/svgs/common/social/dribbble.inline.svg'
-import DribbbleCtaBg from '@static/svgs/careers/ctas/cta-dribbble-mobile.inline.svg'
-import DribbbleCtaMd from '@static/svgs/careers/ctas/cta-dribbble-md.inline.svg'
-import DribbbleCtaLg from '@static/svgs/careers/ctas/cta-dribbble-lg.inline.svg'
-import DribbbleCtaXl from '@static/svgs/careers/ctas/cta-dribbble-xl.inline.svg'
+import { TypeGatsbyChildrenImageSharpFluid } from '@common/types/GatsbyImage'
 
 interface Props {
   location: PageProps['location']
@@ -32,15 +34,41 @@ interface Props {
     allContentfulJob: {
       nodes: TypeJob[]
     }
+    heroImages: {
+      nodes: TypeGatsbyChildrenImageSharpFluid[]
+    }
   }
 }
 
 const Careers = ({
   data: {
-    allContentfulJob: { nodes: jobs }
+    allContentfulJob: { nodes: jobs },
+    heroImages: { nodes: heroImgs }
   },
   location
 }: Props) => {
+  const [heroMobile, heroMd, heroLg, heroXl, hero2xl] = heroImgs
+
+  const heroImgSrcs = [
+    heroMobile.childrenImageSharp['0'].fluid,
+    {
+      ...hero2xl.childrenImageSharp['0'].fluid,
+      media: `(min-width: 2560px)`
+    },
+    {
+      ...heroXl.childrenImageSharp['0'].fluid,
+      media: `(min-width: 1280px)`
+    },
+    {
+      ...heroLg.childrenImageSharp['0'].fluid,
+      media: `(min-width: 1024px)`
+    },
+    {
+      ...heroMd.childrenImageSharp['0'].fluid,
+      media: `(min-width: 768px)`
+    }
+  ]
+
   const { showModal } = useOpportunityFormModal()
   return (
     <>
@@ -60,6 +88,12 @@ const Careers = ({
               See Current Openings
             </Button>
           </div>
+          <Img
+            className="Careers-hero__image"
+            durationFadeIn={150}
+            fadeIn
+            fluid={heroImgSrcs}
+          />
         </div>
 
         <div className="Careers-cta dribbble">
@@ -176,14 +210,25 @@ const Careers = ({
           <div className="Careers-positions__items">
             {jobs.map((job, idx) => (
               <div key={`job-${idx}`} className="Careers-positions__item">
-                <h3 className="text-h3 Careers-positions__item-title">
-                  {job.title}
-                </h3>
-                {job.description ? (
-                  <p className="text-body Careers-positions__item-description">
-                    {job.description.description}
-                  </p>
-                ) : null}
+                <div className="Careers-positions__item-content">
+                  <h3 className="text-h3 Careers-positions__item-title">
+                    {job.title}
+                  </h3>
+                  {job.description ? (
+                    <p className="text-body Careers-positions__item-description">
+                      {job.description.description}
+                    </p>
+                  ) : null}
+
+                  <Button
+                    className="Careers-positions__item-button"
+                    href={job.applicationLink}
+                    styleType="outline-purple"
+                    target="_blank"
+                  >
+                    Learn More
+                  </Button>
+                </div>
               </div>
             ))}
           </div>
@@ -224,6 +269,28 @@ export const CAREERS_PAGE_QUERY = graphql`
           description
         }
         title
+      }
+    }
+
+    heroImages: allFile(
+      filter: {
+        relativePath: {
+          in: [
+            "careers/careers-hero-mobile.png"
+            "careers/careers-hero-md.png"
+            "careers/careers-hero-lg.png"
+            "careers/careers-hero-xl.png"
+            "careers/careers-hero-2xl.png"
+          ]
+        }
+      }
+    ) {
+      nodes {
+        childrenImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid_withWebp_noBase64
+          }
+        }
       }
     }
   }

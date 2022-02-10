@@ -72,6 +72,28 @@
   }
 }
 
+.Button-outline-purple {
+  @apply bg-transparent;
+  @apply border-solid;
+  @apply border-deepViolet;
+  @apply text-deepViolet;
+  @apply border;
+
+  @apply hover:bg-deepViolet;
+  @apply hover:text-white;
+
+  &:focus {
+    @apply bg-deepViolet;
+    @apply text-white;
+    @apply border-solid;
+    @apply border-2;
+  }
+
+  &:disabled {
+    opacity: 0.3;
+  }
+}
+
 .Button-loading {
   @apply flex;
   @apply justify-center;

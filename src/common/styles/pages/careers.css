@@ -1,9 +1,11 @@
 /** HERO SECTION **/
 .Careers-hero {
-  @apply pt-8;
   @apply text-center;
+  @apply pt-8;
 
-  @apply md:pt-10;
+  @apply md:pt-16;
+
+  @apply xl:pt-30;
 }
 
 
@@ -26,6 +28,21 @@
 .Careers-hero__button {
   @apply inline-block;
   @apply mt-8;
+
+  @apply lg:mt-10;
+}
+
+
+.Careers-hero__image {
+  top: -75px;
+
+  @screen lg {
+    top: -150px;
+  }
+
+  @screen 2xl {
+    top: -275px;
+  }
 }
 
 /** CTA SECTION DRIBBBLE **/
@@ -204,16 +221,26 @@
 }
 
 .Careers-positions__item {
-  @apply pb-10;
   @apply mb-10;
+}
+
+.Careers-positions__item-content {
+  max-width: 684px;
+  @apply pb-10;
   @apply border-b-2;
   @apply border-electricViolet;
   @apply border-solid;
+
 }
 
 .Careers-positions__item-title {
   @apply font-extrabold;
   @apply mb-6;
+}
+
+.Careers-positions__item-button {
+  @apply inline-block;
+  @apply mt-8;
 }
 
 

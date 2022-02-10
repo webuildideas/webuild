@@ -20,7 +20,12 @@ interface Props extends WithChildren, WithClassName {
   onSubmit?: () => void
   disabled?: boolean
   type?: 'submit' | 'reset' | 'button'
-  styleType?: 'solid' | 'solid-purple' | 'outline' | 'solid-salmon'
+  styleType?:
+    | 'solid'
+    | 'solid-purple'
+    | 'outline'
+    | 'outline-purple'
+    | 'solid-salmon'
   loading?: boolean
   download?: boolean
   target?: string
@@ -72,6 +77,7 @@ const Button = ({
     'Button-solid-purple': styleType === 'solid-purple',
     'Button-solid-salmon': styleType === 'solid-salmon',
     'Button-outline': styleType === 'outline',
+    'Button-outline-purple': styleType === 'outline-purple',
     'Button-loading': loading,
     'text-button': true
   })

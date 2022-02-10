@@ -15,3 +15,11 @@ export interface TypeGatsbyChildImageSharpFluid {
     fluid: FluidObject
   }
 }
+
+export interface TypeGatsbyChildrenImageSharpFluid {
+  childrenImageSharp: {
+    '0': {
+      fluid: FluidObject
+    }
+  }
+}
