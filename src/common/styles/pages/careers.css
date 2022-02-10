@@ -121,12 +121,45 @@
 
 .Careers-team {
   @apply mt-28;
+  @apply relative;
+}
+
+.Careers-team__content {
   @apply px-6;
 }
 
 .Careers-team__title {
   @apply font-extrabold;
   @apply mb-3;
+}
+
+.Careers-team__image-lg {
+  width: 64%;
+  @apply ml-auto;
+  @apply mt-16;
+}
+
+.Careers-team__image-sm {
+  @apply relative;
+  @apply z-10;
+  width: 57%;
+  @apply ml-6;
+  @apply mt-8;
+}
+
+.Careers-team__illustration {
+  @apply absolute;
+  @apply left-6;
+  top: 30%;
+  width: 44%;
+}
+
+.Careers-team__wave {
+  @apply absolute;
+  @apply right-0;
+  @apply z-0;
+  bottom: 5%;
+  width: 50%;
 }
 
 /** PERKS SECTION **/

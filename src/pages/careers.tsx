@@ -25,8 +25,13 @@ import DribbbleCtaBg from '@static/svgs/careers/cta-dribbble-mobile.inline.svg'
 import DribbbleCtaMd from '@static/svgs/careers/cta-dribbble-md.inline.svg'
 import DribbbleCtaLg from '@static/svgs/careers/cta-dribbble-lg.inline.svg'
 import DribbbleCtaXl from '@static/svgs/careers/cta-dribbble-xl.inline.svg'
+import TeamIllustration from '@static/svgs/careers/team-illustration.inline.svg'
+import TeamWave from '@static/svgs/careers/team-wave.inline.svg'
 import Dribbble from '@static/svgs/common/social/dribbble.inline.svg'
-import { TypeGatsbyChildrenImageSharpFluid } from '@common/types/GatsbyImage'
+import {
+  TypeGatsbyChildImageSharpFluid,
+  TypeGatsbyChildrenImageSharpFluid
+} from '@common/types/GatsbyImage'
 
 interface Props {
   location: PageProps['location']
@@ -37,13 +42,17 @@ interface Props {
     heroImages: {
       nodes: TypeGatsbyChildrenImageSharpFluid[]
     }
+    teamLg: TypeGatsbyChildImageSharpFluid
+    teamSm: TypeGatsbyChildImageSharpFluid
   }
 }
 
 const Careers = ({
   data: {
     allContentfulJob: { nodes: jobs },
-    heroImages: { nodes: heroImgs }
+    heroImages: { nodes: heroImgs },
+    teamLg,
+    teamSm
   },
   location
 }: Props) => {
@@ -114,12 +123,28 @@ const Careers = ({
         </div>
 
         <div className="Careers-team">
-          <h3 className="text-h3 Careers-team__title">A Global Team</h3>
-          <p className="text-h3 Careers-team__description">
-            We've worked remotely since before it was cool — and it's never
-            stifled our team spirit. We embrace and celebrate diversity and
-            enjoy learning about each other's cultures.
-          </p>
+          <div className="Careers-team__content">
+            <h3 className="text-h3 Careers-team__title">A Global Team</h3>
+            <p className="text-h3 Careers-team__description">
+              We've worked remotely since before it was cool — and it's never
+              stifled our team spirit. We embrace and celebrate diversity and
+              enjoy learning about each other's cultures.
+            </p>
+          </div>
+          <Img
+            className="Careers-team__image-lg"
+            durationFadeIn={150}
+            fadeIn
+            fluid={teamLg.childImageSharp.fluid}
+          />
+          <Img
+            className="Careers-team__image-sm"
+            durationFadeIn={150}
+            fadeIn
+            fluid={teamSm.childImageSharp.fluid}
+          />
+          <TeamIllustration className="Careers-team__illustration" />
+          <TeamWave className="Careers-team__wave" />
         </div>
 
         <div className="Careers-perks">
@@ -290,6 +315,22 @@ export const CAREERS_PAGE_QUERY = graphql`
           fluid {
             ...GatsbyImageSharpFluid_withWebp_noBase64
           }
+        }
+      }
+    }
+
+    teamLg: file(relativePath: { eq: "careers/careers-team-lg.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 2000) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+
+    teamSm: file(relativePath: { eq: "careers/careers-team-small.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 2000) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
         }
       }
     }
