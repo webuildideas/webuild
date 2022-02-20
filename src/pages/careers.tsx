@@ -231,10 +231,17 @@ const Careers = ({
         </div>
 
         <div className="Careers-positions" id="career-positions">
-          <h2 className="text-h3 Careers-positions__title">Open Positions</h2>
+          <h2 className="text-h1 Careers-positions__title">Open Positions</h2>
           <div className="Careers-positions__items">
             {jobs.map((job, idx) => (
               <div key={`job-${idx}`} className="Careers-positions__item">
+                {job.illustration ? (
+                  <img
+                    alt={`${job.title} illustration`}
+                    className="Careers-positions__item-illustration"
+                    src={job.illustration.file.url}
+                  />
+                ) : null}
                 <div className="Careers-positions__item-content">
                   <h3 className="text-h3 Careers-positions__item-title">
                     {job.title}
@@ -294,6 +301,11 @@ export const CAREERS_PAGE_QUERY = graphql`
           description
         }
         title
+        illustration {
+          file {
+            url
+          }
+        }
       }
     }
 
