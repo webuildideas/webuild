@@ -329,14 +329,112 @@
 /** CULTURE SECTION **/
 
 .Careers-culture {
+  @apply relative;
   @apply mt-26;
+
+  @apply md:flex;
+  @apply md:flex-row;
+  @apply md:flex-wrap;
+  @apply md:gap-x-12;
+}
+
+.Careers-culture__content {
+  @apply mb-10;
   @apply px-6;
+
+  @apply md:order-2;
+  @apply md:pl-0;
+  @apply md:pr-8;
+  @screen md {
+    width: 41%;
+  }
 }
 
 .Careers-culture__title {
   @apply font-extrabold;
   @apply mb-3;
 }
+
+.Careers-culture__image-lg {
+  width: 63%;
+  @apply mb-15;
+
+  @md:order-1;
+  @screen md {
+    width: 49%;
+  }
+}
+
+.Careers-culture__image-sm {
+  @apply relative;
+  @apply z-10;
+  width: 43%;
+  @apply ml-auto;
+  @apply mr-6;
+
+  @apply md:order-3;
+  @apply md:m-auto;
+  @screen md {
+    width: 22%;
+  }
+}
+
+.Careers-culture__computers {
+  @apply absolute;
+  @apply z-0;
+  bottom: 8%;
+  width: 80%;
+  left: -64px;
+
+  @screen md {
+    width: 60%;
+    right: -128px;
+    left: auto;
+  }
+
+  @screen lg {
+    bottom: 20%;
+  }
+}
+
+.Careers-culture__bubbles {
+  @apply absolute;
+  top: 35%;
+  right: 0;
+  width: 45%;
+  max-width: 200px;
+
+  @screen md {
+    @apply z-10;
+    width: 21%;
+    left: 19%;
+    right: auto;
+    top: auto;
+    bottom: 7%;
+  }
+
+  @screen lg {
+    left: 21%;
+    bottom: 5%;
+  }
+}
+
+/** Testimonials **/
+.Careers-testimonials {
+  @apply bg-beauBlue;
+  @apply pt-14;
+  @apply mt-26;
+
+  @apply md:mt-16;
+
+  @apply lg:mt-20;
+
+  @apply xl:mt-24;
+  @apply xl:pt-26;
+
+  @apply 2xl:mt-59;
+}
+
 
 /** OPEN POSITIONS SECTION **/
 

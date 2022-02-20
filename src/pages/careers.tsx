@@ -27,6 +27,8 @@ import DribbbleCtaLg from '@static/svgs/careers/cta-dribbble-lg.inline.svg'
 import DribbbleCtaXl from '@static/svgs/careers/cta-dribbble-xl.inline.svg'
 import TeamIllustration from '@static/svgs/careers/team-illustration.inline.svg'
 import TeamWave from '@static/svgs/careers/team-wave.inline.svg'
+import CultureComputer from '@static/svgs/careers/culture-illustration-computers.inline.svg'
+import CultureBubbles from '@static/svgs/careers/culture-illustration-bubbles.inline.svg'
 import Dribbble from '@static/svgs/common/social/dribbble.inline.svg'
 import {
   TypeGatsbyChildImageSharpFluid,
@@ -44,6 +46,8 @@ interface Props {
     }
     teamLg: TypeGatsbyChildImageSharpFluid
     teamSm: TypeGatsbyChildImageSharpFluid
+    cultureLg: TypeGatsbyChildImageSharpFluid
+    cultureSm: TypeGatsbyChildImageSharpFluid
   }
 }
 
@@ -52,7 +56,9 @@ const Careers = ({
     allContentfulJob: { nodes: jobs },
     heroImages: { nodes: heroImgs },
     teamLg,
-    teamSm
+    teamSm,
+    cultureLg,
+    cultureSm
   },
   location
 }: Props) => {
@@ -221,13 +227,35 @@ const Careers = ({
         </div>
 
         <div className="Careers-culture">
-          <h3 className="text-h3 Careers-culture__title">Our Culture</h3>
-          <p className="text-h3">
-            We're a friendly group of designers, strategists, producers, and
-            product managers. We love what we do. We nurture growth and champion
-            possibility. And we are all passionate about product design. And
-            tacos. (Extra guac!)
-          </p>
+          <div className="Careers-culture__content">
+            <h3 className="text-h3 Careers-culture__title">Our Culture</h3>
+            <p className="text-h3 Careers-culture__description">
+              We're a friendly group of designers, strategists, producers, and
+              product managers. We love what we do. We nurture growth and
+              champion possibility. And we are all passionate about product
+              design. And tacos. (Extra guac!)
+            </p>
+          </div>
+
+          <Img
+            className="Careers-culture__image-lg"
+            durationFadeIn={150}
+            fadeIn
+            fluid={cultureLg.childImageSharp.fluid}
+          />
+          <Img
+            className="Careers-culture__image-sm"
+            durationFadeIn={150}
+            fadeIn
+            fluid={cultureSm.childImageSharp.fluid}
+          />
+
+          <CultureComputer className="Careers-culture__computers" />
+          <CultureBubbles className="Careers-culture__bubbles" />
+        </div>
+
+        <div className="Careers-testimonials">
+          <h2 className="text-h3 font-extrabold">Hear it from our team</h2>
         </div>
 
         <div className="Careers-positions" id="career-positions">
@@ -340,6 +368,22 @@ export const CAREERS_PAGE_QUERY = graphql`
     }
 
     teamSm: file(relativePath: { eq: "careers/careers-team-small.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 2000) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+
+    cultureSm: file(relativePath: { eq: "careers/culture-small.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 2000) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+
+    cultureLg: file(relativePath: { eq: "careers/culture-lg.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 2000) {
           ...GatsbyImageSharpFluid_withWebp_noBase64
