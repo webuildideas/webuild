@@ -336,6 +336,10 @@
   @apply md:flex-row;
   @apply md:flex-wrap;
   @apply md:gap-x-12;
+
+  @apply lg:gap-x-25;
+
+  @apply xl:gap-x-29;
 }
 
 .Careers-culture__content {
@@ -348,6 +352,8 @@
   @screen md {
     width: 41%;
   }
+
+  @apply lg:pt-10;
 }
 
 .Careers-culture__title {
@@ -363,6 +369,10 @@
   @screen md {
     width: 49%;
   }
+
+  @screen xl {
+    width: 35%;
+  }
 }
 
 .Careers-culture__image-sm {
@@ -376,6 +386,15 @@
   @apply md:m-auto;
   @screen md {
     width: 22%;
+  }
+
+  @screen lg {
+    width: 29%;
+  }
+
+  @screen xl {
+    width: 20%;
+    margin-left: 21%;
   }
 }
 
@@ -394,6 +413,10 @@
 
   @screen lg {
     bottom: 20%;
+  }
+
+  @screen xl {
+    bottom: 25%;
   }
 }
 
@@ -416,6 +439,12 @@
   @screen lg {
     left: 21%;
     bottom: 5%;
+  }
+
+  @screen xl {
+    bottom: 18%;
+    left: auto;
+    right: 40%;
   }
 }
 
