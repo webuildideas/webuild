@@ -375,15 +375,17 @@
   @apply md:items-center;
   @apply md:gap-x-10;
   @apply md:pl-0;
-  @apply md:pr-8;
+  @apply md:pr-0;
+  @apply md:mb-16;
   @screen md {
     left: -32px;
   }
 
-  @apply lg:pr-10;
+  @apply lg:pr-2;
   @apply lg:gap-x-16;
 
   @apply xl:pr-0;
+  @apply xl:mb-22;
   @screen xl {
     max-width: 1244px;
   }
@@ -402,6 +404,9 @@
 
   @apply md:mb-0;
   @apply md:flex-shrink-0;
+  @screen md {
+    width: 44%;
+  }
 
   @screen lg {
     width: 45%;
@@ -420,9 +425,6 @@
   @apply border-solid;
 
   @apply md:pb-16;
-  @screen md {
-    max-width: 380px;
-  }
 
   @screen lg {
     max-width: 576px;

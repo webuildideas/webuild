@@ -83,7 +83,7 @@ const Careers = ({
     <>
       <Meta location={location} title="Careers" />
 
-      <div className="Careers">
+      <div className="Careers overflow-x-hidden">
         <div className="Careers-hero">
           <div className="Careers-hero__content">
             <h1 className="text-h1 Careers-hero__title">
