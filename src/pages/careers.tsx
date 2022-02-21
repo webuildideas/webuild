@@ -6,8 +6,9 @@ import { graphql, PageProps } from 'gatsby'
 import Img from 'gatsby-image'
 
 // Commons
-import { TypeJob } from '@common/types/Job'
 import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModal'
+import { TypeSEO } from '@common/types/SEO'
+import { TypeJob } from '@common/types/Job'
 import { TypeTestimonial } from '@common/types/Testimonial'
 import {
   TypeGatsbyChildImageSharpFluid,
@@ -36,7 +37,10 @@ import TeamWave from '@static/svgs/careers/team-wave.inline.svg'
 import CultureComputer from '@static/svgs/careers/culture-illustration-computers.inline.svg'
 import CultureBubbles from '@static/svgs/careers/culture-illustration-bubbles.inline.svg'
 import Dribbble from '@static/svgs/common/social/dribbble.inline.svg'
-import { TypeSEO } from '@common/types/SEO'
+import JoinTeamBgMobile from '@static/svgs/careers/join-team-bg-mobile.inline.svg'
+import JoinTeamBgMd from '@static/svgs/careers/join-team-bg-md.inline.svg'
+import JoinTeamBgLg from '@static/svgs/careers/join-team-bg-lg.inline.svg'
+import JoinTeamBgXl from '@static/svgs/careers/join-team-bg-xl.inline.svg'
 
 interface Props {
   location: PageProps['location']
@@ -309,6 +313,10 @@ const Careers = ({
         </div>
 
         <div className="Careers-cta form">
+          <JoinTeamBgMobile className="Careers-cta__bg mobile" />
+          <JoinTeamBgMd className="Careers-cta__bg md" />
+          <JoinTeamBgLg className="Careers-cta__bg lg" />
+          <JoinTeamBgXl className="Careers-cta__bg xl" />
           <div className="Careers-cta__wrapper">
             <h3 className="text-h3 Careers-cta__title">
               We're always looking for talented, kind, and ready-for-anything

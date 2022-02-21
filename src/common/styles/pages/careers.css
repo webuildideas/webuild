@@ -610,6 +610,8 @@
 }
 
 .Careers-cta__wrapper {
+  @apply relative;
+  @apply z-10;
   max-width: 784px;
   @apply mx-auto;
 
@@ -625,9 +627,50 @@
 
 
 .Careers-cta.form {
+  @apply relative;
   .Careers-cta__button {
     @apply mt-8;
 
     @apply lg:mt-12;
+  }
+
+  .Careers-cta__bg {
+    @apply absolute;
+    @apply left-0;
+    @apply z-0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+  }
+
+  .Careers-cta__bg.mobile {
+    @apply md:hidden;
+    width: 115%;
+  }
+
+  .Careers-cta__bg.md {
+    @apply hidden;
+    @apply md:block;
+    @apply lg:hidden;
+
+    width: 105%;
+  }
+  
+  .Careers-cta__bg.lg {
+    @apply hidden;
+    @apply lg:block;
+    @apply xl:hidden;
+
+    width: 105%;
+  }
+  
+  .Careers-cta__bg.xl {
+    @apply hidden;
+    @apply xl:block;
+    width: 140%;
+
+    @screen 2xl {
+      width: 100%;
+    }
   }
 }
