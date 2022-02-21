@@ -38,7 +38,6 @@ const CaseStudies = ({
 }: Props) => {
   return (
     <>
-      <Meta location={location} title="Case Studies" />
       <Meta
         description={seo.seoDescription?.seoDescription}
         location={location}

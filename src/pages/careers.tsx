@@ -36,6 +36,7 @@ import TeamWave from '@static/svgs/careers/team-wave.inline.svg'
 import CultureComputer from '@static/svgs/careers/culture-illustration-computers.inline.svg'
 import CultureBubbles from '@static/svgs/careers/culture-illustration-bubbles.inline.svg'
 import Dribbble from '@static/svgs/common/social/dribbble.inline.svg'
+import { TypeSEO } from '@common/types/SEO'
 
 interface Props {
   location: PageProps['location']
@@ -53,6 +54,7 @@ interface Props {
     teamSm: TypeGatsbyChildImageSharpFluid
     cultureLg: TypeGatsbyChildImageSharpFluid
     cultureSm: TypeGatsbyChildImageSharpFluid
+    seo: TypeSEO
   }
 }
 
@@ -64,7 +66,8 @@ const Careers = ({
     teamLg,
     teamSm,
     cultureLg,
-    cultureSm
+    cultureSm,
+    seo
   },
   location
 }: Props) => {
@@ -93,7 +96,12 @@ const Careers = ({
   const { showModal } = useOpportunityFormModal()
   return (
     <>
-      <Meta location={location} title="Careers" />
+      <Meta
+        description={seo?.seoDescription?.seoDescription}
+        location={location}
+        shareImage={seo.seoShareImage?.file?.url}
+        title={seo.seoTitle}
+      />
 
       <div className="Careers overflow-x-hidden">
         <div className="Careers-hero">
@@ -328,6 +336,18 @@ const Careers = ({
 
 export const CAREERS_PAGE_QUERY = graphql`
   query CareersPageQuery {
+    seo: contentfulSeo(title: { eq: "Careers Page" }) {
+      seoTitle
+      seoDescription {
+        seoDescription
+      }
+      seoShareImage {
+        file {
+          url
+        }
+      }
+    }
+
     allContentfulJob(filter: { isOpen: { eq: true } }) {
       nodes {
         applicationLink

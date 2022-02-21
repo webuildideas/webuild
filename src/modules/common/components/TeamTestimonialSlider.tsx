@@ -77,26 +77,6 @@ const TestimonialSlider = ({ testimonials }: Props) => {
     []
   )
 
-  // const onRightArrowClick = useCallback(() => {
-  //   setCurrentSlide((prev) => {
-  //     if (prev + 1 > testimonials.length - 1) {
-  //       return 0
-  //     }
-
-  //     return prev + 1
-  //   })
-  // }, [testimonials])
-
-  // const onLeftArrowClick = useCallback(() => {
-  //   setCurrentSlide((prev) => {
-  //     if (prev - 1 < 0) {
-  //       return testimonials.length - 1
-  //     }
-
-  //     return prev - 1
-  //   })
-  // }, [testimonials])
-
   const handleAfterSlide: CarouselProps['beforeSlide'] = (
     _currentSlide: number,
     endSlide: number

@@ -52,6 +52,12 @@
   @apply mt-28;
   @apply px-6;
 
+  @apply md:px-8;
+
+  @apply lg:px-10;
+
+  @apply 2xl:px-0;
+
 
   .Careers-cta__bg {
     @apply absolute;
@@ -64,24 +70,33 @@
 
   .Careers-cta__bg.mobile {
     @apply md:hidden;
+    width: 115%;
   }
 
   .Careers-cta__bg.md {
     @apply hidden;
     @apply md:block;
     @apply lg:hidden;
+
+    width: 105%;
   }
   
   .Careers-cta__bg.lg {
     @apply hidden;
     @apply lg:block;
     @apply xl:hidden;
+
+    width: 120%;
   }
   
   .Careers-cta__bg.xl {
     @apply hidden;
     @apply xl:block;
-    @apply 2xl:hidden;
+    width: 140%;
+
+    @screen 2xl {
+      width: 100%;
+    }
   }
 
 }
@@ -93,6 +108,8 @@
   @apply py-12;
   @apply px-18;
   @apply z-10;
+
+  @apply xl:py-18;
 }
 
 .Careers-cta.dribbble .Careers-cta__content {
@@ -329,6 +346,8 @@
 /** CULTURE SECTION **/
 
 .Careers-culture {
+  max-width: 1674px;
+  @apply mx-auto;
   @apply relative;
   @apply mt-26;
 
@@ -340,6 +359,9 @@
   @apply lg:gap-x-25;
 
   @apply xl:gap-x-29;
+  @apply xl:mt-34;
+
+  @apply 2xl:mt-36;
 }
 
 .Careers-culture__content {
