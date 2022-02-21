@@ -451,7 +451,6 @@
 /** Testimonials **/
 .Careers-testimonials {
   @apply bg-beauBlue;
-  @apply pt-14;
   @apply mt-26;
 
   @apply md:mt-16;
@@ -459,7 +458,6 @@
   @apply lg:mt-20;
 
   @apply xl:mt-24;
-  @apply xl:pt-26;
 
   @apply 2xl:mt-59;
 }

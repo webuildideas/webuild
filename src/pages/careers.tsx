@@ -8,11 +8,17 @@ import Img from 'gatsby-image'
 // Commons
 import { TypeJob } from '@common/types/Job'
 import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModal'
+import { TypeTestimonial } from '@common/types/Testimonial'
+import {
+  TypeGatsbyChildImageSharpFluid,
+  TypeGatsbyChildrenImageSharpFluid
+} from '@common/types/GatsbyImage'
 
 // Components
 import Footer from '@modules/common/components/Footer'
 import Meta from '@components/Meta'
 import Button from '@modules/common/components/Button'
+import TeamTestimonialSlider from '@modules/common/components/TeamTestimonialSlider'
 
 // SVGs
 import PerkComputer from '@static/svgs/careers/perks-computer.inline.svg'
@@ -30,16 +36,15 @@ import TeamWave from '@static/svgs/careers/team-wave.inline.svg'
 import CultureComputer from '@static/svgs/careers/culture-illustration-computers.inline.svg'
 import CultureBubbles from '@static/svgs/careers/culture-illustration-bubbles.inline.svg'
 import Dribbble from '@static/svgs/common/social/dribbble.inline.svg'
-import {
-  TypeGatsbyChildImageSharpFluid,
-  TypeGatsbyChildrenImageSharpFluid
-} from '@common/types/GatsbyImage'
 
 interface Props {
   location: PageProps['location']
   data: {
     allContentfulJob: {
       nodes: TypeJob[]
+    }
+    teamTestimonials: {
+      nodes: TypeTestimonial[]
     }
     heroImages: {
       nodes: TypeGatsbyChildrenImageSharpFluid[]
@@ -55,6 +60,7 @@ const Careers = ({
   data: {
     allContentfulJob: { nodes: jobs },
     heroImages: { nodes: heroImgs },
+    teamTestimonials: { nodes: testimonials },
     teamLg,
     teamSm,
     cultureLg,
@@ -255,7 +261,7 @@ const Careers = ({
         </div>
 
         <div className="Careers-testimonials">
-          <h2 className="text-h3 font-extrabold">Hear it from our team</h2>
+          <TeamTestimonialSlider testimonials={testimonials} />
         </div>
 
         <div className="Careers-positions" id="career-positions">
@@ -332,6 +338,25 @@ export const CAREERS_PAGE_QUERY = graphql`
         illustration {
           file {
             url
+          }
+        }
+      }
+    }
+
+    teamTestimonials: allContentfulTestimonial(
+      filter: {
+        name: { in: ["Mackenzie Almquist-Murray", "Abby Milan", "Norton King"] }
+      }
+    ) {
+      nodes {
+        name
+        role
+        quote {
+          raw
+        }
+        featuredHeadshot {
+          fluid {
+            ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
       }
