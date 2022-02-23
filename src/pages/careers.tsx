@@ -319,7 +319,8 @@ const Careers = ({
           <JoinTeamBgXl className="Careers-cta__bg xl" />
           <div className="Careers-cta__wrapper">
             <h3 className="text-h3 Careers-cta__title">
-              We're always looking for talented, kind, and ready-for-anything
+              We're always looking for talented, kind, and{' '}
+              <span className="whitespace-nowrap">ready-for-anything</span>
               people to join our remote team.
             </h3>
             <p className="text-body Careers-cta__subtitle">

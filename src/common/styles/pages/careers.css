@@ -53,10 +53,17 @@
   @apply px-6;
 
   @apply md:px-8;
+  @apply md:mt-16;
 
   @apply lg:px-10;
+  @apply lg:mt-29;
+
+  @apply xl:mt-35;
 
   @apply 2xl:px-0;
+  @screen 2xl {
+    margin-top: 260px;
+  }
 
 
   .Careers-cta__bg {
@@ -174,12 +181,14 @@
     width: 50%;
   }
 
+  @apply xl:pt-43;
+  @apply xl:pr-0;
   @screen xl{
     padding-left: 16%;
     width: 57%;
   }
 
-  @apply 2xl:pl-25;
+  @apply 2xl:pl-40;
 }
 
 .Careers-team__title {
@@ -246,8 +255,9 @@
 
   @apply 2xl:left-25;
   @screen 2xl {
-    top: 35%;
+    top: 42%;
     max-width: 385px;
+    @apply left-50;
   }
 }
 
@@ -272,7 +282,7 @@
 
   @screen 2xl {
     max-width: 425px;
-    bottom: 45%;
+    bottom: 40%;
   }
 }
 
@@ -376,6 +386,15 @@
   }
 
   @apply lg:pt-10;
+
+  @apply xl:pt-12;
+  @apply xl:pr-0;
+
+  @apply 2xl:pt-35;
+  @screen 2xl {
+    width: 100%;
+    max-width: 875px;
+  }
 }
 
 .Careers-culture__title {
@@ -426,6 +445,7 @@
   bottom: 8%;
   width: 80%;
   left: -64px;
+  max-width: 875px;
 
   @screen md {
     width: 60%;
@@ -438,7 +458,13 @@
   }
 
   @screen xl {
-    bottom: 25%;
+    width: 54%;
+    bottom: 27%;
+  }
+
+  @screen 2xl {
+    bottom: 34%;
+    right: 0%;
   }
 }
 
@@ -447,7 +473,7 @@
   top: 35%;
   right: 0;
   width: 45%;
-  max-width: 200px;
+  max-width: 148px;
 
   @screen md {
     @apply z-10;
@@ -456,16 +482,24 @@
     right: auto;
     top: auto;
     bottom: 7%;
+    max-width: 164px;
   }
 
   @screen lg {
-    left: 21%;
-    bottom: 5%;
+    left: 18%;
+    bottom: 7%;
+    max-width: 230px;
   }
 
   @screen xl {
+    max-width: 280px;
     bottom: 18%;
     left: auto;
+    right: 35%;
+  }
+
+  @screen 2xl {
+    bottom: 28%;
     right: 40%;
   }
 }
@@ -525,11 +559,15 @@
   @apply md:pr-0;
   @apply md:mb-16;
   @screen md {
-    left: -32px;
+    width: calc(100% + 84px);
+    left: -116px;
   }
 
-  @apply lg:pr-2;
   @apply lg:gap-x-16;
+  @screen lg {
+    width: calc(100% + 112px);
+    left: -152px;
+  }
 
   @apply xl:pr-0;
   @apply xl:mb-22;

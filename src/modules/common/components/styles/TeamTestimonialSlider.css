@@ -67,6 +67,7 @@
 
   @screen xl {
     bottom: -104px;
+    right: -32px;
   }
 
   @screen 2xl {
