@@ -7,7 +7,7 @@
 
 
 [context.deploy-preview.environment]
-  GATSBY_CONTENTFUL_ENVIRONMENT = 'main'
+  GATSBY_CONTENTFUL_ENVIRONMENT = 'feature-careers'
 
 [context.branch-deploy.environment]
-  GATSBY_CONTENTFUL_ENVIRONMENT = 'main'
+  GATSBY_CONTENTFUL_ENVIRONMENT = 'feature-careers'
