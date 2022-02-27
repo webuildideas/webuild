@@ -52,6 +52,11 @@
   @apply mt-28;
   @apply px-6;
 
+  @media screen and (min-width: 400px) {
+    @apply mt-40;
+  }
+    
+
   @apply md:px-8;
   @apply md:mt-16;
 
@@ -71,8 +76,12 @@
     @apply left-0;
     @apply z-0;
     top: 50%;
-    transform: translateY(-50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 100%;
+    @screen maxMd {
+      max-width: 584px;
+    }
   }
 
   .Careers-cta__bg.mobile {
