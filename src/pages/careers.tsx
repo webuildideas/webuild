@@ -10,10 +10,7 @@ import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModa
 import { TypeSEO } from '@common/types/SEO'
 import { TypeJob } from '@common/types/Job'
 import { TypeTestimonial } from '@common/types/Testimonial'
-import {
-  TypeGatsbyChildImageSharpFluid,
-  TypeGatsbyChildrenImageSharpFluid
-} from '@common/types/GatsbyImage'
+import { TypeGatsbyChildImageSharpFluid } from '@common/types/GatsbyImage'
 
 // Components
 import Footer from '@modules/common/components/Footer'
@@ -51,9 +48,11 @@ interface Props {
     teamTestimonials: {
       nodes: TypeTestimonial[]
     }
-    heroImages: {
-      nodes: TypeGatsbyChildrenImageSharpFluid[]
-    }
+    heroMobile: TypeGatsbyChildImageSharpFluid
+    heroMd: TypeGatsbyChildImageSharpFluid
+    heroLg: TypeGatsbyChildImageSharpFluid
+    heroXl: TypeGatsbyChildImageSharpFluid
+    hero2Xl: TypeGatsbyChildImageSharpFluid
     teamLg: TypeGatsbyChildImageSharpFluid
     teamSm: TypeGatsbyChildImageSharpFluid
     cultureLg: TypeGatsbyChildImageSharpFluid
@@ -65,8 +64,12 @@ interface Props {
 const Careers = ({
   data: {
     allContentfulJob: { nodes: jobs },
-    heroImages: { nodes: heroImgs },
     teamTestimonials: { nodes: testimonials },
+    heroMobile,
+    heroMd,
+    heroLg,
+    heroXl,
+    hero2Xl,
     teamLg,
     teamSm,
     cultureLg,
@@ -75,24 +78,23 @@ const Careers = ({
   },
   location
 }: Props) => {
-  const [heroMobile, heroMd, heroLg, heroXl, hero2xl] = heroImgs
-
+  console.log(heroMobile, heroMd, heroLg, heroXl, hero2Xl)
   const heroImgSrcs = [
-    heroMobile.childrenImageSharp['0'].fluid,
+    heroMobile.childImageSharp.fluid,
     {
-      ...hero2xl.childrenImageSharp['0'].fluid,
+      ...hero2Xl.childImageSharp.fluid,
       media: `(min-width: 2560px)`
     },
     {
-      ...heroXl.childrenImageSharp['0'].fluid,
+      ...heroXl.childImageSharp.fluid,
       media: `(min-width: 1280px)`
     },
     {
-      ...heroLg.childrenImageSharp['0'].fluid,
+      ...heroLg.childImageSharp.fluid,
       media: `(min-width: 1024px)`
     },
     {
-      ...heroMd.childrenImageSharp['0'].fluid,
+      ...heroMd.childImageSharp.fluid,
       media: `(min-width: 768px)`
     }
   ]
@@ -320,7 +322,7 @@ const Careers = ({
           <div className="Careers-cta__wrapper">
             <h3 className="text-h3 Careers-cta__title">
               We're always looking for talented, kind, and{' '}
-              <span className="whitespace-nowrap">ready-for-anything</span>
+              <span className="whitespace-nowrap">ready-for-anything</span>{' '}
               people to join our remote team.
             </h3>
             <p className="text-body Careers-cta__subtitle">
@@ -391,24 +393,42 @@ export const CAREERS_PAGE_QUERY = graphql`
       }
     }
 
-    heroImages: allFile(
-      filter: {
-        relativePath: {
-          in: [
-            "careers/careers-hero-mobile.png"
-            "careers/careers-hero-md.png"
-            "careers/careers-hero-lg.png"
-            "careers/careers-hero-xl.png"
-            "careers/careers-hero-2xl.png"
-          ]
+    heroMobile: file(relativePath: { eq: "careers/careers-hero-mobile.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 1000, quality: 100) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
         }
       }
-    ) {
-      nodes {
-        childrenImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
-          }
+    }
+
+    heroMd: file(relativePath: { eq: "careers/careers-hero-md.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 2200, quality: 100) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+
+    heroLg: file(relativePath: { eq: "careers/careers-hero-lg.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 3100, quality: 100) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+
+    heroXl: file(relativePath: { eq: "careers/careers-hero-xl.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 4200, quality: 100) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+
+    hero2Xl: file(relativePath: { eq: "careers/careers-hero-2xl.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 6000, quality: 100) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
         }
       }
     }

@@ -67,7 +67,7 @@
 
   @apply 2xl:px-0;
   @screen 2xl {
-    margin-top: 260px;
+    margin-top: 0px;
   }
 
 
@@ -81,6 +81,10 @@
     width: 100%;
     @screen maxMd {
       max-width: 584px;
+    }
+
+    @screen 2xl {
+      max-width: 2492px;
     }
   }
 
@@ -172,6 +176,7 @@
   @apply 2xl:mx-auto; 
   @screen 2xl {
     max-width: 1474px;
+    margin-top: 260px;
   }
 }
 
@@ -305,12 +310,17 @@
 
   @apply md:px-8;
   @apply md:py-16;
+  @apply md:mt-16;
 
   @apply lg:px-10;
   @apply lg:py-20;
+  @apply lg:mt-20;
 
   @apply xl:px-0;
   @apply xl:py-24;
+  @apply xl:mt-24;
+
+  @apply 2xl:mt-36;
 }
 
 .Careers-perks__title {
