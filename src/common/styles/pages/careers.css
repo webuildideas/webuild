@@ -10,6 +10,8 @@
 
 
 .Careers-hero__content {
+  @apply relative;
+  @apply z-10;
   max-width: 584px;
   @apply mx-auto;
   @apply px-6;
@@ -61,7 +63,7 @@
   @apply md:mt-16;
 
   @apply lg:px-10;
-  @apply lg:mt-29;
+  @apply lg:mt-0;
 
   @apply xl:mt-35;
 
@@ -85,6 +87,10 @@
 
     @screen 2xl {
       max-width: 2492px;
+    }
+
+    @screen md {
+      max-width: 100%;
     }
   }
 
@@ -146,7 +152,7 @@
 }
 
 .Careers-cta__button {
-  @apply flex;
+  @apply inline-flex;
   @apply flex-nowrap;
   @apply items-center;
   @apply mx-auto;

@@ -52,7 +52,7 @@ export const GlobalStyle = createGlobalStyle<StyleProps>`
     padding: 0;
     margin: 0;
     &.overlayIsOpen {
-      position: fixed;
+      position: absolute;
       height: 100vh;
       overflow-y: hidden;
       width: 100%;

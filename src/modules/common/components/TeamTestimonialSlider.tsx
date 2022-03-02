@@ -103,7 +103,7 @@ const TestimonialSlider = ({ testimonials }: Props) => {
           autoplay={true}
           autoplayInterval={7000}
           beforeSlide={handleAfterSlide}
-          heightMode="current"
+          heightMode="max"
           slideIndex={currentSlide}
           transitionMode="fade"
           withoutControls
