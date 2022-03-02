@@ -78,7 +78,6 @@ const Careers = ({
   },
   location
 }: Props) => {
-  console.log(heroMobile, heroMd, heroLg, heroXl, hero2Xl)
   const heroImgSrcs = [
     heroMobile.childImageSharp.fluid,
     {
@@ -141,7 +140,12 @@ const Careers = ({
             <h3 className="text-h3 Careers-cta__subtitle">
               Click below to see more of our work
             </h3>
-            <Button className="Careers-cta__button" styleType="solid-salmon">
+            <Button
+              className="Careers-cta__button"
+              href="https://dribbble.com/webuild"
+              styleType="solid-salmon"
+              target="_blank"
+            >
               <Dribbble className="Careers-cta__button-icon" />
               <span>Dribbble</span>
             </Button>
@@ -359,7 +363,10 @@ export const CAREERS_PAGE_QUERY = graphql`
       }
     }
 
-    allContentfulJob(filter: { isOpen: { eq: true } }) {
+    allContentfulJob(
+      sort: { fields: priority, order: DESC }
+      filter: { isOpen: { eq: true } }
+    ) {
       nodes {
         applicationLink
         description {

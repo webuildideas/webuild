@@ -10,6 +10,8 @@
 
 
 .Careers-hero__content {
+  @apply relative;
+  @apply z-10;
   max-width: 584px;
   @apply mx-auto;
   @apply px-6;
@@ -61,7 +63,7 @@
   @apply md:mt-16;
 
   @apply lg:px-10;
-  @apply lg:mt-29;
+  @apply lg:mt-0;
 
   @apply xl:mt-35;
 
@@ -85,6 +87,10 @@
 
     @screen 2xl {
       max-width: 2492px;
+    }
+
+    @screen md {
+      max-width: 100%;
     }
   }
 
@@ -146,7 +152,7 @@
 }
 
 .Careers-cta__button {
-  @apply flex;
+  @apply inline-flex;
   @apply flex-nowrap;
   @apply items-center;
   @apply mx-auto;
@@ -599,6 +605,13 @@
     @apply mx-auto;
     max-width: 1574px;
   }
+
+  /** Remove border from last item **/
+  &:last-of-type {
+    .Careers-positions__item-content {
+      @apply border-b-0;
+    }
+  }
     
 }
 
@@ -696,13 +709,16 @@
     @apply left-0;
     @apply z-0;
     top: 50%;
-    transform: translateY(-50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 100%;
   }
 
   .Careers-cta__bg.mobile {
     @apply md:hidden;
-    width: 115%;
+    width: 110%;
+    left: 40%;
+    max-width: 475px;
   }
 
   .Careers-cta__bg.md {
@@ -710,7 +726,7 @@
     @apply md:block;
     @apply lg:hidden;
 
-    width: 105%;
+    width: 120%;
   }
   
   .Careers-cta__bg.lg {
@@ -724,10 +740,10 @@
   .Careers-cta__bg.xl {
     @apply hidden;
     @apply xl:block;
-    width: 140%;
+    width: 175%;
 
     @screen 2xl {
-      width: 100%;
+      width: 75%;
     }
   }
 }
