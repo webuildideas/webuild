@@ -4,7 +4,7 @@ import './styles/Footer.css'
 import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
-import { Link } from 'gatsby'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 // Forms
 import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModal'
@@ -95,13 +95,32 @@ const Footer = () => {
             initial="hidden"
             variants={variants}
           >
-            <div>
+            <div className="Footer-logo-container">
               <Logo className="Footer-logo" />
               <span className="Footer-copyright">&copy; {d.getFullYear()}</span>
             </div>
-            <Link className="Footer-privacy text-caption" to="/privacy/">
-              Privacy
-            </Link>
+            <div className="Footer-copyright-links">
+              <AniLink
+                bg="#0E0E1B"
+                className="Footer-privacy text-caption"
+                cover
+                direction="top"
+                hex="#0E0E1B"
+                to="/privacy/"
+              >
+                Privacy
+              </AniLink>
+              <AniLink
+                bg="#0E0E1B"
+                className="Footer-careers text-caption"
+                cover
+                direction="top"
+                hex="#0E0E1B"
+                to="/careers/"
+              >
+                Careers
+              </AniLink>
+            </div>
           </motion.div>
 
           <motion.div
