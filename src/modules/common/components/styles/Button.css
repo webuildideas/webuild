@@ -82,7 +82,7 @@
   @apply hover:bg-deepViolet;
   @apply hover:text-white;
 
-  &:focus {
+  &:active {
     @apply bg-deepViolet;
     @apply text-white;
     @apply border-solid;
