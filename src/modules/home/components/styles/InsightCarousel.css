@@ -68,9 +68,7 @@
   @apply mx-auto;
   @apply mb-4;
 
-  @screen md {
-    width: 224px;
-  }
+  @apply md:mb-8;
 
   @apply lg:ml-0;
   @apply lg:mb-6;
@@ -81,7 +79,7 @@
   @apply xl:flex-shrink-0;
   @apply xl:mr-6;
   @apply xl:mb-0;
-  @apply xl:pt-8;
+  @apply xl:pt-16;
 }
 
 .InsightCarousel-slide-title {
