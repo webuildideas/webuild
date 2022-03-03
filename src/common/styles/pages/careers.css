@@ -713,15 +713,20 @@
   }
 
   .Careers-cta__bg.mobile {
-    @apply md:hidden;
-    width: 110%;
-    left: 40%;
+    @media screen and (min-width: 475px) {
+      @apply hidden
+    }
+      
+    width: 120%;
     max-width: 475px;
+    top: 45%;
   }
 
   .Careers-cta__bg.md {
     @apply hidden;
-    @apply md:block;
+    @media screen and (min-width: 475px) {
+      @apply block;
+    }
     @apply lg:hidden;
 
     width: 120%;
