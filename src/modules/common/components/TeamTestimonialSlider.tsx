@@ -14,6 +14,7 @@ import Carousel, { CarouselProps } from 'nuka-carousel'
 // Common
 import { TypeTestimonial } from '@common/types/Testimonial'
 import { classNames } from '@common/utils/classNames'
+import useWindowSize from '@common/hooks/useWindowSize'
 
 interface Props {
   testimonials: TypeTestimonial[]
@@ -63,6 +64,8 @@ const TestimonialDot = ({
 }
 
 const TestimonialSlider = ({ testimonials }: Props) => {
+  const { width } = useWindowSize()
+  const isMobile = width && width <= 767
   const animationControls = useAnimation()
   const [currentSlide, setCurrentSlide] = useState(0)
   const [ref, inView] = useInView({
@@ -103,7 +106,7 @@ const TestimonialSlider = ({ testimonials }: Props) => {
           autoplay={true}
           autoplayInterval={7000}
           beforeSlide={handleAfterSlide}
-          heightMode="max"
+          heightMode={isMobile ? 'current' : 'max'}
           slideIndex={currentSlide}
           transitionMode="fade"
           withoutControls
