@@ -81,16 +81,12 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
-    @screen maxMd {
+    @media screen and (max-width: 767px) {
       max-width: 584px;
     }
 
     @screen 2xl {
       max-width: 2492px;
-    }
-
-    @screen md {
-      max-width: 100%;
     }
   }
 
@@ -118,10 +114,12 @@
   .Careers-cta__bg.xl {
     @apply hidden;
     @apply xl:block;
-    width: 140%;
+    width: 150%;
+    left: 60%;
 
     @screen 2xl {
       width: 100%;
+      left: 50%;
     }
   }
 
