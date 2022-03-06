@@ -13,6 +13,7 @@ import Img from 'gatsby-image'
 // Common
 import { classNames } from '@common/utils/classNames'
 import { TypeInsight } from '@common/types/Insight'
+import { getEstimatedReadingTime } from '@modules/insight/utils'
 
 // Components
 import Meta from '@components/Meta'
@@ -20,7 +21,6 @@ import SocialShare from '@modules/insight/components/SocialShare'
 import ReadNext from '@modules/insight/components/ReadNext'
 import ReadNextSidebar from '@modules/insight/components/ReadNextSidebar'
 import InsightTags from '@modules/common/components/InsightTags'
-import { getEstimatedReadingTime } from '@modules/insight/utils'
 import Author from '@modules/insight/components/Author'
 import Footer from '@modules/common/components/Footer'
 import EmailSignupForm from '@modules/forms/EmailSignupForm'
