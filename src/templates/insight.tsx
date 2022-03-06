@@ -1,3 +1,5 @@
+import '@common/styles/templates/insight.css'
+
 // Packages
 import React, { useEffect, useRef, useState } from 'react'
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
@@ -28,9 +30,6 @@ import MonthlyNewsletterForm from '@modules/forms/MonthlyNewsletterForm'
 
 // Atoms
 import { userGatedPostConversionsAtom } from '@modules/insight/atoms/userGatedPostConversions'
-
-// Styles
-import '@common/styles/templates/insight.css'
 
 interface Props {
   location: PageProps['location']
