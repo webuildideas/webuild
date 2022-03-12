@@ -27,10 +27,10 @@ import EmailSignupForm from '@modules/forms/EmailSignupForm'
 import GatedPostForm from '@modules/forms/GatedPostForm'
 import ContentUpgradeForm from '@modules/forms/ContentUpgradeForm'
 import MonthlyNewsletterForm from '@modules/forms/MonthlyNewsletterForm'
+import Button from '@modules/common/components/Button'
 
 // Atoms
 import { userGatedPostConversionsAtom } from '@modules/insight/atoms/userGatedPostConversions'
-import Button from '@modules/common/components/Button'
 import { userContentUpgradeConversionsAtom } from '@modules/forms/atoms/userContentUpgradeConversionsAtom'
 
 interface Props {
