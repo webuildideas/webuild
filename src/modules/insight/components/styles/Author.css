@@ -1,0 +1,12 @@
+.Author {
+  @apply flex;
+  @apply flex-wrap;
+  @apply items-center;
+}
+
+.Author__headshot {
+  @apply rounded-full;
+  @apply mr-4;
+  @apply inline-block;
+}
+

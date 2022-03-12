@@ -30,6 +30,7 @@ import MonthlyNewsletterForm from '@modules/forms/MonthlyNewsletterForm'
 
 // Atoms
 import { userGatedPostConversionsAtom } from '@modules/insight/atoms/userGatedPostConversions'
+import Button from '@modules/common/components/Button'
 
 interface Props {
   location: PageProps['location']
@@ -149,6 +150,9 @@ const Insight = ({
   const [estReadTime, setEstReadTime] = useState<number>()
   const articleRef = useRef<HTMLDivElement>(null)
 
+  const showReadNext = insight.type !== 'Resource'
+  const showSidebar = insight.type !== 'Resource'
+
   const articleClassNames = classNames({
     'Insight-article': true,
     'Insight-article-locked': isLocked
@@ -171,7 +175,7 @@ const Insight = ({
         title={insight.seoTitle ?? insight.title}
       />
       <div
-        className={`Insight-container Insight-${insight.type}`}
+        className={`Insight-container Insight-${insight.type.toLowerCase()}`}
         id="insight-container"
       >
         {insight?.heroIllustration?.file?.url ? (
@@ -189,16 +193,30 @@ const Insight = ({
               topics={insight.topics}
               type={insight.type}
             />
+
             <h1 className="text-h1 mb-4 mt-6">{insight.title}</h1>
+
             {insight.subtitle ? (
               <h2 className="text-title-subheading">{insight.subtitle}</h2>
             ) : null}
+
             {insight.author ? (
-              <Author
-                author={insight.author}
-                estReadTime={estReadTime}
-                publishDate={insight.publishDate}
-              />
+              <div className="Insight-author">
+                <Author
+                  author={insight.author}
+                  estReadTime={estReadTime}
+                  publishDate={insight.publishDate}
+                  showReadTime={insight.type !== 'Resource'}
+                />
+                {insight.type === 'Resource' ? (
+                  <Button
+                    className="Insight-access-button"
+                    styleType="solid-purple"
+                  >
+                    Access Now
+                  </Button>
+                ) : null}
+              </div>
             ) : null}
           </div>
           <article ref={articleRef} className="Insight" id="article">
@@ -207,6 +225,7 @@ const Insight = ({
                 ? renderRichText(insight.content, options)
                 : null}
             </div>
+
             {insight.isGated ? (
               <div className="pr-6 md:pr-8 lg:pr-0">
                 <GatedPostForm
@@ -216,6 +235,7 @@ const Insight = ({
                 />
               </div>
             ) : null}
+
             {!isLocked && insight.contentUpgrade ? (
               <ContentUpgradeForm
                 className="mt-16 mb-8 md:mb-0 ContentUpgrade-bottom"
@@ -223,6 +243,7 @@ const Insight = ({
               />
             ) : null}
           </article>
+
           {!isLocked ? (
             <>
               <div className="Insight-share">
@@ -236,24 +257,28 @@ const Insight = ({
                 </Sticky>
               </div>
 
-              <ReadNext
-                className="Insight-read-next"
-                posts={insight.readNext}
-                relatedPostsByTopic={relatedInsightsByTopic}
-              />
+              {showReadNext ? (
+                <ReadNext
+                  className="Insight-read-next"
+                  posts={insight.readNext}
+                  relatedPostsByTopic={relatedInsightsByTopic}
+                />
+              ) : null}
 
-              <div className="Insight-ctas">
-                <EmailSignupForm location={location.href} />
-                <MonthlyNewsletterForm
-                  containerId="insight-container"
-                  location={location.href}
-                  percentTrigger={0.3}
-                />
-                <ReadNextSidebar
-                  insights={insight.readNext}
-                  relatedInsightsByTopic={relatedInsightsByTopic}
-                />
-              </div>
+              {showSidebar ? (
+                <div className="Insight-ctas">
+                  <EmailSignupForm location={location.href} />
+                  <MonthlyNewsletterForm
+                    containerId="insight-container"
+                    location={location.href}
+                    percentTrigger={0.3}
+                  />
+                  <ReadNextSidebar
+                    insights={insight.readNext}
+                    relatedInsightsByTopic={relatedInsightsByTopic}
+                  />
+                </div>
+              ) : null}
             </>
           ) : null}
         </main>

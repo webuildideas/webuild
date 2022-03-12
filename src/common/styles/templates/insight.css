@@ -38,6 +38,12 @@
   }
 }
 
+.Insight-resource .Insight-grid {
+  @apply pb-8;
+
+  @apply md:pb-24;
+}
+
 .Insight-header {
   max-width: 616px;
   grid-row: 1;
@@ -61,6 +67,19 @@
   @screen xl {
     max-width: 780px;
   }
+}
+
+.Insight-author {
+  max-width: 478px;
+  @apply mt-6;
+  @apply md:flex;
+  @apply md:justify-between;
+  @apply md:items-center;
+}
+
+.Insight-access-button {
+  @apply mt-6;
+  @apply md:mt-0;
 }
 
 .Insight {
