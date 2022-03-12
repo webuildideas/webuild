@@ -38,7 +38,7 @@
   }
 }
 
-.Insight-resource .Insight-grid {
+.Insight-type-resource .Insight-grid {
   @apply pb-8;
 
   @apply md:pb-24;

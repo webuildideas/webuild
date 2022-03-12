@@ -31,6 +31,7 @@ import MonthlyNewsletterForm from '@modules/forms/MonthlyNewsletterForm'
 // Atoms
 import { userGatedPostConversionsAtom } from '@modules/insight/atoms/userGatedPostConversions'
 import Button from '@modules/common/components/Button'
+import { userContentUpgradeConversionsAtom } from '@modules/forms/atoms/userContentUpgradeConversionsAtom'
 
 interface Props {
   location: PageProps['location']
@@ -145,10 +146,17 @@ const Insight = ({
   location
 }: Props) => {
   const userGatedPostConversions = useRecoilValue(userGatedPostConversionsAtom)
+  const userContentUpgradeConversions = useRecoilValue(
+    userContentUpgradeConversionsAtom
+  )
   const userHasUnlockedPost = userGatedPostConversions.includes(insight.id)
   const isLocked = insight.isGated && !userHasUnlockedPost
   const [estReadTime, setEstReadTime] = useState<number>()
   const articleRef = useRef<HTMLDivElement>(null)
+  const contentUpgradeInputRef = useRef<HTMLInputElement>(null)
+  const userHasCompletedContentUpgrade = userContentUpgradeConversions.includes(
+    insight.contentUpgrade ? insight.contentUpgrade.title : ''
+  )
 
   const showReadNext = insight.type !== 'Resource'
   const showSidebar = insight.type !== 'Resource'
@@ -157,6 +165,29 @@ const Insight = ({
     'Insight-article': true,
     'Insight-article-locked': isLocked
   })
+
+  /**
+   * If there is a content upgrade and user has already completed form
+   * then scroll them to that element.
+   *
+   * If the user has not completed form then focus on the form input.
+   *
+   * @returns void;
+   */
+  const handleOnAccessClick = () => {
+    const contentUpgrade = document.getElementsByClassName(
+      'ContentUpgrade-bottom'
+    )[0]
+
+    if (contentUpgrade && userHasCompletedContentUpgrade) {
+      contentUpgrade.scrollIntoView({ behavior: 'smooth' })
+      return
+    }
+
+    if (contentUpgradeInputRef.current) {
+      contentUpgradeInputRef.current.focus()
+    }
+  }
 
   useEffect(() => {
     if (articleRef.current) {
@@ -175,7 +206,7 @@ const Insight = ({
         title={insight.seoTitle ?? insight.title}
       />
       <div
-        className={`Insight-container Insight-${insight.type.toLowerCase()}`}
+        className={`Insight-container Insight-type-${insight.type.toLowerCase()}`}
         id="insight-container"
       >
         {insight?.heroIllustration?.file?.url ? (
@@ -211,6 +242,7 @@ const Insight = ({
                 {insight.type === 'Resource' ? (
                   <Button
                     className="Insight-access-button"
+                    onClick={handleOnAccessClick}
                     styleType="solid-purple"
                   >
                     Access Now
@@ -240,6 +272,8 @@ const Insight = ({
               <ContentUpgradeForm
                 className="mt-16 mb-8 md:mb-0 ContentUpgrade-bottom"
                 contentUpgrade={insight.contentUpgrade}
+                inputRef={contentUpgradeInputRef}
+                isSimple={insight.type === 'Resource'}
               />
             ) : null}
           </article>

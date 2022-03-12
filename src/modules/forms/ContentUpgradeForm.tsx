@@ -29,6 +29,7 @@ interface Props extends WithClassName {
   contentUpgrade: TypeContentUpgrade
   isSimple?: boolean
   title?: string
+  inputRef?: React.RefObject<HTMLInputElement>
 }
 
 interface FormValues {
@@ -57,7 +58,8 @@ const ContentUpgradeForm = ({
   className,
   contentUpgrade,
   isSimple = false,
-  title
+  title,
+  inputRef
 }: Props) => {
   const [
     userContentUpgradeConversions,
@@ -159,14 +161,17 @@ const ContentUpgradeForm = ({
                   />
 
                   <div className="ContentUpgrade-form">
-                    <img
-                      alt="illustration"
-                      className="ContentUpgrade-image mb-6"
-                      src={contentUpgrade.formImage.file.url}
-                    />
+                    {contentUpgrade.formImage ? (
+                      <img
+                        alt="illustration"
+                        className="ContentUpgrade-image mb-6"
+                        src={contentUpgrade.formImage.file.url}
+                      />
+                    ) : null}
                     <div className="ContentUpgrade-form-fields">
                       <TextInput
                         className="ContentUpgrade-email block appearance-none mb-4"
+                        inputRef={inputRef}
                         label="Email *"
                         name="E-mail Address"
                         type="text"

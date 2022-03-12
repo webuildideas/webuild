@@ -12,6 +12,7 @@ import '../styles/TextInput.css'
 
 interface Props extends WithClassName, WithFormField {
   showError?: boolean
+  inputRef?: React.RefObject<HTMLInputElement>
 }
 
 const TextInput = ({
@@ -20,6 +21,7 @@ const TextInput = ({
   placeholder,
   label,
   showError,
+  inputRef,
   ...props
 }: Props) => {
   const [field, { error, touched }] = useField(props)
@@ -36,6 +38,7 @@ const TextInput = ({
           <span className="text-tag block text-gray-700 mb-3">{label}</span>
         ) : null}
         <input
+          ref={inputRef}
           className={inputClasses}
           placeholder={placeholder}
           type={type}
