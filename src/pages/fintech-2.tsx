@@ -30,6 +30,9 @@ import Logo from '@static/svgs/logo.inline.svg'
 import Dribbble from '@static/svgs/common/social/dribbble.inline.svg'
 import Instagram from '@static/svgs/common/social/instagram.inline.svg'
 import LinkedIn from '@static/svgs/common/social/linkedin.inline.svg'
+import SlhLogo from '@static/svgs/logos/clients/slh-logo.inline.svg'
+import YottaLogo from '@static/svgs/logos/clients/yotta-logo.inline.svg'
+import ZipLogo from '@static/svgs/logos/clients/zip-logo.inline.svg'
 
 // Styles
 import { TypeGatsbyChildImageSharpFluid } from '@common/types/GatsbyImage'
@@ -127,16 +130,39 @@ const Fintech = ({
           />
         </div>
 
-        <div className="Fintech-call-cta">
-          <h3 className="Fintech-call-cta-title text-h3">
-            <span className="regular">
-              We combine our deep expertise in product design and strategy to
-            </span>
-            <span className="highlight">
-              accelerate business growth for fast-growing Fintech startups.
-            </span>
-          </h3>
-          <Button onClick={showBookACallModal}>Book a call</Button>
+        <div className="Fintech__clients">
+          <div className="Fintech__clients-items">
+            <div className="Fintech__clients-item">
+              <div className="Fintech__clients-logo-container">
+                <ZipLogo className="Fintech__clients-logo" />
+              </div>
+              <p className="Fintech__clients-copy text-body">
+                4.8 App Star rating, 2+ million users &amp; an acquisition
+              </p>
+            </div>
+            <div className="Fintech__clients-item">
+              <div className="Fintech__clients-logo-container">
+                <YottaLogo className="Fintech__clients-logo" />
+              </div>
+              <p className="Fintech__clients-copy text-body">
+                250% growth driven by a robust design system
+              </p>
+            </div>
+            <div className="Fintech__clients-item">
+              <div className="Fintech__clients-logo-container">
+                <SlhLogo className="Fintech__clients-logo" />
+              </div>
+              <p className="Fintech__clients-copy text-body">
+                5x revenue through obsessive optimization
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="Fintech-testimonials">
+          <div className="Fintech-testimonials-inner">
+            <TestimonialSlider testimonials={testimonials} />
+          </div>
         </div>
 
         <div className="Fintech-works">
@@ -197,12 +223,6 @@ const Fintech = ({
                 Learn More
               </MotionAniLink>
             </div>
-          </div>
-        </div>
-
-        <div className="Fintech-testimonials">
-          <div className="Fintech-testimonials-inner">
-            <TestimonialSlider testimonials={testimonials} />
           </div>
         </div>
 
