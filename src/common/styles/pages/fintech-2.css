@@ -363,6 +363,70 @@
   }
 }
 
+/** Form **/
+
+.Fintech__form {
+  @apply py-20;
+  @apply px-6;
+
+  @apply md:px-0;
+  @apply md:mx-auto;
+  @screen md {
+    max-width: 616px;
+  }
+
+  @apply 2xl:pt-30;
+  @apply 2xl:pb-50;
+  @screen 2xl {
+    max-width: 977px;
+  }
+}
+
+.Fintech__form-title {
+  @apply font-extrabold;
+  @apply text-center;
+  @apply mb-10;
+
+  @apply 2xl:mb-20;
+}
+
+.Fintech__form-container {
+  @apply flex;
+  @apply flex-col;
+  @apply items-center;
+  @apply justify-center;
+  
+  @apply md:flex-row;
+  @apply md:flex-nowrap;
+  @apply md:gap-x-8;
+  @apply md:items-end;
+
+  @apply 2xl:gap-x-10;
+}
+
+.Fintech__form-input-container {
+  @apply block;
+  @apply w-full;
+}
+
+.Fintech__form-input {
+  @apply block;
+  @apply w-full;
+  @apply appearance-none;
+  @apply bg-transparent;
+  @apply border-b;
+  @apply border-gray-600;
+  @apply pb-1;
+  @apply text-black;
+}
+
+.Fintech__form-button {
+  @apply mt-10;
+  @apply block;
+  @apply flex-shrink-0;
+  padding-left: 57px;
+  padding-right: 57px;
+}
 
 /** Services **/
 .Fintech-services {

@@ -225,6 +225,19 @@ const Fintech = ({
           </div>
         </div>
 
+        <div className="Fintech__form">
+          <h3 className="Fintech__form-title text-h3">Get in touch</h3>
+          <div className="Fintech__form-container">
+            <label className="Fintech__form-input-container">
+              <span className="text-tag block text-gray-700 mb-3">Email *</span>
+              <input className="Fintech__form-input" type="text" />
+            </label>
+            <Button className="Fintech__form-button" styleType="solid-salmon">
+              Get In Touch
+            </Button>
+          </div>
+        </div>
+
         <div className="Fintech-services">
           <OtherServices
             services={services}
