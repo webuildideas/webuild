@@ -26,6 +26,7 @@ interface Props extends WithChildren, WithClassName {
     | 'outline'
     | 'outline-purple'
     | 'solid-salmon'
+    | 'solid-blueRibbon'
   loading?: boolean
   download?: boolean
   target?: string
@@ -76,6 +77,7 @@ const Button = ({
     'Button-solid': styleType === 'solid',
     'Button-solid-purple': styleType === 'solid-purple',
     'Button-solid-salmon': styleType === 'solid-salmon',
+    'Button-solid-blueRibbon': styleType === 'solid-blueRibbon',
     'Button-outline': styleType === 'outline',
     'Button-outline-purple': styleType === 'outline-purple',
     'Button-loading': loading,

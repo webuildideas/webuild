@@ -1,4 +1,4 @@
-import '@common/styles/pages/fintech.css'
+import '@common/styles/pages/fintech-2.css'
 
 // Packages
 import React, { useEffect } from 'react'
@@ -177,9 +177,17 @@ const Fintech = ({
           <div className="Fintech-hero-inner">
             <div className="Fintech-title-container">
               <h1 className="Fintech-title text-h1">
-                Boost your fintech startup with thoughtful & informed design.
+                Boost your fintech startup with thoughtful &amp; informed
+                design.
               </h1>
+              <h3 className="text-h3">
+                We combine our deep expertise in product design and strategy to
+                accelerate business growth for fast-growing Fintech startups.
+              </h3>
             </div>
+            <Button onClick={showBookACallModal} styleType="solid-blueRibbon">
+              Book a call
+            </Button>
           </div>
         </div>
 
