@@ -168,7 +168,9 @@ const Fintech = ({
           <h2 className="Fintech__works-title text-h2">Why webuild works</h2>
           <div className="Fintech__works-items">
             <div className="Fintech__works-item">
-              <ExpandResources className="Fintech__works-item-illustration resources" />
+              <div className="Fintech__works-item-illustration-container resources">
+                <ExpandResources className="Fintech__works-item-illustration resources" />
+              </div>
               <div className="Fintech__works-item-content">
                 <h3 className="text-h3 font-extrabold">Expand Resources</h3>
                 <p className="text-body">
@@ -179,8 +181,10 @@ const Fintech = ({
               </div>
             </div>
 
-            <div className="Fintech__works-item illustration-right">
-              <IncreaseVelocity className="Fintech__works-item-illustration velocity" />
+            <div className="Fintech__works-item">
+              <div className="Fintech__works-item-illustration-container velocity">
+                <IncreaseVelocity className="Fintech__works-item-illustration velocity" />
+              </div>
               <div className="Fintech__works-item-content">
                 <h3 className="text-h3 font-extrabold">Increase Velocity</h3>
                 <p className="text-body">
@@ -191,7 +195,9 @@ const Fintech = ({
             </div>
 
             <div className="Fintech__works-item">
-              <Reliability className="Fintech__works-item-illustration reliability" />
+              <div className="Fintech__works-item-illustration-container reliability">
+                <Reliability className="Fintech__works-item-illustration reliability" />
+              </div>
               <div className="Fintech__works-item-content">
                 <h3 className="text-h3 font-extrabold">
                   Experience Reliability
@@ -204,8 +210,10 @@ const Fintech = ({
               </div>
             </div>
 
-            <div className="Fintech__works-item illustration-right">
-              <DreamBig className="Fintech__works-item-illustration dream" />
+            <div className="Fintech__works-item">
+              <div className="Fintech__works-item-illustration-container dream">
+                <DreamBig className="Fintech__works-item-illustration dream" />
+              </div>
               <div className="Fintech__works-item-content">
                 <h3 className="text-h3 font-extrabold">Dream Big</h3>
                 <p className="text-body">
