@@ -3,13 +3,13 @@
 .Fintech__hero {
   @apply relative;
   @apply overflow-y-hidden;
-  @apply pt-12;
+  @apply pt-10;
 
-  @apply md:pt-16;
+  @apply md:pt-8;
 
   @apply lg:pt-20;
   
-  @apply xl:pt-25;
+  @apply 2xl:pt-40;
 }
 
 .Fintech__hero-illustration-container {
@@ -30,35 +30,6 @@
     left: 50%;
     transform: translateX(-50%);
     max-width: 1400px;
-  }
-}
-
-.Fintech__hero-illustration {
-  @apply absolute;
-
-  width: 100%;
-  right: -50%;
-  bottom: -20%;
-  max-width: 600px;
-
-  @screen md {
-    width: auto;
-    right: -60%;
-    bottom: -55%;
-    max-width: 900px;
-  }
-
-  @screen lg {
-    right: -57%;
-    bottom: -74%;
-    max-width: 1024px;
-  }
-
-  @screen xl {
-    right: -2%;
-    bottom: -20%;
-    width: 80%;
-    max-width: 1025px;
   }
 }
 
@@ -86,12 +57,22 @@
 
   @apply xl:mx-auto;
   @apply xl:w-full;
+
+  @screen 2xl {
+    max-width: 2368px;
+  }
 }
 
 .Fintech__hero-title-container {
   @apply xl:ml-25;
   @screen xl {
     max-width: 760px;
+  }
+
+
+  @screen 2xl {
+    margin-left: 400px;
+    max-width: 984px;
   }
 }
 
@@ -103,6 +84,10 @@
 
 .Fintech__hero-subtitle {
   @apply mt-6;
+
+  @apply lg:pr-12;
+
+  @apply xl:pr-16;
 }
 
 .Fintech__hero-button {
@@ -111,6 +96,26 @@
   @apply px-15;
 
   @apply 2xl:mt-12;
+}
+
+.Fintech__hero-image {
+  margin-top: -125px;
+
+  @screen md {
+    margin-top: -520px;
+  }
+
+  @screen lg {
+    margin-top: -620px;
+  }
+
+  @screen xl {
+    margin-top: -650px;
+  }
+
+  @screen 2xl {
+    margin-top: -600px;
+  }
 }
 
 /** END ALT Layout **/
