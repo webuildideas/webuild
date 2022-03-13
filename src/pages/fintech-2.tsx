@@ -159,8 +159,8 @@ const Fintech = ({
           </div>
         </div>
 
-        <div className="Fintech-testimonials">
-          <div className="Fintech-testimonials-inner">
+        <div className="Fintech__testimonials">
+          <div className="Fintech__testimonials-inner">
             <TestimonialSlider testimonials={testimonials} />
           </div>
         </div>

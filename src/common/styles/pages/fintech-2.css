@@ -196,28 +196,27 @@
   @apply md:px-0;
 }
 
-/** END ALT Layout **/
+/** Testimonials **/
+.Fintech__testimonials {
+  @apply py-15;
 
-.Fintech-hero-form {
-  @apply w-full;
-  @apply hidden; 
+  @apply md:py-16;
 
-  @apply md:self-center;
-  @screen md {
-    max-width: 482px;
-  }
+  @apply lg:py-25;
 
-  @apply xl:block;
+  @apply xl:py-31;
 }
 
-.Fintech-hero-form.BookACall-success {
-  @apply text-center;
-  @apply bg-foundation;
+.Fintech__testimonials-inner {
+  @apply mx-auto;
+  @apply px-6;
 
-  .BookACall-success-title {
-    max-width: 250px;
-    @apply mx-auto;
+  @apply md:px-0;
+  @screen md {
+    width: 92%;
   }
+  
+  max-width: 984px;
 }
 
 
@@ -321,30 +320,6 @@
 
 .Fintech-work-illustration.dream {
   max-width: 454px;
-}
-
-/** Testimonials **/
-.Fintech-testimonials {
-  @apply bg-foundation;
-  @apply py-15;
-
-  @apply md:py-16;
-
-  @apply lg:py-18;
-
-  @apply xl:py-31;
-}
-
-.Fintech-testimonials-inner {
-  @apply mx-auto;
-  @apply px-6;
-
-  @apply md:px-0;
-  @screen md {
-    width: 92%;
-  }
-  
-  max-width: 984px;
 }
 
 /** Services **/
