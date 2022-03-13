@@ -221,32 +221,43 @@
 
 
 /** Webuild Works **/
-.Fintech-works-title {
-  @apply text-center;
-  @apply font-extrabold;
-  @apply mb-12;
-  @apply mt-24;
-  
-  @apply md:mt-32;
-  @apply md:mb-16;
-  
-  @apply lg:mt-40;
-  @apply lg:mb-20;
 
-  @apply xl:mt-46;
+.Fintech__works {
+  @apply bg-foundation;
+  @apply px-6;
+  @apply py-20;
+
+  @apply md:px-8;
+  @apply md:py-26;
+
+  @apply lg:px-10;
+  @apply lg:pb-39;
+
+  @apply 2xl:py-50;
 }
 
-.Fintech-work {
+.Fintech__works-title {
+  @apply text-center;
+  @apply font-extrabold;
+  @apply mb-16;
+  
+  @apply md:text-left;
+  @apply md:mb-18;
+  
+  @apply lg:mb-20;
+
+  @apply 2xl:mb-28;
+}
+
+.Fintech__works-items {
   @apply flex;
   @apply flex-col;
-  @apply justify-between;
-  @apply items-center;
-  @apply mx-auto;
-  @apply px-6;
-  @apply mb-20;
+  @apply gap-16;
+}
+
+.Fintech__works-item {
   
   @apply md:px-0;
-  @apply md:mb-30;
   @apply items-start;
   @screen md {
     width: 82%;
@@ -265,24 +276,7 @@
   }
 }
 
-.Fintech-work.illustration-right {
-  @screen lg {
-    .Fintech-work-content {
-      order: 1;
-      @screen lg {
-        max-width: 344px;
-      }
-      @screen xl {
-        max-width: 484px;
-      }
-    }
-    .Fintech-work-illustration {
-      order: 2;
-    }
-  }
-}
-
-.Fintech-work-content {
+.Fintech__works-item-content {
   @screen lg {
     max-width: 424px;
   }
@@ -299,32 +293,52 @@
   }
 }
 
-.Fintech-work-illustration {
-  @apply mb-10;
+.Fintech__works-item-illustration {
+  @apply mb-8;
+
+  @apply md:mb-12;
 
   @apply lg:flex-shrink-0;
   @apply lg:mb-0;
 }
 
-.Fintech-work-illustration.resources {
-   max-width: 384px;
+.Fintech__works-item-illustration.resources {
+  width: 223px;
+
+  @screen lg {
+    width: 285px;
+  }
 }
 
-.Fintech-work-illustration.velocity {
-  max-width: 463px;
+.Fintech__works-item-illustration.velocity {
+  width: 234px;
+
+  @screen lg {
+    width: 298px;
+  }
 }
 
-.Fintech-work-illustration.reliability {
-  max-width: 383px;
+.Fintech__works-item-illustration.reliability {
+  width: 236px;
+
+  @screen lg {
+    width: 302px;
+  }
 }
 
-.Fintech-work-illustration.dream {
-  max-width: 454px;
+.Fintech__works-item-illustration.dream {
+  width: 236px;
+
+  @screen lg {
+    width: 302px;
+  }
 }
+
 
 /** Services **/
 .Fintech-services {
   .OtherServices {
+    @apply bg-champagnePink;
     @apply mt-0;
     @apply pt-10;
     @apply pb-14;

@@ -7,7 +7,6 @@ import Img from 'gatsby-image'
 
 // Components
 import Meta from '@components/Meta'
-import MotionAniLink from '@modules/common/components/MotionAniLink'
 import Button from '@modules/common/components/Button'
 import TestimonialSlider from '@modules/common/components/TestimonialSlider'
 import OtherServices from '@modules/service/components/OtherServices'
@@ -22,10 +21,10 @@ import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModa
 import useBookACallFormModal from '@modules/forms/hooks/useBookACallFormModal'
 
 // Svgs
-import DreamBig from '@static/svgs/landing-pages/fintech/fintech-dream-big.inline.svg'
-import ExpandResources from '@static/svgs/landing-pages/fintech/fintech-expand-resources.inline.svg'
-import IncreaseVelocity from '@static/svgs/landing-pages/fintech/fintech-velocity.inline.svg'
-import Reliability from '@static/svgs/landing-pages/fintech/fintech-reliability.inline.svg'
+import DreamBig from '@static/svgs/landing-pages/fintech-2/fintech-dream-big.inline.svg'
+import ExpandResources from '@static/svgs/landing-pages/fintech-2/fintech-expand-resources.inline.svg'
+import IncreaseVelocity from '@static/svgs/landing-pages/fintech-2/fintech-velocity.inline.svg'
+import Reliability from '@static/svgs/landing-pages/fintech-2/fintech-reliability.inline.svg'
 import Logo from '@static/svgs/logo.inline.svg'
 import Dribbble from '@static/svgs/common/social/dribbble.inline.svg'
 import Instagram from '@static/svgs/common/social/instagram.inline.svg'
@@ -165,63 +164,55 @@ const Fintech = ({
           </div>
         </div>
 
-        <div className="Fintech-works">
-          <h2 className="Fintech-works-title text-h2">Why webuild works</h2>
-          <div className="Fintech-work">
-            <ExpandResources className="Fintech-work-illustration resources" />
-            <div className="Fintech-work-content">
-              <h3 className="text-h3 font-extrabold">Expand Resources</h3>
-              <p className="text-body">
-                We help you solve your resourcing challenges in a fraction of
-                the time at a reasonable cost. We plug in and get to work
-                immediately.
-              </p>
-              <Button onClick={showBookACallModal} styleType="solid-purple">
-                Schedule A Call
-              </Button>
+        <div className="Fintech__works">
+          <h2 className="Fintech__works-title text-h2">Why webuild works</h2>
+          <div className="Fintech__works-items">
+            <div className="Fintech__works-item">
+              <ExpandResources className="Fintech__works-item-illustration resources" />
+              <div className="Fintech__works-item-content">
+                <h3 className="text-h3 font-extrabold">Expand Resources</h3>
+                <p className="text-body">
+                  We help you solve your resourcing challenges in a fraction of
+                  the time at a reasonable cost. We plug in and get to work
+                  immediately.
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div className="Fintech-work illustration-right">
-            <IncreaseVelocity className="Fintech-work-illustration velocity" />
-            <div className="Fintech-work-content">
-              <h3 className="text-h3 font-extrabold">Increase Velocity</h3>
-              <p className="text-body">
-                We work fast, iterate often, and gather informed feedback along
-                the way to deliver effective solutions.
-              </p>
-              <MotionAniLink styleType="solid-purple" to="/what-we-do/">
-                Learn More
-              </MotionAniLink>
+            <div className="Fintech__works-item illustration-right">
+              <IncreaseVelocity className="Fintech__works-item-illustration velocity" />
+              <div className="Fintech__works-item-content">
+                <h3 className="text-h3 font-extrabold">Increase Velocity</h3>
+                <p className="text-body">
+                  We work fast, iterate often, and gather informed feedback
+                  along the way to deliver effective solutions.
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div className="Fintech-work">
-            <Reliability className="Fintech-work-illustration reliability" />
-            <div className="Fintech-work-content">
-              <h3 className="text-h3 font-extrabold">Experience Reliability</h3>
-              <p className="text-body">
-                We have deep expertise in our field, leveraging a ton of Fintech
-                experience with product. We deliver results with minimal
-                oversight.
-              </p>
-              <Button onClick={showBookACallModal} styleType="solid-purple">
-                Schedule A Call
-              </Button>
+            <div className="Fintech__works-item">
+              <Reliability className="Fintech__works-item-illustration reliability" />
+              <div className="Fintech__works-item-content">
+                <h3 className="text-h3 font-extrabold">
+                  Experience Reliability
+                </h3>
+                <p className="text-body">
+                  We have deep expertise in our field, leveraging a ton of
+                  Fintech experience with product. We deliver results with
+                  minimal oversight.
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div className="Fintech-work illustration-right">
-            <DreamBig className="Fintech-work-illustration dream" />
-            <div className="Fintech-work-content">
-              <h3 className="text-h3 font-extrabold">Dream Big</h3>
-              <p className="text-body">
-                We’re strategically minded and hyper-focused on helping you get
-                your business to the next level.
-              </p>
-              <MotionAniLink styleType="solid-purple" to="/what-we-do/">
-                Learn More
-              </MotionAniLink>
+            <div className="Fintech__works-item illustration-right">
+              <DreamBig className="Fintech__works-item-illustration dream" />
+              <div className="Fintech__works-item-content">
+                <h3 className="text-h3 font-extrabold">Dream Big</h3>
+                <p className="text-body">
+                  We're strategically minded and hyper-focused on helping you
+                  get your business to the next level.
+                </p>
+              </div>
             </div>
           </div>
         </div>
