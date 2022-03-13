@@ -1,11 +1,8 @@
 import '@common/styles/pages/fintech-2.css'
 
 // Packages
-import React, { useEffect } from 'react'
+import React from 'react'
 import { graphql, PageProps } from 'gatsby'
-import Img from 'gatsby-image'
-import { useAnimation, Variants, motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
 
 // Components
 import Meta from '@components/Meta'
@@ -61,104 +58,16 @@ interface Props {
   location: PageProps['location']
 }
 
-const variants: Variants = {
-  visible: (i: number) => ({
-    opacity: 1,
-    x: 0,
-    y: 0,
-    transition: {
-      duration: 0.65,
-      delay: i * 0.3
-    }
-  }),
-
-  image1Hidden: {
-    opacity: 0,
-    x: -15,
-    y: -20
-  },
-
-  image2Hidden: {
-    opacity: 0,
-    y: -35
-  },
-
-  image3Hidden: {
-    opacity: 0,
-    x: 35,
-    y: 10
-  },
-
-  image4Hidden: {
-    opacity: 0,
-    x: -25,
-    y: 20
-  },
-
-  image5Hidden: {
-    opacity: 0,
-    x: 35,
-    y: 20
-  },
-
-  image6Hidden: {
-    opacity: 0,
-    x: -25,
-    y: 40
-  },
-
-  image7Hidden: {
-    opacity: 0,
-    y: 40
-  },
-
-  image8Hidden: {
-    opacity: 0,
-    y: 40
-  },
-
-  image9Hidden: {
-    opacity: 0,
-    y: 40
-  },
-
-  image10Hidden: {
-    opacity: 0,
-    y: 40
-  }
-}
-
 const Fintech = ({
   data: {
     contentfulSeo,
     allContentfulTestimonial: { nodes: testimonials },
-    allContentfulService: { nodes: services },
-    mobileGallery,
-    row11,
-    row12,
-    row13,
-    row21,
-    row22,
-    row23,
-    row24,
-    row25,
-    row31,
-    row32
+    allContentfulService: { nodes: services }
   },
   location
 }: Props) => {
-  const animationControls = useAnimation()
   const { showModal } = useOpportunityFormModal()
   const { showModal: showBookACallModal } = useBookACallFormModal()
-  const [ref, inView] = useInView({
-    triggerOnce: true
-  })
-
-  useEffect(() => {
-    if (inView) {
-      animationControls.start('visible')
-    }
-  })
   return (
     <>
       <Meta
@@ -170,24 +79,28 @@ const Fintech = ({
       />
 
       <main className="Fintech Fintech-alt">
-        <div className="Fintech-hero">
-          <div className="Fintech-hero-illustration-container">
-            <HeroIllustration className="Fintech-hero-illustration" />
+        <div className="Fintech__hero">
+          <div className="Fintech__hero-illustration-container">
+            <HeroIllustration className="Fintech__hero-illustration" />
           </div>
-          <div className="Fintech-hero-inner">
-            <div className="Fintech-title-container">
-              <h1 className="Fintech-title text-h1">
+          <div className="Fintech__hero-inner">
+            <div className="Fintech__hero-title-container">
+              <h1 className="Fintech__hero-title text-h1">
                 Boost your fintech startup with thoughtful &amp; informed
                 design.
               </h1>
-              <h3 className="text-h3">
+              <h3 className="Fintech__hero-subtitle text-h3">
                 We combine our deep expertise in product design and strategy to
                 accelerate business growth for fast-growing Fintech startups.
               </h3>
+              <Button
+                className="Fintech__hero-button"
+                onClick={showBookACallModal}
+                styleType="solid-blueRibbon"
+              >
+                Book a call
+              </Button>
             </div>
-            <Button onClick={showBookACallModal} styleType="solid-blueRibbon">
-              Book a call
-            </Button>
           </div>
         </div>
 
@@ -201,192 +114,6 @@ const Fintech = ({
             </span>
           </h3>
           <Button onClick={showBookACallModal}>Book a call</Button>
-        </div>
-
-        <div className="Fintech-latest-work">
-          <h2 className="Fintech-latest-work-title text-h2">
-            Our Latest Work in Fintech
-          </h2>
-
-          <div className="Fintech-mobile-gallery">
-            <div
-              className="Fintech-mobile-gallery-sliding"
-              style={{
-                backgroundImage: `url(${mobileGallery.childImageSharp.fluid.src})`
-              }}
-            />
-          </div>
-          <div ref={ref} className="Fintech-latest-work-gallery">
-            <motion.div
-              key="photo-0"
-              animate={animationControls}
-              className="Fintech-gallery-img row11"
-              custom={2}
-              data-photo={1}
-              initial="image1Hidden"
-              variants={variants}
-            >
-              <Img
-                durationFadeIn={150}
-                fadeIn
-                fluid={row11.childImageSharp.fluid}
-                imgStyle={{ objectFit: 'cover' }}
-              />
-            </motion.div>
-
-            <motion.div
-              key="photo-1"
-              animate={animationControls}
-              className="Fintech-gallery-img row12"
-              custom={3}
-              data-photo={2}
-              initial="image2Hidden"
-              variants={variants}
-            >
-              <Img
-                durationFadeIn={150}
-                fadeIn
-                fluid={row12.childImageSharp.fluid}
-                imgStyle={{ objectFit: 'cover' }}
-              />
-            </motion.div>
-
-            <motion.div
-              key="photo-2"
-              animate={animationControls}
-              className="Fintech-gallery-img row13"
-              custom={4}
-              data-photo={3}
-              initial="image3Hidden"
-              variants={variants}
-            >
-              <Img
-                durationFadeIn={150}
-                fadeIn
-                fluid={row13.childImageSharp.fluid}
-                imgStyle={{ objectFit: 'cover' }}
-              />
-            </motion.div>
-
-            <motion.div
-              key="photo-3"
-              animate={animationControls}
-              className="Fintech-gallery-img row21"
-              custom={5}
-              data-photo={4}
-              initial="image4Hidden"
-              variants={variants}
-            >
-              <Img
-                durationFadeIn={150}
-                fadeIn
-                fluid={row21.childImageSharp.fluid}
-                imgStyle={{ objectFit: 'cover' }}
-              />
-            </motion.div>
-
-            <motion.div
-              key="photo-4"
-              animate={animationControls}
-              className="Fintech-gallery-img row22"
-              custom={6}
-              data-photo={5}
-              initial="image5Hidden"
-              variants={variants}
-            >
-              <Img
-                durationFadeIn={150}
-                fadeIn
-                fluid={row22.childImageSharp.fluid}
-                imgStyle={{ objectFit: 'cover' }}
-              />
-            </motion.div>
-
-            <motion.div
-              key="photo-5"
-              animate={animationControls}
-              className="Fintech-gallery-img row23"
-              custom={7}
-              data-photo={6}
-              initial="image6Hidden"
-              variants={variants}
-            >
-              <Img
-                durationFadeIn={150}
-                fadeIn
-                fluid={row23.childImageSharp.fluid}
-                imgStyle={{ objectFit: 'cover' }}
-              />
-            </motion.div>
-
-            <motion.div
-              key="photo-6"
-              animate={animationControls}
-              className="Fintech-gallery-img row24"
-              custom={8}
-              data-photo={7}
-              initial="image7Hidden"
-              variants={variants}
-            >
-              <Img
-                durationFadeIn={150}
-                fadeIn
-                fluid={row24.childImageSharp.fluid}
-                imgStyle={{ objectFit: 'cover' }}
-              />
-            </motion.div>
-
-            <motion.div
-              key="photo-7"
-              animate={animationControls}
-              className="Fintech-gallery-img row25"
-              custom={9}
-              data-photo={8}
-              initial="image8Hidden"
-              variants={variants}
-            >
-              <Img
-                durationFadeIn={150}
-                fadeIn
-                fluid={row25.childImageSharp.fluid}
-                imgStyle={{ objectFit: 'cover' }}
-              />
-            </motion.div>
-
-            <motion.div
-              key="photo-8"
-              animate={animationControls}
-              className="Fintech-gallery-img row31"
-              custom={10}
-              data-photo={9}
-              initial="image9Hidden"
-              variants={variants}
-            >
-              <Img
-                durationFadeIn={150}
-                fadeIn
-                fluid={row31.childImageSharp.fluid}
-                imgStyle={{ objectFit: 'cover' }}
-              />
-            </motion.div>
-
-            <motion.div
-              key="photo-9"
-              animate={animationControls}
-              className="Fintech-gallery-img row32"
-              custom={11}
-              data-photo={20}
-              initial="image10Hidden"
-              variants={variants}
-            >
-              <Img
-                durationFadeIn={150}
-                fadeIn
-                fluid={row32.childImageSharp.fluid}
-                imgStyle={{ objectFit: 'cover' }}
-              />
-            </motion.div>
-          </div>
         </div>
 
         <div className="Fintech-works">
@@ -524,96 +251,6 @@ export const FINTECH_ALT_PAGE_QUERY = graphql`
       seoTitle
       seoDescription {
         seoDescription
-      }
-    }
-
-    mobileGallery: file(
-      relativePath: { eq: "landing-pages/fintech/mobile-gallery.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 3000, quality: 100) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
-
-    row11: file(relativePath: { eq: "landing-pages/fintech/row-1-1.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 2000) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
-
-    row12: file(relativePath: { eq: "landing-pages/fintech/row-1-2.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 2000) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
-
-    row13: file(relativePath: { eq: "landing-pages/fintech/row-1-3.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 2000) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
-
-    row21: file(relativePath: { eq: "landing-pages/fintech/row-2-1.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 2000) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
-
-    row22: file(relativePath: { eq: "landing-pages/fintech/row-2-2.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 2000) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
-
-    row23: file(relativePath: { eq: "landing-pages/fintech/row-2-3.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 2000) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
-
-    row24: file(relativePath: { eq: "landing-pages/fintech/row-2-4.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 2000) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
-
-    row25: file(relativePath: { eq: "landing-pages/fintech/row-2-5.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 2000) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
-
-    row31: file(relativePath: { eq: "landing-pages/fintech/row-3-1.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 2000) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
-
-    row32: file(relativePath: { eq: "landing-pages/fintech/row-3-2.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 2000) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
       }
     }
 
