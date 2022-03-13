@@ -3,6 +3,7 @@ import '@common/styles/pages/fintech-2.css'
 // Packages
 import React from 'react'
 import { graphql, PageProps } from 'gatsby'
+import Img from 'gatsby-image'
 
 // Components
 import Meta from '@components/Meta'
@@ -21,7 +22,6 @@ import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModa
 import useBookACallFormModal from '@modules/forms/hooks/useBookACallFormModal'
 
 // Svgs
-import HeroIllustration from '@static/svgs/landing-pages/fintech/fintech-hero.inline.svg'
 import DreamBig from '@static/svgs/landing-pages/fintech/fintech-dream-big.inline.svg'
 import ExpandResources from '@static/svgs/landing-pages/fintech/fintech-expand-resources.inline.svg'
 import IncreaseVelocity from '@static/svgs/landing-pages/fintech/fintech-velocity.inline.svg'
@@ -43,17 +43,11 @@ interface Props {
     allContentfulService: {
       nodes: TypeService[]
     }
-    mobileGallery: TypeGatsbyChildImageSharpFluid
-    row11: TypeGatsbyChildImageSharpFluid
-    row12: TypeGatsbyChildImageSharpFluid
-    row13: TypeGatsbyChildImageSharpFluid
-    row21: TypeGatsbyChildImageSharpFluid
-    row22: TypeGatsbyChildImageSharpFluid
-    row23: TypeGatsbyChildImageSharpFluid
-    row24: TypeGatsbyChildImageSharpFluid
-    row25: TypeGatsbyChildImageSharpFluid
-    row31: TypeGatsbyChildImageSharpFluid
-    row32: TypeGatsbyChildImageSharpFluid
+    heroMobile: TypeGatsbyChildImageSharpFluid
+    heroMd: TypeGatsbyChildImageSharpFluid
+    heroLg: TypeGatsbyChildImageSharpFluid
+    heroXl: TypeGatsbyChildImageSharpFluid
+    hero2Xl: TypeGatsbyChildImageSharpFluid
   }
   location: PageProps['location']
 }
@@ -61,6 +55,11 @@ interface Props {
 const Fintech = ({
   data: {
     contentfulSeo,
+    heroMobile,
+    heroMd,
+    heroLg,
+    heroXl,
+    hero2Xl,
     allContentfulTestimonial: { nodes: testimonials },
     allContentfulService: { nodes: services }
   },
@@ -68,6 +67,27 @@ const Fintech = ({
 }: Props) => {
   const { showModal } = useOpportunityFormModal()
   const { showModal: showBookACallModal } = useBookACallFormModal()
+
+  const heroImgSrcs = [
+    heroMobile.childImageSharp.fluid,
+    {
+      ...hero2Xl.childImageSharp.fluid,
+      media: `(min-width: 2560px)`
+    },
+    {
+      ...heroXl.childImageSharp.fluid,
+      media: `(min-width: 1280px)`
+    },
+    {
+      ...heroLg.childImageSharp.fluid,
+      media: `(min-width: 1024px)`
+    },
+    {
+      ...heroMd.childImageSharp.fluid,
+      media: `(min-width: 768px)`
+    }
+  ]
+
   return (
     <>
       <Meta
@@ -80,9 +100,6 @@ const Fintech = ({
 
       <main className="Fintech Fintech-alt">
         <div className="Fintech__hero">
-          <div className="Fintech__hero-illustration-container">
-            <HeroIllustration className="Fintech__hero-illustration" />
-          </div>
           <div className="Fintech__hero-inner">
             <div className="Fintech__hero-title-container">
               <h1 className="Fintech__hero-title text-h1">
@@ -102,6 +119,12 @@ const Fintech = ({
               </Button>
             </div>
           </div>
+          <Img
+            className="Fintech__hero-image"
+            durationFadeIn={150}
+            fadeIn
+            fluid={heroImgSrcs}
+          />
         </div>
 
         <div className="Fintech-call-cta">
@@ -191,14 +214,14 @@ const Fintech = ({
           />
         </div>
 
-        <div className="Fintech-footer">
-          <div className="Fintech-footer-content">
-            <h3 className="text-h3 Fintech-footer-title">
+        <div className="Fintech__footer">
+          <div className="Fintech__footer-content">
+            <h3 className="text-h3 Fintech__footer-title">
               Let's do something <span className="text-lilac">bold</span>{' '}
               together!
             </h3>
             <Button
-              className="Fintech-footer-button"
+              className="Fintech__footer-button"
               onClick={showModal}
               styleType="outline"
             >
@@ -206,34 +229,34 @@ const Fintech = ({
             </Button>
           </div>
 
-          <div className="Fintech-footer-contact">
-            <div className="Fintech-footer-social">
+          <div className="Fintech__footer-contact">
+            <div className="Fintech__footer-social">
               <a
                 href="https://www.dribbble.com/webuild/"
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <Dribbble className="Fintech-footer-social-icon" />
+                <Dribbble className="Fintech__footer-social-icon" />
               </a>
               <a
                 href="https://www.instagram.com/wearewebuild/"
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <Instagram className="Fintech-footer-social-icon" />
+                <Instagram className="Fintech__footer-social-icon" />
               </a>
               <a
                 href="https://www.linkedin.com/company/wearewebuild/"
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <LinkedIn className="Fintech-footer-social-icon" />
+                <LinkedIn className="Fintech__footer-social-icon" />
               </a>
             </div>
-            <div className="Fintech-footer-logo">
+            <div className="Fintech__footer-logo">
               <Logo />
             </div>
-            <div className="Fintech-footer-copyright">
+            <div className="Fintech__footer-copyright">
               <p className="text-caption">
                 All rights reserved &copy; webuild {new Date().getFullYear()}
               </p>
@@ -251,6 +274,56 @@ export const FINTECH_ALT_PAGE_QUERY = graphql`
       seoTitle
       seoDescription {
         seoDescription
+      }
+    }
+
+    heroMobile: file(
+      relativePath: { eq: "landing-pages/fintech-2/fintech-2-hero-mobile.png" }
+    ) {
+      childImageSharp {
+        fluid(maxWidth: 1000, quality: 100) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+
+    heroMd: file(
+      relativePath: { eq: "landing-pages/fintech-2/fintech-2-hero-md.png" }
+    ) {
+      childImageSharp {
+        fluid(maxWidth: 2200, quality: 100) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+
+    heroLg: file(
+      relativePath: { eq: "landing-pages/fintech-2/fintech-2-hero-lg.png" }
+    ) {
+      childImageSharp {
+        fluid(maxWidth: 3100, quality: 100) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+
+    heroXl: file(
+      relativePath: { eq: "landing-pages/fintech-2/fintech-2-hero-xl.png" }
+    ) {
+      childImageSharp {
+        fluid(maxWidth: 4200, quality: 100) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+
+    hero2Xl: file(
+      relativePath: { eq: "landing-pages/fintech-2/fintech-2-hero-2xl.png" }
+    ) {
+      childImageSharp {
+        fluid(maxWidth: 6000, quality: 100) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
       }
     }
 

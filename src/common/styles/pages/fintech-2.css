@@ -322,12 +322,12 @@
 }
 
 /** Footer **/
-.Fintech-footer {
+.Fintech__footer {
   @apply text-white;
   @apply bg-black;
 }
 
-.Fintech-footer-content {
+.Fintech__footer-content {
   @apply text-center;
   @apply py-20;
   @apply px-6;
@@ -341,12 +341,12 @@
   @apply xl:pb-39;
 }
 
-.Fintech-footer-title {
+.Fintech__footer-title {
   @apply font-extrabold;
   @apply mb-8;
 }
 
-.Fintech-footer-contact {
+.Fintech__footer-contact {
   @apply relative;
   @apply mx-auto;
   @apply py-10;
@@ -364,7 +364,7 @@
   max-width: 1184px;
 }
 
-.Fintech-footer-logo {
+.Fintech__footer-logo {
   @apply my-6;
   @apply w-25;
 
@@ -379,12 +379,12 @@
   }
 }
 
-.Fintech-footer-social {
+.Fintech__footer-social {
   @apply flex;
   @apply flex-nowrap;
   @apply gap-6;
 }
 
-.Fintech-footer-social-icon {
+.Fintech__footer-social-icon {
   @apply w-6;
 }
