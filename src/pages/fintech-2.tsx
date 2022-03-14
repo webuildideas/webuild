@@ -32,6 +32,10 @@ import LinkedIn from '@static/svgs/common/social/linkedin.inline.svg'
 import SlhLogo from '@static/svgs/logos/clients/slh-logo.inline.svg'
 import YottaLogo from '@static/svgs/logos/clients/yotta-logo.inline.svg'
 import ZipLogo from '@static/svgs/logos/clients/zip-logo.inline.svg'
+import DottedArrow from '@static/svgs/landing-pages/fintech-2/dotted-arrow.inline.svg'
+import Star from '@static/svgs/landing-pages/fintech-2/star.inline.svg'
+import Triangles from '@static/svgs/landing-pages/fintech-2/triangles.inline.svg'
+import Circles from '@static/svgs/landing-pages/fintech-2/circles.inline.svg'
 
 // Styles
 import { TypeGatsbyChildImageSharpFluid } from '@common/types/GatsbyImage'
@@ -226,15 +230,29 @@ const Fintech = ({
         </div>
 
         <div className="Fintech__form">
-          <h3 className="Fintech__form-title text-h3">Get in touch</h3>
-          <div className="Fintech__form-container">
-            <label className="Fintech__form-input-container">
-              <span className="text-tag block text-gray-700 mb-3">Email *</span>
-              <input className="Fintech__form-input" type="text" />
-            </label>
-            <Button className="Fintech__form-button" styleType="solid-salmon">
-              Get In Touch
-            </Button>
+          <div className="Fintech__circles-star">
+            <Circles className="Fintech__circles" />
+            <Star className="Fintech__star" />
+          </div>
+          <DottedArrow className="Fintech__arrow" />
+
+          <div className="Fintech__triangles-star">
+            <Triangles className="Fintech__triangles" />
+            <Star className="Fintech__star" />
+          </div>
+          <div className="Fintech__form-content">
+            <h3 className="Fintech__form-title text-h3">Get in touch</h3>
+            <div className="Fintech__form-container">
+              <label className="Fintech__form-input-container">
+                <span className="text-tag block text-gray-700 mb-3">
+                  Email *
+                </span>
+                <input className="Fintech__form-input" type="text" />
+              </label>
+              <Button className="Fintech__form-button" styleType="solid-salmon">
+                Get In Touch
+              </Button>
+            </div>
           </div>
         </div>
 

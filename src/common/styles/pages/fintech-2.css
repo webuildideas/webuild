@@ -1,3 +1,7 @@
+.Fintech {
+  @apply overflow-x-hidden;
+}
+
 /** Hero **/
 
 .Fintech__hero {
@@ -366,17 +370,23 @@
 /** Form **/
 
 .Fintech__form {
+  @apply relative;
   @apply py-20;
   @apply px-6;
 
   @apply md:px-0;
-  @apply md:mx-auto;
+
+  @apply 2xl:pt-30;
+  @apply 2xl:pb-50;
+}
+
+.Fintech__form-container {
+  @apply mx-auto;
+  @apply w-full;
   @screen md {
     max-width: 616px;
   }
 
-  @apply 2xl:pt-30;
-  @apply 2xl:pb-50;
   @screen 2xl {
     max-width: 977px;
   }
@@ -426,6 +436,132 @@
   @apply flex-shrink-0;
   padding-left: 57px;
   padding-right: 57px;
+}
+
+.Fintech__circles-star {
+  @apply absolute;
+  width: 130px;
+  left: -20px;
+  top: -50px;
+
+  @screen md {
+    left: 64px;
+  }
+
+  @screen xl {
+    left: 112px;
+  }
+
+  .Fintech__circles {
+    width: 104px;
+
+    @screen lg {
+      width: 125px;
+    }
+
+    @screen xl {
+      width: 150px;
+    }
+  }
+  
+  .Fintech__star {
+    @apply absolute;
+    right: 8px;
+    bottom: 4px;
+    width: 26px;
+
+    @screen md {
+      right: auto;
+      left: -32px;
+      bottom: auto;
+      top: 4px;
+    }
+
+    @screen lg {
+      width: 32px;
+    }
+
+    @screen xl {
+      width: 38px;
+      left: auto;
+      top: -24px;
+      right: -96px;
+    }
+  }
+}
+
+.Fintech__arrow {
+  @apply absolute;
+  right: -100px;
+  top: -120px;
+  width: 233px;
+
+  @screen md {
+    right: -50px;
+  }
+
+  @screen lg {
+    top: -175px;
+    right: -64px;
+    width: 280px;
+  }
+
+  @screen xl {
+    width: 335px;
+    right: -80px;
+  }
+}
+
+.Fintech__triangles-star {
+  @apply absolute;
+  right: -70px;
+  bottom: -90px;
+
+  @screen md {
+    bottom: -90px;
+    right: 32px;
+  }
+
+  @screen xl {
+    right: 96px;
+    bottom: -136px;
+  }
+  
+  .Fintech__triangles {
+    width: 112px;
+
+    @screen lg {
+      width: 135px;
+    }
+
+    @screen xl {
+      width: 162px;
+    }
+  }
+  
+  .Fintech__star {
+    @apply absolute;
+    width: 26px;
+    top: 0px;
+    left: -8px;
+
+    @screen md {
+      left: auto;
+      top: auto;
+      bottom: -16px;
+      right: 0px;
+    }
+    
+    @screen lg {
+      width: 32px;
+    }
+
+    @screen xl {
+      width: 38px;
+      right: -64px;
+      bottom: -32px;
+    }
+  }
 }
 
 /** Services **/
