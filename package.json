@@ -50,10 +50,12 @@
     "react-paginate": "^7.1.0",
     "react-player": "^2.9.0",
     "react-share": "^4.3.1",
+    "react-slick": "^0.28.1",
     "react-spring": "^8.0.27",
     "react-stickynode": "^4.0.0",
     "recoil": "^0.2.0",
     "recoil-persist": "^2.5.0",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^5.2.1",
     "tailwindcss": "^2.0.2",
     "yup": "^0.32.8"

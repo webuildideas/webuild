@@ -1,0 +1,56 @@
+.other-members {
+  @apply relative;
+  @apply pt-8;
+  @apply px-6;
+
+  @apply md:px-8;
+
+  @apply lg:px-10;
+  @screen lg {
+    max-width: 1575px;
+    @apply pt-24;
+  }
+
+  @screen xl {
+    @apply mx-auto;
+  }
+}
+
+.other-members__wrapper {
+  @apply grid grid-cols-2 gap-x-2 gap-y-6 md:grid-cols-4 md:gap-x-4 lg:gap-x-5;
+}
+
+.other-members__wrapper
+  .WhoWeAre-team-member:nth-child(1)
+  .WhoWeAre-team-info::before,
+.other-members__wrapper
+  .WhoWeAre-team-member:nth-child(1)
+  .WhoWeAre-team-info::after,
+.other-members__wrapper
+  .WhoWeAre-team-member:nth-child(4)
+  .WhoWeAre-team-info::before,
+.other-members__wrapper
+  .WhoWeAre-team-member:nth-child(4)
+  .WhoWeAre-team-info::after {
+  display: none;
+}
+
+.other-members__wrapper .WhoWeAre-team-photo {
+  @apply lg:pt-23;
+}
+
+.other-members__wrapper .WhoWeAre-team-info {
+  @apply p-0 pt-4;
+}
+
+.other-members__wrapper .WhoWeAre-team-headshot {
+  max-height: 100%;
+}
+
+.other-members__wrapper .WhoWeAre-team-illustration {
+  @apply lg:w-full;
+}
+
+.others-meet {
+  @apply flex justify-center mt-20 mb-30 w-full;
+}

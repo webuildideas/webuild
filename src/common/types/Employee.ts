@@ -3,6 +3,7 @@ import { TypeContentfulAsset } from './Contentful'
 export interface TypeEmployee {
   name: string
   role: string
+  slug: string
   location: string
   loveAboutDesign: string
   favoriteLocalMeal: string

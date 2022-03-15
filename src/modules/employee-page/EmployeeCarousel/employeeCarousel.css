@@ -1,0 +1,76 @@
+.employee-carousel {
+  @apply relative transform -translate-y-10 overflow-hidden pb-6;
+}
+
+.employee-carousel__wrapper {
+  @apply md:w-11/12 md:m-auto;
+}
+
+.survey-card {
+  @apply py-12 px-6 bg-white;
+  box-shadow: 0px 24px 38px rgba(0, 0, 0, 0.06),
+    0px 9px 46px rgba(0, 0, 0, 0.08), 0px 11px 15px rgba(0, 0, 0, 0.1);
+}
+
+.survey-card__wrapper {
+  @apply opacity-30 transition-opacity duration-300;
+}
+
+.survey-card__icon {
+  @apply mb-8;
+}
+
+.survey-card__icon svg {
+  height: 64px;
+  width: auto;
+}
+
+.survey-card__content h3 {
+  @apply mb-2;
+}
+
+/* SLICK THINGS */
+.slick-list {
+  @apply pb-12 !important;
+  @apply overflow-visible !important;
+}
+
+.slick-track {
+  display: flex !important;
+}
+
+.slick-slide {
+  padding: 0 8px;
+  height: inherit !important;
+  @apply transform scale-95 transition-transform duration-300;
+}
+
+.slick-slide.slick-active {
+  @apply transform-none;
+}
+
+.slick-slide.slick-active .survey-card__wrapper {
+  @apply opacity-100;
+}
+
+.slick-slide > div {
+  height: 100%;
+}
+
+.slick-slide .survey-card {
+  height: 100%;
+}
+
+.slick-arrow::before {
+  display: none;
+}
+
+.slick-arrow {
+  z-index: 2;
+  @apply transition-opacity duration-300;
+}
+
+.slick-arrow.slick-disabled {
+  opacity: 0;
+  pointer-events: none;
+}
