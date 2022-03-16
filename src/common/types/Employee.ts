@@ -1,5 +1,9 @@
 import { TypeContentfulAsset } from './Contentful'
 
+// export type TypeEmployeeSurvey {
+
+// }
+
 export interface TypeEmployee {
   name: string
   role: string
