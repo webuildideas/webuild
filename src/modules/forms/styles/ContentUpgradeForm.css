@@ -45,7 +45,8 @@
   @apply mt-8;
 }
 
-.ContentUpgrade.simpleForm {
+.ContentUpgrade.simpleForm,
+.ContentUpgrade.resourceForm {
   @apply md:pr-8;
 
   img {

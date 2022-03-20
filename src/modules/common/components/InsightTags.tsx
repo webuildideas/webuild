@@ -1,3 +1,5 @@
+import './styles/InsightTags.css'
+
 // Packages
 import React from 'react'
 import { kebabCase } from 'lodash'
@@ -11,9 +13,6 @@ import {
   TypeInsightTypeIconConfig,
   TypeInsightTopicIconConfig
 } from './configs/InsightTags'
-
-// Styles
-import './styles/InsightTags.css'
 
 interface Props extends WithClassName {
   type: TypeInsightType
