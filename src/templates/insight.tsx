@@ -185,7 +185,12 @@ const Insight = ({
     }
 
     if (contentUpgradeInputRef.current) {
-      contentUpgradeInputRef.current.focus()
+      contentUpgrade.scrollIntoView({ behavior: 'smooth' })
+      setTimeout(() => {
+        if (contentUpgradeInputRef.current) {
+          contentUpgradeInputRef.current.focus()
+        }
+      }, 1000)
     }
   }
 
