@@ -20,7 +20,12 @@ interface Props extends WithClassName {
 }
 
 const InsightTags = ({ type, topics, className }: Props) => {
+  if (!TypeInsightTypeIconConfig[type]) {
+    return null
+  }
+
   const { name: typeName, icon: TypeIcon } = TypeInsightTypeIconConfig[type]
+
   return (
     <div className={`InsightTags ${className}`}>
       <div className="InsightTags-type">
