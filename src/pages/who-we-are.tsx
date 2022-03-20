@@ -154,7 +154,7 @@ const WhoWeAre = ({ data, location }: Props) => {
           <PhotoGrid photos={photoGrid} />
         </PhotoGridContainer>
 
-        <div className="WhoWeAre-team">
+        <div className="WhoWeAre-team" id="who-we-are-team">
           <h2 className="WhoWeAre-section-title text-h2 text-center">
             <span className="block text-h4 mb-2">Who's Who</span>
             <span className="font-extrabold">Meet the Team</span>

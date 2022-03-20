@@ -49,7 +49,7 @@ const OtherMembers = ({ peeps }) => {
         <MotionAniLink
           className="inline-block m-auto"
           styleType="solid-purple"
-          to="/who-we-are/"
+          to="/who-we-are#who-we-are-team"
         >
           Meet all of us
         </MotionAniLink>

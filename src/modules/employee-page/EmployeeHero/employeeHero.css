@@ -1,6 +1,6 @@
 /* HERO */
 .employee-hero {
-  @apply relative overflow-hidden m-auto;
+  @apply relative m-auto;
 }
 
 .employee-hero::before {

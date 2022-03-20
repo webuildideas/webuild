@@ -2,6 +2,7 @@
   @apply relative;
   @apply pt-8;
   @apply px-6;
+  @apply overflow-hidden;
 
   @apply md:px-8;
 

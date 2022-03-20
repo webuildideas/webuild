@@ -25,7 +25,7 @@ const EmployeeHero = ({
           <div className="relative m-auto flex justify-end content-end w-full h-full">
             <img
               alt=""
-              className="w-full self-end lg:self-auto md:w-2/3 h-auto"
+              className="w-full self-end lg:self-auto md:w-2/3 h-3/4 md:h-auto object-contain lg:object-none"
               src={illustration}
             />
           </div>

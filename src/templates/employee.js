@@ -22,7 +22,7 @@ const employeePage = ({
       <Meta location={location} title={`Who We Are | ${employee.name}`} />
       <motion.main
         animate={animateTo}
-        className="WhoWeAre overflow-hidden"
+        className="WhoWeAre"
         initial={initial}
         transition={{ delay: 1 }}
       >
