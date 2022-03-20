@@ -145,18 +145,18 @@ const Fintech = ({
             </div>
             <div className="Fintech__clients-item">
               <div className="Fintech__clients-logo-container">
-                <YottaLogo className="Fintech__clients-logo" />
-              </div>
-              <p className="Fintech__clients-copy text-body">
-                250% growth driven by a robust design system
-              </p>
-            </div>
-            <div className="Fintech__clients-item">
-              <div className="Fintech__clients-logo-container">
                 <SlhLogo className="Fintech__clients-logo" />
               </div>
               <p className="Fintech__clients-copy text-body">
                 5x revenue through obsessive optimization
+              </p>
+            </div>
+            <div className="Fintech__clients-item">
+              <div className="Fintech__clients-logo-container">
+                <YottaLogo className="Fintech__clients-logo" />
+              </div>
+              <p className="Fintech__clients-copy text-body">
+                $16M raised &amp; cross-platform experience designed
               </p>
             </div>
           </div>
