@@ -14,12 +14,14 @@ interface Props {
   services: TypeService[]
   showButton?: boolean
   title?: string
+  isChampagnePinkBg?: boolean
 }
 
 const OtherServices = ({
   services,
   title = 'Other Services',
-  showButton = true
+  showButton = true,
+  isChampagnePinkBg = false
 }: Props) => {
   return (
     <div className="OtherServices">
@@ -58,11 +60,19 @@ const OtherServices = ({
                   )}-other-service`}
                   src={service.otherServicesIllustration.file.url}
                 />
-                {service.otherServicesGif?.file?.url ? (
+                {!isChampagnePinkBg && service.otherServicesGif?.file?.url ? (
                   <img
                     alt={`${service.title} illustration`}
                     className="OtherServices-service-animated-gif"
                     src={service.otherServicesGif.file.url}
+                  />
+                ) : null}
+                {isChampagnePinkBg &&
+                service.otherServicesGifChampagnePinkBg?.file?.url ? (
+                  <img
+                    alt={`${service.title} illustration`}
+                    className="OtherServices-service-animated-gif"
+                    src={service.otherServicesGifChampagnePinkBg.file.url}
                   />
                 ) : null}
               </div>

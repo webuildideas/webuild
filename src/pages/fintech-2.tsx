@@ -277,6 +277,7 @@ const Fintech = ({
 
         <div className="Fintech-services">
           <OtherServices
+            isChampagnePinkBg
             services={services}
             showButton={false}
             title="What we do (very) well"
@@ -444,6 +445,11 @@ export const FINTECH_ALT_PAGE_QUERY = graphql`
           }
         }
         otherServicesGif {
+          file {
+            url
+          }
+        }
+        otherServicesGifChampagnePinkBg {
           file {
             url
           }
