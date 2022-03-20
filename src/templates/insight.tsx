@@ -1,3 +1,5 @@
+import '@common/styles/templates/insight.css'
+
 // Packages
 import React, { useEffect, useRef, useState } from 'react'
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
@@ -11,6 +13,7 @@ import Img from 'gatsby-image'
 // Common
 import { classNames } from '@common/utils/classNames'
 import { TypeInsight } from '@common/types/Insight'
+import { getEstimatedReadingTime } from '@modules/insight/utils'
 
 // Components
 import Meta from '@components/Meta'
@@ -18,19 +21,17 @@ import SocialShare from '@modules/insight/components/SocialShare'
 import ReadNext from '@modules/insight/components/ReadNext'
 import ReadNextSidebar from '@modules/insight/components/ReadNextSidebar'
 import InsightTags from '@modules/common/components/InsightTags'
-import { getEstimatedReadingTime } from '@modules/insight/utils'
 import Author from '@modules/insight/components/Author'
 import Footer from '@modules/common/components/Footer'
 import EmailSignupForm from '@modules/forms/EmailSignupForm'
 import GatedPostForm from '@modules/forms/GatedPostForm'
 import ContentUpgradeForm from '@modules/forms/ContentUpgradeForm'
 import MonthlyNewsletterForm from '@modules/forms/MonthlyNewsletterForm'
+import Button from '@modules/common/components/Button'
 
 // Atoms
 import { userGatedPostConversionsAtom } from '@modules/insight/atoms/userGatedPostConversions'
-
-// Styles
-import '@common/styles/templates/insight.css'
+import { userContentUpgradeConversionsAtom } from '@modules/forms/atoms/userContentUpgradeConversionsAtom'
 
 interface Props {
   location: PageProps['location']
@@ -145,15 +146,53 @@ const Insight = ({
   location
 }: Props) => {
   const userGatedPostConversions = useRecoilValue(userGatedPostConversionsAtom)
+  const userContentUpgradeConversions = useRecoilValue(
+    userContentUpgradeConversionsAtom
+  )
   const userHasUnlockedPost = userGatedPostConversions.includes(insight.id)
   const isLocked = insight.isGated && !userHasUnlockedPost
   const [estReadTime, setEstReadTime] = useState<number>()
   const articleRef = useRef<HTMLDivElement>(null)
+  const contentUpgradeInputRef = useRef<HTMLInputElement>(null)
+  const userHasCompletedContentUpgrade = userContentUpgradeConversions.includes(
+    insight.contentUpgrade ? insight.contentUpgrade.title : ''
+  )
+
+  const showReadNext = insight.type !== 'Resource'
+  const showSidebar = insight.type !== 'Resource'
 
   const articleClassNames = classNames({
     'Insight-article': true,
     'Insight-article-locked': isLocked
   })
+
+  /**
+   * If there is a content upgrade and user has already completed form
+   * then scroll them to that element.
+   *
+   * If the user has not completed form then focus on the form input.
+   *
+   * @returns void;
+   */
+  const handleOnAccessClick = () => {
+    const contentUpgrade = document.getElementsByClassName(
+      'ContentUpgrade-bottom'
+    )[0]
+
+    if (contentUpgrade && userHasCompletedContentUpgrade) {
+      contentUpgrade.scrollIntoView({ behavior: 'smooth' })
+      return
+    }
+
+    if (contentUpgradeInputRef.current) {
+      contentUpgrade.scrollIntoView({ behavior: 'smooth' })
+      setTimeout(() => {
+        if (contentUpgradeInputRef.current) {
+          contentUpgradeInputRef.current.focus()
+        }
+      }, 1000)
+    }
+  }
 
   useEffect(() => {
     if (articleRef.current) {
@@ -172,7 +211,7 @@ const Insight = ({
         title={insight.seoTitle ?? insight.title}
       />
       <div
-        className={`Insight-container Insight-${insight.type}`}
+        className={`Insight-container Insight-type-${insight.type.toLowerCase()}`}
         id="insight-container"
       >
         {insight?.heroIllustration?.file?.url ? (
@@ -190,16 +229,31 @@ const Insight = ({
               topics={insight.topics}
               type={insight.type}
             />
+
             <h1 className="text-h1 mb-4 mt-6">{insight.title}</h1>
+
             {insight.subtitle ? (
               <h2 className="text-title-subheading">{insight.subtitle}</h2>
             ) : null}
+
             {insight.author ? (
-              <Author
-                author={insight.author}
-                estReadTime={estReadTime}
-                publishDate={insight.publishDate}
-              />
+              <div className="Insight-author">
+                <Author
+                  author={insight.author}
+                  estReadTime={estReadTime}
+                  publishDate={insight.publishDate}
+                  showReadTime={insight.type !== 'Resource'}
+                />
+                {insight.type === 'Resource' ? (
+                  <Button
+                    className="Insight-access-button"
+                    onClick={handleOnAccessClick}
+                    styleType="solid-purple"
+                  >
+                    Access Now
+                  </Button>
+                ) : null}
+              </div>
             ) : null}
           </div>
           <article ref={articleRef} className="Insight" id="article">
@@ -208,6 +262,7 @@ const Insight = ({
                 ? renderRichText(insight.content, options)
                 : null}
             </div>
+
             {insight.isGated ? (
               <div className="pr-6 md:pr-8 lg:pr-0">
                 <GatedPostForm
@@ -217,13 +272,17 @@ const Insight = ({
                 />
               </div>
             ) : null}
+
             {!isLocked && insight.contentUpgrade ? (
               <ContentUpgradeForm
                 className="mt-16 mb-8 md:mb-0 ContentUpgrade-bottom"
                 contentUpgrade={insight.contentUpgrade}
+                inputRef={contentUpgradeInputRef}
+                isResource={insight.type === 'Resource'}
               />
             ) : null}
           </article>
+
           {!isLocked ? (
             <>
               <div className="Insight-share">
@@ -237,24 +296,28 @@ const Insight = ({
                 </Sticky>
               </div>
 
-              <ReadNext
-                className="Insight-read-next"
-                posts={insight.readNext}
-                relatedPostsByTopic={relatedInsightsByTopic}
-              />
+              {showReadNext ? (
+                <ReadNext
+                  className="Insight-read-next"
+                  posts={insight.readNext}
+                  relatedPostsByTopic={relatedInsightsByTopic}
+                />
+              ) : null}
 
-              <div className="Insight-ctas">
-                <EmailSignupForm location={location.href} />
-                <MonthlyNewsletterForm
-                  containerId="insight-container"
-                  location={location.href}
-                  percentTrigger={0.3}
-                />
-                <ReadNextSidebar
-                  insights={insight.readNext}
-                  relatedInsightsByTopic={relatedInsightsByTopic}
-                />
-              </div>
+              {showSidebar ? (
+                <div className="Insight-ctas">
+                  <EmailSignupForm location={location.href} />
+                  <MonthlyNewsletterForm
+                    containerId="insight-container"
+                    location={location.href}
+                    percentTrigger={0.3}
+                  />
+                  <ReadNextSidebar
+                    insights={insight.readNext}
+                    relatedInsightsByTopic={relatedInsightsByTopic}
+                  />
+                </div>
+              ) : null}
             </>
           ) : null}
         </main>
@@ -357,6 +420,10 @@ export const query = graphql`
         }
         simpleFormTitle
         title
+        resourceFormTitle
+        resourceBlurb {
+          resourceBlurb
+        }
         upgradeContent {
           file {
             url

@@ -11,6 +11,7 @@ import EmailCourse from '@static/svgs/type/email-course.inline.svg'
 import Event from '@static/svgs/type/event.inline.svg'
 import Podcast from '@static/svgs/type/podcast.inline.svg'
 import Publication from '@static/svgs/type/publication.inline.svg'
+import Resource from '@static/svgs/type/resource.inline.svg'
 import Video from '@static/svgs/type/video.inline.svg'
 import Webinar from '@static/svgs/type/webinar.inline.svg'
 
@@ -57,6 +58,10 @@ export const TypeInsightTypeIconConfig: TypeInsightTypeIconConfig = {
   Publication: {
     icon: Publication,
     name: 'Publication'
+  },
+  Resource: {
+    icon: Resource,
+    name: 'Resource'
   },
   Video: {
     icon: Video,

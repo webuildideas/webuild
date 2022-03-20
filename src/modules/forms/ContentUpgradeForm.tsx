@@ -28,7 +28,9 @@ import { classNames } from '@common/utils/classNames'
 interface Props extends WithClassName {
   contentUpgrade: TypeContentUpgrade
   isSimple?: boolean
+  isResource?: boolean
   title?: string
+  inputRef?: React.RefObject<HTMLInputElement>
 }
 
 interface FormValues {
@@ -57,7 +59,9 @@ const ContentUpgradeForm = ({
   className,
   contentUpgrade,
   isSimple = false,
-  title
+  isResource = false,
+  title,
+  inputRef
 }: Props) => {
   const [
     userContentUpgradeConversions,
@@ -70,6 +74,7 @@ const ContentUpgradeForm = ({
   const formClassNames = classNames({
     ContentUpgrade: true,
     simpleForm: isSimple,
+    resourceForm: isResource,
     [`${className}`]: !!className
   })
 
@@ -123,15 +128,43 @@ const ContentUpgradeForm = ({
     ]
   )
 
+  const getTitle = useCallback((): string => {
+    if (isSimple && contentUpgrade.simpleFormTitle) {
+      return contentUpgrade.simpleFormTitle
+    }
+
+    if (isResource && contentUpgrade.resourceFormTitle) {
+      return contentUpgrade.resourceFormTitle
+    }
+
+    return contentUpgrade.title
+  }, [
+    isSimple,
+    isResource,
+    contentUpgrade.simpleFormTitle,
+    contentUpgrade.resourceFormTitle,
+    contentUpgrade.title
+  ])
+
   return (
     <div className={formClassNames}>
       <div className="ContentUpgrade-container">
         <h2 className="ContentUpgrade-title text-h3 font-extrabold mb-6">
-          {isSimple ? contentUpgrade.simpleFormTitle : contentUpgrade.title}
+          {getTitle()}
         </h2>
-        {contentUpgrade?.blurb?.blurb && isSimple && !userHasCompletedForm ? (
+
+        {isSimple && contentUpgrade?.blurb?.blurb && !userHasCompletedForm ? (
           <p className="text-body mb-6">{contentUpgrade.blurb.blurb}</p>
         ) : null}
+
+        {isResource &&
+        contentUpgrade?.resourceBlurb?.resourceBlurb &&
+        !userHasCompletedForm ? (
+          <p className="text-body mb-6">
+            {contentUpgrade.resourceBlurb.resourceBlurb}
+          </p>
+        ) : null}
+
         <Formik
           initialValues={initialFormValues}
           onSubmit={handleSubmit}
@@ -159,14 +192,17 @@ const ContentUpgradeForm = ({
                   />
 
                   <div className="ContentUpgrade-form">
-                    <img
-                      alt="illustration"
-                      className="ContentUpgrade-image mb-6"
-                      src={contentUpgrade.formImage.file.url}
-                    />
+                    {contentUpgrade.formImage ? (
+                      <img
+                        alt="illustration"
+                        className="ContentUpgrade-image mb-6"
+                        src={contentUpgrade.formImage.file.url}
+                      />
+                    ) : null}
                     <div className="ContentUpgrade-form-fields">
                       <TextInput
                         className="ContentUpgrade-email block appearance-none mb-4"
+                        inputRef={inputRef}
                         label="Email *"
                         name="E-mail Address"
                         type="text"

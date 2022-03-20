@@ -16,6 +16,7 @@ export type TypeInsightType =
   | 'Event'
   | 'Podcast'
   | 'Publication'
+  | 'Resource'
   | 'Video'
   | 'Webinar'
 

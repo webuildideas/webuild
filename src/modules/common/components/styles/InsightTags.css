@@ -11,6 +11,11 @@
   @apply items-center;
   @apply mr-4;
   @apply mb-3;
+
+  .text-caption {
+    @apply pt-1;
+    line-height: 1;
+  }
 }
 
 .InsightTags-topics {
