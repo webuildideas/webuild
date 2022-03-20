@@ -16,7 +16,9 @@ import SelectField from '@modules/forms/components/SelectField'
 
 import './styles/OpportunityForm.css'
 import MotionAniLink from '@modules/common/components/MotionAniLink'
+import { useRecoilValue } from 'recoil'
 import useOpportunityFormModal from './hooks/useOpportunityFormModal'
+import { opportunityFormModalEmail } from './atoms/opportunityFormModalEmail'
 
 interface Props {
   title?: string
@@ -60,12 +62,13 @@ const OpportunityForm = ({
   title = 'Set up a meeting—we’d love to chat!',
   buttonText = 'Send'
 }: Props) => {
+  const emailAddress = useRecoilValue(opportunityFormModalEmail)
   const [formSubmitted, setFormSubmitted] = useState(false)
   const { closeModal } = useOpportunityFormModal()
   const initialFormValues: FormValues = {
     'First Name': '',
     'Last Name': '',
-    'E-mail Address': '',
+    'E-mail Address': emailAddress,
     Country: '',
     Message: '',
     'Privacy Notice': true,

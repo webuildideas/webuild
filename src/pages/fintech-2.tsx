@@ -1,7 +1,7 @@
 import '@common/styles/pages/fintech-2.css'
 
 // Packages
-import React from 'react'
+import React, { useCallback, useState } from 'react'
 import { graphql, PageProps } from 'gatsby'
 import Img from 'gatsby-image'
 
@@ -71,8 +71,18 @@ const Fintech = ({
   },
   location
 }: Props) => {
-  const { showModal } = useOpportunityFormModal()
+  const [email, setEmail] = useState('')
+  const { showModal, setFormEmail } = useOpportunityFormModal()
   const { showModal: showBookACallModal } = useBookACallFormModal()
+
+  const handleSetEmailAndOpenModal = useCallback(() => {
+    setFormEmail(email)
+    showModal()
+  }, [email, setFormEmail, showModal])
+
+  const handleInputChange = useCallback((event: any) => {
+    setEmail(event.target.value)
+  }, [])
 
   const heroImgSrcs = [
     heroMobile.childImageSharp.fluid,
@@ -247,9 +257,18 @@ const Fintech = ({
                 <span className="text-tag block text-gray-700 mb-3">
                   Email *
                 </span>
-                <input className="Fintech__form-input" type="text" />
+                <input
+                  className="Fintech__form-input"
+                  onChange={handleInputChange}
+                  type="text"
+                  value={email}
+                />
               </label>
-              <Button className="Fintech__form-button" styleType="solid-salmon">
+              <Button
+                className="Fintech__form-button"
+                onClick={handleSetEmailAndOpenModal}
+                styleType="solid-salmon"
+              >
                 Get In Touch
               </Button>
             </div>
