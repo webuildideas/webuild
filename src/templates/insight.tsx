@@ -273,7 +273,7 @@ const Insight = ({
                 className="mt-16 mb-8 md:mb-0 ContentUpgrade-bottom"
                 contentUpgrade={insight.contentUpgrade}
                 inputRef={contentUpgradeInputRef}
-                isSimple={insight.type === 'Resource'}
+                isResource={insight.type === 'Resource'}
               />
             ) : null}
           </article>
@@ -415,6 +415,10 @@ export const query = graphql`
         }
         simpleFormTitle
         title
+        resourceFormTitle
+        resourceBlurb {
+          resourceBlurb
+        }
         upgradeContent {
           file {
             url

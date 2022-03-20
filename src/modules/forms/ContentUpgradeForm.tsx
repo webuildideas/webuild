@@ -28,6 +28,7 @@ import { classNames } from '@common/utils/classNames'
 interface Props extends WithClassName {
   contentUpgrade: TypeContentUpgrade
   isSimple?: boolean
+  isResource?: boolean
   title?: string
   inputRef?: React.RefObject<HTMLInputElement>
 }
@@ -58,6 +59,7 @@ const ContentUpgradeForm = ({
   className,
   contentUpgrade,
   isSimple = false,
+  isResource = false,
   title,
   inputRef
 }: Props) => {
@@ -72,6 +74,7 @@ const ContentUpgradeForm = ({
   const formClassNames = classNames({
     ContentUpgrade: true,
     simpleForm: isSimple,
+    resourceForm: isResource,
     [`${className}`]: !!className
   })
 
@@ -125,15 +128,43 @@ const ContentUpgradeForm = ({
     ]
   )
 
+  const getTitle = useCallback((): string => {
+    if (isSimple && contentUpgrade.simpleFormTitle) {
+      return contentUpgrade.simpleFormTitle
+    }
+
+    if (isResource && contentUpgrade.resourceFormTitle) {
+      return contentUpgrade.resourceFormTitle
+    }
+
+    return contentUpgrade.title
+  }, [
+    isSimple,
+    isResource,
+    contentUpgrade.simpleFormTitle,
+    contentUpgrade.resourceFormTitle,
+    contentUpgrade.title
+  ])
+
   return (
     <div className={formClassNames}>
       <div className="ContentUpgrade-container">
         <h2 className="ContentUpgrade-title text-h3 font-extrabold mb-6">
-          {isSimple ? contentUpgrade.simpleFormTitle : contentUpgrade.title}
+          {getTitle()}
         </h2>
-        {contentUpgrade?.blurb?.blurb && isSimple && !userHasCompletedForm ? (
+
+        {isSimple && contentUpgrade?.blurb?.blurb && !userHasCompletedForm ? (
           <p className="text-body mb-6">{contentUpgrade.blurb.blurb}</p>
         ) : null}
+
+        {isResource &&
+        contentUpgrade?.resourceBlurb?.resourceBlurb &&
+        !userHasCompletedForm ? (
+          <p className="text-body mb-6">
+            {contentUpgrade.resourceBlurb.resourceBlurb}
+          </p>
+        ) : null}
+
         <Formik
           initialValues={initialFormValues}
           onSubmit={handleSubmit}
