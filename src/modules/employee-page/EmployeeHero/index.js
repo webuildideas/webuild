@@ -25,7 +25,7 @@ const EmployeeHero = ({
           <div className="relative m-auto flex justify-end content-end w-full h-full">
             <img
               alt=""
-              className="w-full self-end lg:self-auto md:w-2/3 h-3/4 md:h-auto object-contain lg:object-none"
+              className="w-full self-end lg:self-auto md:w-2/3 h-3/4 md:h-auto object-contain 2xl:object-none"
               src={illustration}
             />
           </div>
@@ -44,7 +44,7 @@ const EmployeeHero = ({
               cover={true}
               direction="left"
               duration={1.25}
-              to="/who-we-are/"
+              to="/who-we-are#who-we-are-team"
             >
               <SimpleArrowLeft className="Service-header-icon" />
               <span>About Us</span>

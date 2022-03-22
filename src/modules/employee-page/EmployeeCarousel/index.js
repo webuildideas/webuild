@@ -54,9 +54,26 @@ const settings = {
   initialSlide: 0,
   nextArrow: <NextArrow />,
   prevArrow: <PrevArrow />,
+  variableWidth: true,
   responsive: [
     {
-      breakpoint: 2240,
+      breakpoint: 2380,
+      settings: {
+        slidesToShow: 5,
+        slidesToScroll: 5,
+        initialSlide: 0
+      }
+    },
+    {
+      breakpoint: 1970,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        initialSlide: 0
+      }
+    },
+    {
+      breakpoint: 1560,
       settings: {
         slidesToShow: 3,
         slidesToScroll: 3,
@@ -67,7 +84,7 @@ const settings = {
       breakpoint: 1024,
       settings: {
         slidesToShow: 2,
-        slidesToScroll: 2,
+        slidesToScroll: 1,
         initialSlide: 0,
         arrows: false
       }
@@ -91,7 +108,7 @@ const SurveyCard = ({ item, question, icon }) => {
       <div className="survey-card__wrapper">
         <div className="survey-card__icon">{icon}</div>
         <div className="survey-card__content">
-          <h3 className="text-h3">{question}</h3>
+          <h3 className="text-h3 font-extrabold">{question}</h3>
           <p className="text-body">{item.internal.content}</p>
         </div>
       </div>

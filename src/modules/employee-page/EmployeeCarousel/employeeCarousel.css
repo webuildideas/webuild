@@ -7,7 +7,7 @@
 }
 
 .survey-card {
-  @apply py-12 px-6 bg-white;
+  @apply py-12 px-6 bg-white md:px-8 md:py-12;
   box-shadow: 0px 24px 38px rgba(0, 0, 0, 0.06),
     0px 9px 46px rgba(0, 0, 0, 0.08), 0px 11px 15px rgba(0, 0, 0, 0.1);
 }
@@ -17,7 +17,7 @@
 }
 
 .survey-card__icon {
-  @apply mb-8;
+  @apply mb-8 md:mb-12;
 }
 
 .survey-card__icon svg {
@@ -43,6 +43,9 @@
   padding: 0 8px;
   height: inherit !important;
   @apply transform scale-95 transition-transform duration-300;
+  @screen md {
+    width: 380px;
+  }
 }
 
 .slick-slide.slick-active {
