@@ -1,7 +1,7 @@
 import React from 'react'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import Img from 'gatsby-image'
-// import { motion } from 'framer-motion'
+import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
 
 // Components
 import LocationIcon from '@static/svgs/employee-page/location.inline.svg'
@@ -10,6 +10,15 @@ import SimpleArrowLeft from '@static/svgs/common/arrows/arrow-simple-left.inline
 // Styles
 import './employeeHero.css'
 
+interface Props {
+  background: string
+  name: string
+  role: string
+  location: string
+  headshot: TypeGatsbyImageFluid
+  illustration: string
+}
+
 const EmployeeHero = ({
   background,
   name,
@@ -17,7 +26,7 @@ const EmployeeHero = ({
   location,
   headshot,
   illustration
-}) => {
+}: Props) => {
   return (
     <section className="employee-hero" style={{ background: `${background}` }}>
       {illustration && (
@@ -32,11 +41,7 @@ const EmployeeHero = ({
         </div>
       )}
       <div className="employee-hero__wrapper relative">
-        <div
-          animate="show"
-          className="employee-hero__container"
-          initial="hidden"
-        >
+        <div className="employee-hero__container">
           <div className="employee-hero__info">
             <AniLink
               bg="#286AFF"

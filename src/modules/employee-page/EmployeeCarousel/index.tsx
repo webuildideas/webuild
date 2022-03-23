@@ -17,8 +17,14 @@ import './employeeCarousel.css'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
+interface ArrowProps {
+  className: string
+  style: Record<string, unknown>
+  onClick(): any
+}
+
 // Custom Carousel Arows
-const NextArrow = ({ className, style, onClick }) => {
+const NextArrow = ({ className, style, onClick }: ArrowProps) => {
   return (
     <div
       className={className}
@@ -31,7 +37,7 @@ const NextArrow = ({ className, style, onClick }) => {
   )
 }
 
-const PrevArrow = ({ className, style, onClick }) => {
+const PrevArrow = ({ className, style, onClick }: ArrowProps) => {
   return (
     <div
       className={className}
@@ -102,83 +108,79 @@ const settings = {
   ]
 }
 
-const SurveyCard = ({ item, question, icon }) => {
+interface SurveyCardProps {
+  item: string
+  question: string
+  icon: any
+}
+
+const SurveyCard = ({ item, question, icon }: SurveyCardProps) => {
   return (
     <div className="survey-card">
       <div className="survey-card__wrapper">
         <div className="survey-card__icon">{icon}</div>
         <div className="survey-card__content">
           <h3 className="text-h3 font-extrabold">{question}</h3>
-          <p className="text-body">{item.internal.content}</p>
+          <p className="text-body">{item}</p>
         </div>
       </div>
     </div>
   )
 }
 
-const Questions = ({ item, gender }) => {
-  switch (item.__typename) {
-    case 'contentfulEmployeeLoveAboutDesignTextNode': {
-      const question = `What do you love most about design?`
-      return (
-        <SurveyCard icon={<LoveMostIcon />} item={item} question={question} />
-      )
-    }
-    case 'contentfulEmployeeFavoriteLocalMealTextNode': {
-      const question = `What’s your favorite local meal?`
-      return <SurveyCard icon={<MealIcon />} item={item} question={question} />
-    }
-    case 'contentfulEmployeeFavoritePlaceToTravelTextNode': {
-      const question = `What's your favorite place to travel to & why?`
-
-      return (
-        <SurveyCard
-          icon={gender ? <TravelMaleIcon /> : <TravelFemaleIcon />}
-          item={item}
-          question={question}
-        />
-      )
-    }
-    case 'contentfulEmployeeSecretPowerTextNode': {
-      const question = `What’s your secret power?`
-      return (
-        <SurveyCard
-          icon={<SecretPowerIcon />}
-          item={item}
-          question={question}
-        />
-      )
-    }
-    case 'contentfulEmployeeCoffeeOrTeaTextNode': {
-      const question = `Are you team coffee or tea?`
-      return (
-        <SurveyCard icon={<CoffeeTeaIcon />} item={item} question={question} />
-      )
-    }
-    case 'contentfulEmployeeFindInspirationTextNode': {
-      const question = `Where do you find the best inspiration?`
-      return (
-        <SurveyCard
-          icon={<InspirationIcon />}
-          item={item}
-          question={question}
-        />
-      )
-    }
-    default: {
-      break
-    }
-  }
+interface Props {
+  loveAboutDesign: any
+  favoritePlaceToTravel: any
+  favoriteLocalMeal: any
+  secretPower: any
+  coffeeOrTea: any
+  findInspiration: any
+  gender: boolean
 }
 
-const EmployeeCarousel = ({ qna, gender }) => {
+const EmployeeCarousel = ({
+  loveAboutDesign,
+  favoritePlaceToTravel,
+  favoriteLocalMeal,
+  secretPower,
+  coffeeOrTea,
+  findInspiration,
+  gender
+}: Props) => {
   return (
     <section className="employee-carousel">
       <div className="employee-carousel__wrapper">
         <Slider {...settings}>
-          {qna.map((item) => (
-            <Questions key={item.id} gender={gender} item={item} />
-          ))}
+          <SurveyCard
+            icon={<LoveMostIcon />}
+            item={loveAboutDesign.loveAboutDesign}
+            question="What do you love most about design?"
+          />
+          <SurveyCard
+            icon={<MealIcon />}
+            item={favoriteLocalMeal.favoriteLocalMeal}
+            question="What’s your favorite local meal?"
+          />
+          <SurveyCard
+            icon={gender ? <TravelMaleIcon /> : <TravelFemaleIcon />}
+            item={favoritePlaceToTravel.favoritePlaceToTravel}
+            question="What's your favorite place to travel to & why?"
+          />
+          <SurveyCard
+            icon={<SecretPowerIcon />}
+            item={secretPower.secretPower}
+            question="What’s your secret power?"
+          />
+          <SurveyCard
+            icon={<CoffeeTeaIcon />}
+            item={coffeeOrTea.coffeeOrTea}
+            question="Are you team coffee or tea?"
+          />
+          <SurveyCard
+            icon={<InspirationIcon />}
+            item={findInspiration.findInspiration}
+            question="Where do you find the best inspiration?"
+          />
         </Slider>
       </div>
     </section>

@@ -3,10 +3,16 @@ import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import MotionAniLink from '@modules/common/components/MotionAniLink'
 import Button from '@modules/common/components/Button'
 
+import { TypeEmployee } from '@common/types/Employee'
+
 import './otherMembers.css'
 import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModal'
 
-const OtherMembers = ({ peeps }) => {
+interface Props {
+  peeps: TypeEmployee[]
+}
+
+const OtherMembers = ({ peeps }: Props) => {
   const { showModal } = useOpportunityFormModal()
   return (
     <section className="other-members">

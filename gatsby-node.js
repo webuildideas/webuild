@@ -99,7 +99,7 @@ export const createPages = async ({ graphql, actions }) => {
 
     createPage({
       path: `/who-we-are/${node.slug}`,
-      component: path.resolve('./src/templates/employee.js'),
+      component: path.resolve('./src/templates/employee.tsx'),
       context: {
         slug: node.slug,
         peeps
