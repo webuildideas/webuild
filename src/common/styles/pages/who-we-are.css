@@ -260,6 +260,8 @@
 }
 
 .WhoWeAre-team-member {
+  @apply relative;
+  @apply z-10;
   @apply bg-white;
 }
 
@@ -326,9 +328,7 @@
   @apply xl:pb-36;
 }
 
-.WhoWeAre-team-member:nth-child(1),
-.WhoWeAre-team-member:nth-child(4),
-.WhoWeAre-team-member:nth-child(7) {
+.WhoWeAre-team-member:nth-child(3n + 1) {
   @screen xl {
     .WhoWeAre-team-info {
       @apply relative;
@@ -349,9 +349,8 @@
   }
 }
 
-.WhoWeAre-team-member:nth-child(3),
-.WhoWeAre-team-member:nth-child(6),
-.WhoWeAre-team-member:nth-child(8) {
+.WhoWeAre-team-member:nth-child(3n + 3),
+.WhoWeAre-team-member:last-of-type {
   @screen xl {
     .WhoWeAre-team-info {
       @apply relative;
