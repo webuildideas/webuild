@@ -1,3 +1,5 @@
+import '@common/styles/pages/who-we-are.css'
+
 // Packages
 import React from 'react'
 import { graphql, PageProps } from 'gatsby'
@@ -10,6 +12,7 @@ import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
 import { TypeEmployee } from '@common/types/Employee'
 import { TypeService } from '@common/types/Service'
 import fadeInUpVariants from '@modules/common/animation/variants/fadeInUp'
+import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModal'
 
 // Components
 import Meta from '@components/Meta'
@@ -24,10 +27,6 @@ import Details from '@static/svgs/who-we-are/details.inline.svg'
 import Initiate from '@static/svgs/who-we-are/initiate.inline.svg'
 import Iterate from '@static/svgs/who-we-are/iterate.inline.svg'
 import Support from '@static/svgs/who-we-are/support.inline.svg'
-
-// Styles
-import '@common/styles/pages/who-we-are.css'
-import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModal'
 
 interface WhoWeAreQueryResponse {
   contentfulAboutPage: {
