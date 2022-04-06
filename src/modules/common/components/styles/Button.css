@@ -53,6 +53,24 @@
   }
 }
 
+
+.Button-solid-blueRibbon {
+  @apply bg-blueRibbon;
+  @apply text-white;
+  @apply border-none;
+  &:hover {
+    background-color: #4e72ff;
+  }
+  &:focus {
+    background-color: #4e72ff;
+  }
+  &:disabled {
+    opacity: 0.3;
+    @apply cursor-not-allowed;
+    @apply border-none;
+  }
+}
+
 .Button-outline {
   @apply bg-transparent;
   @apply border-solid;

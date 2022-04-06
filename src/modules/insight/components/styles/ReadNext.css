@@ -1,0 +1,45 @@
+.ReadNext {
+  @apply relative;
+  &:before {
+    content: "";
+    height: 1px;
+    width: 100%;
+    top: 0;
+    max-width: 980px;
+    @apply block;
+    @apply absolute;
+    @apply bg-gray-400;
+  }
+}
+
+.ReadNextInsight {
+  @apply block;
+  @apply bg-gray-200;
+  @apply mr-6;
+  @apply p-8;
+  width: 320px;
+  flex-shrink: 0;
+  &:last-of-type {
+    @apply mr-0;
+  }
+  @screen xl {
+    @apply mr-12;
+    width: 350px;
+    &:hover {
+      .ReadNextInsight-read-more {
+        @apply font-bold;
+      }
+    }
+  }
+}
+
+.spacer {
+  @apply block;
+  width: 1px;
+  opacity: 0;
+  @apply mr-0;
+}
+
+.ReadNextInsight-read-more {
+  @apply text-electricViolet;
+}

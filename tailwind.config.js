@@ -88,10 +88,7 @@ module.exports = {
           light: '#FFDFE4',
           dark: '#CD1900'
         }
-      },
-
-      vulcan: '#0E0E1B',
-      error: 'red'
+      }
     },
 
     fontFamily: {
