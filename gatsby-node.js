@@ -29,13 +29,32 @@ export const createPages = async ({ graphql, actions }) => {
           type
         }
       }
+
+      allContentfulEmployee {
+        nodes {
+          slug
+          name
+          role
+          illustration {
+            file {
+              url
+            }
+          }
+          headshot {
+            file {
+              url
+            }
+          }
+        }
+      }
     }
   `)
 
   const {
     allContentfulCaseStudy: caseStudies,
     allContentfulService: services,
-    allContentfulInsight: insights
+    allContentfulInsight: insights,
+    allContentfulEmployee: employees
   } = result.data
 
   caseStudies.nodes.forEach((node) => {
@@ -54,6 +73,36 @@ export const createPages = async ({ graphql, actions }) => {
       component: path.resolve('./src/templates/service.tsx'),
       context: {
         slug: node.slug
+      }
+    })
+  })
+
+  let peeps
+  employees.nodes.forEach((node, index) => {
+    if (employees.nodes.length - (index + 1) >= 4) {
+      peeps = [...employees.nodes.slice(index + 1, index + 5)]
+    } else if (employees.nodes.length - (index + 1) === 3) {
+      peeps = [...employees.nodes.slice(index + 1), employees.nodes[0]]
+    } else if (employees.nodes.length - (index + 1) === 2) {
+      peeps = [
+        ...employees.nodes.slice(index + 1),
+        ...employees.nodes.slice(0, 2)
+      ]
+    } else if (employees.nodes.length - (index + 1) === 1) {
+      peeps = [
+        ...employees.nodes.slice(index + 1),
+        ...employees.nodes.slice(0, 3)
+      ]
+    } else if (employees.nodes.length === index + 1) {
+      peeps = [...employees.nodes.slice(0, 4)]
+    }
+
+    createPage({
+      path: `/who-we-are/${node.slug}`,
+      component: path.resolve('./src/templates/employee.tsx'),
+      context: {
+        slug: node.slug,
+        peeps
       }
     })
   })

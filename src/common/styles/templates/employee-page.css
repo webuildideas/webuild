@@ -1,0 +1,57 @@
+/* HERO */
+.employee-hero {
+  @apply relative;
+}
+
+.employee-hero::before {
+  position: absolute;
+  content: '';
+  background-color: inherit;
+  top: -50%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.employee-hero__wrapper .Service-header-all {
+}
+
+.employee-hero__wrapper {
+  @apply relative;
+  @apply pt-8;
+  @apply px-6;
+  @apply mb-16;
+
+  @apply md:mb-20;
+  @apply md:px-8;
+
+  @apply lg:mb-26;
+  @apply lg:px-10;
+  @screen lg {
+    max-width: 1184px;
+    @apply pt-16;
+  }
+
+  @apply xl:px-0;
+  @screen xl {
+    @apply mx-auto;
+  }
+}
+
+.employee-hero__container {
+  @screen md {
+    @apply grid grid-cols-2 items-start;
+  }
+}
+
+.employee-location {
+  @apply flex items-center mt-6 lg:mt-10;
+
+  svg {
+    @apply mr-4;
+  }
+
+  .text-body {
+    line-height: unset;
+  }
+}

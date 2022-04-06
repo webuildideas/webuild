@@ -172,7 +172,7 @@ const Nav = memo(function NavMemo() {
                     cover
                     direction="right"
                     duration={1.5}
-                    to="/insights/"
+                    to="/insights"
                   >
                     Insights
                   </AniLink>
