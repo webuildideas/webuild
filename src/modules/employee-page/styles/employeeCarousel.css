@@ -40,11 +40,13 @@
 }
 
 .slick-slide {
-  padding: 0 8px;
+  padding: 0 4px;
   height: inherit !important;
+  width: 100%;
   @apply transform scale-95 transition-transform duration-300;
   @screen md {
     width: 380px;
+    padding: 0 8px;
   }
 }
 
