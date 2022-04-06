@@ -13,7 +13,7 @@ import NextCarouselArrow from '@static/svgs/employee-page/next-arrow.inline.svg'
 import PrevCarouselArrow from '@static/svgs/employee-page/prev-arrow.inline.svg'
 
 // Styles
-import './employeeCarousel.css'
+import '../styles/employeeCarousel.css'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 

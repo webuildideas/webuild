@@ -5,7 +5,7 @@ import Button from '@modules/common/components/Button'
 
 import { TypeEmployee } from '@common/types/Employee'
 
-import './otherMembers.css'
+import '../styles/otherMembers.css'
 import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModal'
 
 interface Props {

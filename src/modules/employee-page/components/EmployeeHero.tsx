@@ -8,7 +8,7 @@ import LocationIcon from '@static/svgs/employee-page/location.inline.svg'
 import SimpleArrowLeft from '@static/svgs/common/arrows/arrow-simple-left.inline.svg'
 
 // Styles
-import './employeeHero.css'
+import '../styles/employeeHero.css'
 
 interface Props {
   background: string

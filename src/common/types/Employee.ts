@@ -10,12 +10,12 @@ export interface TypeEmployee {
   headshot: TypeGatsbyImageFluid | TypeContentfulAsset
   employeeBioHeroBackground: string
   gender: boolean
-  loveAboutDesign: Record<string, unknown>
-  favoriteLocalMeal: Record<string, unknown>
-  favoritePlaceToTravel: Record<string, unknown>
-  secretPower: Record<string, unknown>
-  coffeeOrTea: Record<string, unknown>
-  findInspiration: Record<string, unknown>
+  loveAboutDesign: Record<'loveAboutDesign', string>
+  favoriteLocalMeal: Record<'favoriteLocalMeal', string>
+  favoritePlaceToTravel: Record<'favoritePlaceToTravel', string>
+  secretPower: Record<'secretPower', string>
+  coffeeOrTea: Record<'coffeeOrTea', string>
+  findInspiration: Record<'findInspiration', string>
   illustration: TypeContentfulAsset
   heroIllustration: TypeContentfulAsset
 }

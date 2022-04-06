@@ -5,9 +5,9 @@ import { motion } from 'framer-motion'
 import { TypeEmployee } from '@common/types/Employee'
 
 // Components
-import EmployeeHero from '@modules/employee-page/EmployeeHero/index'
-import EmployeeCarousel from '@modules/employee-page/EmployeeCarousel/index'
-import OtherEmployees from '@modules/employee-page/OtherMembers/index'
+import EmployeeHero from '@modules/employee-page/components/EmployeeHero'
+import EmployeeCarousel from '@modules/employee-page/components/EmployeeCarousel'
+import OtherEmployees from '@modules/employee-page/components/OtherMembers'
 import Footer from '@modules/common/components/Footer'
 import Meta from '@components/Meta'
 
@@ -101,44 +101,6 @@ export const EMPLOYEE_PAGE_QUERY = graphql`
       findInspiration {
         findInspiration
       }
-      # children {
-      #   ... on contentfulEmployeeLoveAboutDesignTextNode {
-      #     id
-      #     internal {
-      #       content
-      #     }
-      #   }
-      #   ... on contentfulEmployeeFavoriteLocalMealTextNode {
-      #     id
-      #     internal {
-      #       content
-      #     }
-      #   }
-      #   ... on contentfulEmployeeFavoritePlaceToTravelTextNode {
-      #     id
-      #     internal {
-      #       content
-      #     }
-      #   }
-      #   ... on contentfulEmployeeSecretPowerTextNode {
-      #     id
-      #     internal {
-      #       content
-      #     }
-      #   }
-      #   ... on contentfulEmployeeCoffeeOrTeaTextNode {
-      #     id
-      #     internal {
-      #       content
-      #     }
-      #   }
-      #   ... on contentfulEmployeeFindInspirationTextNode {
-      #     id
-      #     internal {
-      #       content
-      #     }
-      #   }
-      # }
     }
   }
 `
