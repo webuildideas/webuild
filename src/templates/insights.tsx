@@ -2,7 +2,12 @@
 // Packages
 import React, { useCallback, useEffect, useState } from 'react'
 import { useQuery } from '@apollo/client'
-import { graphql, PageProps } from 'gatsby'
+import { graphql, PageProps, navigate } from 'gatsby'
+
+// NEW NEW
+import slugify from 'slugify'
+import { useLocation } from '@reach/router'
+import queryString from 'query-string'
 
 // Common
 import {
@@ -48,7 +53,7 @@ export interface FilterState<T> {
   filters: T[]
 }
 
-const PAGINATION_LIMIT = 7
+const PAGINATION_LIMIT = 12
 
 const Insights = ({
   location,

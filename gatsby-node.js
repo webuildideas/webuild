@@ -120,9 +120,18 @@ export const createPages = async ({ graphql, actions }) => {
     return true
   })
 
+  // createPage({
+  //   path: '/insights',
+  //   component: path.resolve('./src/templates/insights.tsx'),
+  //   context: {
+  //     topics: uniq(topics),
+  //     types: orderBy(uniq(types))
+  //   }
+  // })
+
   createPage({
     path: '/insights',
-    component: path.resolve('./src/templates/insights.tsx'),
+    component: path.resolve('./src/templates/insightss.js'),
     context: {
       topics: uniq(topics),
       types: orderBy(uniq(types))

@@ -2,6 +2,9 @@
 import React from 'react'
 import kebabCase from 'lodash/kebabCase'
 
+// NEW NEW
+import { navigate } from 'gatsby'
+
 // Common
 import { TypeInsightTopic, TypeInsightType } from '@common/types/Insight'
 
