@@ -8,13 +8,15 @@ interface Props {
   pageSelectedHandler: (evt: MouseEvent<HTMLElement>) => void
   selected: boolean
   page: number
+  skip: boolean
 }
 
-const PageView = ({ pageSelectedHandler, selected, page }: Props) => {
+const PageView = ({ pageSelectedHandler, selected, page, skip }: Props) => {
   const pageClasses = classNames({
     'Pagination-page': true,
     'text-tag': true,
-    'is-active': selected
+    // 'is-active': selected
+    'is-active': skip
   })
 
   return (

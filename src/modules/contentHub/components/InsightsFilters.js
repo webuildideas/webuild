@@ -115,12 +115,14 @@ const InsightsFilters = ({
             <h5 className="mb-2 text-body font-extrabold uppercase">Type</h5>
             {types.map((type) => {
               const handleOnClick = (e, theType) => {
+                // console.log(theType)
+                // console.log(filters)
                 if (filters?.types?.includes(theType)) {
                   let theFilters
 
                   if (filters.types.length === 1) {
                     theFilters = undefined
-                  } else if (filters?.topics.length > 1) {
+                  } else if (filters?.types.length > 1) {
                     theFilters = queryParams.types.filter(
                       (item) => item !== e.target.dataset.filter
                     )
@@ -133,7 +135,7 @@ const InsightsFilters = ({
                     },
                     { arrayFormat: 'comma' }
                   )
-                  navigate(`?${newQuery}`, { hash: 'insights-main' })
+                  navigate(`?${newQuery}`)
                 } else {
                   const theFilters = [e.target.dataset.filter]
 
@@ -152,7 +154,7 @@ const InsightsFilters = ({
                     },
                     { arrayFormat: 'comma' }
                   )
-                  navigate(`?${newQuery}`, { hash: 'insights-main' })
+                  navigate(`?${newQuery}`)
                 }
               }
               const isActive = filters?.types?.includes(type)

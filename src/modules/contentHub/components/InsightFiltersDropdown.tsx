@@ -59,9 +59,8 @@ Props) {
       return `Viewing ${filters.length} ${title}${
         filters.length > 1 ? 's' : ''
       }`
-    } else {
-      return title
     }
+    return title
   }
 
   const topicFilterText = getFilterText('Topic', filters?.topics)
@@ -112,9 +111,7 @@ Props) {
                     },
                     { arrayFormat: 'comma' }
                   )
-                  navigate(`?${newQuery}`, {
-                    hash: '#insights-main'
-                  })
+                  navigate(`?${newQuery}`)
                 } else {
                   const theFilters = [e.target.dataset.filter]
 
@@ -133,7 +130,7 @@ Props) {
                     },
                     { arrayFormat: 'comma' }
                   )
-                  navigate(`?${newQuery}`, { hash: 'insights-main' })
+                  navigate(`?${newQuery}`)
                 }
               }
               const isActive = filters?.topics?.includes(topic)
@@ -141,8 +138,8 @@ Props) {
                 <div
                   key={kebabCase(topic)}
                   className={`Insight-filters-item ${isActive && 'is-active'}`}
-                  onClick={(e) => handleOnClick(e, topic)}
                   data-filter={slugify(topic, { lower: true })}
+                  onClick={(e) => handleOnClick(e, topic)}
                   role="button"
                 >
                   <span className="text-page-navigation">{topic}</span>

@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // Packages
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState, useRef } from 'react'
 import { useQuery } from '@apollo/client'
-import { graphql, PageProps, navigate } from 'gatsby'
+import { graphql, PageProps, navigate, Link } from 'gatsby'
 
 // NEW NEW
 import slugify from 'slugify'
@@ -50,12 +50,15 @@ const Insights = ({
   const unslugifyParams = (theFilters) => {
     if (typeof theFilters === `string`) {
       const arr = []
-      arr.push(unslugify(theFilters))
+      const unSlug = unslugify(theFilters)
+      arr.push(unSlug.replace('And', '&').replace('Ebook', 'eBook'))
       return arr
     }
 
     if (typeof theFilters === `object`) {
-      return theFilters.map((filter) => unslugify(filter))
+      return theFilters.map((filter) =>
+        unslugify(filter).replace('And', '&').replace('Ebook', 'eBook')
+      )
     }
   }
 
@@ -68,6 +71,7 @@ const Insights = ({
     topics: unslugifyParams(queryParams.topics),
     types: unslugifyParams(queryParams.types)
   })
+  const insightsContainer = useRef(null)
 
   const { loading, error, data, fetchMore } = useQuery(FILTER_INSIGHTS_QUERY, {
     variables: {
@@ -131,6 +135,10 @@ const Insights = ({
     })
 
     setSkip(newQueryParams.page - 1 || 0)
+
+    if (newQueryParams) {
+      insightsContainer.current.scrollIntoView()
+    }
   }, [location])
 
   return (
@@ -148,7 +156,7 @@ const Insights = ({
         {featuredInsight ? <FeaturedInsight insight={featuredInsight} /> : null}
       </div>
 
-      <div className="InsightsPage-main" id="insights-main">
+      <div ref={insightsContainer} className="InsightsPage-main">
         <aside className="InsightsPage-filters">
           <InsightsFilters
             filters={filters}
@@ -177,7 +185,10 @@ const Insights = ({
               {noInisights ? (
                 <p className="text-h3">
                   No insights match that search. Please try again or view all
-                  insights here.
+                  insights{' '}
+                  <Link className="text-electricViolet" to="/insights">
+                    here.
+                  </Link>
                 </p>
               ) : null}
 
@@ -195,10 +206,12 @@ const Insights = ({
         <div className="InsightsPage-pagination">
           {showPagination ? (
             <Pagination
+              forcePage={skip}
               marginPagesDisplayed={1}
               onPageChange={onPageChange}
               pageCount={Math.ceil(total / PAGINATION_LIMIT)}
               pageRangeDisplayed={5}
+              skip={skip}
             />
           ) : null}
         </div>

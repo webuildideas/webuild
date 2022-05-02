@@ -22,6 +22,7 @@ interface Props {
   onPageChange: (selectedItem: { selected: number }) => void
   initialPage?: number
   forcePage?: number
+  skip: number
 }
 
 const Pagination = ({
@@ -30,7 +31,8 @@ const Pagination = ({
   marginPagesDisplayed = 3,
   onPageChange,
   initialPage,
-  forcePage
+  forcePage,
+  skip
 }: Props) => {
   const initialSelected = initialPage || forcePage || 0
   const [selected, setSelected] = useState(initialSelected)
@@ -103,6 +105,7 @@ const Pagination = ({
           page={index + 1}
           pageSelectedHandler={handlePageSelected.bind(null, index)}
           selected={selected === index}
+          skip={skip === index}
         />
       )
     },
