@@ -83,6 +83,10 @@ const Insights = ({
     }
   })
 
+  if (queryParams) {
+    insightsContainer.current.scrollIntoView({ block: 'end' })
+  }
+
   const noInisights = data?.insightCollection.items.length === 0
   const loadingOrNoItems = loading || noInisights
   const showPagination = total && total > PAGINATION_LIMIT
@@ -135,10 +139,6 @@ const Insights = ({
     })
 
     setSkip(newQueryParams.page - 1 || 0)
-
-    if (newQueryParams) {
-      insightsContainer.current.scrollIntoView()
-    }
   }, [location])
 
   return (
@@ -152,11 +152,15 @@ const Insights = ({
           </p>
         </div>
       </div>
-      <div className="InsightsPage-feature" id="insights-feature">
+      <div
+        ref={insightsContainer}
+        className="InsightsPage-feature"
+        id="insights-feature"
+      >
         {featuredInsight ? <FeaturedInsight insight={featuredInsight} /> : null}
       </div>
 
-      <div ref={insightsContainer} className="InsightsPage-main">
+      <div className="InsightsPage-main">
         <aside className="InsightsPage-filters">
           <InsightsFilters
             filters={filters}
