@@ -139,6 +139,10 @@ const Insights = ({
     })
 
     setSkip(newQueryParams.page - 1 || 0)
+
+    if (Object.keys(newQueryParams).length !== 0) {
+      insightsContainer.current.scrollIntoView()
+    }
   }, [location])
 
   return (
@@ -152,16 +156,12 @@ const Insights = ({
           </p>
         </div>
       </div>
-      <div
-        ref={insightsContainer}
-        className="InsightsPage-feature"
-        id="insights-feature"
-      >
+      <div className="InsightsPage-feature" id="insights-feature">
         {featuredInsight ? <FeaturedInsight insight={featuredInsight} /> : null}
       </div>
 
       <div className="InsightsPage-main">
-        <aside className="InsightsPage-filters">
+        <aside ref={insightsContainer} className="InsightsPage-filters">
           <InsightsFilters
             filters={filters}
             queryParams={queryParams}
