@@ -83,9 +83,9 @@ const Insights = ({
     }
   })
 
-  if (queryParams) {
-    insightsContainer.current.scrollIntoView({ block: 'end' })
-  }
+  // if (queryParams) {
+  //   insightsContainer.current.scrollIntoView({ block: 'end' })
+  // }
 
   const noInisights = data?.insightCollection.items.length === 0
   const loadingOrNoItems = loading || noInisights
