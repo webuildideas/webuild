@@ -71,7 +71,9 @@ const InsightsFilters = ({
                   { arrayFormat: 'comma' }
                 )
                 navigate(`?${newQuery}`, {
-                  hash: 'insights-main'
+                  state: {
+                    disableScrollUpdate: true
+                  }
                 })
               } else {
                 const theFilters = [e.target.dataset.filter]
@@ -91,7 +93,11 @@ const InsightsFilters = ({
                   },
                   { arrayFormat: 'comma' }
                 )
-                navigate(`?${newQuery}`, { hash: 'insights-main' })
+                navigate(`?${newQuery}`, {
+                  state: {
+                    disableScrollUpdate: true
+                  }
+                })
               }
             }
             const isActive = filters?.topics?.includes(topic)
@@ -135,7 +141,11 @@ const InsightsFilters = ({
                     },
                     { arrayFormat: 'comma' }
                   )
-                  navigate(`?${newQuery}`)
+                  navigate(`?${newQuery}`, {
+                    state: {
+                      disableScrollUpdate: true
+                    }
+                  })
                 } else {
                   const theFilters = [e.target.dataset.filter]
 
@@ -154,7 +164,11 @@ const InsightsFilters = ({
                     },
                     { arrayFormat: 'comma' }
                   )
-                  navigate(`?${newQuery}`)
+                  navigate(`?${newQuery}`, {
+                    state: {
+                      disableScrollUpdate: true
+                    }
+                  })
                 }
               }
               const isActive = filters?.types?.includes(type)

@@ -83,29 +83,25 @@ const Insights = ({
     }
   })
 
-  // if (queryParams) {
-  //   insightsContainer.current.scrollIntoView({ block: 'end' })
-  // }
-
   const noInisights = data?.insightCollection.items.length === 0
   const loadingOrNoItems = loading || noInisights
   const showPagination = total && total > PAGINATION_LIMIT
 
-  const fetchMoreInsights = useCallback(
-    ({ selected }) => {
-      const newSkip = selected * PAGINATION_LIMIT
-      fetchMore({
-        variables: {
-          skip: newSkip,
-          limit: PAGINATION_LIMIT
-        }
-      }).then((response) => {
-        setSkip(newSkip)
-        setTotal(response.data.insightCollection.total)
-      })
-    },
-    [fetchMore]
-  )
+  // const fetchMoreInsights = useCallback(
+  //   ({ selected }) => {
+  //     const newSkip = selected * PAGINATION_LIMIT
+  //     fetchMore({
+  //       variables: {
+  //         skip: newSkip,
+  //         limit: PAGINATION_LIMIT
+  //       }
+  //     }).then((response) => {
+  //       setSkip(newSkip)
+  //       setTotal(response.data.insightCollection.total)
+  //     })
+  //   },
+  //   [fetchMore]
+  // )
 
   const onPageChange = ({ selected }) => {
     const newQuery = queryString.stringify(
@@ -116,7 +112,11 @@ const Insights = ({
       },
       { arrayFormat: 'comma' }
     )
-    navigate(`?${newQuery}`, { hash: 'insights-main' })
+    navigate(`?${newQuery}`, {
+      state: {
+        disableScrollUpdate: true
+      }
+    })
   }
 
   useEffect(() => {
@@ -141,7 +141,9 @@ const Insights = ({
     setSkip(newQueryParams.page - 1 || 0)
 
     if (Object.keys(newQueryParams).length !== 0) {
-      insightsContainer.current.scrollIntoView()
+      setTimeout(() => {
+        insightsContainer.current.scrollIntoView()
+      }, 500)
     }
   }, [location])
 
@@ -160,8 +162,8 @@ const Insights = ({
         {featuredInsight ? <FeaturedInsight insight={featuredInsight} /> : null}
       </div>
 
-      <div className="InsightsPage-main">
-        <aside ref={insightsContainer} className="InsightsPage-filters">
+      <div ref={insightsContainer} className="InsightsPage-main" id="test">
+        <aside className="InsightsPage-filters">
           <InsightsFilters
             filters={filters}
             queryParams={queryParams}

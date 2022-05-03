@@ -12,6 +12,11 @@ import './src/common/styles/tailwind.css'
 // Components
 import AppProvider from './src/components/AppProvider'
 
+export const shouldUpdateScroll = ({ routerProps }) => {
+  const { disableScrollUpdate } = routerProps.location.state
+  return !disableScrollUpdate
+}
+
 export const wrapPageElement = ({ element, props }) => {
   return (
     <CookiesProvider>
