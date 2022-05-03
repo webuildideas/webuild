@@ -23,6 +23,7 @@ const InsightsFilters = ({
   filters,
   queryString,
   queryParams,
+  insightsContainer,
   topicsFilter,
   typesFilter,
   createOnTopicClickHandler,
@@ -75,6 +76,9 @@ const InsightsFilters = ({
                     disableScrollUpdate: true
                   }
                 })
+                setTimeout(() => {
+                  insightsContainer.current.scrollIntoView()
+                }, 400)
               } else {
                 const theFilters = [e.target.dataset.filter]
 
@@ -98,6 +102,9 @@ const InsightsFilters = ({
                     disableScrollUpdate: true
                   }
                 })
+                setTimeout(() => {
+                  insightsContainer.current.scrollIntoView()
+                }, 400)
               }
             }
             const isActive = filters?.topics?.includes(topic)
@@ -146,6 +153,9 @@ const InsightsFilters = ({
                       disableScrollUpdate: true
                     }
                   })
+                  setTimeout(() => {
+                    insightsContainer.current.scrollIntoView()
+                  }, 400)
                 } else {
                   const theFilters = [e.target.dataset.filter]
 
@@ -169,6 +179,9 @@ const InsightsFilters = ({
                       disableScrollUpdate: true
                     }
                   })
+                  setTimeout(() => {
+                    insightsContainer.current.scrollIntoView()
+                  }, 400)
                 }
               }
               const isActive = filters?.types?.includes(type)

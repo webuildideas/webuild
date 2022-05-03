@@ -112,11 +112,14 @@ const Insights = ({
       },
       { arrayFormat: 'comma' }
     )
-    navigate(`?${newQuery}`, {
-      state: {
-        disableScrollUpdate: true
-      }
-    })
+    insightsContainer.current.scrollIntoView()
+    setTimeout(() => {
+      navigate(`?${newQuery}`, {
+        state: {
+          disableScrollUpdate: true
+        }
+      })
+    }, 800)
   }
 
   useEffect(() => {
@@ -139,12 +142,6 @@ const Insights = ({
     })
 
     setSkip(newQueryParams.page - 1 || 0)
-
-    if (Object.keys(newQueryParams).length !== 0) {
-      setTimeout(() => {
-        insightsContainer.current.scrollIntoView()
-      }, 500)
-    }
   }, [location])
 
   return (
@@ -166,6 +163,7 @@ const Insights = ({
         <aside className="InsightsPage-filters">
           <InsightsFilters
             filters={filters}
+            insightsContainer={insightsContainer}
             queryParams={queryParams}
             queryString={queryString}
             setFilters={setFilters}
