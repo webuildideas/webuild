@@ -112,7 +112,7 @@ const Insights = ({
       },
       { arrayFormat: 'comma' }
     )
-    insightsContainer.current.scrollIntoView()
+    insightsContainer.current.scrollIntoView({ block: 'center' })
     setTimeout(() => {
       navigate(`?${newQuery}`, {
         state: {
@@ -156,11 +156,18 @@ const Insights = ({
         </div>
       </div>
       <div className="InsightsPage-feature" id="insights-feature">
-        {featuredInsight ? <FeaturedInsight insight={featuredInsight} /> : null}
+        <div className="wrap">
+          {featuredInsight ? (
+            <FeaturedInsight insight={featuredInsight} />
+          ) : null}
+        </div>
       </div>
 
-      <div ref={insightsContainer} className="InsightsPage-main" id="test">
-        <aside className="InsightsPage-filters">
+      <div className="InsightsPage-main" id="test">
+        <aside
+          ref={insightsContainer}
+          className="InsightsPage-filters self-start"
+        >
           <InsightsFilters
             filters={filters}
             insightsContainer={insightsContainer}

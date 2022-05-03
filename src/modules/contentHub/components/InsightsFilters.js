@@ -77,7 +77,7 @@ const InsightsFilters = ({
                   }
                 })
                 setTimeout(() => {
-                  insightsContainer.current.scrollIntoView()
+                  insightsContainer.current.scrollIntoView({ block: 'center' })
                 }, 400)
               } else {
                 const theFilters = [e.target.dataset.filter]
@@ -103,7 +103,7 @@ const InsightsFilters = ({
                   }
                 })
                 setTimeout(() => {
-                  insightsContainer.current.scrollIntoView()
+                  insightsContainer.current.scrollIntoView({ block: 'center' })
                 }, 400)
               }
             }
@@ -154,7 +154,9 @@ const InsightsFilters = ({
                     }
                   })
                   setTimeout(() => {
-                    insightsContainer.current.scrollIntoView()
+                    insightsContainer.current.scrollIntoView({
+                      block: 'center'
+                    })
                   }, 400)
                 } else {
                   const theFilters = [e.target.dataset.filter]
@@ -180,7 +182,9 @@ const InsightsFilters = ({
                     }
                   })
                   setTimeout(() => {
-                    insightsContainer.current.scrollIntoView()
+                    insightsContainer.current.scrollIntoView({
+                      block: 'center'
+                    })
                   }, 400)
                 }
               }
