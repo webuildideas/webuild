@@ -2,6 +2,7 @@ import React from 'react'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { motion, usePresence } from 'framer-motion'
 import Img from 'gatsby-image'
+import Arrow from '@static/svgs/cta-arrow.inline.svg'
 // import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
 
 import { TypeInsightTypeIconConfig } from '@modules/common/components/configs/InsightTags'
@@ -53,13 +54,14 @@ const ListingAd = ({ ad }) => {
         </div>
         <h3 className={`text-h3 ${headlineColor}`}>{ad.headline}</h3>
         <AniLink
-          className={`text-button ${buttonColor} transition-all duration-200 ease-in-out`}
+          className={`text-button ${buttonColor} inline-flex items-center transition-all duration-200 ease-in-out`}
           cover
           direction="right"
           duration={1.25}
           to={`${ad.ctaLink}`}
         >
-          {ad.ctaText}
+          <span className="mr-4 pt-1">{ad.ctaText}</span>
+          <Arrow />
         </AniLink>
       </div>
       <div className="listing-ad__image">

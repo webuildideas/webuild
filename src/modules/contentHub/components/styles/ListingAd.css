@@ -19,6 +19,24 @@
   @apply bg-black;
 }
 
+.listing-ad.light .text-button svg path {
+  stroke: #ffffff;
+}
+
+.listing-ad.light .text-button:hover svg path {
+  @screen lg {
+    transition: all 0.2s ease-in-out;
+    stroke: #000000;
+  }
+}
+
+.listing-ad.dark .text-button:hover svg path {
+  @screen lg {
+    transition: all 0.2s ease-in-out;
+    stroke: #ffffff;
+  }
+}
+
 .listing-ad__content {
   @apply px-6 pb-10;
 
@@ -37,7 +55,6 @@
   a {
     @apply px-6;
     @apply py-4;
-    @apply inline-block;
     @apply hover:bg-transparent;
   }
 }
