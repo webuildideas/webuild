@@ -9,7 +9,7 @@
   .InsightTags-topic {
     transition: all 200ms ease-out;
   }
-  
+
   @screen xl {
     .InsightTags-topic {
       @apply text-gray-500;

@@ -29,13 +29,15 @@ import {
 // Components
 import Meta from '@components/Meta'
 import InsightsFilters from '@modules/contentHub/components/InsightsFilters'
-import ListingInsight from '@modules/contentHub/components/ListingInsight'
+// import ListingInsight from '@modules/contentHub/components/ListingInsight'
+import ListingInsight2 from '@modules/contentHub/components/ListingInsight2'
 import ListingInsightSkeleton from '@modules/contentHub/components/ListingInsightSkeleton'
 import FeaturedInsight from '@modules/contentHub/components/FeaturedInsight'
 import Pagination from '@modules/contentHub/components/Paginations'
 import Footer from '@modules/common/components/Footer'
 import EmailSignUpForm from '@modules/forms/EmailSignupForm'
 import MonthlyNewsletterForm from '@modules/forms/MonthlyNewsletterForm'
+import ListingAd from '@modules/contentHub/components/ListingAd'
 
 const PAGINATION_LIMIT = 12
 
@@ -44,7 +46,7 @@ const Insights = ({
   data: {
     contentfulContentHub: { featuredInsight }
   },
-  pageContext: { topics, types }
+  pageContext: { topics, types, ads }
 }) => {
   // NEW
   const unslugifyParams = (theFilters) => {
@@ -72,36 +74,49 @@ const Insights = ({
     types: unslugifyParams(queryParams.types)
   })
   const insightsContainer = useRef(null)
+  const insightsWrapper = useRef(null)
 
-  const { loading, error, data, fetchMore } = useQuery(FILTER_INSIGHTS_QUERY, {
-    variables: {
-      // skip,
-      skip: skip * PAGINATION_LIMIT,
-      limit: PAGINATION_LIMIT,
-      topics: unslugifyParams(queryParams.topics) || topics,
-      types: unslugifyParams(queryParams.types) || types
+  const { loading, error, data, fetchMore, refetch } = useQuery(
+    FILTER_INSIGHTS_QUERY,
+    {
+      variables: {
+        // skip,
+        skip: skip * PAGINATION_LIMIT,
+        limit: PAGINATION_LIMIT,
+        topics: unslugifyParams(queryParams.topics) || topics,
+        types: unslugifyParams(queryParams.types) || types
+      }
     }
-  })
+  )
 
   const noInisights = data?.insightCollection.items.length === 0
   const loadingOrNoItems = loading || noInisights
   const showPagination = total && total > PAGINATION_LIMIT
 
-  // const fetchMoreInsights = useCallback(
-  //   ({ selected }) => {
-  //     const newSkip = selected * PAGINATION_LIMIT
-  //     fetchMore({
-  //       variables: {
-  //         skip: newSkip,
-  //         limit: PAGINATION_LIMIT
-  //       }
-  //     }).then((response) => {
-  //       setSkip(newSkip)
-  //       setTotal(response.data.insightCollection.total)
-  //     })
-  //   },
-  //   [fetchMore]
-  // )
+  const refetchInsights = useCallback(
+    (params) => {
+      refetch({
+        variables: {
+          skip: skip * PAGINATION_LIMIT,
+          limit: PAGINATION_LIMIT,
+          topics: unslugifyParams(params.topics) || topics,
+          types: unslugifyParams(params.types) || types
+        }
+      }).then((response) => {
+        setFilters((prevState) => {
+          return {
+            ...prevState,
+            topics: unslugifyParams(params.topics),
+            types: unslugifyParams(params.types),
+            page: params.page || 0
+          }
+        })
+        setSkip(params.page - 1 || 0)
+        // insightsWrapper.current.style.opacity = 1
+      })
+    },
+    [refetch, skip, topics, types]
+  )
 
   const onPageChange = ({ selected }) => {
     const newQuery = queryString.stringify(
@@ -132,17 +147,49 @@ const Insights = ({
     const newQueryParams = queryString.parse(location.search, {
       arrayFormat: 'comma'
     })
-    setFilters((prevState) => {
-      return {
-        ...prevState,
-        topics: unslugifyParams(newQueryParams.topics),
-        types: unslugifyParams(newQueryParams.types),
-        page: newQueryParams.page || 0
-      }
-    })
+    // insightsWrapper.current.style.opacity = 0
+    refetchInsights(newQueryParams)
+  }, [location, refetchInsights])
 
-    setSkip(newQueryParams.page - 1 || 0)
-  }, [location])
+  const splitInsightsUp = (insights, numberOfAds) => {
+    const theAds = ads.nodes
+    console.log(theAds)
+    if (numberOfAds >= 2) {
+      return (
+        <>
+          {insights.slice(0, 3).map((insight) => (
+            <ListingInsight2 key={`item-${insight.slug}`} insight={insight} />
+          ))}
+          {theAds.slice(0, 1).map((ad) => (
+            <ListingAd key={`item-${ad.id}`} ad={ad} />
+          ))}
+          {insights.slice(4, 8).map((insight) => (
+            <ListingInsight2 key={`item-${insight.slug}`} insight={insight} />
+          ))}
+          {theAds.slice(1, 2).map((ad) => (
+            <ListingAd key={`item-${ad.id}`} ad={ad} />
+          ))}
+          {insights.slice(8, 12).map((insight) => (
+            <ListingInsight2 key={`item-${insight.slug}`} insight={insight} />
+          ))}
+        </>
+      )
+    }
+
+    return (
+      <>
+        {insights.slice(0, 3).map((insight) => (
+          <ListingInsight2 key={`item-${insight.slug}`} insight={insight} />
+        ))}
+        {theAds.slice(0, 1).map((ad) => (
+          <ListingAd key={`item-${ad.id}`} ad={ad} />
+        ))}
+        {insights.slice(4).map((insight) => (
+          <ListingInsight2 key={`item-${insight.slug}`} insight={insight} />
+        ))}
+      </>
+    )
+  }
 
   return (
     <div className="InsightsPage" id="insights-container">
@@ -179,20 +226,12 @@ const Insights = ({
           />
         </aside>
 
-        <div className="InsightsPage-insights">
+        <div
+          ref={insightsWrapper}
+          className={`InsightsPage-insights transition-opacity duration-200 min-h-screen `}
+        >
           {loadingOrNoItems || error ? (
             <>
-              {loading ? (
-                <>
-                  <ListingInsightSkeleton />
-                  <ListingInsightSkeleton />
-                  <ListingInsightSkeleton />
-                  <ListingInsightSkeleton />
-                  <ListingInsightSkeleton />
-                  <ListingInsightSkeleton />
-                </>
-              ) : null}
-
               {noInisights ? (
                 <p className="text-h3">
                   No insights match that search. Please try again or view all
@@ -208,9 +247,25 @@ const Insights = ({
               ) : null}
             </>
           ) : (
-            data?.insightCollection.items.map((insight) => (
-              <ListingInsight key={`item-${insight.slug}`} insight={insight} />
-            ))
+            <>
+              {data?.insightCollection.items.length < 4
+                ? data?.insightCollection.items.map((insight) => (
+                    <ListingInsight2
+                      key={`item-${insight.slug}`}
+                      insight={insight}
+                    />
+                  ))
+                : null}
+
+              {data?.insightCollection.items.length > 4 &&
+              data?.insightCollection.items.length <= 8
+                ? splitInsightsUp(data?.insightCollection.items, 1)
+                : null}
+
+              {data?.insightCollection.items.length > 8
+                ? splitInsightsUp(data?.insightCollection.items, 2)
+                : null}
+            </>
           )}
         </div>
 
