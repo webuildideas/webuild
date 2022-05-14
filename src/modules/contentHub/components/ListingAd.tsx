@@ -3,13 +3,26 @@ import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { motion, usePresence } from 'framer-motion'
 import Img from 'gatsby-image'
 import Arrow from '@static/svgs/cta-arrow.inline.svg'
-// import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
+import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
 
 import { TypeInsightTypeIconConfig } from '@modules/common/components/configs/InsightTags'
-
+import { TypeInsightType } from '@common/types/Insight'
+// Styles
 import './styles/ListingAd.css'
 
-const ListingAd = ({ ad }) => {
+interface Props {
+  ad: {
+    backgroundColor: string
+    ctaLink: string
+    ctaText: string
+    headline: string
+    id: string
+    image: TypeGatsbyImageFluid
+    resourceType: TypeInsightType
+  }
+}
+
+const ListingAd = ({ ad }: Props) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { name: typeName, icon: TypeIcon } = TypeInsightTypeIconConfig[
     ad.resourceType
@@ -38,8 +51,8 @@ const ListingAd = ({ ad }) => {
   const tagColor = ad.backgroundColor === 'light' ? `text-salmon` : `text-white`
   const buttonColor =
     ad.backgroundColor === 'light'
-      ? `bg-black text-white hover:text-black`
-      : `bg-white text-black hover:text-white`
+      ? `bg-black text-white Button-solid`
+      : `bg-white text-black hover:bg-gray-200`
   const headlineColor =
     ad.backgroundColor === 'light' ? `text-black` : `text-white`
   return (
@@ -52,9 +65,12 @@ const ListingAd = ({ ad }) => {
           <TypeIcon className={`mr-2 w-5 ${tagColor}`} />
           <span className={`text-tag ${tagColor}`}>{typeName}</span>
         </div>
-        <h3 className={`text-h3 ${headlineColor}`}>{ad.headline}</h3>
+        <h3
+          className={`text-h3 ${headlineColor}`}
+          dangerouslySetInnerHTML={{ __html: ad.headline }}
+        />
         <AniLink
-          className={`text-button ${buttonColor} inline-flex items-center transition-all duration-200 ease-in-out`}
+          className={`text-button ${buttonColor} inline-flex items-center transition-all duration-200 ease-in-out Button`}
           cover
           direction="right"
           duration={1.25}

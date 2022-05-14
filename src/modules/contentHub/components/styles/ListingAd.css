@@ -23,19 +23,19 @@
   stroke: #ffffff;
 }
 
-.listing-ad.light .text-button:hover svg path {
+/* .listing-ad.light .text-button:hover svg path {
   @screen lg {
     transition: all 0.2s ease-in-out;
     stroke: #000000;
   }
-}
+} */
 
-.listing-ad.dark .text-button:hover svg path {
+/* .listing-ad.dark .text-button:hover svg path {
   @screen lg {
     transition: all 0.2s ease-in-out;
     stroke: #ffffff;
   }
-}
+} */
 
 .listing-ad__content {
   @apply px-6 pb-10;
@@ -45,7 +45,7 @@
   }
 
   @screen lg {
-    @apply pl-8 pb-0 w-3/5;
+    @apply px-8 pb-0 w-3/5;
   }
 
   h3 {
@@ -55,7 +55,7 @@
   a {
     @apply px-6;
     @apply py-4;
-    @apply hover:bg-transparent;
+    /* @apply hover:bg-transparent; */
   }
 }
 
