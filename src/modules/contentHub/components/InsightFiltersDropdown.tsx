@@ -10,7 +10,8 @@ import Arrow from '@static/svgs/common/arrows/arrow-simple-down.inline.svg'
 // Common
 import { TypeInsightTopic, TypeInsightType } from '@common/types/Insight'
 import { classNames } from '@common/utils/classNames'
-import { FilterState } from '../../../templates/insights'
+import { FiltersType, QueryParamsType } from './InsightsFilters'
+// import { FilterState } from '../../../templates/insights'
 
 // Styles
 import './styles/InsightFilters.css'
@@ -18,27 +19,14 @@ import './styles/InsightFilters.css'
 interface Props {
   topics: TypeInsightTopic[]
   types: TypeInsightType[]
-  topicsFilter: FilterState<TypeInsightTopic>
-  typesFilter: FilterState<TypeInsightType>
-  createOnTopicClickHandler: (name: TypeInsightTopic) => () => void
-  createOnTypeClickHandler: (name: TypeInsightType) => () => void
+  filters: FiltersType
   queryString: any
-  queryParams: any
-  filters: any
+  queryParams: QueryParamsType
+  // topicsFilter: FilterState<TypeInsightTopic>
+  // typesFilter: FilterState<TypeInsightType>
+  // createOnTopicClickHandler: (name: TypeInsightTopic) => () => void
+  // createOnTypeClickHandler: (name: TypeInsightType) => () => void
 }
-
-// function getFilterText<T>(
-//   title: string,
-//   { filters, noFilters }: FilterState<T>
-// ): string {
-//   if (noFilters) {
-//     return title
-//   }
-
-//   return filters.length === 0
-//     ? title
-//     : `Viewing ${filters.length} ${title}${filters.length > 1 ? 's' : ''}`
-// }
 
 const InsightFiltersDropdown = memo(function InsightFiltersDropdownMemo({
   topics,
@@ -46,15 +34,11 @@ const InsightFiltersDropdown = memo(function InsightFiltersDropdownMemo({
   filters,
   queryString,
   queryParams
-}: // topicsFilter,
-// typesFilter,
-// createOnTopicClickHandler,
-// createOnTypeClickHandler
-Props) {
+}: Props) {
   const [isTopicFilterOpen, setIsTopicFilterOpen] = useState(false)
   const [isTypeFilterOpen, setIsTypeFilterOpen] = useState(false)
 
-  const getFilterText = (title, filters) => {
+  const getFilterText = (title: string, filters: any) => {
     if (filters) {
       return `Viewing ${filters.length} ${title}${
         filters.length > 1 ? 's' : ''
@@ -92,7 +76,7 @@ Props) {
         {isTopicFilterOpen && (
           <div className="Insight-filters-dropdown-menu">
             {topics.map((topic) => {
-              const handleOnClick = (e, theTopic) => {
+              const handleOnClick = (e: any, theTopic: string) => {
                 if (filters?.topics?.includes(theTopic)) {
                   let theFilters
 
@@ -158,14 +142,53 @@ Props) {
         {isTypeFilterOpen && (
           <div className="Insight-filters-dropdown-menu">
             {types.map((type) => {
-              const handleOnClick = createOnTypeClickHandler(type)
-              const isActive =
-                !typesFilter.noFilters && typesFilter.filters.includes(type)
+              const handleOnClick = (e: any, theType: string) => {
+                if (filters?.types?.includes(theType)) {
+                  let theFilters
+
+                  if (filters.types.length === 1) {
+                    theFilters = undefined
+                  } else if (filters?.types.length > 1) {
+                    theFilters = queryParams.types.filter(
+                      (item) => item !== e.target.dataset.filter
+                    )
+                  }
+
+                  const newQuery = queryString.stringify(
+                    {
+                      topics: queryParams.topics,
+                      types: theFilters
+                    },
+                    { arrayFormat: 'comma' }
+                  )
+                  navigate(`?${newQuery}`)
+                } else {
+                  const theFilters = [e.target.dataset.filter]
+
+                  if (typeof queryParams.types === `string`) {
+                    theFilters.push(queryParams.types)
+                  }
+
+                  if (typeof queryParams.types === `object`) {
+                    theFilters.push(...queryParams.types)
+                  }
+
+                  const newQuery = queryString.stringify(
+                    {
+                      topics: queryParams.topics,
+                      types: theFilters
+                    },
+                    { arrayFormat: 'comma' }
+                  )
+                  navigate(`?${newQuery}`)
+                }
+              }
+              const isActive = filters?.types?.includes(type)
               return (
                 <div
                   key={kebabCase(type)}
                   className={`Insight-filters-item ${isActive && 'is-active'}`}
-                  onClick={handleOnClick}
+                  onClick={(e) => handleOnClick(e, type)}
                   role="button"
                 >
                   <span className="text-page-navigation">{type}</span>

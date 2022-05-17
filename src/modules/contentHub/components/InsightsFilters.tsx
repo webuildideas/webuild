@@ -17,30 +17,35 @@ import InsightFiltersDropdown from './InsightFiltersDropdown'
 // Styles
 import './styles/InsightFilters.css'
 
+export interface FiltersType {
+  topics: string[]
+  types: string[]
+}
+
+export interface QueryParamsType {
+  topics: string[]
+  types: string[]
+}
+
+interface Props {
+  topics: TypeInsightTopic[]
+  types: TypeInsightType[]
+  filters: FiltersType
+  queryString: any
+  queryParams: QueryParamsType
+  insightsContainer: React.RefObject<HTMLElement> | any
+}
+
 const InsightsFilters = ({
   topics,
   types,
   filters,
   queryString,
   queryParams,
-  insightsContainer,
-  topicsFilter,
-  typesFilter,
-  createOnTopicClickHandler,
-  createOnTypeClickHandler,
-  setFilters
-  // onFilterChange
-}) => {
+  insightsContainer
+}: Props) => {
   return (
     <>
-      {/* <InsightFiltersDropdown
-        createOnTopicClickHandler={createOnTopicClickHandler}
-        createOnTypeClickHandler={createOnTypeClickHandler}
-        topics={topics}
-        topicsFilter={topicsFilter}
-        types={types}
-        typesFilter={typesFilter}
-      /> */}
       <InsightFiltersDropdown
         filters={filters}
         queryParams={queryParams}
@@ -52,7 +57,7 @@ const InsightsFilters = ({
         <div>
           <h5 className="mb-2 text-body font-extrabold uppercase">Topic</h5>
           {topics.map((topic) => {
-            const handleOnClick = (e, theTopic) => {
+            const handleOnClick = (e: any, theTopic: string) => {
               if (filters?.topics?.includes(theTopic)) {
                 let theFilters
 
@@ -127,7 +132,7 @@ const InsightsFilters = ({
           <div className="mt-8">
             <h5 className="mb-2 text-body font-extrabold uppercase">Type</h5>
             {types.map((type) => {
-              const handleOnClick = (e, theType) => {
+              const handleOnClick = (e: any, theType: string) => {
                 // console.log(theType)
                 // console.log(filters)
                 if (filters?.types?.includes(theType)) {

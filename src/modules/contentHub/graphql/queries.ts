@@ -10,6 +10,7 @@ export interface InsightsListingArgs {
   limit: number
   topics: TypeInsightTopic[]
   types: TypeInsightType[]
+  [others: string]: any
 }
 
 export interface InsightsListingData extends QueryResult {

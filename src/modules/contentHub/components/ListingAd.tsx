@@ -10,16 +10,18 @@ import { TypeInsightType } from '@common/types/Insight'
 // Styles
 import './styles/ListingAd.css'
 
+export interface TypeListingAd {
+  backgroundColor: string
+  ctaLink: string
+  ctaText: string
+  headline: string
+  id: string
+  image: TypeGatsbyImageFluid
+  resourceType: TypeInsightType
+}
+
 interface Props {
-  ad: {
-    backgroundColor: string
-    ctaLink: string
-    ctaText: string
-    headline: string
-    id: string
-    image: TypeGatsbyImageFluid
-    resourceType: TypeInsightType
-  }
+  ad: TypeListingAd
 }
 
 const ListingAd = ({ ad }: Props) => {
