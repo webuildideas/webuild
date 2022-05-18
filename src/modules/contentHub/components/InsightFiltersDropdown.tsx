@@ -22,10 +22,7 @@ interface Props {
   filters: FiltersType
   queryString: any
   queryParams: QueryParamsType
-  // topicsFilter: FilterState<TypeInsightTopic>
-  // typesFilter: FilterState<TypeInsightType>
-  // createOnTopicClickHandler: (name: TypeInsightTopic) => () => void
-  // createOnTypeClickHandler: (name: TypeInsightType) => () => void
+  insightsContainer: React.RefObject<HTMLElement> | any
 }
 
 const InsightFiltersDropdown = memo(function InsightFiltersDropdownMemo({
@@ -33,7 +30,8 @@ const InsightFiltersDropdown = memo(function InsightFiltersDropdownMemo({
   types,
   filters,
   queryString,
-  queryParams
+  queryParams,
+  insightsContainer
 }: Props) {
   const [isTopicFilterOpen, setIsTopicFilterOpen] = useState(false)
   const [isTypeFilterOpen, setIsTypeFilterOpen] = useState(false)
@@ -95,7 +93,17 @@ const InsightFiltersDropdown = memo(function InsightFiltersDropdownMemo({
                     },
                     { arrayFormat: 'comma' }
                   )
-                  navigate(`?${newQuery}`)
+                  setIsTopicFilterOpen((prevState) => !prevState)
+                  navigate(`?${newQuery}`, {
+                    state: {
+                      disableScrollUpdate: true
+                    }
+                  })
+                  setTimeout(() => {
+                    insightsContainer.current.scrollIntoView({
+                      block: 'center'
+                    })
+                  }, 400)
                 } else {
                   const theFilters = [e.target.dataset.filter]
 
@@ -114,7 +122,17 @@ const InsightFiltersDropdown = memo(function InsightFiltersDropdownMemo({
                     },
                     { arrayFormat: 'comma' }
                   )
-                  navigate(`?${newQuery}`)
+                  setIsTopicFilterOpen((prevState) => !prevState)
+                  navigate(`?${newQuery}`, {
+                    state: {
+                      disableScrollUpdate: true
+                    }
+                  })
+                  setTimeout(() => {
+                    insightsContainer.current.scrollIntoView({
+                      block: 'center'
+                    })
+                  }, 400)
                 }
               }
               const isActive = filters?.topics?.includes(topic)
@@ -126,7 +144,9 @@ const InsightFiltersDropdown = memo(function InsightFiltersDropdownMemo({
                   onClick={(e) => handleOnClick(e, topic)}
                   role="button"
                 >
-                  <span className="text-page-navigation">{topic}</span>
+                  <span className="text-page-navigation pointer-events-none">
+                    {topic}
+                  </span>
                 </div>
               )
             })}
@@ -161,7 +181,17 @@ const InsightFiltersDropdown = memo(function InsightFiltersDropdownMemo({
                     },
                     { arrayFormat: 'comma' }
                   )
-                  navigate(`?${newQuery}`)
+                  navigate(`?${newQuery}`, {
+                    state: {
+                      disableScrollUpdate: true
+                    }
+                  })
+                  setIsTypeFilterOpen((prevState) => !prevState)
+                  setTimeout(() => {
+                    insightsContainer.current.scrollIntoView({
+                      block: 'center'
+                    })
+                  }, 400)
                 } else {
                   const theFilters = [e.target.dataset.filter]
 
@@ -180,7 +210,17 @@ const InsightFiltersDropdown = memo(function InsightFiltersDropdownMemo({
                     },
                     { arrayFormat: 'comma' }
                   )
-                  navigate(`?${newQuery}`)
+                  setIsTypeFilterOpen((prevState) => !prevState)
+                  navigate(`?${newQuery}`, {
+                    state: {
+                      disableScrollUpdate: true
+                    }
+                  })
+                  setTimeout(() => {
+                    insightsContainer.current.scrollIntoView({
+                      block: 'center'
+                    })
+                  }, 400)
                 }
               }
               const isActive = filters?.types?.includes(type)
@@ -188,10 +228,11 @@ const InsightFiltersDropdown = memo(function InsightFiltersDropdownMemo({
                 <div
                   key={kebabCase(type)}
                   className={`Insight-filters-item ${isActive && 'is-active'}`}
+                  data-filter={slugify(type, { lower: true })}
                   onClick={(e) => handleOnClick(e, type)}
                   role="button"
                 >
-                  <span className="text-page-navigation">{type}</span>
+                  <span className="text-page-navigation pointer-events-none">{`${type}s`}</span>
                 </div>
               )
             })}

@@ -1,12 +1,14 @@
 import React from 'react'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { motion, usePresence } from 'framer-motion'
-import Img from 'gatsby-image'
+// import Img from 'gatsby-image'
 import Arrow from '@static/svgs/cta-arrow.inline.svg'
 import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
 
 import { TypeInsightTypeIconConfig } from '@modules/common/components/configs/InsightTags'
 import { TypeInsightType } from '@common/types/Insight'
+import smallImg from '@static/images/home/homepage-hero-mobile.jpg'
+
 // Styles
 import './styles/ListingAd.css'
 
@@ -16,12 +18,49 @@ export interface TypeListingAd {
   ctaText: string
   headline: string
   id: string
-  image: TypeGatsbyImageFluid
+  image: any
   resourceType: TypeInsightType
 }
 
 interface Props {
   ad: TypeListingAd
+}
+
+interface BlurredImage {
+  image: string
+}
+
+export const useProgressiveImg = (
+  lowQualitySrc: string,
+  highQualitySrc: string
+) => {
+  const [src, setSrc] = React.useState(lowQualitySrc)
+
+  React.useEffect(() => {
+    setSrc(lowQualitySrc)
+    const img = new Image()
+    img.src = highQualitySrc
+    img.onload = () => {
+      setSrc(highQualitySrc)
+    }
+  }, [lowQualitySrc, highQualitySrc])
+
+  return [src, { blur: src === lowQualitySrc }]
+}
+
+export const BlurredUpImage = ({ image }: BlurredImage) => {
+  const [src, { blur }] = useProgressiveImg(smallImg, image)
+  return (
+    <img
+      alt="testing"
+      className="mb-6 md:mb-0 w-full"
+      src={src}
+      style={{
+        filter: blur ? 'blur(20px)' : 'none',
+        transition: blur ? 'none' : 'filter 0.3s ease-out'
+      }}
+    />
+  )
 }
 
 const ListingAd = ({ ad }: Props) => {
@@ -83,7 +122,7 @@ const ListingAd = ({ ad }: Props) => {
         </AniLink>
       </div>
       <div className="listing-ad__image">
-        <Img fluid={ad.image.fluid} imgStyle={{ objectFit: 'contain' }} />
+        <BlurredUpImage image={ad.image.sizes.src} />
       </div>
     </motion.article>
   )

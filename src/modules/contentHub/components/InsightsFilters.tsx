@@ -48,6 +48,7 @@ const InsightsFilters = ({
     <>
       <InsightFiltersDropdown
         filters={filters}
+        insightsContainer={insightsContainer}
         queryParams={queryParams}
         queryString={queryString}
         topics={topics}
@@ -133,8 +134,6 @@ const InsightsFilters = ({
             <h5 className="mb-2 text-body font-extrabold uppercase">Type</h5>
             {types.map((type) => {
               const handleOnClick = (e: any, theType: string) => {
-                // console.log(theType)
-                // console.log(filters)
                 if (filters?.types?.includes(theType)) {
                   let theFilters
 

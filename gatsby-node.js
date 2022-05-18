@@ -39,8 +39,8 @@ export const createPages = async ({ graphql, actions }) => {
           ctaLink
           backgroundColor
           image {
-            fluid {
-              srcSet
+            sizes {
+              src
             }
           }
         }
