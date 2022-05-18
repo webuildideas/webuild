@@ -1,8 +1,15 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // Packages
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState, useRef } from 'react'
 import { useQuery } from '@apollo/client'
-import { graphql, PageProps } from 'gatsby'
+import { graphql, PageProps, navigate, Link } from 'gatsby'
+
+// NEW NEW
+import slugify from 'slugify'
+import { unslugify } from 'unslugify'
+import { useLocation } from '@reach/router'
+import queryString from 'query-string'
 
 // Common
 import {
@@ -21,14 +28,16 @@ import {
 
 // Components
 import Meta from '@components/Meta'
-import InsightFilters from '@modules/contentHub/components/InsightFilters'
+import InsightsFilters from '@modules/contentHub/components/InsightsFilters'
 import ListingInsight from '@modules/contentHub/components/ListingInsight'
-import ListingInsightSkeleton from '@modules/contentHub/components/ListingInsightSkeleton'
+import ListingAd from '@modules/contentHub/components/ListingAd'
+// import ListingInsightSkeleton from '@modules/contentHub/components/ListingInsightSkeleton'
 import FeaturedInsight from '@modules/contentHub/components/FeaturedInsight'
-import Pagination from '@modules/contentHub/components/Pagination'
+import Pagination from '@modules/contentHub/components/Paginations'
 import Footer from '@modules/common/components/Footer'
 import EmailSignUpForm from '@modules/forms/EmailSignupForm'
 import MonthlyNewsletterForm from '@modules/forms/MonthlyNewsletterForm'
+import { TypeListingAd } from '@modules/contentHub/components/ListingAd'
 
 interface Props {
   location: PageProps['location']
@@ -40,44 +49,66 @@ interface Props {
   pageContext: {
     topics: TypeInsightTopic[]
     types: TypeInsightType[]
+    ads: {
+      nodes: {
+        node: TypeListingAd
+      }
+    }
   }
 }
 
-export interface FilterState<T> {
-  noFilters: boolean
-  filters: T[]
+interface Filters {
+  topics: string[]
+  types: string[]
 }
 
-const PAGINATION_LIMIT = 7
+const PAGINATION_LIMIT = 12
 
 const Insights = ({
   location,
   data: {
     contentfulContentHub: { featuredInsight }
   },
-  pageContext: { topics, types }
+  pageContext: { topics, types, ads }
 }: Props) => {
-  const [skip, setSkip] = useState(0)
+  // NEW
+  const unslugifyParams = (theFilters: any) => {
+    if (typeof theFilters === `string`) {
+      const arr = []
+      const unSlug = unslugify(theFilters)
+      arr.push(unSlug.replace('And', '&').replace('Ebook', 'eBook'))
+      return arr
+    }
+
+    if (typeof theFilters === `object`) {
+      return theFilters.map((filter: string) =>
+        unslugify(filter).replace('And', '&').replace('Ebook', 'eBook')
+      )
+    }
+  }
+
+  const queryParams = queryString.parse(location.search, {
+    arrayFormat: 'comma'
+  })
+  const [skip, setSkip] = useState(queryParams.page || 0)
   const [total, setTotal] = useState<number | null>(null)
-  const [topicsFilter, setTopicsFilter] = useState<
-    FilterState<TypeInsightTopic>
-  >({
-    noFilters: true,
-    filters: topics
+  const [filters, setFilters] = useState<Filters>({
+    topics: unslugifyParams(queryParams.topics),
+    types: unslugifyParams(queryParams.types)
   })
-  const [typesFilter, setTypesFilter] = useState<FilterState<TypeInsightType>>({
-    noFilters: true,
-    filters: types
-  })
-  const { loading, error, data, fetchMore } = useQuery<
+  const insightsContainer = useRef<HTMLElement>(null)
+  const insightsWrapper = useRef<HTMLElement>(null)
+
+  const { loading, error, data, refetch } = useQuery<
     InsightsListingData,
     InsightsListingArgs
   >(FILTER_INSIGHTS_QUERY, {
     variables: {
-      skip,
+      // skip,
+      skip: skip * PAGINATION_LIMIT,
       limit: PAGINATION_LIMIT,
-      topics: topicsFilter.filters,
-      types: typesFilter.filters
+      topics: unslugifyParams(queryParams.topics) || topics,
+      types: unslugifyParams(queryParams.types) || types
     }
   })
 
@@ -85,150 +116,101 @@ const Insights = ({
   const loadingOrNoItems = loading || noInisights
   const showPagination = total && total > PAGINATION_LIMIT
 
-  const fetchMoreInsights = useCallback(
-    ({ selected }: { selected: number }) => {
-      const newSkip = selected * PAGINATION_LIMIT
-      fetchMore({
+  const refetchInsights = useCallback(
+    (params) => {
+      const newSkip = skip * PAGINATION_LIMIT
+      refetch({
         variables: {
           skip: newSkip,
-          limit: PAGINATION_LIMIT
+          limit: PAGINATION_LIMIT,
+          topics: unslugifyParams(params.topics) || topics,
+          types: unslugifyParams(params.types) || types
         }
       }).then((response) => {
-        setSkip(newSkip)
-        setTotal(response.data.insightCollection.total)
+        setFilters((prevState) => {
+          return {
+            ...prevState,
+            topics: unslugifyParams(params.topics),
+            types: unslugifyParams(params.types),
+            page: params.page || 0
+          }
+        })
+        setSkip(params.page - 1 || 0)
       })
     },
-    [fetchMore]
+    [refetch, skip, topics, types]
   )
 
-  const createOnTopicClickHandler = useCallback(
-    (name: TypeInsightTopic) => () => {
-      if (topicsFilter.noFilters) {
-        setTopicsFilter({
-          filters: [name],
-          noFilters: false
-        })
-        fetchMore({
-          variables: {
-            skip: 0,
-            limit: PAGINATION_LIMIT,
-            topics: [name]
-          }
-        }).then((response) => {
-          setSkip(0)
-          setTotal(response.data.insightCollection.total)
-        })
-        return
-      }
-
-      if (topicsFilter.filters.includes(name)) {
-        const filterWithTopicRemoved = topicsFilter.filters.filter(
-          (topic) => topic !== name
-        )
-        const hasNoFilters = filterWithTopicRemoved.length === 0
-        setTopicsFilter({
-          filters: hasNoFilters ? topics : filterWithTopicRemoved,
-          noFilters: hasNoFilters
-        })
-        fetchMore({
-          variables: {
-            skip: 0,
-            limit: PAGINATION_LIMIT,
-            topics: hasNoFilters ? topics : filterWithTopicRemoved
-          }
-        }).then((response) => {
-          setSkip(0)
-          setTotal(response.data.insightCollection.total)
-        })
-        return
-      }
-
-      setTopicsFilter((prevState) => {
-        return {
-          ...prevState,
-          filters: [...prevState.filters, name]
+  const onPageChange = ({ selected }: { selected: any }) => {
+    const newQuery = queryString.stringify(
+      {
+        topics: queryParams.topics,
+        types: queryParams.types,
+        page: selected === 0 ? undefined : selected + 1
+      },
+      { arrayFormat: 'comma' }
+    )
+    insightsContainer.current.scrollIntoView({ block: 'center' })
+    setTimeout(() => {
+      navigate(`?${newQuery}`, {
+        state: {
+          disableScrollUpdate: true
         }
       })
-      fetchMore({
-        variables: {
-          skip: 0,
-          limit: PAGINATION_LIMIT
-        }
-      }).then((response) => {
-        setSkip(0)
-        setTotal(response.data.insightCollection.total)
-      })
-    },
-    [topicsFilter, fetchMore, topics, setTopicsFilter]
-  )
-
-  const createOnTypeClickHandler = useCallback(
-    (name: TypeInsightType) => () => {
-      if (typesFilter.noFilters) {
-        setTypesFilter({
-          filters: [name],
-          noFilters: false
-        })
-        fetchMore({
-          variables: {
-            skip: 0,
-            limit: PAGINATION_LIMIT,
-            types: [name]
-          }
-        }).then((response) => {
-          setSkip(0)
-          setTotal(response.data.insightCollection.total)
-        })
-        return
-      }
-
-      if (typesFilter.filters.includes(name)) {
-        const filterWithTypeRemoved = typesFilter.filters.filter(
-          (type) => type !== name
-        )
-        const hasNotFilters = filterWithTypeRemoved.length === 0
-        setTypesFilter({
-          filters: hasNotFilters ? types : filterWithTypeRemoved,
-          noFilters: !!hasNotFilters
-        })
-
-        fetchMore({
-          variables: {
-            skip: 0,
-            limit: PAGINATION_LIMIT,
-            types: hasNotFilters ? types : filterWithTypeRemoved
-          }
-        }).then((response) => {
-          setSkip(0)
-          setTotal(response.data.insightCollection.total)
-        })
-        return
-      }
-
-      setTypesFilter((prevState) => {
-        return {
-          filters: [...prevState.filters, name],
-          noFilters: prevState.noFilters
-        }
-      })
-      fetchMore({
-        variables: {
-          skip: 0,
-          limit: PAGINATION_LIMIT
-        }
-      }).then((response) => {
-        setSkip(0)
-        setTotal(response.data.insightCollection.total)
-      })
-    },
-    [typesFilter, fetchMore, setTypesFilter, types]
-  )
+    }, 800)
+  }
 
   useEffect(() => {
     if (data && data?.insightCollection?.items) {
       setTotal(data.insightCollection.total)
     }
   }, [data])
+
+  useEffect(() => {
+    const newQueryParams = queryString.parse(location.search, {
+      arrayFormat: 'comma'
+    })
+    refetchInsights(newQueryParams)
+  }, [location, refetchInsights])
+
+  const splitInsightsUp = (insights: any, numberOfAds: number) => {
+    const theAds = ads.nodes
+    if (numberOfAds >= 2) {
+      return (
+        <>
+          {insights.slice(0, 3).map((insight) => (
+            <ListingInsight key={`item-${insight.slug}`} insight={insight} />
+          ))}
+          {theAds.slice(0, 1).map((ad) => (
+            <ListingAd key={`item-${ad.id}`} ad={ad} />
+          ))}
+          {insights.slice(4, 8).map((insight) => (
+            <ListingInsight key={`item-${insight.slug}`} insight={insight} />
+          ))}
+          {theAds.slice(1, 2).map((ad) => (
+            <ListingAd key={`item-${ad.id}`} ad={ad} />
+          ))}
+          {insights.slice(8, 12).map((insight) => (
+            <ListingInsight key={`item-${insight.slug}`} insight={insight} />
+          ))}
+        </>
+      )
+    }
+
+    return (
+      <>
+        {insights.slice(0, 3).map((insight) => (
+          <ListingInsight key={`item-${insight.slug}`} insight={insight} />
+        ))}
+        {theAds.slice(0, 1).map((ad) => (
+          <ListingAd key={`item-${ad.id}`} ad={ad} />
+        ))}
+        {insights.slice(4).map((insight) => (
+          <ListingInsight key={`item-${insight.slug}`} insight={insight} />
+        ))}
+      </>
+    )
+  }
 
   return (
     <div className="InsightsPage" id="insights-container">
@@ -241,40 +223,43 @@ const Insights = ({
           </p>
         </div>
       </div>
-      <div className="InsightsPage-feature">
-        {featuredInsight ? <FeaturedInsight insight={featuredInsight} /> : null}
+      <div className="InsightsPage-feature" id="insights-feature">
+        <div className="wrap">
+          {featuredInsight ? (
+            <FeaturedInsight insight={featuredInsight} />
+          ) : null}
+        </div>
       </div>
 
-      <div className="InsightsPage-main">
-        <aside className="InsightsPage-filters">
-          <InsightFilters
-            createOnTopicClickHandler={createOnTopicClickHandler}
-            createOnTypeClickHandler={createOnTypeClickHandler}
+      <div className="InsightsPage-main" id="test">
+        <aside
+          ref={insightsContainer}
+          className="InsightsPage-filters self-start"
+        >
+          <InsightsFilters
+            filters={filters}
+            insightsContainer={insightsContainer}
+            queryParams={queryParams}
+            queryString={queryString}
+            setFilters={setFilters}
             topics={topics}
-            topicsFilter={topicsFilter}
             types={types}
-            typesFilter={typesFilter}
           />
         </aside>
 
-        <div className="InsightsPage-insights">
+        <div
+          ref={insightsWrapper}
+          className={`InsightsPage-insights transition-opacity duration-200 min-h-screen `}
+        >
           {loadingOrNoItems || error ? (
             <>
-              {loading ? (
-                <>
-                  <ListingInsightSkeleton />
-                  <ListingInsightSkeleton />
-                  <ListingInsightSkeleton />
-                  <ListingInsightSkeleton />
-                  <ListingInsightSkeleton />
-                  <ListingInsightSkeleton />
-                </>
-              ) : null}
-
               {noInisights ? (
                 <p className="text-h3">
                   No insights match that search. Please try again or view all
-                  insights here.
+                  insights{' '}
+                  <Link className="text-electricViolet" to="/insights">
+                    here.
+                  </Link>
                 </p>
               ) : null}
 
@@ -283,19 +268,37 @@ const Insights = ({
               ) : null}
             </>
           ) : (
-            data?.insightCollection.items.map((insight) => (
-              <ListingInsight key={`item-${insight.slug}`} insight={insight} />
-            ))
+            <>
+              {data?.insightCollection.items.length < 4
+                ? data?.insightCollection.items.map((insight: any) => (
+                    <ListingInsight
+                      key={`item-${insight.slug}`}
+                      insight={insight}
+                    />
+                  ))
+                : null}
+
+              {data?.insightCollection.items.length > 4 &&
+              data?.insightCollection.items.length <= 8
+                ? splitInsightsUp(data?.insightCollection.items, 1)
+                : null}
+
+              {data?.insightCollection.items.length > 8
+                ? splitInsightsUp(data?.insightCollection.items, 2)
+                : null}
+            </>
           )}
         </div>
 
         <div className="InsightsPage-pagination">
           {showPagination ? (
             <Pagination
+              forcePage={skip}
               marginPagesDisplayed={1}
-              onPageChange={fetchMoreInsights}
-              pageCount={Math.ceil(total! / PAGINATION_LIMIT)}
+              onPageChange={onPageChange}
+              pageCount={Math.ceil(total / PAGINATION_LIMIT)}
               pageRangeDisplayed={5}
+              skip={skip}
             />
           ) : null}
         </div>
@@ -313,8 +316,8 @@ const Insights = ({
   )
 }
 
-export const CONTENT_HUB_QUERY = graphql`
-  query contentHubQuery {
+export const CONTENT_HUB_QUERYY = graphql`
+  query contentHubQueryy {
     contentfulContentHub(pageTitle: { eq: "Content Hub" }) {
       featuredInsight {
         type

@@ -40,6 +40,7 @@
     "postcss": "^8.2.4",
     "postcss-import": "^14.0.0",
     "pure-react-carousel": "^1.27.6",
+    "query-string": "^7.1.1",
     "react": "^17.0.2",
     "react-cookie": "^4.0.3",
     "react-dom": "^17.0.2",
@@ -57,8 +58,10 @@
     "recoil": "^0.2.0",
     "recoil-persist": "^2.5.0",
     "slick-carousel": "^1.8.1",
+    "slugify": "^1.6.5",
     "styled-components": "^5.2.1",
     "tailwindcss": "^2.0.2",
+    "unslugify": "^1.0.2",
     "yup": "^0.32.8"
   },
   "devDependencies": {
