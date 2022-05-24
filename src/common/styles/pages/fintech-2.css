@@ -12,7 +12,7 @@
   @apply md:pt-8;
 
   @apply lg:pt-20;
-  
+
   @apply 2xl:pt-40;
 }
 
@@ -47,8 +47,7 @@
 
   @apply md:mx-8;
   @apply md:pb-20;
-  
-  
+
   @screen md {
     width: 80%;
   }
@@ -73,13 +72,11 @@
     max-width: 760px;
   }
 
-
   @screen 2xl {
     margin-left: 400px;
     max-width: 984px;
   }
 }
-
 
 .Fintech__hero-title {
   @apply xl:mt-6;
@@ -196,7 +193,7 @@
 
 .Fintech__clients-copy {
   @apply px-8;
-  
+
   @apply md:px-0;
 }
 
@@ -219,10 +216,9 @@
   @screen md {
     width: 92%;
   }
-  
+
   max-width: 984px;
 }
-
 
 /** Webuild Works **/
 .Fintech__works {
@@ -245,10 +241,10 @@
   @apply text-center;
   @apply font-extrabold;
   @apply mb-16;
-  
+
   @apply md:text-left;
   @apply md:mb-18;
-  
+
   @apply lg:mb-20;
 
   @apply xl:mx-auto;
@@ -289,7 +285,7 @@
 .Fintech__works-item {
   @apply md:px-0;
   @apply items-start;
-  
+
   @apply lg:flex-row;
   @apply lg:flex-nowrap;
   @apply lg:items-center;
@@ -306,9 +302,11 @@
   h3 {
     @apply mb-3;
   }
-  p {
+  /* p {
     @apply mb-8;
-  }
+
+    @
+  } */
 }
 
 .Fintech__works-item-illustration-container {
@@ -319,17 +317,20 @@
   @apply md:mb-12;
 
   @screen md {
-    &.resources, &.velocity {
+    &.resources,
+    &.velocity {
       height: 180px;
     }
 
-    &.reliability, &.dream {
+    &.reliability,
+    &.dream {
       height: 230px;
     }
   }
 
   @screen lg {
-    &.resources, &.velocity {
+    &.resources,
+    &.velocity {
       height: 230px;
     }
   }
@@ -405,7 +406,7 @@
   @apply flex-col;
   @apply items-center;
   @apply justify-center;
-  
+
   @apply md:flex-row;
   @apply md:flex-nowrap;
   @apply md:gap-x-8;
@@ -431,7 +432,7 @@
 }
 
 .Fintech__form-button {
-  @apply mt-10;
+  @apply mt-10 md:mt-0;
   @apply block;
   @apply flex-shrink-0;
   padding-left: 57px;
@@ -463,7 +464,7 @@
       width: 150px;
     }
   }
-  
+
   .Fintech__star {
     @apply absolute;
     right: 8px;
@@ -526,7 +527,7 @@
     right: 96px;
     bottom: -136px;
   }
-  
+
   .Fintech__triangles {
     width: 112px;
 
@@ -538,7 +539,7 @@
       width: 162px;
     }
   }
-  
+
   .Fintech__star {
     @apply absolute;
     width: 26px;
@@ -551,7 +552,7 @@
       bottom: -16px;
       right: 0px;
     }
-    
+
     @screen lg {
       width: 32px;
     }
@@ -567,20 +568,26 @@
 /** Services **/
 .Fintech-services {
   .OtherServices {
-    @apply bg-champagnePink;
+    /* @apply bg-champagnePink; */
     @apply mt-0;
     @apply pt-10;
     @apply pb-14;
 
     @apply md:pt-12;
     @apply md:pb-16;
-    
+
     @apply xl:pt-18;
     @apply xl:pb-24;
   }
-  
+
   .OtherServices-header {
     @apply justify-center;
+  }
+}
+
+.Fintech-services .OtherServices.Fintech-services-2 {
+  @screen lg {
+    @apply pt-40 pb-44;
   }
 }
 
@@ -632,13 +639,13 @@
   @apply w-25;
 
   @apply md:my-8;
-  
+
   @apply lg:my-0;
   @screen lg {
     @apply absolute;
     @apply z-10;
-    left:50%;
-    transform: translateX(-50%)
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 

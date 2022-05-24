@@ -15,16 +15,19 @@ interface Props {
   showButton?: boolean
   title?: string
   isChampagnePinkBg?: boolean
+  className?: string
 }
 
 const OtherServices = ({
   services,
   title = 'Other Services',
   showButton = true,
-  isChampagnePinkBg = false
+  isChampagnePinkBg = false,
+  className
 }: Props) => {
+  const bgColor = isChampagnePinkBg ? `bg-champagnePink` : `bg-white`
   return (
-    <div className="OtherServices">
+    <div className={`OtherServices ${bgColor} ${className}`}>
       <div className="OtherServices-inner">
         <div className="OtherServices-header">
           <h3 className="text-h3 font-extrabold text-center">{title}</h3>

@@ -2,7 +2,7 @@
   @apply pt-10;
   @apply pb-14;
   @apply text-center;
-  @apply bg-gray-100;
+  /* @apply bg-gray-100; */
 
   @apply md:px-8;
 
@@ -44,7 +44,6 @@
   width: 90%;
   max-width: 450px;
 
-
   .OtherServices-service {
     grid-column: span 2;
   }
@@ -60,7 +59,6 @@
     grid-column-start: 4;
     grid-column-end: 6;
   }
-
 
   @screen md {
     @apply flex;
@@ -102,7 +100,6 @@
   width: 100px;
   height: 100px;
 
-  
   img {
     @apply absolute;
     @apply z-10;

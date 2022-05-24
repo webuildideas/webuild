@@ -152,7 +152,13 @@ const BookACallForm = ({
           validateOnMount={false}
           validationSchema={formSchema}
         >
-          {({ isSubmitting, values, errors }: FormikProps<FormValues>) => (
+          {({
+            dirty,
+            isSubmitting,
+            values,
+            errors,
+            isValid
+          }: FormikProps<FormValues>) => (
             <Form id={NFForms.BookACall.actOnId} name={NFForms.BookACall.name}>
               <h3 className="BookACallForm-title text-h3 mb-6">Book a call</h3>
 
@@ -228,7 +234,12 @@ const BookACallForm = ({
               <Button
                 animate={false}
                 className="block mx-auto mt-10 lg:ml-0"
-                disabled={isSubmitting || !values['Privacy Notice']}
+                // disabled={isSubmitting || !values['Privacy Notice']}
+                disabled={
+                  isSubmitting ||
+                  !values['Privacy Notice'] ||
+                  !(dirty && isValid)
+                }
                 loading={isSubmitting}
                 styleType="solid-purple"
                 type="submit"

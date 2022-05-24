@@ -30,6 +30,8 @@ const AppProvider = memo(function AppProviderMemo({
     userFormConversionsAtom
   )
 
+  console.log(location.pathname)
+
   useEffect(() => {
     const setUserConversionsData = setTimeout(() => {
       const conversions = window.NF.getActivityData()
