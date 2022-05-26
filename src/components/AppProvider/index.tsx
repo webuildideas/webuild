@@ -10,7 +10,6 @@ import { userFormConversionsAtom } from '@modules/common/atoms/userFormConversio
 import { WithChildren } from '@common/types/Utilities'
 import { styleTheme } from '@common/theme/styleTheme'
 import { GlobalStyle } from '@common/theme/GlobalStyle'
-import { isOverlayNavOpenAtom } from '@common/store/userInterface/atoms'
 
 // Components
 import Nav from '@modules/common/components/Nav'
@@ -31,17 +30,7 @@ const AppProvider = memo(function AppProviderMemo({
     userFormConversionsAtom
   )
 
-  const [isOverlayNavOpen, setIsOverlayNavOpen] = useRecoilState(
-    isOverlayNavOpenAtom
-  )
-
-  console.log(location.pathname)
-
   useEffect(() => {
-    if (bookACallUrls.includes(location.pathname)) {
-      setIsOverlayNavOpen(false)
-    }
-
     const setUserConversionsData = setTimeout(() => {
       const conversions = window.NF.getActivityData()
         ? window.NF.getActivityData().conversions

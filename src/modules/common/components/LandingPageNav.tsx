@@ -20,7 +20,7 @@ interface Props {
 const LandingPageNav = ({ tagline }: Props) => {
   const { showModal } = useOpportunityFormModal()
   return (
-    <>
+    <div>
       <nav className="LandingPageNav">
         <div className="LandingPageNav-inner">
           <AniLink
@@ -53,7 +53,7 @@ const LandingPageNav = ({ tagline }: Props) => {
           </div>
         </div>
       </nav>
-    </>
+    </div>
   )
 }
 
