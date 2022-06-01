@@ -158,6 +158,9 @@ const Insight = ({
     insight.contentUpgrade ? insight.contentUpgrade.title : ''
   )
 
+  const showReadTime = !(
+    insight.type === 'Resource' || insight.type === 'eBook'
+  )
   const showReadNext = insight.type !== 'Resource'
   const showSidebar = insight.type !== 'Resource'
 
@@ -242,9 +245,9 @@ const Insight = ({
                   author={insight.author}
                   estReadTime={estReadTime}
                   publishDate={insight.publishDate}
-                  showReadTime={insight.type !== 'Resource'}
+                  showReadTime={showReadTime}
                 />
-                {insight.type === 'Resource' ? (
+                {insight.type === 'Resource' || insight.type === 'eBook' ? (
                   <Button
                     className="Insight-access-button"
                     onClick={handleOnAccessClick}
