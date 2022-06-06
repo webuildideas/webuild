@@ -30,13 +30,14 @@ import {
 import Meta from '@components/Meta'
 import InsightsFilters from '@modules/contentHub/components/InsightsFilters'
 import ListingInsight from '@modules/contentHub/components/ListingInsight'
-import ListingAd from '@modules/contentHub/components/ListingAd'
+import ListingAd, {
+  TypeListingAd
+} from '@modules/contentHub/components/ListingAd'
 import FeaturedInsight from '@modules/contentHub/components/FeaturedInsight'
 import Pagination from '@modules/contentHub/components/Paginations'
 import Footer from '@modules/common/components/Footer'
 import EmailSignUpForm from '@modules/forms/EmailSignupForm'
 import MonthlyNewsletterForm from '@modules/forms/MonthlyNewsletterForm'
-import { TypeListingAd } from '@modules/contentHub/components/ListingAd'
 
 interface Props {
   location: PageProps['location']
@@ -114,6 +115,8 @@ const Insights = ({
   const noInisights = data?.insightCollection.items.length === 0
   const loadingOrNoItems = loading || noInisights
   const showPagination = total && total > PAGINATION_LIMIT
+
+  console.log(data?.insightCollection.items)
 
   const refetchInsights = useCallback(
     (params) => {
@@ -268,7 +271,7 @@ const Insights = ({
             </>
           ) : (
             <>
-              {data?.insightCollection.items.length < 4
+              {data?.insightCollection.items.length <= 4
                 ? data?.insightCollection.items.map((insight: any) => (
                     <ListingInsight
                       key={`item-${insight.slug}`}
