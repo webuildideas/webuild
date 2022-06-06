@@ -7,7 +7,7 @@
 
 
 [context.deploy-preview.environment]
-  GATSBY_CONTENTFUL_ENVIRONMENT = 'feature-insights-updates'
+  GATSBY_CONTENTFUL_ENVIRONMENT = 'blog-components'
 
 [context.branch-deploy.environment]
-  GATSBY_CONTENTFUL_ENVIRONMENT = 'feature-insights-updates'
+  GATSBY_CONTENTFUL_ENVIRONMENT = 'blog-components'
