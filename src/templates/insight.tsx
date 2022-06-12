@@ -1,4 +1,5 @@
 import '@common/styles/templates/insight.css'
+import '@common/styles/templates/insight-components/ordered-list.css'
 
 // Packages
 import React, { useEffect, useRef, useState } from 'react'
@@ -32,6 +33,7 @@ import Button from '@modules/common/components/Button'
 // Atoms
 import { userGatedPostConversionsAtom } from '@modules/insight/atoms/userGatedPostConversions'
 import { userContentUpgradeConversionsAtom } from '@modules/forms/atoms/userContentUpgradeConversionsAtom'
+import { isOrderedList, OrderedListTypeEnum } from '@common/types/OrderedLists'
 
 interface Props {
   location: PageProps['location']
@@ -43,77 +45,8 @@ interface Props {
   }
 }
 
-const options: Options = {
+const blocksOptions: Options = {
   renderNode: {
-    [BLOCKS.EMBEDDED_ASSET]: (node) => {
-      const caption = node.data.target.description
-
-      return (
-        <div className="Insight-img">
-          <Img durationFadeIn={125} fadeIn fluid={node.data.target.fluid} />
-          {caption ? <p className="text-caption">{caption}</p> : null}
-        </div>
-      )
-    },
-    [BLOCKS.EMBEDDED_ENTRY]: (node) => {
-      if (!node.data.target) {
-        return
-      }
-
-      if (node.data.target.__typename === 'ContentfulImage') {
-        return (
-          <div className="Insight-img">
-            <Img
-              alt={node.data.target.altText}
-              className={
-                node.data.target.imageType
-                  ? node.data.target.imageType.join(' ')
-                  : undefined
-              }
-              durationFadeIn={125}
-              fadeIn
-              fluid={node.data.target.asset.fluid}
-            />
-            {node.data.target.caption ? (
-              <p className="text-caption">{node.data.target.caption}</p>
-            ) : null}
-          </div>
-        )
-      }
-
-      if (node.data.target.__typename === 'ContentfulContentUpgrade') {
-        return (
-          <ContentUpgradeForm
-            className="mt-16 mb-8 md:mb-0"
-            contentUpgrade={node.data.target}
-            isSimple
-          />
-        )
-      }
-
-      return null
-    },
-    [INLINES.EMBEDDED_ENTRY]: (node) => {
-      if (!node.data.target) {
-        return
-      }
-      return (
-        <span className="Insight-img-inline mt-12 md:mt-18 block">
-          <img
-            alt={node.data.target.altText}
-            className={`Insight-img-inline ${
-              node.data.target.imageType
-                ? node.data.target.imageType.join(' ')
-                : undefined
-            }`}
-            src={node.data.target.asset.fluid.src}
-          />
-          {node.data.target.caption ? (
-            <p className="text-caption">{node.data.target.caption}</p>
-          ) : null}
-        </span>
-      )
-    },
     [BLOCKS.HEADING_2]: (_, children) => (
       <h2 className="Insight-copy Insight-h2 text-h2">{children}</h2>
     ),
@@ -135,6 +68,150 @@ const options: Options = {
         </blockquote>
       )
     }
+  }
+}
+
+const options: Options = {
+  renderNode: {
+    [BLOCKS.EMBEDDED_ASSET]: (node) => {
+      const caption = node.data.target.description
+
+      return (
+        <div className="Insight-img">
+          <Img durationFadeIn={125} fadeIn fluid={node.data.target.fluid} />
+          {caption ? <p className="text-caption">{caption}</p> : null}
+        </div>
+      )
+    },
+
+    [BLOCKS.EMBEDDED_ENTRY]: (node) => {
+      if (!node.data.target) {
+        return null
+      }
+
+      const { target: entry } = node.data
+
+      if (isOrderedList(entry)) {
+        const { listItems, orderedListType } = entry
+
+        if (!listItems) {
+          return null
+        }
+
+        switch (orderedListType) {
+          case OrderedListTypeEnum.INLINE:
+            return (
+              <ol className="Insight-ol-inline">
+                {listItems.map((item, idx) => {
+                  return (
+                    <li key={`item-${idx}`}>
+                      <div className="Insight-ol-inline__content">
+                        {renderRichText(item.content, blocksOptions)}
+                      </div>
+                    </li>
+                  )
+                })}
+              </ol>
+            )
+
+          case OrderedListTypeEnum.BLOCK_TITLE:
+            return (
+              <ol className="Insight-ol-bt">
+                {listItems.map((item, idx) => {
+                  return (
+                    <li key={`item-${idx}`}>
+                      {renderRichText(item.content, blocksOptions)}
+                    </li>
+                  )
+                })}
+              </ol>
+            )
+
+          case OrderedListTypeEnum.BLOCK_TITLE_IMAGE:
+            return (
+              <ol className="Insight-ol-bti">
+                {listItems.map((item, idx) => {
+                  return (
+                    <li key={`item-${idx}`}>
+                      {renderRichText(item.content, blocksOptions)}
+                    </li>
+                  )
+                })}
+              </ol>
+            )
+
+          case OrderedListTypeEnum.STEPS:
+            return (
+              <ol className="Insight-ol-steps">
+                {listItems.map((item, idx) => {
+                  return (
+                    <li key={`item-${idx}`}>
+                      {renderRichText(item.content, blocksOptions)}
+                    </li>
+                  )
+                })}
+              </ol>
+            )
+
+          default:
+            return null
+        }
+      }
+
+      if (entry.__typename === 'ContentfulImage') {
+        return (
+          <div className="Insight-img">
+            <Img
+              alt={entry.altText}
+              className={
+                entry.imageType ? entry.imageType.join(' ') : undefined
+              }
+              durationFadeIn={125}
+              fadeIn
+              fluid={entry.asset.fluid}
+            />
+            {entry.caption ? (
+              <p className="text-caption">{entry.caption}</p>
+            ) : null}
+          </div>
+        )
+      }
+
+      if (entry.__typename === 'ContentfulContentUpgrade') {
+        return (
+          <ContentUpgradeForm
+            className="mt-16 mb-8 md:mb-0"
+            contentUpgrade={entry}
+            isSimple
+          />
+        )
+      }
+
+      return null
+    },
+
+    [INLINES.EMBEDDED_ENTRY]: (node) => {
+      if (!node.data.target) {
+        return
+      }
+      return (
+        <span className="Insight-img-inline mt-12 md:mt-18 block">
+          <img
+            alt={node.data.target.altText}
+            className={`Insight-img-inline ${
+              node.data.target.imageType
+                ? node.data.target.imageType.join(' ')
+                : undefined
+            }`}
+            src={node.data.target.asset.fluid.src}
+          />
+          {node.data.target.caption ? (
+            <p className="text-caption">{node.data.target.caption}</p>
+          ) : null}
+        </span>
+      )
+    },
+    ...blocksOptions.renderNode
   }
 }
 
@@ -261,6 +338,7 @@ const Insight = ({
           </div>
           <article ref={articleRef} className="Insight" id="article">
             <div className={articleClassNames}>
+              {console.log(insight.content)}
               {insight.content
                 ? renderRichText(insight.content, options)
                 : null}
@@ -356,6 +434,15 @@ export const query = graphql`
         raw
         references {
           __typename
+          ... on ContentfulOrderedList {
+            contentful_id
+            orderedListType
+            listItems {
+              content {
+                raw
+              }
+            }
+          }
           ... on ContentfulContentUpgrade {
             contentful_id
             id

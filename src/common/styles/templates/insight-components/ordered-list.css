@@ -1,0 +1,69 @@
+/** INLINE STYLES **/
+
+.Insight-ol-inline {
+  list-style: none;
+  counter-reset: olInlineCount;
+  width: 92.5%;
+  max-width: 580px;
+  @apply my-6;
+  @apply mx-auto;
+
+  @screen xl {
+    max-width: 750px;
+  }
+
+  b {
+    @apply font-bold;
+  }
+}
+
+.Insight-ol-inline > li {
+  counter-increment: olInlineCount;
+  @apply flex;
+  @apply items-start;
+  @apply flex-nowrap;
+  @apply mb-10;
+
+  &:before {    
+    content: counter(olInlineCount) ". ";
+    height: 100%;
+    width: 25px;
+    @apply flex-shrink-0;
+    @apply relative;
+    @apply block;
+    @apply font-bold;
+    @apply text-xl;
+    @apply leading-relaxed;
+    @apply tracking-wider;
+
+    @media (min-width: 426px) and (max-width: 899px) {
+      @apply text-lg;
+    }
+
+    @media (max-width: 425px) {
+      @apply text-base;
+    }
+  }
+}
+
+.Insight-ol-inline > li {
+  p {
+    @apply block;
+    @apply mb-0;
+    @apply mx-0;
+    white-space: pre-wrap;
+  }
+
+  p:first-of-type {
+    width: calc(98% - 30px);
+  }
+
+  ul {
+    @apply flex-shrink-0;
+    @apply mb-0;
+  }
+
+  ol {
+    @apply flex-shrink-0;
+  }
+}
