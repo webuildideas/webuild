@@ -1,7 +1,7 @@
 import '@common/styles/templates/insight.css'
 
 // Packages
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, useContext } from 'react'
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import { BLOCKS, INLINES } from '@contentful/rich-text-types'
 import { Options } from '@contentful/rich-text-react-renderer'
@@ -14,6 +14,7 @@ import Img from 'gatsby-image'
 import { classNames } from '@common/utils/classNames'
 import { TypeInsight } from '@common/types/Insight'
 import { getEstimatedReadingTime } from '@modules/insight/utils'
+import AdsContext from '@common/ads/AdsContext'
 
 // Components
 import Meta from '@components/Meta'
@@ -28,6 +29,7 @@ import GatedPostForm from '@modules/forms/GatedPostForm'
 import ContentUpgradeForm from '@modules/forms/ContentUpgradeForm'
 import MonthlyNewsletterForm from '@modules/forms/MonthlyNewsletterForm'
 import Button from '@modules/common/components/Button'
+import SidebarAd from '@common/ads/SidebarAd'
 
 // Atoms
 import { userGatedPostConversionsAtom } from '@modules/insight/atoms/userGatedPostConversions'
@@ -157,6 +159,7 @@ const Insight = ({
   const userHasCompletedContentUpgrade = userContentUpgradeConversions.includes(
     insight.contentUpgrade ? insight.contentUpgrade.title : ''
   )
+  const { SidebarAds } = useContext(AdsContext)
 
   const showReadTime = !(
     insight.type === 'Resource' || insight.type === 'eBook'
@@ -315,6 +318,12 @@ const Insight = ({
                     location={location.href}
                     percentTrigger={0.3}
                   />
+                  <SidebarAd
+                    ad={
+                      insight.sidebarAd ||
+                      SidebarAds[Math.floor(Math.random() * SidebarAds.length)]
+                    }
+                  />
                   <ReadNextSidebar
                     insights={insight.readNext}
                     relatedInsightsByTopic={relatedInsightsByTopic}
@@ -351,6 +360,18 @@ export const query = graphql`
             ...GatsbyContentfulFixed_withWebp_noBase64
           }
         }
+      }
+      sidebarAd {
+        id
+        headline
+        copy
+        image {
+          fluid {
+            ...GatsbyContentfulFluid_withWebp_noBase64
+          }
+        }
+        ctaLink
+        ctaText
       }
       content {
         raw

@@ -5,10 +5,12 @@ import Arrow from '@static/svgs/cta-arrow.inline.svg'
 
 import { TypeInsightTypeIconConfig } from '@modules/common/components/configs/InsightTags'
 import { TypeInsightType } from '@common/types/Insight'
-import smallImg from '@static/images/home/homepage-hero-mobile.jpg'
+// import smallImg from '@static/images/home/homepage-hero-mobile.jpg'
+import Img from 'gatsby-image'
 
 // Styles
 import './styles/ListingAd.css'
+import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
 
 export interface TypeListingAd {
   backgroundColor: string
@@ -16,7 +18,7 @@ export interface TypeListingAd {
   ctaText: string
   headline: string
   id: string
-  image: any
+  image: TypeGatsbyImageFluid
   resourceType: TypeInsightType
 }
 
@@ -24,42 +26,42 @@ interface Props {
   ad: TypeListingAd
 }
 
-interface BlurredImage {
-  image: string
-}
+// interface BlurredImage {
+//   image: string
+// }
 
-export const useProgressiveImg = (
-  lowQualitySrc: string,
-  highQualitySrc: string
-) => {
-  const [src, setSrc] = React.useState(lowQualitySrc)
+// export const useProgressiveImg = (
+//   lowQualitySrc: string,
+//   highQualitySrc: string
+// ) => {
+//   const [src, setSrc] = React.useState(lowQualitySrc)
 
-  React.useEffect(() => {
-    setSrc(lowQualitySrc)
-    const img = new Image()
-    img.src = highQualitySrc
-    img.onload = () => {
-      setSrc(highQualitySrc)
-    }
-  }, [lowQualitySrc, highQualitySrc])
+//   React.useEffect(() => {
+//     setSrc(lowQualitySrc)
+//     const img = new Image()
+//     img.src = highQualitySrc
+//     img.onload = () => {
+//       setSrc(highQualitySrc)
+//     }
+//   }, [lowQualitySrc, highQualitySrc])
 
-  return [src, { blur: src === lowQualitySrc }]
-}
+//   return [src, { blur: src === lowQualitySrc }]
+// }
 
-export const BlurredUpImage = ({ image }: BlurredImage) => {
-  const [src, { blur }] = useProgressiveImg(smallImg, image)
-  return (
-    <img
-      alt="testing"
-      className="mb-6 md:mb-0 w-full"
-      src={src}
-      style={{
-        filter: blur ? 'blur(20px)' : 'none',
-        transition: blur ? 'none' : 'filter 0.3s ease-out'
-      }}
-    />
-  )
-}
+// export const BlurredUpImage = ({ image }: BlurredImage) => {
+//   const [src, { blur }] = useProgressiveImg(smallImg, image)
+//   return (
+//     <img
+//       alt="testing"
+//       className="mb-6 md:mb-0 w-full"
+//       src={src}
+//       style={{
+//         filter: blur ? 'blur(20px)' : 'none',
+//         transition: blur ? 'none' : 'filter 0.3s ease-out'
+//       }}
+//     />
+//   )
+// }
 
 const ListingAd = ({ ad }: Props) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -120,7 +122,7 @@ const ListingAd = ({ ad }: Props) => {
         </AniLink>
       </div>
       <div className="listing-ad__image">
-        <BlurredUpImage image={ad.image.sizes.src} />
+        <Img fadeIn fluid={ad.image.fluid} />
       </div>
     </motion.article>
   )

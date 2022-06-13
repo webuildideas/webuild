@@ -5,6 +5,7 @@ import { RenderRichTextData } from 'gatsby-source-contentful/rich-text'
 import { TypeAuthor } from '@common/types/Author'
 import { TypeCarousel } from '@common/types/Carousel'
 import { TypeContentfulAsset } from '@common/types/Contentful'
+import { TypeSidebarAd } from './Sidebar'
 import { TypeContentUpgrade } from './ContentUpgrade'
 import { TypeGatsbyImageFixed } from './GatsbyImage'
 
@@ -55,4 +56,5 @@ export interface TypeInsight {
     shareQuote: string
   }
   seoTitle?: string
+  sidebarAd?: TypeSidebarAd
 }

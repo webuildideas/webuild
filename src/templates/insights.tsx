@@ -1,7 +1,13 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // Packages
-import React, { useCallback, useEffect, useState, useRef } from 'react'
+import React, {
+  useCallback,
+  useEffect,
+  useState,
+  useRef,
+  useContext
+} from 'react'
 import { useQuery } from '@apollo/client'
 import { graphql, PageProps, navigate, Link } from 'gatsby'
 
@@ -18,6 +24,7 @@ import {
   TypeInsightType
 } from '@common/types/Insight'
 import '@common/styles/templates/insights.css'
+import AdsContext from '@common/ads/AdsContext'
 
 // GraphQL
 import {
@@ -30,13 +37,16 @@ import {
 import Meta from '@components/Meta'
 import InsightsFilters from '@modules/contentHub/components/InsightsFilters'
 import ListingInsight from '@modules/contentHub/components/ListingInsight'
-import ListingAd from '@modules/contentHub/components/ListingAd'
+import ListingAd, {
+  TypeListingAd
+} from '@modules/contentHub/components/ListingAd'
 import FeaturedInsight from '@modules/contentHub/components/FeaturedInsight'
 import Pagination from '@modules/contentHub/components/Paginations'
 import Footer from '@modules/common/components/Footer'
 import EmailSignUpForm from '@modules/forms/EmailSignupForm'
 import MonthlyNewsletterForm from '@modules/forms/MonthlyNewsletterForm'
-import { TypeListingAd } from '@modules/contentHub/components/ListingAd'
+
+import SidebarAd, { MemoizedSidebarAd } from '@common/ads/SidebarAd'
 
 interface Props {
   location: PageProps['location']
@@ -97,6 +107,7 @@ const Insights = ({
   })
   const insightsContainer = useRef<HTMLElement>(null)
   const insightsWrapper = useRef<HTMLElement>(null)
+  const { SidebarAds, insightsHubAds } = useContext(AdsContext)
 
   const { loading, error, data, refetch } = useQuery<
     InsightsListingData,
@@ -173,7 +184,7 @@ const Insights = ({
   }, [location, refetchInsights])
 
   const splitInsightsUp = (insights: any, numberOfAds: number) => {
-    const theAds = ads.nodes
+    const theAds = insightsHubAds
     if (numberOfAds >= 2) {
       return (
         <>
@@ -308,6 +319,7 @@ const Insights = ({
             containerId="insights-container"
             location={location.href}
           />
+          <MemoizedSidebarAd ad={SidebarAds[0]} />
         </aside>
       </div>
       <Footer />

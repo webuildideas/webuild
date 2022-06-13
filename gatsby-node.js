@@ -30,22 +30,6 @@ export const createPages = async ({ graphql, actions }) => {
         }
       }
 
-      allContentfulInterstitialAds {
-        nodes {
-          headline
-          id
-          resourceType
-          ctaText
-          ctaLink
-          backgroundColor
-          image {
-            sizes {
-              src
-            }
-          }
-        }
-      }
-
       allContentfulEmployee {
         nodes {
           slug
@@ -70,8 +54,7 @@ export const createPages = async ({ graphql, actions }) => {
     allContentfulCaseStudy: caseStudies,
     allContentfulService: services,
     allContentfulInsight: insights,
-    allContentfulEmployee: employees,
-    allContentfulInterstitialAds: ads
+    allContentfulEmployee: employees
   } = result.data
 
   caseStudies.nodes.forEach((node) => {
@@ -142,8 +125,7 @@ export const createPages = async ({ graphql, actions }) => {
     component: path.resolve('./src/templates/insights.tsx'),
     context: {
       topics: uniq(topics),
-      types: orderBy(uniq(types)),
-      ads
+      types: orderBy(uniq(types))
     }
   })
 
