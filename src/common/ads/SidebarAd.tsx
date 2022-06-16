@@ -3,23 +3,69 @@ import Img from 'gatsby-image'
 import { TypeSidebarAd } from '@common/types/Sidebar'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import Arrow from '@static/svgs/cta-arrow.inline.svg'
+import { useStaticQuery, graphql } from 'gatsby'
 import './sidebarAd.css'
 
 interface Props {
-  ad: TypeSidebarAd
+  theAd?: TypeSidebarAd
+  excludeEbooks?: boolean
 }
 
-export default function SidebarAd({ ad }: Props) {
+const SIDEBAR_QUERY = graphql`
+  query SidebarQuery {
+    allContentfulSidebarAd {
+      nodes {
+        id
+        headline
+        copy
+        image {
+          fluid {
+            ...GatsbyContentfulFluid_withWebp_noBase64
+          }
+        }
+        mobileImage {
+          fluid {
+            ...GatsbyContentfulFluid_withWebp_noBase64
+          }
+        }
+        ctaLink
+        ctaText
+        resourceType
+      }
+    }
+  }
+`
+
+export default function SidebarAd({ theAd, excludeEbooks }: Props) {
+  const {
+    allContentfulSidebarAd: { nodes: ads }
+  } = useStaticQuery(SIDEBAR_QUERY)
+  let ad
+
+  if (theAd) {
+    ad = theAd
+  } else if (excludeEbooks) {
+    ad = ads.filter((item: TypeSidebarAd) => item.resourceType !== 'eBook')
+    ad = ad[Math.floor(Math.random() * ad.length)]
+  } else {
+    ad = ads[Math.floor(Math.random() * ads.length)]
+  }
+
+  const mobileImg = ad?.mobileImage?.fluid || ad.image.fluid
+  const imgSources = [
+    mobileImg,
+    {
+      ...ad.image.fluid,
+      media: `(min-width: 990px)`
+    }
+  ]
+
   return (
     <div className="sidebar-ad my-12 lg:mt-40 mx-8">
       <div className="sidebar-ad__wrapper">
         <h4 className="text-h4 my-4 text-center lg:text-left">{ad.headline}</h4>
         <div className="md:flex items-center justify-between lg:block">
-          <Img
-            className="mb-6 md:w-1/2 lg:w-full"
-            fadeIn
-            fluid={ad.image.fluid}
-          />
+          <Img className="mb-6 md:w-1/2 lg:w-full" fadeIn fluid={imgSources} />
           <div className="flex flex-col md:block md:w-2/5 lg:w-full">
             {ad.copy && <p className="text-caption">{ad.copy}</p>}
             <AniLink

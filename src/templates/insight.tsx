@@ -14,7 +14,7 @@ import Img from 'gatsby-image'
 import { classNames } from '@common/utils/classNames'
 import { TypeInsight } from '@common/types/Insight'
 import { getEstimatedReadingTime } from '@modules/insight/utils'
-import AdsContext from '@common/ads/AdsContext'
+// import AdsContext from '@common/ads/AdsContext'
 
 // Components
 import Meta from '@components/Meta'
@@ -159,7 +159,7 @@ const Insight = ({
   const userHasCompletedContentUpgrade = userContentUpgradeConversions.includes(
     insight.contentUpgrade ? insight.contentUpgrade.title : ''
   )
-  const { SidebarAds } = useContext(AdsContext)
+  // const { SidebarAds } = useContext(AdsContext)
 
   const showReadTime = !(
     insight.type === 'Resource' || insight.type === 'eBook'
@@ -318,12 +318,8 @@ const Insight = ({
                     location={location.href}
                     percentTrigger={0.3}
                   />
-                  <SidebarAd
-                    ad={
-                      insight.sidebarAd ||
-                      SidebarAds[Math.floor(Math.random() * SidebarAds.length)]
-                    }
-                  />
+                  <SidebarAd theAd={insight.sidebarAd || undefined} />
+
                   <ReadNextSidebar
                     insights={insight.readNext}
                     relatedInsightsByTopic={relatedInsightsByTopic}

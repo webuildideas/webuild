@@ -74,3 +74,11 @@
     width: 43%;
   }
 }
+
+.listing-ad__image .gatsby-image-wrapper img {
+  object-fit: contain !important;
+
+  @screen lg {
+    object-fit: cover !important;
+  }
+}

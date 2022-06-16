@@ -9,7 +9,7 @@ import React, {
   useContext
 } from 'react'
 import { useQuery } from '@apollo/client'
-import { graphql, PageProps, navigate, Link } from 'gatsby'
+import { graphql, PageProps, navigate, Link, useStaticQuery } from 'gatsby'
 
 // NEW NEW
 import slugify from 'slugify'
@@ -24,7 +24,7 @@ import {
   TypeInsightType
 } from '@common/types/Insight'
 import '@common/styles/templates/insights.css'
-import AdsContext from '@common/ads/AdsContext'
+// import AdsContext from '@common/ads/AdsContext'
 
 // GraphQL
 import {
@@ -54,15 +54,15 @@ interface Props {
     contentfulContentHub: {
       featuredInsight: TypeInsight
     }
-  }
-  pageContext: {
-    topics: TypeInsightTopic[]
-    types: TypeInsightType[]
-    ads: {
+    allContentfulInterstitialAds: {
       nodes: {
         node: TypeListingAd
       }
     }
+  }
+  pageContext: {
+    topics: TypeInsightTopic[]
+    types: TypeInsightType[]
   }
 }
 
@@ -76,9 +76,10 @@ const PAGINATION_LIMIT = 12
 const Insights = ({
   location,
   data: {
-    contentfulContentHub: { featuredInsight }
+    contentfulContentHub: { featuredInsight },
+    allContentfulInterstitialAds: { nodes: insightsHubAds }
   },
-  pageContext: { topics, types, ads }
+  pageContext: { topics, types }
 }: Props) => {
   // NEW
   const unslugifyParams = (theFilters: any) => {
@@ -107,7 +108,7 @@ const Insights = ({
   })
   const insightsContainer = useRef<HTMLElement>(null)
   const insightsWrapper = useRef<HTMLElement>(null)
-  const { SidebarAds, insightsHubAds } = useContext(AdsContext)
+  // const { SidebarAds, insightsHubAds } = useContext(AdsContext)
 
   const { loading, error, data, refetch } = useQuery<
     InsightsListingData,
@@ -319,7 +320,7 @@ const Insights = ({
             containerId="insights-container"
             location={location.href}
           />
-          <MemoizedSidebarAd ad={SidebarAds[0]} />
+          <MemoizedSidebarAd excludeEbooks />
         </aside>
       </div>
       <Footer />
@@ -342,6 +343,21 @@ export const CONTENT_HUB_QUERYY = graphql`
         featuredIllustration {
           file {
             url
+          }
+        }
+      }
+    }
+    allContentfulInterstitialAds {
+      nodes {
+        headline
+        id
+        resourceType
+        ctaText
+        ctaLink
+        backgroundColor
+        image {
+          fluid {
+            ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
       }

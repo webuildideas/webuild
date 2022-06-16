@@ -7,4 +7,6 @@ export interface TypeSidebarAd {
   ctaText: string
   headline: string
   image: TypeGatsbyImageFluid
+  mobileImage: TypeGatsbyImageFluid
+  resourceType: string
 }
