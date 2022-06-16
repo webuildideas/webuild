@@ -3,7 +3,6 @@ import { TypeListItem } from '@common/types/ListItem'
 export enum OrderedListTypeEnum {
   INLINE = 'INLINE',
   BLOCK_TITLE = 'BLOCK TITLE',
-  BLOCK_TITLE_IMAGE = 'BLOCK TITLE IMAGE',
   STEPS = 'STEPS'
 }
 

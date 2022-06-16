@@ -98,6 +98,8 @@ const options: Options = {
           return null
         }
 
+        console.log('list items', listItems)
+
         switch (orderedListType) {
           case OrderedListTypeEnum.INLINE:
             return (
@@ -118,22 +120,21 @@ const options: Options = {
             return (
               <ol className="Insight-ol-bt">
                 {listItems.map((item, idx) => {
-                  return (
+                  const { content, image } = item
+                  return image?.file.url ? (
+                    <>
+                      <img
+                        alt={node.data.target.altText}
+                        className="Insight-ol-bt__img"
+                        src={image.file.url}
+                      />
+                      <li key={`item-${idx}`}>
+                        {renderRichText(content, blocksOptions)}
+                      </li>
+                    </>
+                  ) : (
                     <li key={`item-${idx}`}>
-                      {renderRichText(item.content, blocksOptions)}
-                    </li>
-                  )
-                })}
-              </ol>
-            )
-
-          case OrderedListTypeEnum.BLOCK_TITLE_IMAGE:
-            return (
-              <ol className="Insight-ol-bti">
-                {listItems.map((item, idx) => {
-                  return (
-                    <li key={`item-${idx}`}>
-                      {renderRichText(item.content, blocksOptions)}
+                      {renderRichText(content, blocksOptions)}
                     </li>
                   )
                 })}
@@ -144,9 +145,21 @@ const options: Options = {
             return (
               <ol className="Insight-ol-steps">
                 {listItems.map((item, idx) => {
-                  return (
+                  const { content, image } = item
+                  return image?.file.url ? (
+                    <>
+                      <img
+                        alt={node.data.target.altText}
+                        className="Insight-ol-steps__img"
+                        src={image.file.url}
+                      />
+                      <li key={`item-${idx}`}>
+                        {renderRichText(content, blocksOptions)}
+                      </li>
+                    </>
+                  ) : (
                     <li key={`item-${idx}`}>
-                      {renderRichText(item.content, blocksOptions)}
+                      {renderRichText(content, blocksOptions)}
                     </li>
                   )
                 })}
@@ -438,6 +451,11 @@ export const query = graphql`
             contentful_id
             orderedListType
             listItems {
+              image {
+                file {
+                  url
+                }
+              }
               content {
                 raw
               }

@@ -3,7 +3,7 @@
 .Insight-ol-inline {
   list-style: none;
   counter-reset: olInlineCount;
-  width: 92.5%;
+  width: calc(100% - 5px);
   max-width: 580px;
   @apply my-6;
   @apply mx-auto;
@@ -22,7 +22,7 @@
   @apply flex;
   @apply items-start;
   @apply flex-nowrap;
-  @apply mb-10;
+  @apply mb-8;
 
   &:before {    
     content: counter(olInlineCount) ". ";
@@ -65,5 +65,182 @@
 
   ol {
     @apply flex-shrink-0;
+  }
+}
+
+
+/** BLOCK TITLE STYLES **/
+.Insight-ol-bt {
+  list-style: none;
+  counter-reset: olBtCount;
+  max-width: 580px;
+  @apply my-6;
+  @apply mx-auto;
+
+  @screen xl {
+    max-width: 750px;
+  }
+}
+
+.Insight-ol-bt__img {
+  @apply mb-8;
+}
+
+.Insight-ol-bt > li {
+  counter-increment: olBtCount;
+  @apply flex;
+  @apply items-start;
+  @apply flex-wrap;
+  @apply mb-8;
+
+  b {
+    @apply font-bold;
+  }
+
+  p {
+    @apply block;
+    @apply mb-2;
+    @apply mx-0;
+    white-space: pre-wrap;
+  }
+
+  p:first-of-type {
+    width: calc(98% - 30px);
+    @apply mb-2;
+
+    b {
+      @apply font-bold;
+      @apply block;
+      @apply uppercase;
+    }
+  }
+
+  ul {
+    @apply flex-shrink-0;
+    @apply mb-0;
+  }
+
+  ol {
+    @apply flex-shrink-0;
+  }
+
+  &:before {    
+    content: counter(olBtCount) ". ";
+
+    @apply flex-shrink-0;
+    @apply relative;
+    @apply block;
+    @apply mr-2;
+    @apply font-bold;
+    @apply leading-relaxed;
+    @apply tracking-wider;
+    @apply text-3xl;
+    top: -11px;
+    width: 25px;
+
+    @apply md:text-4xl;
+    @screen md {
+      width: 30px;
+      height: 40px;
+      top: -16px;
+    }
+
+    @screen lg {
+      top: -13px;
+    }
+
+    @media (max-width: 425px) {
+      top: -5px;
+      width: 16px;
+      @apply text-xl;
+    }
+  }
+}
+
+/** STEPS STYLES **/
+.Insight-ol-steps {
+  list-style: none;
+  counter-reset: olStepsCount;
+  max-width: 580px;
+  @apply my-6;
+  @apply mx-auto;
+
+  @screen xl {
+    max-width: 750px;
+  }
+}
+
+.Insight-ol-steps__img {
+  @apply mb-8;
+}
+
+.Insight-ol-steps > li {
+  counter-increment: olStepsCount;
+  @apply flex;
+  @apply items-start;
+  @apply flex-wrap;
+  @apply mb-8;
+
+  b {
+    @apply font-bold;
+  }
+
+  p {
+    @apply block;
+    @apply mb-2;
+    @apply mx-0;
+    white-space: pre-wrap;
+  }
+
+  p:first-of-type {
+    width: calc(98% - 30px);
+    @apply mb-2;
+
+    b {
+      @apply font-bold;
+      @apply block;
+      @apply uppercase;
+    }
+  }
+
+  ul {
+    @apply flex-shrink-0;
+    @apply mb-0;
+  }
+
+  ol {
+    @apply flex-shrink-0;
+  }
+
+  &:before {    
+    content: "STEP " counter(olStepsCount) ". ";
+
+    @apply flex-shrink-0;
+    @apply relative;
+    @apply block;
+    @apply mr-2;
+    @apply font-bold;
+    @apply leading-relaxed;
+    @apply tracking-wider;
+    @apply text-3xl;
+    top: -11px;
+    width: 75px;
+
+    @apply md:text-4xl;
+    @screen md {
+      width: 120px;
+      height: 40px;
+      top: -16px;
+    }
+
+    @screen lg {
+      top: -13px;
+    }
+
+    @media (max-width: 425px) {
+      top: -5px;
+      width: 16px;
+      @apply text-xl;
+    }
   }
 }

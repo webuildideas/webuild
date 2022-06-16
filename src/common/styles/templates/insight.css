@@ -333,7 +333,7 @@ li .Insight-img-inline.Image-numbered-list {
   }
 }
 
-.Insight ol:not(.Insight-ol-inline) {
+.Insight ol:not(.Insight-ol-inline):not(.Insight-ol-bt):not(.Insight-ol-steps) {
   list-style: none;
   counter-reset: count;
   width: 92.5%;
@@ -346,7 +346,7 @@ li .Insight-img-inline.Image-numbered-list {
   }
 }
 
-.Insight ol:not(.Insight-ol-inline) > li {
+.Insight ol:not(.Insight-ol-inline):not(.Insight-ol-bt):not(.Insight-ol-steps) > li {
   counter-increment: count;
   @apply flex;
   @apply items-start;
