@@ -89,6 +89,8 @@
   @apply flex-wrap;
   @apply mb-8;
 
+  @apply md:mb-18;
+
   b {
     @apply font-bold;
   }
@@ -182,6 +184,8 @@
   @apply items-start;
   @apply flex-wrap;
   @apply mb-8;
+
+  @apply md:mb-18;
 
   b {
     @apply font-bold;
