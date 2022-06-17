@@ -120,7 +120,7 @@ const options: Options = {
             return (
               <ol className="Insight-ol-bt">
                 {listItems.map((item, idx) => {
-                  const { content, image } = item
+                  const { title, content, image } = item
                   return image?.file.url ? (
                     <>
                       <img
@@ -129,11 +129,22 @@ const options: Options = {
                         src={image.file.url}
                       />
                       <li key={`item-${idx}`}>
+                        {title ? (
+                          <div className="Insight-ol-bt__title">
+                            {renderRichText(title, blocksOptions)}
+                          </div>
+                        ) : null}
+
                         {renderRichText(content, blocksOptions)}
                       </li>
                     </>
                   ) : (
                     <li key={`item-${idx}`}>
+                      {title ? (
+                        <div className="Insight-ol-bt__title">
+                          {renderRichText(title, blocksOptions)}
+                        </div>
+                      ) : null}
                       {renderRichText(content, blocksOptions)}
                     </li>
                   )
@@ -145,7 +156,7 @@ const options: Options = {
             return (
               <ol className="Insight-ol-steps">
                 {listItems.map((item, idx) => {
-                  const { content, image } = item
+                  const { title, content, image } = item
                   return image?.file.url ? (
                     <>
                       <img
@@ -154,11 +165,21 @@ const options: Options = {
                         src={image.file.url}
                       />
                       <li key={`item-${idx}`}>
+                        {title ? (
+                          <div className="Insight-ol-steps__title">
+                            {renderRichText(title, blocksOptions)}
+                          </div>
+                        ) : null}
                         {renderRichText(content, blocksOptions)}
                       </li>
                     </>
                   ) : (
                     <li key={`item-${idx}`}>
+                      {title ? (
+                        <div className="Insight-ol-steps__title">
+                          {renderRichText(title, blocksOptions)}
+                        </div>
+                      ) : null}
                       {renderRichText(content, blocksOptions)}
                     </li>
                   )
@@ -455,6 +476,9 @@ export const query = graphql`
                 file {
                   url
                 }
+              }
+              title {
+                raw
               }
               content {
                 raw

@@ -54,10 +54,6 @@
     white-space: pre-wrap;
   }
 
-  p:first-of-type {
-    width: calc(98% - 30px);
-  }
-
   ul {
     @apply flex-shrink-0;
     @apply mb-0;
@@ -99,20 +95,13 @@
 
   p {
     @apply block;
-    @apply mb-2;
     @apply mx-0;
+    @apply mb-0;
     white-space: pre-wrap;
   }
 
-  p:first-of-type {
-    width: calc(98% - 30px);
-    @apply mb-2;
-
-    b {
-      @apply font-bold;
-      @apply block;
-      @apply uppercase;
-    }
+  p + p {
+    @apply mt-6;
   }
 
   ul {
@@ -123,6 +112,24 @@
   ol {
     @apply flex-shrink-0;
   }
+}
+
+.Insight-ol-bt__title {
+  @apply flex;
+  @apply w-full;
+  @apply flex-nowrap;
+  @apply items-start;
+  @apply mb-2;
+
+  p {
+    @apply hidden;
+  }
+
+  h4 {
+    margin-left: initial;
+    margin-right: initial;
+    width: auto;
+  }
 
   &:before {    
     content: counter(olBtCount) ". ";
@@ -132,26 +139,21 @@
     @apply block;
     @apply mr-2;
     @apply font-bold;
-    @apply leading-relaxed;
     @apply tracking-wider;
     @apply text-3xl;
-    top: -11px;
-    width: 25px;
+    line-height: 1;
+    width: auto;
 
     @apply md:text-4xl;
     @screen md {
-      width: 30px;
-      height: 40px;
-      top: -16px;
+      top: -7px;
     }
 
     @screen lg {
-      top: -13px;
+      top: -5px;
     }
 
     @media (max-width: 425px) {
-      top: -5px;
-      width: 16px;
       @apply text-xl;
     }
   }
@@ -187,20 +189,13 @@
 
   p {
     @apply block;
-    @apply mb-2;
+    @apply mb-0;
     @apply mx-0;
     white-space: pre-wrap;
   }
 
-  p:first-of-type {
-    width: calc(98% - 30px);
-    @apply mb-2;
-
-    b {
-      @apply font-bold;
-      @apply block;
-      @apply uppercase;
-    }
+  p + p {
+    @apply mt-6;
   }
 
   ul {
@@ -211,35 +206,49 @@
   ol {
     @apply flex-shrink-0;
   }
+}
+
+.Insight-ol-steps__title {
+  @apply flex;
+  @apply w-full;
+  @apply flex-nowrap;
+  @apply items-start;
+  @apply mb-2;
+
+  p {
+    @apply hidden;
+  }
+
+  h4 {
+    margin-left: initial;
+    margin-right: initial;
+    width: auto;
+  }
 
   &:before {    
     content: "STEP " counter(olStepsCount) ". ";
 
     @apply flex-shrink-0;
     @apply relative;
-    @apply block;
+    @apply inline-block;
     @apply mr-2;
     @apply font-bold;
-    @apply leading-relaxed;
     @apply tracking-wider;
     @apply text-3xl;
-    top: -11px;
-    width: 75px;
+    line-height: 1;
+    width: auto;
 
     @apply md:text-4xl;
+
     @screen md {
-      width: 120px;
-      height: 40px;
-      top: -16px;
+      top: -7px;
     }
 
     @screen lg {
-      top: -13px;
+      top: -5px;
     }
 
     @media (max-width: 425px) {
-      top: -5px;
-      width: 16px;
       @apply text-xl;
     }
   }
