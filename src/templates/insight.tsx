@@ -33,7 +33,7 @@ import Button from '@modules/common/components/Button'
 // Atoms
 import { userGatedPostConversionsAtom } from '@modules/insight/atoms/userGatedPostConversions'
 import { userContentUpgradeConversionsAtom } from '@modules/forms/atoms/userContentUpgradeConversionsAtom'
-import { isOrderedList, OrderedListTypeEnum } from '@common/types/OrderedLists'
+import { isOrderedList, OrderedListTypeEnum } from '@common/types/OrderedList'
 
 interface Props {
   location: PageProps['location']
@@ -97,8 +97,6 @@ const options: Options = {
         if (!listItems) {
           return null
         }
-
-        console.log('list items', listItems)
 
         switch (orderedListType) {
           case OrderedListTypeEnum.INLINE:
