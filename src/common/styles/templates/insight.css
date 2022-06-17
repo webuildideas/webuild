@@ -408,7 +408,7 @@ li .Insight-img-inline.Image-numbered-list {
   }
 }
 
-.Insight ul {
+.Insight ul:not(.Insight-ul-bt):not(.Insight-ul-btns) {
   list-style-type: disc;
   width: 92.5%;
   max-width: 580px;

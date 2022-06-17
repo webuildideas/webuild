@@ -1,5 +1,6 @@
 import '@common/styles/templates/insight.css'
 import '@common/styles/templates/insight-components/ordered-list.css'
+import '@common/styles/templates/insight-components/unordered-list.css'
 
 // Packages
 import React, { useEffect, useRef, useState } from 'react'
@@ -34,6 +35,10 @@ import Button from '@modules/common/components/Button'
 import { userGatedPostConversionsAtom } from '@modules/insight/atoms/userGatedPostConversions'
 import { userContentUpgradeConversionsAtom } from '@modules/forms/atoms/userContentUpgradeConversionsAtom'
 import { isOrderedList, OrderedListTypeEnum } from '@common/types/OrderedList'
+import {
+  isUnorderedList,
+  UnorderedListTypeEnum
+} from '@common/types/UnorderedList'
 
 interface Props {
   location: PageProps['location']
@@ -119,30 +124,22 @@ const options: Options = {
               <ol className="Insight-ol-bt">
                 {listItems.map((item, idx) => {
                   const { title, content, image } = item
-                  return image?.file.url ? (
-                    <>
-                      <img
-                        alt={node.data.target.altText}
-                        className="Insight-ol-bt__img"
-                        src={image.file.url}
-                      />
-                      <li key={`item-${idx}`}>
-                        {title ? (
-                          <div className="Insight-ol-bt__title">
-                            {renderRichText(title, blocksOptions)}
-                          </div>
-                        ) : null}
-
-                        {renderRichText(content, blocksOptions)}
-                      </li>
-                    </>
-                  ) : (
+                  return (
                     <li key={`item-${idx}`}>
+                      {image?.file.url ? (
+                        <img
+                          alt={node.data.target.altText}
+                          className="Insight-ol-bt__img"
+                          src={image.file.url}
+                        />
+                      ) : null}
+
                       {title ? (
                         <div className="Insight-ol-bt__title">
                           {renderRichText(title, blocksOptions)}
                         </div>
                       ) : null}
+
                       {renderRichText(content, blocksOptions)}
                     </li>
                   )
@@ -155,34 +152,96 @@ const options: Options = {
               <ol className="Insight-ol-steps">
                 {listItems.map((item, idx) => {
                   const { title, content, image } = item
-                  return image?.file.url ? (
-                    <>
-                      <img
-                        alt={node.data.target.altText}
-                        className="Insight-ol-steps__img"
-                        src={image.file.url}
-                      />
-                      <li key={`item-${idx}`}>
-                        {title ? (
-                          <div className="Insight-ol-steps__title">
-                            {renderRichText(title, blocksOptions)}
-                          </div>
-                        ) : null}
-                        {renderRichText(content, blocksOptions)}
-                      </li>
-                    </>
-                  ) : (
+                  return (
                     <li key={`item-${idx}`}>
+                      {image?.file.url ? (
+                        <img
+                          alt={node.data.target.altText}
+                          className="Insight-ol-steps__img"
+                          src={image.file.url}
+                        />
+                      ) : null}
+
                       {title ? (
                         <div className="Insight-ol-steps__title">
                           {renderRichText(title, blocksOptions)}
                         </div>
                       ) : null}
+
                       {renderRichText(content, blocksOptions)}
                     </li>
                   )
                 })}
               </ol>
+            )
+
+          default:
+            return null
+        }
+      }
+
+      if (isUnorderedList(entry)) {
+        const { listItems, unorderedListType } = entry
+
+        if (!listItems) {
+          return null
+        }
+
+        switch (unorderedListType) {
+          case UnorderedListTypeEnum.BLOCK_TITLE:
+            return (
+              <ul className="Insight-ul-bt">
+                {listItems.map((item, idx) => {
+                  const { title, content, image } = item
+                  return (
+                    <li key={`item-${idx}`}>
+                      {image?.file.url ? (
+                        <img
+                          alt={node.data.target.altText}
+                          className="Insight-ul-bt__img"
+                          src={image.file.url}
+                        />
+                      ) : null}
+
+                      {title ? (
+                        <div className="Insight-ul-btns__title">
+                          {renderRichText(title, blocksOptions)}
+                        </div>
+                      ) : null}
+
+                      {renderRichText(content, blocksOptions)}
+                    </li>
+                  )
+                })}
+              </ul>
+            )
+
+          case UnorderedListTypeEnum.BLOCK_TITLE_NO_STYLE:
+            return (
+              <ul className="Insight-ul-btns">
+                {listItems.map((item, idx) => {
+                  const { title, content, image } = item
+                  return (
+                    <li key={`item-${idx}`}>
+                      {image?.file.url ? (
+                        <img
+                          alt={node.data.target.altText}
+                          className="Insight-ul-btns__img"
+                          src={image.file.url}
+                        />
+                      ) : null}
+
+                      {title ? (
+                        <div className="Insight-ul-btns__title">
+                          {renderRichText(title, blocksOptions)}
+                        </div>
+                      ) : null}
+
+                      {renderRichText(content, blocksOptions)}
+                    </li>
+                  )
+                })}
+              </ul>
             )
 
           default:
@@ -370,7 +429,6 @@ const Insight = ({
           </div>
           <article ref={articleRef} className="Insight" id="article">
             <div className={articleClassNames}>
-              {console.log(insight.content)}
               {insight.content
                 ? renderRichText(insight.content, options)
                 : null}
@@ -469,6 +527,23 @@ export const query = graphql`
           ... on ContentfulOrderedList {
             contentful_id
             orderedListType
+            listItems {
+              image {
+                file {
+                  url
+                }
+              }
+              title {
+                raw
+              }
+              content {
+                raw
+              }
+            }
+          }
+          ... on ContentfulUnorderedList {
+            contentful_id
+            unorderedListType
             listItems {
               image {
                 file {

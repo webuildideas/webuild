@@ -1,0 +1,29 @@
+/** BLOCK TITLE STYLES **/
+.Insight-ul-bt {
+  list-style-type: disc;
+  font-size: 20px;
+
+  li + li {
+    @apply mt-8;
+  }
+}
+
+.Insight-ul-btns__title {
+  @apply mb-2;
+
+  p {
+    @apply hidden;
+  }
+
+  h4 {
+    @apply mb-0;
+  }
+}
+
+.Insight-ul-bt__img {
+  @apply pt-8;
+  @apply mb-4;
+}
+
+/** BLOCK TITLE NO LIST STYLE STYLES **/
+.Insight-ul-btns {}
