@@ -117,10 +117,10 @@
 }
 
 .Insight-ol-bt__title {
-  @apply flex;
+  /* @apply flex; */
   @apply w-full;
-  @apply flex-nowrap;
-  @apply items-start;
+  /* @apply flex-nowrap; */
+  /* @apply items-start; */
   @apply mb-2;
 
   p {
@@ -128,6 +128,7 @@
   }
 
   h4 {
+    @apply inline;
     margin-left: initial;
     margin-right: initial;
     width: auto;
@@ -136,9 +137,8 @@
   &:before {    
     content: counter(olBtCount) ". ";
 
-    @apply flex-shrink-0;
     @apply relative;
-    @apply block;
+    @apply inline-block;
     @apply mr-2;
     @apply font-bold;
     @apply tracking-wider;
@@ -147,13 +147,6 @@
     width: auto;
 
     @apply md:text-4xl;
-    @screen md {
-      top: -7px;
-    }
-
-    @screen lg {
-      top: -5px;
-    }
 
     @media (max-width: 425px) {
       @apply text-xl;
@@ -213,10 +206,7 @@
 }
 
 .Insight-ol-steps__title {
-  @apply flex;
   @apply w-full;
-  @apply flex-nowrap;
-  @apply items-start;
   @apply mb-2;
 
   p {
@@ -227,6 +217,7 @@
     margin-left: initial;
     margin-right: initial;
     width: auto;
+    @apply inline;
   }
 
   &:before {    
@@ -243,14 +234,6 @@
     width: auto;
 
     @apply md:text-4xl;
-
-    @screen md {
-      top: -7px;
-    }
-
-    @screen lg {
-      top: -5px;
-    }
 
     @media (max-width: 425px) {
       @apply text-xl;
