@@ -366,8 +366,11 @@ export const query = graphql`
             ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
-        ctaLink
+        customCtaLink
         ctaText
+        ctaLink {
+          slug
+        }
       }
       content {
         raw

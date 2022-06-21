@@ -3,10 +3,13 @@ import { TypeGatsbyImageFluid } from './GatsbyImage'
 export interface TypeSidebarAd {
   id: string
   copy?: string
-  ctaLink: string
+  ctaLink: {
+    slug: string
+  }
   ctaText: string
   headline: string
   image: TypeGatsbyImageFluid
   mobileImage: TypeGatsbyImageFluid
-  resourceType: string
+  eBook: boolean
+  customCtaLink: string
 }

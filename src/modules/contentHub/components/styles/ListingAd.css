@@ -19,7 +19,8 @@
   @apply bg-black;
 }
 
-.listing-ad.light .text-button svg path {
+.listing-ad.bg-peach .text-button svg path,
+.listing-ad.bg-lavenderMist .text-button svg path {
   stroke: #ffffff;
 }
 
@@ -41,7 +42,7 @@
   @apply px-6 pb-10;
 
   @screen md {
-    @apply pl-20 w-1/2;
+    @apply pl-20 w-1/2 pr-0;
   }
 
   @screen lg {

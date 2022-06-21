@@ -5,7 +5,6 @@ import Arrow from '@static/svgs/cta-arrow.inline.svg'
 
 import { TypeInsightTypeIconConfig } from '@modules/common/components/configs/InsightTags'
 import { TypeInsightType } from '@common/types/Insight'
-// import smallImg from '@static/images/home/homepage-hero-mobile.jpg'
 import Img from 'gatsby-image'
 
 // Styles
@@ -25,43 +24,6 @@ export interface TypeListingAd {
 interface Props {
   ad: TypeListingAd
 }
-
-// interface BlurredImage {
-//   image: string
-// }
-
-// export const useProgressiveImg = (
-//   lowQualitySrc: string,
-//   highQualitySrc: string
-// ) => {
-//   const [src, setSrc] = React.useState(lowQualitySrc)
-
-//   React.useEffect(() => {
-//     setSrc(lowQualitySrc)
-//     const img = new Image()
-//     img.src = highQualitySrc
-//     img.onload = () => {
-//       setSrc(highQualitySrc)
-//     }
-//   }, [lowQualitySrc, highQualitySrc])
-
-//   return [src, { blur: src === lowQualitySrc }]
-// }
-
-// export const BlurredUpImage = ({ image }: BlurredImage) => {
-//   const [src, { blur }] = useProgressiveImg(smallImg, image)
-//   return (
-//     <img
-//       alt="testing"
-//       className="mb-6 md:mb-0 w-full"
-//       src={src}
-//       style={{
-//         filter: blur ? 'blur(20px)' : 'none',
-//         transition: blur ? 'none' : 'filter 0.3s ease-out'
-//       }}
-//     />
-//   )
-// }
 
 const ListingAd = ({ ad }: Props) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -89,18 +51,33 @@ const ListingAd = ({ ad }: Props) => {
     transition
   }
 
-  const tagColor = ad.backgroundColor === 'light' ? `text-salmon` : `text-white`
+  const backgroundColor =
+    ad.backgroundColor === 'peach'
+      ? `bg-peach`
+      : ad.backgroundColor === 'black'
+      ? `bg-black`
+      : `bg-lavenderMist`
+
+  const tagColor =
+    ad.backgroundColor === 'peach'
+      ? `text-salmon`
+      : ad.backgroundColor === 'black'
+      ? `text-white`
+      : `text-electricViolet`
   const buttonColor =
-    ad.backgroundColor === 'light'
+    ad.backgroundColor === 'peach'
       ? `bg-black text-white Button-solid`
-      : `bg-white text-black hover:bg-gray-200`
+      : ad.backgroundColor === 'black'
+      ? `bg-white text-black hover:bg-gray-200`
+      : `bg-deepViolet text-white hover:bg-lilac`
   const headlineColor =
-    ad.backgroundColor === 'light' ? `text-black` : `text-white`
+    ad.backgroundColor === 'peach'
+      ? `text-black`
+      : ad.backgroundColor === `black`
+      ? `text-white`
+      : `text-deepViolet`
   return (
-    <motion.article
-      {...animations}
-      className={`listing-ad ${ad.backgroundColor}`}
-    >
+    <motion.article {...animations} className={`listing-ad ${backgroundColor}`}>
       <div className="listing-ad__content">
         <div className="listing-ad__type flex items-center">
           <TypeIcon className={`mr-2 w-5 ${tagColor}`} />
