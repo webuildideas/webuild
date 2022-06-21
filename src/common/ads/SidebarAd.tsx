@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Img from 'gatsby-image'
 import { TypeSidebarAd } from '@common/types/Sidebar'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
@@ -43,15 +43,21 @@ export default function SidebarAd({ theAd, excludeEbooks }: Props) {
   const {
     allContentfulSidebarAd: { nodes: ads }
   } = useStaticQuery(SIDEBAR_QUERY)
-  let ad
+  // let ad
 
-  if (theAd) {
-    ad = theAd
-  } else if (excludeEbooks) {
-    ad = ads.filter((item: TypeSidebarAd) => item.eBook !== true)
-    ad = ad[Math.floor(Math.random() * ad.length)]
-  } else {
-    ad = ads[Math.floor(Math.random() * ads.length)]
+  const [ad, setAd] = useState(setTheAd)
+
+  function setTheAd() {
+    if (theAd) {
+      return theAd
+    }
+    if (excludeEbooks) {
+      const filteredAds = ads.filter(
+        (item: TypeSidebarAd) => item.eBook !== true
+      )
+      return filteredAds[Math.floor(Math.random() * filteredAds.length)]
+    }
+    return ads[Math.floor(Math.random() * ads.length)]
   }
 
   const mobileImg = ad?.mobileImage?.fluid || ad.image.fluid
@@ -62,6 +68,8 @@ export default function SidebarAd({ theAd, excludeEbooks }: Props) {
       media: `(min-width: 990px)`
     }
   ]
+
+  console.log(ad.ctaLink.slug)
 
   return (
     <div className="sidebar-ad my-12 lg:mt-40 mx-8">
@@ -77,7 +85,7 @@ export default function SidebarAd({ theAd, excludeEbooks }: Props) {
                 cover
                 direction="right"
                 duration={1.25}
-                to={`${ad.ctaLink}`}
+                to={`/${ad.ctaLink.slug}`}
               >
                 <span className="mt-1 mr-2">{ad.ctaText}</span>
                 <Arrow />
