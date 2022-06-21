@@ -69,8 +69,6 @@ export default function SidebarAd({ theAd, excludeEbooks }: Props) {
     }
   ]
 
-  console.log(ad.ctaLink.slug)
-
   return (
     <div className="sidebar-ad my-12 lg:mt-40 mx-8">
       <div className="sidebar-ad__wrapper">
