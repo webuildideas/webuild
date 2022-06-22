@@ -58,6 +58,14 @@
     @apply py-4;
     /* @apply hover:bg-transparent; */
   }
+
+  br {
+    display: none;
+
+    @screen lg {
+      display: inline;
+    }
+  }
 }
 
 .listing-ad__image {

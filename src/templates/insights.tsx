@@ -53,6 +53,7 @@ interface Props {
   data: {
     contentfulContentHub: {
       featuredInsight: TypeInsight
+      featuredInterstitialAd: TypeListingAd
     }
     allContentfulInterstitialAds: {
       nodes: {
@@ -76,7 +77,7 @@ const PAGINATION_LIMIT = 12
 const Insights = ({
   location,
   data: {
-    contentfulContentHub: { featuredInsight },
+    contentfulContentHub: { featuredInsight, featuredInterstitialAd },
     allContentfulInterstitialAds: { nodes: insightsHubAds }
   },
   pageContext: { topics, types }
@@ -186,15 +187,28 @@ const Insights = ({
 
   const splitInsightsUp = (insights: any, numberOfAds: number) => {
     const theAds = insightsHubAds
+
+    const featured = () => {
+      if (featuredInterstitialAd !== null) {
+        return (
+          <ListingAd
+            key={`item-${featuredInterstitialAd.id}`}
+            ad={featuredInterstitialAd}
+          />
+        )
+      }
+      return theAds
+        .slice(0, 1)
+        .map((ad) => <ListingAd key={`item-${ad.id}`} ad={ad} />)
+    }
+
     if (numberOfAds >= 2) {
       return (
         <>
           {insights.slice(0, 3).map((insight) => (
             <ListingInsight key={`item-${insight.slug}`} insight={insight} />
           ))}
-          {theAds.slice(0, 1).map((ad) => (
-            <ListingAd key={`item-${ad.id}`} ad={ad} />
-          ))}
+          {featured()}
           {insights.slice(4, 8).map((insight) => (
             <ListingInsight key={`item-${insight.slug}`} insight={insight} />
           ))}
@@ -213,9 +227,7 @@ const Insights = ({
         {insights.slice(0, 3).map((insight) => (
           <ListingInsight key={`item-${insight.slug}`} insight={insight} />
         ))}
-        {theAds.slice(0, 1).map((ad) => (
-          <ListingAd key={`item-${ad.id}`} ad={ad} />
-        ))}
+        {featured()}
         {insights.slice(4).map((insight) => (
           <ListingInsight key={`item-${insight.slug}`} insight={insight} />
         ))}
@@ -346,6 +358,22 @@ export const CONTENT_HUB_QUERYY = graphql`
           }
         }
       }
+      featuredInterstitialAd {
+        headline
+        id
+        resourceType
+        ctaText
+        customCtaLink
+        ctaLink {
+          slug
+        }
+        backgroundColor
+        image {
+          fluid {
+            ...GatsbyContentfulFluid_withWebp_noBase64
+          }
+        }
+      }
     }
     allContentfulInterstitialAds {
       nodes {
@@ -353,7 +381,10 @@ export const CONTENT_HUB_QUERYY = graphql`
         id
         resourceType
         ctaText
-        ctaLink
+        customCtaLink
+        ctaLink {
+          slug
+        }
         backgroundColor
         image {
           fluid {

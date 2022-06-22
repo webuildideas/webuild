@@ -13,7 +13,10 @@ import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
 
 export interface TypeListingAd {
   backgroundColor: string
-  ctaLink: string
+  ctaLink: {
+    slug: string
+  }
+  customCtaLink?: string
   ctaText: string
   headline: string
   id: string
@@ -50,6 +53,8 @@ const ListingAd = ({ ad }: Props) => {
     onAnimationComplete: () => !isPresent && safeToRemove(),
     transition
   }
+
+  const link = ad?.ctaLink?.slug || ad?.customCtaLink
 
   const backgroundColor =
     ad.backgroundColor === 'peach'
@@ -92,7 +97,7 @@ const ListingAd = ({ ad }: Props) => {
           cover
           direction="right"
           duration={1.25}
-          to={`${ad.ctaLink}`}
+          to={`/${link}`}
         >
           <span className="mr-4 pt-1">{ad.ctaText}</span>
           <Arrow />
