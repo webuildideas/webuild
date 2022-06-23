@@ -197,9 +197,21 @@ const Insights = ({
           />
         )
       }
-      return theAds
-        .slice(0, 1)
-        .map((ad) => <ListingAd key={`item-${ad.id}`} ad={ad} />)
+      const randomAd = theAds[Math.floor(Math.random() * filteredAds.length)]
+      return <ListingAd key={`item-${randomAd.id}`} ad={randomAd} />
+    }
+
+    const nonFeatured = () => {
+      if (featuredInterstitialAd !== null) {
+        const filteredAds = theAds.filter(
+          (ad) => ad.id !== featuredInterstitialAd.id
+        )
+        const randomAd =
+          filteredAds[Math.floor(Math.random() * filteredAds.length)]
+        return <ListingAd key={`item-${randomAd.id}`} ad={randomAd} />
+      }
+      const randomAd = theAds[Math.floor(Math.random() * filteredAds.length)]
+      return <ListingAd key={`item-${randomAd.id}`} ad={randomAd} />
     }
 
     if (numberOfAds >= 2) {
@@ -212,9 +224,7 @@ const Insights = ({
           {insights.slice(4, 8).map((insight) => (
             <ListingInsight key={`item-${insight.slug}`} insight={insight} />
           ))}
-          {theAds.slice(1, 2).map((ad) => (
-            <ListingAd key={`item-${ad.id}`} ad={ad} />
-          ))}
+          {nonFeatured()}
           {insights.slice(8, 12).map((insight) => (
             <ListingInsight key={`item-${insight.slug}`} insight={insight} />
           ))}
