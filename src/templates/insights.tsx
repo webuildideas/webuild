@@ -1,9 +1,15 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // Packages
-import React, { useCallback, useEffect, useState, useRef } from 'react'
+import React, {
+  useCallback,
+  useEffect,
+  useState,
+  useRef,
+  useContext
+} from 'react'
 import { useQuery } from '@apollo/client'
-import { graphql, PageProps, navigate, Link } from 'gatsby'
+import { graphql, PageProps, navigate, Link, useStaticQuery } from 'gatsby'
 
 // NEW NEW
 import slugify from 'slugify'
@@ -18,6 +24,7 @@ import {
   TypeInsightType
 } from '@common/types/Insight'
 import '@common/styles/templates/insights.css'
+// import AdsContext from '@common/ads/AdsContext'
 
 // GraphQL
 import {
@@ -39,21 +46,24 @@ import Footer from '@modules/common/components/Footer'
 import EmailSignUpForm from '@modules/forms/EmailSignupForm'
 import MonthlyNewsletterForm from '@modules/forms/MonthlyNewsletterForm'
 
+import SidebarAd, { MemoizedSidebarAd } from '@common/ads/SidebarAd'
+
 interface Props {
   location: PageProps['location']
   data: {
     contentfulContentHub: {
       featuredInsight: TypeInsight
+      featuredInterstitialAd: TypeListingAd
+    }
+    allContentfulInterstitialAds: {
+      nodes: {
+        node: TypeListingAd
+      }
     }
   }
   pageContext: {
     topics: TypeInsightTopic[]
     types: TypeInsightType[]
-    ads: {
-      nodes: {
-        node: TypeListingAd
-      }
-    }
   }
 }
 
@@ -67,9 +77,10 @@ const PAGINATION_LIMIT = 12
 const Insights = ({
   location,
   data: {
-    contentfulContentHub: { featuredInsight }
+    contentfulContentHub: { featuredInsight, featuredInterstitialAd },
+    allContentfulInterstitialAds: { nodes: insightsHubAds }
   },
-  pageContext: { topics, types, ads }
+  pageContext: { topics, types }
 }: Props) => {
   // NEW
   const unslugifyParams = (theFilters: any) => {
@@ -98,6 +109,7 @@ const Insights = ({
   })
   const insightsContainer = useRef<HTMLElement>(null)
   const insightsWrapper = useRef<HTMLElement>(null)
+  // const { SidebarAds, insightsHubAds } = useContext(AdsContext)
 
   const { loading, error, data, refetch } = useQuery<
     InsightsListingData,
@@ -176,22 +188,45 @@ const Insights = ({
   }, [location, refetchInsights])
 
   const splitInsightsUp = (insights: any, numberOfAds: number) => {
-    const theAds = ads.nodes
+    const theAds = insightsHubAds
+
+    const featured = () => {
+      if (featuredInterstitialAd !== null) {
+        return (
+          <ListingAd
+            key={`item-${featuredInterstitialAd.id}`}
+            ad={featuredInterstitialAd}
+          />
+        )
+      }
+      const randomAd = theAds[Math.floor(Math.random() * filteredAds.length)]
+      return <ListingAd key={`item-${randomAd.id}`} ad={randomAd} />
+    }
+
+    const nonFeatured = () => {
+      if (featuredInterstitialAd !== null) {
+        const filteredAds = theAds.filter(
+          (ad) => ad.id !== featuredInterstitialAd.id
+        )
+        const randomAd =
+          filteredAds[Math.floor(Math.random() * filteredAds.length)]
+        return <ListingAd key={`item-${randomAd.id}`} ad={randomAd} />
+      }
+      const randomAd = theAds[Math.floor(Math.random() * filteredAds.length)]
+      return <ListingAd key={`item-${randomAd.id}`} ad={randomAd} />
+    }
+
     if (numberOfAds >= 2) {
       return (
         <>
           {insights.slice(0, 3).map((insight) => (
             <ListingInsight key={`item-${insight.slug}`} insight={insight} />
           ))}
-          {theAds.slice(0, 1).map((ad) => (
-            <ListingAd key={`item-${ad.id}`} ad={ad} />
-          ))}
+          {featured()}
           {insights.slice(4, 8).map((insight) => (
             <ListingInsight key={`item-${insight.slug}`} insight={insight} />
           ))}
-          {theAds.slice(1, 2).map((ad) => (
-            <ListingAd key={`item-${ad.id}`} ad={ad} />
-          ))}
+          {nonFeatured()}
           {insights.slice(8, 12).map((insight) => (
             <ListingInsight key={`item-${insight.slug}`} insight={insight} />
           ))}
@@ -204,9 +239,7 @@ const Insights = ({
         {insights.slice(0, 3).map((insight) => (
           <ListingInsight key={`item-${insight.slug}`} insight={insight} />
         ))}
-        {theAds.slice(0, 1).map((ad) => (
-          <ListingAd key={`item-${ad.id}`} ad={ad} />
-        ))}
+        {featured()}
         {insights.slice(4).map((insight) => (
           <ListingInsight key={`item-${insight.slug}`} insight={insight} />
         ))}
@@ -311,6 +344,7 @@ const Insights = ({
             containerId="insights-container"
             location={location.href}
           />
+          <MemoizedSidebarAd excludeEbooks />
         </aside>
       </div>
       <Footer />
@@ -333,6 +367,40 @@ export const CONTENT_HUB_QUERYY = graphql`
         featuredIllustration {
           file {
             url
+          }
+        }
+      }
+      featuredInterstitialAd {
+        headline
+        id
+        resourceType
+        ctaText
+        customCtaLink
+        ctaLink {
+          slug
+        }
+        backgroundColor
+        image {
+          fluid {
+            ...GatsbyContentfulFluid_withWebp_noBase64
+          }
+        }
+      }
+    }
+    allContentfulInterstitialAds {
+      nodes {
+        headline
+        id
+        resourceType
+        ctaText
+        customCtaLink
+        ctaLink {
+          slug
+        }
+        backgroundColor
+        image {
+          fluid {
+            ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
       }
