@@ -199,7 +199,7 @@ const Insights = ({
           />
         )
       }
-      const randomAd = theAds[Math.floor(Math.random() * filteredAds.length)]
+      const randomAd = theAds[Math.floor(Math.random() * theAds.length)]
       return <ListingAd key={`item-${randomAd.id}`} ad={randomAd} />
     }
 
@@ -212,7 +212,7 @@ const Insights = ({
           filteredAds[Math.floor(Math.random() * filteredAds.length)]
         return <ListingAd key={`item-${randomAd.id}`} ad={randomAd} />
       }
-      const randomAd = theAds[Math.floor(Math.random() * filteredAds.length)]
+      const randomAd = theAds[Math.floor(Math.random() * theAds.length)]
       return <ListingAd key={`item-${randomAd.id}`} ad={randomAd} />
     }
 
