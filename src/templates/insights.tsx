@@ -128,8 +128,6 @@ const Insights = ({
   const loadingOrNoItems = loading || noInisights
   const showPagination = total && total > PAGINATION_LIMIT
 
-  console.log(data?.insightCollection.items)
-
   const refetchInsights = useCallback(
     (params) => {
       const newSkip = skip * PAGINATION_LIMIT
