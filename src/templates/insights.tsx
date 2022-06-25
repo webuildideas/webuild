@@ -128,8 +128,6 @@ const Insights = ({
   const loadingOrNoItems = loading || noInisights
   const showPagination = total && total > PAGINATION_LIMIT
 
-  console.log(data?.insightCollection.items)
-
   const refetchInsights = useCallback(
     (params) => {
       const newSkip = skip * PAGINATION_LIMIT
@@ -199,7 +197,7 @@ const Insights = ({
           />
         )
       }
-      const randomAd = theAds[Math.floor(Math.random() * filteredAds.length)]
+      const randomAd = theAds[Math.floor(Math.random() * theAds.length)]
       return <ListingAd key={`item-${randomAd.id}`} ad={randomAd} />
     }
 
@@ -212,7 +210,7 @@ const Insights = ({
           filteredAds[Math.floor(Math.random() * filteredAds.length)]
         return <ListingAd key={`item-${randomAd.id}`} ad={randomAd} />
       }
-      const randomAd = theAds[Math.floor(Math.random() * filteredAds.length)]
+      const randomAd = theAds[Math.floor(Math.random() * theAds.length)]
       return <ListingAd key={`item-${randomAd.id}`} ad={randomAd} />
     }
 
