@@ -187,6 +187,7 @@ const Insights = ({
 
   const splitInsightsUp = (insights: any, numberOfAds: number) => {
     const theAds = insightsHubAds
+    let firstAd
 
     const featured = () => {
       if (featuredInterstitialAd !== null) {
@@ -197,8 +198,8 @@ const Insights = ({
           />
         )
       }
-      const randomAd = theAds[Math.floor(Math.random() * theAds.length)]
-      return <ListingAd key={`item-${randomAd.id}`} ad={randomAd} />
+      firstAd = theAds[Math.floor(Math.random() * theAds.length)]
+      return <ListingAd key={`${firstAd.id}`} ad={firstAd} />
     }
 
     const nonFeatured = () => {
@@ -210,7 +211,9 @@ const Insights = ({
           filteredAds[Math.floor(Math.random() * filteredAds.length)]
         return <ListingAd key={`item-${randomAd.id}`} ad={randomAd} />
       }
-      const randomAd = theAds[Math.floor(Math.random() * theAds.length)]
+      const filteredAds = theAds.filter((ad) => ad.id !== firstAd.id)
+      const randomAd =
+        filteredAds[Math.floor(Math.random() * filteredAds.length)]
       return <ListingAd key={`item-${randomAd.id}`} ad={randomAd} />
     }
 
