@@ -104,7 +104,9 @@ const ListingAd = ({ ad }: Props) => {
         </AniLink>
       </div>
       <div className="listing-ad__image">
-        <Img className="h-full lg:h-auto" fadeIn fluid={ad.image.fluid} />
+        <AniLink cover direction="right" duration={1.25} to={`/${link}`}>
+          <Img className="h-full lg:h-auto" fadeIn fluid={ad.image.fluid} />
+        </AniLink>
       </div>
     </motion.article>
   )
