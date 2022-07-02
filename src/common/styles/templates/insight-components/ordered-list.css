@@ -69,6 +69,7 @@
 .Insight-ol-bt {
   list-style: none;
   counter-reset: olBtCount;
+  width: calc(100% - 5px);
   max-width: 580px;
   @apply my-6;
   @apply mx-auto;
@@ -116,23 +117,11 @@
   }
 }
 
-.Insight-ol-bt__title {
-  /* @apply flex; */
-  @apply w-full;
-  /* @apply flex-nowrap; */
-  /* @apply items-start; */
-  @apply mb-2;
+.Insight-ol-bt__content {
+  @apply flex;
+  @apply items-start;
+  @apply flex-nowrap;
 
-  p {
-    @apply hidden;
-  }
-
-  h4 {
-    @apply inline;
-    margin-left: initial;
-    margin-right: initial;
-    width: auto;
-  }
 
   &:before {    
     content: counter(olBtCount) ". ";
@@ -145,12 +134,30 @@
     @apply text-3xl;
     line-height: 1;
     width: auto;
+    top: -5px;
 
     @apply md:text-4xl;
 
     @media (max-width: 425px) {
       @apply text-xl;
     }
+  }
+}
+
+.Insight-ol-bt__title {
+  @apply relative;
+  @apply w-full;
+  @apply mb-2;
+
+  p {
+    @apply hidden;
+  }
+
+  h4 {
+    @apply inline;
+    margin-left: initial;
+    margin-right: initial;
+    width: auto;
   }
 }
 

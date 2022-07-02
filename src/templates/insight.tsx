@@ -133,14 +133,17 @@ const options: Options = {
                           src={image.file.url}
                         />
                       ) : null}
+                      <div className="Insight-ol-bt__content">
+                        <div className="Insight-ol-bt__copy">
+                          {title ? (
+                            <div className="Insight-ol-bt__title">
+                              {renderRichText(title, blocksOptions)}
+                            </div>
+                          ) : null}
 
-                      {title ? (
-                        <div className="Insight-ol-bt__title">
-                          {renderRichText(title, blocksOptions)}
+                          {renderRichText(content, blocksOptions)}
                         </div>
-                      ) : null}
-
-                      {renderRichText(content, blocksOptions)}
+                      </div>
                     </li>
                   )
                 })}

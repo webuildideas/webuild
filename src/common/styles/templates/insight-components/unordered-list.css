@@ -8,7 +8,7 @@
   }
 }
 
-.Insight-ul-btns__title {
+.Insight-ul-bt__title {
   @apply mb-2;
 
   p {
@@ -26,4 +26,27 @@
 }
 
 /** BLOCK TITLE NO LIST STYLE STYLES **/
-.Insight-ul-btns {}
+.Insight-ul-btns {
+  list-style-type: none;
+
+  li + li {
+    @apply mt-8;
+  }
+}
+
+.Insight-ul-btns__title {
+  @apply mb-2;
+
+  p {
+    @apply hidden;
+  }
+
+  h4 {
+    @apply mb-0;
+  }
+}
+
+.Insight-ul-btns li ul li p b {
+  @apply inline !important;
+  text-transform: none !important;
+}
