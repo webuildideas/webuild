@@ -7,7 +7,7 @@
 
 
 [context.deploy-preview.environment]
-  GATSBY_CONTENTFUL_ENVIRONMENT = 'all-things-ads'
+  GATSBY_CONTENTFUL_ENVIRONMENT = 'tetra-case-study'
 
 [context.branch-deploy.environment]
-  GATSBY_CONTENTFUL_ENVIRONMENT = 'all-things-ads'
+  GATSBY_CONTENTFUL_ENVIRONMENT = 'tetra-case-study'
