@@ -1,0 +1,36 @@
+.case-study-hero-illustration {
+  @screen md {
+    @apply mx-auto;
+  }
+
+  @screen lg {
+    width: 624px;
+  }
+
+  @screen xl {
+    width: 784px;
+  }
+
+  @screen min1900 {
+    width: 1523px;
+  }
+}
+
+.case-study-hero-wrapper {
+  @apply p-6;
+  @apply mb-16;
+  /* @apply mt-8; */
+
+  /* @apply md:mt-16; */
+  @apply md:mb-16;
+  @apply md:mx-auto;
+  @apply md:px-16;
+
+  /* @apply lg:mt-20; */
+  @apply lg:mb-20;
+
+  /* @apply xl:mt-24; */
+  @apply xl:mb-24;
+
+  @apply 2xl:mb-36;
+}

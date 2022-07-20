@@ -1,0 +1,39 @@
+.case-study-baf__wrapper {
+  @apply px-6;
+  @apply mb-16;
+  @apply pt-4;
+
+  @apply md:mt-16;
+  @apply md:mb-12;
+  @apply md:mx-auto;
+  @apply md:px-0;
+  @screen md {
+    width: 584px;
+  }
+
+  @apply lg:mt-20;
+  @apply lg:mb-20;
+  @screen lg {
+    width: 700px;
+  }
+
+  @apply xl:mt-24;
+  @apply xl:mb-24;
+
+  @apply 2xl:mb-36;
+  @screen min1900 {
+    width: 942px;
+  }
+}
+
+.baf-container {
+  filter: drop-shadow(0px 5.0179px 7.1087px rgba(0, 0, 0, 0.08))
+    drop-shadow(0px 2.09079px 9.19949px rgba(0, 0, 0, 0.08))
+    drop-shadow(0px 2.92711px 3.34527px rgba(0, 0, 0, 0.06));
+
+  @screen lg {
+    filter: drop-shadow(0px 12px 17px rgba(0, 0, 0, 0.08))
+      drop-shadow(0px 5px 22px rgba(0, 0, 0, 0.08))
+      drop-shadow(0px 7px 8px rgba(0, 0, 0, 0.06));
+  }
+}
