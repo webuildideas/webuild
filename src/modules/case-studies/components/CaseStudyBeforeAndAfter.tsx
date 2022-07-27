@@ -5,6 +5,7 @@ import {
   ReactCompareSlider,
   ReactCompareSliderImage
 } from 'react-compare-slider'
+// import gsap from 'gsap'
 
 // Styles
 import '@modules/case-studies/components/styles/CaseStudyBeforeAndAfter.css'
@@ -22,6 +23,15 @@ const CaseStudyBeforeAndAfter = ({
   description,
   className = ''
 }: Props) => {
+  // useEffect(() => {
+  //   const clipItem = document.querySelector('[data-rcs="clip-item"]')
+  //   const width = clipItem?.getBoundingClientRect().width
+  //   gsap.to(clipItem, {
+  //     duration: 1,
+  //     // eslint-disable-next-line prettier/prettier
+  //     clip: `rect(auto, ${700}px, auto, auto)`
+  //   })
+  // }, [])
   return (
     <div className={`case-study-baf ${className}`}>
       <div className="case-study-baf__wrapper ">
@@ -29,7 +39,7 @@ const CaseStudyBeforeAndAfter = ({
           <span className="text-caption text-gray-600">Before</span>
           <span className="text-caption text-gray-600">After</span>
         </div>
-        <div className="baf-container h-56 md:h-100 lg:h-140 2xl:h-160 min1900:h-235 rounded-2 overflow-hidden">
+        <div className="baf-container rounded-2 overflow-hidden">
           <ReactCompareSlider
             handle={
               <div
@@ -41,7 +51,7 @@ const CaseStudyBeforeAndAfter = ({
               >
                 <div className="w-0.5 h-full bg-lilac absolute top-0 left-1/2 transform -translate-x-1/2" />
                 <div
-                  className="flex justify-around items-center w-4 h-7 rounded-1 cursor-move px-1 z-10"
+                  className="flex justify-around items-center w-4 h-7 rounded-1 cursor-ew-resize hover:cursor-ew-resize px-1 z-10"
                   style={{
                     background: '#8900FF',
                     borderRadius: '3px'

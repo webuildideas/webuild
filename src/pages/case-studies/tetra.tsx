@@ -251,7 +251,11 @@ const Tetra = ({
           />
         </div>
 
-        <OtherServices services={services} title="How We Got There" />
+        <OtherServices
+          bgColor="bg-white"
+          services={services}
+          title="How We Got There"
+        />
         <RelatedCaseStudies caseStudies={nextCaseStudies} />
         <Footer />
       </div>
@@ -288,12 +292,12 @@ export const TETRA_QUERY = graphql`
     }
 
     beforeImage: file(
-      relativePath: { eq: "case-studies/tetra/before-image.jpg" }
+      relativePath: { eq: "case-studies/tetra/before-image.png" }
     ) {
       publicURL
     }
     afterImage: file(
-      relativePath: { eq: "case-studies/tetra/after-image.jpg" }
+      relativePath: { eq: "case-studies/tetra/after-image.png" }
     ) {
       publicURL
     }
@@ -358,7 +362,19 @@ export const TETRA_QUERY = graphql`
       }
     }
 
-    allContentfulService {
+    allContentfulService(
+      filter: {
+        shortTitle: {
+          in: [
+            "Product Design"
+            "Design Systems"
+            "Marketing Design"
+            "Animation & Interaction"
+            "Brand Design"
+          ]
+        }
+      }
+    ) {
       nodes {
         shortTitle
         slug

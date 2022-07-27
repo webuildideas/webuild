@@ -2,7 +2,7 @@
   @apply pt-10;
   @apply pb-14;
   @apply text-center;
-  @apply bg-gray-100;
+  /* @apply bg-gray-100; */
 
   @apply md:px-8;
 
@@ -39,28 +39,26 @@
   @apply flex flex-wrap justify-center;
   @apply text-center;
   @apply mx-auto;
-  width: 90%;
-  max-width: 450px;
+  /* width: 90%;
+  max-width: 450px; */
+  @apply gap-2;
 
   .OtherServices-service {
     width: 40%;
     @screen md {
-      width: auto;
+      /* width: auto; */
+      flex: 1;
     }
   }
 
   @screen md {
     @apply items-start;
     @apply justify-between;
-    @apply gap-y-8;
-  }
-
-  @screen md {
-    max-width: 725px;
+    @apply gap-y-8 gap-x-4;
   }
 
   @screen lg {
-    width: 744px;
+    @apply gap-x-6;
   }
 }
 
