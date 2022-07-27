@@ -363,17 +363,7 @@ export const TETRA_QUERY = graphql`
     }
 
     allContentfulService(
-      filter: {
-        shortTitle: {
-          in: [
-            "Product Design"
-            "Design Systems"
-            "Marketing Design"
-            "Animation & Interaction"
-            "Brand Design"
-          ]
-        }
-      }
+      filter: { shortTitle: { in: ["Product Design", "Design Systems"] } }
     ) {
       nodes {
         shortTitle
