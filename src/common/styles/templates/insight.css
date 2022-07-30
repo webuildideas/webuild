@@ -471,3 +471,68 @@ li .Insight-img-inline.Image-numbered-list {
 .Insight .ContentUpgrade.simpleForm + p {
   @apply mt-16;
 }
+
+
+/* Insight--new-styles */
+.Insight--new-styles {
+  .Insight-paragraph + .Insight-ol-bt {
+    @apply mt-14;
+    
+    @apply lg:mt-16;
+  }
+
+  .Insight-h3 + .Insight-h4 {
+    @apply mt-2;
+  }
+
+  .Insight-h3 + .Insight-paragraph {
+    @apply mt-4;
+  }
+
+  .Insight-h4 + .Insight-paragraph {
+    @apply mt-8;
+  }
+
+  .Insight-h4 + .Insight-ul-bt {
+    @apply mt-8;
+  }
+
+  .Insight-paragraph + .Insight-h3 {
+    @apply mt-14;
+    
+    @apply lg:mt-16;
+  }
+
+  .Insight-paragraph + .Insight-h4 {
+    @apply mt-8;
+  }
+
+  .Insight-img--full-width {
+    max-width: 540px;
+    width: 100%;
+    @apply mx-auto;
+
+    @screen lg {
+      max-width: 100%;
+    }
+  }
+
+  .Insight-img--left-aligned {
+    max-width: 540px;
+    @apply mx-auto;
+
+    @apply xl:ml-0;
+  }
+
+  .Insight-img--center-aligned {
+    max-width: 540px;
+    @apply mx-auto;
+  }
+
+  .Insight-img.full-width,
+  .Insight-img.left-aligned,
+  .Insight-img.center-aligned {
+    @apply pl-0;
+    @apply pr-0;
+  }
+}

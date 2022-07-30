@@ -134,9 +134,13 @@
     @apply text-3xl;
     line-height: 1;
     width: auto;
-    top: -5px;
-
+    top: -1px;
+    
     @apply md:text-4xl;
+    
+    @screen md {
+      top: -7px;
+    }
 
     @media (max-width: 425px) {
       @apply text-xl;

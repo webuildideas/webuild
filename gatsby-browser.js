@@ -13,7 +13,7 @@ import './src/common/styles/tailwind.css'
 import AppProvider from './src/components/AppProvider'
 
 export const shouldUpdateScroll = ({ routerProps }) => {
-  const { disableScrollUpdate } = routerProps.location.state
+  const disableScrollUpdate = routerProps?.location?.state?.disableScrollUpdate
   return !disableScrollUpdate
 }
 

@@ -39,6 +39,7 @@ import {
   isUnorderedList,
   UnorderedListTypeEnum
 } from '@common/types/UnorderedList'
+import { ImageStylingEnum, isWebuildImage } from '@common/types/Image'
 
 interface Props {
   location: PageProps['location']
@@ -252,23 +253,63 @@ const options: Options = {
         }
       }
 
-      if (entry.__typename === 'ContentfulImage') {
-        return (
-          <div className="Insight-img">
-            <Img
-              alt={entry.altText}
-              className={
-                entry.imageType ? entry.imageType.join(' ') : undefined
-              }
-              durationFadeIn={125}
-              fadeIn
-              fluid={entry.asset.fluid}
-            />
-            {entry.caption ? (
-              <p className="text-caption">{entry.caption}</p>
-            ) : null}
-          </div>
-        )
+      if (isWebuildImage(entry)) {
+        const { imageStyling, imageType, altText, caption, asset } = entry
+
+        switch (imageStyling) {
+          case ImageStylingEnum.FULL_WIDTH:
+            return (
+              <div className="Insight-img full-width">
+                <Img
+                  alt={altText}
+                  className="Insight-img--full-width"
+                  durationFadeIn={125}
+                  fadeIn
+                  fluid={asset.fluid}
+                />
+                {caption ? <p className="text-caption">{caption}</p> : null}
+              </div>
+            )
+          case ImageStylingEnum.LEFT_ALIGNED:
+            return (
+              <div className="Insight-img left-aligned">
+                <Img
+                  alt={altText}
+                  className="Insight-img--left-aligned"
+                  durationFadeIn={125}
+                  fadeIn
+                  fluid={asset.fluid}
+                />
+                {caption ? <p className="text-caption">{caption}</p> : null}
+              </div>
+            )
+          case ImageStylingEnum.CENTER_ALIGNED:
+            return (
+              <div className="Insight-img center-aligned">
+                <Img
+                  alt={altText}
+                  className="Insight-img--center-aligned"
+                  durationFadeIn={125}
+                  fadeIn
+                  fluid={asset.fluid}
+                />
+                {caption ? <p className="text-caption">{caption}</p> : null}
+              </div>
+            )
+          default:
+            return (
+              <div className="Insight-img">
+                <Img
+                  alt={altText}
+                  className={imageType ? imageType.join(' ') : undefined}
+                  durationFadeIn={125}
+                  fadeIn
+                  fluid={asset.fluid}
+                />
+                {caption ? <p className="text-caption">{caption}</p> : null}
+              </div>
+            )
+        }
       }
 
       if (entry.__typename === 'ContentfulContentUpgrade') {
@@ -340,6 +381,13 @@ const Insight = ({
     'Insight-article-locked': isLocked
   })
 
+  const insightClassNames = classNames({
+    'Insight-container': true,
+    [`Insight-type-${insight.type.toLowerCase()}`]: true,
+    'Insight--old-styles': !insight.newStyles,
+    'Insight--new-styles': insight.newStyles ? insight.newStyles : false
+  })
+
   /**
    * If there is a content upgrade and user has already completed form
    * then scroll them to that element.
@@ -384,10 +432,7 @@ const Insight = ({
         shareTitle={insight.title}
         title={insight.seoTitle ?? insight.title}
       />
-      <div
-        className={`Insight-container Insight-type-${insight.type.toLowerCase()}`}
-        id="insight-container"
-      >
+      <div className={insightClassNames} id="insight-container">
         {insight?.heroIllustration?.file?.url ? (
           <div className="Insight-hero">
             <img
@@ -505,6 +550,7 @@ export const query = graphql`
   query insightQuery($slug: String!, $topics: [String]) {
     contentfulInsight(slug: { eq: $slug }) {
       id
+      newStyles
       isGated
       type
       topics
@@ -585,6 +631,7 @@ export const query = graphql`
             contentful_id
             caption
             altText
+            imageStyling
             imageType
             asset {
               fluid(maxWidth: 800) {

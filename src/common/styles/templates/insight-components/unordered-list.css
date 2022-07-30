@@ -2,9 +2,26 @@
 .Insight-ul-bt {
   list-style-type: disc;
   font-size: 20px;
+  max-width: 540px;
+  @apply mx-auto;
+  
+  @apply px-4;
+  @apply md:px-0;
+  
+  @screen xl {
+    max-width: calc(100% - 48px);
+  }
 
   li + li {
     @apply mt-8;
+  }
+
+  h4 {
+    max-width: 100%;
+  }
+
+  p {
+    max-width: 100%;
   }
 }
 
