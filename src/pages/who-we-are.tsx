@@ -37,6 +37,9 @@ interface WhoWeAreQueryResponse {
   allContentfulService: {
     nodes: TypeService[]
   }
+  introImg: {
+    publicURL: string
+  }
 }
 
 interface Props {
@@ -192,6 +195,26 @@ const WhoWeAre = ({ data, location }: Props) => {
                   </AniLink>
                 )
               })}
+              <div className="WhoWeAre-team-member relative">
+                <div className="WhoWeAre-team-photo">
+                  <div>
+                    <img
+                      alt="Introduce yourself illustration"
+                      className="WhoWeAre-team-illustration no-hover hover:opacity-100"
+                      src={data.introImg.publicURL}
+                    />
+                  </div>
+                </div>
+                <div className="WhoWeAre-team-info text-center">
+                  <h3 className="text-h3">Join Us!</h3>
+                  <p
+                    className="text-body cursor-pointer text-electricViolet"
+                    onClick={showModal}
+                  >
+                    Introduce yourself
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -253,6 +276,9 @@ export const WHO_WE_ARE_QUERY = graphql`
           }
         }
       }
+    }
+    introImg: file(relativePath: { eq: "intro-yourself.gif" }) {
+      publicURL
     }
   }
 `

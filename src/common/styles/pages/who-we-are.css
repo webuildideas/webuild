@@ -278,6 +278,10 @@
         @apply opacity-0;
       }
 
+      .no-hover {
+        @apply opacity-100;
+      }
+
       .WhoWeAre-team-headshot {
         @apply opacity-100;
       }
@@ -335,7 +339,7 @@
       z-index: 5;
     }
     .WhoWeAre-team-info:before {
-      content: "";
+      content: '';
       @apply block;
       @apply absolute;
       @apply bg-white;
@@ -357,7 +361,7 @@
       z-index: 5;
     }
     .WhoWeAre-team-info:after {
-      content: "";
+      content: '';
       @apply block;
       @apply absolute;
       @apply bg-white;
