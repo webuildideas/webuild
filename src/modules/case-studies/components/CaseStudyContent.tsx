@@ -42,7 +42,7 @@ const CaseStudyContent = ({
         </div>
       )}
       <div
-        className={`case-study-content__wrapper max-w-3xl px-6 mx-auto md:px-14 xl:p-0 ${contentClasses} ${noMargin}`}
+        className={`case-study-content__wrapper px-6 mx-auto md:px-14 xl:p-0 ${contentClasses} ${noMargin}`}
         dangerouslySetInnerHTML={{ __html: content }}
       />
     </div>

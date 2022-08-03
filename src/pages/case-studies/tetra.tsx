@@ -168,7 +168,7 @@ const Tetra = ({
         location={location}
         title={seoTitle}
       />
-      <div className="tetra" id="tetra-container">
+      <div className="tetra quadpay" id="tetra-container">
         <main>
           <CaseStudyHero
             illustration={<HeroIllustration className="w-full h-auto" />}

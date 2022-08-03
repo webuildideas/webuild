@@ -23,15 +23,6 @@ const CaseStudyBeforeAndAfter = ({
   description,
   className = ''
 }: Props) => {
-  // useEffect(() => {
-  //   const clipItem = document.querySelector('[data-rcs="clip-item"]')
-  //   const width = clipItem?.getBoundingClientRect().width
-  //   gsap.to(clipItem, {
-  //     duration: 1,
-  //     // eslint-disable-next-line prettier/prettier
-  //     clip: `rect(auto, ${700}px, auto, auto)`
-  //   })
-  // }, [])
   return (
     <div className={`case-study-baf ${className}`}>
       <div className="case-study-baf__wrapper ">
