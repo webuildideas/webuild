@@ -161,7 +161,7 @@ const WhoWeAre = ({ data, location }: Props) => {
             <span className="block text-h4 mb-2">Who's Who</span>
             <span className="font-extrabold">Meet the Team</span>
           </h2>
-          <div className="WhoWeAre-team-inner bg-foundation">
+          <div className="WhoWeAre-team-inner bg-foundation md:bg-transparent xl:bg-foundation">
             <div className="WhoWeAre-team-grid">
               {meetTheTeam.map((employee) => {
                 return (
