@@ -37,7 +37,10 @@ interface WhoWeAreQueryResponse {
   allContentfulService: {
     nodes: TypeService[]
   }
-  introImg: {
+  introGif: {
+    publicURL: string
+  }
+  introPng: {
     publicURL: string
   }
 }
@@ -195,22 +198,28 @@ const WhoWeAre = ({ data, location }: Props) => {
                   </AniLink>
                 )
               })}
-              <div className="WhoWeAre-team-member relative">
+              <div
+                className="WhoWeAre-team-member relative cursor-pointer"
+                onClick={showModal}
+                role="button"
+              >
                 <div className="WhoWeAre-team-photo">
                   <div>
                     <img
                       alt="Introduce yourself illustration"
-                      className="WhoWeAre-team-illustration no-hover hover:opacity-100"
-                      src={data.introImg.publicURL}
+                      className="WhoWeAre-team-illustration"
+                      src={data.introPng.publicURL}
+                    />
+                    <img
+                      alt="Introduce yourself sign"
+                      className="WhoWeAre-team-headshot"
+                      src={data.introGif.publicURL}
                     />
                   </div>
                 </div>
                 <div className="WhoWeAre-team-info text-center">
                   <h3 className="text-h3">Join Us!</h3>
-                  <p
-                    className="text-body cursor-pointer text-electricViolet"
-                    onClick={showModal}
-                  >
+                  <p className="text-body text-electricViolet">
                     Introduce yourself
                   </p>
                 </div>
@@ -277,7 +286,10 @@ export const WHO_WE_ARE_QUERY = graphql`
         }
       }
     }
-    introImg: file(relativePath: { eq: "intro-yourself.gif" }) {
+    introGif: file(relativePath: { eq: "intro-yourself.gif" }) {
+      publicURL
+    }
+    introPng: file(relativePath: { eq: "you-here.png" }) {
       publicURL
     }
   }

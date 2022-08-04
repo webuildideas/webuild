@@ -278,10 +278,6 @@
         @apply opacity-0;
       }
 
-      .no-hover {
-        @apply opacity-100;
-      }
-
       .WhoWeAre-team-headshot {
         @apply opacity-100;
       }
