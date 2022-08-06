@@ -33,12 +33,12 @@ import GatedPostForm from '@modules/forms/GatedPostForm'
 import ContentUpgradeForm from '@modules/forms/ContentUpgradeForm'
 import MonthlyNewsletterForm from '@modules/forms/MonthlyNewsletterForm'
 import Button from '@modules/common/components/Button'
+import OrderedList from '@modules/insight/components/OrderedList'
+import UnorderedList from '@modules/insight/components/UnorderedList'
 
 // Atoms
 import { userGatedPostConversionsAtom } from '@modules/insight/atoms/userGatedPostConversions'
 import { userContentUpgradeConversionsAtom } from '@modules/forms/atoms/userContentUpgradeConversionsAtom'
-import OrderedList from '@modules/insight/components/OrderedList'
-import UnorderedList from '@modules/insight/components/UnorderedList'
 
 interface Props {
   location: PageProps['location']
@@ -248,6 +248,7 @@ const Insight = ({
       setEstReadTime(readTime)
     }
   }, [articleRef])
+
   return (
     <>
       <Meta
