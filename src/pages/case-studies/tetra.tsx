@@ -201,6 +201,7 @@ const Tetra = ({
             <CaseStudyContent
               content={projectMappingText}
               contentClasses="pt-8 lg:max-w-4xl"
+              sectionClasses="lg:mt-12 2xl:mt-20"
             />
             <CaseStudyLargeImage
               containerClasses="max-w-screen-xl px-5 mt-12 md:px-14"
@@ -222,7 +223,7 @@ const Tetra = ({
             sectionClasses="my-8 md:w-10/12 mx-auto md:my-16 lg:my-20 xl:24"
           />
           <CaseStudyLargeImage
-            bgClasses="bg-gray-200 top-0 left-0 h-5/6"
+            bgClasses="bg-gray-200 top-0 left-0 right-0 bottom-12 md:bottom-16 lg:bottom-32"
             containerClasses="md:w-9/12 lg:w-auto max-w-screen-xl px-5 mt-0 py-6 md:pt-18 md:px-14"
             image={dsGridImage}
           />
