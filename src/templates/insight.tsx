@@ -1,5 +1,4 @@
 import '@common/styles/templates/insight.css'
-import '@common/styles/templates/insight-components/ordered-list.css'
 import '@common/styles/templates/insight-components/unordered-list.css'
 
 // Packages
@@ -16,6 +15,10 @@ import Img from 'gatsby-image'
 import { classNames } from '@common/utils/classNames'
 import { TypeInsight } from '@common/types/Insight'
 import { getEstimatedReadingTime } from '@modules/insight/utils'
+import { ImageStylingEnum, isWebuildImage } from '@common/types/Image'
+import { isUnorderedList } from '@common/types/UnorderedList'
+import { blocksOptions } from '@modules/insight/rich-text-options'
+import { isOrderedList } from '@common/types/OrderedList'
 
 // Components
 import Meta from '@components/Meta'
@@ -34,12 +37,8 @@ import Button from '@modules/common/components/Button'
 // Atoms
 import { userGatedPostConversionsAtom } from '@modules/insight/atoms/userGatedPostConversions'
 import { userContentUpgradeConversionsAtom } from '@modules/forms/atoms/userContentUpgradeConversionsAtom'
-import { isOrderedList, OrderedListTypeEnum } from '@common/types/OrderedList'
-import {
-  isUnorderedList,
-  UnorderedListTypeEnum
-} from '@common/types/UnorderedList'
-import { ImageStylingEnum, isWebuildImage } from '@common/types/Image'
+import OrderedList from '@modules/insight/components/OrderedList'
+import UnorderedList from '@modules/insight/components/UnorderedList'
 
 interface Props {
   location: PageProps['location']
@@ -47,32 +46,6 @@ interface Props {
     contentfulInsight: TypeInsight
     allContentfulInsight: {
       nodes: TypeInsight[]
-    }
-  }
-}
-
-const blocksOptions: Options = {
-  renderNode: {
-    [BLOCKS.HEADING_2]: (_, children) => (
-      <h2 className="Insight-copy Insight-h2 text-h2">{children}</h2>
-    ),
-    [BLOCKS.HEADING_3]: (_, children) => (
-      <h3 className="Insight-copy Insight-h3 text-h3 font-extrabold">
-        {children}
-      </h3>
-    ),
-    [BLOCKS.HEADING_4]: (_, children) => (
-      <h4 className="Insight-copy Insight-h4 text-h4">{children}</h4>
-    ),
-    [BLOCKS.PARAGRAPH]: (_, children) => (
-      <p className="Insight-copy Insight-paragraph text-body">{children}</p>
-    ),
-    [BLOCKS.QUOTE]: (_, children) => {
-      return (
-        <blockquote className="Insight-copy Insight-blockquote text-h2">
-          {children}
-        </blockquote>
-      )
     }
   }
 }
@@ -98,159 +71,11 @@ const options: Options = {
       const { target: entry } = node.data
 
       if (isOrderedList(entry)) {
-        const { listItems, orderedListType } = entry
-
-        if (!listItems) {
-          return null
-        }
-
-        switch (orderedListType) {
-          case OrderedListTypeEnum.INLINE:
-            return (
-              <ol className="Insight-ol-inline">
-                {listItems.map((item, idx) => {
-                  return (
-                    <li key={`item-${idx}`}>
-                      <div className="Insight-ol-inline__content">
-                        {renderRichText(item.content, blocksOptions)}
-                      </div>
-                    </li>
-                  )
-                })}
-              </ol>
-            )
-
-          case OrderedListTypeEnum.BLOCK_TITLE:
-            return (
-              <ol className="Insight-ol-bt">
-                {listItems.map((item, idx) => {
-                  const { title, content, image } = item
-                  return (
-                    <li key={`item-${idx}`}>
-                      {image?.file.url ? (
-                        <img
-                          alt={node.data.target.altText}
-                          className="Insight-ol-bt__img"
-                          src={image.file.url}
-                        />
-                      ) : null}
-                      <div className="Insight-ol-bt__content">
-                        <div className="Insight-ol-bt__copy">
-                          {title ? (
-                            <div className="Insight-ol-bt__title">
-                              {renderRichText(title, blocksOptions)}
-                            </div>
-                          ) : null}
-
-                          {renderRichText(content, blocksOptions)}
-                        </div>
-                      </div>
-                    </li>
-                  )
-                })}
-              </ol>
-            )
-
-          case OrderedListTypeEnum.STEPS:
-            return (
-              <ol className="Insight-ol-steps">
-                {listItems.map((item, idx) => {
-                  const { title, content, image } = item
-                  return (
-                    <li key={`item-${idx}`}>
-                      {image?.file.url ? (
-                        <img
-                          alt={node.data.target.altText}
-                          className="Insight-ol-steps__img"
-                          src={image.file.url}
-                        />
-                      ) : null}
-
-                      {title ? (
-                        <div className="Insight-ol-steps__title">
-                          {renderRichText(title, blocksOptions)}
-                        </div>
-                      ) : null}
-
-                      {renderRichText(content, blocksOptions)}
-                    </li>
-                  )
-                })}
-              </ol>
-            )
-
-          default:
-            return null
-        }
+        return <OrderedList orderedList={entry} />
       }
 
       if (isUnorderedList(entry)) {
-        const { listItems, unorderedListType } = entry
-
-        if (!listItems) {
-          return null
-        }
-
-        switch (unorderedListType) {
-          case UnorderedListTypeEnum.BLOCK_TITLE:
-            return (
-              <ul className="Insight-ul-bt">
-                {listItems.map((item, idx) => {
-                  const { title, content, image } = item
-                  return (
-                    <li key={`item-${idx}`}>
-                      {image?.file.url ? (
-                        <img
-                          alt={node.data.target.altText}
-                          className="Insight-ul-bt__img"
-                          src={image.file.url}
-                        />
-                      ) : null}
-
-                      {title ? (
-                        <div className="Insight-ul-btns__title">
-                          {renderRichText(title, blocksOptions)}
-                        </div>
-                      ) : null}
-
-                      {renderRichText(content, blocksOptions)}
-                    </li>
-                  )
-                })}
-              </ul>
-            )
-
-          case UnorderedListTypeEnum.BLOCK_TITLE_NO_STYLE:
-            return (
-              <ul className="Insight-ul-btns">
-                {listItems.map((item, idx) => {
-                  const { title, content, image } = item
-                  return (
-                    <li key={`item-${idx}`}>
-                      {image?.file.url ? (
-                        <img
-                          alt={node.data.target.altText}
-                          className="Insight-ul-btns__img"
-                          src={image.file.url}
-                        />
-                      ) : null}
-
-                      {title ? (
-                        <div className="Insight-ul-btns__title">
-                          {renderRichText(title, blocksOptions)}
-                        </div>
-                      ) : null}
-
-                      {renderRichText(content, blocksOptions)}
-                    </li>
-                  )
-                })}
-              </ul>
-            )
-
-          default:
-            return null
-        }
+        return <UnorderedList unorderedList={entry} />
       }
 
       if (isWebuildImage(entry)) {
