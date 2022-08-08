@@ -220,7 +220,7 @@ const Tetra = ({
           />
           <CaseStudyContent
             content={designSystemTextTwo}
-            sectionClasses="my-8 md:w-10/12 mx-auto md:my-16 lg:my-20 xl:24"
+            sectionClasses="my-8 md:w-10/12 mx-auto md:my-16 lg:my-20 xl:24 lg:max-w-4xl"
           />
           <CaseStudyLargeImage
             bgClasses="bg-gray-200 top-0 left-0 right-0 bottom-12 md:bottom-16 lg:bottom-32"
@@ -241,7 +241,7 @@ const Tetra = ({
           />
           <CaseStudyContent
             content={servicesTest}
-            sectionClasses="py-8 md:py-16 md:w-10/12 mx-auto"
+            sectionClasses="py-8 md:py-16 md:w-10/12 mx-auto put-to-test"
           />
         </main>
         <div className="Quadpay-opportunity-form lg:pt-10 lg:pb-16">
