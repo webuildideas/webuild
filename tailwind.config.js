@@ -7,6 +7,17 @@ module.exports = {
     }
   },
   theme: {
+    extend: {
+      height: {
+        100: '400px',
+        140: '560px',
+        160: '640px',
+        235: '940px'
+      },
+      translate: {
+        '3/20': '-15%'
+      }
+    },
     borderRadius: {
       px: '1px',
       0: '0px',
@@ -57,6 +68,7 @@ module.exports = {
       santaFe: '#A96C54',
       beauBlue: '#DCEAFF',
       snow: '#F9F9F9',
+      mischka: '#F2F0FF',
 
       // Gray Scale
       gray: {
@@ -139,7 +151,8 @@ module.exports = {
       maxMd: { max: '768px' },
       maxLg: { max: '1024px' },
       maxXl: { max: '1280px' },
-      max2xl: { max: '2560px' }
+      max2xl: { max: '2560px' },
+      min1900: { min: '1900px' }
     },
 
     spacing: {

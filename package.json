@@ -42,6 +42,7 @@
     "pure-react-carousel": "^1.27.6",
     "query-string": "^7.1.1",
     "react": "^17.0.2",
+    "react-compare-slider": "^2.2.0",
     "react-cookie": "^4.0.3",
     "react-dom": "^17.0.2",
     "react-headroom": "^3.1.0",
