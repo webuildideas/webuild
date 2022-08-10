@@ -12,12 +12,12 @@ import './src/common/styles/tailwind.css'
 // Components
 import AppProvider from './src/components/AppProvider'
 
-export const shouldUpdateScroll = ({ routerProps }) => {
-  if (routerProps) {
-    const { disableScrollUpdate } = routerProps.location.state
-    return disableScrollUpdate ? !disableScrollUpdate : null
-  }
-}
+// export const shouldUpdateScroll = ({ routerProps }) => {
+//   if (routerProps) {
+//     const { disableScrollUpdate } = routerProps.location.state
+//     return disableScrollUpdate ? !disableScrollUpdate : null
+//   }
+// }
 
 export const wrapPageElement = ({ element, props }) => {
   return (

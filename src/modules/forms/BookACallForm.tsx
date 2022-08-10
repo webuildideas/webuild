@@ -147,16 +147,16 @@ const BookACallForm = ({
         <Formik
           initialValues={initialFormValues}
           onSubmit={handleSubmit}
-          validateOnBlur={false}
+          validateOnBlur={true}
           validateOnChange={false}
-          validateOnMount={false}
+          validateOnMount={true}
           validationSchema={formSchema}
         >
           {({
             dirty,
             isSubmitting,
-            values,
-            errors,
+            // values,
+            // errors,
             isValid
           }: FormikProps<FormValues>) => (
             <Form id={NFForms.BookACall.actOnId} name={NFForms.BookACall.name}>
@@ -220,7 +220,7 @@ const BookACallForm = ({
 
               <PrivacyOptIn />
 
-              {Object.values(errors).map((error, idx) => {
+              {/* {Object.values(errors).map((error, idx) => {
                 return (
                   <p
                     key={`error-${idx}`}
@@ -229,7 +229,7 @@ const BookACallForm = ({
                     {error}
                   </p>
                 )
-              })}
+              })} */}
 
               <Button
                 animate={false}
@@ -237,7 +237,7 @@ const BookACallForm = ({
                 // disabled={isSubmitting || !values['Privacy Notice']}
                 disabled={
                   isSubmitting ||
-                  !values['Privacy Notice'] ||
+                  // !values['Privacy Notice'] ||
                   !(dirty && isValid)
                 }
                 loading={isSubmitting}
