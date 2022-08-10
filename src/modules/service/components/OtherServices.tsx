@@ -15,7 +15,7 @@ interface Props {
   showButton?: boolean
   title?: string
   isChampagnePinkBg?: boolean
-  className?: string
+  bgColor?: string
 }
 
 const OtherServices = ({
@@ -23,11 +23,13 @@ const OtherServices = ({
   title = 'Other Services',
   showButton = true,
   isChampagnePinkBg = false,
-  className
+  bgColor = 'bg-gray-100'
 }: Props) => {
   const numberOfServices = services.length
+  const serviceBG =
+    numberOfServices > 3 ? 'bg-transparent p-0' : 'bg-gray-200 p-4'
   return (
-    <div className={`OtherServices ${bgColor} ${className}`}>
+    <div className={`OtherServices ${bgColor}`}>
       <div className="OtherServices-inner">
         <div className="OtherServices-header">
           <h3 className="text-h3 font-extrabold text-center">{title}</h3>
@@ -47,8 +49,7 @@ const OtherServices = ({
           {services.map((service) => (
             <AniLink
               key={`${service.shortTitle}-other-service`}
-              bg="#F3F3F3"
-              className="OtherServices-service"
+              className={`OtherServices-service ${serviceBG}`}
               cover
               direction="bottom"
               duration={1.5}
