@@ -1,5 +1,6 @@
 .ListingInsight-container {
   @apply block;
+  transition: all 200ms ease-out;
   @screen md {
     @apply grid;
     @apply grid-cols-2;
@@ -11,10 +12,13 @@
   }
 
   @screen xl {
+    filter: grayscale(100%);
+
     .InsightTags-topic {
       @apply text-gray-500;
     }
     &:hover {
+      filter: grayscale(0%);
       .ListingInsight-illustration img {
         filter: grayscale(0%);
       }

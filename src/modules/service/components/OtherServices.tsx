@@ -25,7 +25,7 @@ const OtherServices = ({
   isChampagnePinkBg = false,
   className
 }: Props) => {
-  const bgColor = isChampagnePinkBg ? `bg-champagnePink` : `bg-white`
+  const numberOfServices = services.length
   return (
     <div className={`OtherServices ${bgColor} ${className}`}>
       <div className="OtherServices-inner">
@@ -40,7 +40,10 @@ const OtherServices = ({
             </AniLink>
           ) : null}
         </div>
-        <div className="OtherServices-services">
+        <div
+          className="OtherServices-services"
+          data-services={numberOfServices}
+        >
           {services.map((service) => (
             <AniLink
               key={`${service.shortTitle}-other-service`}
