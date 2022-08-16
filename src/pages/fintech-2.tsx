@@ -267,7 +267,7 @@ const Fintech = ({
               <Button
                 className="Fintech__form-button"
                 onClick={handleSetEmailAndOpenModal}
-                styleType="solid-salmon"
+                styleType="solid-purple"
               >
                 Get In Touch
               </Button>
