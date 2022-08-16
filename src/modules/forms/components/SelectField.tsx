@@ -37,7 +37,7 @@ const SelectField = ({
     <div className={className}>
       <label>
         {label ? (
-          <span className="text-tag block text-black mb-3">{label}</span>
+          <span className="text-tag block text-gray-700 mb-3">{label}</span>
         ) : null}
         <div className="SelectField-container">
           <SimpleDownArrow className="SelectField-arrow" />

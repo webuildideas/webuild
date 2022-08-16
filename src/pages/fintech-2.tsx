@@ -187,7 +187,7 @@ const Fintech = ({
               </div>
               <div className="Fintech__works-item-content">
                 <h3 className="text-h3 font-extrabold">Expand Resources</h3>
-                <p className="text-body">
+                <p className="text-body mb-0">
                   We help you solve your resourcing challenges in a fraction of
                   the time at a reasonable cost. We plug in and get to work
                   immediately.
@@ -201,7 +201,7 @@ const Fintech = ({
               </div>
               <div className="Fintech__works-item-content">
                 <h3 className="text-h3 font-extrabold">Increase Velocity</h3>
-                <p className="text-body">
+                <p className="text-body mb-0">
                   We work fast, iterate often, and gather informed feedback
                   along the way to deliver effective solutions.
                 </p>
@@ -216,7 +216,7 @@ const Fintech = ({
                 <h3 className="text-h3 font-extrabold">
                   Experience Reliability
                 </h3>
-                <p className="text-body">
+                <p className="text-body mb-0">
                   We have deep expertise in our field, leveraging a ton of
                   Fintech experience with product. We deliver results with
                   minimal oversight.
@@ -230,7 +230,7 @@ const Fintech = ({
               </div>
               <div className="Fintech__works-item-content">
                 <h3 className="text-h3 font-extrabold">Dream Big</h3>
-                <p className="text-body">
+                <p className="text-body mb-0">
                   We're strategically minded and hyper-focused on helping you
                   get your business to the next level.
                 </p>
@@ -277,6 +277,7 @@ const Fintech = ({
 
         <div className="Fintech-services">
           <OtherServices
+            className="Fintech-services-2"
             isChampagnePinkBg
             services={services}
             showButton={false}

@@ -49,7 +49,7 @@ const Link = forwardRef<any, Props>(
       <span ref={ref} className={linkStyle ? 'inline-block' : 'block'}>
         <AniLink
           bg={bgColor}
-          className={`${buttonClasses} ${className}`}
+          className={`${buttonClasses} ${className} inline-block`}
           cover={cover}
           direction={direction}
           duration={duration}
