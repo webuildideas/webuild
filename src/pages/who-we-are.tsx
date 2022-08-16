@@ -212,12 +212,12 @@ const WhoWeAre = ({ data, location }: Props) => {
                     />
                     <img
                       alt="Introduce yourself sign"
-                      className="WhoWeAre-team-headshot"
+                      className="WhoWeAre-team-headshot you-here-gif"
                       src={data.introGif.publicURL}
                     />
                   </div>
                 </div>
-                <div className="WhoWeAre-team-info text-center">
+                <div className="WhoWeAre-team-info text-center md:pb-0">
                   <h3 className="text-h3">Join Us!</h3>
                   <p className="text-body text-electricViolet">
                     Introduce yourself

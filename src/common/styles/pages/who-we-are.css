@@ -424,3 +424,25 @@
     width: 1176px;
   }
 }
+
+.you-here-gif {
+  max-height: unset;
+  width: 215px;
+  height: auto;
+
+  @screen lg {
+    width: 284px;
+  }
+
+  @screen 2xl {
+    width: 380px;
+  }
+}
+
+.WhoWeAre-team-member:last-child {
+  @screen md {
+    .WhoWeAre-team-info {
+      @apply pb-0;
+    }
+  }
+}
