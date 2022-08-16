@@ -259,7 +259,8 @@
   }
 }
 
-.WhoWeAre-team-member {
+.WhoWeAre-team-member,
+.you-here {
   @apply relative;
   @apply z-10;
   @apply bg-white;
@@ -439,7 +440,7 @@
   }
 }
 
-.WhoWeAre-team-member:last-child {
+.you-here {
   @screen md {
     .WhoWeAre-team-info {
       @apply pb-0;

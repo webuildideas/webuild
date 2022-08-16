@@ -199,7 +199,8 @@ const WhoWeAre = ({ data, location }: Props) => {
                 )
               })}
               <div
-                className="WhoWeAre-team-member relative cursor-pointer"
+                key="you-here"
+                className="you-here relative cursor-pointer"
                 onClick={showModal}
                 role="button"
               >
