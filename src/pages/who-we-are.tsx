@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import '@common/styles/pages/who-we-are.css'
 
 // Packages
@@ -36,6 +37,12 @@ interface WhoWeAreQueryResponse {
   }
   allContentfulService: {
     nodes: TypeService[]
+  }
+  introGif: {
+    publicURL: string
+  }
+  introPng: {
+    publicURL: string
   }
 }
 
@@ -158,7 +165,7 @@ const WhoWeAre = ({ data, location }: Props) => {
             <span className="block text-h4 mb-2">Who's Who</span>
             <span className="font-extrabold">Meet the Team</span>
           </h2>
-          <div className="WhoWeAre-team-inner bg-foundation">
+          <div className="WhoWeAre-team-inner bg-foundation xl:bg-foundation">
             <div className="WhoWeAre-team-grid">
               {meetTheTeam.map((employee) => {
                 return (
@@ -192,6 +199,33 @@ const WhoWeAre = ({ data, location }: Props) => {
                   </AniLink>
                 )
               })}
+              <div
+                key="you-here"
+                className="you-here relative cursor-pointer"
+                onClick={showModal}
+                // role="button"
+              >
+                <div className="WhoWeAre-team-photo">
+                  <div>
+                    <img
+                      alt="Introduce yourself illustration"
+                      className="WhoWeAre-team-illustration"
+                      src={data.introPng.publicURL}
+                    />
+                    <img
+                      alt="Introduce yourself sign"
+                      className="WhoWeAre-team-headshot you-here-gif"
+                      src={data.introGif.publicURL}
+                    />
+                  </div>
+                </div>
+                <div className="WhoWeAre-team-info text-center md:pb-0">
+                  <h3 className="text-h3">Join Us!</h3>
+                  <p className="text-body text-electricViolet">
+                    Introduce yourself
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -253,6 +287,12 @@ export const WHO_WE_ARE_QUERY = graphql`
           }
         }
       }
+    }
+    introGif: file(relativePath: { eq: "intro-yourself.gif" }) {
+      publicURL
+    }
+    introPng: file(relativePath: { eq: "you-here.png" }) {
+      publicURL
     }
   }
 `
