@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import '@common/styles/pages/who-we-are.css'
 
 // Packages
@@ -202,7 +203,7 @@ const WhoWeAre = ({ data, location }: Props) => {
                 key="you-here"
                 className="you-here relative cursor-pointer"
                 onClick={showModal}
-                role="button"
+                // role="button"
               >
                 <div className="WhoWeAre-team-photo">
                   <div>

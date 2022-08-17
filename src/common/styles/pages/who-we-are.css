@@ -447,3 +447,7 @@
     }
   }
 }
+
+section .you-here {
+  position: fixed;
+}
