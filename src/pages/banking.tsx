@@ -18,8 +18,8 @@ import { TypeTestimonial } from '@common/types/Testimonial'
 
 // Hooks
 import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModal'
-// import useBookACallFormModal from '@modules/forms/hooks/useBookACallFormModal'
-import useBookACall from '@modules/forms/hooks/useBookACall'
+import useBookACallFormModal from '@modules/forms/hooks/useBookACallFormModal'
+// import useBookACall from '@modules/forms/hooks/useBookACall'
 
 // Svgs
 import DreamBig from '@static/svgs/landing-pages/fintech-2/fintech-dream-big.inline.svg'
@@ -74,7 +74,7 @@ const Banking = ({
 }: Props) => {
   const [email, setEmail] = useState('')
   const { showModal, setFormEmail } = useOpportunityFormModal()
-  const { showBookModal } = useBookACall()
+  const { showModal: showBookACallModal, isVisible } = useBookACallFormModal()
 
   const handleSetEmailAndOpenModal = useCallback(() => {
     setFormEmail(email)
@@ -128,7 +128,7 @@ const Banking = ({
               </h3>
               <Button
                 className="Fintech__hero-button"
-                onClick={showBookModal}
+                onClick={showBookACallModal}
                 styleType="solid-blueRibbon"
               >
                 Book a call
