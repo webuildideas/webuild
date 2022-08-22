@@ -276,14 +276,26 @@ li .Insight-img-inline.Image-numbered-list {
   i {
     @apply italic;
   }
+
+  b {
+    @apply font-bold;
+  }
 }
 
 .Insight-h3 i {
   @apply italic;
 }
 
+.Insight-h3 a {
+  @apply text-electricViolet;
+}
+
 .Insight-h4 i {
   @apply italic;
+}
+
+.Insight-h4 a {
+  @apply text-electricViolet;
 }
 
 * + .Insight-h3 {

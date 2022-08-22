@@ -64,6 +64,10 @@
   }
 }
 
+.Insight-ol-inline ul {
+  width: 97.5% !important;
+}
+
 
 /** BLOCK TITLE STYLES **/
 .Insight-ol-bt {
@@ -154,7 +158,7 @@
   @apply mb-2;
 
   p {
-    @apply hidden;
+    display: none !important;
   }
 
   h4 {
