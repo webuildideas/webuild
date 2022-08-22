@@ -19,7 +19,6 @@ import { TypeTestimonial } from '@common/types/Testimonial'
 // Hooks
 import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModal'
 import useBookACallFormModal from '@modules/forms/hooks/useBookACallFormModal'
-// import useBookACall from '@modules/forms/hooks/useBookACall'
 
 // Svgs
 import DreamBig from '@static/svgs/landing-pages/fintech-2/fintech-dream-big.inline.svg'
@@ -76,6 +75,7 @@ const Banking = ({
   const { showModal, setFormEmail } = useOpportunityFormModal()
   const { showModal: showBookACallModal, isVisible } = useBookACallFormModal()
 
+  console.log(isVisible)
   const handleSetEmailAndOpenModal = useCallback(() => {
     setFormEmail(email)
     showModal()
@@ -339,8 +339,8 @@ const Banking = ({
   )
 }
 
-export const FINTECH_BANKING_PAGE_QUERY = graphql`
-  query FintechBankingPageQuery {
+export const BANKING_PAGE_QUERY = graphql`
+  query BankingPageQuery {
     contentfulSeo(title: { eq: "Landing Page - Banking" }) {
       seoTitle
       seoDescription {
