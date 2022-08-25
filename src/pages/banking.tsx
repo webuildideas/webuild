@@ -73,9 +73,8 @@ const Banking = ({
 }: Props) => {
   const [email, setEmail] = useState('')
   const { showModal, setFormEmail } = useOpportunityFormModal()
-  const { showModal: showBookACallModal, isVisible } = useBookACallFormModal()
+  const { showModal: showBookACallModal } = useBookACallFormModal()
 
-  console.log(isVisible)
   const handleSetEmailAndOpenModal = useCallback(() => {
     setFormEmail(email)
     showModal()
@@ -104,6 +103,8 @@ const Banking = ({
       media: `(min-width: 768px)`
     }
   ]
+
+  console.log(contentfulSeo.seoShareImage?.file.url)
 
   return (
     <>
@@ -345,6 +346,11 @@ export const BANKING_PAGE_QUERY = graphql`
       seoTitle
       seoDescription {
         seoDescription
+      }
+      seoShareImage {
+        file {
+          url
+        }
       }
     }
 
