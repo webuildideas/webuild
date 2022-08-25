@@ -59,9 +59,7 @@ const Meta = ({
 
   const socialTitle = shareTitle || contentfulSeo.seoTitle
   const socialImage =
-    shareImage !== undefined
-      ? shareImage.slice(2)
-      : contentfulSeo.seoShareImage.file.url.slice(2)
+    shareImage !== undefined ? shareImage : contentfulSeo.seoShareImage.file.url
   const metaDescription =
     description || contentfulSeo.seoDescription.seoDescription
 
