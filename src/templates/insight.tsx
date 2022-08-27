@@ -80,6 +80,7 @@ const options: Options = {
 
       if (isWebuildImage(entry)) {
         const { imageStyling, imageType, altText, caption, asset } = entry
+        console.log("ENTRY IMAGE", entry)
 
         switch (imageStyling) {
           case ImageStylingEnum.FULL_WIDTH:
@@ -189,8 +190,8 @@ const Insight = ({
   const userHasUnlockedPost = userGatedPostConversions.includes(insight.id)
   const isLocked = insight.isGated && !userHasUnlockedPost
   const [estReadTime, setEstReadTime] = useState<number>()
-  const articleRef = useRef<HTMLDivElement>(null)
-  const contentUpgradeInputRef = useRef<HTMLInputElement>(null)
+  const articleRef = useRef<HTMLDivElement>()
+  const contentUpgradeInputRef = useRef<HTMLInputElement>()
   const userHasCompletedContentUpgrade = userContentUpgradeConversions.includes(
     insight.contentUpgrade ? insight.contentUpgrade.title : ''
   )
@@ -460,7 +461,10 @@ export const query = graphql`
             imageStyling
             imageType
             asset {
-              fluid(maxWidth: 800) {
+                fixed {
+                    src
+                }
+                fluid(maxWidth: 800) {
                 ...GatsbyContentfulFluid_withWebp_noBase64
               }
             }

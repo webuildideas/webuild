@@ -1,7 +1,7 @@
 // Packages
 import React from 'react'
 import { Options } from '@contentful/rich-text-react-renderer'
-import { BLOCKS } from '@contentful/rich-text-types'
+import { BLOCKS, INLINES } from '@contentful/rich-text-types'
 
 export const blocksOptions: Options = {
   renderNode: {
@@ -24,6 +24,13 @@ export const blocksOptions: Options = {
         <blockquote className="Insight-copy Insight-blockquote text-h2">
           {children}
         </blockquote>
+      )
+    },
+    [INLINES.HYPERLINK]: ({ data }, children) => {
+      return (
+        <a href={data.uri} target="_blank" rel="noopener noreferrer">
+          {children}
+        </a>
       )
     }
   }

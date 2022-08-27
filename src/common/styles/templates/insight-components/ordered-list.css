@@ -68,6 +68,13 @@
   width: 97.5% !important;
 }
 
+.Insight-ol-inline__content ul li {
+  b {
+    text-transform: none !important;
+    display: inline !important;
+  }
+}
+
 
 /** BLOCK TITLE STYLES **/
 .Insight-ol-bt {
