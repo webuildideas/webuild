@@ -351,7 +351,6 @@ const Insight = ({
               </div>
             ) : null}
 
-            {console.log(insight.contentUpgrade)}
             {!isLocked && insight.contentUpgrade ? (
               <ContentUpgradeForm
                 className="mt-16 mb-8 md:mb-0 ContentUpgrade-bottom"
