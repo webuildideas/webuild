@@ -82,9 +82,6 @@ const options: Options = {
       if (isWebuildImage(entry)) {
         const { imageStyling, imageType, altText, caption, asset } = entry
 
-        console.log('asset', asset)
-        console.log('isFluid', isGatsbyImageFluid(asset))
-
         switch (imageStyling) {
           case ImageStylingEnum.FULL_WIDTH:
             return (
