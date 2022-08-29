@@ -1,3 +1,4 @@
+import { TypeContentfulAsset } from '@common/types/Contentful'
 import { TypeGatsbyImageFluid } from './GatsbyImage'
 
 export enum ImageStylingEnum {
@@ -7,7 +8,7 @@ export enum ImageStylingEnum {
 }
 
 export interface TypeImage {
-  asset: TypeGatsbyImageFluid
+  asset: TypeGatsbyImageFluid | TypeContentfulAsset
   altText?: string
   caption?: string
   imageStyling?: ImageStylingEnum

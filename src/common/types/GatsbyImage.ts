@@ -23,3 +23,14 @@ export interface TypeGatsbyChildrenImageSharpFluid {
     }
   }
 }
+
+export function isGatsbyImageFluid(
+  value: unknown
+): value is TypeGatsbyImageFluid {
+  return (
+    typeof value === 'object' &&
+    value !== null &&
+    'fluid' in value &&
+    value.fluid !== null
+  )
+}

@@ -39,6 +39,7 @@ import UnorderedList from '@modules/insight/components/UnorderedList'
 // Atoms
 import { userGatedPostConversionsAtom } from '@modules/insight/atoms/userGatedPostConversions'
 import { userContentUpgradeConversionsAtom } from '@modules/forms/atoms/userContentUpgradeConversionsAtom'
+import { isGatsbyImageFluid } from '@common/types/GatsbyImage'
 
 interface Props {
   location: PageProps['location']
@@ -80,58 +81,92 @@ const options: Options = {
 
       if (isWebuildImage(entry)) {
         const { imageStyling, imageType, altText, caption, asset } = entry
-        console.log("ENTRY IMAGE", entry)
+
+        console.log('asset', asset)
+        console.log('isFluid', isGatsbyImageFluid(asset))
 
         switch (imageStyling) {
           case ImageStylingEnum.FULL_WIDTH:
             return (
               <div className="Insight-img full-width">
-                <Img
-                  alt={altText}
-                  className="Insight-img--full-width"
-                  durationFadeIn={125}
-                  fadeIn
-                  fluid={asset.fluid}
-                />
+                {isGatsbyImageFluid(asset) ? (
+                  <Img
+                    alt={altText}
+                    className="Insight-img--full-width"
+                    durationFadeIn={125}
+                    fadeIn
+                    fluid={asset.fluid}
+                  />
+                ) : (
+                  <img
+                    alt={altText}
+                    className="Insight-img--full-width"
+                    src={asset.file.url}
+                  />
+                )}
                 {caption ? <p className="text-caption">{caption}</p> : null}
               </div>
             )
           case ImageStylingEnum.LEFT_ALIGNED:
             return (
               <div className="Insight-img left-aligned">
-                <Img
-                  alt={altText}
-                  className="Insight-img--left-aligned"
-                  durationFadeIn={125}
-                  fadeIn
-                  fluid={asset.fluid}
-                />
+                {isGatsbyImageFluid(asset) ? (
+                  <Img
+                    alt={altText}
+                    className="Insight-img--left-aligned"
+                    durationFadeIn={125}
+                    fadeIn
+                    fluid={asset.fluid}
+                  />
+                ) : (
+                  <img
+                    alt={altText}
+                    className="Insight-img--left-aligned"
+                    src={asset.file.url}
+                  />
+                )}
                 {caption ? <p className="text-caption">{caption}</p> : null}
               </div>
             )
           case ImageStylingEnum.CENTER_ALIGNED:
             return (
               <div className="Insight-img center-aligned">
-                <Img
-                  alt={altText}
-                  className="Insight-img--center-aligned"
-                  durationFadeIn={125}
-                  fadeIn
-                  fluid={asset.fluid}
-                />
+                {isGatsbyImageFluid(asset) ? (
+                  <Img
+                    alt={altText}
+                    className="Insight-img--center-aligned"
+                    durationFadeIn={125}
+                    fadeIn
+                    fluid={asset.fluid}
+                  />
+                ) : (
+                  <img
+                    alt={altText}
+                    className="Insight-img--center-aligned"
+                    src={asset.file.url}
+                  />
+                )}
                 {caption ? <p className="text-caption">{caption}</p> : null}
               </div>
             )
           default:
             return (
               <div className="Insight-img">
-                <Img
-                  alt={altText}
-                  className={imageType ? imageType.join(' ') : undefined}
-                  durationFadeIn={125}
-                  fadeIn
-                  fluid={asset.fluid}
-                />
+                {isGatsbyImageFluid(asset) ? (
+                  <Img
+                    alt={altText}
+                    className={imageType ? imageType.join(' ') : undefined}
+                    durationFadeIn={125}
+                    fadeIn
+                    fluid={asset.fluid}
+                  />
+                ) : (
+                  <img
+                    alt={altText}
+                    className={imageType ? imageType.join(' ') : undefined}
+                    src={asset.file.url}
+                  />
+                )}
                 {caption ? <p className="text-caption">{caption}</p> : null}
               </div>
             )
@@ -190,8 +225,8 @@ const Insight = ({
   const userHasUnlockedPost = userGatedPostConversions.includes(insight.id)
   const isLocked = insight.isGated && !userHasUnlockedPost
   const [estReadTime, setEstReadTime] = useState<number>()
-  const articleRef = useRef<HTMLDivElement>()
-  const contentUpgradeInputRef = useRef<HTMLInputElement>()
+  const articleRef = useRef<HTMLDivElement>(null)
+  const contentUpgradeInputRef = useRef<HTMLInputElement>(null)
   const userHasCompletedContentUpgrade = userContentUpgradeConversions.includes(
     insight.contentUpgrade ? insight.contentUpgrade.title : ''
   )
@@ -319,6 +354,7 @@ const Insight = ({
               </div>
             ) : null}
 
+            {console.log(insight.contentUpgrade)}
             {!isLocked && insight.contentUpgrade ? (
               <ContentUpgradeForm
                 className="mt-16 mb-8 md:mb-0 ContentUpgrade-bottom"
@@ -461,10 +497,10 @@ export const query = graphql`
             imageStyling
             imageType
             asset {
-                fixed {
-                    src
-                }
-                fluid(maxWidth: 800) {
+              file {
+                url
+              }
+              fluid(maxWidth: 800) {
                 ...GatsbyContentfulFluid_withWebp_noBase64
               }
             }
