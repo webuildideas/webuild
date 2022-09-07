@@ -1,4 +1,4 @@
-import '@common/styles/templates/insight-components/ordered-list.css'
+import './styles/OrderedList.css'
 
 // Packages
 import React from 'react'

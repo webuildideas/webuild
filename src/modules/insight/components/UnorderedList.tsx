@@ -1,3 +1,5 @@
+import './styles/UnorderedList.css'
+
 // Packages
 import React from 'react'
 import { renderRichText } from 'gatsby-source-contentful/rich-text'

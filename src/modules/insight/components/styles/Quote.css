@@ -1,0 +1,58 @@
+.Insight-blockquote__container {
+  @apply my-12;
+
+  @screen md {
+    max-width: 450px;
+    @apply mx-auto;
+  }
+}
+
+.Insight-blockquote__source {
+  @apply text-3xl;
+  @apply italic;
+  @apply text-deepViolet;
+  @apply text-right;
+  @apply mt-8;
+}
+
+.Insight-blockquote--default {
+  @apply text-deepViolet;
+  @apply border-solid;
+  @apply border-deepViolet;
+  @apply border-l-4;
+  @apply pl-6;
+
+  p {
+    @apply text-6xl;
+    @apply leading-tight;
+    @apply font-normal;
+    @apply mb-0;
+
+    @media (min-width: 426px) and (max-width: 899px) {
+      @apply text-5xl;
+    }
+
+    @media (max-width: 425px) {
+      @apply text-4xl;
+    }
+  }
+}
+
+.Insight-blockquote--sourced {
+  @apply text-deepViolet;
+
+  p {
+    @apply text-6xl;
+    @apply leading-tight;
+    @apply font-normal;
+    @apply mb-0;
+
+    @media (min-width: 426px) and (max-width: 899px) {
+      @apply text-5xl;
+    }
+
+    @media (max-width: 425px) {
+      @apply text-4xl;
+    }
+  }
+}

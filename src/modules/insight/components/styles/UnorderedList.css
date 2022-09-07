@@ -4,10 +4,10 @@
   font-size: 20px;
   max-width: 540px;
   @apply mx-auto;
-  
+
   @apply px-4;
   @apply md:px-0;
-  
+
   @screen xl {
     max-width: calc(100% - 48px);
   }

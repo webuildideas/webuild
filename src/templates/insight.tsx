@@ -1,5 +1,4 @@
 import '@common/styles/templates/insight.css'
-import '@common/styles/templates/insight-components/unordered-list.css'
 
 // Packages
 import React, { useEffect, useRef, useState } from 'react'
@@ -35,11 +34,14 @@ import MonthlyNewsletterForm from '@modules/forms/MonthlyNewsletterForm'
 import Button from '@modules/common/components/Button'
 import OrderedList from '@modules/insight/components/OrderedList'
 import UnorderedList from '@modules/insight/components/UnorderedList'
+import Quote from '@modules/insight/components/Quote'
 
 // Atoms
 import { userGatedPostConversionsAtom } from '@modules/insight/atoms/userGatedPostConversions'
 import { userContentUpgradeConversionsAtom } from '@modules/forms/atoms/userContentUpgradeConversionsAtom'
 import { isGatsbyImageFluid } from '@common/types/GatsbyImage'
+import { isContentUpgrade } from '@common/types/ContentUpgrade'
+import { isQuote } from '@common/types/Quote'
 
 interface Props {
   location: PageProps['location']
@@ -82,14 +84,32 @@ const options: Options = {
       if (isWebuildImage(entry)) {
         const { imageStyling, imageType, altText, caption, asset } = entry
 
+        const imageContainerClassNames = classNames({
+          'Insight-img': true,
+          'full-width': imageStyling === ImageStylingEnum.FULL_WIDTH,
+          'left-aligned': imageStyling === ImageStylingEnum.LEFT_ALIGNED,
+          'center-aligned': imageStyling === ImageStylingEnum.CENTER_ALIGNED
+        })
+
+        const imageClassNames = classNames({
+          'Insight-img--full-width':
+            imageStyling === ImageStylingEnum.FULL_WIDTH,
+          'Insight-img--left-aligned':
+            imageStyling === ImageStylingEnum.LEFT_ALIGNED,
+          'Insight-img--center-aligned':
+            imageStyling === ImageStylingEnum.CENTER_ALIGNED
+        })
+
         switch (imageStyling) {
+          case ImageStylingEnum.CENTER_ALIGNED:
+          case ImageStylingEnum.LEFT_ALIGNED:
           case ImageStylingEnum.FULL_WIDTH:
             return (
-              <div className="Insight-img full-width">
+              <div className={imageContainerClassNames}>
                 {isGatsbyImageFluid(asset) ? (
                   <Img
                     alt={altText}
-                    className="Insight-img--full-width"
+                    className={imageClassNames}
                     durationFadeIn={125}
                     fadeIn
                     fluid={asset.fluid}
@@ -97,49 +117,7 @@ const options: Options = {
                 ) : (
                   <img
                     alt={altText}
-                    className="Insight-img--full-width"
-                    src={asset.file.url}
-                  />
-                )}
-                {caption ? <p className="text-caption">{caption}</p> : null}
-              </div>
-            )
-          case ImageStylingEnum.LEFT_ALIGNED:
-            return (
-              <div className="Insight-img left-aligned">
-                {isGatsbyImageFluid(asset) ? (
-                  <Img
-                    alt={altText}
-                    className="Insight-img--left-aligned"
-                    durationFadeIn={125}
-                    fadeIn
-                    fluid={asset.fluid}
-                  />
-                ) : (
-                  <img
-                    alt={altText}
-                    className="Insight-img--left-aligned"
-                    src={asset.file.url}
-                  />
-                )}
-                {caption ? <p className="text-caption">{caption}</p> : null}
-              </div>
-            )
-          case ImageStylingEnum.CENTER_ALIGNED:
-            return (
-              <div className="Insight-img center-aligned">
-                {isGatsbyImageFluid(asset) ? (
-                  <Img
-                    alt={altText}
-                    className="Insight-img--center-aligned"
-                    durationFadeIn={125}
-                    fadeIn
-                    fluid={asset.fluid}
-                  />
-                ) : (
-                  <img
-                    alt={altText}
-                    className="Insight-img--center-aligned"
+                    className={imageClassNames}
                     src={asset.file.url}
                   />
                 )}
@@ -170,7 +148,7 @@ const options: Options = {
         }
       }
 
-      if (entry.__typename === 'ContentfulContentUpgrade') {
+      if (isContentUpgrade(entry)) {
         return (
           <ContentUpgradeForm
             className="mt-16 mb-8 md:mb-0"
@@ -178,6 +156,10 @@ const options: Options = {
             isSimple
           />
         )
+      }
+
+      if (isQuote(entry)) {
+        return <Quote quote={entry} />
       }
 
       return null
@@ -484,6 +466,14 @@ export const query = graphql`
                 url
               }
             }
+          }
+          ... on ContentfulQuote {
+            contentful_id
+            quoteType
+            quote {
+              raw
+            }
+            source
           }
           ... on ContentfulImage {
             id

@@ -1,5 +1,4 @@
-/** INLINE STYLES **/
-
+/** INLINE OL STYLES **/
 .Insight-ol-inline {
   list-style: none;
   counter-reset: olInlineCount;
@@ -24,7 +23,7 @@
   @apply flex-nowrap;
   @apply mb-8;
 
-  &:before {    
+  &:before {
     content: counter(olInlineCount) ". ";
     height: 100%;
     width: 25px;
@@ -134,7 +133,7 @@
   @apply flex-nowrap;
 
 
-  &:before {    
+  &:before {
     content: counter(olBtCount) ". ";
 
     @apply relative;
@@ -146,9 +145,9 @@
     line-height: 1;
     width: auto;
     top: -1px;
-    
+
     @apply md:text-4xl;
-    
+
     @screen md {
       top: -7px;
     }
@@ -242,7 +241,7 @@
     @apply inline;
   }
 
-  &:before {    
+  &:before {
     content: "STEP " counter(olStepsCount) ". ";
 
     @apply flex-shrink-0;
