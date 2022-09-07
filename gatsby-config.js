@@ -13,6 +13,7 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-typescript`,
+    `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -163,17 +164,17 @@ module.exports = {
         ]
       }
     },
-    {
-      resolve: 'gatsby-plugin-load-script',
-      options: {
-        src: `https://insight-engine.newfangled.com/api/v1/${process.env.GATSBY_NEWFANGLED_KEY}/beacon`,
-        crossorigin: 'anonymous'
-      }
-    },
+    // {
+    //   resolve: 'gatsby-plugin-load-script',
+    //   options: {
+    //     src: `https://insight-engine.newfangled.com/api/v1/${process.env.GATSBY_NEWFANGLED_KEY}/beacon`,
+    //     crossorigin: 'anonymous'
+    //   }
+    // },
     {
       resolve: `gatsby-plugin-netlify`,
       options: {
-        mergeLinkHeaders: false,
+        // mergeLinkHeaders: false,
         mergeCachingHeaders: false
       }
     },
