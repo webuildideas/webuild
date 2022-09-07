@@ -286,12 +286,20 @@ li .Insight-img-inline.Image-numbered-list {
   @apply italic;
 }
 
+.Insight-h3 b {
+  @apply font-black;
+}
+
 .Insight-h3 a {
   @apply text-electricViolet;
 }
 
 .Insight-h4 i {
   @apply italic;
+}
+
+.Insight-h4 b {
+  @apply font-black;
 }
 
 .Insight-h4 a {
