@@ -127,6 +127,13 @@
   }
 }
 
+.Insight-ol-bt.Insight-ol-bt .Insight-ol-bt__content ul {
+  width: 97.5%;
+  & > li {
+    @apply mb-4;
+  }
+}
+
 .Insight-ol-bt__content {
   @apply flex;
   @apply items-start;

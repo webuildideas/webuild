@@ -354,7 +354,7 @@ li .Insight-img-inline.Image-numbered-list {
 }
 
 .Insight ol:not(.Insight-ol-inline):not(.Insight-ol-bt):not(.Insight-ol-steps) {
-  list-style: none;
+  list-style-type: none;
   counter-reset: count;
   width: 92.5%;
   max-width: 580px;
@@ -554,5 +554,33 @@ li .Insight-img-inline.Image-numbered-list {
   .Insight-img.center-aligned {
     @apply pl-0;
     @apply pr-0;
+  }
+
+  .Insight.Insight ul {
+    width: 97.5%;
+
+    li {
+      b {
+        @apply font-extrabold;
+        @apply inline-block;
+        @apply normal-case;
+        @apply mb-0;
+      }
+    }
+  }
+
+  .Insight ol {
+    list-style: decimal outside none !important;
+    li {
+      display: list-item !important;
+      &::marker {
+        @apply font-medium;
+        @apply text-xl;
+      }
+      &:before {
+        display: none !important;
+      }
+    }
+
   }
 }

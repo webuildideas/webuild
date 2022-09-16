@@ -28,7 +28,7 @@ export const blocksOptions: Options = {
     },
     [INLINES.HYPERLINK]: ({ data }, children) => {
       return (
-        <a href={data.uri} target="_blank" rel="noopener noreferrer">
+        <a href={data.uri} rel="noopener noreferrer" target="_blank">
           {children}
         </a>
       )
