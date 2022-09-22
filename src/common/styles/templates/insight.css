@@ -452,10 +452,7 @@ li .Insight-img-inline.Image-numbered-list {
 
     p {
       white-space: pre-wrap;
-    }
-
-    p + p {
-      @apply mt-2;
+      @apply mb-2;
     }
 
     ol:not(.Insight-ol-inline):not(.Insight-ol-bt):not(.Insight-ol-steps) {
@@ -602,6 +599,14 @@ li .Insight-img-inline.Image-numbered-list {
   .Insight ul:not(.Insight-ul-bt):not(.Insight-ul-btns):not(.Insight-ul-no-title) {
     li {
       @apply mb-0;
+
+      p {
+        @apply mb-0;
+      }
+
+      p + p {
+        @apply mt-2;
+      }
     }
   }
 }
