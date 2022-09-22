@@ -180,7 +180,7 @@ const Insights = ({
     if (numberOfAds >= 2) {
       return (
         <>
-          {insights.slice(0, 3).map((insight) => (
+          {insights.slice(0, 4).map((insight) => (
             <ListingInsight key={`item-${insight.slug}`} insight={insight} />
           ))}
           {theAds.slice(0, 1).map((ad) => (

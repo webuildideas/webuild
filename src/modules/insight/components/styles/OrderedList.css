@@ -68,10 +68,15 @@
 }
 
 .Insight-ol-inline__content ul li {
+
   b {
     text-transform: none !important;
     display: inline !important;
   }
+}
+
+.Insight-ol-inline ul li + li {
+  @apply mt-4;
 }
 
 
