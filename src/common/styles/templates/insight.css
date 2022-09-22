@@ -451,8 +451,15 @@ li .Insight-img-inline.Image-numbered-list {
     }
 
     p {
-      @apply mb-2;
       white-space: pre-wrap;
+    }
+
+    p + p {
+      @apply mt-2;
+    }
+
+    ol:not(.Insight-ol-inline):not(.Insight-ol-bt):not(.Insight-ol-steps) {
+      @apply mt-0;
     }
   }
 }
@@ -569,18 +576,32 @@ li .Insight-img-inline.Image-numbered-list {
     }
   }
 
-  .Insight ol {
-    list-style: decimal outside none !important;
+  .Insight ol:not(.Insight-ol-inline):not(.Insight-ol-bt):not(.Insight-ol-steps) {
+    list-style: decimal outside none;
+
+    ol {
+      @apply mb-0;
+      @apply mt-0;
+      list-style: lower-alpha outside none;
+    }
+
     li {
-      display: list-item !important;
+      @apply mb-0;
+      display: list-item;
       &::marker {
         @apply font-medium;
         @apply text-xl;
       }
       &:before {
-        display: none !important;
+        display: none;
       }
     }
 
+  }
+
+  .Insight ul:not(.Insight-ul-bt):not(.Insight-ul-btns):not(.Insight-ul-no-title) {
+    li {
+      @apply mb-0;
+    }
   }
 }

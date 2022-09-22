@@ -74,6 +74,29 @@ const UlBlockTitleNoStyle = ({ listItems }: UnorderedListTypeProps) => {
   )
 }
 
+const UlNoTitle = ({ listItems }: UnorderedListTypeProps) => {
+  return (
+    <ul className="Insight-ul-no-title">
+      {listItems.map((item, idx) => {
+        const { content, image } = item
+        return (
+          <li key={`item-${idx}`}>
+            {image?.file.url ? (
+              <img
+                alt="List Item"
+                className="Insight-ul-btns__img"
+                src={image.file.url}
+              />
+            ) : null}
+
+            {renderRichText(content, blocksOptions)}
+          </li>
+        )
+      })}
+    </ul>
+  )
+}
+
 interface UnorderedListProps {
   unorderedList: TypeUnorderedList
 }
@@ -88,6 +111,8 @@ const UnorderedList = ({ unorderedList }: UnorderedListProps) => {
       return <UlBlockTitle listItems={unorderedList.listItems} />
     case UnorderedListTypeEnum.BLOCK_TITLE_NO_STYLE:
       return <UlBlockTitleNoStyle listItems={unorderedList.listItems} />
+    case UnorderedListTypeEnum.NO_TITLE:
+      return <UlNoTitle listItems={unorderedList.listItems} />
     default:
       return null
   }
