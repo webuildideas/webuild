@@ -11,6 +11,7 @@ export interface TypeContentUpgrade {
     resourceBlurb: string
   }
   formImage?: TypeContentfulAsset
+  formImageWithSpacing?: boolean
   upgradeContent: TypeContentfulAsset
 }
 

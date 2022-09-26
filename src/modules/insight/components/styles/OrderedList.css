@@ -132,6 +132,10 @@
   }
 }
 
+.Insight-ol-bt > li .Insight-ol-bt__title b {
+  @apply font-black;
+}
+
 .Insight-ol-bt.Insight-ol-bt .Insight-ol-bt__content ul {
   width: 97.5%;
   & > li {
@@ -161,7 +165,7 @@
     @apply md:text-4xl;
 
     @screen md {
-      top: -7px;
+      top: -5px;
     }
 
     @media (max-width: 425px) {

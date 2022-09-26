@@ -525,6 +525,7 @@ export const query = graphql`
             url
           }
         }
+        formImageWithSpacing
         simpleFormTitle
         title
         resourceFormTitle

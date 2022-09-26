@@ -586,7 +586,7 @@ li .Insight-img-inline.Image-numbered-list {
       @apply mb-0;
       display: list-item;
       &::marker {
-        @apply font-medium;
+        @apply font-bold;
         @apply text-xl;
       }
       &:before {

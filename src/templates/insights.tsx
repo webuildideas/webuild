@@ -1,14 +1,8 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 // Packages
 import React, { useCallback, useEffect, useState, useRef } from 'react'
 import { useQuery } from '@apollo/client'
 import { graphql, PageProps, navigate, Link } from 'gatsby'
-
-// NEW NEW
-import slugify from 'slugify'
 import { unslugify } from 'unslugify'
-import { useLocation } from '@reach/router'
 import queryString from 'query-string'
 
 // Common
@@ -90,7 +84,7 @@ const Insights = ({
   const queryParams = queryString.parse(location.search, {
     arrayFormat: 'comma'
   })
-  const [skip, setSkip] = useState(queryParams.page || 0)
+  const [skip, setSkip] = useState(Number(queryParams.page) || 0)
   const [total, setTotal] = useState<number | null>(null)
   const [filters, setFilters] = useState<Filters>({
     topics: unslugifyParams(queryParams.topics),
@@ -112,11 +106,9 @@ const Insights = ({
     }
   })
 
-  const noInisights = data?.insightCollection.items.length === 0
-  const loadingOrNoItems = loading || noInisights
+  const noInsights = data?.insightCollection.items.length === 0
+  const loadingOrNoItems = loading || noInsights
   const showPagination = total && total > PAGINATION_LIMIT
-
-  console.log(data?.insightCollection.items)
 
   const refetchInsights = useCallback(
     (params) => {
@@ -128,7 +120,7 @@ const Insights = ({
           topics: unslugifyParams(params.topics) || topics,
           types: unslugifyParams(params.types) || types
         }
-      }).then((response) => {
+      }).then(() => {
         setFilters((prevState) => {
           return {
             ...prevState,
@@ -143,7 +135,7 @@ const Insights = ({
     [refetch, skip, topics, types]
   )
 
-  const onPageChange = ({ selected }: { selected: any }) => {
+  const onPageChange = ({ selected }: { selected: number }) => {
     const newQuery = queryString.stringify(
       {
         topics: queryParams.topics,
@@ -152,9 +144,13 @@ const Insights = ({
       },
       { arrayFormat: 'comma' }
     )
-    insightsContainer.current.scrollIntoView({ block: 'center' })
-    setTimeout(() => {
-      navigate(`?${newQuery}`, {
+
+    if (insightsContainer.current) {
+      insightsContainer.current.scrollIntoView({ block: 'center' })
+    }
+
+    setTimeout(async () => {
+      await navigate(`?${newQuery}`, {
         state: {
           disableScrollUpdate: true
         }
@@ -255,7 +251,7 @@ const Insights = ({
         >
           {loadingOrNoItems || error ? (
             <>
-              {noInisights ? (
+              {noInsights ? (
                 <p className="text-h3">
                   No insights match that search. Please try again or view all
                   insights{' '}

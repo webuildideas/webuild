@@ -41,6 +41,10 @@
   }
 }
 
+.ContentUpgrade-image__spaced {
+  @apply mr-8;
+}
+
 .ContentUpgrade-button {
   @apply mt-8;
 }
