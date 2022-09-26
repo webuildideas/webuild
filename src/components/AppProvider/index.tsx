@@ -20,7 +20,14 @@ import BookACallFormModal from '@modules/forms/components/BookACallFormModal'
 interface Props extends WithChildren {
   location: PageProps['location']
 }
-const bookACallUrls = ['/fintech', '/fintech/', '/fintech-2', '/fintech-2/']
+const bookACallUrls = [
+  '/fintech',
+  '/fintech/',
+  '/fintech-2',
+  '/fintech-2/',
+  '/banking',
+  '/banking/'
+]
 
 const AppProvider = memo(function AppProviderMemo({
   children,

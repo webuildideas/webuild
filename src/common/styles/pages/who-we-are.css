@@ -259,7 +259,8 @@
   }
 }
 
-.WhoWeAre-team-member {
+.WhoWeAre-team-member,
+.you-here {
   @apply relative;
   @apply z-10;
   @apply bg-white;
@@ -335,7 +336,7 @@
       z-index: 5;
     }
     .WhoWeAre-team-info:before {
-      content: "";
+      content: '';
       @apply block;
       @apply absolute;
       @apply bg-white;
@@ -357,7 +358,7 @@
       z-index: 5;
     }
     .WhoWeAre-team-info:after {
-      content: "";
+      content: '';
       @apply block;
       @apply absolute;
       @apply bg-white;
@@ -423,4 +424,30 @@
   @screen 2xl {
     width: 1176px;
   }
+}
+
+.you-here-gif {
+  max-height: unset;
+  width: 215px;
+  height: auto;
+
+  @screen lg {
+    width: 284px;
+  }
+
+  @screen 2xl {
+    width: 380px;
+  }
+}
+
+.you-here {
+  @screen md {
+    .WhoWeAre-team-info {
+      @apply pb-0;
+    }
+  }
+}
+
+section .you-here {
+  position: fixed;
 }

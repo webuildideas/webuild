@@ -1,0 +1,13 @@
+.case-study-xl-image__img {
+  width: 130%;
+  /* transform: translateX(-15%); */
+  @media only screen and (min-width: 1969px) {
+    transform: none;
+    margin: auto;
+    max-width: 1970px;
+  }
+}
+
+.case-study-xl-image__bg {
+  @apply absolute;
+}

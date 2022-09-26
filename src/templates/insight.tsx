@@ -18,6 +18,9 @@ import { ImageStylingEnum, isWebuildImage } from '@common/types/Image'
 import { isUnorderedList } from '@common/types/UnorderedList'
 import { blocksOptions } from '@modules/insight/rich-text-options'
 import { isOrderedList } from '@common/types/OrderedList'
+import { isGatsbyImageFluid } from '@common/types/GatsbyImage'
+import { isContentUpgrade } from '@common/types/ContentUpgrade'
+import { isQuote } from '@common/types/Quote'
 
 // Components
 import Meta from '@components/Meta'
@@ -32,6 +35,7 @@ import GatedPostForm from '@modules/forms/GatedPostForm'
 import ContentUpgradeForm from '@modules/forms/ContentUpgradeForm'
 import MonthlyNewsletterForm from '@modules/forms/MonthlyNewsletterForm'
 import Button from '@modules/common/components/Button'
+import SidebarAd from '@common/ads/SidebarAd'
 import OrderedList from '@modules/insight/components/OrderedList'
 import UnorderedList from '@modules/insight/components/UnorderedList'
 import Quote from '@modules/insight/components/Quote'
@@ -39,9 +43,6 @@ import Quote from '@modules/insight/components/Quote'
 // Atoms
 import { userGatedPostConversionsAtom } from '@modules/insight/atoms/userGatedPostConversions'
 import { userContentUpgradeConversionsAtom } from '@modules/forms/atoms/userContentUpgradeConversionsAtom'
-import { isGatsbyImageFluid } from '@common/types/GatsbyImage'
-import { isContentUpgrade } from '@common/types/ContentUpgrade'
-import { isQuote } from '@common/types/Quote'
 
 interface Props {
   location: PageProps['location']
@@ -372,6 +373,8 @@ const Insight = ({
                     location={location.href}
                     percentTrigger={0.3}
                   />
+                  <SidebarAd theAd={insight.sidebarAd || undefined} />
+
                   <ReadNextSidebar
                     insights={insight.readNext}
                     relatedInsightsByTopic={relatedInsightsByTopic}
@@ -408,6 +411,21 @@ export const query = graphql`
           fixed(cropFocus: FACE, height: 96, width: 96) {
             ...GatsbyContentfulFixed_withWebp_noBase64
           }
+        }
+      }
+      sidebarAd {
+        id
+        headline
+        copy
+        image {
+          fluid {
+            ...GatsbyContentfulFluid_withWebp_noBase64
+          }
+        }
+        customCtaLink
+        ctaText
+        ctaLink {
+          slug
         }
       }
       content {

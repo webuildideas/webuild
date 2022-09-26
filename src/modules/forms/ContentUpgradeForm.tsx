@@ -63,10 +63,8 @@ const ContentUpgradeForm = ({
   title,
   inputRef
 }: Props) => {
-  const [
-    userContentUpgradeConversions,
-    setUserContentUpgradeConversions
-  ] = useRecoilState(userContentUpgradeConversionsAtom)
+  const [userContentUpgradeConversions, setUserContentUpgradeConversions] =
+    useRecoilState(userContentUpgradeConversionsAtom)
   const userHasCompletedForm = userContentUpgradeConversions.includes(
     contentUpgrade.title
   )
@@ -153,7 +151,7 @@ const ContentUpgradeForm = ({
   ])
 
   return (
-    <div className={formClassNames}>
+    <div className={formClassNames} id="content-upgrade">
       <div className="ContentUpgrade-container">
         <h2 className="ContentUpgrade-title text-h3 font-extrabold mb-6">
           {getTitle()}

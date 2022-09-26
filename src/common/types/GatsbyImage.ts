@@ -7,6 +7,7 @@ export interface TypeGatsbyImageFixed {
 }
 
 export interface TypeGatsbyImageFluid {
+  childImageSharp: any
   fluid: FluidObject
 }
 

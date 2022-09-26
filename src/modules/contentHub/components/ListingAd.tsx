@@ -5,60 +5,27 @@ import Arrow from '@static/svgs/cta-arrow.inline.svg'
 
 import { TypeInsightTypeIconConfig } from '@modules/common/components/configs/InsightTags'
 import { TypeInsightType } from '@common/types/Insight'
-import smallImg from '@static/images/home/homepage-hero-mobile.jpg'
+import Img from 'gatsby-image'
 
 // Styles
 import './styles/ListingAd.css'
+import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
 
 export interface TypeListingAd {
   backgroundColor: string
-  ctaLink: string
+  ctaLink: {
+    slug: string
+  }
+  customCtaLink?: string
   ctaText: string
   headline: string
   id: string
-  image: any
+  image: TypeGatsbyImageFluid
   resourceType: TypeInsightType
 }
 
 interface Props {
   ad: TypeListingAd
-}
-
-interface BlurredImage {
-  image: string
-}
-
-export const useProgressiveImg = (
-  lowQualitySrc: string,
-  highQualitySrc: string
-) => {
-  const [src, setSrc] = React.useState(lowQualitySrc)
-
-  React.useEffect(() => {
-    setSrc(lowQualitySrc)
-    const img = new Image()
-    img.src = highQualitySrc
-    img.onload = () => {
-      setSrc(highQualitySrc)
-    }
-  }, [lowQualitySrc, highQualitySrc])
-
-  return [src, { blur: src === lowQualitySrc }]
-}
-
-export const BlurredUpImage = ({ image }: BlurredImage) => {
-  const [src, { blur }] = useProgressiveImg(smallImg, image)
-  return (
-    <img
-      alt="testing"
-      className="mb-6 md:mb-0 w-full"
-      src={src}
-      style={{
-        filter: blur ? 'blur(20px)' : 'none',
-        transition: blur ? 'none' : 'filter 0.3s ease-out'
-      }}
-    />
-  )
 }
 
 const ListingAd = ({ ad }: Props) => {
@@ -87,18 +54,35 @@ const ListingAd = ({ ad }: Props) => {
     transition
   }
 
-  const tagColor = ad.backgroundColor === 'light' ? `text-salmon` : `text-white`
+  const link = ad?.ctaLink?.slug || ad?.customCtaLink
+
+  const backgroundColor =
+    ad.backgroundColor === 'peach'
+      ? `bg-peach`
+      : ad.backgroundColor === 'black'
+      ? `bg-black`
+      : `bg-lavenderMist`
+
+  const tagColor =
+    ad.backgroundColor === 'peach'
+      ? `text-salmon`
+      : ad.backgroundColor === 'black'
+      ? `text-white`
+      : `text-electricViolet`
   const buttonColor =
-    ad.backgroundColor === 'light'
+    ad.backgroundColor === 'peach'
       ? `bg-black text-white Button-solid`
-      : `bg-white text-black hover:bg-gray-200`
+      : ad.backgroundColor === 'black'
+      ? `bg-white text-black hover:bg-gray-200`
+      : `bg-deepViolet text-white hover:bg-lilac`
   const headlineColor =
-    ad.backgroundColor === 'light' ? `text-black` : `text-white`
+    ad.backgroundColor === 'peach'
+      ? `text-black`
+      : ad.backgroundColor === `black`
+      ? `text-white`
+      : `text-deepViolet`
   return (
-    <motion.article
-      {...animations}
-      className={`listing-ad ${ad.backgroundColor}`}
-    >
+    <motion.article {...animations} className={`listing-ad ${backgroundColor}`}>
       <div className="listing-ad__content">
         <div className="listing-ad__type flex items-center">
           <TypeIcon className={`mr-2 w-5 ${tagColor}`} />
@@ -113,14 +97,16 @@ const ListingAd = ({ ad }: Props) => {
           cover
           direction="right"
           duration={1.25}
-          to={`${ad.ctaLink}`}
+          to={`/${link}`}
         >
           <span className="mr-4 pt-1">{ad.ctaText}</span>
           <Arrow />
         </AniLink>
       </div>
       <div className="listing-ad__image">
-        <BlurredUpImage image={ad.image.sizes.src} />
+        <AniLink cover direction="right" duration={1.25} to={`/${link}`}>
+          <Img className="h-full lg:h-auto" fadeIn fluid={ad.image.fluid} />
+        </AniLink>
       </div>
     </motion.article>
   )

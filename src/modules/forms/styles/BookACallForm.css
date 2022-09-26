@@ -5,12 +5,12 @@
   @apply pt-6;
   @apply px-6;
   @apply pb-12;
-  
+
   @apply md:shadow-lg;
   @apply md:px-10;
   @apply md:pt-8;
   @apply md:pb-14;
-  
+
   @apply xl:px-10;
   @apply xl:pt-8;
   @apply xl:pb-14;
@@ -41,15 +41,27 @@
   @apply flex-nowrap;
 }
 
-.BookACall-fname, .BookACall-lname, .BookACall-country, .BookACall-phone {
+.BookACall-fname,
+.BookACall-lname,
+.BookACall-country,
+.BookACall-phone {
   width: 50%;
   @apply flex-shrink-0;
 }
 
-.BookACall-fname, .BookACall-country {
+.BookACall-fname,
+.BookACall-country {
   @apply pr-3;
 }
 
-.BookACall-lname, .BookACall-phone {
+.BookACall-lname,
+.BookACall-phone {
   @apply pl-3;
+}
+.Fintech-hero-form .TextInput.has-error {
+  color: inherit;
+}
+
+.Fintech-hero-form .TextInput {
+  @apply pt-2;
 }
