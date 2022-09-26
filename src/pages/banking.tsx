@@ -104,8 +104,6 @@ const Banking = ({
     }
   ]
 
-  console.log(contentfulSeo.seoShareImage?.file.url)
-
   return (
     <>
       <Meta
