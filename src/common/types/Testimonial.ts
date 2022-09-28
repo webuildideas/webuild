@@ -10,10 +10,10 @@ import {
 export interface TypeTestimonial {
   type?: 'Client' | 'Team Member'
   name: string
-  headshot: TypeGatsbyImageFixed
-  purpleHeadshot: TypeGatsbyImageFixed
-  featuredHeadshot?: TypeGatsbyImageFluid
-  mainHeadshot?: TypeGatsbyImageFluid
+  headshot: any
+  purpleHeadshot: any
+  featuredHeadshot?: any
+  mainHeadshot?: any
   role: string
   company: string
   testimonial: {

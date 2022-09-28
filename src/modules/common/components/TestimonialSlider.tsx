@@ -1,6 +1,7 @@
 // Packages
 import React, { useCallback, useEffect, useState } from 'react'
-import Img from 'gatsby-image'
+// import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation, Variants } from 'framer-motion'
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
@@ -62,19 +63,22 @@ const TestimonialDot = ({
     'TestimonialSlider-control': true,
     'is-selected': selected
   })
+
   return (
     <div className={dotClasses} onClick={onClick} role="button">
       <div className="Testimonial__client-headshot">
         {selected ? (
-          <Img
+          <GatsbyImage
             alt={`${t.name} headshot`}
-            fixed={t.headshot.fixed}
+            // className="Fintech__hero-image"
+            image={t.headshot.gatsbyImageData}
             style={{ width: '100%', height: '100%' }}
           />
         ) : (
-          <Img
+          <GatsbyImage
             alt={`${t.name} headshot`}
-            fixed={t.purpleHeadshot.fixed}
+            // className="Fintech__hero-image"
+            image={t.purpleHeadshot.gatsbyImageData}
             style={{ width: '100%', height: '100%' }}
           />
         )}
@@ -137,7 +141,7 @@ const TestimonialSlider = ({ testimonials }: Props) => {
         variants={testimonialSliderVariants}
       >
         <Carousel
-          autoplay={true}
+          autoplay={false}
           autoplayInterval={7000}
           beforeSlide={handleAfterSlide}
           heightMode="current"
@@ -152,12 +156,17 @@ const TestimonialSlider = ({ testimonials }: Props) => {
                 key={`slide-${testimonial.name}`}
                 className="TestimonialSlider-slide"
               >
-                {testimonial.mainHeadshot?.fluid ? (
+                {testimonial.mainHeadshot ? (
                   <div className="TestimonialSlider-featured-headshot">
-                    <Img
+                    <GatsbyImage
+                      alt={`${testimonial.name} headshot`}
+                      className="headshot"
+                      image={testimonial.mainHeadshot.gatsbyImageData}
+                    />
+                    {/* <Img
                       className="headshot"
                       fluid={testimonial.mainHeadshot?.fluid}
-                    />
+                    /> */}
                     <div className="mt-4">
                       <h5 className="text-caption font-extrabold">
                         {testimonial.name}

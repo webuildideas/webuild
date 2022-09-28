@@ -3,7 +3,7 @@ import '@common/styles/pages/careers.css'
 // Packages
 import React from 'react'
 import { graphql, PageProps } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 // Commons
 import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModal'
@@ -48,13 +48,13 @@ interface Props {
     teamTestimonials: {
       nodes: TypeTestimonial[]
     }
-    heroMobile: TypeGatsbyChildImageSharpFluid
-    heroMd: TypeGatsbyChildImageSharpFluid
-    heroLg: TypeGatsbyChildImageSharpFluid
-    heroXl: TypeGatsbyChildImageSharpFluid
-    hero2Xl: TypeGatsbyChildImageSharpFluid
-    teamLg: TypeGatsbyChildImageSharpFluid
-    teamSm: TypeGatsbyChildImageSharpFluid
+    // heroMobile: TypeGatsbyChildImageSharpFluid
+    // heroMd: TypeGatsbyChildImageSharpFluid
+    // heroLg: TypeGatsbyChildImageSharpFluid
+    // heroXl: TypeGatsbyChildImageSharpFluid
+    hero2Xl: any
+    teamLg: any
+    teamSm: any
     cultureLg: TypeGatsbyChildImageSharpFluid
     cultureSm: TypeGatsbyChildImageSharpFluid
     seo: TypeSEO
@@ -65,10 +65,10 @@ const Careers = ({
   data: {
     allContentfulJob: { nodes: jobs },
     teamTestimonials: { nodes: testimonials },
-    heroMobile,
-    heroMd,
-    heroLg,
-    heroXl,
+    // heroMobile,
+    // heroMd,
+    // heroLg,
+    // heroXl,
     hero2Xl,
     teamLg,
     teamSm,
@@ -78,25 +78,25 @@ const Careers = ({
   },
   location
 }: Props) => {
-  const heroImgSrcs = [
-    heroMobile.childImageSharp.fluid,
-    {
-      ...hero2Xl.childImageSharp.fluid,
-      media: `(min-width: 2560px)`
-    },
-    {
-      ...heroXl.childImageSharp.fluid,
-      media: `(min-width: 1280px)`
-    },
-    {
-      ...heroLg.childImageSharp.fluid,
-      media: `(min-width: 1024px)`
-    },
-    {
-      ...heroMd.childImageSharp.fluid,
-      media: `(min-width: 768px)`
-    }
-  ]
+  // const heroImgSrcs = [
+  //   heroMobile.childImageSharp.fluid,
+  //   {
+  //     ...hero2Xl.childImageSharp.fluid,
+  //     media: `(min-width: 2560px)`
+  //   },
+  //   {
+  //     ...heroXl.childImageSharp.fluid,
+  //     media: `(min-width: 1280px)`
+  //   },
+  //   {
+  //     ...heroLg.childImageSharp.fluid,
+  //     media: `(min-width: 1024px)`
+  //   },
+  //   {
+  //     ...heroMd.childImageSharp.fluid,
+  //     media: `(min-width: 768px)`
+  //   }
+  // ]
 
   const { showModal } = useOpportunityFormModal()
   return (
@@ -122,12 +122,17 @@ const Careers = ({
               See Current Openings
             </Button>
           </div>
-          <Img
+          <GatsbyImage
+            alt="Hero Illustration"
             className="Careers-hero__image"
-            durationFadeIn={150}
-            fadeIn
-            fluid={heroImgSrcs}
+            image={hero2Xl}
           />
+          {/* <Img
+          className="Careers-hero__image"
+          durationFadeIn={150}
+          fadeIn
+          fluid={heroImgSrcs}
+        /> */}
         </div>
 
         <div className="Careers-cta dribbble">
@@ -161,18 +166,28 @@ const Careers = ({
               enjoy learning about each other's cultures.
             </p>
           </div>
-          <Img
+          <GatsbyImage
+            alt="Team photo one"
             className="Careers-team__image-lg"
-            durationFadeIn={150}
-            fadeIn
-            fluid={teamLg.childImageSharp.fluid}
+            image={teamLg}
           />
-          <Img
+          <GatsbyImage
+            alt="Team photo two"
             className="Careers-team__image-sm"
-            durationFadeIn={150}
-            fadeIn
-            fluid={teamSm.childImageSharp.fluid}
+            image={teamSm}
           />
+          {/* <Img
+          className="Careers-team__image-lg"
+          durationFadeIn={150}
+          fadeIn
+          fluid={teamLg.childImageSharp.fluid}
+        /> */}
+          {/* <Img
+          className="Careers-team__image-sm"
+          durationFadeIn={150}
+          fadeIn
+          fluid={teamSm.childImageSharp.fluid}
+        /> */}
           <TeamIllustration className="Careers-team__illustration" />
           <TeamWave className="Careers-team__wave" />
         </div>
@@ -261,17 +276,17 @@ const Careers = ({
             </p>
           </div>
 
-          <Img
+          <GatsbyImage
             className="Careers-culture__image-lg"
             durationFadeIn={150}
             fadeIn
-            fluid={cultureLg.childImageSharp.fluid}
+            image={cultureLg.childImageSharp.gatsbyImageData}
           />
-          <Img
+          <GatsbyImage
             className="Careers-culture__image-sm"
             durationFadeIn={150}
             fadeIn
-            fluid={cultureSm.childImageSharp.fluid}
+            image={cultureSm.childImageSharp.gatsbyImageData}
           />
 
           <CultureComputer className="Careers-culture__computers" />
@@ -362,7 +377,6 @@ export const CAREERS_PAGE_QUERY = graphql`
         }
       }
     }
-
     allContentfulJob(
       sort: { fields: priority, order: DESC }
       filter: { isOpen: { eq: true } }
@@ -380,7 +394,6 @@ export const CAREERS_PAGE_QUERY = graphql`
         }
       }
     }
-
     teamTestimonials: allContentfulTestimonial(
       filter: {
         name: { in: ["Mackenzie Almquist-Murray", "Abby Milan", "Norton King"] }
@@ -393,82 +406,33 @@ export const CAREERS_PAGE_QUERY = graphql`
           raw
         }
         featuredHeadshot {
-          fluid {
-            ...GatsbyContentfulFluid_withWebp_noBase64
-          }
+          gatsbyImageData(width: 2000)
         }
       }
     }
-
-    heroMobile: file(relativePath: { eq: "careers/careers-hero-mobile.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 1000, quality: 100) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
-
-    heroMd: file(relativePath: { eq: "careers/careers-hero-md.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 2200, quality: 100) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
-
-    heroLg: file(relativePath: { eq: "careers/careers-hero-lg.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 3100, quality: 100) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
-
-    heroXl: file(relativePath: { eq: "careers/careers-hero-xl.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 4200, quality: 100) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
-
     hero2Xl: file(relativePath: { eq: "careers/careers-hero-2xl.png" }) {
       childImageSharp {
-        fluid(maxWidth: 6000, quality: 100) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        gatsbyImageData
       }
     }
-
     teamLg: file(relativePath: { eq: "careers/careers-team-lg.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 2000) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        gatsbyImageData(width: 2000)
       }
     }
-
     teamSm: file(relativePath: { eq: "careers/careers-team-small.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 2000) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        gatsbyImageData(width: 2000)
       }
     }
-
     cultureSm: file(relativePath: { eq: "careers/culture-small.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 2000) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        gatsbyImageData(placeholder: NONE, layout: FULL_WIDTH)
       }
     }
-
     cultureLg: file(relativePath: { eq: "careers/culture-lg.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 2000) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        gatsbyImageData(placeholder: NONE, layout: FULL_WIDTH)
       }
     }
   }

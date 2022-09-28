@@ -9,7 +9,7 @@ import styled from 'styled-components'
 
 // Common
 import { rhythmUnit } from '@common/utils/typography'
-import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
+// import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
 import { TypeEmployee } from '@common/types/Employee'
 import { TypeService } from '@common/types/Service'
 import fadeInUpVariants from '@modules/common/animation/variants/fadeInUp'
@@ -32,7 +32,7 @@ import Support from '@static/svgs/who-we-are/support.inline.svg'
 
 interface WhoWeAreQueryResponse {
   contentfulAboutPage: {
-    photoGrid: TypeGatsbyImageFluid[]
+    photoGrid: any
     meetTheTeam: TypeEmployee[]
   }
   allContentfulService: {
@@ -250,9 +250,7 @@ export const WHO_WE_ARE_QUERY = graphql`
   query whoWeAreQuery {
     contentfulAboutPage(pageTitle: { eq: "Who We Are" }) {
       photoGrid {
-        fluid(maxWidth: 1000) {
-          ...GatsbyContentfulFluid_withWebp_noBase64
-        }
+        gatsbyImageData(width: 1000)
       }
 
       meetTheTeam {

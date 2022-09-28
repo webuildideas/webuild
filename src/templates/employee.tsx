@@ -72,9 +72,7 @@ export const EMPLOYEE_PAGE_QUERY = graphql`
       role
       location
       headshot {
-        fluid {
-          ...GatsbyContentfulFluid_withWebp_noBase64
-        }
+        gatsbyImageData(layout: FULL_WIDTH)
       }
       employeeBioHeroBackground
       heroIllustration {

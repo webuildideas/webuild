@@ -1,6 +1,7 @@
 // Packages
 import React from 'react'
-import Img, { FluidObject } from 'gatsby-image'
+// import Img, { FluidObject } from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { motion } from 'framer-motion'
 
 // Common
@@ -11,7 +12,7 @@ interface Props {
   background: string
   successSummary: string
   logo: string
-  heroImg: FluidObject
+  heroImg: any
 }
 
 const CaseStudyHero = ({
@@ -57,7 +58,8 @@ const CaseStudyHero = ({
         }}
         transition={{ duration: 0.75, delay: 0.25 }}
       >
-        <Img durationFadeIn={125} fadeIn fluid={heroImg} />
+        {/* <Img durationFadeIn={125} fadeIn fluid={heroImg} /> */}
+        <GatsbyImage alt="Hero Image" image={heroImg.gatsbyImageData} />
       </motion.div>
     </SiteMaxWidthContainer>
   </S.CaseStudyHero>

@@ -2,7 +2,7 @@ import './styles/ReadNext.css'
 
 // Packages
 import React from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 // Common
@@ -27,12 +27,12 @@ const ReadNextInsight = ({ insight }: { insight: TypeInsight }) => {
     >
       <InsightTags type={insight.type} />
       <div className="flex items-center mt-5 mb-6">
-        <Img
+        <GatsbyImage
           alt={`${insight.author.name} Headshot`}
           className="rounded-full inline-block"
-          durationFadeIn={150}
-          fadeIn
-          fixed={insight.author.headshot.fixed}
+          // durationFadeIn={150}
+          // fadeIn
+          image={insight.author.gatsbyImageData}
           imgStyle={authorImgStyle}
           style={authorStyle}
         />

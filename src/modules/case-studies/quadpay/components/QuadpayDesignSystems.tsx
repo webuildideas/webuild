@@ -1,7 +1,7 @@
 // Packages
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 
 // SVGs
 import DesignSystems from '@static/svgs/service/circle/design-systems-circle.inline.svg'
@@ -11,31 +11,23 @@ import BrandDesign from '@static/svgs/service/circle/brand-design-circle.inline.
 import './styles/QuadpayDesignSystems.css'
 
 const QuadpayDesignSystems = () => {
-  const { designSystemMobileImg, designSystemImg } = useStaticQuery(graphql`
-    query {
-      designSystemMobileImg: file(
-        relativePath: {
-          eq: "case-studies/quadpay/quadpay-design-systems-mobile.png"
-        }
-      ) {
-        childImageSharp {
-          fluid(maxWidth: 1000) {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
-          }
-        }
-      }
-
-      designSystemImg: file(
-        relativePath: { eq: "case-studies/quadpay/quadpay-design-systems.png" }
-      ) {
-        childImageSharp {
-          fluid(maxWidth: 3000) {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
-          }
-        }
-      }
+  const { designSystemMobileImg, designSystemImg } = useStaticQuery(graphql`{
+  designSystemMobileImg: file(
+    relativePath: {eq: "case-studies/quadpay/quadpay-design-systems-mobile.png"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(placeholder: NONE, layout: FULL_WIDTH)
     }
-  `)
+  }
+  designSystemImg: file(
+    relativePath: {eq: "case-studies/quadpay/quadpay-design-systems.png"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(placeholder: NONE, layout: FULL_WIDTH)
+    }
+  }
+}
+`)
   return (
     <div className="QuadpayDesignSystems">
       <div className="QuadpayDesignSystems-content">
@@ -73,21 +65,19 @@ const QuadpayDesignSystems = () => {
         </p>
       </div>
 
-      <Img
+      <GatsbyImage
+        image={designSystemMobileImg.childImageSharp.gatsbyImageData}
         className="QuadpayDesignSystems-img mobile md:hidden"
         durationFadeIn={150}
-        fadeIn
-        fluid={designSystemMobileImg.childImageSharp.fluid}
-      />
+        fadeIn />
 
-      <Img
+      <GatsbyImage
+        image={designSystemImg.childImageSharp.gatsbyImageData}
         className="QuadpayDesignSystems-img hidden md:block"
         durationFadeIn={150}
-        fadeIn
-        fluid={designSystemImg.childImageSharp.fluid}
-      />
+        fadeIn />
     </div>
-  )
+  );
 }
 
 export default QuadpayDesignSystems

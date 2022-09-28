@@ -8,19 +8,14 @@ import './styles/QuadpayConclusion.css'
 
 const QuadpayConclusion = () => {
   const [isPlaying, setIsPlaying] = useState(false)
-  const { videoCover } = useStaticQuery(graphql`
-    query {
-      videoCover: file(
-        relativePath: { eq: "case-studies/quadpay/quadpay-video.jpg" }
-      ) {
-        childImageSharp {
-          fluid(maxWidth: 3000) {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
-          }
-        }
-      }
+  const { videoCover } = useStaticQuery(graphql`{
+  videoCover: file(relativePath: {eq: "case-studies/quadpay/quadpay-video.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(placeholder: NONE, layout: FULL_WIDTH)
     }
-  `)
+  }
+}
+`)
 
   const handlePlay = () => setIsPlaying((playing) => !playing)
 
@@ -59,7 +54,7 @@ const QuadpayConclusion = () => {
             className="react-player"
             controls={true}
             height="100%"
-            light={videoCover.childImageSharp.fluid.src}
+            light={videoCover.childImageSharp.gatsbyImageData.src}
             playing={isPlaying}
             playsinline={true}
             url="https://www.youtube.com/watch?v=zCQR437QcJo"
@@ -87,7 +82,7 @@ const QuadpayConclusion = () => {
         </p>
       </div>
     </div>
-  )
+  );
 }
 
 export default QuadpayConclusion

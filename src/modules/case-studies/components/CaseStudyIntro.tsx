@@ -1,6 +1,6 @@
 // Packages
 import React from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 
 // Styles
 import '@modules/case-studies/components/styles/CaseStudyIntro.css'
@@ -22,17 +22,16 @@ const CaseStudyIntro = ({
   return (
     <div className={`case-study-intro ${className}`}>
       <div className="case-study-intro__wrapper">
-        <Img
+        <GatsbyImage
+          image={logo.childImageSharp.gatsbyImageData}
           className="case-study-intro__logo"
           durationFadeIn={150}
-          fadeIn
-          fluid={logo.childImageSharp.fluid}
-        />
+          fadeIn />
         <h1 className="text-h1 mb-4 md:mb-6">{headline}</h1>
         <h2 className="text-h3 font-extrabold">{subheadline}</h2>
       </div>
     </div>
-  )
+  );
 }
 
 export default CaseStudyIntro

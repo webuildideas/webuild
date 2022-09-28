@@ -1,7 +1,8 @@
 // Packages
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import Img from 'gatsby-image'
+// import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 // Svgs
 import Growth from '@static/svgs/case-studies/gosite/metrics-growth.inline.svg'
@@ -42,62 +43,62 @@ const metrics: Metric[] = [
 
 const GoSiteSummary = () => {
   const {
-    productMobile,
-    productMd,
-    productLg,
-    productXl,
+    // productMobile,
+    // productMd,
+    // productLg,
+    // productXl,
     product2xl,
     process
   } = useStaticQuery(
     graphql`
       query {
-        productMobile: file(
-          relativePath: {
-            eq: "case-studies/gosite/gosite-product-feature-mobile.png"
-          }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 600, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
+        # productMobile: file(
+        #   relativePath: {
+        #     eq: "case-studies/gosite/gosite-product-feature-mobile.png"
+        #   }
+        # ) {
+        #   childImageSharp {
+        #     fluid(maxWidth: 600, quality: 100) {
+        #       ...GatsbyImageSharpFluid_withWebp_noBase64
+        #     }
+        #   }
+        # }
 
-        productMd: file(
-          relativePath: {
-            eq: "case-studies/gosite/gosite-product-feature-md.png"
-          }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 1500, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
+        # productMd: file(
+        #   relativePath: {
+        #     eq: "case-studies/gosite/gosite-product-feature-md.png"
+        #   }
+        # ) {
+        #   childImageSharp {
+        #     fluid(maxWidth: 1500, quality: 100) {
+        #       ...GatsbyImageSharpFluid_withWebp_noBase64
+        #     }
+        #   }
+        # }
 
-        productLg: file(
-          relativePath: {
-            eq: "case-studies/gosite/gosite-product-feature-lg.png"
-          }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 2000, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
+        # productLg: file(
+        #   relativePath: {
+        #     eq: "case-studies/gosite/gosite-product-feature-lg.png"
+        #   }
+        # ) {
+        #   childImageSharp {
+        #     fluid(maxWidth: 2000, quality: 100) {
+        #       ...GatsbyImageSharpFluid_withWebp_noBase64
+        #     }
+        #   }
+        # }
 
-        productXl: file(
-          relativePath: {
-            eq: "case-studies/gosite/gosite-product-feature-xl.png"
-          }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 2800, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
+        # productXl: file(
+        #   relativePath: {
+        #     eq: "case-studies/gosite/gosite-product-feature-xl.png"
+        #   }
+        # ) {
+        #   childImageSharp {
+        #     fluid(maxWidth: 2800, quality: 100) {
+        #       ...GatsbyImageSharpFluid_withWebp_noBase64
+        #     }
+        #   }
+        # }
 
         product2xl: file(
           relativePath: {
@@ -105,9 +106,7 @@ const GoSiteSummary = () => {
           }
         ) {
           childImageSharp {
-            fluid(maxWidth: 5000, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
 
@@ -115,34 +114,32 @@ const GoSiteSummary = () => {
           relativePath: { eq: "case-studies/gosite/gosite-process.png" }
         ) {
           childImageSharp {
-            fluid(maxWidth: 5000, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
       }
     `
   )
 
-  const productFeatureSources = [
-    productMobile.childImageSharp.fluid,
-    {
-      ...product2xl.childImageSharp.fluid,
-      media: `(min-width: 2560px)`
-    },
-    {
-      ...productXl.childImageSharp.fluid,
-      media: `(min-width: 1280px)`
-    },
-    {
-      ...productLg.childImageSharp.fluid,
-      media: `(min-width: 1024px)`
-    },
-    {
-      ...productMd.childImageSharp.fluid,
-      media: `(min-width: 768px)`
-    }
-  ]
+  // const productFeatureSources = [
+  //   productMobile.childImageSharp.fluid,
+  //   {
+  //     ...product2xl.childImageSharp.fluid,
+  //     media: `(min-width: 2560px)`
+  //   },
+  //   {
+  //     ...productXl.childImageSharp.fluid,
+  //     media: `(min-width: 1280px)`
+  //   },
+  //   {
+  //     ...productLg.childImageSharp.fluid,
+  //     media: `(min-width: 1024px)`
+  //   },
+  //   {
+  //     ...productMd.childImageSharp.fluid,
+  //     media: `(min-width: 768px)`
+  //   }
+  // ]
   return (
     <div className="GoSiteSummary">
       <div className="GoSiteSummary-business-owner">
@@ -185,12 +182,17 @@ const GoSiteSummary = () => {
           ))}
         </div>
       </div>
-      <Img
+      <GatsbyImage
+        alt="Product Image"
+        className="GoSiteSummary-product-img"
+        image={product2xl}
+      />
+      {/* <Img
         className="GoSiteSummary-product-img"
         durationFadeIn={150}
         fadeIn
         fluid={productFeatureSources}
-      />
+      /> */}
 
       <div className="GoSitesummary-summary-content">
         <p className="text-body mb-4 md:mb-6 lg:mb-8">
@@ -211,13 +213,17 @@ const GoSiteSummary = () => {
           just getting started.
         </p>
       </div>
-
-      <Img
+      <GatsbyImage
+        alt="Process Image"
+        className="GoSiteSummary-process-img"
+        image={process}
+      />
+      {/* <Img
         className="GoSiteSummary-process-img"
         durationFadeIn={150}
         fadeIn
         fluid={process.childImageSharp.fluid}
-      />
+      /> */}
     </div>
   )
 }

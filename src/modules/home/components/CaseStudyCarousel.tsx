@@ -1,7 +1,8 @@
 // Packages
 import React, { useCallback, useState } from 'react'
 import Carousel from 'nuka-carousel'
-import Img from 'gatsby-image'
+// import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 // Assets
 import ArrowRight from '@static/svgs/common/arrows/arrow-right.inline.svg'
@@ -76,13 +77,17 @@ const CaseStudyCarousel = ({ caseStudies }: Props) => {
               to={`/case-studies/${caseStudy.slug}/`}
             >
               <div className="CaseStudyCarousel-slide-img">
-                <Img
+                <GatsbyImage
+                  alt={`${caseStudy.name}`}
+                  image={caseStudy.listingImage.gatsbyImageData}
+                  // imgStyle={{ objectFit: 'contain' }}
+                />
+                {/* <Img
                   alt={`${caseStudy.name}`}
                   durationFadeIn={275}
                   fadeIn
                   fluid={caseStudy.listingImage.fluid}
-                  imgStyle={{ objectFit: 'contain' }}
-                />
+                /> */}
               </div>
               <div className="CaseStudyCarousel-content">
                 <div>

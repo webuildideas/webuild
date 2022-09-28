@@ -142,9 +142,7 @@ export const CASE_STUDIES_PAGE_QUERY = graphql`
           }
         }
         listingImage {
-          fluid(maxWidth: 625) {
-            ...GatsbyContentfulFluid_withWebp_noBase64
-          }
+          gatsbyImageData(width: 625)
         }
       }
       testimonials {
@@ -155,19 +153,13 @@ export const CASE_STUDIES_PAGE_QUERY = graphql`
           raw
         }
         mainHeadshot {
-          fluid(maxWidth: 500) {
-            ...GatsbyContentfulFluid_withWebp_noBase64
-          }
+          gatsbyImageData(width: 500)
         }
         headshot {
-          fixed(cropFocus: FACE, height: 150, width: 150) {
-            ...GatsbyContentfulFixed_withWebp_noBase64
-          }
+          gatsbyImageData(width: 150)
         }
         purpleHeadshot {
-          fixed(cropFocus: FACE, height: 150, width: 150) {
-            ...GatsbyContentfulFixed_withWebp_noBase64
-          }
+          gatsbyImageData(width: 150)
         }
       }
 

@@ -1,6 +1,6 @@
 // Packages
 import React from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 
 // Styles
 import '@modules/case-studies/components/styles/CaseStudyXLargeImage.css'
@@ -23,15 +23,14 @@ const CaseStudyXLargeImage = ({
     <div className="case-study-xl-image relative">
       <div className={`case-study-xl-image__bg ${bgColor} ${bgClasses}`} />
       <div className="overflow-hidden">
-        <Img
+        <GatsbyImage
+          image={image.childImageSharp.gatsbyImageData}
           className={`case-study-xl-image__img ${imageClasses}`}
           durationFadeIn={150}
-          fadeIn
-          fluid={image.childImageSharp.fluid}
-        />
+          fadeIn />
       </div>
     </div>
-  )
+  );
 }
 
 export default CaseStudyXLargeImage

@@ -7,7 +7,7 @@ export interface TypeEmployee {
   role: string
   slug: string
   location: string
-  headshot: TypeGatsbyImageFluid | TypeContentfulAsset
+  headshot: any
   employeeBioHeroBackground: string
   gender: boolean
   loveAboutDesign: Record<'loveAboutDesign', string>

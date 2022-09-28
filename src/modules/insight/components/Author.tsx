@@ -3,7 +3,7 @@ import './styles/Author.css'
 // Packages
 import React from 'react'
 import dayjs from 'dayjs'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 // Common
 import { TypeAuthor } from '@common/types/Author'
@@ -27,12 +27,12 @@ const Author = ({
   const shouldDisplayReadTime = showReadTime && estReadTime
   return (
     <div className="Author">
-      <Img
+      <GatsbyImage
         alt={`${author.name} Headshot`}
+        image={author.gatsbyImageData}
         className="Author__headshot"
-        durationFadeIn={150}
-        fadeIn
-        fixed={author.headshot.fixed}
+        // durationFadeIn={150}
+        // fadeIn
         imgStyle={authorImgStyle}
         style={authorStyle}
       />

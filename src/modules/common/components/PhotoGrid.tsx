@@ -1,17 +1,18 @@
 // Packages
 import React, { useEffect } from 'react'
-import Img from 'gatsby-image'
+// import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { useAnimation, Variants, motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 
 // Common
-import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
+// import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
 
 // Styles
 import './styles/PhotoGrid.css'
 
 interface Props {
-  photos: TypeGatsbyImageFluid[]
+  photos: any
 }
 
 const variants: Variants = {
@@ -90,12 +91,16 @@ const PhotoGrid = ({ photos }: Props) => {
           initial={`image${idx + 1}Hidden`}
           variants={variants}
         >
-          <Img
+          <GatsbyImage
+            alt="webuild Team photos"
+            image={photo.gatsbyImageData}
+          />
+          {/* <Img
             alt="webuild Team photos"
             durationFadeIn={275}
             fadeIn
             fluid={photo.fluid}
-          />
+          /> */}
         </motion.div>
       ))}
     </div>

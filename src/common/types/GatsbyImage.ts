@@ -1,9 +1,7 @@
-/* eslint-disable camelcase */
-// Packages
-import { FixedObject, FluidObject } from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 
 export interface TypeGatsbyImageFixed {
-  fixed: FixedObject
+  fixed: GatsbyImage
 }
 
 export interface TypeGatsbyImageFluid {

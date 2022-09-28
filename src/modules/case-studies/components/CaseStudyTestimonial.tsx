@@ -1,9 +1,9 @@
 // Packages
 import React from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 // Styles
-import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
+// import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
 
 interface Props {
   testimonial: {
@@ -13,7 +13,7 @@ interface Props {
       title: string
       company: string
     }
-    image: TypeGatsbyImageFluid
+    image: any
   }
 }
 
@@ -36,19 +36,19 @@ const CaseStudyTestimonial = ({ testimonial }: Props) => {
             </p>
           </div>
           <div className="ServiceTestimonial-cite-image hidden md:block">
-            <Img
+            <GatsbyImage
               className="headshot"
               durationFadeIn={150}
               fadeIn
-              fluid={testimonial.image.childImageSharp.fluid}
+              image={testimonial.image.childImageSharp.gatsbyImageData}
             />
           </div>
           <div className="ServiceTestimonial-cite-image md:hidden">
-            <Img
+            <GatsbyImage
               className="headshot"
               durationFadeIn={150}
               fadeIn
-              fluid={testimonial.image.childImageSharp.fluid}
+              image={testimonial.image.childImageSharp.gatsbyImageData}
             />
           </div>
         </div>

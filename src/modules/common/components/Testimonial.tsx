@@ -1,6 +1,6 @@
 // Packages
 import React, { useCallback, useEffect, useMemo } from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation } from 'framer-motion'
 import { Options } from '@contentful/rich-text-react-renderer'
@@ -66,15 +66,14 @@ const Testimonial = ({ isFeatured = false, testimonial, ...props }: Props) => {
           initial="hidden"
           variants={featureHeadshotVariants}
         >
-          <Img
+          <GatsbyImage
+            image={testimonial?.childImageSharp?.gatsbyImageData}
             alt={`${testimonial.name} Headshot`}
             durationFadeIn={100}
-            fadeIn
-            fluid={testimonial?.featuredHeadshot?.fluid}
-          />
+            fadeIn />
         </motion.div>
       </div>
-    ) : null
+    ) : null;
   }, [
     featuredAnimationControls,
     testimonial.name,
@@ -88,14 +87,13 @@ const Testimonial = ({ isFeatured = false, testimonial, ...props }: Props) => {
         initial="hidden"
         variants={headshotVariants}
       >
-        <Img
+        <GatsbyImage
+          image={testimonial?.childImageSharp?.gatsbyImageData}
           alt={`${testimonial.name} Headshot`}
           durationFadeIn={350}
-          fadeIn
-          fixed={testimonial?.headshot.fixed}
-        />
+          fadeIn />
       </motion.div>
-    )
+    );
   }, [headshotAnimationControls, testimonial.name, testimonial.headshot])
 
   const renderFeaturedTestimonial = useCallback(

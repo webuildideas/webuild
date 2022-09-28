@@ -1,7 +1,7 @@
 // Packages
 import React, { useEffect, useState } from 'react'
 import { CarouselProvider } from 'pure-react-carousel'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation, Variants } from 'framer-motion'
 
@@ -89,11 +89,10 @@ const TestimonialSlider = ({ testimonials }: Props) => {
             {testimonials.map((t: TypeTestimonial, idx: number) => (
               <S.TestimonialDot key={`tdot-${t.name}`} slide={idx}>
                 <div className="Testimonial__client-headshot">
-                  <Img
+                  <GatsbyImage
+                    image={t.childImageSharp.gatsbyImageData}
                     alt={`${t.name} headshot`}
-                    fixed={t.headshot.fixed}
-                    style={{ width: '100%', height: '100%' }}
-                  />
+                    style={{ width: '100%', height: '100%' }} />
                 </div>
                 <div className="Testimonial__client-details">
                   <h5 className="text-body font-bold mb-1">{t.name}</h5>
@@ -107,7 +106,7 @@ const TestimonialSlider = ({ testimonials }: Props) => {
         </CarouselProvider>
       </motion.div>
     </SiteMaxWidthContainer>
-  )
+  );
 }
 
 export default TestimonialSlider

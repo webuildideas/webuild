@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import Img from 'gatsby-image'
+// import Img from 'gatsby-image'
+import { GatsbyImage, getImage, withArtDirection } from 'gatsby-plugin-image'
 import { TypeSidebarAd } from '@common/types/Sidebar'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import Arrow from '@static/svgs/cta-arrow.inline.svg'
@@ -19,14 +20,16 @@ const SIDEBAR_QUERY = graphql`
         headline
         copy
         image {
-          fluid {
-            ...GatsbyContentfulFluid_withWebp_noBase64
-          }
+          # fluid {
+          #   ...GatsbyContentfulFluid_withWebp_noBase64
+          # }
+          gatsbyImageData(layout: FULL_WIDTH)
         }
         mobileImage {
-          fluid {
-            ...GatsbyContentfulFluid_withWebp_noBase64
-          }
+          # fluid {
+          #   ...GatsbyContentfulFluid_withWebp_noBase64
+          # }
+          gatsbyImageData(layout: FULL_WIDTH)
         }
         customCtaLink
         ctaText
@@ -60,14 +63,21 @@ export default function SidebarAd({ theAd, excludeEbooks }: Props) {
     return ads[Math.floor(Math.random() * ads.length)]
   }
 
-  const mobileImg = ad?.mobileImage?.fluid || ad.image.fluid
-  const imgSources = [
-    mobileImg,
+  // const mobileImg = ad?.mobileImage?.fluid || ad.image.fluid
+  // const imgSources = [
+  //   mobileImg,
+  //   {
+  //     ...ad.image.fluid,
+  //     media: `(min-width: 990px)`
+  //   }
+  // ]
+
+  const images = withArtDirection(getImage(ad.image), [
     {
-      ...ad.image.fluid,
-      media: `(min-width: 990px)`
+      media: '(max-width: 990px)',
+      image: ad?.mobileImage ? getImage(ad.mobileImage) : getImage(ad.image)
     }
-  ]
+  ])
 
   const link = ad?.ctaLink?.slug || ad?.customCtaLink
 
@@ -77,11 +87,12 @@ export default function SidebarAd({ theAd, excludeEbooks }: Props) {
         <h4 className="text-h4 my-4 text-center lg:text-left">{ad.headline}</h4>
         <div className="md:flex items-center justify-between lg:block">
           <AniLink cover direction="right" duration={1.25} to={`/${link}`}>
-            <Img
+            {/* <Img
               className="mb-6 md:w-1/2 lg:w-full"
               fadeIn
               fluid={imgSources}
-            />
+            /> */}
+            <GatsbyImage alt="Ad Illustration" image={images} />
           </AniLink>
           <div className="flex flex-col md:block md:w-2/5 lg:w-full">
             {ad.copy && <p className="text-caption">{ad.copy}</p>}

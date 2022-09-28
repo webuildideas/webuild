@@ -1,7 +1,8 @@
 // Packages
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import Img from 'gatsby-image'
+// import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 // SVGs
 import DesignSystems from '@static/svgs/service/circle/design-systems-circle.inline.svg'
@@ -12,71 +13,71 @@ import MotionAniLink from '@modules/common/components/MotionAniLink'
 
 const GoSiteDesignSystems = () => {
   const {
-    dsMobile,
-    dsMd,
-    dsLg,
-    dsXl,
+    // dsMobile,
+    // dsMd,
+    // dsLg,
+    // dsXl,
     ds2xl,
-    ddMobile,
-    ddMd,
-    ddLg,
-    ddXl,
+    // ddMobile,
+    // ddMd,
+    // ddLg,
+    // ddXl,
     dd2xl,
-    webAppMobile,
-    webAppMd,
-    webAppLg,
-    webAppXl,
+    // webAppMobile,
+    // webAppMd,
+    // webAppLg,
+    // webAppXl,
     webApp2xl
   } = useStaticQuery(
     graphql`
       query {
-        dsMobile: file(
-          relativePath: {
-            eq: "case-studies/gosite/gosite-design-system-mobile.png"
-          }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 600, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
+        # dsMobile: file(
+        #   relativePath: {
+        #     eq: "case-studies/gosite/gosite-design-system-mobile.png"
+        #   }
+        # ) {
+        #   childImageSharp {
+        #     fluid(maxWidth: 600, quality: 100) {
+        #       ...GatsbyImageSharpFluid_withWebp_noBase64
+        #     }
+        #   }
+        # }
 
-        dsMd: file(
-          relativePath: {
-            eq: "case-studies/gosite/gosite-design-system-md.png"
-          }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 1500, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
+        # dsMd: file(
+        #   relativePath: {
+        #     eq: "case-studies/gosite/gosite-design-system-md.png"
+        #   }
+        # ) {
+        #   childImageSharp {
+        #     fluid(maxWidth: 1500, quality: 100) {
+        #       ...GatsbyImageSharpFluid_withWebp_noBase64
+        #     }
+        #   }
+        # }
 
-        dsLg: file(
-          relativePath: {
-            eq: "case-studies/gosite/gosite-design-system-lg.png"
-          }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 2000, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
+        # dsLg: file(
+        #   relativePath: {
+        #     eq: "case-studies/gosite/gosite-design-system-lg.png"
+        #   }
+        # ) {
+        #   childImageSharp {
+        #     fluid(maxWidth: 2000, quality: 100) {
+        #       ...GatsbyImageSharpFluid_withWebp_noBase64
+        #     }
+        #   }
+        # }
 
-        dsXl: file(
-          relativePath: {
-            eq: "case-studies/gosite/gosite-design-system-xl.png"
-          }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 2800, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
+        # dsXl: file(
+        #   relativePath: {
+        #     eq: "case-studies/gosite/gosite-design-system-xl.png"
+        #   }
+        # ) {
+        #   childImageSharp {
+        #     fluid(maxWidth: 2800, quality: 100) {
+        #       ...GatsbyImageSharpFluid_withWebp_noBase64
+        #     }
+        #   }
+        # }
 
         ds2xl: file(
           relativePath: {
@@ -84,59 +85,57 @@ const GoSiteDesignSystems = () => {
           }
         ) {
           childImageSharp {
-            fluid(maxWidth: 5000, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
 
-        ddMobile: file(
-          relativePath: {
-            eq: "case-studies/gosite/gosite-design-decisions-mobile.png"
-          }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 600, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
+        # ddMobile: file(
+        #   relativePath: {
+        #     eq: "case-studies/gosite/gosite-design-decisions-mobile.png"
+        #   }
+        # ) {
+        #   childImageSharp {
+        #     fluid(maxWidth: 600, quality: 100) {
+        #       ...GatsbyImageSharpFluid_withWebp_noBase64
+        #     }
+        #   }
+        # }
 
-        ddMd: file(
-          relativePath: {
-            eq: "case-studies/gosite/gosite-design-decisions-md.png"
-          }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 1500, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
+        # ddMd: file(
+        #   relativePath: {
+        #     eq: "case-studies/gosite/gosite-design-decisions-md.png"
+        #   }
+        # ) {
+        #   childImageSharp {
+        #     fluid(maxWidth: 1500, quality: 100) {
+        #       ...GatsbyImageSharpFluid_withWebp_noBase64
+        #     }
+        #   }
+        # }
 
-        ddLg: file(
-          relativePath: {
-            eq: "case-studies/gosite/gosite-design-decisions-lg.png"
-          }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 2000, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
+        # ddLg: file(
+        #   relativePath: {
+        #     eq: "case-studies/gosite/gosite-design-decisions-lg.png"
+        #   }
+        # ) {
+        #   childImageSharp {
+        #     fluid(maxWidth: 2000, quality: 100) {
+        #       ...GatsbyImageSharpFluid_withWebp_noBase64
+        #     }
+        #   }
+        # }
 
-        ddXl: file(
-          relativePath: {
-            eq: "case-studies/gosite/gosite-design-decisions-xl.png"
-          }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 2800, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
+        # ddXl: file(
+        #   relativePath: {
+        #     eq: "case-studies/gosite/gosite-design-decisions-xl.png"
+        #   }
+        # ) {
+        #   childImageSharp {
+        #     fluid(maxWidth: 2800, quality: 100) {
+        #       ...GatsbyImageSharpFluid_withWebp_noBase64
+        #     }
+        #   }
+        # }
 
         dd2xl: file(
           relativePath: {
@@ -144,124 +143,120 @@ const GoSiteDesignSystems = () => {
           }
         ) {
           childImageSharp {
-            fluid(maxWidth: 5000, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
 
-        webAppMobile: file(
-          relativePath: { eq: "case-studies/gosite/gosite-web-app-mobile.jpg" }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 600, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
+        # webAppMobile: file(
+        #   relativePath: { eq: "case-studies/gosite/gosite-web-app-mobile.jpg" }
+        # ) {
+        #   childImageSharp {
+        #     fluid(maxWidth: 600, quality: 100) {
+        #       ...GatsbyImageSharpFluid_withWebp_noBase64
+        #     }
+        #   }
+        # }
 
-        webAppMd: file(
-          relativePath: { eq: "case-studies/gosite/gosite-web-app-md.jpg" }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 1500, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
+        # webAppMd: file(
+        #   relativePath: { eq: "case-studies/gosite/gosite-web-app-md.jpg" }
+        # ) {
+        #   childImageSharp {
+        #     fluid(maxWidth: 1500, quality: 100) {
+        #       ...GatsbyImageSharpFluid_withWebp_noBase64
+        #     }
+        #   }
+        # }
 
-        webAppLg: file(
-          relativePath: { eq: "case-studies/gosite/gosite-web-app-lg.jpg" }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 2000, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
+        # webAppLg: file(
+        #   relativePath: { eq: "case-studies/gosite/gosite-web-app-lg.jpg" }
+        # ) {
+        #   childImageSharp {
+        #     fluid(maxWidth: 2000, quality: 100) {
+        #       ...GatsbyImageSharpFluid_withWebp_noBase64
+        #     }
+        #   }
+        # }
 
-        webAppXl: file(
-          relativePath: { eq: "case-studies/gosite/gosite-web-app-xl.jpg" }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 2800, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
+        # webAppXl: file(
+        #   relativePath: { eq: "case-studies/gosite/gosite-web-app-xl.jpg" }
+        # ) {
+        #   childImageSharp {
+        #     fluid(maxWidth: 2800, quality: 100) {
+        #       ...GatsbyImageSharpFluid_withWebp_noBase64
+        #     }
+        #   }
+        # }
 
         webApp2xl: file(
           relativePath: { eq: "case-studies/gosite/gosite-web-app-2xl.jpg" }
         ) {
           childImageSharp {
-            fluid(maxWidth: 5000, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
       }
     `
   )
 
-  const designSystemSources = [
-    dsMobile.childImageSharp.fluid,
-    {
-      ...ds2xl.childImageSharp.fluid,
-      media: `(min-width: 2560px)`
-    },
-    {
-      ...dsXl.childImageSharp.fluid,
-      media: `(min-width: 1280px)`
-    },
-    {
-      ...dsLg.childImageSharp.fluid,
-      media: `(min-width: 1024px)`
-    },
-    {
-      ...dsMd.childImageSharp.fluid,
-      media: `(min-width: 768px)`
-    }
-  ]
+  // const designSystemSources = [
+  //   dsMobile.childImageSharp.fluid,
+  //   {
+  //     ...ds2xl.childImageSharp.fluid,
+  //     media: `(min-width: 2560px)`
+  //   },
+  //   {
+  //     ...dsXl.childImageSharp.fluid,
+  //     media: `(min-width: 1280px)`
+  //   },
+  //   {
+  //     ...dsLg.childImageSharp.fluid,
+  //     media: `(min-width: 1024px)`
+  //   },
+  //   {
+  //     ...dsMd.childImageSharp.fluid,
+  //     media: `(min-width: 768px)`
+  //   }
+  // ]
 
-  const designDecisionsSources = [
-    ddMobile.childImageSharp.fluid,
-    {
-      ...dd2xl.childImageSharp.fluid,
-      media: `(min-width: 2560px)`
-    },
-    {
-      ...ddXl.childImageSharp.fluid,
-      media: `(min-width: 1280px)`
-    },
-    {
-      ...ddLg.childImageSharp.fluid,
-      media: `(min-width: 1024px)`
-    },
-    {
-      ...ddMd.childImageSharp.fluid,
-      media: `(min-width: 768px)`
-    }
-  ]
+  // const designDecisionsSources = [
+  //   ddMobile.childImageSharp.fluid,
+  //   {
+  //     ...dd2xl.childImageSharp.fluid,
+  //     media: `(min-width: 2560px)`
+  //   },
+  //   {
+  //     ...ddXl.childImageSharp.fluid,
+  //     media: `(min-width: 1280px)`
+  //   },
+  //   {
+  //     ...ddLg.childImageSharp.fluid,
+  //     media: `(min-width: 1024px)`
+  //   },
+  //   {
+  //     ...ddMd.childImageSharp.fluid,
+  //     media: `(min-width: 768px)`
+  //   }
+  // ]
 
-  const webAppSources = [
-    webAppMobile.childImageSharp.fluid,
-    {
-      ...webApp2xl.childImageSharp.fluid,
-      media: `(min-width: 2560px)`
-    },
-    {
-      ...webAppXl.childImageSharp.fluid,
-      media: `(min-width: 1280px)`
-    },
-    {
-      ...webAppLg.childImageSharp.fluid,
-      media: `(min-width: 1024px)`
-    },
-    {
-      ...webAppMd.childImageSharp.fluid,
-      media: `(min-width: 768px)`
-    }
-  ]
+  // const webAppSources = [
+  //   webAppMobile.childImageSharp.fluid,
+  //   {
+  //     ...webApp2xl.childImageSharp.fluid,
+  //     media: `(min-width: 2560px)`
+  //   },
+  //   {
+  //     ...webAppXl.childImageSharp.fluid,
+  //     media: `(min-width: 1280px)`
+  //   },
+  //   {
+  //     ...webAppLg.childImageSharp.fluid,
+  //     media: `(min-width: 1024px)`
+  //   },
+  //   {
+  //     ...webAppMd.childImageSharp.fluid,
+  //     media: `(min-width: 768px)`
+  //   }
+  // ]
 
   return (
     <div className="GoSiteDesignSystems">
@@ -303,12 +298,17 @@ const GoSiteDesignSystems = () => {
           </p>
         </div>
       </div>
-      <Img
+      <GatsbyImage
+        alt="Design System"
+        className="GoSiteDesignSystems-img"
+        image={ds2xl}
+      />
+      {/* <Img
         className="GoSiteDesignSystems-img"
         durationFadeIn={150}
         fadeIn
         fluid={designSystemSources}
-      />
+      /> */}
       <p className="GoSiteDesignSystems-copy text-body">
         Next, we worked on{' '}
         <MotionAniLink
@@ -326,12 +326,17 @@ const GoSiteDesignSystems = () => {
         relentlessly and rapidly enhancing core features product-by-product as
         we continue to listen to user observations.
       </p>
-      <Img
+      <GatsbyImage
+        alt="Design System"
+        className="GoSiteDesignSystems-decisions-img"
+        image={dd2xl}
+      />
+      {/* <Img
         className="GoSiteDesignSystems-decisions-img"
         durationFadeIn={150}
         fadeIn
         fluid={designDecisionsSources}
-      />
+      /> */}
       <p className="GoSiteDesignSystems-copy text-body mb-4 md:mb-6 lg:mb-8">
         Since small business owners are often on the go, GoSite needed a more
         mobile-friendly app. What they had before worked, but it wasn’t the
@@ -349,13 +354,17 @@ const GoSiteDesignSystems = () => {
         product optimization, we are excited to see what’s ahead for the app
         that champions the service-based small business owner.
       </p>
-
-      <Img
+      <GatsbyImage
+        alt="Design System Web App"
+        className="GoSiteDesignSystems-webApp-img"
+        image={webApp2xl}
+      />
+      {/* <Img
         className="GoSiteDesignSystems-webApp-img"
         durationFadeIn={150}
         fadeIn
         fluid={webAppSources}
-      />
+      /> */}
     </div>
   )
 }

@@ -1,6 +1,6 @@
 // Packages
 import React from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 
 // Styles
 // import '@modules/case-studies/components/styles/CaseStudyIntro.css'
@@ -23,15 +23,14 @@ const CaseStudyLargeImage = ({
       <div
         className={`case-study-large-image__wrapper mx-auto ${containerClasses}`}
       >
-        <Img
+        <GatsbyImage
+          image={image.childImageSharp.gatsbyImageData}
           className="case-study-large-image__img"
           durationFadeIn={150}
-          fadeIn
-          fluid={image.childImageSharp.fluid}
-        />
+          fadeIn />
       </div>
     </div>
-  )
+  );
 }
 
 export default CaseStudyLargeImage

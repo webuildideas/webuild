@@ -382,9 +382,7 @@ export const CONTENT_HUB_QUERYY = graphql`
         }
         backgroundColor
         image {
-          fluid {
-            ...GatsbyContentfulFluid_withWebp_noBase64
-          }
+          gatsbyImageData(layout: FULL_WIDTH)
         }
       }
     }
@@ -400,9 +398,7 @@ export const CONTENT_HUB_QUERYY = graphql`
         }
         backgroundColor
         image {
-          fluid {
-            ...GatsbyContentfulFluid_withWebp_noBase64
-          }
+          gatsbyImageData(layout: FULL_WIDTH)
         }
       }
     }

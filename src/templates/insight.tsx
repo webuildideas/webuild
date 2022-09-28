@@ -1,14 +1,15 @@
+/* eslint-disable react/destructuring-assignment */
 import '@common/styles/templates/insight.css'
 
 // Packages
-import React, { useEffect, useRef, useState, useContext } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import { BLOCKS, INLINES } from '@contentful/rich-text-types'
 import { Options } from '@contentful/rich-text-react-renderer'
 import { useRecoilValue } from 'recoil'
 import { graphql, PageProps } from 'gatsby'
 import Sticky from 'react-stickynode'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 // Common
 import { classNames } from '@common/utils/classNames'
@@ -48,11 +49,17 @@ interface Props {
 const options: Options = {
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
+      // eslint-disable-next-line react/destructuring-assignment
       const caption = node.data.target.description
 
       return (
         <div className="Insight-img">
-          <Img durationFadeIn={125} fadeIn fluid={node.data.target.fluid} />
+          <GatsbyImage
+            // durationFadeIn={125}
+            // fadeIn
+            alt={node.data.target.description}
+            image={node.data.gatsbyImageData}
+          />
           {caption ? <p className="text-caption">{caption}</p> : null}
         </div>
       )
@@ -65,16 +72,15 @@ const options: Options = {
       if (node.data.target.__typename === 'ContentfulImage') {
         return (
           <div className="Insight-img">
-            <Img
+            <GatsbyImage
               alt={node.data.target.altText}
               className={
                 node.data.target.imageType
                   ? node.data.target.imageType.join(' ')
                   : undefined
               }
-              durationFadeIn={125}
-              fadeIn
-              fluid={node.data.target.asset.fluid}
+              // fadeIn
+              image={node.data.target.gatsbyImageData}
             />
             {node.data.target.caption ? (
               <p className="text-caption">{node.data.target.caption}</p>
@@ -212,7 +218,7 @@ const Insight = ({
       <Meta
         description={insight.shareQuote?.shareQuote}
         location={location}
-        shareImage={insight.shareImage?.fixed.src}
+        shareImage={insight.shareImage?.gatsbyImageData}
         shareTitle={insight.title}
         title={insight.seoTitle ?? insight.title}
       />
@@ -352,9 +358,7 @@ export const query = graphql`
       author {
         name
         headshot {
-          fixed(cropFocus: FACE, height: 96, width: 96) {
-            ...GatsbyContentfulFixed_withWebp_noBase64
-          }
+          gatsbyImageData(cropFocus: FACE, height: 96, width: 96)
         }
       }
       sidebarAd {
@@ -362,9 +366,7 @@ export const query = graphql`
         headline
         copy
         image {
-          fluid {
-            ...GatsbyContentfulFluid_withWebp_noBase64
-          }
+          gatsbyImageData(layout: FULL_WIDTH)
         }
         customCtaLink
         ctaText
@@ -402,9 +404,7 @@ export const query = graphql`
             altText
             imageType
             asset {
-              fluid(maxWidth: 800) {
-                ...GatsbyContentfulFluid_withWebp_noBase64
-              }
+              gatsbyImageData(width: 800)
             }
           }
         }
@@ -418,9 +418,12 @@ export const query = graphql`
         author {
           name
           headshot {
-            fixed(cropFocus: FACE, height: 48, width: 48) {
-              ...GatsbyContentfulFixed_withWebp_noBase64
-            }
+            gatsbyImageData(
+              cropFocus: FACE
+              layout: FIXED
+              width: 48
+              height: 48
+            )
           }
         }
       }
@@ -428,9 +431,7 @@ export const query = graphql`
         shareQuote
       }
       shareImage {
-        fixed(width: 1200, height: 630) {
-          src
-        }
+        gatsbyImageData(width: 1200, height: 630)
       }
       contentUpgrade {
         blurb {
@@ -471,9 +472,7 @@ export const query = graphql`
         author {
           name
           headshot {
-            fixed(cropFocus: FACE, height: 48, width: 48) {
-              ...GatsbyContentfulFixed_withWebp_noBase64
-            }
+            gatsbyImageData(width: 48)
           }
         }
       }

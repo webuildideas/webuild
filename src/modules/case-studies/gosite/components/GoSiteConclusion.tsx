@@ -28,9 +28,7 @@ const GoSiteConclusion = ({ testimonial }: Props) => {
         relativePath: { eq: "case-studies/gosite/gosite-video-cover.png" }
       ) {
         childImageSharp {
-          fluid(maxWidth: 3000) {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
-          }
+          gatsbyImageData(layout: FULL_WIDTH)
         }
       }
     }
@@ -55,7 +53,9 @@ const GoSiteConclusion = ({ testimonial }: Props) => {
             className="react-player"
             controls={true}
             height="100%"
-            light={videoCover.childImageSharp.fluid.src}
+            light={
+              videoCover.childImageSharp.gatsbyImageData.images.fallback.src
+            }
             playing={isPlaying}
             playsinline={true}
             url={videoSrc}

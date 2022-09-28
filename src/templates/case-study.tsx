@@ -77,7 +77,7 @@ const CaseStudyDetail = ({
         {heroBackgroundImage && heroImage && whiteLogo && successSummary ? (
           <Hero
             background={heroBackgroundImage.file.url}
-            heroImg={heroImage.fluid}
+            heroImg={heroImage}
             logo={whiteLogo.file.url}
             successSummary={successSummary.successSummary}
           />
@@ -155,9 +155,7 @@ export const query = graphql`
         }
       }
       heroImage {
-        fluid(maxWidth: 1100) {
-          ...GatsbyContentfulFluid_withWebp_noBase64
-        }
+        gatsbyImageData(width: 1100)
       }
       whiteLogo {
         file {
@@ -173,9 +171,7 @@ export const query = graphql`
       }
       designSystemCarousel {
         images {
-          fluid(maxWidth: 1400) {
-            ...GatsbyContentfulFluid_withWebp_noBase64
-          }
+          gatsbyImageData(width: 1400)
         }
       }
       resultOne {
@@ -195,14 +191,10 @@ export const query = graphql`
           raw
         }
         featuredHeadshot {
-          fluid(maxWidth: 500) {
-            ...GatsbyContentfulFluid_withWebp_noBase64
-          }
+          gatsbyImageData(width: 500)
         }
         headshot {
-          fixed(cropFocus: FACE, height: 50, width: 50) {
-            ...GatsbyContentfulFixed_withWebp_noBase64
-          }
+          gatsbyImageData(cropFocus: FACE, width: 150, height: 150)
         }
       }
       projectOverview {
@@ -211,17 +203,13 @@ export const query = graphql`
           ... on ContentfulAsset {
             contentful_id
             __typename
-            fluid(maxWidth: 1100) {
-              ...GatsbyContentfulFluid_withWebp_noBase64
-            }
+            gatsbyImageData(width: 1100)
           }
           ... on ContentfulCarousel {
             contentful_id
             __typename
             images {
-              fluid(maxWidth: 1100) {
-                ...GatsbyContentfulFluid_withWebp_noBase64
-              }
+              gatsbyImageData(width: 1100)
             }
           }
         }
@@ -232,17 +220,13 @@ export const query = graphql`
           ... on ContentfulAsset {
             contentful_id
             __typename
-            fluid(maxWidth: 1100) {
-              ...GatsbyContentfulFluid_withWebp_noBase64
-            }
+            gatsbyImageData(width: 1100)
           }
           ... on ContentfulCarousel {
             contentful_id
             __typename
             images {
-              fluid(maxWidth: 1100) {
-                ...GatsbyContentfulFluid_withWebp_noBase64
-              }
+              gatsbyImageData(width: 1100)
             }
           }
         }
@@ -253,17 +237,13 @@ export const query = graphql`
           ... on ContentfulAsset {
             contentful_id
             __typename
-            fluid(maxWidth: 1100) {
-              ...GatsbyContentfulFluid_withWebp_noBase64
-            }
+            gatsbyImageData(width: 1100)
           }
           ... on ContentfulCarousel {
             contentful_id
             __typename
             images {
-              fluid(maxWidth: 1100) {
-                ...GatsbyContentfulFluid_withWebp_noBase64
-              }
+              gatsbyImageData(width: 1100)
             }
           }
         }
@@ -274,17 +254,13 @@ export const query = graphql`
           ... on ContentfulAsset {
             contentful_id
             __typename
-            fluid(maxWidth: 1100) {
-              ...GatsbyContentfulFluid_withWebp_noBase64
-            }
+            gatsbyImageData(width: 1100)
           }
           ... on ContentfulCarousel {
             contentful_id
             __typename
             images {
-              fluid(maxWidth: 1100) {
-                ...GatsbyContentfulFluid_withWebp_noBase64
-              }
+              gatsbyImageData(width: 1100)
             }
           }
         }
@@ -302,9 +278,7 @@ export const query = graphql`
           }
         }
         listingImage {
-          fluid(maxWidth: 625) {
-            ...GatsbyContentfulFluid_withWebp_noBase64
-          }
+          gatsbyImageData(width: 1100)
         }
       }
     }

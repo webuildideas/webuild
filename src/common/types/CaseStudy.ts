@@ -8,7 +8,7 @@ import { RenderRichTextData } from 'gatsby-source-contentful/rich-text'
 export interface TypeCaseStudy {
   name: string
   slug?: string
-  listingImage: TypeGatsbyImageFluid
+  listingImage: any
   tagline: string
   taglineRichText?: RenderRichTextData<never>
   seoTitle: string

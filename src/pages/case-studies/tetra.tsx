@@ -264,124 +264,94 @@ const Tetra = ({
   )
 }
 
-export const TETRA_QUERY = graphql`
-  query tetraQuery {
-    contentfulCaseStudy(name: { eq: "Tetra" }) {
-      nextCaseStudies {
-        logo {
-          file {
-            url
-          }
-        }
-        name
-        slug
-        tagline
-      }
-
-      metaDescription {
-        metaDescription
-      }
-      seoTitle
-    }
-
-    logo: file(relativePath: { eq: "case-studies/tetra/tetra-logo.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
+export const TETRA_QUERY = graphql`query tetraQuery {
+  contentfulCaseStudy(name: {eq: "Tetra"}) {
+    nextCaseStudies {
+      logo {
+        file {
+          url
         }
       }
+      name
+      slug
+      tagline
     }
-
-    beforeImage: file(
-      relativePath: { eq: "case-studies/tetra/before-image.png" }
-    ) {
-      publicURL
+    metaDescription {
+      metaDescription
     }
-    afterImage: file(
-      relativePath: { eq: "case-studies/tetra/after-image.png" }
-    ) {
-      publicURL
+    seoTitle
+  }
+  logo: file(relativePath: {eq: "case-studies/tetra/tetra-logo.png"}) {
+    childImageSharp {
+      gatsbyImageData(width: 500, placeholder: NONE, layout: CONSTRAINED)
     }
-
-    sketches: file(
-      relativePath: { eq: "case-studies/tetra/tetra-sketches.png" }
-    ) {
-      childImageSharp {
-        fluid(sizes: "100vw") {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
+  }
+  beforeImage: file(relativePath: {eq: "case-studies/tetra/before-image.png"}) {
+    publicURL
+  }
+  afterImage: file(relativePath: {eq: "case-studies/tetra/after-image.png"}) {
+    publicURL
+  }
+  sketches: file(relativePath: {eq: "case-studies/tetra/tetra-sketches.png"}) {
+    childImageSharp {
+      gatsbyImageData(sizes: "100vw", placeholder: NONE, layout: FULL_WIDTH)
+    }
+  }
+  pmImage: file(
+    relativePath: {eq: "case-studies/tetra/tetra-project-mapping-image.png"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(sizes: "100vw", placeholder: NONE, layout: FULL_WIDTH)
+    }
+  }
+  dsImage: file(relativePath: {eq: "case-studies/tetra/tetra-ds-image.png"}) {
+    childImageSharp {
+      gatsbyImageData(sizes: "100vw", placeholder: NONE, layout: FULL_WIDTH)
+    }
+  }
+  dsGridImage: file(
+    relativePath: {eq: "case-studies/tetra/tetra-design-system-grid.png"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(sizes: "100vw", placeholder: NONE, layout: FULL_WIDTH)
+    }
+  }
+  gridImage: file(
+    relativePath: {eq: "case-studies/tetra/tetra-image-on-grid.png"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(sizes: "100vw", placeholder: NONE, layout: FULL_WIDTH)
+    }
+  }
+  wexler: file(relativePath: {eq: "case-studies/tetra/josh-wexler.png"}) {
+    childImageSharp {
+      gatsbyImageData(placeholder: NONE, layout: FULL_WIDTH)
+    }
+  }
+  flowImage: file(relativePath: {eq: "case-studies/tetra/flow-image.png"}) {
+    childImageSharp {
+      gatsbyImageData(sizes: "100vw", placeholder: NONE, layout: FULL_WIDTH)
+    }
+  }
+  allContentfulService(
+    filter: {shortTitle: {in: ["Product Design", "Design Systems"]}}
+  ) {
+    nodes {
+      shortTitle
+      slug
+      otherServicesIllustration {
+        file {
+          url
         }
       }
-    }
-    pmImage: file(
-      relativePath: { eq: "case-studies/tetra/tetra-project-mapping-image.png" }
-    ) {
-      childImageSharp {
-        fluid(sizes: "100vw") {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
-    dsImage: file(
-      relativePath: { eq: "case-studies/tetra/tetra-ds-image.png" }
-    ) {
-      childImageSharp {
-        fluid(sizes: "100vw") {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
-    dsGridImage: file(
-      relativePath: { eq: "case-studies/tetra/tetra-design-system-grid.png" }
-    ) {
-      childImageSharp {
-        fluid(sizes: "100vw") {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
-    gridImage: file(
-      relativePath: { eq: "case-studies/tetra/tetra-image-on-grid.png" }
-    ) {
-      childImageSharp {
-        fluid(sizes: "100vw") {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
-    wexler: file(relativePath: { eq: "case-studies/tetra/josh-wexler.png" }) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
-    flowImage: file(relativePath: { eq: "case-studies/tetra/flow-image.png" }) {
-      childImageSharp {
-        fluid(sizes: "100vw") {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
-
-    allContentfulService(
-      filter: { shortTitle: { in: ["Product Design", "Design Systems"] } }
-    ) {
-      nodes {
-        shortTitle
-        slug
-        otherServicesIllustration {
-          file {
-            url
-          }
-        }
-        otherServicesGif {
-          file {
-            url
-          }
+      otherServicesGif {
+        file {
+          url
         }
       }
     }
   }
+}
 `
 
 export default Tetra

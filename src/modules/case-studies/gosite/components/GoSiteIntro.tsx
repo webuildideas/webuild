@@ -1,6 +1,7 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import Img from 'gatsby-image'
+// import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 // Styles
 import '@modules/case-studies/gosite/components/styles/GoSiteIntro.css'
@@ -11,57 +12,57 @@ import GoSiteLogo from '@static/svgs/case-studies/gosite/gosite-logo.inline.svg'
 
 const GoSiteIntro = () => {
   const {
-    bannerMobile,
-    bannerMd,
-    bannerLg,
-    bannerXl,
+    // bannerMobile,
+    // bannerMd,
+    // bannerLg,
+    // bannerXl,
     banner2xl
   } = useStaticQuery(
     graphql`
       query {
-        bannerMobile: file(
-          relativePath: {
-            eq: "case-studies/gosite/gosite-intro-banner-mobile.png"
-          }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 600, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
+        # bannerMobile: file(
+        #   relativePath: {
+        #     eq: "case-studies/gosite/gosite-intro-banner-mobile.png"
+        #   }
+        # ) {
+        #   childImageSharp {
+        #     fluid(maxWidth: 600, quality: 100) {
+        #       ...GatsbyImageSharpFluid_withWebp_noBase64
+        #     }
+        #   }
+        # }
 
-        bannerMd: file(
-          relativePath: { eq: "case-studies/gosite/gosite-intro-banner-md.png" }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 1500, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
+        # bannerMd: file(
+        #   relativePath: { eq: "case-studies/gosite/gosite-intro-banner-md.png" }
+        # ) {
+        #   childImageSharp {
+        #     fluid(maxWidth: 1500, quality: 100) {
+        #       ...GatsbyImageSharpFluid_withWebp_noBase64
+        #     }
+        #   }
+        # }
 
-        bannerLg: file(
-          relativePath: { eq: "case-studies/gosite/gosite-intro-banner-lg.png" }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 2000, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
+        # bannerLg: file(
+        #   relativePath: { eq: "case-studies/gosite/gosite-intro-banner-lg.png" }
+        # ) {
+        #   childImageSharp {
+        #     fluid(maxWidth: 2000, quality: 100) {
+        #       ...GatsbyImageSharpFluid_withWebp_noBase64
+        #     }
+        #   }
+        # }
 
-        bannerXl: file(
-          relativePath: {
-            eq: "case-studies/gosite/gosite-intro-banner-desktop.png"
-          }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 2800, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
+        # bannerXl: file(
+        #   relativePath: {
+        #     eq: "case-studies/gosite/gosite-intro-banner-desktop.png"
+        #   }
+        # ) {
+        #   childImageSharp {
+        #     fluid(maxWidth: 2800, quality: 100) {
+        #       ...GatsbyImageSharpFluid_withWebp_noBase64
+        #     }
+        #   }
+        # }
 
         banner2xl: file(
           relativePath: {
@@ -69,34 +70,32 @@ const GoSiteIntro = () => {
           }
         ) {
           childImageSharp {
-            fluid(maxWidth: 5000, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
       }
     `
   )
 
-  const bannerSources = [
-    bannerMobile.childImageSharp.fluid,
-    {
-      ...banner2xl.childImageSharp.fluid,
-      media: `(min-width: 2560px)`
-    },
-    {
-      ...bannerXl.childImageSharp.fluid,
-      media: `(min-width: 1280px)`
-    },
-    {
-      ...bannerLg.childImageSharp.fluid,
-      media: `(min-width: 1024px)`
-    },
-    {
-      ...bannerMd.childImageSharp.fluid,
-      media: `(min-width: 768px)`
-    }
-  ]
+  // const bannerSources = [
+  //   bannerMobile.childImageSharp.fluid,
+  //   {
+  //     ...banner2xl.childImageSharp.fluid,
+  //     media: `(min-width: 2560px)`
+  //   },
+  //   {
+  //     ...bannerXl.childImageSharp.fluid,
+  //     media: `(min-width: 1280px)`
+  //   },
+  //   {
+  //     ...bannerLg.childImageSharp.fluid,
+  //     media: `(min-width: 1024px)`
+  //   },
+  //   {
+  //     ...bannerMd.childImageSharp.fluid,
+  //     media: `(min-width: 768px)`
+  //   }
+  // ]
 
   return (
     <>
@@ -117,12 +116,17 @@ const GoSiteIntro = () => {
           attention.
         </h2>
       </div>
-      <Img
+      <GatsbyImage
+        alt="Design System"
+        className="gosite-intro-img"
+        image={banner2xl}
+      />
+      {/* <Img
         className="gosite-intro-img"
         durationFadeIn={150}
         fadeIn
         fluid={bannerSources}
-      />
+      /> */}
     </>
   )
 }

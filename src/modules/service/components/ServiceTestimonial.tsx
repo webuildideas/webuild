@@ -1,7 +1,8 @@
 // Packages
 import React from 'react'
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
-import Img from 'gatsby-image'
+// import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 // Common
 import { TypeTestimonial } from '@common/types/Testimonial'
@@ -22,6 +23,7 @@ const richTextOptions: Options = {
 }
 
 const ServiceTestimonial = ({ testimonial }: Props) => {
+  console.log(testimonial)
   return (
     <div className="ServiceTestimonial">
       <blockquote className="ServiceTestimonial-quote text-h3">
@@ -36,24 +38,32 @@ const ServiceTestimonial = ({ testimonial }: Props) => {
             {testimonial.role}, <span>{testimonial.company}</span>
           </p>
         </div>
-        {testimonial.mainHeadshot?.fluid ? (
+        {testimonial.mainHeadshot ? (
           <div className="ServiceTestimonial-cite-image hidden md:block">
-            <Img
+            <GatsbyImage
+              alt={`${testimonial.name} Headshot`}
+              image={testimonial.mainHeadshot.gatsbyImageData}
+            />
+            {/* <Img
               alt={`${testimonial.name} Headshot`}
               durationFadeIn={100}
               fadeIn
               fluid={testimonial.mainHeadshot?.fluid}
-            />
+            /> */}
           </div>
         ) : null}
-        {testimonial.featuredHeadshot?.fluid ? (
+        {testimonial.featuredHeadshot ? (
           <div className="ServiceTestimonial-cite-image md:hidden">
-            <Img
+            <GatsbyImage
+              alt={`${testimonial.name} Headshot`}
+              image={testimonial.featuredHeadshot.gatsbyImageData}
+            />
+            {/* <Img
               alt={`${testimonial.name} Headshot`}
               durationFadeIn={100}
               fadeIn
               fluid={testimonial.featuredHeadshot?.fluid}
-            />
+            /> */}
           </div>
         ) : null}
       </div>

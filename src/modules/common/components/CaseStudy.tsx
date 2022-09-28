@@ -2,7 +2,8 @@ import './styles/CaseStudy.css'
 
 // Packages
 import React, { useEffect, useMemo } from 'react'
-import Img from 'gatsby-image'
+// import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
@@ -242,7 +243,7 @@ const CaseStudy = ({
             Read Case Study
           </MotionAniLink>
         </div>
-        {caseStudy?.listingImage?.fluid ? (
+        {caseStudy?.listingImage ? (
           <AniLink
             bg={bgColor}
             className={caseStudyImgClasses}
@@ -256,13 +257,18 @@ const CaseStudy = ({
               initial="imageHidden"
               variants={variants}
             >
-              <Img
+              <GatsbyImage
+                alt={`${caseStudy.name}`}
+                image={caseStudy.listingImage.gatsbyImageData}
+                // imgStyle={{ objectFit: 'contain' }}
+              />
+              {/* <Img
                 alt={`${caseStudy.name}`}
                 durationFadeIn={275}
                 fadeIn
                 fluid={caseStudy.listingImage.fluid}
                 imgStyle={{ objectFit: 'contain' }}
-              />
+              /> */}
             </motion.div>
           </AniLink>
         ) : null}

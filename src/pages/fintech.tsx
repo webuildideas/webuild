@@ -3,7 +3,8 @@ import '@common/styles/pages/fintech.css'
 // Packages
 import React, { useEffect } from 'react'
 import { graphql, PageProps } from 'gatsby'
-import Img from 'gatsby-image'
+// import Img from 'gatsby-image'
+import { StaticImage } from 'gatsby-plugin-image'
 import { useAnimation, Variants, motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 
@@ -36,7 +37,7 @@ import Instagram from '@static/svgs/common/social/instagram.inline.svg'
 import LinkedIn from '@static/svgs/common/social/linkedin.inline.svg'
 
 // Styles
-import { TypeGatsbyChildImageSharpFluid } from '@common/types/GatsbyImage'
+// import { TypeGatsbyChildImageSharpFluid } from '@common/types/GatsbyImage'
 
 interface Props {
   data: {
@@ -47,17 +48,17 @@ interface Props {
     allContentfulService: {
       nodes: TypeService[]
     }
-    mobileGallery: TypeGatsbyChildImageSharpFluid
-    row11: TypeGatsbyChildImageSharpFluid
-    row12: TypeGatsbyChildImageSharpFluid
-    row13: TypeGatsbyChildImageSharpFluid
-    row21: TypeGatsbyChildImageSharpFluid
-    row22: TypeGatsbyChildImageSharpFluid
-    row23: TypeGatsbyChildImageSharpFluid
-    row24: TypeGatsbyChildImageSharpFluid
-    row25: TypeGatsbyChildImageSharpFluid
-    row31: TypeGatsbyChildImageSharpFluid
-    row32: TypeGatsbyChildImageSharpFluid
+    mobileGallery: any
+    // row11: any
+    // row12: any
+    // row13: any
+    // row21: any
+    // row22: any
+    // row23: any
+    // row24: any
+    // row25: any
+    // row31: any
+    // row32: any
   }
   location: PageProps['location']
 }
@@ -134,17 +135,17 @@ const Fintech = ({
     contentfulSeo,
     allContentfulTestimonial: { nodes: testimonials },
     allContentfulService: { nodes: services },
-    mobileGallery,
-    row11,
-    row12,
-    row13,
-    row21,
-    row22,
-    row23,
-    row24,
-    row25,
-    row31,
-    row32
+    mobileGallery
+    // row11,
+    // row12,
+    // row13,
+    // row21,
+    // row22,
+    // row23,
+    // row24,
+    // row25,
+    // row31,
+    // row32
   },
   location
 }: Props) => {
@@ -160,6 +161,7 @@ const Fintech = ({
       animationControls.start('visible')
     }
   })
+
   return (
     <>
       <Meta
@@ -211,7 +213,7 @@ const Fintech = ({
             <div
               className="Fintech-mobile-gallery-sliding"
               style={{
-                backgroundImage: `url(${mobileGallery.childImageSharp.fluid.src})`
+                backgroundImage: `url(${mobileGallery.childImageSharp.gatsbyImageData.images.fallback.src})`
               }}
             />
           </div>
@@ -225,12 +227,16 @@ const Fintech = ({
               initial="image1Hidden"
               variants={variants}
             >
-              <Img
-                durationFadeIn={150}
-                fadeIn
-                fluid={row11.childImageSharp.fluid}
-                imgStyle={{ objectFit: 'cover' }}
+              <StaticImage
+                alt="Gallery Image"
+                src="../static/images/landing-pages/fintech/row-1-1.jpg"
               />
+              {/* <Img
+              durationFadeIn={150}
+              fadeIn
+              fluid={row11.childImageSharp.fluid}
+              imgStyle={{ objectFit: 'cover' }}
+            /> */}
             </motion.div>
 
             <motion.div
@@ -242,12 +248,16 @@ const Fintech = ({
               initial="image2Hidden"
               variants={variants}
             >
-              <Img
-                durationFadeIn={150}
-                fadeIn
-                fluid={row12.childImageSharp.fluid}
-                imgStyle={{ objectFit: 'cover' }}
+              <StaticImage
+                alt="Gallery Image"
+                src="../static/images/landing-pages/fintech/row-1-2.jpg"
               />
+              {/* <Img
+              durationFadeIn={150}
+              fadeIn
+              fluid={row12.childImageSharp.fluid}
+              imgStyle={{ objectFit: 'cover' }}
+            /> */}
             </motion.div>
 
             <motion.div
@@ -259,12 +269,16 @@ const Fintech = ({
               initial="image3Hidden"
               variants={variants}
             >
-              <Img
-                durationFadeIn={150}
-                fadeIn
-                fluid={row13.childImageSharp.fluid}
-                imgStyle={{ objectFit: 'cover' }}
+              <StaticImage
+                alt="Gallery Image"
+                src="../static/images/landing-pages/fintech/row-1-3.jpg"
               />
+              {/* <Img
+              durationFadeIn={150}
+              fadeIn
+              fluid={row13.childImageSharp.fluid}
+              imgStyle={{ objectFit: 'cover' }}
+            /> */}
             </motion.div>
 
             <motion.div
@@ -276,12 +290,17 @@ const Fintech = ({
               initial="image4Hidden"
               variants={variants}
             >
-              <Img
-                durationFadeIn={150}
-                fadeIn
-                fluid={row21.childImageSharp.fluid}
+              <StaticImage
+                alt="Gallery Image"
                 imgStyle={{ objectFit: 'cover' }}
+                src="../static/images/landing-pages/fintech/row-2-1.jpg"
               />
+              {/* <Img
+              durationFadeIn={150}
+              fadeIn
+              fluid={row21.childImageSharp.fluid}
+              imgStyle={{ objectFit: 'cover' }}
+            /> */}
             </motion.div>
 
             <motion.div
@@ -293,12 +312,17 @@ const Fintech = ({
               initial="image5Hidden"
               variants={variants}
             >
-              <Img
-                durationFadeIn={150}
-                fadeIn
-                fluid={row22.childImageSharp.fluid}
+              <StaticImage
+                alt="Gallery Image"
                 imgStyle={{ objectFit: 'cover' }}
+                src="../static/images/landing-pages/fintech/row-2-2.jpg"
               />
+              {/* <Img
+              durationFadeIn={150}
+              fadeIn
+              fluid={row22.childImageSharp.fluid}
+              imgStyle={{ objectFit: 'cover' }}
+            /> */}
             </motion.div>
 
             <motion.div
@@ -310,12 +334,17 @@ const Fintech = ({
               initial="image6Hidden"
               variants={variants}
             >
-              <Img
-                durationFadeIn={150}
-                fadeIn
-                fluid={row23.childImageSharp.fluid}
+              <StaticImage
+                alt="Gallery Image"
                 imgStyle={{ objectFit: 'cover' }}
+                src="../static/images/landing-pages/fintech/row-2-3.jpg"
               />
+              {/* <Img
+              durationFadeIn={150}
+              fadeIn
+              fluid={row23.childImageSharp.fluid}
+              imgStyle={{ objectFit: 'cover' }}
+            /> */}
             </motion.div>
 
             <motion.div
@@ -327,12 +356,17 @@ const Fintech = ({
               initial="image7Hidden"
               variants={variants}
             >
-              <Img
-                durationFadeIn={150}
-                fadeIn
-                fluid={row24.childImageSharp.fluid}
+              <StaticImage
+                alt="Gallery Image"
                 imgStyle={{ objectFit: 'cover' }}
+                src="../static/images/landing-pages/fintech/row-2-4.jpg"
               />
+              {/* <Img
+              durationFadeIn={150}
+              fadeIn
+              fluid={row24.childImageSharp.fluid}
+              imgStyle={{ objectFit: 'cover' }}
+            /> */}
             </motion.div>
 
             <motion.div
@@ -344,12 +378,17 @@ const Fintech = ({
               initial="image8Hidden"
               variants={variants}
             >
-              <Img
-                durationFadeIn={150}
-                fadeIn
-                fluid={row25.childImageSharp.fluid}
+              <StaticImage
+                alt="Gallery Image"
                 imgStyle={{ objectFit: 'cover' }}
+                src="../static/images/landing-pages/fintech/row-2-5.jpg"
               />
+              {/* <Img
+              durationFadeIn={150}
+              fadeIn
+              fluid={row25.childImageSharp.fluid}
+              imgStyle={{ objectFit: 'cover' }}
+            /> */}
             </motion.div>
 
             <motion.div
@@ -361,12 +400,17 @@ const Fintech = ({
               initial="image9Hidden"
               variants={variants}
             >
-              <Img
-                durationFadeIn={150}
-                fadeIn
-                fluid={row31.childImageSharp.fluid}
+              <StaticImage
+                alt="Gallery Image"
                 imgStyle={{ objectFit: 'cover' }}
+                src="../static/images/landing-pages/fintech/row-3-1.jpg"
               />
+              {/* <Img
+              durationFadeIn={150}
+              fadeIn
+              fluid={row31.childImageSharp.fluid}
+              imgStyle={{ objectFit: 'cover' }}
+            /> */}
             </motion.div>
 
             <motion.div
@@ -378,12 +422,17 @@ const Fintech = ({
               initial="image10Hidden"
               variants={variants}
             >
-              <Img
-                durationFadeIn={150}
-                fadeIn
-                fluid={row32.childImageSharp.fluid}
+              <StaticImage
+                alt="Gallery Image"
                 imgStyle={{ objectFit: 'cover' }}
+                src="../static/images/landing-pages/fintech/row-3-2.jpg"
               />
+              {/* <Img
+              durationFadeIn={150}
+              fadeIn
+              fluid={row32.childImageSharp.fluid}
+              imgStyle={{ objectFit: 'cover' }}
+            /> */}
             </motion.div>
           </div>
         </div>
@@ -530,91 +579,69 @@ export const FINTECH_PAGE_QUERY = graphql`
       relativePath: { eq: "landing-pages/fintech/mobile-gallery.png" }
     ) {
       childImageSharp {
-        fluid(maxWidth: 3000, quality: 100) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        gatsbyImageData(layout: FULL_WIDTH)
       }
     }
 
-    row11: file(relativePath: { eq: "landing-pages/fintech/row-1-1.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 2000) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
+    # row11: file(relativePath: { eq: "landing-pages/fintech/row-1-1.jpg" }) {
+    #   childImageSharp {
+    #     gatsbyImageData(layout: FULL_WIDTH)
+    #   }
+    # }
 
-    row12: file(relativePath: { eq: "landing-pages/fintech/row-1-2.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 2000) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
+    # row12: file(relativePath: { eq: "landing-pages/fintech/row-1-2.jpg" }) {
+    #   childImageSharp {
+    #     gatsbyImageData(layout: FULL_WIDTH)
+    #   }
+    # }
 
-    row13: file(relativePath: { eq: "landing-pages/fintech/row-1-3.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 2000) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
+    # row13: file(relativePath: { eq: "landing-pages/fintech/row-1-3.jpg" }) {
+    #   childImageSharp {
+    #     gatsbyImageData(layout: FULL_WIDTH)
+    #   }
+    # }
 
-    row21: file(relativePath: { eq: "landing-pages/fintech/row-2-1.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 2000) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
+    # row21: file(relativePath: { eq: "landing-pages/fintech/row-2-1.jpg" }) {
+    #   childImageSharp {
+    #     gatsbyImageData(layout: FULL_WIDTH)
+    #   }
+    # }
 
-    row22: file(relativePath: { eq: "landing-pages/fintech/row-2-2.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 2000) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
+    # row22: file(relativePath: { eq: "landing-pages/fintech/row-2-2.jpg" }) {
+    #   childImageSharp {
+    #     gatsbyImageData(layout: FULL_WIDTH)
+    #   }
+    # }
 
-    row23: file(relativePath: { eq: "landing-pages/fintech/row-2-3.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 2000) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
+    # row23: file(relativePath: { eq: "landing-pages/fintech/row-2-3.jpg" }) {
+    #   childImageSharp {
+    #     gatsbyImageData(layout: FULL_WIDTH)
+    #   }
+    # }
 
-    row24: file(relativePath: { eq: "landing-pages/fintech/row-2-4.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 2000) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
+    # row24: file(relativePath: { eq: "landing-pages/fintech/row-2-4.jpg" }) {
+    #   childImageSharp {
+    #     gatsbyImageData(layout: FULL_WIDTH)
+    #   }
+    # }
 
-    row25: file(relativePath: { eq: "landing-pages/fintech/row-2-5.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 2000) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
+    # row25: file(relativePath: { eq: "landing-pages/fintech/row-2-5.jpg" }) {
+    #   childImageSharp {
+    #     gatsbyImageData(layout: FULL_WIDTH)
+    #   }
+    # }
 
-    row31: file(relativePath: { eq: "landing-pages/fintech/row-3-1.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 2000) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
+    # row31: file(relativePath: { eq: "landing-pages/fintech/row-3-1.jpg" }) {
+    #   childImageSharp {
+    #     gatsbyImageData(layout: FULL_WIDTH)
+    #   }
+    # }
 
-    row32: file(relativePath: { eq: "landing-pages/fintech/row-3-2.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 2000) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
+    # row32: file(relativePath: { eq: "landing-pages/fintech/row-3-2.jpg" }) {
+    #   childImageSharp {
+    #     gatsbyImageData(layout: FULL_WIDTH)
+    #   }
+    # }
 
     allContentfulTestimonial(
       filter: {
@@ -637,19 +664,13 @@ export const FINTECH_PAGE_QUERY = graphql`
           raw
         }
         mainHeadshot {
-          fluid(maxWidth: 500) {
-            ...GatsbyContentfulFluid_withWebp_noBase64
-          }
+          gatsbyImageData(width: 500)
         }
         headshot {
-          fixed(cropFocus: FACE, height: 150, width: 150) {
-            ...GatsbyContentfulFixed_withWebp_noBase64
-          }
+          gatsbyImageData(width: 150)
         }
         purpleHeadshot {
-          fixed(cropFocus: FACE, height: 150, width: 150) {
-            ...GatsbyContentfulFixed_withWebp_noBase64
-          }
+          gatsbyImageData(width: 150)
         }
       }
     }

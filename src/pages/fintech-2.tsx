@@ -3,7 +3,8 @@ import '@common/styles/pages/fintech-2.css'
 // Packages
 import React, { useCallback, useState } from 'react'
 import { graphql, PageProps } from 'gatsby'
-import Img from 'gatsby-image'
+// import Img from 'gatsby-image'
+import { GatsbyImage, withArtDirection } from 'gatsby-plugin-image'
 
 // Components
 import Meta from '@components/Meta'
@@ -38,7 +39,7 @@ import Triangles from '@static/svgs/landing-pages/fintech-2/triangles.inline.svg
 import Circles from '@static/svgs/landing-pages/fintech-2/circles.inline.svg'
 
 // Styles
-import { TypeGatsbyChildImageSharpFluid } from '@common/types/GatsbyImage'
+// import { TypeGatsbyChildImageSharpFluid } from '@common/types/GatsbyImage'
 
 interface Props {
   data: {
@@ -49,11 +50,11 @@ interface Props {
     allContentfulService: {
       nodes: TypeService[]
     }
-    heroMobile: TypeGatsbyChildImageSharpFluid
-    heroMd: TypeGatsbyChildImageSharpFluid
-    heroLg: TypeGatsbyChildImageSharpFluid
-    heroXl: TypeGatsbyChildImageSharpFluid
-    hero2Xl: TypeGatsbyChildImageSharpFluid
+    heroMobile: any
+    heroMd: any
+    heroLg: any
+    heroXl: any
+    hero2Xl: any
   }
   location: PageProps['location']
 }
@@ -84,25 +85,47 @@ const Fintech = ({
     setEmail(event.target.value)
   }, [])
 
-  const heroImgSrcs = [
-    heroMobile.childImageSharp.fluid,
-    {
-      ...hero2Xl.childImageSharp.fluid,
-      media: `(min-width: 2560px)`
-    },
-    {
-      ...heroXl.childImageSharp.fluid,
-      media: `(min-width: 1280px)`
-    },
-    {
-      ...heroLg.childImageSharp.fluid,
-      media: `(min-width: 1024px)`
-    },
-    {
-      ...heroMd.childImageSharp.fluid,
-      media: `(min-width: 768px)`
-    }
-  ]
+  // const heroImgSrcs = [
+  //   heroMobile.childImageSharp.fluid,
+  //   {
+  //     ...hero2Xl.childImageSharp.fluid,
+  //     media: `(min-width: 2560px)`
+  //   },
+  //   {
+  //     ...heroXl.childImageSharp.fluid,
+  //     media: `(min-width: 1280px)`
+  //   },
+  //   {
+  //     ...heroLg.childImageSharp.fluid,
+  //     media: `(min-width: 1024px)`
+  //   },
+  //   {
+  //     ...heroMd.childImageSharp.fluid,
+  //     media: `(min-width: 768px)`
+  //   }
+  // ]
+
+  const heroImages = withArtDirection(
+    heroMobile.childImageSharp.gatsbyImageData,
+    [
+      {
+        media: `(min-width: 2560px)`,
+        image: hero2Xl.childImageSharp.gatsbyImageData
+      },
+      {
+        image: heroXl.childImageSharp.gatsbyImageData,
+        media: `(min-width: 1280px)`
+      },
+      {
+        image: heroLg.childImageSharp.gatsbyImageData,
+        media: `(min-width: 1024px)`
+      },
+      {
+        image: heroMd.childImageSharp.gatsbyImageData,
+        media: `(min-width: 768px)`
+      }
+    ]
+  )
 
   return (
     <>
@@ -135,12 +158,17 @@ const Fintech = ({
               </Button>
             </div>
           </div>
-          <Img
+          <GatsbyImage
+            alt="Fintech Design Illustration"
+            className="Fintech__hero-image"
+            image={heroImages}
+          />
+          {/* <Img
             className="Fintech__hero-image"
             durationFadeIn={150}
             fadeIn
             fluid={heroImgSrcs}
-          />
+          /> */}
         </div>
 
         <div className="Fintech__clients">
@@ -352,9 +380,10 @@ export const FINTECH_ALT_PAGE_QUERY = graphql`
       relativePath: { eq: "landing-pages/fintech-2/fintech-2-hero-mobile.png" }
     ) {
       childImageSharp {
-        fluid(maxWidth: 1000, quality: 100) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        # fluid(maxWidth: 1000, quality: 100) {
+        #   ...GatsbyImageSharpFluid_withWebp_noBase64
+        # }
+        gatsbyImageData(width: 1000, layout: FULL_WIDTH)
       }
     }
 
@@ -362,9 +391,10 @@ export const FINTECH_ALT_PAGE_QUERY = graphql`
       relativePath: { eq: "landing-pages/fintech-2/fintech-2-hero-md.png" }
     ) {
       childImageSharp {
-        fluid(maxWidth: 2200, quality: 100) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        # fluid(maxWidth: 2200, quality: 100) {
+        #   ...GatsbyImageSharpFluid_withWebp_noBase64
+        # }
+        gatsbyImageData(width: 2200, layout: FULL_WIDTH)
       }
     }
 
@@ -372,9 +402,10 @@ export const FINTECH_ALT_PAGE_QUERY = graphql`
       relativePath: { eq: "landing-pages/fintech-2/fintech-2-hero-lg.png" }
     ) {
       childImageSharp {
-        fluid(maxWidth: 3100, quality: 100) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        # fluid(maxWidth: 3100, quality: 100) {
+        #   ...GatsbyImageSharpFluid_withWebp_noBase64
+        # }
+        gatsbyImageData(width: 3100, layout: FULL_WIDTH)
       }
     }
 
@@ -382,9 +413,10 @@ export const FINTECH_ALT_PAGE_QUERY = graphql`
       relativePath: { eq: "landing-pages/fintech-2/fintech-2-hero-xl.png" }
     ) {
       childImageSharp {
-        fluid(maxWidth: 4200, quality: 100) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        # fluid(maxWidth: 4200, quality: 100) {
+        #   ...GatsbyImageSharpFluid_withWebp_noBase64
+        # }
+        gatsbyImageData(width: 4200, layout: FULL_WIDTH)
       }
     }
 
@@ -392,9 +424,7 @@ export const FINTECH_ALT_PAGE_QUERY = graphql`
       relativePath: { eq: "landing-pages/fintech-2/fintech-2-hero-2xl.png" }
     ) {
       childImageSharp {
-        fluid(maxWidth: 6000, quality: 100) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        gatsbyImageData(width: 6000, layout: FULL_WIDTH)
       }
     }
 
@@ -419,19 +449,13 @@ export const FINTECH_ALT_PAGE_QUERY = graphql`
           raw
         }
         mainHeadshot {
-          fluid(maxWidth: 500) {
-            ...GatsbyContentfulFluid_withWebp_noBase64
-          }
+          gatsbyImageData(width: 500)
         }
         headshot {
-          fixed(cropFocus: FACE, height: 150, width: 150) {
-            ...GatsbyContentfulFixed_withWebp_noBase64
-          }
+          gatsbyImageData(width: 150)
         }
         purpleHeadshot {
-          fixed(cropFocus: FACE, height: 150, width: 150) {
-            ...GatsbyContentfulFixed_withWebp_noBase64
-          }
+          gatsbyImageData(width: 150)
         }
       }
     }

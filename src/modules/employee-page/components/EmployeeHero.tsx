@@ -1,7 +1,8 @@
 import React from 'react'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
-import Img from 'gatsby-image'
-import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
+// import Img from 'gatsby-image'
+// import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 // Components
 import LocationIcon from '@static/svgs/employee-page/location.inline.svg'
@@ -15,7 +16,7 @@ interface Props {
   name: string
   role: string
   location: string
-  headshot: TypeGatsbyImageFluid
+  headshot: any
   illustration: string
 }
 
@@ -62,7 +63,8 @@ const EmployeeHero = ({
             </div>
           </div>
           <div className="employee-hero__images">
-            <Img fadeIn fluid={headshot.fluid} />
+            {/* <Img fadeIn fluid={headshot.fluid} /> */}
+            <GatsbyImage alt={`${name}`} image={headshot.gatsbyImageData} />
           </div>
         </div>
       </div>

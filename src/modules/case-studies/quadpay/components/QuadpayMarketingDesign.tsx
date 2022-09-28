@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 
 // Svgs
 import Marketing from '@static/svgs/service/circle/marketing-circle.inline.svg'
@@ -13,45 +13,30 @@ const QuadpayMarketingDesign = () => {
     marketingPhoneTabDesktop,
     marketingSketch,
     marketingDesign
-  } = useStaticQuery(graphql`
-    query {
-      marketingPhoneTabDesktop: file(
-        relativePath: {
-          eq: "case-studies/quadpay/quadpay-marketing-phone-tab-desk.jpg"
-        }
-      ) {
-        childImageSharp {
-          fluid(maxWidth: 600) {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
-          }
-        }
-      }
-
-      marketingSketch: file(
-        relativePath: {
-          eq: "case-studies/quadpay/quadpay-marketing-sketch.jpg"
-        }
-      ) {
-        childImageSharp {
-          fluid(maxWidth: 600) {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
-          }
-        }
-      }
-
-      marketingDesign: file(
-        relativePath: {
-          eq: "case-studies/quadpay/quadpay-marketing-design.png"
-        }
-      ) {
-        childImageSharp {
-          fluid(maxWidth: 3500) {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
-          }
-        }
-      }
+  } = useStaticQuery(graphql`{
+  marketingPhoneTabDesktop: file(
+    relativePath: {eq: "case-studies/quadpay/quadpay-marketing-phone-tab-desk.jpg"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(width: 600, placeholder: NONE, layout: CONSTRAINED)
     }
-  `)
+  }
+  marketingSketch: file(
+    relativePath: {eq: "case-studies/quadpay/quadpay-marketing-sketch.jpg"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(width: 600, placeholder: NONE, layout: CONSTRAINED)
+    }
+  }
+  marketingDesign: file(
+    relativePath: {eq: "case-studies/quadpay/quadpay-marketing-design.png"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(placeholder: NONE, layout: FULL_WIDTH)
+    }
+  }
+}
+`)
 
   return (
     <div className="QuadpayMarketingDesign">
@@ -75,30 +60,27 @@ const QuadpayMarketingDesign = () => {
         </div>
 
         <div className="QuadpayMarektingDesign-images">
-          <Img
+          <GatsbyImage
+            image={marketingPhoneTabDesktop.childImageSharp.gatsbyImageData}
             className="QuadpayMarektingDesign-ptd"
             durationFadeIn={150}
-            fadeIn
-            fluid={marketingPhoneTabDesktop.childImageSharp.fluid}
-          />
+            fadeIn />
 
-          <Img
+          <GatsbyImage
+            image={marketingSketch.childImageSharp.gatsbyImageData}
             className="QuadpayMarektingDesign-sketch"
             durationFadeIn={150}
-            fadeIn
-            fluid={marketingSketch.childImageSharp.fluid}
-          />
+            fadeIn />
         </div>
       </div>
 
       <div className="QuadpayMarektingDesign-banner">
         <div className="QuadpayMarektingDesign-container">
-          <Img
+          <GatsbyImage
+            image={marketingDesign.childImageSharp.gatsbyImageData}
             className="QuadpayMarektingDesign-img block"
             durationFadeIn={150}
-            fadeIn
-            fluid={marketingDesign.childImageSharp.fluid}
-          />
+            fadeIn />
         </div>
 
         <div className="QuadpayMarektingDesign-caption">
@@ -108,7 +90,7 @@ const QuadpayMarketingDesign = () => {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default QuadpayMarketingDesign

@@ -5,11 +5,11 @@ import Arrow from '@static/svgs/cta-arrow.inline.svg'
 
 import { TypeInsightTypeIconConfig } from '@modules/common/components/configs/InsightTags'
 import { TypeInsightType } from '@common/types/Insight'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 // Styles
 import './styles/ListingAd.css'
-import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
+// import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
 
 export interface TypeListingAd {
   backgroundColor: string
@@ -20,7 +20,7 @@ export interface TypeListingAd {
   ctaText: string
   headline: string
   id: string
-  image: TypeGatsbyImageFluid
+  image: any
   resourceType: TypeInsightType
 }
 
@@ -30,9 +30,8 @@ interface Props {
 
 const ListingAd = ({ ad }: Props) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { name: typeName, icon: TypeIcon } = TypeInsightTypeIconConfig[
-    ad.resourceType
-  ]
+  const { name: typeName, icon: TypeIcon } =
+    TypeInsightTypeIconConfig[ad.resourceType]
 
   const transition = {
     type: 'tween',
@@ -81,6 +80,7 @@ const ListingAd = ({ ad }: Props) => {
       : ad.backgroundColor === `black`
       ? `text-white`
       : `text-deepViolet`
+
   return (
     <motion.article {...animations} className={`listing-ad ${backgroundColor}`}>
       <div className="listing-ad__content">
@@ -105,7 +105,11 @@ const ListingAd = ({ ad }: Props) => {
       </div>
       <div className="listing-ad__image">
         <AniLink cover direction="right" duration={1.25} to={`/${link}`}>
-          <Img className="h-full lg:h-auto" fadeIn fluid={ad.image.fluid} />
+          <GatsbyImage
+            alt="listing ad illustration"
+            className="h-full lg:h-auto"
+            image={ad.image.gatsbyImageData}
+          />
         </AniLink>
       </div>
     </motion.article>
