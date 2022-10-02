@@ -7,7 +7,7 @@
 
 
 [context.deploy-preview.environment]
-  GATSBY_CONTENTFUL_ENVIRONMENT = 'blog-components'
+  GATSBY_CONTENTFUL_ENVIRONMENT = 'master'
 
 [context.branch-deploy.environment]
-  GATSBY_CONTENTFUL_ENVIRONMENT = 'blog-components'
+  GATSBY_CONTENTFUL_ENVIRONMENT = 'master'

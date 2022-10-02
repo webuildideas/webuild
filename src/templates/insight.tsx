@@ -432,20 +432,22 @@ export const query = graphql`
         raw
         references {
           __typename
-          ... on ContentfulOrderedList {
+          ... on ContentfulContentUpgrade {
             contentful_id
-            orderedListType
-            listItems {
-              image {
-                file {
-                  url
-                }
+            id
+            blurb {
+              blurb
+            }
+            formImage {
+              file {
+                url
               }
-              title {
-                raw
-              }
-              content {
-                raw
+            }
+            simpleFormTitle
+            title
+            upgradeContent {
+              file {
+                url
               }
             }
           }
@@ -466,22 +468,20 @@ export const query = graphql`
               }
             }
           }
-          ... on ContentfulContentUpgrade {
+          ... on ContentfulOrderedList {
             contentful_id
-            id
-            blurb {
-              blurb
-            }
-            formImage {
-              file {
-                url
+            orderedListType
+            listItems {
+              image {
+                file {
+                  url
+                }
               }
-            }
-            simpleFormTitle
-            title
-            upgradeContent {
-              file {
-                url
+              title {
+                raw
+              }
+              content {
+                raw
               }
             }
           }
