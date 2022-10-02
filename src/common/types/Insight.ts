@@ -32,6 +32,7 @@ export type TypeInsightTopic =
 
 export interface TypeInsight {
   id: string
+  newStyles?: boolean
   isGated: boolean
   type: TypeInsightType
   title: string

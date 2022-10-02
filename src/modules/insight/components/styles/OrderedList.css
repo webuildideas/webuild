@@ -1,0 +1,279 @@
+/** INLINE OL STYLES **/
+.Insight-ol-inline {
+  list-style: none;
+  counter-reset: olInlineCount;
+  width: calc(100% - 5px);
+  max-width: 580px;
+  @apply my-6;
+  @apply mx-auto;
+
+  @screen xl {
+    max-width: 750px;
+  }
+
+  b {
+    @apply font-bold;
+  }
+}
+
+.Insight-ol-inline > li {
+  counter-increment: olInlineCount;
+  @apply flex;
+  @apply items-start;
+  @apply flex-nowrap;
+  @apply mb-8;
+
+  &:before {
+    content: counter(olInlineCount) ". ";
+    height: 100%;
+    width: 25px;
+    @apply flex-shrink-0;
+    @apply relative;
+    @apply block;
+    @apply font-bold;
+    @apply text-xl;
+    @apply leading-relaxed;
+    @apply tracking-wider;
+
+    @media (min-width: 426px) and (max-width: 899px) {
+      @apply text-lg;
+    }
+
+    @media (max-width: 425px) {
+      @apply text-base;
+    }
+  }
+}
+
+.Insight-ol-inline > li {
+  p {
+    @apply block;
+    @apply mb-0;
+    @apply mx-0;
+    white-space: pre-wrap;
+  }
+
+  ul {
+    @apply flex-shrink-0;
+    @apply mb-0;
+  }
+
+  ol {
+    @apply flex-shrink-0;
+  }
+}
+
+.Insight-ol-inline ul {
+  width: 97.5% !important;
+}
+
+.Insight-ol-inline__content ul li {
+
+  b {
+    text-transform: none !important;
+    display: inline !important;
+  }
+}
+
+.Insight-ol-inline ul li + li {
+  @apply mt-4;
+}
+
+
+/** BLOCK TITLE STYLES **/
+.Insight-ol-bt {
+  list-style: none;
+  counter-reset: olBtCount;
+  width: calc(100% - 5px);
+  max-width: 580px;
+  @apply my-6;
+  @apply mx-auto;
+
+  @screen xl {
+    max-width: 750px;
+  }
+}
+
+.Insight-ol-bt__img {
+  @apply mb-8;
+}
+
+.Insight-ol-bt > li {
+  counter-increment: olBtCount;
+  @apply flex;
+  @apply items-start;
+  @apply flex-wrap;
+  @apply mb-8;
+
+  @apply md:mb-18;
+
+  b {
+    @apply font-bold;
+  }
+
+  p {
+    @apply block;
+    @apply mx-0;
+    @apply mb-0;
+    white-space: pre-wrap;
+  }
+
+  p + p {
+    @apply mt-6;
+  }
+
+  ul {
+    @apply flex-shrink-0;
+    @apply mb-0;
+  }
+
+  ol {
+    @apply flex-shrink-0;
+  }
+}
+
+.Insight-ol-bt > li .Insight-ol-bt__title b {
+  @apply font-black;
+}
+
+.Insight-ol-bt.Insight-ol-bt .Insight-ol-bt__content ul {
+  width: 97.5%;
+  & > li {
+    @apply mb-4;
+  }
+}
+
+.Insight-ol-bt__content {
+  @apply flex;
+  @apply items-start;
+  @apply flex-nowrap;
+
+
+  &:before {
+    content: counter(olBtCount) ". ";
+
+    @apply relative;
+    @apply inline-block;
+    @apply mr-2;
+    @apply font-bold;
+    @apply tracking-wider;
+    @apply text-3xl;
+    line-height: 1;
+    width: auto;
+    top: -1px;
+
+    @apply md:text-4xl;
+
+    @screen md {
+      top: -5px;
+    }
+
+    @media (max-width: 425px) {
+      @apply text-xl;
+    }
+  }
+}
+
+.Insight-ol-bt__title {
+  @apply relative;
+  @apply w-full;
+  @apply mb-2;
+
+  p {
+    display: none !important;
+  }
+
+  h4 {
+    @apply inline;
+    margin-left: initial;
+    margin-right: initial;
+    width: auto;
+  }
+}
+
+/** STEPS STYLES **/
+.Insight-ol-steps {
+  list-style: none;
+  counter-reset: olStepsCount;
+  max-width: 580px;
+  @apply my-6;
+  @apply mx-auto;
+
+  @screen xl {
+    max-width: 750px;
+  }
+}
+
+.Insight-ol-steps__img {
+  @apply mb-8;
+}
+
+.Insight-ol-steps > li {
+  counter-increment: olStepsCount;
+  @apply flex;
+  @apply items-start;
+  @apply flex-wrap;
+  @apply mb-8;
+
+  @apply md:mb-18;
+
+  b {
+    @apply font-bold;
+  }
+
+  p {
+    @apply block;
+    @apply mb-0;
+    @apply mx-0;
+    white-space: pre-wrap;
+  }
+
+  p + p {
+    @apply mt-6;
+  }
+
+  ul {
+    @apply flex-shrink-0;
+    @apply mb-0;
+  }
+
+  ol {
+    @apply flex-shrink-0;
+  }
+}
+
+.Insight-ol-steps__title {
+  @apply w-full;
+  @apply mb-2;
+
+  p {
+    @apply hidden;
+  }
+
+  h4 {
+    margin-left: initial;
+    margin-right: initial;
+    width: auto;
+    @apply inline;
+  }
+
+  &:before {
+    content: "STEP " counter(olStepsCount) ". ";
+
+    @apply flex-shrink-0;
+    @apply relative;
+    @apply inline-block;
+    @apply mr-2;
+    @apply font-bold;
+    @apply tracking-wider;
+    @apply text-3xl;
+    line-height: 1;
+    width: auto;
+
+    @apply md:text-4xl;
+
+    @media (max-width: 425px) {
+      @apply text-xl;
+    }
+  }
+}

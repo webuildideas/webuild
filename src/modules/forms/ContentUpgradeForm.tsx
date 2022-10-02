@@ -76,6 +76,12 @@ const ContentUpgradeForm = ({
     [`${className}`]: !!className
   })
 
+  const formImageClassNames = classNames({
+    'ContentUpgrade-image': true,
+    'ContentUpgrade-image__spaced': !!contentUpgrade.formImageWithSpacing,
+    'mb-6': true
+  })
+
   const initialFormValues: FormValues = {
     'E-mail Address': '',
     Country: '',
@@ -193,7 +199,7 @@ const ContentUpgradeForm = ({
                     {contentUpgrade.formImage ? (
                       <img
                         alt="illustration"
-                        className="ContentUpgrade-image mb-6"
+                        className={formImageClassNames}
                         src={contentUpgrade.formImage.file.url}
                       />
                     ) : null}

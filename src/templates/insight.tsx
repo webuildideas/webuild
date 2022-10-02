@@ -1,7 +1,7 @@
 import '@common/styles/templates/insight.css'
 
 // Packages
-import React, { useEffect, useRef, useState, useContext } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import { BLOCKS, INLINES } from '@contentful/rich-text-types'
 import { Options } from '@contentful/rich-text-react-renderer'
@@ -14,7 +14,13 @@ import Img from 'gatsby-image'
 import { classNames } from '@common/utils/classNames'
 import { TypeInsight } from '@common/types/Insight'
 import { getEstimatedReadingTime } from '@modules/insight/utils'
-// import AdsContext from '@common/ads/AdsContext'
+import { ImageStylingEnum, isWebuildImage } from '@common/types/Image'
+import { isUnorderedList } from '@common/types/UnorderedList'
+import { blocksOptions } from '@modules/insight/rich-text-options'
+import { isOrderedList } from '@common/types/OrderedList'
+import { isGatsbyImageFluid } from '@common/types/GatsbyImage'
+import { isContentUpgrade } from '@common/types/ContentUpgrade'
+import { isQuote } from '@common/types/Quote'
 
 // Components
 import Meta from '@components/Meta'
@@ -30,6 +36,9 @@ import ContentUpgradeForm from '@modules/forms/ContentUpgradeForm'
 import MonthlyNewsletterForm from '@modules/forms/MonthlyNewsletterForm'
 import Button from '@modules/common/components/Button'
 import SidebarAd from '@common/ads/SidebarAd'
+import OrderedList from '@modules/insight/components/OrderedList'
+import UnorderedList from '@modules/insight/components/UnorderedList'
+import Quote from '@modules/insight/components/Quote'
 
 // Atoms
 import { userGatedPostConversionsAtom } from '@modules/insight/atoms/userGatedPostConversions'
@@ -57,44 +66,106 @@ const options: Options = {
         </div>
       )
     },
+
     [BLOCKS.EMBEDDED_ENTRY]: (node) => {
       if (!node.data.target) {
-        return
+        return null
       }
 
-      if (node.data.target.__typename === 'ContentfulImage') {
-        return (
-          <div className="Insight-img">
-            <Img
-              alt={node.data.target.altText}
-              className={
-                node.data.target.imageType
-                  ? node.data.target.imageType.join(' ')
-                  : undefined
-              }
-              durationFadeIn={125}
-              fadeIn
-              fluid={node.data.target.asset.fluid}
-            />
-            {node.data.target.caption ? (
-              <p className="text-caption">{node.data.target.caption}</p>
-            ) : null}
-          </div>
-        )
+      const { target: entry } = node.data
+
+      if (isOrderedList(entry)) {
+        return <OrderedList orderedList={entry} />
       }
 
-      if (node.data.target.__typename === 'ContentfulContentUpgrade') {
+      if (isUnorderedList(entry)) {
+        return <UnorderedList unorderedList={entry} />
+      }
+
+      if (isWebuildImage(entry)) {
+        const { imageStyling, imageType, altText, caption, asset } = entry
+
+        const imageContainerClassNames = classNames({
+          'Insight-img': true,
+          'full-width': imageStyling === ImageStylingEnum.FULL_WIDTH,
+          'left-aligned': imageStyling === ImageStylingEnum.LEFT_ALIGNED,
+          'center-aligned': imageStyling === ImageStylingEnum.CENTER_ALIGNED
+        })
+
+        const imageClassNames = classNames({
+          'Insight-img--full-width':
+            imageStyling === ImageStylingEnum.FULL_WIDTH,
+          'Insight-img--left-aligned':
+            imageStyling === ImageStylingEnum.LEFT_ALIGNED,
+          'Insight-img--center-aligned':
+            imageStyling === ImageStylingEnum.CENTER_ALIGNED
+        })
+
+        switch (imageStyling) {
+          case ImageStylingEnum.CENTER_ALIGNED:
+          case ImageStylingEnum.LEFT_ALIGNED:
+          case ImageStylingEnum.FULL_WIDTH:
+            return (
+              <div className={imageContainerClassNames}>
+                {isGatsbyImageFluid(asset) ? (
+                  <Img
+                    alt={altText}
+                    className={imageClassNames}
+                    durationFadeIn={125}
+                    fadeIn
+                    fluid={asset.fluid}
+                  />
+                ) : (
+                  <img
+                    alt={altText}
+                    className={imageClassNames}
+                    src={asset.file.url}
+                  />
+                )}
+                {caption ? <p className="text-caption">{caption}</p> : null}
+              </div>
+            )
+          default:
+            return (
+              <div className="Insight-img">
+                {isGatsbyImageFluid(asset) ? (
+                  <Img
+                    alt={altText}
+                    className={imageType ? imageType.join(' ') : undefined}
+                    durationFadeIn={125}
+                    fadeIn
+                    fluid={asset.fluid}
+                  />
+                ) : (
+                  <img
+                    alt={altText}
+                    className={imageType ? imageType.join(' ') : undefined}
+                    src={asset.file.url}
+                  />
+                )}
+                {caption ? <p className="text-caption">{caption}</p> : null}
+              </div>
+            )
+        }
+      }
+
+      if (isContentUpgrade(entry)) {
         return (
           <ContentUpgradeForm
             className="mt-16 mb-8 md:mb-0"
-            contentUpgrade={node.data.target}
+            contentUpgrade={entry}
             isSimple
           />
         )
       }
 
+      if (isQuote(entry)) {
+        return <Quote quote={entry} />
+      }
+
       return null
     },
+
     [INLINES.EMBEDDED_ENTRY]: (node) => {
       if (!node.data.target) {
         return
@@ -116,27 +187,7 @@ const options: Options = {
         </span>
       )
     },
-    [BLOCKS.HEADING_2]: (_, children) => (
-      <h2 className="Insight-copy Insight-h2 text-h2">{children}</h2>
-    ),
-    [BLOCKS.HEADING_3]: (_, children) => (
-      <h3 className="Insight-copy Insight-h3 text-h3 font-extrabold">
-        {children}
-      </h3>
-    ),
-    [BLOCKS.HEADING_4]: (_, children) => (
-      <h4 className="Insight-copy Insight-h4 text-h4">{children}</h4>
-    ),
-    [BLOCKS.PARAGRAPH]: (_, children) => (
-      <p className="Insight-copy Insight-paragraph text-body">{children}</p>
-    ),
-    [BLOCKS.QUOTE]: (_, children) => {
-      return (
-        <blockquote className="Insight-copy Insight-blockquote text-h2">
-          {children}
-        </blockquote>
-      )
-    }
+    ...blocksOptions.renderNode
   }
 }
 
@@ -159,7 +210,6 @@ const Insight = ({
   const userHasCompletedContentUpgrade = userContentUpgradeConversions.includes(
     insight.contentUpgrade ? insight.contentUpgrade.title : ''
   )
-  // const { SidebarAds } = useContext(AdsContext)
 
   const showReadTime = !(
     insight.type === 'Resource' || insight.type === 'eBook'
@@ -170,6 +220,13 @@ const Insight = ({
   const articleClassNames = classNames({
     'Insight-article': true,
     'Insight-article-locked': isLocked
+  })
+
+  const insightClassNames = classNames({
+    'Insight-container': true,
+    [`Insight-type-${insight.type.toLowerCase()}`]: true,
+    'Insight--old-styles': !insight.newStyles,
+    'Insight--new-styles': insight.newStyles ? insight.newStyles : false
   })
 
   /**
@@ -207,6 +264,7 @@ const Insight = ({
       setEstReadTime(readTime)
     }
   }, [articleRef])
+
   return (
     <>
       <Meta
@@ -216,10 +274,7 @@ const Insight = ({
         shareTitle={insight.title}
         title={insight.seoTitle ?? insight.title}
       />
-      <div
-        className={`Insight-container Insight-type-${insight.type.toLowerCase()}`}
-        id="insight-container"
-      >
+      <div className={insightClassNames} id="insight-container">
         {insight?.heroIllustration?.file?.url ? (
           <div className="Insight-hero">
             <img
@@ -339,6 +394,7 @@ export const query = graphql`
   query insightQuery($slug: String!, $topics: [String]) {
     contentfulInsight(slug: { eq: $slug }) {
       id
+      newStyles
       isGated
       type
       topics
@@ -376,6 +432,40 @@ export const query = graphql`
         raw
         references {
           __typename
+          ... on ContentfulOrderedList {
+            contentful_id
+            orderedListType
+            listItems {
+              image {
+                file {
+                  url
+                }
+              }
+              title {
+                raw
+              }
+              content {
+                raw
+              }
+            }
+          }
+          ... on ContentfulUnorderedList {
+            contentful_id
+            unorderedListType
+            listItems {
+              image {
+                file {
+                  url
+                }
+              }
+              title {
+                raw
+              }
+              content {
+                raw
+              }
+            }
+          }
           ... on ContentfulContentUpgrade {
             contentful_id
             id
@@ -395,13 +485,25 @@ export const query = graphql`
               }
             }
           }
+          ... on ContentfulQuote {
+            contentful_id
+            quoteType
+            quote {
+              raw
+            }
+            source
+          }
           ... on ContentfulImage {
             id
             contentful_id
             caption
             altText
+            imageStyling
             imageType
             asset {
+              file {
+                url
+              }
               fluid(maxWidth: 800) {
                 ...GatsbyContentfulFluid_withWebp_noBase64
               }
@@ -441,6 +543,7 @@ export const query = graphql`
             url
           }
         }
+        formImageWithSpacing
         simpleFormTitle
         title
         resourceFormTitle

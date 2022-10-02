@@ -1,0 +1,98 @@
+/** BLOCK TITLE STYLES **/
+.Insight-ul-bt {
+  list-style-type: disc;
+  font-size: 20px;
+  max-width: 540px;
+  @apply mx-auto;
+
+  @apply px-4;
+  @apply md:px-0;
+
+  @screen xl {
+    max-width: calc(100% - 48px);
+  }
+
+  li + li {
+    @apply mt-8;
+  }
+
+  h4 {
+    max-width: 100%;
+  }
+
+  p {
+    max-width: 100%;
+  }
+}
+
+.Insight-ul-bt__title {
+  @apply mb-2;
+
+  p {
+    @apply hidden;
+  }
+
+  h4 {
+    @apply mb-0;
+  }
+}
+
+.Insight-ul-bt__img {
+  @apply pt-8;
+  @apply mb-4;
+}
+
+/** BLOCK TITLE NO LIST STYLE STYLES **/
+.Insight-ul-btns {
+  list-style-type: none;
+
+  li + li {
+    @apply mt-8;
+  }
+}
+
+.Insight-ul-btns__title {
+  @apply mb-2;
+
+  p {
+    @apply hidden;
+  }
+
+  h4 {
+    @apply mb-0;
+  }
+}
+
+.Insight-ul-btns li ul li p b {
+  @apply inline !important;
+  text-transform: none !important;
+}
+
+
+/** BLOCK TITLE NO TITLE **/
+
+.Insight-ul-no-title {
+  list-style-type: disc;
+  font-size: 20px;
+  max-width: 540px;
+  @apply mx-auto;
+
+  @apply px-4;
+  @apply md:px-0;
+
+  @screen xl {
+    max-width: calc(100% - 48px);
+  }
+
+  li + li {
+    @apply mt-8;
+  }
+
+  h4 {
+    max-width: 100%;
+  }
+
+  p {
+    max-width: 100%;
+  }
+}

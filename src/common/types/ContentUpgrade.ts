@@ -11,5 +11,16 @@ export interface TypeContentUpgrade {
     resourceBlurb: string
   }
   formImage?: TypeContentfulAsset
+  formImageWithSpacing?: boolean
   upgradeContent: TypeContentfulAsset
+}
+
+export function isContentUpgrade(value: unknown): value is TypeContentUpgrade {
+  return (
+    typeof value === 'object' &&
+    value !== null &&
+    'title' in value &&
+    'simpleFormTitle' in value &&
+    'upgradeContent' in value
+  )
 }
