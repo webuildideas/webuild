@@ -44,7 +44,7 @@ module.exports = {
           google: [
             {
               family: `Overpass`,
-              variants: [`400`, `800`, `900`]
+              variants: [`300`, `400`, `800`, `900`]
             },
             {
               family: `Noto Serif SC`,

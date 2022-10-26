@@ -49,6 +49,7 @@ module.exports = {
       white: '#ffffff',
       transparent: 'transparent',
       current: 'currentColor',
+      newBlack: '#262627',
 
       // Primary Colors
       deepViolet: '#340096',
@@ -69,6 +70,7 @@ module.exports = {
       beauBlue: '#DCEAFF',
       snow: '#F9F9F9',
       mischka: '#F2F0FF',
+      brightBlue: '#F0F6FF',
 
       // Gray Scale
       gray: {
@@ -219,6 +221,9 @@ module.exports = {
       58: '232px',
       59: '236px',
       60: '240px'
+    },
+    right: {
+      '4/5': '80%'
     }
   }
 }
