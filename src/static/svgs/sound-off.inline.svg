@@ -1,5 +1,5 @@
  <svg
-  className="w-12 h-auto lg:w-20"
+  className="w-full h-auto"
   fill="none"
   viewBox="0 0 48 48"
   xmlns="http://www.w3.org/2000/svg"

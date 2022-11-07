@@ -17,7 +17,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Img from 'gatsby-image'
 import TestimonialSlider from '@modules/new-home/TestimonialSlider'
 import NewFooter from '@modules/common/components/NewFooter'
-
+import { Helmet } from 'react-helmet'
 import videoSrc from '@static/videos/Showreel.mp4'
 
 import '@common/styles/pages/new-home.css'
@@ -220,8 +220,9 @@ const NewHome = ({ location }) => {
   }, [])
 
   return (
-    <div className="home z-10">
+    <div className="home new-home z-10 absolute top-0 w-full overflow-hidden">
       <Meta location={location} title="New Home" />
+
       <section
         ref={heroRef}
         className="home-hero bg-newBlack text-white pt-18 pb-26 lg:pt-32"
@@ -258,7 +259,7 @@ const NewHome = ({ location }) => {
             <div className="curtain absolute top-0 left-0 w-full h-full bg-newBlack" />
           </div>
           <button
-            className="m-auto border-none block mt-6 relative md:absolute md:mt-0 md:top-8 md:right-3/4 md:mr-8 lg:top-22"
+            className="m-auto border-none block mt-6 relative md:absolute md:mt-0 md:top-8 md:right-3/4 md:mr-8 lg:top-22 w-12 lg:w-20"
             onClick={handleVolumeControl}
             type="button"
           >

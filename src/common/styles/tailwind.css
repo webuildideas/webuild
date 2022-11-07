@@ -8,3 +8,8 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* body.transparent header.Nav {
+  background: transparent;
+  color: white;
+} */
