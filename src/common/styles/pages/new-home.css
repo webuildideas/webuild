@@ -1,0 +1,44 @@
+.results__content {
+  h2 {
+    @screen lg {
+      width: 280px;
+    }
+  }
+  p {
+    @screen lg {
+      /* width: 500px; */
+      @apply ml-14;
+    }
+  }
+}
+
+.results-container {
+  padding-left: calc((100vw - 1400px) / 2);
+  padding-right: calc((100vw - 1400px) / 2);
+  @screen md {
+    padding-left: calc((100vw - 1152px) / 2);
+    padding-right: calc((100vw - 1152px) / 2);
+  }
+}
+
+.case-study {
+  width: 70%;
+  max-width: 350px;
+}
+
+.the-agency__img .gatsby-image-wrapper {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &.no-clip {
+    clip-path: inset(0 0 0 0);
+
+    img {
+      transform: none;
+    }
+  }
+
+  img {
+    transform: scale(1.2);
+  }
+}

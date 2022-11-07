@@ -44,11 +44,15 @@ module.exports = {
           google: [
             {
               family: `Overpass`,
-              variants: [`300`, `400`, `800`, `900`]
+              variants: [`200`, `300`, `400`, `800`, `900`]
             },
             {
               family: `Noto Serif SC`,
               variants: [`500`, `700`, `800`]
+            },
+            {
+              family: `Crimson Pro`,
+              variants: [`300`]
             }
           ]
         }

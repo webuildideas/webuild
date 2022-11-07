@@ -16,6 +16,9 @@ module.exports = {
       },
       translate: {
         '3/20': '-15%'
+      },
+      borderWidth: {
+        1: '1px'
       }
     },
     borderRadius: {
@@ -107,7 +110,8 @@ module.exports = {
 
     fontFamily: {
       primary: ['Overpass', 'sans-serif'],
-      secondary: ['Noto Serif SC', 'serif']
+      secondary: ['Noto Serif SC', 'serif'],
+      crimson: ['Crimson Pro', 'serif']
     },
 
     fontSize: {
