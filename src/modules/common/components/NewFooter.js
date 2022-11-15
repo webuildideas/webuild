@@ -4,13 +4,18 @@ import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import Logo from '@static/svgs/logo.inline.svg'
+import InstagramIcon from '@static/svgs/common/social/instagram.inline.svg'
+import LinkedinIcon from '@static/svgs/common/social/linkedin.inline.svg'
+import DribbbleIcon from '@static/svgs/common/social/dribbble.inline.svg'
+import InstagramGradient from '@static/svgs/common/social/instagram-gradient.inline.svg'
 // Forms
 import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModal'
+import './styles/NewFooter.css'
 
 export default function NewFooter() {
   return (
     <footer className="bg-newBlack pt-26 pb-8">
-      <div className="footer__wrapper px-6 max-w-6xl m-auto text-white pb-30 border-solid border-b border-gray-700">
+      <div className="footer__wrapper px-6 max-w-6xl m-auto text-white pb-30">
         <h2 className="text-h2 font-light w-1/2">
           Ready to <i className="font-crimson italic">get started?</i>
         </h2>
@@ -37,8 +42,89 @@ export default function NewFooter() {
           </svg>
         </button>
       </div>
-      <div className="secondary-footer px-6 max-w-6xl m-auto pt-8">
-        <Logo className="text-white w-25 h-auto" />
+      <div className="secondary-footer px-6 pt-8 border-solid border-t border-gray-700">
+        <div className="secondary-footer__wrapper max-w-6xl m-auto md:flex md:items-center md:justify-between">
+          <Logo className="text-white w-25 h-auto" />
+          <nav className="grid grid-cols-2 mt-10 gap-y-4 md:grid-cols-4 md:mt-0 md:gap-x-10">
+            <AniLink
+              bg="#F3F3F3"
+              className="block text-white font-crimson font-light italic md:text-xl hover:font-bold"
+              cover
+              direction="right"
+              duration={1.5}
+              to="/case-studies/"
+            >
+              our work
+            </AniLink>
+            <AniLink
+              bg="#F3F3F3"
+              className="block text-white font-crimson font-light italic md:text-xl hover:font-bold"
+              cover
+              direction="right"
+              duration={1.5}
+              to="/what-we-do/"
+            >
+              our services
+            </AniLink>
+            <AniLink
+              bg="#F3F3F3"
+              className="block text-white font-crimson font-light italic md:text-xl hover:font-bold"
+              cover
+              direction="right"
+              duration={1.5}
+              to="/who-we-are/"
+            >
+              our team
+            </AniLink>
+            <AniLink
+              bg="#F3F3F3"
+              className="block text-white font-crimson font-light italic md:text-xl hover:font-bold"
+              cover
+              direction="right"
+              duration={1.5}
+              to="/insights"
+            >
+              our thoughts
+            </AniLink>
+          </nav>
+          <div className="social flex items-center gap-6 my-10">
+            <a
+              className="footer-social-link dribbble"
+              href="https://www.dribbble.com/webuild/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <DribbbleIcon className="w-6 h-auto" />
+            </a>
+            <a
+              className="footer-social-link ig"
+              href="https://www.instagram.com/wearewebuild/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <InstagramIcon className="w-6 h-auto footer-social-icon ig" />
+              <InstagramGradient className="footer-social-icon ig-gradient" />
+            </a>
+            <a
+              className="footer-social-link linkedin"
+              href="https://www.linkedin.com/company/wearewebuild/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <LinkedinIcon className="w-6 h-auto" />
+            </a>
+          </div>
+          <AniLink
+            bg="#0E0E1B"
+            className="text-base text-white"
+            cover
+            direction="top"
+            hex="#0E0E1B"
+            to="/privacy/"
+          >
+            privacy
+          </AniLink>
+        </div>
       </div>
     </footer>
   )

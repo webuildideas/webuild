@@ -49,10 +49,12 @@ module.exports = {
             {
               family: `Noto Serif SC`,
               variants: [`500`, `700`, `800`]
-            },
+            }
+          ],
+          google2: [
             {
               family: `Crimson Pro`,
-              variants: [`300`]
+              axes: 'ital,wght@1,200;1,300'
             }
           ]
         }

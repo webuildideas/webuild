@@ -8,6 +8,43 @@
   height: 100%;
 }
 
+.share {
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  &:hover {
+    height: 220px;
+
+    a {
+      @apply transform-none opacity-100;
+    }
+
+    .share-icon {
+      transform: rotate(90deg);
+    }
+  }
+  &__wrapper {
+    .share-icon {
+      transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    a {
+      @apply opacity-0 transform translate-y-6;
+      transition: all 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+      &:nth-of-type(2) {
+        transition-delay: 0.1s;
+      }
+
+      &:nth-of-type(3) {
+        transition-delay: 0.2s;
+      }
+
+      &:nth-of-type(4) {
+        transition-delay: 0.3s;
+      }
+    }
+  }
+}
+
 .results__content {
   h2 {
     @screen lg {

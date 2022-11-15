@@ -7,11 +7,11 @@ import ReactPlayer from 'react-player/file'
 import { gsap } from 'gsap'
 import SoundOn from '@static/svgs/sound-on.inline.svg'
 import SoundOff from '@static/svgs/sound-off.inline.svg'
-import ClientLogoOne from '@static/svgs/logos/clients/Client-Logos-1.inline.svg'
-import ClientLogoTwo from '@static/svgs/logos/clients/Client-Logos-2.inline.svg'
-import ClientLogoThree from '@static/svgs/logos/clients/Client-Logos-3.inline.svg'
-import ClientLogoFour from '@static/svgs/logos/clients/Client-Logos-4.inline.svg'
-import ClientLogoFive from '@static/svgs/logos/clients/Client-Logos-5.inline.svg'
+import ShareIcon from '@static/svgs/share.inline.svg'
+import InstagramIcon from '@static/svgs/common/social/instagram.inline.svg'
+import LinkedinIcon from '@static/svgs/common/social/linkedin.inline.svg'
+import FacebookIcon from '@static/svgs/common/social/facebook.inline.svg'
+
 import FancyArrow from '@static/svgs/fancy-arrow-right.inline.svg'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Img from 'gatsby-image'
@@ -28,7 +28,7 @@ const NEW_HOME_PAGE_QUERY = graphql`
       nodes {
         name
         tagline
-        listingImage {
+        carouselImage {
           fluid {
             ...GatsbyContentfulFluid_withWebp_noBase64
           }
@@ -38,7 +38,7 @@ const NEW_HOME_PAGE_QUERY = graphql`
         }
       }
     }
-    weTeam: file(relativePath: { eq: "we-build-team.jpg" }) {
+    weTeam: file(relativePath: { eq: "we-build-team-new.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1200, quality: 100) {
           ...GatsbyImageSharpFluid_withWebp_noBase64
@@ -53,10 +53,22 @@ const NEW_HOME_PAGE_QUERY = graphql`
         }
         name
         role
-        headshot {
+        bwHeadshot {
           fluid {
             ...GatsbyContentfulFluid_withWebp_noBase64
           }
+        }
+        companyLogo {
+          file {
+            url
+            fileName
+          }
+        }
+      }
+      logos {
+        file {
+          url
+          fileName
         }
       }
     }
@@ -69,11 +81,15 @@ const CaseStudy = ({ data }) => {
       <span className="service text-blueRibbon text-base uppercase">
         {data.service ? data.service[0].shortTitle : `Branding`}
       </span>
-      <div className="image my-8 border-solid border-1 border-gray-500 rounded-2 w-full h-56">
-        <Img className="w-full h-full" fadeIn fluid={data.listingImage.fluid} />
+      <div className="image my-8 w-full h-auto">
+        <Img
+          className="w-full h-full"
+          fadeIn
+          fluid={data.carouselImage.fluid}
+        />
       </div>
 
-      <h3 className="text-h3 text-blueRibbon border-solid border-b-2 border-blueRibbon pb-8">
+      <h3 className="text-h3 text-blueRibbon border-solid border-b-2 border-blueRibbon pb-8 flex-1">
         {data.tagline}
       </h3>
       <svg
@@ -93,11 +109,11 @@ const CaseStudy = ({ data }) => {
   )
 }
 
-const NewHome = ({ location }) => {
+const IndexPage = ({ location }) => {
   const {
     allContentfulCaseStudy: { nodes: caseStudies },
     weTeam,
-    contentfulHomePage: { testimonials }
+    contentfulHomePage: { testimonials, logos: theLogos }
   } = useStaticQuery(NEW_HOME_PAGE_QUERY)
   gsap.registerPlugin(ScrollTrigger)
   const [isMuted, setIsMuted] = useState(true)
@@ -117,7 +133,7 @@ const NewHome = ({ location }) => {
     const intro = [...hero.querySelectorAll('h1, .we-are')]
     const curtain = hero.querySelector('.curtain')
     const line = hero.querySelector('.line')
-    const soundButton = hero.querySelector('button')
+    const buttons = [...hero.querySelectorAll('button, .share')]
     const bottomContent = hero.querySelector('.home-hero__bottom-content')
     const logos = [...hero.querySelectorAll('.logo')]
     const sections = [...caseStudyRef.current.querySelectorAll('.case-study')]
@@ -142,14 +158,19 @@ const NewHome = ({ location }) => {
       { opacity: 0, y: 32, skewY: 5 },
       { opacity: 1, y: 0, skewY: 0, stagger: 0.1 }
     )
-      .to(curtain, { xPercent: 101, duration: 1.7, ease: 'expo.out' }, '>-0.3')
+      .to(curtain, { xPercent: 101, duration: 1.5, ease: 'expo.out' }, '>-0.3')
       .fromTo(
         line,
         { scaleY: 0 },
         { scaleY: 1, ease: 'none', duration: 1 },
         '<'
       )
-      .fromTo(soundButton, { opacity: 0, y: 32 }, { opacity: 1, y: 0 }, '<')
+      .fromTo(
+        buttons,
+        { opacity: 0, y: 32 },
+        { opacity: 1, y: 0, stagger: 0.1 },
+        '<'
+      )
       .fromTo(
         bottomContent,
         { opacity: 0, y: 32 },
@@ -228,10 +249,13 @@ const NewHome = ({ location }) => {
         className="home-hero bg-newBlack text-white pt-18 pb-26 lg:pt-32"
       >
         <div className="home-hero__intro text-center max-w-lg m-auto px-6">
-          <h1 className="text-5xl lg:text-7xl">
-            Product design for <i className="italic">ambitious teams.</i>
+          <h1 className="text-5xl lg:text-7xl font-light">
+            Product design for{' '}
+            <i className="italic font-extralight font-crimson">
+              ambitious teams.
+            </i>
           </h1>
-          <p className="text-body font-light mt-5 we-are">
+          <p className="text-body font-extralight mt-5 we-are">
             We're webuild.{' '}
             <i className="block md:inline-block">
               The get-it-done product studio.
@@ -265,6 +289,30 @@ const NewHome = ({ location }) => {
           >
             {isMuted ? <SoundOff /> : <SoundOn />}
           </button>
+
+          <div className="share hidden m-auto mt-6 relative lg:grid lg:absolute lg:right-3/4 lg:mr-8 lg:top-41 lg:w-20 lg:h-20 border border-solid rounded-full border-white origin-top overflow-hidden">
+            <div className="share__wrapper absolute top-0 left-0 w-full pt-7 flex flex-col gap-10 items-center">
+              <ShareIcon className="block mx-auto block mx-auto my-0 share-icon" />
+
+              {/* <a href="/" rel="noreferrer" target="_blank">
+                <InstagramIcon className="w-6 h-auto" />
+              </a> */}
+              <a
+                href="http://www.linkedin.com/shareArticle?mini=true&url=https://webuild.io/&title=webuild&source=https://webuild.io/"
+                rel="noreferrer"
+                target="_blank"
+              >
+                <LinkedinIcon className="w-6 h-auto" />
+              </a>
+              <a
+                href="http://www.facebook.com/sharer/sharer.php?u=https://webuild.io/&title=webuild"
+                rel="noreferrer"
+                target="_blank"
+              >
+                <FacebookIcon className="w-6 h-auto" />
+              </a>
+            </div>
+          </div>
         </div>
         <div className="home-hero__bottom-content max-w-lg m-auto text-center px-6">
           <p className="text-body">
@@ -276,21 +324,11 @@ const NewHome = ({ location }) => {
           ref={logosRef}
           className="home-hero__logos flex flex-wrap justify-between items-center max-w-6xl m-auto px-6 py-8 md:py-16 lg:py-35 lg:px-0"
         >
-          <div className="logo my-4">
-            <ClientLogoOne />
-          </div>
-          <div className="logo my-4">
-            <ClientLogoTwo />
-          </div>
-          <div className="logo my-4">
-            <ClientLogoThree />
-          </div>
-          <div className="logo my-4">
-            <ClientLogoFour />
-          </div>
-          <div className="logo my-4">
-            <ClientLogoFive />
-          </div>
+          {theLogos.map((logo) => (
+            <div key={logo.file.url} className="logo my-4">
+              <img alt={logo.file.fileName} src={logo.file.url} />
+            </div>
+          ))}
         </div>
       </section>
       <section className="results my-20">
@@ -365,4 +403,4 @@ const NewHome = ({ location }) => {
   )
 }
 
-export default NewHome
+export default IndexPage

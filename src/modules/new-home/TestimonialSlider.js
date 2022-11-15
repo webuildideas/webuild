@@ -131,7 +131,15 @@ export default function TestimonialSlider({ testimonials }) {
             className={index === 0 ? `testimonial active` : `testimonial`}
             testimonail-index={index}
           >
-            <p className="text-center">{testimonial.company}</p>
+            {testimonial?.companyLogo ? (
+              <div className="flex justify-center w-1/3 mx-auto">
+                <img
+                  alt={testimonial.companyLogo.file.fileName}
+                  className="w-full h-full object-contain"
+                  src={testimonial.companyLogo.file.url}
+                />
+              </div>
+            ) : null}
             {testimonial.quoteShort
               ? renderRichText(testimonial.quoteShort, richTextOptions)
               : null}
@@ -153,8 +161,7 @@ export default function TestimonialSlider({ testimonials }) {
             >
               <Img
                 className="w-22 h-auto m-auto md:m-0"
-                fluid={testimonial.headshot.fluid}
-                style={{ filter: `grayscale(1)` }}
+                fluid={testimonial.bwHeadshot.fluid}
               />
               <div className="hidden md:block h-px bg-blueRibbon flex-1" />
               <div className="mt-4 md:ml-12">
