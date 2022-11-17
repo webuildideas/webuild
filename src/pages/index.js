@@ -89,7 +89,7 @@ const CaseStudy = ({ data }) => {
         />
       </div>
 
-      <h3 className="text-h3 text-blueRibbon border-solid border-b-2 border-blueRibbon pb-8 flex-1">
+      <h3 className="font-overpass text-blueRibbon border-solid border-b-2 border-blueRibbon pb-8 flex-1">
         {data.tagline}
       </h3>
       <svg
@@ -178,7 +178,7 @@ const IndexPage = ({ location }) => {
         '>-0.1'
       )
 
-    ScrollTrigger.create({
+    const logosScroll = ScrollTrigger.create({
       trigger: logosRef.current,
       start: 'top 70%',
       onEnter: () =>
@@ -203,7 +203,7 @@ const IndexPage = ({ location }) => {
       scrollLength = sections.length * sections[0].offsetWidth
     }
 
-    gsap.to(sections, {
+    const caseStudyScroll = gsap.to(sections, {
       xPercent: -100 * (sections.length - Math.ceil(offScreen)),
       ease: 'none', // <-- IMPORTANT!
       scrollTrigger: {
@@ -216,7 +216,7 @@ const IndexPage = ({ location }) => {
       }
     })
 
-    ScrollTrigger.create({
+    const agencyScroll = ScrollTrigger.create({
       trigger: agencyRef.current,
       start: 'top 50%',
       onEnter: () => {
@@ -238,10 +238,16 @@ const IndexPage = ({ location }) => {
         })
       }
     })
+
+    return () => {
+      logosScroll.kill()
+      caseStudyScroll.kill()
+      agencyScroll.kill()
+    }
   }, [])
 
   return (
-    <div className="home new-home z-10 absolute top-0 w-full overflow-hidden">
+    <div className="home new-home absolute top-0 w-full overflow-hidden bg-white">
       <Meta location={location} title="New Home" />
 
       <section

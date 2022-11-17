@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // Packages
-import React, { useEffect } from 'react'
-import { useInView } from 'react-intersection-observer'
+import React, { useEffect, useRef } from 'react'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Logo from '@static/svgs/logo.inline.svg'
 import InstagramIcon from '@static/svgs/common/social/instagram.inline.svg'
 import LinkedinIcon from '@static/svgs/common/social/linkedin.inline.svg'
@@ -13,17 +14,56 @@ import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModa
 import './styles/NewFooter.css'
 
 export default function NewFooter() {
+  const footerRef = useRef(null)
+  gsap.registerPlugin(ScrollTrigger)
+  useEffect(() => {
+    const fadeInElems = [...footerRef.current.querySelectorAll('.fade-in')]
+
+    gsap.set(fadeInElems, { autoAlpha: 0, y: 32 })
+
+    setTimeout(() => {
+      gsap.to(fadeInElems, {
+        scrollTrigger: {
+          trigger: footerRef.current,
+          start: `top 65%`
+        },
+        autoAlpha: 1,
+        y: 0,
+        duration: 1.3,
+        ease: 'expo.out',
+        stagger: 0.15
+      })
+    }, 2000)
+
+    // const footerScrolls = ScrollTrigger.create({
+    //   trigger: footerRef.current,
+    //   start: `top 65%`,
+    //   onEnter: () =>
+    //     gsap.fromTo(
+    //       fadeInElems,
+    //       { alpha: 0, y: 32 },
+    //       { alpha: 1, y: 0, stagger: 0.1, duration: 0.8, ease: 'expo.out' }
+    //     ),
+    //   refreshPriority: 10,
+    //   markers: true
+    // })
+
+    // setTimeout(() => {
+    //   footerScrolls.refresh()
+    // }, 3000)
+  }, [])
+
   return (
-    <footer className="bg-newBlack pt-26 pb-8">
+    <footer ref={footerRef} className="bg-newBlack pt-26 pb-8">
       <div className="footer__wrapper px-6 max-w-6xl m-auto text-white pb-30">
-        <h2 className="text-h2 font-light w-1/2">
+        <h2 className="text-h2 font-light w-1/2 fade-in">
           Ready to <i className="font-crimson italic">get started?</i>
         </h2>
-        <p className="font-light text-base w-11/12 mt-8 leading-relaxed">
+        <p className="font-light text-base w-11/12 mt-8 leading-relaxed fade-in">
           Take your product efforts to the next level. Drop us a line.
         </p>
         <button
-          className="block flex items-center border border-solid rounded-full font-light px-10 py-7 mt-12 text-gray-100"
+          className="fade-in block flex items-center border border-solid rounded-full font-light px-10 py-7 mt-12 text-gray-100"
           type="button"
         >
           Let's go!

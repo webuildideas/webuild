@@ -12,7 +12,8 @@ import { styleTheme } from '@common/theme/styleTheme'
 import { GlobalStyle } from '@common/theme/GlobalStyle'
 
 // Components
-import Nav from '@modules/common/components/Nav'
+// import Nav from '@modules/common/components/Nav'
+import NewNav from '@modules/common/components/NewNav'
 import LandingPageNav from '@modules/common/components/LandingPageNav'
 import OpportunityFormModal from '@modules/forms/components/OpportunityFormModal'
 import BookACallFormModal from '@modules/forms/components/BookACallFormModal'
@@ -63,7 +64,7 @@ const AppProvider = memo(function AppProviderMemo({
           <LandingPageNav tagline="Results-driven Fintech design" />
         </>
       ) : (
-        <Nav />
+        <NewNav />
       )}
       {children}
     </ThemeProvider>

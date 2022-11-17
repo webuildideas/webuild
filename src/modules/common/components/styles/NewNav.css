@@ -1,0 +1,136 @@
+.new-nav {
+  mix-blend-mode: difference;
+  .burger {
+    grid-template-areas: 'center';
+
+    &.open {
+    }
+
+    .line {
+      grid-area: center;
+
+      &:first-of-type {
+        transform: translateY(-4px);
+      }
+
+      &:last-of-type {
+        transform: translateY(4px);
+      }
+    }
+  }
+}
+
+.nav {
+  transform: translateY(-101%);
+  /* transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); */
+
+  &__wrapper {
+    max-width: 1440px;
+    @screen lg {
+      height: auto;
+      display: grid;
+      grid-template-areas:
+        'parent1 child'
+        'parent2 child'
+        'parent3 child'
+        'parent4 child';
+
+      .nav-link-1 {
+        grid-area: 1;
+      }
+      .nav-link-2 {
+        grid-area: 2;
+      }
+      .nav-link-3 {
+        grid-area: 3;
+      }
+      .nav-link-4 {
+        grid-area: 4;
+      }
+    }
+  }
+
+  .nav-link {
+    cursor: pointer;
+    transform-origin: 'left';
+    span {
+      transition: font-weight 0.25s ease;
+    }
+    @screen lg {
+      &:hover {
+        span {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+  .drop {
+    overflow: hidden;
+  }
+
+  .drop-container {
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.35s ease-in-out;
+
+    @screen lg {
+      grid-area: child;
+      max-height: unset;
+      opacity: 0;
+    }
+
+    &__wrapper {
+    }
+  }
+
+  .nav-contact {
+    max-width: 1440px;
+  }
+}
+
+.nav-social-link {
+  @apply text-gray-800;
+  /* transition: all 0.3s ease; */
+}
+
+.nav-social-icon {
+  transition: opacity 0.3s ease;
+}
+
+.nav-social-link.linkedin:hover {
+  @screen lg {
+    color: #1579e0;
+  }
+}
+
+.nav-social-link.dribbble:hover {
+  @screen lg {
+    color: #ea4c89;
+  }
+}
+
+.nav-social-link.ig {
+  display: grid;
+  grid-template-areas: 'icon';
+
+  svg {
+    grid-area: icon;
+  }
+}
+
+.nav-social-icon.ig-gradient {
+  @apply opacity-0;
+  grid-area: icon;
+}
+
+.nav-social-link.ig:hover {
+  @screen lg {
+    .ig {
+      @apply opacity-0;
+    }
+    .ig-gradient {
+      @apply opacity-100;
+    }
+  }
+}
