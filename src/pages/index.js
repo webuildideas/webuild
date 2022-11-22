@@ -282,7 +282,7 @@ const IndexPage = ({ location }) => {
               playing={isPlaying}
               // light={videoCover.childImageSharp.fluid.src}
               // playing={isPlaying}
-              playsinline={true}
+              playsInline={true}
               url={[{ src: videoSrc, type: 'video/mp4' }]}
               width="100%"
             />

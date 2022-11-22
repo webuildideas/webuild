@@ -1,7 +1,7 @@
 .new-nav {
+  backdrop-filter: blur(20px);
   mix-blend-mode: difference;
   /* background-color: rgba(38, 38, 39, 0.3); */
-  backdrop-filter: blur(20px);
   .burger {
     grid-template-areas: 'center';
 
