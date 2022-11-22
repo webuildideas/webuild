@@ -88,43 +88,55 @@ export default function NewFooter() {
           <nav className="grid grid-cols-2 mt-10 gap-y-4 md:grid-cols-4 md:mt-0 md:gap-x-10">
             <AniLink
               bg="#F3F3F3"
-              className="block text-white font-crimson font-light italic md:text-xl hover:font-bold"
+              className="block text-white text-base font-extralight hover:font-bold"
               cover
               direction="right"
               duration={1.5}
               to="/case-studies/"
             >
-              our work
+              our{' '}
+              <span className="font-crimson text-xl italic lg:group-hover:font-bold">
+                work
+              </span>
             </AniLink>
             <AniLink
               bg="#F3F3F3"
-              className="block text-white font-crimson font-light italic md:text-xl hover:font-bold"
+              className="block text-white font-extralight hover:font-bold"
               cover
               direction="right"
               duration={1.5}
               to="/what-we-do/"
             >
-              our services
+              our{' '}
+              <span className="font-crimson text-xl italic lg:group-hover:font-bold">
+                services
+              </span>
             </AniLink>
             <AniLink
               bg="#F3F3F3"
-              className="block text-white font-crimson font-light italic md:text-xl hover:font-bold"
+              className="block text-white font-extralight hover:font-bold"
               cover
               direction="right"
               duration={1.5}
               to="/who-we-are/"
             >
-              our team
+              our{' '}
+              <span className="font-crimson text-xl italic lg:group-hover:font-bold">
+                team
+              </span>
             </AniLink>
             <AniLink
               bg="#F3F3F3"
-              className="block text-white font-crimson font-light italic md:text-xl hover:font-bold"
+              className="block text-white font-extralight hover:font-bold"
               cover
               direction="right"
               duration={1.5}
               to="/insights"
             >
-              our thoughts
+              our{' '}
+              <span className="font-crimson text-xl italic lg:group-hover:font-bold">
+                thoughts
+              </span>
             </AniLink>
           </nav>
           <div className="social flex items-center gap-6 my-10">

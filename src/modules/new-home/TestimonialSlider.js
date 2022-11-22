@@ -173,7 +173,7 @@ export default function TestimonialSlider({ testimonials }) {
         </div>
         <div
           ref={navRef}
-          className="nav mt-14 flex justify-center items-center gap-x-4 md:mt-0"
+          className="mt-14 flex justify-center items-center gap-x-4 md:mt-0"
         >
           <div
             className="next-btn border-1 cursor-pointer border-solid border-blueRibbon rounded-full w-22 h-22 p-7"

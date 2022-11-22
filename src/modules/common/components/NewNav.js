@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // Packages
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -12,24 +12,27 @@ import InstagramGradient from '@static/svgs/common/social/instagram-gradient.inl
 // Forms
 import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModal'
 import './styles/NewNav.css'
+import useScrollDirection from '@common/hooks/useScrollDirection'
 
 export default function NewNav() {
   const { showModal } = useOpportunityFormModal()
   const burgerLineOneRef = useRef(null)
   const burgerLineTwoRef = useRef(null)
-  const navRef = useRef(null)
+  const newNavRef = useRef(null)
   const burgerTl = useRef(null)
   const dropContainerRef = useRef(null)
   const navWrapperRef = useRef(null)
   const contactRef = useRef(null)
+  const scrollDirection = useScrollDirection()
+  // const slide = scrollDirection === 'down' ? `translateY: -101%` : `none`
 
   useEffect(() => {
-    const navLinks = [...navRef.current.querySelectorAll('.nav-link')]
+    const navLinks = [...newNavRef.current.querySelectorAll('.nav-link')]
     const contactThings = [...contactRef.current.querySelectorAll('.fade-in')]
     function menuAnimation() {
       const menuTl = gsap.timeline()
       menuTl
-        .to(navRef.current, {
+        .to(newNavRef.current, {
           transform: 'none',
           ease: 'expo.out',
           duration: 0.7
@@ -109,8 +112,14 @@ export default function NewNav() {
 
   return (
     <>
-      <header className="new-nav fixed top-0 left-0 w-full z-50 py-4 px-6">
-        <div className="header__wrapper text-white flex justify-between items-center max-w-screen-2xl mx-auto xl:py-18 xl:px-32">
+      <header
+        className="new-nav fixed top-0 left-0 w-full z-50 py-4 px-6 xl:px-0 xl:py-0 transition transform ease duration-300"
+        style={{
+          transform: scrollDirection === 'down' ? `translateY(-101%)` : 'none'
+          // backgroundColor: `rgba(38, 38, 39, 0.3)`
+        }}
+      >
+        <div className="header__wrapper text-white flex justify-between items-center max-w-screen-2xl mx-auto xl:py-14 xl:px-32">
           <AniLink
             bg="#F3F3F3"
             className=""
@@ -144,7 +153,7 @@ export default function NewNav() {
         </div>
       </header>
       <nav
-        ref={navRef}
+        ref={newNavRef}
         className="fixed top-0 left-0 w-screen h-screen bg-brightBlue z-40 nav flex flex-col justify-between"
       >
         <div

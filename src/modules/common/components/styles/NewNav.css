@@ -1,5 +1,7 @@
 .new-nav {
   mix-blend-mode: difference;
+  /* background-color: rgba(38, 38, 39, 0.3); */
+  backdrop-filter: blur(20px);
   .burger {
     grid-template-areas: 'center';
 
@@ -22,6 +24,9 @@
 
 .nav {
   transform: translateY(-101%);
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  min-height: fill-available;
   /* transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); */
 
   &__wrapper {

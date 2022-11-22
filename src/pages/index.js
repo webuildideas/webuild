@@ -77,7 +77,7 @@ const NEW_HOME_PAGE_QUERY = graphql`
 
 const CaseStudy = ({ data }) => {
   return (
-    <div className="case-study mx-6 flex flex-shrink-0 flex-col pt-11 lg:mx-0 lg:mr-26">
+    <div className="case-study mx-6 flex flex-shrink-0 flex-col pt-11 lg:mx-0 lg:mr-26 ">
       <span className="service text-blueRibbon text-base uppercase">
         {data.service ? data.service[0].shortTitle : `Branding`}
       </span>
@@ -252,7 +252,7 @@ const IndexPage = ({ location }) => {
 
       <section
         ref={heroRef}
-        className="home-hero bg-newBlack text-white pt-18 pb-26 lg:pt-32"
+        className="home-hero bg-newBlack text-white pt-18 pb-26 lg:pt-60"
       >
         <div className="home-hero__intro text-center max-w-lg m-auto px-6">
           <h1 className="text-5xl lg:text-7xl font-light">
@@ -283,7 +283,7 @@ const IndexPage = ({ location }) => {
               // light={videoCover.childImageSharp.fluid.src}
               // playing={isPlaying}
               playsinline={true}
-              url={videoSrc}
+              url={[{ src: videoSrc, type: 'video/mp4' }]}
               width="100%"
             />
             <div className="curtain absolute top-0 left-0 w-full h-full bg-newBlack" />
@@ -328,7 +328,7 @@ const IndexPage = ({ location }) => {
         </div>
         <div
           ref={logosRef}
-          className="home-hero__logos flex flex-wrap justify-between items-center max-w-6xl m-auto px-6 py-8 md:py-16 lg:py-35 lg:px-0"
+          className="home-hero__logos flex flex-wrap justify-center gap-x-9 items-center max-w-6xl m-auto px-6 py-8 md:py-16 lg:py-35 lg:px-0"
         >
           {theLogos.map((logo) => (
             <div key={logo.file.url} className="logo my-4">
