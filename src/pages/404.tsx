@@ -14,7 +14,10 @@ const NotFoundPage = () => {
 
   return (
     <SiteMaxWidthContainer style={maxWidthContainerStyles}>
-      <Meta title="404: Not found" />
+      <Meta
+        bodyAttributes={{ class: 'new-nav-padding' }}
+        title="404: Not found"
+      />
       <div>
         <h1 className="SectionHeading__title">Error 404</h1>
         <h2 className="SectionHeading__subtitle">

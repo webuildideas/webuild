@@ -102,6 +102,7 @@ const Careers = ({
   return (
     <>
       <Meta
+        bodyAttributes={{ class: 'new-nav-padding' }}
         description={seo?.seoDescription?.seoDescription}
         location={location}
         shareImage={seo.seoShareImage?.file?.url}

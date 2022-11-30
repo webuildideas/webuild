@@ -14,3 +14,10 @@ html {
   background: transparent;
   color: white;
 } */
+
+body.new-nav-padding {
+  padding-top: 60px;
+  @screen lg {
+    padding-top: 120px;
+  }
+}

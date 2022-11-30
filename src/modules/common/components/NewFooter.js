@@ -14,6 +14,7 @@ import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModa
 import './styles/NewFooter.css'
 
 export default function NewFooter() {
+  const { showModal } = useOpportunityFormModal()
   const footerRef = useRef(null)
   gsap.registerPlugin(ScrollTrigger)
   useEffect(() => {
@@ -34,23 +35,6 @@ export default function NewFooter() {
         stagger: 0.15
       })
     }, 2000)
-
-    // const footerScrolls = ScrollTrigger.create({
-    //   trigger: footerRef.current,
-    //   start: `top 65%`,
-    //   onEnter: () =>
-    //     gsap.fromTo(
-    //       fadeInElems,
-    //       { alpha: 0, y: 32 },
-    //       { alpha: 1, y: 0, stagger: 0.1, duration: 0.8, ease: 'expo.out' }
-    //     ),
-    //   refreshPriority: 10,
-    //   markers: true
-    // })
-
-    // setTimeout(() => {
-    //   footerScrolls.refresh()
-    // }, 3000)
   }, [])
 
   return (
@@ -64,6 +48,7 @@ export default function NewFooter() {
         </p>
         <button
           className="fade-in block flex items-center border border-solid rounded-full font-light px-10 py-7 mt-12 text-gray-100"
+          onClick={showModal}
           type="button"
         >
           Let's go!

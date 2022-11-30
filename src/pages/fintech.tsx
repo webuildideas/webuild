@@ -163,6 +163,7 @@ const Fintech = ({
   return (
     <>
       <Meta
+        bodyAttributes={{ class: 'new-nav-padding' }}
         description={contentfulSeo.seoDescription?.seoDescription}
         location={location}
         shareImage={contentfulSeo.seoShareImage?.file.url}

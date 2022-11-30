@@ -6,6 +6,7 @@ import React from 'react'
 import { graphql, PageProps } from 'gatsby'
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
+import { Helmet } from 'react-helmet'
 
 // Common
 import { rhythmUnit } from '@common/utils/typography'
@@ -68,7 +69,11 @@ const WhoWeAre = ({ data, location }: Props) => {
 
   return (
     <>
-      <Meta location={location} title="Who We Are" />
+      <Meta
+        bodyAttributes={{ class: 'new-nav-padding' }}
+        location={location}
+        title="Who We Are"
+      />
       <motion.main animate={animateTo} className="WhoWeAre" initial={initial}>
         <div className="WhoWeAre-intro">
           <motion.h1

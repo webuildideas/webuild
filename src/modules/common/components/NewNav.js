@@ -20,13 +20,23 @@ export default function NewNav() {
   const burgerLineTwoRef = useRef(null)
   const newNavRef = useRef(null)
   const burgerTl = useRef(null)
-  const dropContainerRef = useRef(null)
+  const dropWorkContainerRef = useRef(null)
+  const dropServicesRef = useRef(null)
   const navWrapperRef = useRef(null)
   const contactRef = useRef(null)
   const scrollDirection = useScrollDirection()
+  const headerRef = useRef(null)
+
   // const slide = scrollDirection === 'down' ? `translateY: -101%` : `none`
 
   useEffect(() => {
+    // Safari things
+    if (
+      navigator.userAgent.indexOf('Safari') !== -1 &&
+      navigator.userAgent.indexOf('Chrome') === -1
+    ) {
+      headerRef.current.classList.add('safari-only')
+    }
     const navLinks = [...newNavRef.current.querySelectorAll('.nav-link')]
     const contactThings = [...contactRef.current.querySelectorAll('.fade-in')]
     function menuAnimation() {
@@ -104,15 +114,27 @@ export default function NewNav() {
   }
 
   function handleSubMenuMouseEnter(e) {
-    dropContainerRef.current.style.opacity = `1`
+    if (window.innerWidth > 989) {
+      if (e.target.classList.contains('nav-link-1')) {
+        dropServicesRef.current.style.opacity = `0`
+        dropServicesRef.current.style.pointerEvents = `none`
+      } else {
+        dropWorkContainerRef.current.style.pointerEvents = `none`
+        dropWorkContainerRef.current.style.opacity = `0`
+      }
+      e.target.nextElementSibling.style.opacity = `1`
+      e.target.nextElementSibling.style.pointerEvents = `auto`
+    }
   }
   function handleAllElseMouseEnters(e) {
-    dropContainerRef.current.style.opacity = `0`
+    dropServicesRef.current.style.opacity = `0`
+    dropWorkContainerRef.current.style.opacity = `0`
   }
 
   return (
     <>
       <header
+        ref={headerRef}
         className="new-nav fixed top-0 left-0 w-full z-50 py-4 px-6 xl:px-0 xl:py-0 transition transform ease duration-300"
         style={{
           transform: scrollDirection === 'down' ? `translateY(-101%)` : 'none'
@@ -160,7 +182,7 @@ export default function NewNav() {
           ref={navWrapperRef}
           className="nav__wrapper w-full flex flex-col px-6 pt-32 mx-auto lg:px-22 lg:pt-27 xl:px-44 xl:pt-54"
         >
-          <AniLink
+          {/* <AniLink
             bg="#F3F3F3"
             className="block nav-link nav-link-1 font-extralight text-5xl md:text-7xl group mb-6"
             cover
@@ -174,7 +196,169 @@ export default function NewNav() {
             <span className="font-crimson italic lg:group-hover:font-bold">
               work
             </span>
-          </AniLink>
+          </AniLink> */}
+
+          <p
+            className="drop block nav-link nav-link-1 font-extralight text-5xl md:text-7xl group mb-6"
+            onClick={(e) => toggleAccordion(e)}
+            onMouseEnter={(e) => handleSubMenuMouseEnter(e)}
+          >
+            Our{' '}
+            <span className="font-crimson italic pointer-events-none lg:group-hover:font-bold">
+              work
+            </span>
+          </p>
+          <div
+            ref={dropWorkContainerRef}
+            className="drop-container box-content"
+          >
+            <div className="drop-container__wrapper flex flex-col gap-y-5 pl-7 pb-6 lg:h-full lg:gap-y-1 lg:justify-center lg:text-lg lg:items-start">
+              <AniLink
+                bg="#F3F3F3"
+                className="block sub-item box-content lg:flex lg:items-center"
+                cover
+                direction="right"
+                duration={1.5}
+                onClick={handleBurgerClick}
+                to="/case-studies/"
+              >
+                All Case Studies
+                <svg
+                  className="w-8 h-auto ml-25 hidden lg:block"
+                  fill="none"
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clipRule="evenodd"
+                    d="M24.2753 7.33331C24.2753 11.6662 27.7337 15.1787 32 15.1787V15.4583V15.7379V16.2621V16.5416V16.8212C27.7338 16.8212 24.2753 20.3337 24.2753 24.6666H23.2086C23.2086 21.0582 25.3163 17.9497 28.3495 16.5416L0 16.5416V15.4583L28.3495 15.4583C25.3163 14.0503 23.2086 10.9418 23.2086 7.33331H24.2753Z"
+                    fill="#000000"
+                    fillRule="evenodd"
+                  />
+                </svg>
+              </AniLink>
+              <AniLink
+                bg="#F3F3F3"
+                className="block sub-item box-content lg:flex lg:items-center"
+                cover
+                direction="right"
+                duration={1.5}
+                onClick={handleBurgerClick}
+                to="/case-studies/tetra/"
+              >
+                Tetra
+                <svg
+                  className="w-8 h-auto ml-25 hidden lg:block"
+                  fill="none"
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clipRule="evenodd"
+                    d="M24.2753 7.33331C24.2753 11.6662 27.7337 15.1787 32 15.1787V15.4583V15.7379V16.2621V16.5416V16.8212C27.7338 16.8212 24.2753 20.3337 24.2753 24.6666H23.2086C23.2086 21.0582 25.3163 17.9497 28.3495 16.5416L0 16.5416V15.4583L28.3495 15.4583C25.3163 14.0503 23.2086 10.9418 23.2086 7.33331H24.2753Z"
+                    fill="#000000"
+                    fillRule="evenodd"
+                  />
+                </svg>
+              </AniLink>
+              <AniLink
+                bg="#F3F3F3"
+                className="block sub-item box-content lg:flex lg:items-center"
+                cover
+                direction="right"
+                duration={1.5}
+                onClick={handleBurgerClick}
+                to="/case-studies/student-loan-hero"
+              >
+                Student Loan Hero
+                <svg
+                  className="w-8 h-auto ml-25 hidden lg:block"
+                  fill="none"
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clipRule="evenodd"
+                    d="M24.2753 7.33331C24.2753 11.6662 27.7337 15.1787 32 15.1787V15.4583V15.7379V16.2621V16.5416V16.8212C27.7338 16.8212 24.2753 20.3337 24.2753 24.6666H23.2086C23.2086 21.0582 25.3163 17.9497 28.3495 16.5416L0 16.5416V15.4583L28.3495 15.4583C25.3163 14.0503 23.2086 10.9418 23.2086 7.33331H24.2753Z"
+                    fill="#000000"
+                    fillRule="evenodd"
+                  />
+                </svg>
+              </AniLink>
+              <AniLink
+                bg="#F3F3F3"
+                className="block sub-item box-content lg:flex lg:items-center"
+                cover
+                direction="right"
+                duration={1.5}
+                onClick={handleBurgerClick}
+                to="/case-studies/quadpay/"
+              >
+                Quadpay
+                <svg
+                  className="w-8 h-auto ml-25 hidden lg:block"
+                  fill="none"
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clipRule="evenodd"
+                    d="M24.2753 7.33331C24.2753 11.6662 27.7337 15.1787 32 15.1787V15.4583V15.7379V16.2621V16.5416V16.8212C27.7338 16.8212 24.2753 20.3337 24.2753 24.6666H23.2086C23.2086 21.0582 25.3163 17.9497 28.3495 16.5416L0 16.5416V15.4583L28.3495 15.4583C25.3163 14.0503 23.2086 10.9418 23.2086 7.33331H24.2753Z"
+                    fill="#000000"
+                    fillRule="evenodd"
+                  />
+                </svg>
+              </AniLink>
+              <AniLink
+                bg="#F3F3F3"
+                className="block sub-item box-content lg:flex lg:items-center"
+                cover
+                direction="right"
+                duration={1.5}
+                onClick={handleBurgerClick}
+                to="/case-studies/optimize"
+              >
+                Optimize
+                <svg
+                  className="w-8 h-auto ml-25 hidden lg:block"
+                  fill="none"
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clipRule="evenodd"
+                    d="M24.2753 7.33331C24.2753 11.6662 27.7337 15.1787 32 15.1787V15.4583V15.7379V16.2621V16.5416V16.8212C27.7338 16.8212 24.2753 20.3337 24.2753 24.6666H23.2086C23.2086 21.0582 25.3163 17.9497 28.3495 16.5416L0 16.5416V15.4583L28.3495 15.4583C25.3163 14.0503 23.2086 10.9418 23.2086 7.33331H24.2753Z"
+                    fill="#000000"
+                    fillRule="evenodd"
+                  />
+                </svg>
+              </AniLink>
+              <AniLink
+                bg="#F3F3F3"
+                className="block sub-item box-content lg:flex lg:items-center"
+                cover
+                direction="right"
+                duration={1.5}
+                onClick={handleBurgerClick}
+                to="/case-studies/gosite/"
+              >
+                GoSite
+                <svg
+                  className="w-8 h-auto ml-25 hidden lg:block"
+                  fill="none"
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clipRule="evenodd"
+                    d="M24.2753 7.33331C24.2753 11.6662 27.7337 15.1787 32 15.1787V15.4583V15.7379V16.2621V16.5416V16.8212C27.7338 16.8212 24.2753 20.3337 24.2753 24.6666H23.2086C23.2086 21.0582 25.3163 17.9497 28.3495 16.5416L0 16.5416V15.4583L28.3495 15.4583C25.3163 14.0503 23.2086 10.9418 23.2086 7.33331H24.2753Z"
+                    fill="#000000"
+                    fillRule="evenodd"
+                  />
+                </svg>
+              </AniLink>
+            </div>
+          </div>
 
           <p
             className="drop block nav-link nav-link-2 font-extralight text-5xl md:text-7xl group mb-6"
@@ -186,51 +370,151 @@ export default function NewNav() {
               services
             </span>
           </p>
-          <div ref={dropContainerRef} className="drop-container">
-            <div className="drop-container__wrapper flex flex-col gap-y-5 pl-7 pb-6 lg:h-full lg:justify-center lg:text-lg">
+          <div ref={dropServicesRef} className="drop-container box-content">
+            <div className="drop-container__wrapper flex flex-col gap-y-5 pl-7 pb-6 lg:h-full lg:gap-y-1 lg:justify-center lg:text-lg lg:items-start">
               <AniLink
                 bg="#F3F3F3"
-                className="block"
+                className="block sub-item box-content lg:flex lg:items-center"
                 cover
                 direction="right"
                 duration={1.5}
                 onClick={handleBurgerClick}
-                to="/digital-product-strategy-and-design/"
+                to="/what-we-do/"
+              >
+                All Services
+                <svg
+                  className="w-8 h-auto ml-25 hidden lg:block"
+                  fill="none"
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clipRule="evenodd"
+                    d="M24.2753 7.33331C24.2753 11.6662 27.7337 15.1787 32 15.1787V15.4583V15.7379V16.2621V16.5416V16.8212C27.7338 16.8212 24.2753 20.3337 24.2753 24.6666H23.2086C23.2086 21.0582 25.3163 17.9497 28.3495 16.5416L0 16.5416V15.4583L28.3495 15.4583C25.3163 14.0503 23.2086 10.9418 23.2086 7.33331H24.2753Z"
+                    fill="#000000"
+                    fillRule="evenodd"
+                  />
+                </svg>
+              </AniLink>
+              <AniLink
+                bg="#F3F3F3"
+                className="block sub-item box-content lg:flex lg:items-center"
+                cover
+                direction="right"
+                duration={1.5}
+                onClick={handleBurgerClick}
+                to="/what-we-do/digital-product-strategy-and-design/"
               >
                 Product Design
+                <svg
+                  className="w-8 h-auto ml-25 hidden lg:block"
+                  fill="none"
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clipRule="evenodd"
+                    d="M24.2753 7.33331C24.2753 11.6662 27.7337 15.1787 32 15.1787V15.4583V15.7379V16.2621V16.5416V16.8212C27.7338 16.8212 24.2753 20.3337 24.2753 24.6666H23.2086C23.2086 21.0582 25.3163 17.9497 28.3495 16.5416L0 16.5416V15.4583L28.3495 15.4583C25.3163 14.0503 23.2086 10.9418 23.2086 7.33331H24.2753Z"
+                    fill="#000000"
+                    fillRule="evenodd"
+                  />
+                </svg>
               </AniLink>
               <AniLink
                 bg="#F3F3F3"
-                className="block"
+                className="block sub-item box-content lg:flex lg:items-center"
                 cover
                 direction="right"
                 duration={1.5}
                 onClick={handleBurgerClick}
-                to="/marketing-design/"
+                to="/what-we-do/marketing-design/"
               >
                 Marketing Design
+                <svg
+                  className="w-8 h-auto ml-25 hidden lg:block"
+                  fill="none"
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clipRule="evenodd"
+                    d="M24.2753 7.33331C24.2753 11.6662 27.7337 15.1787 32 15.1787V15.4583V15.7379V16.2621V16.5416V16.8212C27.7338 16.8212 24.2753 20.3337 24.2753 24.6666H23.2086C23.2086 21.0582 25.3163 17.9497 28.3495 16.5416L0 16.5416V15.4583L28.3495 15.4583C25.3163 14.0503 23.2086 10.9418 23.2086 7.33331H24.2753Z"
+                    fill="#000000"
+                    fillRule="evenodd"
+                  />
+                </svg>
               </AniLink>
               <AniLink
                 bg="#F3F3F3"
-                className="block"
+                className="block sub-item box-content lg:flex lg:items-center"
                 cover
                 direction="right"
                 duration={1.5}
                 onClick={handleBurgerClick}
-                to="/design-systems/"
+                to="/what-we-do/design-systems/"
               >
                 Design Systems
+                <svg
+                  className="w-8 h-auto ml-25 hidden lg:block"
+                  fill="none"
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clipRule="evenodd"
+                    d="M24.2753 7.33331C24.2753 11.6662 27.7337 15.1787 32 15.1787V15.4583V15.7379V16.2621V16.5416V16.8212C27.7338 16.8212 24.2753 20.3337 24.2753 24.6666H23.2086C23.2086 21.0582 25.3163 17.9497 28.3495 16.5416L0 16.5416V15.4583L28.3495 15.4583C25.3163 14.0503 23.2086 10.9418 23.2086 7.33331H24.2753Z"
+                    fill="#000000"
+                    fillRule="evenodd"
+                  />
+                </svg>
               </AniLink>
               <AniLink
                 bg="#F3F3F3"
-                className="block"
+                className="block sub-item box-content lg:flex lg:items-center"
                 cover
                 direction="right"
                 duration={1.5}
                 onClick={handleBurgerClick}
-                to="/animation-and-interaction/"
+                to="/what-we-do/animation-and-interaction/"
               >
                 Animation and Interaction
+                <svg
+                  className="w-8 h-auto ml-25 hidden lg:block"
+                  fill="none"
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clipRule="evenodd"
+                    d="M24.2753 7.33331C24.2753 11.6662 27.7337 15.1787 32 15.1787V15.4583V15.7379V16.2621V16.5416V16.8212C27.7338 16.8212 24.2753 20.3337 24.2753 24.6666H23.2086C23.2086 21.0582 25.3163 17.9497 28.3495 16.5416L0 16.5416V15.4583L28.3495 15.4583C25.3163 14.0503 23.2086 10.9418 23.2086 7.33331H24.2753Z"
+                    fill="#000000"
+                    fillRule="evenodd"
+                  />
+                </svg>
+              </AniLink>
+              <AniLink
+                bg="#F3F3F3"
+                className="block sub-item box-content lg:flex lg:items-center"
+                cover
+                direction="right"
+                duration={1.5}
+                onClick={handleBurgerClick}
+                to="/what-we-do/brand-strategy-and-design/"
+              >
+                Brand Design
+                <svg
+                  className="w-8 h-auto ml-25 hidden lg:block"
+                  fill="none"
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clipRule="evenodd"
+                    d="M24.2753 7.33331C24.2753 11.6662 27.7337 15.1787 32 15.1787V15.4583V15.7379V16.2621V16.5416V16.8212C27.7338 16.8212 24.2753 20.3337 24.2753 24.6666H23.2086C23.2086 21.0582 25.3163 17.9497 28.3495 16.5416L0 16.5416V15.4583L28.3495 15.4583C25.3163 14.0503 23.2086 10.9418 23.2086 7.33331H24.2753Z"
+                    fill="#000000"
+                    fillRule="evenodd"
+                  />
+                </svg>
               </AniLink>
             </div>
           </div>
@@ -243,7 +527,7 @@ export default function NewNav() {
             duration={1.5}
             onClick={handleBurgerClick}
             onMouseEnter={(e) => handleAllElseMouseEnters(e)}
-            to="/who-we-are/"
+            to="/what-we-do/who-we-are/"
           >
             Our{' '}
             <span className="font-crimson italic lg:group-hover:font-bold">
@@ -271,7 +555,7 @@ export default function NewNav() {
           className="nav-contact w-full flex flex-col px-6 mx-auto lg:flex-row lg:justify-between lg:items-center"
         >
           <p
-            className="fade-in font-light flex items-center text-2xl lg:order-2"
+            className="fade-in font-light flex items-center text-2xl lg:order-2 cursor-pointer"
             onClick={showModal}
           >
             Get in touch

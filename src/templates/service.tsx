@@ -70,6 +70,7 @@ const Service = ({
   return (
     <>
       <Meta
+        bodyAttributes={{ class: 'new-nav-padding' }}
         description={service.seo?.seoDescription?.seoDescription}
         location={location}
         title={service.seo?.seoTitle}

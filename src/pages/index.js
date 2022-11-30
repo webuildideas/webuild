@@ -18,7 +18,8 @@ import Img from 'gatsby-image'
 import TestimonialSlider from '@modules/new-home/TestimonialSlider'
 import NewFooter from '@modules/common/components/NewFooter'
 import { Helmet } from 'react-helmet'
-import videoSrc from '@static/videos/Showreel.mp4'
+import videoSrc from '@static/videos/showreel.mp4'
+import lightVideo from '@static/images/home/how-we-work.png'
 
 import '@common/styles/pages/new-home.css'
 
@@ -280,10 +281,9 @@ const IndexPage = ({ location }) => {
               loop={true}
               muted={isMuted}
               playing={isPlaying}
-              // light={videoCover.childImageSharp.fluid.src}
-              // playing={isPlaying}
-              playsInline={true}
-              url={[{ src: videoSrc, type: 'video/mp4' }]}
+              playsinline={true}
+              type="mp4"
+              url={videoSrc}
               width="100%"
             />
             <div className="curtain absolute top-0 left-0 w-full h-full bg-newBlack" />
@@ -331,7 +331,10 @@ const IndexPage = ({ location }) => {
           className="home-hero__logos flex flex-wrap justify-center gap-x-9 items-center max-w-6xl m-auto px-6 py-8 md:py-16 lg:py-35 lg:px-0"
         >
           {theLogos.map((logo) => (
-            <div key={logo.file.url} className="logo my-4">
+            <div
+              key={logo.file.url}
+              className="logo my-4 w-2/5 md:w-auto lg:flex-1"
+            >
               <img alt={logo.file.fileName} src={logo.file.url} />
             </div>
           ))}

@@ -34,7 +34,11 @@ const WhatWeDo = ({
 }: Props) => {
   return (
     <>
-      <Meta location={location} title="What We Do" />
+      <Meta
+        bodyAttributes={{ class: 'new-nav-padding' }}
+        location={location}
+        title="What We Do"
+      />
       <main className="ServicesPage">
         <div className="ServicesPage-intro">
           <div className="ServicesPage-intro-inner">
