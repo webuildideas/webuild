@@ -19,7 +19,6 @@ import TestimonialSlider from '@modules/new-home/TestimonialSlider'
 import NewFooter from '@modules/common/components/NewFooter'
 import { Helmet } from 'react-helmet'
 import videoSrc from '@static/videos/showreel.mp4'
-import lightVideo from '@static/images/home/how-we-work.png'
 
 import '@common/styles/pages/new-home.css'
 

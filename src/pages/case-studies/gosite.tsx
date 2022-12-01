@@ -46,6 +46,7 @@ const GoSite = ({
   return (
     <>
       <Meta
+        bodyAttributes={{ class: 'new-nav-padding' }}
         description={metaDescription}
         location={location}
         title={seoTitle}
