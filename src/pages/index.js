@@ -18,7 +18,7 @@ import Img from 'gatsby-image'
 import TestimonialSlider from '@modules/new-home/TestimonialSlider'
 import NewFooter from '@modules/common/components/NewFooter'
 import { Helmet } from 'react-helmet'
-import videoSrc from '@static/videos/showreel.mp4'
+import videoSrc from '../static/videos/showreel.mp4'
 
 import '@common/styles/pages/new-home.css'
 
