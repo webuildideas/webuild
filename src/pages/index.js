@@ -11,6 +11,7 @@ import ShareIcon from '@static/svgs/share.inline.svg'
 import InstagramIcon from '@static/svgs/common/social/instagram.inline.svg'
 import LinkedinIcon from '@static/svgs/common/social/linkedin.inline.svg'
 import FacebookIcon from '@static/svgs/common/social/facebook.inline.svg'
+import videoSrc from '@static/videos/showreel.mp4'
 
 import FancyArrow from '@static/svgs/fancy-arrow-right.inline.svg'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -18,7 +19,6 @@ import Img from 'gatsby-image'
 import TestimonialSlider from '@modules/new-home/TestimonialSlider'
 import NewFooter from '@modules/common/components/NewFooter'
 import { Helmet } from 'react-helmet'
-import videoSrc from '../static/videos/showreel.mp4'
 
 import '@common/styles/pages/new-home.css'
 
