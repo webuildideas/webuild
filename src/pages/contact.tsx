@@ -13,7 +13,11 @@ interface Props {
 const Contact = ({ location }: Props) => {
   return (
     <>
-      <Meta location={location} title="Contact" />
+      <Meta
+        bodyAttributes={{ class: 'new-nav-padding' }}
+        location={location}
+        title="Contact"
+      />
       <ContactForm />
     </>
   )

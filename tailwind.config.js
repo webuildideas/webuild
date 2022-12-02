@@ -16,6 +16,13 @@ module.exports = {
       },
       translate: {
         '3/20': '-15%'
+      },
+      borderWidth: {
+        1: '1px'
+      },
+      transitionTimingFunction: {
+        'in-expo': 'cubic-bezier(0.95, 0.05, 0.795, 0.035)',
+        'out-expo': 'cubic-bezier(0.16, 1, 0.3, 1)'
       }
     },
     borderRadius: {
@@ -49,6 +56,7 @@ module.exports = {
       white: '#ffffff',
       transparent: 'transparent',
       current: 'currentColor',
+      newBlack: '#262627',
 
       // Primary Colors
       deepViolet: '#340096',
@@ -69,6 +77,7 @@ module.exports = {
       beauBlue: '#DCEAFF',
       snow: '#F9F9F9',
       mischka: '#F2F0FF',
+      brightBlue: '#F0F6FF',
 
       // Gray Scale
       gray: {
@@ -105,7 +114,8 @@ module.exports = {
 
     fontFamily: {
       primary: ['Overpass', 'sans-serif'],
-      secondary: ['Noto Serif SC', 'serif']
+      secondary: ['Noto Serif SC', 'serif'],
+      crimson: ['Crimson Pro', 'serif']
     },
 
     fontSize: {
@@ -115,6 +125,7 @@ module.exports = {
       '5xl': '2.25rem',
       '4xl': '2rem',
       '3xl': '1.75rem',
+      '2.5xl': '1.5rem',
       '2xl': '1.375rem',
       xl: '1.25rem',
       lg: '1.125rem',
@@ -219,6 +230,9 @@ module.exports = {
       58: '232px',
       59: '236px',
       60: '240px'
+    },
+    right: {
+      '4/5': '80%'
     }
   }
 }

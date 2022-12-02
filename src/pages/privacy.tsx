@@ -16,7 +16,11 @@ const styles = {
 const PrivacyPage = ({ location }: Props) => {
   return (
     <div>
-      <Meta location={location} title="Privacy" />
+      <Meta
+        bodyAttributes={{ class: 'new-nav-padding' }}
+        location={location}
+        title="Privacy"
+      />
       <main className="mx-auto my-20" style={styles}>
         <h1 className="text-h1 mb-6 cvc">Privacy Policy</h1>
         <p className="text-body mb-4">Last updated: April 23, 2021</p>

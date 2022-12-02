@@ -1,0 +1,23 @@
+.testimonial-slider {
+  --clip: inset(0 0 0 0);
+}
+
+.testimonials {
+  grid-template-areas: 'testimonial';
+}
+
+.testimonial {
+  grid-area: testimonial;
+  clip-path: var(--clip);
+  transition: clip-path 0.25s;
+}
+
+.people {
+  grid-template-areas: 'person';
+  clip-path: var(--clip);
+  transition: clip-path 0.25s;
+}
+
+.person-info {
+  grid-area: person;
+}

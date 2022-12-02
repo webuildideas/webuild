@@ -1,0 +1,45 @@
+.footer-social-link {
+  @apply text-gray-500;
+  transition: all 0.3s ease;
+}
+
+.footer-social-icon {
+  transition: all 0.3s ease;
+}
+
+.footer-social-link.linkedin:hover {
+  @screen lg {
+    color: #1579e0;
+  }
+}
+
+.footer-social-link.dribbble:hover {
+  @screen lg {
+    color: #ea4c89;
+  }
+}
+
+.footer-social-link.ig {
+  display: grid;
+  grid-template-areas: 'icon';
+
+  svg {
+    grid-area: icon;
+  }
+}
+
+.footer-social-icon.ig-gradient {
+  @apply opacity-0;
+  grid-area: icon;
+}
+
+.footer-social-link.ig:hover {
+  @screen lg {
+    .ig {
+      @apply opacity-0;
+    }
+    .ig-gradient {
+      @apply opacity-100;
+    }
+  }
+}

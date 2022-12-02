@@ -7,7 +7,7 @@
 
 
 [context.deploy-preview.environment]
-  GATSBY_CONTENTFUL_ENVIRONMENT = 'master'
+  GATSBY_CONTENTFUL_ENVIRONMENT = 'new-home'
 
 [context.branch-deploy.environment]
-  GATSBY_CONTENTFUL_ENVIRONMENT = 'master'
+  GATSBY_CONTENTFUL_ENVIRONMENT = 'new-home'
