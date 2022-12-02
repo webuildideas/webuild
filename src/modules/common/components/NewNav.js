@@ -26,6 +26,7 @@ export default function NewNav() {
   const contactRef = useRef(null)
   const scrollDirection = useScrollDirection()
   const headerRef = useRef(null)
+  const drops = useRef(null)
 
   // const slide = scrollDirection === 'down' ? `translateY: -101%` : `none`
 
@@ -39,6 +40,8 @@ export default function NewNav() {
     }
     const navLinks = [...newNavRef.current.querySelectorAll('.nav-link')]
     const contactThings = [...contactRef.current.querySelectorAll('.fade-in')]
+    drops.current = [...document.querySelectorAll('.drop-container')]
+
     function menuAnimation() {
       const menuTl = gsap.timeline()
       menuTl
@@ -138,10 +141,9 @@ export default function NewNav() {
         className="new-nav fixed top-0 left-0 w-full z-50 py-4 px-6 xl:px-0 xl:py-0 transition transform ease duration-300"
         style={{
           transform: scrollDirection === 'down' ? `translateY(-101%)` : 'none'
-          // backgroundColor: `rgba(38, 38, 39, 0.3)`
         }}
       >
-        <div className="header__wrapper text-white flex justify-between items-center max-w-screen-2xl mx-auto xl:py-14 xl:px-32">
+        <div className="header__wrapper text-white flex justify-between items-center max-w-screen-2xl mx-auto xl:py-6 xl:px-32">
           <AniLink
             bg="#F3F3F3"
             className=""
@@ -176,28 +178,12 @@ export default function NewNav() {
       </header>
       <nav
         ref={newNavRef}
-        className="fixed top-0 left-0 w-screen h-screen bg-brightBlue z-40 nav flex flex-col justify-between"
+        className="fixed top-0 left-0 w-screen h-screen bg-brightBlue z-40 nav flex flex-col justify-between overflow-scroll"
       >
         <div
           ref={navWrapperRef}
           className="nav__wrapper w-full flex flex-col px-6 pt-32 mx-auto lg:px-22 lg:pt-27 xl:px-44 xl:pt-54"
         >
-          {/* <AniLink
-            bg="#F3F3F3"
-            className="block nav-link nav-link-1 font-extralight text-5xl md:text-7xl group mb-6"
-            cover
-            direction="right"
-            duration={1.5}
-            onClick={handleBurgerClick}
-            onMouseEnter={(e) => handleAllElseMouseEnters(e)}
-            to="/case-studies/"
-          >
-            Our{' '}
-            <span className="font-crimson italic lg:group-hover:font-bold">
-              work
-            </span>
-          </AniLink> */}
-
           <p
             className="drop block nav-link nav-link-1 font-extralight text-5xl md:text-7xl group mb-6"
             onClick={(e) => toggleAccordion(e)}
@@ -527,7 +513,7 @@ export default function NewNav() {
             duration={1.5}
             onClick={handleBurgerClick}
             onMouseEnter={(e) => handleAllElseMouseEnters(e)}
-            to="/what-we-do/who-we-are/"
+            to="/who-we-are/"
           >
             Our{' '}
             <span className="font-crimson italic lg:group-hover:font-bold">

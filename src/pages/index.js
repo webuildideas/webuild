@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // Packages
 import React, { useState, useRef, useEffect } from 'react'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { graphql, useStaticQuery } from 'gatsby'
 import Meta from '@components/Meta'
 import ReactPlayer from 'react-player/file'
@@ -28,6 +29,7 @@ const NEW_HOME_PAGE_QUERY = graphql`
       nodes {
         name
         tagline
+        slug
         carouselImage {
           fluid {
             ...GatsbyContentfulFluid_withWebp_noBase64
@@ -77,7 +79,13 @@ const NEW_HOME_PAGE_QUERY = graphql`
 
 const CaseStudy = ({ data }) => {
   return (
-    <div className="case-study mx-6 flex flex-shrink-0 flex-col pt-11 lg:mx-0 lg:mr-26 ">
+    <AniLink
+      className="case-study mx-6 flex flex-shrink-0 flex-col pt-11 lg:mx-0 lg:mr-26 "
+      cover
+      direction="right"
+      duration={1.5}
+      to={`/case-studies/${data.slug}`}
+    >
       <span className="service text-blueRibbon text-base uppercase">
         {data.service ? data.service[0].shortTitle : `Branding`}
       </span>
@@ -105,7 +113,7 @@ const CaseStudy = ({ data }) => {
           fill="#2250FF"
         />
       </svg>
-    </div>
+    </AniLink>
   )
 }
 
@@ -334,7 +342,11 @@ const IndexPage = ({ location }) => {
               key={logo.file.url}
               className="logo my-4 w-2/5 md:w-auto lg:flex-1"
             >
-              <img alt={logo.file.fileName} src={logo.file.url} />
+              <img
+                alt={logo.file.fileName}
+                className="mx-auto"
+                src={logo.file.url}
+              />
             </div>
           ))}
         </div>
