@@ -99,6 +99,8 @@ export default function NewNav() {
     if (burgerTl.current.reversed()) {
       burgerTl.current.timeScale(1.5).play()
     } else {
+      dropServicesRef.current.style.opacity = `0`
+      dropWorkContainerRef.current.style.opacity = `0`
       burgerTl.current.timeScale(2).reverse()
     }
   }
