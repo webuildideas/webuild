@@ -256,7 +256,7 @@ const IndexPage = ({ location }) => {
 
   return (
     <div className="home new-home absolute top-0 w-full overflow-hidden bg-white">
-      <Meta location={location} title="New Home" />
+      <Meta location={location} title="Home" />
 
       <section
         ref={heroRef}
