@@ -8,6 +8,7 @@
 html {
   scroll-behavior: smooth;
   background-color: #fff;
+  scroll-padding-top: 100px;
 }
 
 /* body.transparent header.Nav {

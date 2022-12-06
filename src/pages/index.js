@@ -280,7 +280,10 @@ const IndexPage = ({ location }) => {
           <div className="absolute top-0 left-0 w-full h-full grid place-items-center">
             <div className="w-px h-full bg-white origin-top line" />
           </div>
-          <div className="video relative md:w-3/4 md:ml-auto overflow-hidden">
+          <div
+            className="video relative md:w-3/4 md:ml-auto overflow-hidden"
+            id="showreel"
+          >
             <ReactPlayer
               className="react-player"
               controls={false}
