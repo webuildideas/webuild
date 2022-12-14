@@ -1,10 +1,10 @@
-import React, { useCallback, useState } from 'react'
+import React, { useState } from 'react'
 import { Formik, Form, FormikProps } from 'formik'
 import * as Yup from 'yup'
 
 // Common
-import useSubmitNfForm from '@modules/forms/hooks/useSubmitNfForm'
-import { NFForms } from '@common/types/NewFangled'
+// import useSubmitNfForm from '@modules/forms/hooks/useSubmitNfForm'
+// import { NFForms } from '@common/types/NewFangled'
 import { COUNTRIES } from '@common/constants/countries'
 
 // Components
@@ -77,35 +77,52 @@ const OpportunityForm = ({
     'Page URL': location
   }
 
-  const submitToInsightEngine = useSubmitNfForm({
-    formName: NFForms.Opportunity.name,
-    actOnFormId: NFForms.Opportunity.actOnId
-  })
+  // const submitToInsightEngine = useSubmitNfForm({
+  //   formName: NFForms.Opportunity.name,
+  //   actOnFormId: NFForms.Opportunity.actOnId
+  // })
 
-  const handleSubmit = useCallback(
-    async (values: FormValues) => {
-      const formattedSubmissionValues = {
-        'First Name': values['First Name'],
-        'Last Name': values['Last Name'],
-        'E-mail Address': values['E-mail Address'],
-        Country: values.Country,
-        Message: values.Message,
-        'Privacy Notice': values['Privacy Notice'] ? '1' : '0',
-        'Opt-In': values['Opt-In'] ? '1' : '0',
-        'Lead Source': values['Lead Source'],
-        'Page URL': values['Page URL']
-      }
-      await submitToInsightEngine(
-        values['E-mail Address'],
-        formattedSubmissionValues
+  const encode = (data: any) => {
+    return Object.keys(data)
+      .map(
+        (key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
       )
+      .join('&')
+  }
 
-      await sleep(500)
+  const handleSubmit = async (values: FormValues, actions: any) => {
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({ 'form-name': 'book-a-call', ...values })
+    })
+      .then(() => {
+        actions.resetForm()
+      })
+      .catch(() => {
+        console.log('Error')
+      })
+      .finally(() => actions.setSubmitting(false))
+    // const formattedSubmissionValues = {
+    //   'First Name': values['First Name'],
+    //   'Last Name': values['Last Name'],
+    //   'E-mail Address': values['E-mail Address'],
+    //   Country: values.Country,
+    //   Message: values.Message,
+    //   'Privacy Notice': values['Privacy Notice'] ? '1' : '0',
+    //   'Opt-In': values['Opt-In'] ? '1' : '0',
+    //   'Lead Source': values['Lead Source'],
+    //   'Page URL': values['Page URL']
+    // }
+    // await submitToInsightEngine(
+    //   values['E-mail Address'],
+    //   formattedSubmissionValues
+    // )
 
-      setFormSubmitted(true)
-    },
-    [submitToInsightEngine]
-  )
+    await sleep(500)
+
+    setFormSubmitted(true)
+  }
 
   return formSubmitted ? (
     <div className="OpportunityForm-success">
@@ -145,10 +162,7 @@ const OpportunityForm = ({
         validationSchema={formSchema}
       >
         {({ isSubmitting, values, errors }: FormikProps<FormValues>) => (
-          <Form
-            id={NFForms.Opportunity.actOnId}
-            name={NFForms.Opportunity.name}
-          >
+          <Form data-netlify="true" name="opportunity-form">
             <TextInput className="hidden" name="Lead Source" type="text" />
             <TextInput className="hidden" name="Page URL" type="text" />
 
