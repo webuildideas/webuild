@@ -94,7 +94,7 @@ const OpportunityForm = ({
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'book-a-call', ...values })
+      body: encode({ 'form-name': 'opportunity-form', ...values })
     })
       .then(() => {
         actions.resetForm()
@@ -165,6 +165,7 @@ const OpportunityForm = ({
           <Form data-netlify="true" name="opportunity-form">
             <TextInput className="hidden" name="Lead Source" type="text" />
             <TextInput className="hidden" name="Page URL" type="text" />
+            <input name="form-name" type="hidden" value="opportunity-form" />
 
             <div className="OpportunityForm-row">
               <TextInput
