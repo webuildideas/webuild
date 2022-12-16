@@ -91,7 +91,7 @@ const OpportunityForm = ({
   }
 
   const handleSubmit = async (values: FormValues, actions: any) => {
-    fetch('/', {
+    fetch('/?no-cache=1', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({ 'form-name': 'opportunity-form', ...values })
@@ -162,7 +162,7 @@ const OpportunityForm = ({
         validationSchema={formSchema}
       >
         {({ isSubmitting, values, errors }: FormikProps<FormValues>) => (
-          <Form data-netlify="true" name="opportunity-form">
+          <Form data-netlify={true} name="opportunity-form">
             <TextInput className="hidden" name="Lead Source" type="text" />
             <TextInput className="hidden" name="Page URL" type="text" />
             <input name="form-name" type="hidden" value="opportunity-form" />
