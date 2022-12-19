@@ -17,6 +17,7 @@ import SelectField from '@modules/forms/components/SelectField'
 import './styles/OpportunityForm.css'
 import MotionAniLink from '@modules/common/components/MotionAniLink'
 import { useRecoilValue } from 'recoil'
+import encode from './utils/encode'
 import useOpportunityFormModal from './hooks/useOpportunityFormModal'
 import { opportunityFormModalEmail } from './atoms/opportunityFormModalEmail'
 
@@ -81,14 +82,6 @@ const OpportunityForm = ({
   //   formName: NFForms.Opportunity.name,
   //   actOnFormId: NFForms.Opportunity.actOnId
   // })
-
-  const encode = (data: any) => {
-    return Object.keys(data)
-      .map(
-        (key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
-      )
-      .join('&')
-  }
 
   const handleSubmit = async (values: FormValues, actions: any) => {
     fetch('/?no-cache=1', {
@@ -162,10 +155,15 @@ const OpportunityForm = ({
         validationSchema={formSchema}
       >
         {({ isSubmitting, values, errors }: FormikProps<FormValues>) => (
-          <Form data-netlify={true} name="opportunity-form">
-            <TextInput className="hidden" name="Lead Source" type="text" />
-            <TextInput className="hidden" name="Page URL" type="text" />
+          <Form
+            data-netlify={true}
+            data-netlify-honeypot="bot-field"
+            name="opportunity-form"
+          >
+            {/* <TextInput className="hidden" name="Lead Source" type="text" />
+            <TextInput className="hidden" name="Page URL" type="text" /> */}
             <input name="form-name" type="hidden" value="opportunity-form" />
+            <input name="bot-field" type="hidden" />
 
             <div className="OpportunityForm-row">
               <TextInput

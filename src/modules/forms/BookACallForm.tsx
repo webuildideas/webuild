@@ -2,13 +2,13 @@
 import React, { useState } from 'react'
 import { Formik, Form, FormikProps } from 'formik'
 import * as Yup from 'yup'
-// import { useRecoilState } from 'recoil'
-// import uniq from 'lodash/uniq'
+import { useRecoilState } from 'recoil'
+import uniq from 'lodash/uniq'
 
 // Common
-// import { NFForms } from '@common/types/NewFangled'
+import { NFForms } from '@common/types/NewFangled'
 import { COUNTRIES } from '@common/constants/countries'
-// import { userFormConversionsAtom } from '@modules/common/atoms/userFormConversions'
+import { userFormConversionsAtom } from '@modules/common/atoms/userFormConversions'
 import { classNames } from '@common/utils/classNames'
 
 // Components
@@ -24,7 +24,7 @@ import sleep from '@modules/common/utils/sleep'
 
 // Hooks
 import PurpleCheckmark from '@static/svgs/common/purple-circle-checkmark.inline.svg'
-// import useSubmitNfForm from './hooks/useSubmitNfForm'
+import encode from './utils/encode'
 
 // SVGs
 
@@ -68,14 +68,9 @@ const BookACallForm = ({
   successButtonTo
 }: Props) => {
   const [formSubmitted, setFormSubmitted] = useState(false)
-  // const [userConversions, setUserConversions] = useRecoilState(
-  //   userFormConversionsAtom
-  // )
-
-  // const submitToInsightEngine = useSubmitNfForm({
-  //   formName: NFForms.BookACall.name,
-  //   actOnFormId: NFForms.BookACall.actOnId
-  // })
+  const [userConversions, setUserConversions] = useRecoilState(
+    userFormConversionsAtom
+  )
 
   const initialFormValues: FormValues = {
     'First Name': '',
@@ -96,50 +91,23 @@ const BookACallForm = ({
     'BookACall-success': formSubmitted
   })
 
-  const encode = (data: any) => {
-    return Object.keys(data)
-      .map(
-        (key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
-      )
-      .join('&')
-  }
-
   const handleSubmit = async (values: FormValues, actions: any) => {
-    fetch('/', {
+    fetch('/?no-cache=1', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'book-a-call', ...values })
+      body: encode({ 'form-name': 'opportunity-form', ...values })
     })
       .then(() => {
-        alert('Success')
         actions.resetForm()
       })
       .catch(() => {
-        alert('Error')
+        console.log('Error')
       })
       .finally(() => actions.setSubmitting(false))
-    // const formattedSubmissionValues = {
-    //   'First Name': values['First Name'],
-    //   'Last Name': values['Last Name'],
-    //   'E-mail Address': values['E-mail Address'],
-    //   'Company Name': values['Company Name'],
-    //   Country: values.Country,
-    //   'Phone Number': values['Phone Number'],
-    //   Message: values.Message,
-    //   'Privacy Notice': values['Privacy Notice'] ? '1' : '0',
-    //   'Opt-In': values['Opt-In'] ? '1' : '0',
-    //   'Lead Source': values['Lead Source'],
-    //   'Page URL': values['Page URL']
-    // }
-
-    // await submitToInsightEngine(
-    //   values['E-mail Address'],
-    //   formattedSubmissionValues
-    // )
 
     await sleep(500)
 
-    // setUserConversions(uniq([...userConversions, NFForms.BookACall.name]))
+    setUserConversions(uniq([...userConversions, NFForms.BookACall.name]))
     setFormSubmitted(true)
   }
 
@@ -180,11 +148,15 @@ const BookACallForm = ({
             // errors,
             isValid
           }: FormikProps<FormValues>) => (
-            <Form data-netlify="true" name="book-a-call">
+            <Form
+              data-netlify={true}
+              data-netlify-honeypot="bot-field"
+              name="book-a-call-form"
+            >
               <h3 className="BookACallForm-title text-h3 mb-6">Book a call</h3>
 
-              <TextInput className="hidden" name="Lead Source" type="text" />
-              <TextInput className="hidden" name="Page URL" type="text" />
+              <input name="form-name" type="hidden" value="book-a-call-form" />
+              <input name="bot-field" type="hidden" />
 
               <div className="BookACall-row mb-6">
                 <TextInput

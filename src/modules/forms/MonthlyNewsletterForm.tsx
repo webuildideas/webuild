@@ -2,16 +2,15 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { Formik, Form, FormikProps } from 'formik'
 import * as Yup from 'yup'
-import { useRecoilState } from 'recoil'
-import uniq from 'lodash/uniq'
+// import { useRecoilState } from 'recoil'
+// import uniq from 'lodash/uniq'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation, Variants } from 'framer-motion'
-
 // Commons
-import useSubmitNfForm from '@modules/forms/hooks/useSubmitNfForm'
+// import useSubmitNfForm from '@modules/forms/hooks/useSubmitNfForm'
 import sleep from '@modules/common/utils/sleep'
-import { NFForms } from '@common/types/NewFangled'
-import { userFormConversionsAtom } from '@modules/common/atoms/userFormConversions'
+// import { NFForms } from '@common/types/NewFangled'
+// import { userFormConversionsAtom } from '@modules/common/atoms/userFormConversions'
 import { COUNTRIES } from '@common/constants/countries'
 
 // Components
@@ -24,6 +23,7 @@ import SelectField from '@modules/forms/components/SelectField'
 import EmailIcon from '@static/svgs/type/email-course.inline.svg'
 import CloseIcon from '@static/svgs/closeIcon.inline.svg'
 import Checkmark from '@static/svgs/common/checkmark-handrawn.inline.svg'
+import encode from './utils/encode'
 
 // Styles
 import '@modules/forms/styles/MonthlyNewsletter.css'
@@ -98,16 +98,16 @@ const MonthlyNewsletterForm = ({
     threshold: 0.1
   })
 
-  const [userConversions, setUserConversions] = useRecoilState(
-    userFormConversionsAtom
-  )
-  const userHasCompletedForm = userConversions.includes(
-    NFForms.EmailSignup.name
-  )
-  const submitToInsightEngine = useSubmitNfForm({
-    formName: NFForms.EmailSignup.name,
-    actOnFormId: NFForms.EmailSignup.actOnId
-  })
+  // const [userConversions, setUserConversions] = useRecoilState(
+  //   userFormConversionsAtom
+  // )
+  // const userHasCompletedForm = userConversions.includes(
+  //   NFForms.EmailSignup.name
+  // )
+  // const submitToInsightEngine = useSubmitNfForm({
+  //   formName: NFForms.EmailSignup.name,
+  //   actOnFormId: NFForms.EmailSignup.actOnId
+  // })
   const initialFormValues: FormValues = {
     'E-mail Address': '',
     Country: '',
@@ -117,28 +117,23 @@ const MonthlyNewsletterForm = ({
     'Page URL': location
   }
 
-  const handleSubmit = useCallback(
-    async (values: FormValues) => {
-      const formattedSubmissionValues = {
-        'E-mail Address': values['E-mail Address'],
-        Country: values.Country,
-        'Privacy Notice': values['Privacy Notice'] ? '1' : '0',
-        'Opt-In': values['Opt-In'] ? '1' : '0',
-        'Lead Source': values['Lead Source'],
-        'Page URL': values['Page URL']
-      }
-      await submitToInsightEngine(
-        values['E-mail Address'],
-        formattedSubmissionValues
-      )
+  const handleSubmit = async (values: FormValues, actions: any) => {
+    fetch('/?no-cache=1', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({ 'form-name': 'opportunity-form', ...values })
+    })
+      .then(() => {
+        actions.resetForm()
+      })
+      .catch(() => {
+        console.log('Error')
+      })
+      .finally(() => actions.setSubmitting(false))
 
-      await sleep(500)
-
-      setUserConversions(uniq([...userConversions, NFForms.EmailSignup.name]))
-      setFormSubmitted(true)
-    },
-    [setUserConversions, submitToInsightEngine, userConversions]
-  )
+    await sleep(500)
+    setFormSubmitted(true)
+  }
 
   const handleCloseForm = () => setFormClosed(true)
 
@@ -179,7 +174,7 @@ const MonthlyNewsletterForm = ({
     handleSetAnchorPosition()
   }, [handleSetAnchorPosition])
 
-  return userHasCompletedForm && !formSubmitted ? null : (
+  return !formSubmitted ? null : (
     <>
       <div
         ref={ref}
@@ -226,15 +221,16 @@ const MonthlyNewsletterForm = ({
             >
               {({ isSubmitting, values, errors }: FormikProps<FormValues>) => (
                 <Form
-                  id={NFForms.EmailSignup.actOnId}
-                  name={NFForms.EmailSignup.name}
+                  data-netlify={true}
+                  data-netlify-honeypot="bot-field"
+                  name="monthly-newsletter-form"
                 >
-                  <TextInput
-                    className="hidden"
-                    name="Lead Source"
-                    type="text"
+                  <input
+                    name="form-name"
+                    type="hidden"
+                    value="monthly-newsletter-form"
                   />
-                  <TextInput className="hidden" name="Page URL" type="text" />
+                  <input name="bot-field" type="hidden" />
 
                   <TextInput
                     className="MonthlyNewsletter-email"

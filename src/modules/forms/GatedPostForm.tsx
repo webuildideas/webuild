@@ -6,8 +6,8 @@ import { uniq } from 'lodash'
 import * as Yup from 'yup'
 
 // Common
-import useSubmitNfForm from '@modules/forms/hooks/useSubmitNfForm'
-import { NFForms } from '@common/types/NewFangled'
+// import useSubmitNfForm from '@modules/forms/hooks/useSubmitNfForm'
+// import { NFForms } from '@common/types/NewFangled'
 import { COUNTRIES } from '@common/constants/countries'
 import { WithClassName } from '@common/types/Utilities'
 
@@ -19,6 +19,7 @@ import SelectField from '@modules/forms/components/SelectField'
 
 // Atoms
 import { userGatedPostConversionsAtom } from '@modules/insight/atoms/userGatedPostConversions'
+import encode from './utils/encode'
 
 // Style
 import './styles/GatedPostForm.css'
@@ -69,38 +70,27 @@ const GatedPostForm = ({ className, postTitle, postId }: Props) => {
     'Lead Source': 'Web - Gated Post'
   }
 
-  const submitToInsightEngine = useSubmitNfForm({
-    formName: NFForms.GatedPost.name,
-    actOnFormId: NFForms.GatedPost.actOnId
-  })
-
   const handleSubmit = useCallback(
-    async (values: FormValues) => {
-      const formattedSubmissionValues = {
-        'E-mail Address': values['E-mail Address'],
-        Country: values.Country,
-        'Privacy Notice': values['Privacy Notice'] ? '1' : '0',
-        'Opt-In': values['Opt-In'] ? '1' : 0,
-        'Gated Post Title': values['Gated Post Title'],
-        'Lead Source': values['Lead Source']
-      }
-
-      await submitToInsightEngine(
-        values['E-mail Address'],
-        formattedSubmissionValues
-      )
+    async (values: FormValues, actions: any) => {
+      fetch('/?no-cache=1', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({ 'form-name': 'opportunity-form', ...values })
+      })
+        .then(() => {
+          actions.resetForm()
+        })
+        .catch(() => {
+          console.log('Error')
+        })
+        .finally(() => actions.setSubmitting(false))
 
       await sleep(500)
 
       const updatedConversions = uniq([...userGatedPostConversions, postId])
       setUserGatedPostConversions(updatedConversions)
     },
-    [
-      submitToInsightEngine,
-      postId,
-      userGatedPostConversions,
-      setUserGatedPostConversions
-    ]
+    [postId, userGatedPostConversions, setUserGatedPostConversions]
   )
 
   return userHasCompletedForm ? null : (
@@ -116,13 +106,13 @@ const GatedPostForm = ({ className, postTitle, postId }: Props) => {
           validationSchema={formSchema}
         >
           {({ isSubmitting, errors }: FormikProps<FormValues>) => (
-            <Form id={NFForms.GatedPost.actOnId} name={NFForms.GatedPost.name}>
-              <TextInput className="hidden" name="Lead Source" type="text" />
-              <TextInput
-                className="hidden"
-                name="Gated Post Title"
-                type="text"
-              />
+            <Form
+              data-netlify={true}
+              data-netlify-honeypot="bot-field"
+              name="gated-post-form"
+            >
+              <input name="form-name" type="hidden" value="gated-post-form" />
+              <input name="bot-field" type="hidden" />
 
               <div className="GatedPost-form">
                 <TextInput
