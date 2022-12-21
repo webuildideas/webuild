@@ -69,7 +69,7 @@ const EmailSignupForm = ({ location }: Props) => {
       fetch('/?no-cache=1', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode({ 'form-name': 'opportunity-form', ...values })
+        body: encode({ 'form-name': 'email-signup-form', ...values })
       })
         .then(() => {
           actions.resetForm()

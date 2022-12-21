@@ -121,7 +121,7 @@ const MonthlyNewsletterForm = ({
     fetch('/?no-cache=1', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'opportunity-form', ...values })
+      body: encode({ 'form-name': 'monthly-newsletter-form', ...values })
     })
       .then(() => {
         actions.resetForm()

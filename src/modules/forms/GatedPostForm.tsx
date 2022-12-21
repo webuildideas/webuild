@@ -75,7 +75,7 @@ const GatedPostForm = ({ className, postTitle, postId }: Props) => {
       fetch('/?no-cache=1', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode({ 'form-name': 'opportunity-form', ...values })
+        body: encode({ 'form-name': 'gated-post-form', ...values })
       })
         .then(() => {
           actions.resetForm()
