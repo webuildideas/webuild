@@ -6,8 +6,6 @@ import { uniq } from 'lodash'
 import * as Yup from 'yup'
 
 // Common
-import useSubmitNfForm from '@modules/forms/hooks/useSubmitNfForm'
-import { NFForms } from '@common/types/NewFangled'
 import { COUNTRIES } from '@common/constants/countries'
 import { WithClassName } from '@common/types/Utilities'
 
@@ -24,6 +22,7 @@ import { userContentUpgradeConversionsAtom } from '@modules/forms/atoms/userCont
 import './styles/ContentUpgradeForm.css'
 import { TypeContentUpgrade } from '@common/types/ContentUpgrade'
 import { classNames } from '@common/utils/classNames'
+import encode from './utils/encode'
 
 interface Props extends WithClassName {
   contentUpgrade: TypeContentUpgrade
@@ -63,8 +62,10 @@ const ContentUpgradeForm = ({
   title,
   inputRef
 }: Props) => {
-  const [userContentUpgradeConversions, setUserContentUpgradeConversions] =
-    useRecoilState(userContentUpgradeConversionsAtom)
+  const [
+    userContentUpgradeConversions,
+    setUserContentUpgradeConversions
+  ] = useRecoilState(userContentUpgradeConversionsAtom)
   const userHasCompletedForm = userContentUpgradeConversions.includes(
     contentUpgrade.title
   )
@@ -95,26 +96,20 @@ const ContentUpgradeForm = ({
     'Lead Source': 'Web - Content Upgrade'
   }
 
-  const submitToInsightEngine = useSubmitNfForm({
-    formName: NFForms.ContentUpgrade.name,
-    actOnFormId: NFForms.ContentUpgrade.actOnId
-  })
-
   const handleSubmit = useCallback(
-    async (values: FormValues) => {
-      const formattedSubmissionValues = {
-        'E-mail Address': values['E-mail Address'],
-        Country: values.Country,
-        'Privacy Notice': values['Privacy Notice'] ? '1' : '0',
-        'Opt-In': values['Opt-In'] ? '1' : 0,
-        'Content Upgrade Title': values['Content Upgrade Title'],
-        'Lead Source': values['Lead Source']
-      }
-
-      await submitToInsightEngine(
-        values['E-mail Address'],
-        formattedSubmissionValues
-      )
+    async (values: FormValues, actions: any) => {
+      fetch('/?no-cache=1', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({ 'form-name': 'content-upgrade-form', ...values })
+      })
+        .then(() => {
+          actions.resetForm()
+        })
+        .catch(() => {
+          console.log('Error')
+        })
+        .finally(() => actions.setSubmitting(false))
 
       await sleep(500)
 
@@ -125,7 +120,6 @@ const ContentUpgradeForm = ({
       setUserContentUpgradeConversions(updatedConversions)
     },
     [
-      submitToInsightEngine,
       contentUpgrade,
       userContentUpgradeConversions,
       setUserContentUpgradeConversions
@@ -179,21 +173,18 @@ const ContentUpgradeForm = ({
         >
           {({ isSubmitting, errors }: FormikProps<FormValues>) => (
             <Form
-              id={NFForms.ContentUpgrade.actOnId}
-              name={NFForms.ContentUpgrade.name}
+              data-netlify={true}
+              data-netlify-honeypot="bot-field"
+              name="content-upgrade-form"
             >
               {!userHasCompletedForm ? (
                 <>
-                  <TextInput
-                    className="hidden"
-                    name="Lead Source"
-                    type="text"
+                  <input
+                    name="form-name"
+                    type="hidden"
+                    value="content-upgrade-form"
                   />
-                  <TextInput
-                    className="hidden"
-                    name="Content Upgrade Title"
-                    type="text"
-                  />
+                  <input name="bot-field" type="hidden" />
 
                   <div className="ContentUpgrade-form">
                     {contentUpgrade.formImage ? (

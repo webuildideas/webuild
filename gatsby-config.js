@@ -170,13 +170,6 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-plugin-load-script',
-      options: {
-        src: `https://insight-engine.newfangled.com/api/v1/${process.env.GATSBY_NEWFANGLED_KEY}/beacon`,
-        crossorigin: 'anonymous'
-      }
-    },
-    {
       resolve: `gatsby-plugin-netlify`,
       options: {
         mergeLinkHeaders: false,

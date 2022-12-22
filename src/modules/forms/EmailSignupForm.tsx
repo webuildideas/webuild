@@ -6,7 +6,6 @@ import { useRecoilState } from 'recoil'
 import uniq from 'lodash/uniq'
 
 // Common
-import useSubmitNfForm from '@modules/forms/hooks/useSubmitNfForm'
 import { NFForms } from '@common/types/NewFangled'
 import { COUNTRIES } from '@common/constants/countries'
 import { userFormConversionsAtom } from '@modules/common/atoms/userFormConversions'
@@ -19,6 +18,7 @@ import SelectField from '@modules/forms/components/SelectField'
 
 // Icons
 import Checkmark from '@static/svgs/common/checkmark-handrawn.inline.svg'
+import encode from './utils/encode'
 
 // Style
 import './styles/EmailSignupForm.css'
@@ -64,32 +64,27 @@ const EmailSignupForm = ({ location }: Props) => {
     'Page URL': location
   }
 
-  const submitToInsightEngine = useSubmitNfForm({
-    formName: NFForms.EmailSignup.name,
-    actOnFormId: NFForms.EmailSignup.actOnId
-  })
-
   const handleSubmit = useCallback(
-    async (values: FormValues) => {
-      const formattedSubmissionValues = {
-        'E-mail Address': values['E-mail Address'],
-        Country: values.Country,
-        'Privacy Notice': values['Privacy Notice'] ? '1' : '0',
-        'Opt-In': values['Opt-In'] ? '1' : '0',
-        'Lead Source': values['Lead Source'],
-        'Page URL': values['Page URL']
-      }
-      await submitToInsightEngine(
-        values['E-mail Address'],
-        formattedSubmissionValues
-      )
+    async (values: FormValues, actions: any) => {
+      fetch('/?no-cache=1', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({ 'form-name': 'email-signup-form', ...values })
+      })
+        .then(() => {
+          actions.resetForm()
+        })
+        .catch(() => {
+          console.log('Error')
+        })
+        .finally(() => actions.setSubmitting(false))
 
       await sleep(500)
 
       setUserConversions(uniq([...userConversions, NFForms.EmailSignup.name]))
       setFormSubmitted(true)
     },
-    [setUserConversions, submitToInsightEngine, userConversions]
+    [setUserConversions, userConversions]
   )
 
   return userHasCompletedForm || formSubmitted ? (
@@ -121,11 +116,12 @@ const EmailSignupForm = ({ location }: Props) => {
       >
         {({ isSubmitting, values, errors }: FormikProps<FormValues>) => (
           <Form
-            id={NFForms.EmailSignup.actOnId}
-            name={NFForms.EmailSignup.name}
+            data-netlify={true}
+            data-netlify-honeypot="bot-field"
+            name="email-signup-form"
           >
-            <TextInput className="hidden" name="Lead Source" type="text" />
-            <TextInput className="hidden" name="Page URL" type="text" />
+            <input name="form-name" type="hidden" value="email-signup-form" />
+            <input name="bot-field" type="hidden" />
 
             <TextInput
               className="block appearance-none mb-4"

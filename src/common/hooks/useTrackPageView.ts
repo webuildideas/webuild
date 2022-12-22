@@ -11,11 +11,10 @@ const useTrackPageView = (
   useEffect(() => {
     const trackView = setTimeout(() => {
       if (initialRender && pageUrl && pageTitle && !initialPageLoaded) {
-        console.log('Tracking page view')
-        const url = pageUrl
-        const title = pageTitle
-        window.NF.recordPageView(url, title)
-        window.ActOn.Beacon.track(url, 'page', new Date().getTime())
+        // const url = pageUrl
+        // const title = pageTitle
+        // window.NF.recordPageView(url, title)
+        // window.ActOn.Beacon.track(url, 'page', new Date().getTime())
         setInitialRender(false)
       }
     }, 1000)

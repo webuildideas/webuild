@@ -24,7 +24,7 @@ import sleep from '@modules/common/utils/sleep'
 
 // Hooks
 import PurpleCheckmark from '@static/svgs/common/purple-circle-checkmark.inline.svg'
-import useSubmitNfForm from './hooks/useSubmitNfForm'
+import encode from './utils/encode'
 
 // SVGs
 
@@ -72,11 +72,6 @@ const BookACallForm = ({
     userFormConversionsAtom
   )
 
-  const submitToInsightEngine = useSubmitNfForm({
-    formName: NFForms.BookACall.name,
-    actOnFormId: NFForms.BookACall.actOnId
-  })
-
   const initialFormValues: FormValues = {
     'First Name': '',
     'Last Name': '',
@@ -96,25 +91,19 @@ const BookACallForm = ({
     'BookACall-success': formSubmitted
   })
 
-  const handleSubmit = async (values: FormValues) => {
-    const formattedSubmissionValues = {
-      'First Name': values['First Name'],
-      'Last Name': values['Last Name'],
-      'E-mail Address': values['E-mail Address'],
-      'Company Name': values['Company Name'],
-      Country: values.Country,
-      'Phone Number': values['Phone Number'],
-      Message: values.Message,
-      'Privacy Notice': values['Privacy Notice'] ? '1' : '0',
-      'Opt-In': values['Opt-In'] ? '1' : '0',
-      'Lead Source': values['Lead Source'],
-      'Page URL': values['Page URL']
-    }
-
-    await submitToInsightEngine(
-      values['E-mail Address'],
-      formattedSubmissionValues
-    )
+  const handleSubmit = async (values: FormValues, actions: any) => {
+    fetch('/?no-cache=1', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({ 'form-name': 'book-a-call-form', ...values })
+    })
+      .then(() => {
+        actions.resetForm()
+      })
+      .catch(() => {
+        console.log('Error')
+      })
+      .finally(() => actions.setSubmitting(false))
 
     await sleep(500)
 
@@ -159,11 +148,15 @@ const BookACallForm = ({
             // errors,
             isValid
           }: FormikProps<FormValues>) => (
-            <Form id={NFForms.BookACall.actOnId} name={NFForms.BookACall.name}>
+            <Form
+              data-netlify={true}
+              data-netlify-honeypot="bot-field"
+              name="book-a-call-form"
+            >
               <h3 className="BookACallForm-title text-h3 mb-6">Book a call</h3>
 
-              <TextInput className="hidden" name="Lead Source" type="text" />
-              <TextInput className="hidden" name="Page URL" type="text" />
+              <input name="form-name" type="hidden" value="book-a-call-form" />
+              <input name="bot-field" type="hidden" />
 
               <div className="BookACall-row mb-6">
                 <TextInput
