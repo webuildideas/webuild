@@ -92,7 +92,6 @@ const BookACallForm = ({
   })
 
   const handleSubmit = async (values: FormValues, actions: any) => {
-    console.log(values['First Name'])
     fetch('/?no-cache=1', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },

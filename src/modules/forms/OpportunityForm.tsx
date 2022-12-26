@@ -87,7 +87,11 @@ const OpportunityForm = ({
     fetch('/?no-cache=1', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'opportunity-form', ...values })
+      body: encode({
+        'form-name': 'opportunity-form',
+        subject: `${values['First Name']} ${values['Last Name']} filled out the form Opportunity Form`,
+        ...values
+      })
     })
       .then(() => {
         actions.resetForm()
