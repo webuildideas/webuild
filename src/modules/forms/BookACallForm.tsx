@@ -92,10 +92,15 @@ const BookACallForm = ({
   })
 
   const handleSubmit = async (values: FormValues, actions: any) => {
+    console.log(values['First Name'])
     fetch('/?no-cache=1', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'book-a-call-form', ...values })
+      body: encode({
+        'form-name': 'book-a-call-form',
+        subject: `${values['First Name']} ${values['Last Name']} filled out the form Book a Call`,
+        ...values
+      })
     })
       .then(() => {
         actions.resetForm()
