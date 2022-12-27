@@ -173,6 +173,7 @@ const OpportunityForm = ({
               type="hidden"
               value="Subject to be replaced..."
             />
+            <input name="Page URL" type="hidden" value={location} />
             <input name="bot-field" type="hidden" />
 
             <div className="OpportunityForm-row">
