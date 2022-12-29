@@ -101,7 +101,11 @@ const ContentUpgradeForm = ({
       fetch('/?no-cache=1', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode({ 'form-name': 'content-upgrade-form', ...values })
+        body: encode({
+          'form-name': 'content-upgrade-form',
+          subject: `${values['First Name']} ${values['Last Name']} filled out the Content Upgrade Form`,
+          ...values
+        })
       })
         .then(() => {
           actions.resetForm()
@@ -183,6 +187,21 @@ const ContentUpgradeForm = ({
                     name="form-name"
                     type="hidden"
                     value="content-upgrade-form"
+                  />
+                  <input
+                    name="subject"
+                    type="hidden"
+                    value="Subject to be replaced..."
+                  />
+                  <input
+                    name="Lead Source"
+                    type="hidden"
+                    value="Web - Content Upgrade"
+                  />
+                  <input
+                    name="Content Upgrade Title"
+                    type="hidden"
+                    value={title || contentUpgrade.title}
                   />
                   <input name="bot-field" type="hidden" />
 

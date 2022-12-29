@@ -171,7 +171,11 @@ const ContactForm = () => {
     fetch('/?no-cache=1', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'contact-form', ...values })
+      body: encode({
+        'form-name': 'contact-form',
+        subject: `${values['First Name']} ${values['Last Name']} filled out the Contact Form`,
+        ...values
+      })
     })
       .then(() => {
         actions.resetForm()
@@ -230,6 +234,12 @@ const ContactForm = () => {
             name="contact-form"
           >
             <input name="form-name" type="hidden" value="contact-form" />
+            <input
+              name="subject"
+              type="hidden"
+              value="Subject to be replaced..."
+            />
+            <input name="Lead Source" type="hidden" value="Web - Contact" />
             <input name="bot-field" type="hidden" />
 
             <div className="ContactForm-row">

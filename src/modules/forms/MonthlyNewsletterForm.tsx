@@ -121,7 +121,11 @@ const MonthlyNewsletterForm = ({
     fetch('/?no-cache=1', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'monthly-newsletter-form', ...values })
+      body: encode({
+        'form-name': 'monthly-newsletter-form',
+        subject: `${values['E-mail Address']} filled out the Monthly Newsletter Form`,
+        ...values
+      })
     })
       .then(() => {
         actions.resetForm()
@@ -230,6 +234,12 @@ const MonthlyNewsletterForm = ({
                     type="hidden"
                     value="monthly-newsletter-form"
                   />
+                  <input
+                    name="subject"
+                    type="hidden"
+                    value="Subject to be replaced..."
+                  />
+                  <input name="Page URL" type="hidden" value={location} />
                   <input name="bot-field" type="hidden" />
 
                   <TextInput

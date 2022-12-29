@@ -90,7 +90,7 @@ const OpportunityForm = ({
       body: encode({
         'form-name': 'opportunity-form',
         // eslint-disable-next-line prettier/prettier
-        subject: `${values['First Name']} ${values['Last Name']} filled out the form Opportunity Form`,
+        subject: `${values['First Name']} ${values['Last Name']} filled out the Opportunity Form`,
         ...values
       })
     })

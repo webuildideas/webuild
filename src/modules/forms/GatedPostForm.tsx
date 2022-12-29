@@ -75,7 +75,11 @@ const GatedPostForm = ({ className, postTitle, postId }: Props) => {
       fetch('/?no-cache=1', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode({ 'form-name': 'gated-post-form', ...values })
+        body: encode({
+          'form-name': 'gated-post-form',
+          subject: `${values['First Name']} ${values['Last Name']} filled out the Gated Post Form on ${postTitle}`,
+          ...values
+        })
       })
         .then(() => {
           actions.resetForm()
@@ -112,6 +116,17 @@ const GatedPostForm = ({ className, postTitle, postId }: Props) => {
               name="gated-post-form"
             >
               <input name="form-name" type="hidden" value="gated-post-form" />
+              <input
+                name="subject"
+                type="hidden"
+                value="Subject to be replaced..."
+              />
+              <input
+                name="Lead Source"
+                type="hidden"
+                value="Web - Gated Post"
+              />
+              <input name="Gated Post Title" type="hidden" value={postTitle} />
               <input name="bot-field" type="hidden" />
 
               <div className="GatedPost-form">
