@@ -69,7 +69,11 @@ const EmailSignupForm = ({ location }: Props) => {
       fetch('/?no-cache=1', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode({ 'form-name': 'email-signup-form', ...values })
+        body: encode({
+          'form-name': 'email-signup-form',
+          subject: `${values['E-mail Address']} filled out the Email Signup Form`,
+          ...values
+        })
       })
         .then(() => {
           actions.resetForm()
@@ -121,6 +125,17 @@ const EmailSignupForm = ({ location }: Props) => {
             name="email-signup-form"
           >
             <input name="form-name" type="hidden" value="email-signup-form" />
+            <input
+              name="subject"
+              type="hidden"
+              value="Subject to be replaced..."
+            />
+            <input name="Page URL" type="hidden" value={location} />
+            <input
+              name="Lead Source"
+              type="hidden"
+              value="Web - Email Signup"
+            />
             <input name="bot-field" type="hidden" />
 
             <TextInput

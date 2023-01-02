@@ -30,6 +30,7 @@ interface Props extends WithClassName {
   isResource?: boolean
   title?: string
   inputRef?: React.RefObject<HTMLInputElement>
+  location: string
 }
 
 interface FormValues {
@@ -43,6 +44,7 @@ interface FormValues {
   'Opt-In': boolean
   'Content Upgrade Title': string
   'Lead Source': 'Web - Content Upgrade'
+  'Page URL': string
 }
 
 const formSchema = Yup.object().shape({
@@ -55,6 +57,7 @@ const formSchema = Yup.object().shape({
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
 const ContentUpgradeForm = ({
+  location,
   className,
   contentUpgrade,
   isSimple = false,
@@ -93,7 +96,8 @@ const ContentUpgradeForm = ({
     'Privacy Notice': true,
     'Opt-In': true,
     'Content Upgrade Title': title || contentUpgrade.title,
-    'Lead Source': 'Web - Content Upgrade'
+    'Lead Source': 'Web - Content Upgrade',
+    'Page URL': location
   }
 
   const handleSubmit = useCallback(
@@ -101,7 +105,11 @@ const ContentUpgradeForm = ({
       fetch('/?no-cache=1', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode({ 'form-name': 'content-upgrade-form', ...values })
+        body: encode({
+          'form-name': 'content-upgrade-form',
+          subject: `${values['E-mail Address']} filled out the Content Upgrade Form`,
+          ...values
+        })
       })
         .then(() => {
           actions.resetForm()
@@ -183,6 +191,22 @@ const ContentUpgradeForm = ({
                     name="form-name"
                     type="hidden"
                     value="content-upgrade-form"
+                  />
+                  <input
+                    name="subject"
+                    type="hidden"
+                    value="Subject to be replaced..."
+                  />
+                  <input name="Page URL" type="hidden" value={location} />
+                  <input
+                    name="Lead Source"
+                    type="hidden"
+                    value="Web - Content Upgrade"
+                  />
+                  <input
+                    name="Content Upgrade Title"
+                    type="hidden"
+                    value={title || contentUpgrade.title}
                   />
                   <input name="bot-field" type="hidden" />
 

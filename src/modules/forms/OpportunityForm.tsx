@@ -87,7 +87,12 @@ const OpportunityForm = ({
     fetch('/?no-cache=1', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'opportunity-form', ...values })
+      body: encode({
+        'form-name': 'opportunity-form',
+        // eslint-disable-next-line prettier/prettier
+        subject: `${values['First Name']} ${values['Last Name']} filled out the Opportunity Form`,
+        ...values
+      })
     })
       .then(() => {
         actions.resetForm()
@@ -163,6 +168,12 @@ const OpportunityForm = ({
             {/* <TextInput className="hidden" name="Lead Source" type="text" />
             <TextInput className="hidden" name="Page URL" type="text" /> */}
             <input name="form-name" type="hidden" value="opportunity-form" />
+            <input
+              name="subject"
+              type="hidden"
+              value="Subject to be replaced..."
+            />
+            <input name="Page URL" type="hidden" value={location} />
             <input name="bot-field" type="hidden" />
 
             <div className="OpportunityForm-row">

@@ -54,143 +54,6 @@ interface Props {
   }
 }
 
-const options: Options = {
-  renderNode: {
-    [BLOCKS.EMBEDDED_ASSET]: (node) => {
-      const caption = node.data.target.description
-
-      return (
-        <div className="Insight-img">
-          <Img durationFadeIn={125} fadeIn fluid={node.data.target.fluid} />
-          {caption ? <p className="text-caption">{caption}</p> : null}
-        </div>
-      )
-    },
-
-    [BLOCKS.EMBEDDED_ENTRY]: (node) => {
-      if (!node.data.target) {
-        return null
-      }
-
-      const { target: entry } = node.data
-
-      if (isOrderedList(entry)) {
-        return <OrderedList orderedList={entry} />
-      }
-
-      if (isUnorderedList(entry)) {
-        return <UnorderedList unorderedList={entry} />
-      }
-
-      if (isWebuildImage(entry)) {
-        const { imageStyling, imageType, altText, caption, asset } = entry
-
-        const imageContainerClassNames = classNames({
-          'Insight-img': true,
-          'full-width': imageStyling === ImageStylingEnum.FULL_WIDTH,
-          'left-aligned': imageStyling === ImageStylingEnum.LEFT_ALIGNED,
-          'center-aligned': imageStyling === ImageStylingEnum.CENTER_ALIGNED
-        })
-
-        const imageClassNames = classNames({
-          'Insight-img--full-width':
-            imageStyling === ImageStylingEnum.FULL_WIDTH,
-          'Insight-img--left-aligned':
-            imageStyling === ImageStylingEnum.LEFT_ALIGNED,
-          'Insight-img--center-aligned':
-            imageStyling === ImageStylingEnum.CENTER_ALIGNED
-        })
-
-        switch (imageStyling) {
-          case ImageStylingEnum.CENTER_ALIGNED:
-          case ImageStylingEnum.LEFT_ALIGNED:
-          case ImageStylingEnum.FULL_WIDTH:
-            return (
-              <div className={imageContainerClassNames}>
-                {isGatsbyImageFluid(asset) ? (
-                  <Img
-                    alt={altText}
-                    className={imageClassNames}
-                    durationFadeIn={125}
-                    fadeIn
-                    fluid={asset.fluid}
-                  />
-                ) : (
-                  <img
-                    alt={altText}
-                    className={imageClassNames}
-                    src={asset.file.url}
-                  />
-                )}
-                {caption ? <p className="text-caption">{caption}</p> : null}
-              </div>
-            )
-          default:
-            return (
-              <div className="Insight-img">
-                {isGatsbyImageFluid(asset) ? (
-                  <Img
-                    alt={altText}
-                    className={imageType ? imageType.join(' ') : undefined}
-                    durationFadeIn={125}
-                    fadeIn
-                    fluid={asset.fluid}
-                  />
-                ) : (
-                  <img
-                    alt={altText}
-                    className={imageType ? imageType.join(' ') : undefined}
-                    src={asset.file.url}
-                  />
-                )}
-                {caption ? <p className="text-caption">{caption}</p> : null}
-              </div>
-            )
-        }
-      }
-
-      if (isContentUpgrade(entry)) {
-        return (
-          <ContentUpgradeForm
-            className="mt-16 mb-8 md:mb-0"
-            contentUpgrade={entry}
-            isSimple
-          />
-        )
-      }
-
-      if (isQuote(entry)) {
-        return <Quote quote={entry} />
-      }
-
-      return null
-    },
-
-    [INLINES.EMBEDDED_ENTRY]: (node) => {
-      if (!node.data.target) {
-        return
-      }
-      return (
-        <span className="Insight-img-inline mt-12 md:mt-18 block">
-          <img
-            alt={node.data.target.altText}
-            className={`Insight-img-inline ${
-              node.data.target.imageType
-                ? node.data.target.imageType.join(' ')
-                : undefined
-            }`}
-            src={node.data.target.asset.fluid.src}
-          />
-          {node.data.target.caption ? (
-            <p className="text-caption">{node.data.target.caption}</p>
-          ) : null}
-        </span>
-      )
-    },
-    ...blocksOptions.renderNode
-  }
-}
-
 const Insight = ({
   data: {
     contentfulInsight: insight,
@@ -210,6 +73,144 @@ const Insight = ({
   const userHasCompletedContentUpgrade = userContentUpgradeConversions.includes(
     insight.contentUpgrade ? insight.contentUpgrade.title : ''
   )
+
+  const options: Options = {
+    renderNode: {
+      [BLOCKS.EMBEDDED_ASSET]: (node) => {
+        const caption = node.data.target.description
+
+        return (
+          <div className="Insight-img">
+            <Img durationFadeIn={125} fadeIn fluid={node.data.target.fluid} />
+            {caption ? <p className="text-caption">{caption}</p> : null}
+          </div>
+        )
+      },
+
+      [BLOCKS.EMBEDDED_ENTRY]: (node) => {
+        if (!node.data.target) {
+          return null
+        }
+
+        const { target: entry } = node.data
+
+        if (isOrderedList(entry)) {
+          return <OrderedList orderedList={entry} />
+        }
+
+        if (isUnorderedList(entry)) {
+          return <UnorderedList unorderedList={entry} />
+        }
+
+        if (isWebuildImage(entry)) {
+          const { imageStyling, imageType, altText, caption, asset } = entry
+
+          const imageContainerClassNames = classNames({
+            'Insight-img': true,
+            'full-width': imageStyling === ImageStylingEnum.FULL_WIDTH,
+            'left-aligned': imageStyling === ImageStylingEnum.LEFT_ALIGNED,
+            'center-aligned': imageStyling === ImageStylingEnum.CENTER_ALIGNED
+          })
+
+          const imageClassNames = classNames({
+            'Insight-img--full-width':
+              imageStyling === ImageStylingEnum.FULL_WIDTH,
+            'Insight-img--left-aligned':
+              imageStyling === ImageStylingEnum.LEFT_ALIGNED,
+            'Insight-img--center-aligned':
+              imageStyling === ImageStylingEnum.CENTER_ALIGNED
+          })
+
+          switch (imageStyling) {
+            case ImageStylingEnum.CENTER_ALIGNED:
+            case ImageStylingEnum.LEFT_ALIGNED:
+            case ImageStylingEnum.FULL_WIDTH:
+              return (
+                <div className={imageContainerClassNames}>
+                  {isGatsbyImageFluid(asset) ? (
+                    <Img
+                      alt={altText}
+                      className={imageClassNames}
+                      durationFadeIn={125}
+                      fadeIn
+                      fluid={asset.fluid}
+                    />
+                  ) : (
+                    <img
+                      alt={altText}
+                      className={imageClassNames}
+                      src={asset.file.url}
+                    />
+                  )}
+                  {caption ? <p className="text-caption">{caption}</p> : null}
+                </div>
+              )
+            default:
+              return (
+                <div className="Insight-img">
+                  {isGatsbyImageFluid(asset) ? (
+                    <Img
+                      alt={altText}
+                      className={imageType ? imageType.join(' ') : undefined}
+                      durationFadeIn={125}
+                      fadeIn
+                      fluid={asset.fluid}
+                    />
+                  ) : (
+                    <img
+                      alt={altText}
+                      className={imageType ? imageType.join(' ') : undefined}
+                      src={asset.file.url}
+                    />
+                  )}
+                  {caption ? <p className="text-caption">{caption}</p> : null}
+                </div>
+              )
+          }
+        }
+
+        if (isContentUpgrade(entry)) {
+          return (
+            <ContentUpgradeForm
+              className="mt-16 mb-8 md:mb-0"
+              contentUpgrade={entry}
+              isSimple
+              location={location.href}
+            />
+          )
+        }
+
+        if (isQuote(entry)) {
+          return <Quote quote={entry} />
+        }
+
+        return null
+      },
+
+      [INLINES.EMBEDDED_ENTRY]: (node) => {
+        if (!node.data.target) {
+          return
+        }
+        return (
+          <span className="Insight-img-inline mt-12 md:mt-18 block">
+            <img
+              alt={node.data.target.altText}
+              className={`Insight-img-inline ${
+                node.data.target.imageType
+                  ? node.data.target.imageType.join(' ')
+                  : undefined
+              }`}
+              src={node.data.target.asset.fluid.src}
+            />
+            {node.data.target.caption ? (
+              <p className="text-caption">{node.data.target.caption}</p>
+            ) : null}
+          </span>
+        )
+      },
+      ...blocksOptions.renderNode
+    }
+  }
 
   const showReadTime = !(
     insight.type === 'Resource' || insight.type === 'eBook'
@@ -340,6 +341,7 @@ const Insight = ({
                 contentUpgrade={insight.contentUpgrade}
                 inputRef={contentUpgradeInputRef}
                 isResource={insight.type === 'Resource'}
+                location={location.href}
               />
             ) : null}
           </article>
