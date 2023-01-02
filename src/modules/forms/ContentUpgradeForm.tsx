@@ -30,6 +30,7 @@ interface Props extends WithClassName {
   isResource?: boolean
   title?: string
   inputRef?: React.RefObject<HTMLInputElement>
+  location: string
 }
 
 interface FormValues {
@@ -43,6 +44,7 @@ interface FormValues {
   'Opt-In': boolean
   'Content Upgrade Title': string
   'Lead Source': 'Web - Content Upgrade'
+  'Page URL': string
 }
 
 const formSchema = Yup.object().shape({
@@ -55,6 +57,7 @@ const formSchema = Yup.object().shape({
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
 const ContentUpgradeForm = ({
+  location,
   className,
   contentUpgrade,
   isSimple = false,
@@ -93,7 +96,8 @@ const ContentUpgradeForm = ({
     'Privacy Notice': true,
     'Opt-In': true,
     'Content Upgrade Title': title || contentUpgrade.title,
-    'Lead Source': 'Web - Content Upgrade'
+    'Lead Source': 'Web - Content Upgrade',
+    'Page URL': location
   }
 
   const handleSubmit = useCallback(
@@ -103,7 +107,7 @@ const ContentUpgradeForm = ({
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: encode({
           'form-name': 'content-upgrade-form',
-          subject: `${values['First Name']} ${values['Last Name']} filled out the Content Upgrade Form`,
+          subject: `${values['E-mail Address']} filled out the Content Upgrade Form`,
           ...values
         })
       })
@@ -193,6 +197,7 @@ const ContentUpgradeForm = ({
                     type="hidden"
                     value="Subject to be replaced..."
                   />
+                  <input name="Page URL" type="hidden" value={location} />
                   <input
                     name="Lead Source"
                     type="hidden"
