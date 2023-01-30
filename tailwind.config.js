@@ -115,7 +115,14 @@ module.exports = {
     fontFamily: {
       primary: ['Overpass', 'sans-serif'],
       secondary: ['Noto Serif SC', 'serif'],
-      crimson: ['Crimson Pro', 'serif']
+      crimson: ['Crimson Pro', 'serif'],
+      courier: [
+        `Courier New`,
+        'Courier',
+        'Lucida Sans Typewriter',
+        'Lucida Typewriter',
+        'monospace'
+      ]
     },
 
     fontSize: {
@@ -131,7 +138,8 @@ module.exports = {
       lg: '1.125rem',
       base: '1rem',
       tiny: '0.875rem',
-      sm: '0.75rem'
+      sm: '0.75rem',
+      xs: '0.625rem'
     },
 
     letterSpacing: {
@@ -158,6 +166,7 @@ module.exports = {
       lg: '1024px',
       xl: '1280px',
       '2xl': '2560px',
+      1536: '1536px',
       maxSm: { max: '425px' },
       maxMd: { max: '768px' },
       maxLg: { max: '1024px' },
@@ -229,7 +238,8 @@ module.exports = {
       57: '228px',
       58: '232px',
       59: '236px',
-      60: '240px'
+      60: '240px',
+      68: '272px'
     },
     right: {
       '4/5': '80%'
