@@ -143,7 +143,7 @@ export const createPages = async ({ graphql, actions }) => {
   })
 }
 
-export const onCreateWebpackConfig = ({ actions }) => {
+export const onCreateWebpackConfig = ({ stage, loaders, actions }) => {
   actions.setWebpackConfig({
     resolve: {
       alias: {
@@ -155,4 +155,17 @@ export const onCreateWebpackConfig = ({ actions }) => {
       }
     }
   })
+
+  if (stage === 'build-html' || stage === 'develop-html') {
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /gsap/,
+            use: loaders.null()
+          }
+        ]
+      }
+    })
+  }
 }
