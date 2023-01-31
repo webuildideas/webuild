@@ -143,7 +143,7 @@ export const createPages = async ({ graphql, actions }) => {
   })
 }
 
-export const onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+export const onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
       alias: {
@@ -156,16 +156,16 @@ export const onCreateWebpackConfig = ({ stage, loaders, actions }) => {
     }
   })
 
-  if (stage === 'build-html' || stage === 'develop-html') {
-    actions.setWebpackConfig({
-      module: {
-        rules: [
-          {
-            test: /gsap/,
-            use: loaders.null()
-          }
-        ]
-      }
-    })
-  }
+  // if (stage === 'build-html' || stage === 'develop-html') {
+  //   actions.setWebpackConfig({
+  //     module: {
+  //       rules: [
+  //         {
+  //           test: /gsap/,
+  //           use: loaders.null()
+  //         }
+  //       ]
+  //     }
+  //   })
+  // }
 }
