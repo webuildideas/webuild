@@ -25,8 +25,6 @@ import BrandIcon from '../../static/svgs/service-icons/brand-icon.inline.svg'
 
 import '../../common/styles/pages/yotta.css'
 
-gsap.registerPlugin(Draggable)
-
 const stats = [
   {
     stat: `100%`,
@@ -120,6 +118,7 @@ const Yotta = ({
   const yottaAppScreens = useRef(null)
 
   useEffect(() => {
+    gsap.registerPlugin(Draggable)
     const scrollMagnifier = window.innerWidth < 768 ? 3.5 : 1.75
 
     scrollAppInstance.current = Draggable.create(scrollBarKnobRef.current, {
