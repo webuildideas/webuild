@@ -63,6 +63,7 @@
     "styled-components": "^5.2.1",
     "tailwindcss": "^2.0.2",
     "unslugify": "^1.0.2",
+    "use-long-press": "^2.0.3",
     "yup": "^0.32.8"
   },
   "devDependencies": {

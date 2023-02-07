@@ -1,4 +1,6 @@
-import React, { useEffect, useRef } from 'react'
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react/button-has-type */
+import React, { useEffect, useRef, useCallback, useState } from 'react'
 import { graphql } from 'gatsby'
 import Meta from '@components/Meta'
 import Img from 'gatsby-image'
@@ -6,6 +8,8 @@ import {
   ReactCompareSlider,
   ReactCompareSliderImage
 } from 'react-compare-slider'
+import { useLongPress } from 'use-long-press'
+import useWindowSize from '@common/hooks/useWindowSize'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { gsap } from 'gsap'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -22,6 +26,7 @@ import MarketingIcon from '../../static/svgs/service-icons/marketing-icon.inline
 import DesignIcon from '../../static/svgs/service-icons/design-icon.inline.svg'
 import InteractionIcon from '../../static/svgs/service-icons/interaction-icon.inline.svg'
 import BrandIcon from '../../static/svgs/service-icons/brand-icon.inline.svg'
+import TapIcon from '../../static/svgs/tap-icon.inline.svg'
 
 import '../../common/styles/pages/yotta.css'
 
@@ -98,7 +103,13 @@ const Yotta = ({
     appScreenFour,
     appScreenFive,
     appScreenSix,
-    adamHeadshot
+    adamHeadshot,
+    yottaOldOne,
+    yottaOldTwo,
+    yottaOldThree,
+    yottaNewOne,
+    yottaNewTwo,
+    yottaNewThree
   }
 }) => {
   const {
@@ -112,28 +123,121 @@ const Yotta = ({
       media: `(min-width: 768px)`
     }
   ]
+
+  const [oldImgClasses, setOldImgClasses] = useState([
+    'opacity-0 z-0',
+    'opacity-0 z-0',
+    'opacity-0 z-0'
+  ])
+
+  const { width } = useWindowSize()
+  const isMobile = width && width < 768
+  const isTablet = width && width < 1024
+  const isDesktop = width && width >= 1024
+
   const scrollAppInstance = useRef(null)
   const scrollBarKnobRef = useRef(null)
   const yottaAppScrollbar = useRef(null)
   const yottaAppScreens = useRef(null)
 
-  useEffect(() => {
-    gsap.registerPlugin(Draggable)
-    const scrollMagnifier = window.innerWidth < 768 ? 3.5 : 1.75
+  const oldNewScrollInstance = useRef(null)
+  const oldNewScrollBarKnobRef = useRef(null)
+  const oldNewScrollbar = useRef(null)
+  const oldNewScreens = useRef(null)
 
-    scrollAppInstance.current = Draggable.create(scrollBarKnobRef.current, {
-      type: 'x',
-      bounds: yottaAppScrollbar.current,
-      throwProps: true,
-      onDrag() {
-        gsap.to(yottaAppScreens.current, {
-          // eslint-disable-next-line react/no-this-in-sfc
-          x: -this.x * scrollMagnifier,
-          overwrite: true
-        })
-      }
-    })
+  const beforeAndAfter = [
+    {
+      title: `A data-driven summary page`,
+      caption: `Our refreshed summary page tackled the recurring problem of displaying data and information in an easily digestible and on-brand manner.`,
+      beforeImage: yottaOldOne.childImageSharp.fluid,
+      afterImage: yottaNewOne.childImageSharp.fluid
+    },
+    {
+      title: `An overhauled interactive winning number reveal`,
+      caption: `From repetitive, outdated animations to an interactive game, number reveals were transformed into an engaging experience that highlights Yotta’s unique spin on the industry.`,
+      beforeImage: yottaOldTwo.childImageSharp.fluid,
+      afterImage: yottaNewTwo.childImageSharp.fluid
+    },
+    {
+      title: `A gamified and bold Play tab`,
+      caption: `The Play tab encompasses Yotta’s main selling point: gamifying banking by pairing lottery with savings. The redesign transforms a data-intensive UI into an intuitive, engaging experience.`,
+      beforeImage: yottaOldThree.childImageSharp.fluid,
+      afterImage: yottaNewThree.childImageSharp.fluid
+    }
+  ]
+
+  const showOldImage = (index) => {
+    const newArr = [...oldImgClasses]
+    newArr[index] = `opacity-100 z-50`
+    setOldImgClasses(newArr)
+  }
+
+  const hideOldImage = (index) => {
+    const newArr = [...oldImgClasses]
+    newArr[index] = `opacity-0 z-0`
+    setOldImgClasses(newArr)
+  }
+
+  const lpCallback = useCallback((event) => {
+    const { index } = event.target.dataset
+    showOldImage(index)
   }, [])
+
+  const bind = useLongPress(lpCallback, {
+    // eslint-disable-next-line no-undef
+    onFinish: (event) => hideOldImage(event.target.dataset.index)
+  })
+
+  useEffect(() => {
+    if (isTablet) {
+      gsap.registerPlugin(Draggable)
+      const scrollMagnifier = isMobile ? 3.5 : 1.75
+
+      scrollAppInstance.current = Draggable.create(scrollBarKnobRef.current, {
+        type: 'x',
+        bounds: yottaAppScrollbar.current,
+        throwProps: true,
+        onDrag() {
+          gsap.to(yottaAppScreens.current, {
+            // eslint-disable-next-line react/no-this-in-sfc
+            x: -this.x * scrollMagnifier,
+            overwrite: true
+          })
+        }
+      })
+
+      if (isMobile) {
+        const oldNewMagnifier = isMobile ? 2.5 : 1.75
+        oldNewScrollInstance.current = Draggable.create(
+          oldNewScrollBarKnobRef.current,
+          {
+            type: 'x',
+            bounds: oldNewScrollbar.current,
+            throwProps: true,
+            onDrag() {
+              gsap.to(oldNewScreens.current, {
+                // eslint-disable-next-line react/no-this-in-sfc
+                x: -this.x * oldNewMagnifier,
+                overwrite: true
+              })
+            }
+          }
+        )
+      }
+    }
+  }, [width])
+
+  const showOldImageOnHover = (index) => {
+    if (isDesktop) {
+      showOldImage(index)
+    }
+  }
+
+  const hideOldImageOnHover = (index) => {
+    if (isDesktop) {
+      hideOldImage(index)
+    }
+  }
 
   return (
     <>
@@ -217,8 +321,8 @@ const Yotta = ({
           <section className="yotta-stats mt-4 xl:mt-6">
             <div className="w-full max-w-screen-1536 px-6 md:px-0 xl:px-6 mx-auto md:px-4 cont">
               <div className="yotta-stats__container border border-solid border-blueRibbon p-16 md:flex md:justify-between md:p-10 xl:py-16 xl:px-20">
-                {stats.map((stat) => (
-                  <div key={stat.stat} className="stat mb-8 md:mb-0">
+                {stats.map((stat, i) => (
+                  <div key={i} className="stat mb-8 md:mb-0">
                     <span className="flex items-start">
                       <h3 className="font-semibold text-blueRibbon text-8xl md:text-5xl xl:text-8xl xl:font-normal">
                         {stat.stat}
@@ -336,19 +440,92 @@ const Yotta = ({
           {/* YOTTA COMPARE */}
           <section className="yotta-app-screens">
             {/* APP COMPARE */}
-            <div className="yotta-container yotta-container--skinny mt-20">
-              <h2 className="text-2xl leading-normal">
-                At the same time, we focused on establishing their new brand
-                identity while simultaneously improving their UI on the native
-                app.{' '}
-              </h2>
-              <p className="text-base leading-normal mt-8">
-                By taking inventory of the information architecture and
-                components, as well as how everything was organized, we drove
-                greater design from real data. We restructured information here,
-                removed unnecessary language there, and suggested better
-                orientations to provide a more seamless experience for users.
-              </p>
+            <div className="mt-20">
+              <div className="yotta-container yotta-container--skinny">
+                <h2 className="text-2xl leading-normal">
+                  At the same time, we focused on establishing their new brand
+                  identity while simultaneously improving their UI on the native
+                  app.{' '}
+                </h2>
+                <p className="text-base leading-normal mt-8">
+                  By taking inventory of the information architecture and
+                  components, as well as how everything was organized, we drove
+                  greater design from real data. We restructured information
+                  here, removed unnecessary language there, and suggested better
+                  orientations to provide a more seamless experience for users.
+                </p>
+              </div>
+              <div
+                ref={oldNewScreens}
+                className="yotta-old-new grid grid-cols-3 gap-x-6 mt-10 md:gap-x-8 xl:gap-x-30 xl:mt-25"
+              >
+                {beforeAndAfter.map((item, index) => (
+                  <div key={item.title} className="screen">
+                    <div className="md:grid md:grid-cols-2">
+                      <div
+                        className="yotta-old-new__caption text-white py-6 px-12 grid bg-electricViolet rounded-8 relative md:px-4 md:items-start md:content-between md:order-3 lg:py-8 lg:px-5"
+                        onMouseEnter={() => showOldImageOnHover(index)}
+                        onMouseLeave={() => hideOldImageOnHover(index)}
+                      >
+                        <p className="old-new-title text-2.5xl leading-normal font-light text-center md:text-left md:text-xl lg:text-2.5xl lg:w-3/4">
+                          {item.title}
+                        </p>
+                        <div className="old-image-container relative my-6 md:absolute md:top-0 md:left-0 md:w-full md:h-full md:my-0">
+                          <div className="relative z-10 md:hidden">
+                            <Img fluid={item.afterImage} />
+                          </div>
+                          <div
+                            className={`absolute top-0 left-0 w-full h-auto md:relative transition ease-in-out duration-300 ${oldImgClasses[index]}`}
+                          >
+                            <Img className="" fluid={item.beforeImage} />
+                          </div>
+                        </div>
+                        {isTablet ? (
+                          <button
+                            className="old-new-action border-none z-10"
+                            data-index={index}
+                            {...bind()}
+                          >
+                            <p className="flex font-light pointer-events-none md:flex-col md:text-left md:text-tiny md:w-3/4 lg:text-base leading-snug">
+                              <TapIcon className="mr-2 md:mb-2" />
+                              Tap and hold to reveal old design
+                            </p>
+                          </button>
+                        ) : (
+                          <p className="flex font-light pointer-events-none md:flex-col md:text-left md:text-tiny md:w-3/4 lg:text-base leading-snug">
+                            <TapIcon className="mr-2 md:mb-2" />
+                            Hover to reveal old design
+                          </p>
+                        )}
+                      </div>
+                      <div className="hidden md:block">
+                        <Img fluid={item.afterImage} />
+                      </div>
+                    </div>
+                    <div className="caption flex items-center mt-6 md:mt-4 lg:w-3/4">
+                      <ArrowRight className="transform -rotate-90 mr-2 w-12 pointer-events-none" />
+                      <p className="flex-1 font-courier text-sm leading-tight pointer-events-none md:text-xs lg:leading-normal">
+                        {item.caption}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-13 pb-20 px-6 md:hidden">
+                <div
+                  ref={oldNewScrollbar}
+                  className="yotta-scrollbar w-full relative md:w-1/2"
+                >
+                  <span className="scrollbar-track block w-full border border-solid border-electricViolet rounded-full absolute top-1/2 left-0" />
+                  <div
+                    ref={oldNewScrollBarKnobRef}
+                    className="scrollbar-knob z-10 relative w-14 h-6 bg-electricViolet rounded-full flex flex-col justify-center items-center"
+                  >
+                    <span className="block bar w-6 h-0.5 bg-lavender mb-0.5" />
+                    <span className="block bar w-6 h-0.5 bg-lavender mt-0.5" />
+                  </div>
+                </div>
+              </div>
             </div>
             {/* MARKETING COMPARE */}
             <div className="yotta-container yotta-container--skinny mt-20">
@@ -805,6 +982,60 @@ export const YOTTA_QUERY = graphql`
     }
     adamHeadshot: file(
       relativePath: { eq: "case-studies/yotta/yotta-headshot.png" }
+    ) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+    yottaNewOne: file(
+      relativePath: { eq: "case-studies/yotta/yotta-new-one.png" }
+    ) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+    yottaNewTwo: file(
+      relativePath: { eq: "case-studies/yotta/yotta-new-two.png" }
+    ) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+    yottaNewThree: file(
+      relativePath: { eq: "case-studies/yotta/yotta-new-three.png" }
+    ) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+    yottaOldOne: file(
+      relativePath: { eq: "case-studies/yotta/yotta-old-one.png" }
+    ) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+    yottaOldTwo: file(
+      relativePath: { eq: "case-studies/yotta/yotta-old-two.png" }
+    ) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+    yottaOldThree: file(
+      relativePath: { eq: "case-studies/yotta/yotta-old-three.png" }
     ) {
       childImageSharp {
         fluid {
