@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/button-has-type */
 import React, { useEffect, useRef, useCallback, useState } from 'react'
@@ -15,7 +16,9 @@ import { gsap } from 'gsap'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Draggable } from 'gsap/Draggable'
 import NewFooter from '@modules/common/components/NewFooter'
+import ReactPlayer from 'react-player'
 // SVGS
+import videoSrc from '@static/videos/yotta/yotta-splash-screen.mp4'
 import ArrowRight from '../../static/svgs/fancy-arrow-right.inline.svg'
 import YottaBadge from '../../static/svgs/case-studies/yotta/yotta-badge.inline.svg'
 import Asterisk from '../../static/svgs/asterisk.inline.svg'
@@ -27,6 +30,7 @@ import DesignIcon from '../../static/svgs/service-icons/design-icon.inline.svg'
 import InteractionIcon from '../../static/svgs/service-icons/interaction-icon.inline.svg'
 import BrandIcon from '../../static/svgs/service-icons/brand-icon.inline.svg'
 import TapIcon from '../../static/svgs/tap-icon.inline.svg'
+import CloseIcon from '../../static/svgs/closeIcon.inline.svg'
 
 import '../../common/styles/pages/yotta.css'
 
@@ -125,10 +129,15 @@ const Yotta = ({
   ]
 
   const [oldImgClasses, setOldImgClasses] = useState([
-    'opacity-0 z-0',
-    'opacity-0 z-0',
-    'opacity-0 z-0'
+    'opacity-0 z-0 pointer-events-none',
+    'opacity-0 z-0 pointer-events-none',
+    'opacity-0 z-0 pointer-events-none'
   ])
+
+  const [modalClasses, setModalClasses] = useState(
+    'z-0 pointer-events-none opacity-0'
+  )
+  const [isVimeoPlaying, setIsVimeoPlaying] = useState(false)
 
   const { width } = useWindowSize()
   const isMobile = width && width < 768
@@ -191,7 +200,7 @@ const Yotta = ({
   useEffect(() => {
     if (isTablet) {
       gsap.registerPlugin(Draggable)
-      const scrollMagnifier = isMobile ? 3.5 : 1.75
+      const scrollMagnifier = isMobile ? 2.75 : 1.75
 
       scrollAppInstance.current = Draggable.create(scrollBarKnobRef.current, {
         type: 'x',
@@ -207,7 +216,7 @@ const Yotta = ({
       })
 
       if (isMobile) {
-        const oldNewMagnifier = isMobile ? 2.5 : 1.75
+        const oldNewMagnifier = isMobile ? 2.1 : 1.75
         oldNewScrollInstance.current = Draggable.create(
           oldNewScrollBarKnobRef.current,
           {
@@ -227,16 +236,28 @@ const Yotta = ({
     }
   }, [width])
 
-  const showOldImageOnHover = (index) => {
+  const showOldImageOnHover = (index, e) => {
     if (isDesktop) {
+      e.target.classList.remove(`bg-electricViolet`)
       showOldImage(index)
     }
   }
 
-  const hideOldImageOnHover = (index) => {
+  const hideOldImageOnHover = (index, e) => {
     if (isDesktop) {
+      e.target.classList.add(`bg-electricViolet`)
       hideOldImage(index)
     }
+  }
+
+  const handleShowModal = () => {
+    setModalClasses('z-50 opacity-100 pointer-events-auto')
+    setIsVimeoPlaying(!isVimeoPlaying)
+  }
+
+  const handleHideModal = () => {
+    setModalClasses('z-0 opacity-0 pointer-events-none')
+    setIsVimeoPlaying(!isVimeoPlaying)
   }
 
   return (
@@ -289,14 +310,12 @@ const Yotta = ({
                       <p className="text-caption xl:text-sm">series A</p>
                     </div>
                     <div className="mt-5">
-                      <p className="text-caption xl:text-sm">
-                        $16.6M valuation
-                      </p>
-                      <p className="text-caption xl:text-sm">May 2022</p>
+                      <p className="text-caption xl:text-sm">$10M valuation</p>
+                      <p className="text-caption xl:text-sm">Founded 2019</p>
                     </div>
                   </div>
                 </div>
-                <p className="text-lg mt-8 leading-loose xl:text-xl">
+                <p className="text-lg mt-8 leading-loose lg:mt-21 xl:text-xl">
                   <span className="font-bold">
                     Born out of a mission to make financial stability fun,
                   </span>{' '}
@@ -312,13 +331,13 @@ const Yotta = ({
             </div>
           </section>
           {/* PHOTO GRID */}
-          <section className="photo-grid bg-electricViolet py-10 px-6 mt-21 md:mx-6 md:px-10 lg:py-20 lg:px-20 max-w-screen-1536 xl:mx-auto">
+          <section className="photo-grid bg-electricViolet py-10 px-6 mt-21 md:mx-6 md:px-10 lg:py-20 lg:px-20 max-w-screen-1536">
             <div className="photo-grid__container">
               <Img fluid={designImgSources} />
             </div>
           </section>
           {/* STATS */}
-          <section className="yotta-stats mt-4 xl:mt-6">
+          {/* <section className="yotta-stats mt-4 xl:mt-6">
             <div className="w-full max-w-screen-1536 px-6 md:px-0 xl:px-6 mx-auto md:px-4 cont">
               <div className="yotta-stats__container border border-solid border-blueRibbon p-16 md:flex md:justify-between md:p-10 xl:py-16 xl:px-20">
                 {stats.map((stat, i) => (
@@ -336,7 +355,7 @@ const Yotta = ({
                 ))}
               </div>
             </div>
-          </section>
+          </section> */}
           {/* BEFORE & AFTER */}
           <section className="before-after">
             <div className="yotta-container yotta-container--skinny py-20 md:py-24 xl:py-35">
@@ -395,7 +414,19 @@ const Yotta = ({
                 </p>
               </div>
               <div className="brand-img-one px-6 mt-10 md:mt-0 md:px-0 md:pr-20 md:mt-0">
-                <Img fluid={brandImgOne.childImageSharp.fluid} />
+                {/* <Img fluid={brandImgOne.childImageSharp.fluid} /> */}
+                <ReactPlayer
+                  className="react-player"
+                  controls={false}
+                  height="auto"
+                  loop={true}
+                  muted={true}
+                  playing={true}
+                  playsinline={true}
+                  type="mp4"
+                  url={videoSrc}
+                  width="100%"
+                />
                 <div className="caption-one flex items-center justify-center py-4 px-6 border border-solid border-gray-700 rounded-8 mt-5 md:mt-2 md:flex-col md:items-start">
                   <ArrowRight className="transform -rotate-90 w-11 h-auto mr-4 md:mb-2 md:-translate-x-3" />
                   <p className="font-courier text-gray-600 text-sm flex-1 leading-normal">
@@ -406,7 +437,38 @@ const Yotta = ({
               <div className="yotta-brand-img-grid mt-20 md:mt-24 xl:mt-0">
                 <div className="brand-img-two relative px-6 md:px-0 md:mt-24 xl:mt-0 xl:w-1/2 xl:mx-auto">
                   <Img fluid={brandImgTwo.childImageSharp.fluid} />
-                  <div className="caption-one flex items-center justify-between py-4 px-6 border border-solid border-gray-700 rounded-full mt-5 md:absolute md:top-0 md:left-0 md:transform md:-translate-x-full md:-ml-2 md:mt-0 md:flex-col md:items-end md:rounded-8 md:w-30 md:px-4">
+                  <div
+                    className={`fixed top-0 left-0 w-full h-full bg-black transition ease-in-out grid place-items-center ${modalClasses}`}
+                  >
+                    <span
+                      className="absolute top-6 right-6 text-blueRibbon z-50 cursor-pointer"
+                      onClick={() => handleHideModal()}
+                    >
+                      <CloseIcon className="" />
+                    </span>
+                    <ReactPlayer
+                      config={{
+                        vimeo: {
+                          playerOptions: {
+                            controls: false,
+                            responsive: true,
+                            playsinline: false,
+                            autoplay: false,
+                            muted: false
+                          }
+                        }
+                      }}
+                      height="auto"
+                      playing={isVimeoPlaying}
+                      url="https://vimeo.com/797800048"
+                      // onPlay={() => screenfull.request()}
+                      width="100%"
+                    />
+                  </div>
+                  <div
+                    className="caption-one flex items-center justify-between py-4 px-6 border border-solid border-gray-700 rounded-full mt-5 md:absolute md:top-0 md:left-0 md:transform md:-translate-x-full md:-ml-2 md:mt-0 md:flex-col md:items-end md:rounded-8 md:w-30 md:px-4 cursor-pointer"
+                    onClick={() => handleShowModal()}
+                  >
                     <p className="font-courier text-gray-600 text-sm leading-normal md:order-2 md:text-right md:mt-2">
                       The Yotta hero video
                     </p>
@@ -463,14 +525,14 @@ const Yotta = ({
                   <div key={item.title} className="screen">
                     <div className="md:grid md:grid-cols-2">
                       <div
-                        className="yotta-old-new__caption text-white py-6 px-12 grid bg-electricViolet rounded-8 relative md:px-4 md:items-start md:content-between md:order-3 lg:py-8 lg:px-5"
-                        onMouseEnter={() => showOldImageOnHover(index)}
-                        onMouseLeave={() => hideOldImageOnHover(index)}
+                        className="yotta-old-new__caption text-white py-6 px-12 grid bg-electricViolet rounded-8 relative md:px-4 md:items-start md:content-between md:order-3 lg:py-8 lg:px-5 lg:rounded-10 transition ease-in-out duration-300"
+                        onMouseEnter={(e) => showOldImageOnHover(index, e)}
+                        onMouseLeave={(e) => hideOldImageOnHover(index, e)}
                       >
                         <p className="old-new-title text-2.5xl leading-normal font-light text-center md:text-left md:text-xl lg:text-2.5xl lg:w-3/4">
                           {item.title}
                         </p>
-                        <div className="old-image-container relative my-6 md:absolute md:top-0 md:left-0 md:w-full md:h-full md:my-0">
+                        <div className="old-image-container relative my-6 md:absolute md:top-0 md:left-0 md:w-full md:h-full md:my-0 pointer-events-none">
                           <div className="relative z-10 md:hidden">
                             <Img fluid={item.afterImage} />
                           </div>
@@ -716,7 +778,7 @@ const Yotta = ({
           {/* RESULTS */}
           <section className="yotta-results bg-black lg:mt-15">
             <div className="yotta-container py-20">
-              <h2 className="text-lilac text-4xl leading-none w-1/3 md:ml-16 md:w-full lg:w-9/12 lg:ml-auto">
+              <h2 className="text-lilac text-4xl leading-none w-2/3 md:ml-16 md:w-full lg:w-9/12 lg:ml-auto">
                 Our work's results{' '}
                 <span className="italic font-crimson text-5xl">so far</span>
               </h2>
@@ -817,7 +879,7 @@ const Yotta = ({
                   put to the test
                 </span>
               </h2>
-              <div className="md:grid md:grid-cols-3 md:gap-x-12 md:gap-y-10 md:mt-4">
+              <div className="md:grid md:grid-cols-3 md:gap-x-12 md:gap-y-10 md:mt-4 lg:grid-cols-5 xl:gap-x-26">
                 {services.map((service) => (
                   <div
                     key={service.name}
