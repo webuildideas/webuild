@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/button-has-type */
 import React, { useEffect, useRef, useCallback, useState } from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import Meta from '@components/Meta'
 import Img from 'gatsby-image'
 import {
@@ -17,6 +17,7 @@ import { gsap } from 'gsap'
 import { Draggable } from 'gsap/Draggable'
 import NewFooter from '@modules/common/components/NewFooter'
 import ReactPlayer from 'react-player'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 // SVGS
 import videoSrc from '@static/videos/yotta/yotta-splash-screen.mp4'
 import ArrowRight from '../../static/svgs/fancy-arrow-right.inline.svg'
@@ -24,11 +25,6 @@ import YottaBadge from '../../static/svgs/case-studies/yotta/yotta-badge.inline.
 import Asterisk from '../../static/svgs/asterisk.inline.svg'
 import PlayIcon from '../../static/svgs/playicon.inline.svg'
 import YottaLogo from '../../static/svgs/case-studies/yotta/yotta-logo.inline.svg'
-import ProductIcon from '../../static/svgs/service-icons/product-icon.inline.svg'
-import MarketingIcon from '../../static/svgs/service-icons/marketing-icon.inline.svg'
-import DesignIcon from '../../static/svgs/service-icons/design-icon.inline.svg'
-import InteractionIcon from '../../static/svgs/service-icons/interaction-icon.inline.svg'
-import BrandIcon from '../../static/svgs/service-icons/brand-icon.inline.svg'
 import TapIcon from '../../static/svgs/tap-icon.inline.svg'
 import CloseIcon from '../../static/svgs/closeIcon.inline.svg'
 
@@ -65,29 +61,6 @@ const stats = [
   }
 ]
 
-const services = [
-  {
-    name: `Product Design`,
-    icon: <ProductIcon />
-  },
-  {
-    name: `Marketing Design`,
-    icon: <MarketingIcon />
-  },
-  {
-    name: `Design Systems`,
-    icon: <DesignIcon />
-  },
-  {
-    name: `Animation + Interaction`,
-    icon: <InteractionIcon />
-  },
-  {
-    name: `Brand Design`,
-    icon: <BrandIcon />
-  }
-]
-
 const Yotta = ({
   location,
   data: {
@@ -113,7 +86,12 @@ const Yotta = ({
     yottaOldThree,
     yottaNewOne,
     yottaNewTwo,
-    yottaNewThree
+    yottaNewThree,
+    productGif,
+    marketingGif,
+    designGif,
+    brandingGif,
+    animationGif
   }
 }) => {
   const {
@@ -172,6 +150,34 @@ const Yotta = ({
       caption: `The Play tab encompasses Yotta’s main selling point: gamifying banking by pairing lottery with savings. The redesign transforms a data-intensive UI into an intuitive, engaging experience.`,
       beforeImage: yottaOldThree.childImageSharp.fluid,
       afterImage: yottaNewThree.childImageSharp.fluid
+    }
+  ]
+
+  const services = [
+    {
+      name: `Product Design`,
+      img: productGif.publicURL,
+      link: `/what-we-do/digital-product-strategy-and-design/`
+    },
+    {
+      name: `Marketing Design`,
+      img: marketingGif.publicURL,
+      link: `/what-we-do/marketing-design/`
+    },
+    {
+      name: `Design Systems`,
+      img: designGif.publicURL,
+      link: `/what-we-do/design-systems/`
+    },
+    {
+      name: `Animation + Interaction`,
+      img: brandingGif.publicURL,
+      link: `/what-we-do/animation-and-interaction/`
+    },
+    {
+      name: `Brand Design`,
+      img: animationGif.publicURL,
+      link: `/what-we-do/brand-strategy-and-design/`
     }
   ]
 
@@ -363,13 +369,13 @@ const Yotta = ({
                 <h2 className="text-electricViolet text-3xl flex items-start mb-6 xl:text-4xl">
                   <Asterisk className="w-5 h-auto mr-2" /> Problem
                 </h2>
-                <p className="text-base leading-relaxed">
+                <p className="text-base leading-relaxed lg:text-lg">
                   A weak brand identity and outdated UI zaps any chance of
                   building customer loyalty. Yotta knew this as they experienced
                   insufficient levels of customer engagement. Nothing from the
                   visual identity to the UI and UX was hitting the mark.
                 </p>
-                <p className="text-base leading-relaxed mt-6">
+                <p className="text-base leading-relaxed mt-6 lg:text-lg">
                   In order to turn things around, Yotta needed to update their
                   visual identity to attract their target audience and find ways
                   to reach them in an authentic and engaging way. In short, they
@@ -381,7 +387,7 @@ const Yotta = ({
                 <h2 className="text-electricViolet text-3xl flex items-start mb-6 xl:text-4xl">
                   <Asterisk className="w-5 h-auto mr-2" /> Solution
                 </h2>
-                <p className="text-base leading-relaxed">
+                <p className="text-base leading-relaxed lg:text-lg">
                   A weak brand identity and outdated UI zaps any chance of
                   building customer loyalty. Yotta knew this as they experienced
                   insufficient levels of customer engagement. Nothing from the
@@ -397,7 +403,7 @@ const Yotta = ({
                 <h1 className="text-4xl leading-tight">
                   From Brand and Product Design to Animation and Marketing
                   Design,{' '}
-                  <span className="text-lavender font-crimson italics font-extralight">
+                  <span className="text-lavender font-crimson italic font-extralight">
                     webuild tackled it all
                   </span>
                 </h1>
@@ -436,7 +442,29 @@ const Yotta = ({
               </div>
               <div className="yotta-brand-img-grid mt-20 md:mt-24 xl:mt-0">
                 <div className="brand-img-two relative px-6 md:px-0 md:mt-24 xl:mt-0 xl:w-1/2 xl:mx-auto">
-                  <Img fluid={brandImgTwo.childImageSharp.fluid} />
+                  {/* <Img fluid={brandImgTwo.childImageSharp.fluid} /> */}
+                  <ReactPlayer
+                    config={{
+                      vimeo: {
+                        playerOptions: {
+                          controls: false,
+                          responsive: true,
+                          playsinline: true,
+                          autoplay: true,
+                          muted: true
+                        }
+                      }
+                    }}
+                    controls={false}
+                    height="auto"
+                    loop={true}
+                    muted={true}
+                    playing={true}
+                    playsinline={true}
+                    url="https://vimeo.com/799178998"
+                    // onPlay={() => screenfull.request()}
+                    width="100%"
+                  />
                   <div
                     className={`fixed top-0 left-0 w-full h-full bg-black transition ease-in-out grid place-items-center ${modalClasses}`}
                   >
@@ -460,7 +488,7 @@ const Yotta = ({
                       }}
                       height="auto"
                       playing={isVimeoPlaying}
-                      url="https://vimeo.com/797800048"
+                      url="https://vimeo.com/799178998"
                       // onPlay={() => screenfull.request()}
                       width="100%"
                     />
@@ -509,7 +537,7 @@ const Yotta = ({
                   identity while simultaneously improving their UI on the native
                   app.{' '}
                 </h2>
-                <p className="text-base leading-normal mt-8">
+                <p className="text-base leading-normal mt-8 lg:text-lg">
                   By taking inventory of the information architecture and
                   components, as well as how everything was organized, we drove
                   greater design from real data. We restructured information
@@ -590,11 +618,11 @@ const Yotta = ({
               </div>
             </div>
             {/* MARKETING COMPARE */}
-            <div className="yotta-container yotta-container--skinny mt-20">
+            <div className="yotta-container yotta-container--skinny pb-20 md:pb-15">
               <h3 className="text-2.5xl leading-normal">
                 In addition, we got extra creative to build brand affinity.
               </h3>
-              <p className="mt-8 text-base leading-relaxed">
+              <p className="mt-8 text-base leading-relaxed lg:text-lg">
                 We’re talking playful social ads to establish brand awareness
                 and trust, and custom video campaigns to introduce Yotta’s key
                 features. From animation work to splash videos, we told Yotta’s
@@ -604,7 +632,7 @@ const Yotta = ({
                 (rapped or otherwise!) emphasized the high-trust, high-autonomy
                 factor Yotta needed to show off.
               </p>
-              <p className="mt-8 text-base leading-relaxed">
+              <p className="mt-8 text-base leading-relaxed lg:text-lg">
                 We also leveled up the homepage by creating a more striking
                 visual identity. To do this we performed research and presented
                 a range of concepts. We involved a high-production photo shoot
@@ -613,7 +641,7 @@ const Yotta = ({
                 trustworthiness.{' '}
               </p>
             </div>
-            <div className="yotta-compare-container bg-gray-300 py-8 px-6 max-w-screen-1536 mx-auto lg:mt-15">
+            <div className="yotta-compare-container bg-gray-300 py-8 px-6 max-w-screen-1536 mx-auto md:py-12">
               <div className="relative max-w-screen-md mx-auto">
                 <div className="yotta-ba flex justify-around align-center md:justify-between lg:absolute lg:top-2/4 lg:right-0 lg:-left-25">
                   <span className="text-base text-blueRibbon">Before</span>
@@ -681,7 +709,7 @@ const Yotta = ({
                 The fun doesn’t stop here. Our team is constantly fine-tuning
                 designs based on user feedback and business priorities.
               </h2>
-              <p className="text-base mt-8 lg:text-xl leading-loose">
+              <p className="text-base mt-8 lg:text-lg leading-loose">
                 Right now, that means diving into the *number reveal UX* - a
                 critical portion of the design where a user learns what they
                 have won each week. Our team is working in lockstep with Yotta
@@ -885,8 +913,15 @@ const Yotta = ({
                     key={service.name}
                     className="border-b border-solid pt-5 mt-6"
                   >
-                    {service.icon}
-                    <p className="py-6">{service.name}</p>
+                    <AniLink
+                      cover
+                      direction="right"
+                      duration={1.5}
+                      to={service.link}
+                    >
+                      <img alt={service.name} src={service.img} />
+                      <p className="py-6">{service.name}</p>
+                    </AniLink>
                   </div>
                 ))}
               </div>
@@ -1104,6 +1139,21 @@ export const YOTTA_QUERY = graphql`
           ...GatsbyImageSharpFluid_withWebp_noBase64
         }
       }
+    }
+    productGif: file(relativePath: { eq: "service-gifs/product-design.gif" }) {
+      publicURL
+    }
+    marketingGif: file(relativePath: { eq: "service-gifs/marketing.gif" }) {
+      publicURL
+    }
+    designGif: file(relativePath: { eq: "service-gifs/design.gif" }) {
+      publicURL
+    }
+    brandingGif: file(relativePath: { eq: "service-gifs/branding.gif" }) {
+      publicURL
+    }
+    animationGif: file(relativePath: { eq: "service-gifs/animation.gif" }) {
+      publicURL
     }
   }
 `
