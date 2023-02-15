@@ -206,7 +206,7 @@ const Yotta = ({
   useEffect(() => {
     if (isTablet) {
       gsap.registerPlugin(Draggable)
-      const scrollMagnifier = isMobile ? 2.75 : 1.75
+      const scrollMagnifier = isMobile ? 3.5 : 1.75
 
       scrollAppInstance.current = Draggable.create(scrollBarKnobRef.current, {
         type: 'x',
