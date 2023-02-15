@@ -8,7 +8,9 @@ export const createPages = async ({ graphql, actions }) => {
   const result = await graphql(`
     {
       allContentfulCaseStudy(
-        filter: { name: { nin: ["GoSite", "Quadpay", "Tetra", "PLACEHOLDER"] } }
+        filter: {
+          name: { nin: ["GoSite", "Quadpay", "Tetra", "Yotta", "PLACEHOLDER"] }
+        }
       ) {
         nodes {
           slug
@@ -153,4 +155,17 @@ export const onCreateWebpackConfig = ({ actions }) => {
       }
     }
   })
+
+  // if (stage === 'build-html' || stage === 'develop-html') {
+  //   actions.setWebpackConfig({
+  //     module: {
+  //       rules: [
+  //         {
+  //           test: /gsap/,
+  //           use: loaders.null()
+  //         }
+  //       ]
+  //     }
+  //   })
+  // }
 }

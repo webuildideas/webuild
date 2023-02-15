@@ -1,0 +1,298 @@
+.yotta-hero {
+  h1 {
+    font-size: 40px;
+    line-height: 110%;
+
+    @screen md {
+      font-size: 52px;
+    }
+
+    @screen xl {
+      font-size: 70px;
+    }
+
+    span {
+      font-size: 48px;
+      line-height: 90%;
+
+      @screen md {
+        font-size: 68px;
+      }
+
+      @screen xl {
+        font-size: 82px;
+      }
+    }
+
+    br {
+      display: none;
+
+      @screen xl {
+        display: inline;
+      }
+    }
+  }
+
+  .img {
+    /* transform: translateY(36px); */
+    @screen md {
+      max-width: 364px;
+      @apply mx-auto;
+    }
+  }
+}
+
+.yotta-intro {
+  .intro-p {
+    line-height: 130%;
+  }
+}
+
+.yotta-container {
+  @apply w-full max-w-screen-1536 px-6 md:px-16 xl:px-6 mx-auto;
+
+  @media screen and (min-width: 1440px) {
+    @apply px-30;
+  }
+
+  @media screen and (min-width: 1584px) {
+    @apply px-0;
+  }
+
+  &--skinny {
+    @apply max-w-screen-md;
+  }
+}
+
+.yotta-stats {
+  .cont {
+    @media screen and (min-width: 1632px) {
+      @apply px-0;
+    }
+  }
+
+  &__container {
+    border-radius: 80px;
+
+    @screen md {
+      @apply rounded-full;
+    }
+
+    @screen xl {
+      border-radius: 80px;
+    }
+
+    .stat:last-of-type {
+      @apply mb-0;
+    }
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  #yotta-container {
+    .photo-grid {
+      margin-left: 120px;
+      margin-right: 120px;
+    }
+  }
+}
+
+@media screen and (min-width: 1584px) {
+  #yotta-container {
+    .photo-grid {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+.yotta-brand-product-grid {
+  @screen md {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: auto;
+    grid-template-areas:
+      'img-one content'
+      'img-grid img-grid';
+  }
+
+  @media screen and (min-width: 1440px) {
+    @apply px-30;
+  }
+
+  @screen xl {
+    grid-template-columns: 20% 35% 45%;
+    grid-template-areas: 'img-one content img-grid';
+  }
+
+  .brand-img-one {
+    @screen md {
+      grid-area: img-one;
+    }
+  }
+
+  .yotta-brand-product-content {
+    @screen md {
+      grid-area: content;
+    }
+  }
+
+  .yotta-brand-img-grid {
+    @screen md {
+      grid-area: img-grid;
+      display: grid;
+      grid-template-columns: 45% 5% 50%;
+      grid-template-rows: auto;
+      grid-template-areas:
+        'img-three img-three img-four'
+        '. img-two img-two';
+    }
+
+    @screen xl {
+      grid-template-columns: 60% 40%;
+      grid-template-rows: 40% 60%;
+      grid-template-areas:
+        'img-two img-two'
+        'img-three img-four';
+    }
+  }
+
+  .brand-img-two {
+    @screen md {
+      grid-area: img-two;
+    }
+  }
+  .brand-img-three {
+    @screen md {
+      grid-area: img-three;
+    }
+  }
+  .brand-img-four {
+    @screen md {
+      grid-area: img-four;
+    }
+  }
+}
+
+.baf-handle::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #8900ff;
+  box-shadow: 0000 rgba(137, 0, 255, 0.7);
+  border-radius: 3px;
+  width: 100%;
+  height: 100%;
+  animation: pulse 2s infinite;
+  z-index: 0;
+}
+
+.yotta-ba {
+  @screen lg {
+    width: calc(100% + 200px);
+  }
+}
+
+.yotta-more-app-screens {
+  .yotta-container {
+    width: 350vw;
+
+    @screen md {
+      width: 175vw;
+    }
+
+    @screen lg {
+      @apply w-full;
+    }
+  }
+}
+
+.scrollbar-knob::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #8900ff;
+  box-shadow: 0000 rgba(137, 0, 255, 0.7);
+  border-radius: 3px;
+  width: 100%;
+  height: 100%;
+  animation: pulse 2s infinite;
+  z-index: -1;
+  border-radius: 9999999px;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(137, 0, 255, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(137, 0, 255, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(137, 0, 255, 0);
+  }
+}
+
+.yotta-results {
+  .result-card {
+    @apply flex py-12 px-10 border border-solid border-gray-400;
+    border-radius: 80px;
+
+    @screen md {
+      height: 320px;
+      @apply flex-col justify-between;
+    }
+
+    @screen lg {
+      height: 400px;
+      @apply pt-14;
+    }
+  }
+}
+
+.yotta-old-new {
+  @apply w-full max-w-screen-1536 px-6 md:px-6 xl:px-6 mx-auto;
+  width: 250vw;
+
+  @screen md {
+    width: 100%;
+    grid-template-columns: unset;
+    grid-template-areas: 's-1 s-2' 's-3 s-3';
+
+    .screen:first-of-type {
+      grid-area: s-1;
+    }
+
+    .screen:nth-of-type(2) {
+      grid-area: s-2;
+    }
+
+    .screen:last-of-type {
+      grid-area: s-3;
+
+      @screen md {
+        width: 480px;
+        @apply m-auto mt-20;
+
+        .caption {
+          @apply w-3/4;
+        }
+      }
+
+      @screen lg {
+        width: 680px;
+      }
+    }
+  }
+
+  @media screen and (min-width: 1440px) {
+    @apply px-30;
+  }
+}
