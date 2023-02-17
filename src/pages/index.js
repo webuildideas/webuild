@@ -25,7 +25,9 @@ import '@common/styles/pages/new-home.css'
 
 const NEW_HOME_PAGE_QUERY = graphql`
   query query {
-    allContentfulCaseStudy(filter: { name: { ne: "PLACEHOLDER" } }) {
+    allContentfulCaseStudy(
+      filter: { name: { nin: ["PLACEHOLDER", "Optimize"] } }
+    ) {
       nodes {
         name
         tagline

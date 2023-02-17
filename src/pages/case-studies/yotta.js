@@ -388,10 +388,11 @@ const Yotta = ({
                   <Asterisk className="w-5 h-auto mr-2" /> Solution
                 </h2>
                 <p className="text-base leading-relaxed lg:text-lg">
-                  A weak brand identity and outdated UI zaps any chance of
-                  building customer loyalty. Yotta knew this as they experienced
-                  insufficient levels of customer engagement. Nothing from the
-                  visual identity to the UI and UX was hitting the mark.
+                  To make this happen, we revamped the brand’s visual identity
+                  and gave its customer experience a lot of TLC. With a
+                  completely new look and feel, plus an overhaul of the UX and
+                  UI, the customer experience went from drab to dynamic. Now,
+                  there’s no doubt that Yotta’s brand is alive.
                 </p>
               </div>
             </div>
@@ -718,13 +719,13 @@ const Yotta = ({
                 static one. When users feel more ownership over the process of
                 drawing their weekly numbers, it’s a stickier experience.
               </p>
-              <p className="text-base mt-8 lg:text-xl leading-loose">
+              <p className="text-base mt-8 lg:text-lg leading-loose">
                 We’re still figuring out what that experience will look like -
                 and our Figma files are overflowing with ideas. It’s going to
                 combine the fun of fantasy sports betting, with a high sense of
                 trust and clarity on a user’s savings.
               </p>
-              <p className="text-base mt-8 lg:text-xl leading-loose">
+              <p className="text-base mt-8 lg:text-lg leading-loose">
                 It’ll be a big project, but webuild is a team of big dreamers.
                 Stay tuned!
               </p>
@@ -936,7 +937,7 @@ const Yotta = ({
 
 export const YOTTA_QUERY = graphql`
   query yottaQuery {
-    contentfulCaseStudy(name: { eq: "Quadpay" }) {
+    contentfulCaseStudy(name: { eq: "Yotta" }) {
       metaDescription {
         metaDescription
       }
