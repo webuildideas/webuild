@@ -619,7 +619,7 @@ const Yotta = ({
               </div>
             </div>
             {/* MARKETING COMPARE */}
-            <div className="yotta-container yotta-container--skinny pb-20 md:pb-15">
+            <div className="yotta-container yotta-container--skinny pb-20 md:pb-15 md:mt-20 xl:mt-31">
               <h3 className="text-2.5xl leading-normal">
                 In addition, we got extra creative to build brand affinity.
               </h3>
@@ -711,13 +711,15 @@ const Yotta = ({
                 designs based on user feedback and business priorities.
               </h2>
               <p className="text-base mt-8 lg:text-lg leading-loose">
-                Right now, that means diving into the *number reveal UX* - a
-                critical portion of the design where a user learns what they
-                have won each week. Our team is working in lockstep with Yotta
-                to learn what user pain points we can solve. The biggest one? A
-                desire for a more *experiential* number reveal - rather than a
-                static one. When users feel more ownership over the process of
-                drawing their weekly numbers, it’s a stickier experience.
+                Right now, that means diving into the{' '}
+                <span className="font-bold">number reveal UX</span> - a critical
+                portion of the design where a user learns what they have won
+                each week. Our team is working in lockstep with Yotta to learn
+                what user pain points we can solve. The biggest one? A desire
+                for a more <span className="font-bold">experiential</span>{' '}
+                number reveal - rather than a static one. When users feel more
+                ownership over the process of drawing their weekly numbers, it’s
+                a stickier experience.
               </p>
               <p className="text-base mt-8 lg:text-lg leading-loose">
                 We’re still figuring out what that experience will look like -
