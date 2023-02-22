@@ -6,7 +6,7 @@ import React from 'react'
 import { graphql, PageProps } from 'gatsby'
 
 // Components
-import Footer from '@modules/common/components/Footer'
+import NewFooter from '@modules/common/components/NewFooter'
 import Meta from '@components/Meta'
 import TestimonialSlider from '@modules/common/components/TestimonialSlider'
 import ProcessSteps from '@modules/common/components/ProcessSteps'
@@ -116,7 +116,7 @@ const CaseStudies = ({
           />
         </div>
       </main>
-      <Footer />
+      <NewFooter />
     </>
   )
 }

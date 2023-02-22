@@ -16,7 +16,7 @@ import RichText from '@components/CaseStudyDetail/RichText'
 import ChallengeAndSolution from '@components/CaseStudyDetail/ChallengeAndSolution'
 import FeaturedTestimonial from '@components/CaseStudyDetail/FeaturedTestimonial'
 import CaseStudy from '@modules/common/components/CaseStudy'
-import Footer from '@modules/common/components/Footer'
+import NewFooter from '@modules/common/components/NewFooter'
 import Meta from '@components/Meta'
 
 interface Props {
@@ -132,7 +132,7 @@ const CaseStudyDetail = ({
           </div>
         ) : null}
 
-        <Footer />
+        <NewFooter />
       </S.CaseStudyDetail>
     </>
   )

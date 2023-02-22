@@ -21,7 +21,7 @@ import Meta from '@components/Meta'
 import PhotoGrid from '@modules/common/components/PhotoGrid'
 import Button from '@modules/common/components/Button'
 import OtherServices from '@modules/service/components/OtherServices'
-import Footer from '@modules/common/components/Footer'
+import NewFooter from '@modules/common/components/NewFooter'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 // SVGs
@@ -245,7 +245,7 @@ const WhoWeAre = ({ data, location }: Props) => {
           </Button>
         </div>
         <OtherServices services={services} title="What We Do" />
-        <Footer />
+        <NewFooter />
       </motion.main>
     </>
   )

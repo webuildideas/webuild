@@ -13,7 +13,7 @@ import { TypeTestimonial } from '@common/types/Testimonial'
 import { TypeGatsbyChildImageSharpFluid } from '@common/types/GatsbyImage'
 
 // Components
-import Footer from '@modules/common/components/Footer'
+import NewFooter from '@modules/common/components/NewFooter'
 import Meta from '@components/Meta'
 import Button from '@modules/common/components/Button'
 import TeamTestimonialSlider from '@modules/common/components/TeamTestimonialSlider'
@@ -344,7 +344,7 @@ const Careers = ({
           </div>
         </div>
 
-        <Footer />
+        <NewFooter />
       </div>
     </>
   )

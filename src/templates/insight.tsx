@@ -29,7 +29,7 @@ import ReadNext from '@modules/insight/components/ReadNext'
 import ReadNextSidebar from '@modules/insight/components/ReadNextSidebar'
 import InsightTags from '@modules/common/components/InsightTags'
 import Author from '@modules/insight/components/Author'
-import Footer from '@modules/common/components/Footer'
+import NewFooter from '@modules/common/components/NewFooter'
 import EmailSignupForm from '@modules/forms/EmailSignupForm'
 import GatedPostForm from '@modules/forms/GatedPostForm'
 import ContentUpgradeForm from '@modules/forms/ContentUpgradeForm'
@@ -245,10 +245,7 @@ const Insight = ({
 
     if (contentUpgrade && userHasCompletedContentUpgrade) {
       contentUpgrade.scrollIntoView({ behavior: 'smooth' })
-      return
-    }
-
-    if (contentUpgradeInputRef.current) {
+    } else {
       contentUpgrade.scrollIntoView({ behavior: 'smooth' })
       setTimeout(() => {
         if (contentUpgradeInputRef.current) {
@@ -256,6 +253,10 @@ const Insight = ({
         }
       }, 1000)
     }
+
+    // if (contentUpgradeInputRef.current) {
+
+    // }
   }
 
   useEffect(() => {
@@ -354,6 +355,7 @@ const Insight = ({
                     className="Insight-share-items"
                     hashtags={insight.hashtags}
                     shareQuote={insight.shareQuote?.shareQuote}
+                    shareUrl={`https://webuild.io${location.pathname}`}
                     title={insight.title}
                   />
                 </Sticky>
@@ -386,7 +388,7 @@ const Insight = ({
             </>
           ) : null}
         </main>
-        <Footer />
+        <NewFooter />
       </div>
     </>
   )

@@ -922,7 +922,11 @@ const Yotta = ({
                       duration={1.5}
                       to={service.link}
                     >
-                      <img alt={service.name} src={service.img} />
+                      <img
+                        alt={service.name}
+                        src={service.img}
+                        style={{ width: `auto`, height: `64px` }}
+                      />
                       <p className="py-6">{service.name}</p>
                     </AniLink>
                   </div>

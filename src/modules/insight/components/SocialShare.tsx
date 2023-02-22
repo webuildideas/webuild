@@ -42,7 +42,7 @@ const SocialShare = ({
         <FbIcon className="text-lavender" height={32} width={32} />
       </FacebookShareButton>
       <TwitterShareButton
-        hashtags={hashtags}
+        hashtags={hashtags || [`webuild`]}
         title={shareQuote}
         url={shareUrl}
         via="wearewebuild"

@@ -29,7 +29,7 @@ import ListingAd, {
 } from '@modules/contentHub/components/ListingAd'
 import FeaturedInsight from '@modules/contentHub/components/FeaturedInsight'
 import Pagination from '@modules/contentHub/components/Paginations'
-import Footer from '@modules/common/components/Footer'
+import NewFooter from '@modules/common/components/NewFooter'
 import EmailSignUpForm from '@modules/forms/EmailSignupForm'
 import MonthlyNewsletterForm from '@modules/forms/MonthlyNewsletterForm'
 
@@ -338,7 +338,7 @@ const Insights = ({
           <MemoizedSidebarAd excludeEbooks />
         </aside>
       </div>
-      <Footer />
+      <NewFooter />
     </div>
   )
 }
