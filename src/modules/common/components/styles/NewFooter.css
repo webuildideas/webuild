@@ -44,11 +44,6 @@
   }
 }
 
-.footer-nav {
-  box-sizing: border-box;
-}
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
+section .burger:last-of-type {
+  display: none;
 }
