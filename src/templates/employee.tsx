@@ -8,7 +8,7 @@ import { TypeEmployee } from '@common/types/Employee'
 import EmployeeHero from '@modules/employee-page/components/EmployeeHero'
 import EmployeeCarousel from '@modules/employee-page/components/EmployeeCarousel'
 import OtherEmployees from '@modules/employee-page/components/OtherMembers'
-import Footer from '@modules/common/components/Footer'
+import NewFooter from '@modules/common/components/NewFooter'
 import Meta from '@components/Meta'
 
 interface Props {
@@ -58,7 +58,7 @@ const employeePage = ({
           secretPower={employee.secretPower}
         />
         <OtherEmployees peeps={peeps} />
-        <Footer />
+        <NewFooter />
       </motion.main>
     </>
   )

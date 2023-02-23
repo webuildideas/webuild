@@ -11,7 +11,7 @@ import TestimonialSlider from '@modules/common/components/TestimonialSlider'
 import ServiceListing from '@modules/service/components/ServiceListing'
 import ProcessSteps from '@modules/common/components/ProcessSteps'
 import OpportunityForm from '@modules/forms/OpportunityForm'
-import Footer from '@modules/common/components/Footer'
+import NewFooter from '@modules/common/components/NewFooter'
 
 // styles
 import '@common/styles/pages/what-we-do.css'
@@ -128,7 +128,7 @@ const WhatWeDo = ({
           title="Are you with us? Let's talk."
         />
       </div>
-      <Footer />
+      <NewFooter />
     </>
   )
 }

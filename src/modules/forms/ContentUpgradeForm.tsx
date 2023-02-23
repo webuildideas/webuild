@@ -153,7 +153,10 @@ const ContentUpgradeForm = ({
   ])
 
   return (
-    <div className={formClassNames} id="content-upgrade">
+    <div
+      className={`${formClassNames} ContentUpgrade-bottom`}
+      id="content-upgrade"
+    >
       <div className="ContentUpgrade-container">
         <h2 className="ContentUpgrade-title text-h3 font-extrabold mb-6">
           {getTitle()}

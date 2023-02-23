@@ -17,7 +17,7 @@ import CaseStudyContent from '@modules/case-studies/components/CaseStudyContent'
 import CaseStudyXLargeImage from '@modules/case-studies/components/CaseStudyXLargeImage'
 import CaseStudyTestimonial from '@modules/case-studies/components/CaseStudyTestimonial'
 
-import Footer from '@modules/common/components/Footer'
+import NewFooter from '@modules/common/components/NewFooter'
 import OtherServices from '@modules/service/components/OtherServices'
 // import OpportunityForm from '@modules/forms/OpportunityForm'
 import Meta from '@components/Meta'
@@ -259,7 +259,7 @@ const Tetra = ({
           title="How We Got There"
         />
         <RelatedCaseStudies caseStudies={nextCaseStudies} />
-        <Footer />
+        <NewFooter />
       </div>
     </>
   )

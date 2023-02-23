@@ -10,7 +10,7 @@ import { TypeCaseStudy } from '@common/types/CaseStudy'
 import QuadpayIntro from '@modules/case-studies/quadpay/components/QuadpayIntro'
 import QuadpayDesignSystems from '@modules/case-studies/quadpay/components/QuadpayDesignSystems'
 import QuadpayConclusion from '@modules/case-studies/quadpay/components/QuadpayConclusion'
-import Footer from '@modules/common/components/Footer'
+import NewFooter from '@modules/common/components/NewFooter'
 import OtherServices from '@modules/service/components/OtherServices'
 import QuadpayProductDesign from '@modules/case-studies/quadpay/components/QuadpayProductDesign'
 import OpportunityForm from '@modules/forms/OpportunityForm'
@@ -76,7 +76,7 @@ const QuadPay = ({
 
         <OtherServices services={services} title="How We Got There" />
         <RelatedCaseStudies caseStudies={nextCaseStudies} />
-        <Footer />
+        <NewFooter />
       </div>
     </>
   )

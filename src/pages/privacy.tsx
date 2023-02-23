@@ -4,7 +4,7 @@ import { PageProps } from 'gatsby'
 
 // Components
 import Meta from '@components/Meta'
-import Footer from '@modules/common/components/Footer'
+import NewFooter from '@modules/common/components/NewFooter'
 
 interface Props {
   location: PageProps['location']
@@ -1790,7 +1790,7 @@ const PrivacyPage = ({ location }: Props) => {
           </li>
         </ul>
       </main>
-      <Footer />
+      <NewFooter />
     </div>
   )
 }

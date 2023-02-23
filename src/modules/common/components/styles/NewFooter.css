@@ -43,3 +43,7 @@
     }
   }
 }
+
+section .burger:last-of-type {
+  display: none;
+}
