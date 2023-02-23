@@ -69,59 +69,56 @@ export default function NewFooter() {
       </div>
       <div className="secondary-footer px-6 pt-8 border-solid border-t border-gray-700">
         <div className="secondary-footer__wrapper max-w-6xl m-auto md:flex md:items-center md:justify-between">
-          <Logo className="text-white w-25 h-auto" />
-          <nav className="grid grid-cols-2 mt-10 gap-y-4 md:grid-cols-4 md:mt-0 md:gap-x-10">
+          <AniLink
+            bg="#F3F3F3"
+            // className="block text-white text-base font-extralight hover:font-bold transition ease-in-out duration-300"
+            cover
+            direction="right"
+            duration={1.5}
+            to="/"
+          >
+            <Logo className="text-white w-25 h-auto" />
+          </AniLink>
+          <nav className="grid grid-cols-2 mt-10 gap-y-4 md:grid-cols-4 md:mt-0 md:gap-x-10 footer-nav">
             <AniLink
               bg="#F3F3F3"
-              className="block text-white text-base font-extralight hover:font-bold"
+              className="block text-white text-base font-extralight hover:font-bold transition-all ease-in-out duration-300"
               cover
               direction="right"
               duration={1.5}
               to="/case-studies/"
             >
-              our{' '}
-              <span className="font-crimson text-xl italic lg:group-hover:font-bold">
-                work
-              </span>
+              our <span className="font-crimson text-xl italic">work</span>
             </AniLink>
             <AniLink
               bg="#F3F3F3"
-              className="block text-white font-extralight hover:font-bold"
+              className="block text-white font-extralight hover:font-bold transition-all ease-in-out duration-300"
               cover
               direction="right"
               duration={1.5}
               to="/what-we-do/"
             >
-              our{' '}
-              <span className="font-crimson text-xl italic lg:group-hover:font-bold">
-                services
-              </span>
+              our <span className="font-crimson text-xl italic">services</span>
             </AniLink>
             <AniLink
               bg="#F3F3F3"
-              className="block text-white font-extralight hover:font-bold"
+              className="block text-white font-extralight hover:font-bold transition-all ease-in-out duration-300"
               cover
               direction="right"
               duration={1.5}
               to="/who-we-are/"
             >
-              our{' '}
-              <span className="font-crimson text-xl italic lg:group-hover:font-bold">
-                team
-              </span>
+              our <span className="font-crimson text-xl italic">team</span>
             </AniLink>
             <AniLink
               bg="#F3F3F3"
-              className="block text-white font-extralight hover:font-bold"
+              className="block text-white font-extralight hover:font-bold transition-all ease-in-out duration-300"
               cover
               direction="right"
               duration={1.5}
               to="/insights"
             >
-              our{' '}
-              <span className="font-crimson text-xl italic lg:group-hover:font-bold">
-                thoughts
-              </span>
+              our <span className="font-crimson text-xl italic">thoughts</span>
             </AniLink>
           </nav>
           <div className="social flex items-center gap-6 my-10">
