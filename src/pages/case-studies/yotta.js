@@ -284,7 +284,7 @@ const Yotta = ({
                 <h1 className="text-white font-primary font-light text-center lg:text-left">
                   A{' '}
                   <span className="text-lilac font-crimson italic font-extralight">
-                    transformed visual <br /> identity plus a UX/ui <br />{' '}
+                    transformed visual <br /> identity plus a UX/UI <br />{' '}
                     overhaul
                   </span>{' '}
                   Gave This <br /> Fintech Startup New Life
