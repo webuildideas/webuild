@@ -65,6 +65,7 @@ const Yotta = ({
   location,
   data: {
     contentfulCaseStudy,
+    socialShare,
     yottaHeroImg,
     yottaDesignsDesktop,
     yottaDesignsMobile,
@@ -271,6 +272,7 @@ const Yotta = ({
       <Meta
         description={metaDescription}
         location={location}
+        shareImage={socialShare.childImageSharp.fluid.src}
         title={seoTitle}
       />
       <div
@@ -948,6 +950,15 @@ export const YOTTA_QUERY = graphql`
         metaDescription
       }
       seoTitle
+    }
+    socialShare: file(
+      relativePath: { eq: "case-studies/yotta/social-share-yotta.jpg" }
+    ) {
+      childImageSharp {
+        fluid {
+          src
+        }
+      }
     }
     yottaHeroImg: file(
       relativePath: { eq: "case-studies/yotta/yotta-hero.jpg" }
