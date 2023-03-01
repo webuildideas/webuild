@@ -148,7 +148,7 @@ const OpportunityForm = ({
     </div>
   ) : (
     <div className="OpportunityForm">
-      <h2 className="font-light text-4xl text-h3 mb-8 text-left leading-tight text-blueRibbon">
+      <h2 className="font-extralight text-4xl text-h3 mb-8 text-left leading-tight text-blueRibbon">
         Set up a meeting,{' '}
         <span className="font-medium">we’d love to chat!</span>
       </h2>
