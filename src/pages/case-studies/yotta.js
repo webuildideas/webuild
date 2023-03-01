@@ -272,7 +272,7 @@ const Yotta = ({
       <Meta
         description={metaDescription}
         location={location}
-        shareImage={socialShare.childImageSharp.fluid.src}
+        shareImage={socialShare.publicURL}
         title={seoTitle}
       />
       <div
@@ -954,11 +954,7 @@ export const YOTTA_QUERY = graphql`
     socialShare: file(
       relativePath: { eq: "case-studies/yotta/social-share-yotta.jpg" }
     ) {
-      childImageSharp {
-        fluid {
-          src
-        }
-      }
+      publicURL
     }
     yottaHeroImg: file(
       relativePath: { eq: "case-studies/yotta/yotta-hero.jpg" }

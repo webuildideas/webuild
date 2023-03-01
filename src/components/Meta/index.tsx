@@ -60,7 +60,7 @@ const Meta = ({
   const socialTitle = shareTitle || contentfulSeo.seoTitle
   const socialImage =
     shareImage !== undefined
-      ? `https:${shareImage}`
+      ? `https://webuild.io${shareImage}`
       : `https:${contentfulSeo.seoShareImage.file.url}`
   const metaDescription =
     description || contentfulSeo.seoDescription.seoDescription
