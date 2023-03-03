@@ -124,8 +124,10 @@ const OpportunityForm = ({
 
   return formSubmitted ? (
     <div className="OpportunityForm-success">
-      <h2 className="text-h2 mb-12">Thank you for getting in touch!</h2>
-      <p className="text-h3 mb-35">
+      <h2 className="text-h2 mb-12 leading-tight">
+        Thank you for getting in touch!
+      </h2>
+      <p className="text-h3 mb-35 leading-tight">
         We’ll get back to you shortly. In the meantime, learn more about{' '}
         <MotionAniLink
           className="text-electricViolet"
