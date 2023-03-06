@@ -8,7 +8,7 @@ import * as Yup from 'yup'
 import { COUNTRIES } from '@common/constants/countries'
 
 // Components
-import Button from '@modules/common/components/Button'
+// import Button from '@modules/common/components/Button'
 import PrivacyOptIn from '@modules/forms/components/PrivacyOptIn'
 import TextInput from '@modules/forms/components/TextInput'
 import TextAreaField from '@modules/forms/components/TextAreaField'
@@ -124,10 +124,10 @@ const OpportunityForm = ({
 
   return formSubmitted ? (
     <div className="OpportunityForm-success">
-      <h2 className="text-h2 mb-9 leading-tight">
+      <h2 className="text-h2 mb-12 leading-tight">
         Thank you for getting in touch!
       </h2>
-      <p className="text-h3 mb-35 leading-tight">
+      <p className="text-h3 mb-9 leading-tight">
         We’ll get back to you shortly. In the meantime, learn more about{' '}
         <MotionAniLink
           className="text-blueRibbon"
