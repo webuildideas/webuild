@@ -1,6 +1,5 @@
 .OpportunityForm {
   max-width: 784px;
-  @apply bg-foundation;
   @apply rounded-tr-4;
   @apply mx-auto;
   @apply px-6;

@@ -36,9 +36,9 @@ const OpportunityFormModal = memo(function OpportunityFormModalMemo({
       onClick={handleBackgroundPress}
       role="button"
     >
-      <div ref={formRef} className="OpportunityFormModal-form bg-foundation">
+      <div ref={formRef} className="OpportunityFormModal-form bg-white">
         <CloseIcon
-          className="OpportunityFormModal-close text-gray-800"
+          className="OpportunityFormModal-close text-blueRibbon"
           onClick={closeModal}
         />
         <OpportunityForm location={location} />

@@ -1,6 +1,6 @@
 .OpportunityFormModal {
   @apply fixed;
-  @apply z-50;
+  @apply z-60;
   @apply flex;
   @apply items-center;
   @apply justify-center;
@@ -12,16 +12,25 @@
 }
 
 .OpportunityFormModal-form {
-  @apply bg-foundation;
-  @apply p-6;
-  max-height: 95%;
-  width: 95%;
-  @apply rounded-tr-4;
+  @apply py-6;
+  max-height: 100%;
   @apply overflow-y-scroll;
   max-width: 750px;
+  @apply border;
+  @apply border-blueRibbon border-solid;
 
   &::-webkit-scrollbar {
     display: none;
+  }
+
+  @screen md {
+    border-radius: 50px;
+    @apply px-6;
+  }
+  @screen lg {
+    border-radius: 100px;
+    @apply py-14 px-26;
+    max-width: 784px;
   }
 }
 

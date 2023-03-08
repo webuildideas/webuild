@@ -8,7 +8,7 @@ import * as Yup from 'yup'
 import { COUNTRIES } from '@common/constants/countries'
 
 // Components
-import Button from '@modules/common/components/Button'
+// import Button from '@modules/common/components/Button'
 import PrivacyOptIn from '@modules/forms/components/PrivacyOptIn'
 import TextInput from '@modules/forms/components/TextInput'
 import TextAreaField from '@modules/forms/components/TextAreaField'
@@ -60,7 +60,7 @@ const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
 const OpportunityForm = ({
   location,
-  title = 'Set up a meeting—we’d love to chat!',
+  title = 'Set up a meeting, <span class="font-medium">we’d love to chat!</span>',
   buttonText = 'Send'
 }: Props) => {
   const emailAddress = useRecoilValue(opportunityFormModalEmail)
@@ -124,11 +124,13 @@ const OpportunityForm = ({
 
   return formSubmitted ? (
     <div className="OpportunityForm-success">
-      <h2 className="text-h2 mb-12">Thank you for getting in touch!</h2>
-      <p className="text-h3 mb-35">
+      <h2 className="text-h2 mb-12 leading-tight">
+        Thank you for getting in touch!
+      </h2>
+      <p className="text-h3 mb-9 leading-tight">
         We’ll get back to you shortly. In the meantime, learn more about{' '}
         <MotionAniLink
-          className="text-electricViolet"
+          className="text-blueRibbon"
           onClick={closeModal}
           styleType="link"
           to="/who-we-are/"
@@ -137,7 +139,7 @@ const OpportunityForm = ({
         </MotionAniLink>{' '}
         or catch up on our{' '}
         <MotionAniLink
-          className="text-electricViolet"
+          className="text-blueRibbon"
           onClick={closeModal}
           styleType="link"
           to="/insights/"
@@ -148,8 +150,9 @@ const OpportunityForm = ({
     </div>
   ) : (
     <div className="OpportunityForm">
-      <h2 className="font-extrabold text-h3 mb-8 text-center md:text-left">
-        {title}
+      <h2 className="font-extralight text-4xl text-h3 mb-8 text-left leading-tight text-blueRibbon">
+        Set up a meeting,{' '}
+        <span className="font-medium">we’d love to chat!</span>
       </h2>
       <Formik
         initialValues={initialFormValues}
@@ -226,7 +229,28 @@ const OpportunityForm = ({
                 </p>
               )
             })}
-            <Button
+            <button
+              className="fade-in block flex items-center border border-solid rounded-full font-light px-10 py-6 w-full mt-12 text-gray-700 md:w-56 justify-between"
+              disabled={isSubmitting || !values['Privacy Notice']}
+              // loading={isSubmitting}
+              type="submit"
+            >
+              Submit
+              <svg
+                className="w-8 h-auto"
+                fill="none"
+                viewBox="0 0 32 32"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clipRule="evenodd"
+                  d="M24.2753 7.33331C24.2753 11.6662 27.7337 15.1787 32 15.1787V15.4583V15.7379V16.2621V16.5416V16.8212C27.7338 16.8212 24.2753 20.3337 24.2753 24.6666H23.2086C23.2086 21.0582 25.3163 17.9497 28.3495 16.5416L0 16.5416V15.4583L28.3495 15.4583C25.3163 14.0503 23.2086 10.9418 23.2086 7.33331H24.2753Z"
+                  fill="#525761"
+                  fillRule="evenodd"
+                />
+              </svg>
+            </button>
+            {/* <Button
               animate={false}
               className="block mx-auto mt-12 lg:ml-0"
               disabled={isSubmitting || !values['Privacy Notice']}
@@ -235,7 +259,7 @@ const OpportunityForm = ({
               type="submit"
             >
               {buttonText}
-            </Button>
+            </Button> */}
           </Form>
         )}
       </Formik>
