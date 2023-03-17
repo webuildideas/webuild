@@ -20,6 +20,7 @@ import ReactPlayer from 'react-player'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 // SVGS
 import videoSrc from '@static/videos/yotta/yotta-splash-screen.mp4'
+import { Splide, SplideSlide } from '@splidejs/react-splide'
 import ArrowRight from '../../static/svgs/fancy-arrow-right.inline.svg'
 import YottaBadge from '../../static/svgs/case-studies/yotta/yotta-badge.inline.svg'
 import Asterisk from '../../static/svgs/asterisk.inline.svg'
@@ -27,7 +28,12 @@ import PlayIcon from '../../static/svgs/playicon.inline.svg'
 import YottaLogo from '../../static/svgs/case-studies/yotta/yotta-logo.inline.svg'
 import TapIcon from '../../static/svgs/tap-icon.inline.svg'
 import CloseIcon from '../../static/svgs/closeIcon.inline.svg'
+import QuoteIcon from '../../static/svgs/quote-icon.inline.svg'
 
+// eslint-disable-next-line
+import '@splidejs/splide/dist/css/themes/splide-default.min.css'
+// import '@splidejs/splide/dist/css/splide-core.min.css'
+// import '@splidejs/splide/dist/css/splide.min.css'
 import '../../common/styles/pages/yotta.css'
 
 const stats = [
@@ -116,22 +122,13 @@ const Yotta = ({
   const [modalClasses, setModalClasses] = useState(
     'z-0 pointer-events-none opacity-0'
   )
+  const [vimeoUrl, setVimeoUrl] = useState('https://vimeo.com/799586294')
   const [isVimeoPlaying, setIsVimeoPlaying] = useState(false)
 
   const { width } = useWindowSize()
   const isMobile = width && width < 768
   const isTablet = width && width < 1024
   const isDesktop = width && width >= 1024
-
-  const scrollAppInstance = useRef(null)
-  const scrollBarKnobRef = useRef(null)
-  const yottaAppScrollbar = useRef(null)
-  const yottaAppScreens = useRef(null)
-
-  const oldNewScrollInstance = useRef(null)
-  const oldNewScrollBarKnobRef = useRef(null)
-  const oldNewScrollbar = useRef(null)
-  const oldNewScreens = useRef(null)
 
   const beforeAndAfter = [
     {
@@ -204,45 +201,6 @@ const Yotta = ({
     onFinish: (event) => hideOldImage(event.target.dataset.index)
   })
 
-  useEffect(() => {
-    if (isTablet) {
-      gsap.registerPlugin(Draggable)
-      const scrollMagnifier = isMobile ? 3.5 : 1.75
-
-      scrollAppInstance.current = Draggable.create(scrollBarKnobRef.current, {
-        type: 'x',
-        bounds: yottaAppScrollbar.current,
-        throwProps: true,
-        onDrag() {
-          gsap.to(yottaAppScreens.current, {
-            // eslint-disable-next-line react/no-this-in-sfc
-            x: -this.x * scrollMagnifier,
-            overwrite: true
-          })
-        }
-      })
-
-      if (isMobile) {
-        const oldNewMagnifier = isMobile ? 2.1 : 1.75
-        oldNewScrollInstance.current = Draggable.create(
-          oldNewScrollBarKnobRef.current,
-          {
-            type: 'x',
-            bounds: oldNewScrollbar.current,
-            throwProps: true,
-            onDrag() {
-              gsap.to(oldNewScreens.current, {
-                // eslint-disable-next-line react/no-this-in-sfc
-                x: -this.x * oldNewMagnifier,
-                overwrite: true
-              })
-            }
-          }
-        )
-      }
-    }
-  }, [width])
-
   const showOldImageOnHover = (index, e) => {
     if (isDesktop) {
       e.target.classList.remove(`bg-electricViolet`)
@@ -257,9 +215,12 @@ const Yotta = ({
     }
   }
 
-  const handleShowModal = () => {
+  const handleShowModal = (url) => {
     setModalClasses('z-50 opacity-100 pointer-events-auto')
-    setIsVimeoPlaying(!isVimeoPlaying)
+    setVimeoUrl(url)
+    setTimeout(() => {
+      setIsVimeoPlaying(!isVimeoPlaying)
+    }, 300)
   }
 
   const handleHideModal = () => {
@@ -294,6 +255,41 @@ const Yotta = ({
               </div>
               <div className="img mt-11 w-full transform translate-y-9 md:translate-y-18 md:mt-2 lg:transform-none">
                 <Img fluid={yottaHeroImg.childImageSharp.fluid} />
+              </div>
+            </div>
+          </section>
+          {/* TESTIMONIAL */}
+          <section className="our-clients bg-beauBlue pt-30 pb-20 md:pt-45 md:pb-30 lg:py-45">
+            <div className="mx-auto px-6 md:px-16 lg:px-0 lg:max-w-3xl">
+              <div className="testimonials mb-14 mx-auto md:mb-20 lg:mb-40 grid place-items-center">
+                <div className="testimonial md:pl-26 relative">
+                  <QuoteIcon className="w-18 h-auto md:absolute md:top-0 md:left-0 " />
+                  <p className="text-primary text-left text-blueRibbon font-medium text-4xl leading-normal mt-6 md:mt-0">
+                    “webuild has done an incredible job integrating themselves
+                    into our team, understanding our company objectives, and
+                    working with us to{' '}
+                    <span className="font-crimson font-font-extralight italic text-5xl">
+                      develop the world-class user experience that delights our
+                      customers”
+                    </span>
+                  </p>
+                </div>
+              </div>
+              <div className="md:flex items-center gap-x-22 md:max-w-xs m-auto">
+                <div className="people flex-1 grid">
+                  <div className="person-info text-blueRibbon font-light flex items-center justify-between">
+                    <Img
+                      className="w-22 h-auto m-auto md:m-0"
+                      fluid={adamHeadshot.childImageSharp.fluid}
+                    />
+                    <div className="block h-px bg-blueRibbon flex-1" />
+                    <div className="ml-6">
+                      <YottaLogo className="w-18 h-auto" />
+                      <p className="my-4">Adam Moelis</p>
+                      <p>Yotta CEO/Co-founder</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
@@ -491,14 +487,16 @@ const Yotta = ({
                       }}
                       height="auto"
                       playing={isVimeoPlaying}
-                      url="https://vimeo.com/799178998"
+                      url={vimeoUrl}
                       // onPlay={() => screenfull.request()}
                       width="100%"
                     />
                   </div>
                   <div
                     className="caption-one flex items-center justify-between py-4 px-6 border border-solid border-gray-700 rounded-full mt-5 md:absolute md:top-0 md:left-0 md:transform md:-translate-x-full md:-ml-2 md:mt-0 md:flex-col md:items-end md:rounded-8 md:w-30 md:px-4 cursor-pointer"
-                    onClick={() => handleShowModal()}
+                    onClick={() =>
+                      handleShowModal('https://vimeo.com/799178998')
+                    }
                   >
                     <p className="font-courier text-gray-600 text-sm leading-normal md:order-2 md:text-right md:mt-2">
                       The Yotta hero video
@@ -520,8 +518,13 @@ const Yotta = ({
                     className="md:order-2"
                     fluid={brandImgFour.childImageSharp.fluid}
                   />
-                  <div className="caption-one flex items-center justify-center py-4 px-6 border border-solid border-gray-700 rounded-8 mt-5 md:order-1 md:mt-0 md:mb-2 md:flex-col md:items-start">
-                    <ArrowRight className="transform -rotate-90 w-11 h-auto mr-4 md:rotate-90 md:order-2 md:mt-2 md:transform md:-translate-x-3" />
+                  <div
+                    className="caption-one flex items-center justify-center py-4 px-6 border border-solid border-gray-700 rounded-8 mt-5 md:order-1 md:mt-0 md:mb-2 md:flex-col md:items-start"
+                    onClick={() =>
+                      handleShowModal('https://vimeo.com/799586294')
+                    }
+                  >
+                    <PlayIcon className="md:order-5 mr-4" />
                     <p className="font-courier text-gray-600 text-sm flex-1 leading-normal md:order-1">
                       Engaging social media ads
                     </p>
@@ -548,80 +551,78 @@ const Yotta = ({
                   orientations to provide a more seamless experience for users.
                 </p>
               </div>
-              <div
-                ref={oldNewScreens}
-                className="yotta-old-new grid grid-cols-3 gap-x-6 mt-10 md:gap-x-8 xl:gap-x-30 xl:mt-25"
-              >
-                {beforeAndAfter.map((item, index) => (
-                  <div key={item.title} className="screen">
-                    <div className="md:grid md:grid-cols-2">
-                      <div
-                        className="yotta-old-new__caption text-white py-6 px-12 grid bg-electricViolet rounded-8 relative md:px-4 md:items-start md:content-between md:order-3 lg:py-8 lg:px-5 lg:rounded-10 transition ease-in-out duration-300"
-                        onMouseEnter={(e) => showOldImageOnHover(index, e)}
-                        onMouseLeave={(e) => hideOldImageOnHover(index, e)}
-                      >
-                        <p className="old-new-title text-2.5xl leading-normal font-light text-center md:text-left md:text-xl lg:text-2.5xl lg:w-3/4">
-                          {item.title}
-                        </p>
-                        <div className="old-image-container relative my-6 md:absolute md:top-0 md:left-0 md:w-full md:h-full md:my-0 pointer-events-none">
-                          <div className="relative z-10 md:hidden">
+              <div className="yotta-old-new mt-10 xl:mt-25 max-w-screen-1536 mx-auto md:px-6">
+                <Splide
+                  options={{
+                    fixedWidth: 'calc(90% - 24px)',
+                    arrows: false,
+                    gap: 0,
+                    mediaQuery: 'min',
+                    breakpoints: {
+                      743: {
+                        destroy: true
+                      }
+                    }
+                  }}
+                >
+                  {beforeAndAfter.map((item, index) => (
+                    <SplideSlide key={item.title} className="screen">
+                      <div key={item.title}>
+                        <div className="md:grid md:grid-cols-2">
+                          <div
+                            className="yotta-old-new__caption text-white py-6 px-12 grid bg-electricViolet rounded-8 relative md:px-4 md:items-start md:content-between md:order-3 lg:py-8 lg:px-5 lg:rounded-10 transition ease-in-out duration-300"
+                            onMouseEnter={(e) => showOldImageOnHover(index, e)}
+                            onMouseLeave={(e) => hideOldImageOnHover(index, e)}
+                          >
+                            <p className="old-new-title text-2.5xl leading-normal font-light text-center md:text-left md:text-xl lg:text-2.5xl lg:w-3/4">
+                              {item.title}
+                            </p>
+                            <div className="old-image-container relative my-6 md:absolute md:top-0 md:left-0 md:w-full md:h-full md:my-0 pointer-events-none">
+                              <div className="relative z-10 md:hidden">
+                                <Img fluid={item.afterImage} />
+                              </div>
+                              <div
+                                className={`absolute top-0 left-0 w-full h-auto md:relative transition ease-in-out duration-300 ${oldImgClasses[index]}`}
+                              >
+                                <Img className="" fluid={item.beforeImage} />
+                              </div>
+                            </div>
+                            {isTablet ? (
+                              <button
+                                className="old-new-action border-none z-10"
+                                data-index={index}
+                                {...bind()}
+                              >
+                                <p className="flex font-light pointer-events-none md:flex-col md:text-left md:text-tiny md:w-3/4 lg:text-base leading-snug">
+                                  <TapIcon className="mr-2 md:mb-2" />
+                                  Tap and hold to reveal old design
+                                </p>
+                              </button>
+                            ) : (
+                              <p className="flex font-light pointer-events-none md:flex-col md:text-left md:text-tiny md:w-3/4 lg:text-base leading-snug">
+                                <TapIcon className="mr-2 md:mb-2" />
+                                Hover to reveal old design
+                              </p>
+                            )}
+                          </div>
+                          <div className="hidden md:block">
                             <Img fluid={item.afterImage} />
                           </div>
-                          <div
-                            className={`absolute top-0 left-0 w-full h-auto md:relative transition ease-in-out duration-300 ${oldImgClasses[index]}`}
-                          >
-                            <Img className="" fluid={item.beforeImage} />
-                          </div>
                         </div>
-                        {isTablet ? (
-                          <button
-                            className="old-new-action border-none z-10"
-                            data-index={index}
-                            {...bind()}
-                          >
-                            <p className="flex font-light pointer-events-none md:flex-col md:text-left md:text-tiny md:w-3/4 lg:text-base leading-snug">
-                              <TapIcon className="mr-2 md:mb-2" />
-                              Tap and hold to reveal old design
-                            </p>
-                          </button>
-                        ) : (
-                          <p className="flex font-light pointer-events-none md:flex-col md:text-left md:text-tiny md:w-3/4 lg:text-base leading-snug">
-                            <TapIcon className="mr-2 md:mb-2" />
-                            Hover to reveal old design
+                        <div className="caption flex items-center mt-6 md:mt-4 lg:w-3/4">
+                          <ArrowRight className="transform -rotate-90 mr-2 w-12 pointer-events-none" />
+                          <p className="flex-1 font-courier text-sm leading-tight pointer-events-none md:text-xs lg:leading-normal">
+                            {item.caption}
                           </p>
-                        )}
+                        </div>
                       </div>
-                      <div className="hidden md:block">
-                        <Img fluid={item.afterImage} />
-                      </div>
-                    </div>
-                    <div className="caption flex items-center mt-6 md:mt-4 lg:w-3/4">
-                      <ArrowRight className="transform -rotate-90 mr-2 w-12 pointer-events-none" />
-                      <p className="flex-1 font-courier text-sm leading-tight pointer-events-none md:text-xs lg:leading-normal">
-                        {item.caption}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-13 pb-20 px-6 md:hidden">
-                <div
-                  ref={oldNewScrollbar}
-                  className="yotta-scrollbar w-full relative md:w-1/2"
-                >
-                  <span className="scrollbar-track block w-full border border-solid border-electricViolet rounded-full absolute top-1/2 left-0" />
-                  <div
-                    ref={oldNewScrollBarKnobRef}
-                    className="scrollbar-knob z-10 relative w-14 h-6 bg-electricViolet rounded-full flex flex-col justify-center items-center"
-                  >
-                    <span className="block bar w-6 h-0.5 bg-lavender mb-0.5" />
-                    <span className="block bar w-6 h-0.5 bg-lavender mt-0.5" />
-                  </div>
-                </div>
+                    </SplideSlide>
+                  ))}
+                </Splide>
               </div>
             </div>
             {/* MARKETING COMPARE */}
-            <div className="yotta-container yotta-container--skinny pb-20 md:pb-15 md:mt-20 xl:mt-31">
+            <div className="yotta-container yotta-container--skinny pb-20 md:pb-15 mt-20 xl:mt-31">
               <h3 className="text-2.5xl leading-normal">
                 In addition, we got extra creative to build brand affinity.
               </h3>
@@ -737,10 +738,7 @@ const Yotta = ({
           </section>
           {/* MORE APP SCREENS */}
           <section className="yotta-more-app-screens">
-            <div
-              ref={yottaAppScreens}
-              className="yotta-container yotta-screens grid grid-cols-6 gap-x-6 md:gap-x-12 lg:pb-20"
-            >
+            <div className="yotta-container yotta-screens grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-6 md:gap-x-12 lg:pb-20">
               <div className="mt-23 md:mt-48">
                 <Img
                   className="w-full"
@@ -752,64 +750,49 @@ const Yotta = ({
                   className="w-full"
                   fluid={appScreenTwo.childImageSharp.fluid}
                 />
-                <div className="flex mt-4">
-                  <ArrowRight className="transform -rotate-90 w-12 h-auto items-start" />
+                <div className="flex mt-4 items-start">
+                  <ArrowRight className="transform -rotate-90 w-12 h-auto -ml-2" />
                   <p className="flex-1 font-courier text-xs leading-loose">
                     Engaging number reveals coupled with real-time data and
                     insights.
                   </p>
                 </div>
               </div>
-              <div className="">
+              <div className="order-5 md:order-3 smt-16">
                 <Img
                   className="w-full"
                   fluid={appScreenThree.childImageSharp.fluid}
                 />
-                <div className="flex mt-4">
-                  <ArrowRight className="transform -rotate-90 w-12 h-auto items-start" />
+                <div className="flex items-start mt-4">
+                  <ArrowRight className="transform -rotate-90 w-12 h-auto -ml-2" />
                   <p className="flex-1 font-courier text-xs leading-loose">
                     Using weekly play streaks, colorful visuals, and badges for
                     a gamified experience.
                   </p>
                 </div>
               </div>
-              <div className="mt-23 md:mt-48">
+              <div className="order-6 md:order-4 mt-42 md:mt-20">
                 <Img
                   className="w-full"
                   fluid={appScreenFour.childImageSharp.fluid}
                 />
               </div>
-              <div className="mt-23 md:mt-68">
+              <div className="order-3 md:order-5 mt-16 md:mt-44">
                 <Img
                   className="w-full"
                   fluid={appScreenFive.childImageSharp.fluid}
                 />
               </div>
-              <div className="mt:23 md:mt-48">
+              <div className="order-4 mt-16 md:order-6 md:mt-20">
                 <Img
                   className="w-full"
                   fluid={appScreenSix.childImageSharp.fluid}
                 />
               </div>
             </div>
-            <div className="mt-13 pb-20 px-6 lg:hidden">
-              <div
-                ref={yottaAppScrollbar}
-                className="yotta-scrollbar w-full relative md:w-1/2"
-              >
-                <span className="scrollbar-track block w-full border border-solid border-electricViolet rounded-full absolute top-1/2 left-0" />
-                <div
-                  ref={scrollBarKnobRef}
-                  className="scrollbar-knob z-10 relative w-14 h-6 bg-electricViolet rounded-full flex flex-col justify-center items-center"
-                >
-                  <span className="block bar w-6 h-0.5 bg-lavender mb-0.5" />
-                  <span className="block bar w-6 h-0.5 bg-lavender mt-0.5" />
-                </div>
-              </div>
-            </div>
           </section>
           {/* RESULTS */}
-          <section className="yotta-results bg-black lg:mt-15">
+          <section className="yotta-results bg-black mt-16">
             <div className="yotta-container py-20">
               <h2 className="text-lilac text-4xl leading-none w-2/3 md:ml-16 md:w-full lg:w-9/12 lg:ml-auto">
                 Our work's results{' '}
@@ -853,52 +836,6 @@ const Yotta = ({
                     Introduced a formal design process and inspired the team to
                     embrace a design-thinking culture.
                   </p>
-                </div>
-              </div>
-            </div>
-          </section>
-          {/* TESTIMONIAL */}
-          <section className="our-clients bg-beauBlue py-20 md:py-23 lg:py-28">
-            <div className="our-clients__wrapper px-6 max-w-6xl mx-auto md:px-16 md:flex md:justify-start md:items-start xl:px-0">
-              <h2 className="text-h2 text-blueRibbon md:mr-14 md:flex-2">
-                Our clients love us
-              </h2>
-              <p className="font-light text-body text-blueRibbon mt-8 max-w-md md:flex-1 md:mt-0">
-                Our expertise in and obsession with strategy, design, and
-                optimization make us a triple threat.
-              </p>
-            </div>
-            <div className="max-w-6xl mx-auto px-6 md:px-16 xl:px-0">
-              <div className="testimonials my-14 max-w-xl mx-auto md:my-40 lg:my-40 grid place-items-center">
-                <div className="testimonial">
-                  <div className="flex justify-center w-1/3 mx-auto md:w-29">
-                    <YottaLogo className="w-full h-auto" />
-                  </div>
-
-                  <p className="text-body text-center text-blueRibbon font-light mt-6 md:mt-10">
-                    webuild has done an incredible job integrating themselves
-                    into our team, understanding our company objectives, and
-                    working with us to{' '}
-                    <span className="font-bold">
-                      develop the world-class user experience that delights our
-                      customers
-                    </span>
-                  </p>
-                </div>
-              </div>
-              <div className="md:flex items-center gap-x-22 md:w-1/2 lg:w-full lg:px-35">
-                <div className="people flex-1 grid">
-                  <div className="person-info text-blueRibbon font-light text-center md:flex items-center justify-between md:text-left">
-                    <Img
-                      className="w-22 h-auto m-auto md:m-0"
-                      fluid={adamHeadshot.childImageSharp.fluid}
-                    />
-                    <div className="hidden md:block h-px bg-blueRibbon flex-1" />
-                    <div className="mt-4 md:ml-6">
-                      <p className="mb-2">Adam Moelis</p>
-                      <p>Yotta CEO/Co-founder</p>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
