@@ -49,15 +49,17 @@ section .burger:last-of-type {
 }
 
 @media screen and (min-width: 1440px) {
-  .footer__wrapper {
+  .footer__wrapper,
+  .secondary-footer__wrapper {
     margin-left: 120px;
     margin-right: 120px;
-    @apply px-0;
+    @apply px-30;
   }
 }
 
 @media screen and (min-width: 1584px) {
-  .footer__wrapper {
+  .footer__wrapper,
+  .secondary-footer__wrapper {
     margin-left: auto;
     margin-right: auto;
   }

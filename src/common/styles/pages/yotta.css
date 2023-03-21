@@ -56,7 +56,7 @@
   }
 
   @media screen and (min-width: 1584px) {
-    @apply px-0;
+    /* @apply px-0; */
   }
 
   &--skinny {

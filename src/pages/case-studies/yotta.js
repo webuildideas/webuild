@@ -32,8 +32,6 @@ import QuoteIcon from '../../static/svgs/quote-icon.inline.svg'
 
 // eslint-disable-next-line
 import '@splidejs/splide/dist/css/themes/splide-default.min.css'
-// import '@splidejs/splide/dist/css/splide-core.min.css'
-// import '@splidejs/splide/dist/css/splide.min.css'
 import '../../common/styles/pages/yotta.css'
 
 const stats = [
@@ -551,7 +549,7 @@ const Yotta = ({
                   orientations to provide a more seamless experience for users.
                 </p>
               </div>
-              <div className="yotta-old-new mt-10 xl:mt-25 max-w-screen-1536 mx-auto md:px-6">
+              <div className="yotta-old-new yotta-container mt-10 xl:mt-25 max-w-screen-1536 mx-auto md:px-6">
                 <Splide
                   options={{
                     fixedWidth: 'calc(90% - 24px)',

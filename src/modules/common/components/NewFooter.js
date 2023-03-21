@@ -39,7 +39,7 @@ export default function NewFooter() {
 
   return (
     <footer ref={footerRef} className="bg-newBlack pt-26 pb-8">
-      <div className="footer__wrapper px-6 max-w-screen-1536  m-auto text-white pb-30">
+      <div className="footer__wrapper px-6 max-w-screen-1536 m-auto text-white pb-30">
         <h2 className="text-h2 font-light w-1/2 fade-in">
           Ready to <i className="font-crimson italic">get started?</i>
         </h2>
@@ -68,7 +68,7 @@ export default function NewFooter() {
         </button>
       </div>
       <div className="secondary-footer px-6 pt-8 border-solid border-t border-gray-700">
-        <div className="secondary-footer__wrapper max-w-6xl m-auto md:flex md:items-center md:justify-between">
+        <div className="secondary-footer__wrapper m-auto md:flex md:items-center md:justify-between max-w-screen-1536">
           <AniLink
             bg="#F3F3F3"
             // className="block text-white text-base font-extralight hover:font-bold transition ease-in-out duration-300"
