@@ -122,6 +122,7 @@ const Yotta = ({
   )
   const [vimeoUrl, setVimeoUrl] = useState('https://vimeo.com/799586294')
   const [isVimeoPlaying, setIsVimeoPlaying] = useState(false)
+  const [modalVideoWidth, setModalVideoWidth] = useState('100%')
 
   const { width } = useWindowSize()
   const isMobile = width && width < 768
@@ -213,9 +214,16 @@ const Yotta = ({
     }
   }
 
-  const handleShowModal = (url) => {
+  const handleShowModal = (url, square = false) => {
     setModalClasses('z-50 opacity-100 pointer-events-auto')
     setVimeoUrl(url)
+
+    if (square && isDesktop) {
+      setModalVideoWidth('50%')
+    } else {
+      setModalVideoWidth('100%')
+    }
+
     setTimeout(() => {
       setIsVimeoPlaying(!isVimeoPlaying)
     }, 300)
@@ -486,8 +494,7 @@ const Yotta = ({
                       height="auto"
                       playing={isVimeoPlaying}
                       url={vimeoUrl}
-                      // onPlay={() => screenfull.request()}
-                      width="100%"
+                      width={modalVideoWidth}
                     />
                   </div>
                   <div
@@ -517,9 +524,9 @@ const Yotta = ({
                     fluid={brandImgFour.childImageSharp.fluid}
                   />
                   <div
-                    className="caption-one flex items-center justify-center py-4 px-6 border border-solid border-gray-700 rounded-8 mt-5 md:order-1 md:mt-0 md:mb-2 md:flex-col md:items-start"
+                    className="caption-one flex items-center justify-center py-4 px-6 border border-solid border-gray-700 rounded-8 mt-5 md:order-1 md:mt-0 md:mb-2 md:flex-col md:items-start cursor-pointer"
                     onClick={() =>
-                      handleShowModal('https://vimeo.com/799586294')
+                      handleShowModal('https://vimeo.com/799586294', true)
                     }
                   >
                     <PlayIcon className="md:order-5 mr-4" />
@@ -549,10 +556,10 @@ const Yotta = ({
                   orientations to provide a more seamless experience for users.
                 </p>
               </div>
-              <div className="yotta-old-new yotta-container mt-10 xl:mt-25 max-w-screen-1536 mx-auto md:px-6">
+              <div className="yotta-old-new yotta-container mt-10 xl:mt-25 max-w-screen-1536 mx-auto">
                 <Splide
                   options={{
-                    fixedWidth: 'calc(90% - 24px)',
+                    fixedWidth: 'calc(90%)',
                     arrows: false,
                     gap: 0,
                     mediaQuery: 'min',
@@ -568,14 +575,14 @@ const Yotta = ({
                       <div key={item.title}>
                         <div className="md:grid md:grid-cols-2">
                           <div
-                            className="yotta-old-new__caption text-white py-6 px-12 grid bg-electricViolet rounded-8 relative md:px-4 md:items-start md:content-between md:order-3 lg:py-8 lg:px-5 lg:rounded-10 transition ease-in-out duration-300"
+                            className="yotta-old-new__caption text-white py-6 px-6 grid bg-electricViolet rounded-8 relative md:px-4 md:items-start md:content-between md:order-3 lg:py-8 lg:px-5 lg:rounded-10 transition ease-in-out duration-300"
                             onMouseEnter={(e) => showOldImageOnHover(index, e)}
                             onMouseLeave={(e) => hideOldImageOnHover(index, e)}
                           >
                             <p className="old-new-title text-2.5xl leading-normal font-light text-center md:text-left md:text-xl lg:text-2.5xl lg:w-3/4">
                               {item.title}
                             </p>
-                            <div className="old-image-container relative my-6 md:absolute md:top-0 md:left-0 md:w-full md:h-full md:my-0 pointer-events-none">
+                            <div className="old-image-container relative my-6 px-6 md:absolute md:px-0 md:top-0 md:left-0 md:w-full md:h-full md:my-0 pointer-events-none">
                               <div className="relative z-10 md:hidden">
                                 <Img fluid={item.afterImage} />
                               </div>
