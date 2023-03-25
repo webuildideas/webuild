@@ -582,7 +582,7 @@ const Yotta = ({
                             <p className="old-new-title text-2.5xl leading-normal font-light text-center md:text-left md:text-xl lg:text-2.5xl lg:w-3/4">
                               {item.title}
                             </p>
-                            <div className="old-image-container relative my-6 px-6 md:absolute md:px-0 md:top-0 md:left-0 md:w-full md:h-full md:my-0 pointer-events-none">
+                            <div className="old-image-container relative my-6 md:absolute md:px-0 md:top-0 md:left-0 md:w-full md:h-full md:my-0 pointer-events-none">
                               <div className="relative z-10 md:hidden">
                                 <Img fluid={item.afterImage} />
                               </div>

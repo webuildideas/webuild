@@ -286,9 +286,3 @@
     @apply bg-electricViolet;
   }
 }
-
-.yotta-old-new {
-  &.yotta-container {
-    @apply px-0;
-  }
-}
