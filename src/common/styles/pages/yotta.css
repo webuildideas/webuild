@@ -286,3 +286,13 @@
     @apply bg-electricViolet;
   }
 }
+
+.yotta-old-new {
+  &.yotta-container {
+    @apply px-0 md:px-16;
+
+    @media screen and (min-width: 1440px) {
+      @apply px-30;
+    }
+  }
+}
