@@ -763,7 +763,7 @@ const Yotta = ({
                   </p>
                 </div>
               </div>
-              <div className="order-5 md:order-3 smt-16">
+              <div className="order-5 md:order-3 mt-16 md:mt-0">
                 <Img
                   className="w-full"
                   fluid={appScreenThree.childImageSharp.fluid}
