@@ -170,6 +170,8 @@ module.exports = {
       xl: '1280px',
       '2xl': '2560px',
       1536: '1536px',
+      s1440: '1440px',
+      s1536: '1536px',
       maxSm: { max: '425px' },
       maxMd: { max: '768px' },
       maxLg: { max: '1024px' },
