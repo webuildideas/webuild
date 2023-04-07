@@ -165,7 +165,7 @@ const ClickUp = ({
           <section className="our-clients bg-beauBlue pt-30 pb-20 md:pt-45 md:pb-30 lg:py-45">
             <div className="mx-auto px-6 md:px-16 lg:px-0 lg:max-w-3xl">
               <div className="testimonials mb-14 mx-auto md:mb-20 lg:mb-40 grid place-items-center">
-                <div className="testimonial md:pl-26 relative">
+                <div className="testimonial md:pl-26 relative text-blueRibbon">
                   <QuoteIcon className="w-18 h-auto md:absolute md:top-0 md:left-0 " />
                   <p className="text-primary text-left text-blueRibbon font-medium text-4xl leading-normal mt-6 md:mt-0">
                     “We found webuild in the early days of spinning up our
@@ -199,7 +199,7 @@ const ClickUp = ({
           </section>
           {/* INTRO SECTION */}
           <section className="yotta-intro">
-            <CaseStudyContainer>
+            <CaseStudyContainer className="pb-21 md:pb-0">
               <CaseStudyTextContainer>
                 <div className="pt-28 md:pt-40">
                   <p className="intro-p text-4xl text-center lg:text-left lg:text-5xl">
@@ -208,6 +208,8 @@ const ClickUp = ({
                     <a
                       className="text-electricViolet"
                       href="https://clickup.com/"
+                      rel="noreferrer"
+                      target="_blank"
                     >
                       ClickUp
                     </a>{' '}
@@ -246,6 +248,8 @@ const ClickUp = ({
                     <a
                       className="text-electricViolet"
                       href="https://clickup.com/blog/12-benefits-that-make-clickup-unique/"
+                      rel="noreferrer"
+                      target="_blank"
                     >
                       –ClickUp
                     </a>
@@ -439,7 +443,7 @@ const ClickUp = ({
                   <Img fluid={emailCardThree.childImageSharp.fluid} />
                 </div>
               </div>
-              <div className="rounded-10 overflow-hidden">
+              <div className="rounded-10 overflow-hidden mt-10 lg:mt-15">
                 <Img fluid={emailDiagram.childImageSharp.fluid} />
               </div>
               <div className="flex mt-10 max-w-xs md:mx-auto md:pl-10 xl:pl-0 xl:pr-10 xl:max-w-sm">
@@ -539,7 +543,7 @@ const ClickUp = ({
             <CaseStudyContainer>
               <CaseStudyTextContainer className="mt-20">
                 <h2 className="text-2xl leading-snug">
-                  Retention: Keeping users coming back
+                  Expansion is the name of the game
                 </h2>
                 <p className="text-base leading-relaxed lg:text-lg mt-8">
                   To ensure our client was benefitting from the value they were
