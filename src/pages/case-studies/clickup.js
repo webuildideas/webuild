@@ -231,7 +231,9 @@ const ClickUp = ({
                         <p className="text-caption xl:text-sm">series C</p>
                       </div>
                       <div className="mt-5">
-                        <p className="text-caption xl:text-sm">$5.4M raised</p>
+                        <p className="text-caption xl:text-sm">
+                          $537.5M raised
+                        </p>
                         <p className="text-caption xl:text-sm">founded 2017</p>
                       </div>
                     </div>
