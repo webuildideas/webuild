@@ -36,21 +36,21 @@ export const CaseStudyTextContainer = ({ children, className = '' }) => {
 
 const stats = [
   {
-    stat: `5-10%`,
+    stat: `10%`,
     arrow: (
       <ArrowRight className="transform -rotate-90 w-12 h-auto md:w-8 xl:w-12" />
     ),
     copy: `Conversions`
   },
   {
-    stat: `5-15%`,
+    stat: `12.5%`,
     arrow: (
       <ArrowRight className="transform -rotate-90 w-12 h-auto md:w-8 xl:w-12" />
     ),
     copy: `Activation`
   },
   {
-    stat: `5-10%`,
+    stat: `7.5%`,
     arrow: (
       <ArrowRight className="transform -rotate-90 w-12 h-auto md:w-8 xl:w-12" />
     ),
@@ -189,8 +189,8 @@ const ClickUp = ({
                     <div className="block h-px bg-blueRibbon flex-1" />
                     <div className="ml-6">
                       <ClickupLogo className="w-18 h-auto" />
-                      <p className="my-4">Adam Moelis</p>
-                      <p>Yotta CEO/Co-founder</p>
+                      <p className="my-4">Sep Norouzi</p>
+                      <p>Product Lead</p>
                     </div>
                   </div>
                 </div>
@@ -215,8 +215,8 @@ const ClickUp = ({
                     </a>{' '}
                     is a fast-growing company in the very competitive
                     productivity landscape, alongside tools like Asana, Trello,
-                    Monday, or ToDoist. They recently hit Series C because they
-                    aren’t just another project management tool.
+                    Monday, or ToDoist. They recently raised a $400M Series C
+                    because they aren't just another project management tool.
                   </p>
                   <ArrowRight className="w-12 transform rotate-90 mx-auto mt-10 lg:ml-0" />
                 </div>
@@ -231,10 +231,8 @@ const ClickUp = ({
                         <p className="text-caption xl:text-sm">series C</p>
                       </div>
                       <div className="mt-5">
-                        <p className="text-caption xl:text-sm">
-                          $537.5M valuation
-                        </p>
-                        <p className="text-caption xl:text-sm">May 2022</p>
+                        <p className="text-caption xl:text-sm">$5.4M raised</p>
+                        <p className="text-caption xl:text-sm">founded 2017</p>
                       </div>
                     </div>
                   </div>
@@ -427,9 +425,9 @@ const ClickUp = ({
               <div className="flex mt-10 max-w-xs md:ml-auto md:pl-10 xl:pl-0 xl:pr-10 xl:max-w-sm">
                 <ArrowRight className="transform rotate-90 w-12 h-auto -ml-2" />
                 <p className="font-courier text-xs flex-1 leading-normal">
-                  We designed a growth checklist that simplified the educational
-                  curve for new users by educating them on key actions most
-                  relevant to their ClickUp experience.
+                  A few designs from our comprehensive email overhaul that
+                  distilled important notifications and information directly in
+                  the user’s inbox.
                 </p>
               </div>
               <div className="mt-10 md:flex md:flex-wrap md:justify-center md:gap-x-8 xl:flex-nowrap xl:mt-0">
@@ -470,14 +468,16 @@ const ClickUp = ({
                   </p>
                   <ol className="list-decimal pl-7 mt-6">
                     <li>
-                      Simplified the onboarding experience, making it
-                      frictionless and seamless. We tested out different
-                      patterns for how best to onboard users into the app and
-                      applied our findings to new flows. We learned that users
-                      were much more likely to finish signing up if they had an
-                      indicator for how long the process would take, so we added
-                      a subtle progress bar that helped the user track just
-                      that. We added “Space Creation” to onboarding so that
+                      <span className="font-bold">
+                        Simplified the onboarding experience,
+                      </span>{' '}
+                      making it frictionless and seamless. We tested out
+                      different patterns for how best to onboard users into the
+                      app and applied our findings to new flows. We learned that
+                      users were much more likely to finish signing up if they
+                      had an indicator for how long the process would take, so
+                      we added a subtle progress bar that helped the user track
+                      just that. We added “Space Creation” to onboarding so that
                       users would have a place to land in after signup. The
                       creation process asks users to choose from a set of
                       templates and claim what they’re using the space for,
@@ -485,22 +485,30 @@ const ClickUp = ({
                       base. Minor details, big impact.
                     </li>
                     <li>
-                      Strategically added clear CTAs. A “Give Feedback” button
-                      beckons users to get in touch with ClickUp if frustrated
-                      or stuck. We also added links to download the desktop app,
-                      for a better experience earlier in their journey.
+                      <span className="font-bold">
+                        Strategically added clear CTAs.
+                      </span>{' '}
+                      A “Give Feedback” button beckons users to get in touch
+                      with ClickUp if frustrated or stuck. We also added links
+                      to download the desktop app, for a better experience
+                      earlier in their journey.
                     </li>
                     <li>
-                      Came up with ways to educate users, even after onboarding.
-                      This includes a new user experience exploration, with a
-                      guided step-by-step tour showing users what to do next. In
-                      addition, growth checklists give users tangible tasks to
-                      complete so they feel empowered to continue using the
-                      product.
+                      <span className="font-bold">
+                        Came up with ways to educate users,
+                      </span>{' '}
+                      even after onboarding. This includes a new user experience
+                      exploration, with a guided step-by-step tour showing users
+                      what to do next. In addition, growth checklists give users
+                      tangible tasks to complete so they feel empowered to
+                      continue using the product.
                     </li>
                     <li>
-                      Iterated on all of the above after user feedback and
-                      testing, to create a constantly better experience.
+                      <span className="font-bold">
+                        Iterated on all of the above after user feedback and
+                        testing,
+                      </span>{' '}
+                      to create a constantly better experience.
                     </li>
                   </ol>
                 </div>
