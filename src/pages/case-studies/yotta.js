@@ -783,9 +783,10 @@ const Yotta = ({
                 />
               </div>
               <div className="order-3 md:order-5 mt-16 md:mt-44">
-                <Img
+                <img
+                  alt="new screen gif"
                   className="w-full"
-                  fluid={appScreenFive.childImageSharp.fluid}
+                  src={appScreenFive.publicURL}
                 />
               </div>
               <div className="order-4 mt-16 md:order-6 md:mt-20">
@@ -1016,13 +1017,9 @@ export const YOTTA_QUERY = graphql`
       }
     }
     appScreenFive: file(
-      relativePath: { eq: "case-studies/yotta/app-screen-five.png" }
+      relativePath: { eq: "case-studies/yotta/app-screen-five.gif" }
     ) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
+      publicURL
     }
     appScreenSix: file(
       relativePath: { eq: "case-studies/yotta/app-screen-six.png" }

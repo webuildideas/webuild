@@ -9,7 +9,16 @@ export const createPages = async ({ graphql, actions }) => {
     {
       allContentfulCaseStudy(
         filter: {
-          name: { nin: ["GoSite", "Quadpay", "Tetra", "Yotta", "PLACEHOLDER"] }
+          name: {
+            nin: [
+              "GoSite"
+              "Quadpay"
+              "Tetra"
+              "Yotta"
+              "ClickUp"
+              "PLACEHOLDER"
+            ]
+          }
         }
       ) {
         nodes {
