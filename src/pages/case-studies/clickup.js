@@ -8,6 +8,7 @@ import Img from 'gatsby-image'
 import useWindowSize from '@common/hooks/useWindowSize'
 import NewFooter from '@modules/common/components/NewFooter'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import ReactPlayer from 'react-player'
 // SVGS
 import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModal'
 import ArrowRight from '../../static/svgs/fancy-arrow-right.inline.svg'
@@ -86,7 +87,8 @@ const ClickUp = ({
     otherShotTwo,
     otherShotThree,
     otherShotFour,
-    otherShotFive
+    otherShotFive,
+    acqVideo
   }
 }) => {
   const {
@@ -365,7 +367,19 @@ const ClickUp = ({
           <section className="py-15 bg-gray-200">
             <CaseStudyContainer>
               <div className="rounded-10 overflow-hidden">
-                <Img fluid={acqImg.childImageSharp.fluid} />
+                {/* <Img fluid={acqImg.childImageSharp.fluid} /> */}
+                <ReactPlayer
+                  className="react-player"
+                  controls={false}
+                  height="auto"
+                  loop={true}
+                  muted={true}
+                  playing={true}
+                  playsinline={true}
+                  type="mp4"
+                  url={acqVideo.publicURL}
+                  width="100%"
+                />
               </div>
               <div className="flex items-end mt-6 leading-normal md:max-w-md">
                 <ArrowRight className="transform -rotate-90 w-12 h-auto" />
@@ -595,6 +609,13 @@ const ClickUp = ({
                   <Img fluid={otherShotTwo.childImageSharp.fluid} />
                 </div>
               </div>
+              <div className="flex mt-4 items-start md:w-1/2 md:px-10 xl:max-w-sm">
+                <ArrowRight className="transform -rotate-90 w-12 h-auto -ml-2" />
+                <p className="font-courier text-xs flex-1 leading-normal">
+                  Before we redesigned them, ClickUp’s paywalls were
+                  inconsistent and disorganized.
+                </p>
+              </div>
               <div className="grid place-items-center my-8">
                 <ArrowRight className="transform rotate-90 w-20 h-auto" />
               </div>
@@ -809,6 +830,9 @@ export const CLICKUP_QUERY = graphql`
           ...GatsbyImageSharpFluid_withWebp_noBase64
         }
       }
+    }
+    acqVideo: file(relativePath: { eq: "clickup/acq-video.mp4" }) {
+      publicURL
     }
     emailCardOne: file(
       relativePath: { eq: "case-studies/clickup/card-1.png" }
