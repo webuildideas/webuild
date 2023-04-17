@@ -320,7 +320,7 @@ const Yotta = ({
                       <p className="text-caption xl:text-sm">series A</p>
                     </div>
                     <div className="mt-5">
-                      <p className="text-caption xl:text-sm">$10M valuation</p>
+                      <p className="text-caption xl:text-sm">$30M raised</p>
                       <p className="text-caption xl:text-sm">Founded 2019</p>
                     </div>
                   </div>
