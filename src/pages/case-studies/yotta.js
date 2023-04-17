@@ -330,12 +330,13 @@ const Yotta = ({
                     Born out of a mission to make financial stability fun,
                   </span>{' '}
                   this digital product pools together a portion of the interest
-                  users accumulate from high-value banks. Then, they offer that
-                  interest via prizes through weekly number draws (or lotteries)
-                  where users have the chance to win big. Yotta also takes a
-                  portion and pays it to you - no matter what. Save with Yotta
-                  and get rewarded. It’s a safe, easy, and fun way to build
-                  financial security.
+                  users accumulate from high-value banks. Users can then turn
+                  around and use that interest to earn prizes! Yotta offers
+                  prizes through weekly number draws (or lotteries) where users
+                  have the chance to win big. Yotta also takes a portion and
+                  pays it to you - no matter what. Save with Yotta and get
+                  rewarded. It’s a safe, easy, and fun way to build financial
+                  security.
                 </p>
               </div>
             </div>
@@ -374,17 +375,18 @@ const Yotta = ({
                   <Asterisk className="w-5 h-auto mr-2" /> Problem
                 </h2>
                 <p className="text-base leading-relaxed lg:text-lg">
-                  A weak brand identity and outdated UI zaps any chance of
-                  building customer loyalty. Yotta knew this as they experienced
-                  insufficient levels of customer engagement. Nothing from the
-                  visual identity to the UI and UX was hitting the mark.
+                  The Yotta team came to us with a very clear ask. They had
+                  built a great brand for their MVP, but were ready to get it to
+                  the next stage of growth. Their brand identity and UI was
+                  impacting retention and conversions. Yotta knew this, and was
+                  ready to solve the problem ASAP.
                 </p>
                 <p className="text-base leading-relaxed mt-6 lg:text-lg">
-                  In order to turn things around, Yotta needed to update their
-                  visual identity to attract their target audience and find ways
-                  to reach them in an authentic and engaging way. In short, they
-                  needed a stronger, more trustworthy brand. That’s where
-                  webuild came in.
+                  In order to turn things around, this fintech product needed to
+                  update their visual identity to attract their target audience
+                  in an authentic and engaging way. They needed a strong,
+                  trustworthy brand that reflected their incredible product.
+                  That’s where webuild came in.
                 </p>
               </div>
               <div className="mt-15">
@@ -394,9 +396,9 @@ const Yotta = ({
                 <p className="text-base leading-relaxed lg:text-lg">
                   To make this happen, we revamped the brand’s visual identity
                   and gave its customer experience a lot of TLC. With a
-                  completely new look and feel, plus an overhaul of the UX and
-                  UI, the customer experience went from drab to dynamic. Now,
-                  there’s no doubt that Yotta’s brand is alive.
+                  completely new look and feel, plus an overhaul of the UX, the
+                  Yotta customer experience was ready to reach even greater
+                  heights.
                 </p>
               </div>
             </div>
@@ -415,7 +417,7 @@ const Yotta = ({
                 <p className="mt-16 text-base leading-normal md:mt-8 xl:text-lg">
                   Yotta started off as a native app. The rub was that users were
                   only able to access their accounts in the app - making it hard
-                  to engage on other platforms, or through web usage.To
+                  to engage on other platforms, or through web usage. To
                   eliminate this common frustration, we designed a web version.
                 </p>
                 <p className="mt-6 text-base leading-normal xl:text-lg">
@@ -782,11 +784,23 @@ const Yotta = ({
                   fluid={appScreenFour.childImageSharp.fluid}
                 />
               </div>
-              <div className="order-3 md:order-5 mt-16 md:mt-44">
-                <img
+              <div className="order-3 md:order-5 mt-16 md:mt-44 border border-solid border-electricViolet rounded-4 overflow-hidden">
+                {/* <img
                   alt="new screen gif"
                   className="w-full"
                   src={appScreenFive.publicURL}
+                /> */}
+                <ReactPlayer
+                  className="react-player"
+                  controls={false}
+                  height="100"
+                  loop={true}
+                  muted={true}
+                  playing={true}
+                  playsinline={true}
+                  type="mp4"
+                  url={appScreenFive.publicURL}
+                  width="auto"
                 />
               </div>
               <div className="order-4 mt-16 md:order-6 md:mt-20">
@@ -1016,9 +1030,7 @@ export const YOTTA_QUERY = graphql`
         }
       }
     }
-    appScreenFive: file(
-      relativePath: { eq: "case-studies/yotta/app-screen-five.gif" }
-    ) {
+    appScreenFive: file(relativePath: { eq: "yotta/yotta-screen-video.mp4" }) {
       publicURL
     }
     appScreenSix: file(
