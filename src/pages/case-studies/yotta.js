@@ -784,7 +784,15 @@ const Yotta = ({
                   fluid={appScreenFour.childImageSharp.fluid}
                 />
               </div>
-              <div className="order-3 md:order-5 mt-16 md:mt-44 border border-solid border-electricViolet rounded-4 overflow-hidden">
+              <div
+                className="order-3 md:order-5 mt-16 md:mt-44 border border-solid border-electricViolet rounded-4 overflow-hidden self-baseline"
+                style={{
+                  '-webkit-backface-visibility': 'hidden',
+                  '-moz-backface-visibility': 'hidden',
+                  '-webkit-transform': 'translate3d(0, 0, 0)',
+                  '-moz-transform': 'translate3d(0, 0, 0)'
+                }}
+              >
                 {/* <img
                   alt="new screen gif"
                   className="w-full"
@@ -800,7 +808,7 @@ const Yotta = ({
                   playsinline={true}
                   type="mp4"
                   url={appScreenFive.publicURL}
-                  width="auto"
+                  width="100%"
                 />
               </div>
               <div className="order-4 mt-16 md:order-6 md:mt-20">
