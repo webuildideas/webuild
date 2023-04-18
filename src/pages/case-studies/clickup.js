@@ -599,13 +599,37 @@ const ClickUp = ({
           <section className="other-shots max-w-screen-s1536 mx-auto">
             <div className="bg-gray-300 px-6 py-10 md:mt-20 md:px-6 lg:mx-12 lg:px-12 lg:pb-20 xl:px-8 xl:pt-10 s1440:mx-30 s1536:mx-52 s1536:px-12">
               <div className="bg-gray-400 rounded-8 p-6 grid gap-6 md:grid-cols-3 xl:gap-12 xl:p-10">
-                <div className="rounded-10 overflow-hidden border border-solid border-gray-500">
+                <div
+                  className="rounded-10 overflow-hidden border border-solid border-gray-500"
+                  style={{
+                    '-webkit-backface-visibility': 'hidden',
+                    '-moz-backface-visibility': 'hidden',
+                    '-webkit-transform': 'translate3d(0, 0, 0)',
+                    '-moz-transform': 'translate3d(0, 0, 0)'
+                  }}
+                >
                   <Img fluid={otherShotOne.childImageSharp.fluid} />
                 </div>
-                <div className="rounded-10 overflow-hidden border border-solid border-gray-500">
+                <div
+                  className="rounded-10 overflow-hidden border border-solid border-gray-500"
+                  style={{
+                    '-webkit-backface-visibility': 'hidden',
+                    '-moz-backface-visibility': 'hidden',
+                    '-webkit-transform': 'translate3d(0, 0, 0)',
+                    '-moz-transform': 'translate3d(0, 0, 0)'
+                  }}
+                >
                   <Img fluid={otherShotThree.childImageSharp.fluid} />
                 </div>
-                <div className="rounded-10 overflow-hidden border border-solid border-gray-500">
+                <div
+                  className="rounded-10 overflow-hidden border border-solid border-gray-500"
+                  style={{
+                    '-webkit-backface-visibility': 'hidden',
+                    '-moz-backface-visibility': 'hidden',
+                    '-webkit-transform': 'translate3d(0, 0, 0)',
+                    '-moz-transform': 'translate3d(0, 0, 0)'
+                  }}
+                >
                   <Img fluid={otherShotTwo.childImageSharp.fluid} />
                 </div>
               </div>
@@ -620,14 +644,30 @@ const ClickUp = ({
                 <ArrowRight className="transform rotate-90 w-20 h-auto" />
               </div>
               <div className="grid gap-6 md:grid-cols-2 xl:px-18 s1536:px-6">
-                <div className="rounded-10 overflow-hidden border border-solid border-electricIndigo">
+                <div
+                  className="rounded-10 overflow-hidden border border-solid border-electricIndigo"
+                  style={{
+                    '-webkit-backface-visibility': 'hidden',
+                    '-moz-backface-visibility': 'hidden',
+                    '-webkit-transform': 'translate3d(0, 0, 0)',
+                    '-moz-transform': 'translate3d(0, 0, 0)'
+                  }}
+                >
                   <Img
                     className="h-full"
                     fluid={otherShotFour.childImageSharp.fluid}
                   />
                 </div>
 
-                <div className="rounded-10 overflow-hidden border border-solid border-electricIndigo xl:ml-10">
+                <div
+                  className="rounded-10 overflow-hidden border border-solid border-electricIndigo xl:ml-10"
+                  style={{
+                    '-webkit-backface-visibility': 'hidden',
+                    '-moz-backface-visibility': 'hidden',
+                    '-webkit-transform': 'translate3d(0, 0, 0)',
+                    '-moz-transform': 'translate3d(0, 0, 0)'
+                  }}
+                >
                   <Img
                     className="w-full"
                     fluid={otherShotFive.childImageSharp.fluid}
