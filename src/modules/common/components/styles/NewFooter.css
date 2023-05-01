@@ -48,12 +48,11 @@ section .burger:last-of-type {
   display: none;
 }
 
-@media screen and (min-width: 1440px) {
+/* @media screen and (min-width: 1440px) {
   .footer__wrapper,
   .secondary-footer__wrapper {
     margin-left: 120px;
     margin-right: 120px;
-    @apply px-30;
   }
 }
 
@@ -63,4 +62,4 @@ section .burger:last-of-type {
     margin-left: auto;
     margin-right: auto;
   }
-}
+} */

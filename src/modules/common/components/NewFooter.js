@@ -39,7 +39,7 @@ export default function NewFooter() {
 
   return (
     <footer ref={footerRef} className="bg-newBlack pt-26 pb-8">
-      <div className="footer__wrapper px-6 max-w-screen-1536 m-auto text-white pb-30">
+      <div className="footer__wrapper px-6 max-w-screen-1536 m-auto text-white pb-30 s1440:px-30 s1536:px-52">
         <h2 className="text-h2 font-light w-1/2 fade-in">
           Ready to <i className="font-crimson italic">get started?</i>
         </h2>
