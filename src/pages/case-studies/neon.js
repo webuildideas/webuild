@@ -10,6 +10,7 @@ import NewFooter from '@modules/common/components/NewFooter'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import ReactPlayer from 'react-player'
 import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModal'
+
 import { CaseStudyContainer, CaseStudyTextContainer } from './clickup'
 
 // SVGS
@@ -71,6 +72,7 @@ const Neon = ({
     blThreeImg,
     blFourImg,
     elementsImg,
+    purchaseVideo,
     productGif,
     marketingGif,
     designGif,
@@ -411,10 +413,27 @@ const Neon = ({
             <div className="whitespace-nowrap overflow-auto lg:whitespace-normal p-6 md:flex lg:px-12">
               <div className="store-front-scrollz pb-12 ">
                 <div className="grid grid-cols-3 gap-x-4 md:flex md:gap-x-0">
-                  <Img
+                  {/* <Img
                     className="md:flex-1 md:mr-4"
                     fluid={wishlistOneImg.childImageSharp.fluid}
-                  />
+                  /> */}
+                  <div
+                    className="md:flex-1 md:mr-4 rounded-7 overflow-hidden border-2 border-solid"
+                    style={{ borderColor: '#F8C7B8' }}
+                  >
+                    <ReactPlayer
+                      className="react-player object-cover"
+                      controls={false}
+                      height="100%"
+                      loop={true}
+                      muted={true}
+                      playing={true}
+                      playsinline={true}
+                      type="mp4"
+                      url={purchaseVideo.publicURL}
+                      width="100%"
+                    />
+                  </div>
                   <Img
                     className="md:flex-1 md:mr-4"
                     fluid={wishlistTwoImg.childImageSharp.fluid}
@@ -952,6 +971,9 @@ export const CLICKUP_QUERY = graphql`
           ...GatsbyImageSharpFluid_withWebp_noBase64
         }
       }
+    }
+    purchaseVideo: file(relativePath: { eq: "neon/neon-purchase.mp4" }) {
+      publicURL
     }
     productGif: file(relativePath: { eq: "service-gifs/product-design.gif" }) {
       publicURL
