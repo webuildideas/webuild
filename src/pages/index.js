@@ -25,10 +25,15 @@ import '@common/styles/pages/new-home.css'
 
 const NEW_HOME_PAGE_QUERY = graphql`
   query query {
-    allContentfulCaseStudy(
-      filter: { name: { nin: ["PLACEHOLDER", "Optimize"] } }
-    ) {
-      nodes {
+    weTeam: file(relativePath: { eq: "we-build-team-new.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1200, quality: 100) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+    contentfulHomePage(pageTitle: { eq: "Home" }) {
+      caseStudies {
         name
         tagline
         slug
@@ -41,15 +46,6 @@ const NEW_HOME_PAGE_QUERY = graphql`
           shortTitle
         }
       }
-    }
-    weTeam: file(relativePath: { eq: "we-build-team-new.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 1200, quality: 100) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
-    contentfulHomePage(pageTitle: { eq: "Home" }) {
       testimonials {
         company
         quoteShort {
@@ -121,9 +117,8 @@ const CaseStudy = ({ data }) => {
 
 const IndexPage = ({ location }) => {
   const {
-    allContentfulCaseStudy: { nodes: caseStudies },
     weTeam,
-    contentfulHomePage: { testimonials, logos: theLogos }
+    contentfulHomePage: { testimonials, logos: theLogos, caseStudies }
   } = useStaticQuery(NEW_HOME_PAGE_QUERY)
   gsap.registerPlugin(ScrollTrigger)
   const [isMuted, setIsMuted] = useState(true)
@@ -150,7 +145,7 @@ const IndexPage = ({ location }) => {
     const agencyHeadline = agencyRef.current.querySelector('h2')
     const agencyLine = agencyRef.current.querySelector('.the-agency__img .line')
     let scrollLength
-    let offScreen = 0
+    const offScreen = 0
     gsap.set([logos, agencyHeadline], { opacity: 0, y: 32, skewY: 5 })
 
     // HERO
@@ -203,26 +198,46 @@ const IndexPage = ({ location }) => {
     })
 
     // Scroll Horizontally
-    if (window.innerWidth >= 768 && window.innerWidth < 990) {
-      offScreen = sections.length - 1400 / sections[0].offsetWidth
-      scrollLength = sections[0].offsetWidth * offScreen
-    } else if (window.innerWidth >= 990) {
-      offScreen = sections.length - 1152 / sections[0].offsetWidth
-      scrollLength = sections[0].offsetWidth * offScreen
-    } else {
-      scrollLength = sections.length * sections[0].offsetWidth
-    }
+    // if (window.innerWidth >= 768 && window.innerWidth < 990) {
+    //   offScreen = sections.length - 1400 / sections[0].offsetWidth
+    //   scrollLength = sections[0].offsetWidth * offScreen
+    // } else if (window.innerWidth >= 990) {
+    //   offScreen = sections.length - 1152 / sections[0].offsetWidth
+    //   scrollLength = sections[0].offsetWidth * offScreen
+    // } else {
+    //   scrollLength = sections.length * sections[0].offsetWidth
+    // }
 
-    const caseStudyScroll = gsap.to(sections, {
-      xPercent: -100 * (sections.length - Math.ceil(offScreen)),
-      ease: 'none', // <-- IMPORTANT!
+    // console.log(offScreen)
+    // console.log(sections[0].offsetWidth)
+    // console.log(caseStudyRef.current.style.width)
+
+    // const caseStudyScroll = gsap.to(sections, {
+    //   // xPercent: -100 * (sections.length - Math.ceil(offScreen)),
+    //   xPercent: caseStudyRef.current.style.width,
+    //   ease: 'none', // <-- IMPORTANT!
+    //   scrollTrigger: {
+    //     trigger: caseStudyRef.current,
+    //     pin: true,
+    //     scrub: 0.1,
+    //     start: 'top 15%',
+    //     end: `+=${scrollLength}`
+    //     // markers: true
+    //   }
+    // })
+
+    gsap.to('.results__case-studies', {
+      xPercent: -100,
+      x: () => window.innerWidth,
+      ease: 'none',
       scrollTrigger: {
-        trigger: caseStudyRef.current,
-        pin: true,
+        trigger: '.results__case-studies',
+        end: () => window.innerWidth * 3,
         scrub: 0.1,
         start: 'top 15%',
-        end: `+=${scrollLength}`
-        // markers: true
+        pin: true,
+        invalidateOnRefresh: true,
+        anticipatePin: 1
       }
     })
 
@@ -251,7 +266,7 @@ const IndexPage = ({ location }) => {
 
     return () => {
       logosScroll.kill()
-      caseStudyScroll.kill()
+      // caseStudyScroll.kill()
       agencyScroll.kill()
     }
   }, [])
