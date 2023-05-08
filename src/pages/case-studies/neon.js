@@ -422,7 +422,7 @@ const Neon = ({
                     style={{ borderColor: '#F8C7B8' }}
                   >
                     <ReactPlayer
-                      className="react-player object-cover"
+                      className="react-player"
                       controls={false}
                       height="100%"
                       loop={true}
@@ -457,7 +457,7 @@ const Neon = ({
                     </div>
                   </div>
                 </div>
-                <div className="flex items-start mt-4 whitespace-normal w-68">
+                <div className="flex items-start mt-4 whitespace-normal w-68 md:w-2/3 md:max-w-xl">
                   <ArrowRight className="transform -rotate-90 w-12 h-auto -ml-2 text-blueRibbon" />
                   <p className="font-courier text-xs flex-1 leading-normal">
                     The tone of the storefront needed to fit - regardless if the
@@ -525,7 +525,7 @@ const Neon = ({
                   />
                 </div>
               </div>
-              <div className="flex items-start mt-4 max-w-xs mx-auto xl:mb-32">
+              <div className="flex items-end mt-4 max-w-xs mx-auto xl:mb-32">
                 <ArrowRight className="transform -rotate-90 w-12 h-auto -ml-2 text-blueRibbon" />
                 <p className="font-courier text-xs flex-1 leading-normal">
                   Our FigJam that helped us align with Neon on style & tone for

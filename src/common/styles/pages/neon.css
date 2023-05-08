@@ -68,3 +68,9 @@
     width: 100%;
   }
 }
+
+.react-player {
+  video {
+    @apply object-cover;
+  }
+}
