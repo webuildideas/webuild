@@ -145,7 +145,7 @@ const IndexPage = ({ location }) => {
     const agencyHeadline = agencyRef.current.querySelector('h2')
     const agencyLine = agencyRef.current.querySelector('.the-agency__img .line')
     let scrollLength
-    let offScreen = 0
+    const offScreen = 0
     gsap.set([logos, agencyHeadline], { opacity: 0, y: 32, skewY: 5 })
 
     // HERO
@@ -198,49 +198,24 @@ const IndexPage = ({ location }) => {
     })
 
     // Scroll Horizontally
-    if (window.innerWidth >= 768 && window.innerWidth < 990) {
-      offScreen = sections.length - 1400 / sections[0].offsetWidth
-      scrollLength = sections[0].offsetWidth * offScreen
-    } else if (window.innerWidth >= 990) {
-      offScreen = sections.length - 1152 / sections[0].offsetWidth
-      scrollLength = sections[0].offsetWidth * offScreen
+    if (window.innerWidth >= 768) {
+      scrollLength = -100 * (sections.length - 1)
     } else {
-      scrollLength = sections.length * sections[0].offsetWidth
+      scrollLength = -100 * sections.length + 24
     }
 
-    // console.log(offScreen)
-    // console.log(sections[0].offsetWidth)
-    // console.log(caseStudyRef.current.style.width)
-
     const caseStudyScroll = gsap.to(sections, {
-      // xPercent: -100 * (sections.length - Math.ceil(offScreen)),
-      xPercent: -100 * 3,
+      xPercent: scrollLength,
       ease: 'none', // <-- IMPORTANT!
       scrollTrigger: {
         trigger: caseStudyRef.current,
         pin: true,
         scrub: 0.1,
         start: 'top 15%',
-        // end: `+=${scrollLength}`
         end: `+=${window.innerHeight * 1.5}`
         // markers: true
       }
     })
-
-    // gsap.to(caseStudyRef.current, {
-    //   xPercent: -100,
-    //   x: () => window.innerWidth,
-    //   ease: 'none',
-    //   scrollTrigger: {
-    //     trigger: caseStudyRef.current,
-    //     end: () => window.innerWidth * 3,
-    //     scrub: 0.1,
-    //     start: 'top 15%',
-    //     pin: true,
-    //     invalidateOnRefresh: true,
-    //     anticipatePin: 1
-    //   }
-    // })
 
     const agencyScroll = ScrollTrigger.create({
       trigger: agencyRef.current,
