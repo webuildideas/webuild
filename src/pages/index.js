@@ -42,9 +42,7 @@ const NEW_HOME_PAGE_QUERY = graphql`
             ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
-        service {
-          shortTitle
-        }
+        carouselServices
       }
       testimonials {
         company
@@ -85,7 +83,7 @@ const CaseStudy = ({ data }) => {
       to={`/case-studies/${data.slug}`}
     >
       <span className="service text-blueRibbon text-base uppercase">
-        {data.service ? data.service[0].shortTitle : `Branding`}
+        {data.carouselServices ? data.carouselServices : `Branding`}
       </span>
       <div className="image my-8 w-full h-auto">
         <Img
