@@ -357,15 +357,19 @@ const IndexPage = ({ location }) => {
               design systems.
             </p>
           </div>
-          <a
+          <AniLink
+            bg="#F3F3F3"
             className="cta flex items-center mt-6 text-blueRibbon font-light text-lg lg:mb-3"
-            href="/"
+            cover
+            direction="right"
+            duration={1.5}
+            to="/case-studies/"
           >
             <span className="">View our work</span>
             <span className="w-6 ml-14">
               <FancyArrow />
             </span>
-          </a>
+          </AniLink>
         </div>
         <div
           ref={caseStudyRef}
