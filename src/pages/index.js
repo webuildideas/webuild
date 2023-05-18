@@ -25,23 +25,6 @@ import '@common/styles/pages/new-home.css'
 
 const NEW_HOME_PAGE_QUERY = graphql`
   query query {
-    allContentfulCaseStudy(
-      filter: { name: { nin: ["PLACEHOLDER", "Optimize"] } }
-    ) {
-      nodes {
-        name
-        tagline
-        slug
-        carouselImage {
-          fluid {
-            ...GatsbyContentfulFluid_withWebp_noBase64
-          }
-        }
-        service {
-          shortTitle
-        }
-      }
-    }
     weTeam: file(relativePath: { eq: "we-build-team-new.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1200, quality: 100) {
@@ -50,6 +33,17 @@ const NEW_HOME_PAGE_QUERY = graphql`
       }
     }
     contentfulHomePage(pageTitle: { eq: "Home" }) {
+      caseStudies {
+        name
+        tagline
+        slug
+        carouselImage {
+          fluid {
+            ...GatsbyContentfulFluid_withWebp_noBase64
+          }
+        }
+        carouselServices
+      }
       testimonials {
         company
         quoteShort {
@@ -89,7 +83,7 @@ const CaseStudy = ({ data }) => {
       to={`/case-studies/${data.slug}`}
     >
       <span className="service text-blueRibbon text-base uppercase">
-        {data.service ? data.service[0].shortTitle : `Branding`}
+        {data.carouselServices ? data.carouselServices : `Branding`}
       </span>
       <div className="image my-8 w-full h-auto">
         <Img
@@ -121,9 +115,8 @@ const CaseStudy = ({ data }) => {
 
 const IndexPage = ({ location }) => {
   const {
-    allContentfulCaseStudy: { nodes: caseStudies },
     weTeam,
-    contentfulHomePage: { testimonials, logos: theLogos }
+    contentfulHomePage: { testimonials, logos: theLogos, caseStudies }
   } = useStaticQuery(NEW_HOME_PAGE_QUERY)
   gsap.registerPlugin(ScrollTrigger)
   const [isMuted, setIsMuted] = useState(true)
@@ -150,7 +143,7 @@ const IndexPage = ({ location }) => {
     const agencyHeadline = agencyRef.current.querySelector('h2')
     const agencyLine = agencyRef.current.querySelector('.the-agency__img .line')
     let scrollLength
-    let offScreen = 0
+    const offScreen = 0
     gsap.set([logos, agencyHeadline], { opacity: 0, y: 32, skewY: 5 })
 
     // HERO
@@ -203,25 +196,21 @@ const IndexPage = ({ location }) => {
     })
 
     // Scroll Horizontally
-    if (window.innerWidth >= 768 && window.innerWidth < 990) {
-      offScreen = sections.length - 1400 / sections[0].offsetWidth
-      scrollLength = sections[0].offsetWidth * offScreen
-    } else if (window.innerWidth >= 990) {
-      offScreen = sections.length - 1152 / sections[0].offsetWidth
-      scrollLength = sections[0].offsetWidth * offScreen
+    if (window.innerWidth >= 768) {
+      scrollLength = -100 * (sections.length - 1)
     } else {
-      scrollLength = sections.length * sections[0].offsetWidth
+      scrollLength = -100 * sections.length + 24
     }
 
     const caseStudyScroll = gsap.to(sections, {
-      xPercent: -100 * (sections.length - Math.ceil(offScreen)),
+      xPercent: scrollLength,
       ease: 'none', // <-- IMPORTANT!
       scrollTrigger: {
         trigger: caseStudyRef.current,
         pin: true,
         scrub: 0.1,
         start: 'top 15%',
-        end: `+=${scrollLength}`
+        end: `+=${window.innerHeight * 1.5}`
         // markers: true
       }
     })
@@ -251,7 +240,7 @@ const IndexPage = ({ location }) => {
 
     return () => {
       logosScroll.kill()
-      caseStudyScroll.kill()
+      // caseStudyScroll.kill()
       agencyScroll.kill()
     }
   }, [])
@@ -368,15 +357,19 @@ const IndexPage = ({ location }) => {
               design systems.
             </p>
           </div>
-          <a
+          <AniLink
+            bg="#F3F3F3"
             className="cta flex items-center mt-6 text-blueRibbon font-light text-lg lg:mb-3"
-            href="/"
+            cover
+            direction="right"
+            duration={1.5}
+            to="/case-studies/"
           >
             <span className="">View our work</span>
             <span className="w-6 ml-14">
               <FancyArrow />
             </span>
-          </a>
+          </AniLink>
         </div>
         <div
           ref={caseStudyRef}
