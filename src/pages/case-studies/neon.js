@@ -321,25 +321,25 @@ const Neon = ({
                 <h2 className="text-2xl mb-6 xl:text-2.5xl">Leveling Up</h2>
                 <p className="text-base leading-loose xl:text-lg">
                   We started with the MVP launch of Neon, NPay. It needed to
-                  include:{' '}
-                  <ul className="mt-8 list-disc pl-6">
-                    <li className="mt-8">
-                      Storefront of game items and bundles for a mobile game,
-                      which could easily be customized to the tone and SKUs of
-                      any game type
-                    </li>
-                    <li>
-                      Way to pay which felt safe, fast, and helped educate users
-                      sign-up for Neon easily
-                    </li>
-                    <li>
-                      Clear reason to use Neon, instead of a competitor payment
-                      system We began that process with a research-first
-                      approach and collaborative workshops with the client to
-                      determine their needs.
-                    </li>
-                  </ul>
+                  include:
                 </p>
+                <ul className="mt-8 list-disc pl-6 text-base leading-loose xl:text-lg">
+                  <li className="mt-8">
+                    Storefront of game items and bundles for a mobile game,
+                    which could easily be customized to the tone and SKUs of any
+                    game type
+                  </li>
+                  <li>
+                    Way to pay which felt safe, fast, and helped educate users
+                    sign-up for Neon easily
+                  </li>
+                  <li>
+                    Clear reason to use Neon, instead of a competitor payment
+                    system We began that process with a research-first approach
+                    and collaborative workshops with the client to determine
+                    their needs.
+                  </li>
+                </ul>
                 <p className="text-base leading-loose xl:text-lg mt-8">
                   We began that process with a research-first approach and
                   collaborative workshops with the client to determine their
