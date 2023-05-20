@@ -636,7 +636,7 @@ const Neon = ({
                 </h2>
                 <p className="text-base leading-loose xl:text-lg">
                   We designed partner emails and marketing assets like the ones
-                  below= to remind the user that their next easy purchase (and
+                  below to remind the user that their next easy purchase (and
                   victory) is just a click away.
                 </p>
                 <h3 className="text-2xl mb-6 xl:text-2.5xl mt-10 md:mt-16">
