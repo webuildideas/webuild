@@ -507,6 +507,10 @@ const Neon = ({
                   recommendation and brought to the Neon team for their
                   evaluation and consideration.
                 </p>
+                <p className="text-base leading-loose xl:text-lg mt-8 italic">
+                  *Note: These screens were designed as prototypes and are not
+                  yet real representations of game partners.
+                </p>
               </CaseStudyTextContainer>
             </CaseStudyContainer>
           </section>
@@ -561,10 +565,6 @@ const Neon = ({
                   buildable, and matched their goals. Over 4 months, we created
                   a pretty great MVP. We’re designers, so we’ll let the screens
                   speak for themselves.
-                </p>
-                <p className="text-base leading-loose xl:text-lg mt-8 italic">
-                  *Note: These screens were designed as prototypes and are not
-                  yet real representations of game partners.
                 </p>
               </CaseStudyTextContainer>
             </CaseStudyContainer>
