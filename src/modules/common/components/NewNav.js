@@ -232,6 +232,30 @@ export default function NewNav() {
                 direction="right"
                 duration={1.5}
                 onClick={handleBurgerClick}
+                to="/case-studies/neon/"
+              >
+                Neon
+                <svg
+                  className="w-8 h-auto ml-25 hidden lg:block"
+                  fill="none"
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clipRule="evenodd"
+                    d="M24.2753 7.33331C24.2753 11.6662 27.7337 15.1787 32 15.1787V15.4583V15.7379V16.2621V16.5416V16.8212C27.7338 16.8212 24.2753 20.3337 24.2753 24.6666H23.2086C23.2086 21.0582 25.3163 17.9497 28.3495 16.5416L0 16.5416V15.4583L28.3495 15.4583C25.3163 14.0503 23.2086 10.9418 23.2086 7.33331H24.2753Z"
+                    fill="#000000"
+                    fillRule="evenodd"
+                  />
+                </svg>
+              </AniLink>
+              <AniLink
+                bg="#F3F3F3"
+                className="block sub-item box-content lg:flex lg:items-center"
+                cover
+                direction="right"
+                duration={1.5}
+                onClick={handleBurgerClick}
                 to="/case-studies/clickup/"
               >
                 ClickUp
