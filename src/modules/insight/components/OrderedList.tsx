@@ -71,7 +71,7 @@ const OrderedListSteps = ({ listItems }: OrderedListTypeProps) => {
             {image?.file.url ? (
               <img
                 alt="List item"
-                className="Insight-ol-steps__img"
+                className="Insight-ol-steps__img w-full max-w-xs"
                 src={image.file.url}
               />
             ) : null}

@@ -74,6 +74,8 @@ const Insight = ({
     insight.contentUpgrade ? insight.contentUpgrade.title : ''
   )
 
+  console.log(insight)
+
   const options: Options = {
     renderNode: {
       [BLOCKS.EMBEDDED_ASSET]: (node) => {

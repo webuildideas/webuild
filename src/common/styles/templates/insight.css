@@ -14,27 +14,27 @@
   @apply mx-auto;
   grid-template-rows: auto auto auto auto auto;
   grid-template-areas:
-    "header header header header header header header header header header header header"
-    "article article article article article article article article article article article article"
-    "share share share share share share share share share share share share"
-    "readNext readNext readNext readNext readNext readNext readNext readNext readNext readNext readNext readNext"
-    "ctas ctas ctas ctas ctas ctas ctas ctas ctas ctas ctas ctas";
+    'header header header header header header header header header header header header'
+    'article article article article article article article article article article article article'
+    'share share share share share share share share share share share share'
+    'readNext readNext readNext readNext readNext readNext readNext readNext readNext readNext readNext readNext'
+    'ctas ctas ctas ctas ctas ctas ctas ctas ctas ctas ctas ctas';
 
   @screen lg {
     grid-template-rows: auto auto auto auto;
     grid-template-areas:
-      "header header header header header header header header header header . ."
-      "article article article article article article article article article ctas ctas ctas"
-      "share share share share share share share share share share share share"
-      "readNext readNext readNext readNext readNext readNext readNext readNext readNext readNext readNext readNext";
+      'header header header header header header header header header header . .'
+      'article article article article article article article article article ctas ctas ctas'
+      'share share share share share share share share share share share share'
+      'readNext readNext readNext readNext readNext readNext readNext readNext readNext readNext readNext readNext';
   }
 
   @screen xl {
     grid-template-rows: auto auto auto;
     grid-template-areas:
-      "header header header header header header header header header header . ."
-      "share article article article article article article article article ctas ctas ctas"
-      "readNext readNext readNext readNext readNext readNext readNext readNext readNext readNext readNext readNext";
+      'header header header header header header header header header header . .'
+      'share article article article article article article article article ctas ctas ctas'
+      'readNext readNext readNext readNext readNext readNext readNext readNext readNext readNext readNext readNext';
   }
 }
 
@@ -100,7 +100,7 @@
   height: 750px;
 
   &:after {
-    content: "";
+    content: '';
     bottom: 0;
     @apply absolute;
     @apply block;
@@ -265,7 +265,6 @@ li .Insight-img-inline.Image-numbered-list {
 
 /* End Image Styles*/
 
-
 .Insight-paragraph {
   @apply mb-6;
   a {
@@ -366,7 +365,9 @@ li .Insight-img-inline.Image-numbered-list {
   }
 }
 
-.Insight ol:not(.Insight-ol-inline):not(.Insight-ol-bt):not(.Insight-ol-steps) > li {
+.Insight
+  ol:not(.Insight-ol-inline):not(.Insight-ol-bt):not(.Insight-ol-steps)
+  > li {
   counter-increment: count;
   @apply flex;
   @apply items-start;
@@ -375,9 +376,9 @@ li .Insight-img-inline.Image-numbered-list {
 
   b {
     @apply font-bold;
-    @apply mb-4;
-    @apply block;
-    @apply uppercase;
+    /* @apply mb-4; */
+    /* @apply block; */
+    /* @apply uppercase; */
   }
 
   p {
@@ -385,6 +386,16 @@ li .Insight-img-inline.Image-numbered-list {
     @apply mb-2;
     @apply mx-0;
     white-space: pre-wrap;
+
+    b:first-of-type {
+      @apply mb-4;
+      @apply inline-block;
+      @apply uppercase;
+
+      + i {
+        @apply uppercase;
+      }
+    }
   }
 
   p:first-of-type {
@@ -400,8 +411,8 @@ li .Insight-img-inline.Image-numbered-list {
     @apply flex-shrink-0;
   }
 
-  &:before {    
-    content: counter(count) ". ";
+  &:before {
+    content: counter(count) '. ';
     height: 100%;
     width: 30px;
     @apply flex-shrink-0;
@@ -496,12 +507,11 @@ li .Insight-img-inline.Image-numbered-list {
   @apply mt-16;
 }
 
-
 /* Insight--new-styles */
 .Insight--new-styles {
   .Insight-paragraph + .Insight-ol-bt {
     @apply mt-14;
-    
+
     @apply lg:mt-16;
   }
 
@@ -523,7 +533,7 @@ li .Insight-img-inline.Image-numbered-list {
 
   .Insight-paragraph + .Insight-h3 {
     @apply mt-14;
-    
+
     @apply lg:mt-16;
   }
 
@@ -573,7 +583,8 @@ li .Insight-img-inline.Image-numbered-list {
     }
   }
 
-  .Insight ol:not(.Insight-ol-inline):not(.Insight-ol-bt):not(.Insight-ol-steps) {
+  .Insight
+    ol:not(.Insight-ol-inline):not(.Insight-ol-bt):not(.Insight-ol-steps) {
     list-style: decimal outside none;
 
     ol {
@@ -593,10 +604,10 @@ li .Insight-img-inline.Image-numbered-list {
         display: none;
       }
     }
-
   }
 
-  .Insight ul:not(.Insight-ul-bt):not(.Insight-ul-btns):not(.Insight-ul-no-title) {
+  .Insight
+    ul:not(.Insight-ul-bt):not(.Insight-ul-btns):not(.Insight-ul-no-title) {
     li {
       @apply mb-0;
 
