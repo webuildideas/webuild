@@ -100,41 +100,41 @@ const Service = ({
             />
           </div>
           <div className="Service-intro-copy">
-            {renderRichText(service.intro, introRichTextOptions)}
+            {renderRichText(service?.intro, introRichTextOptions)}
           </div>
         </div>
 
         <div className="Service-content-block first-content-block">
           <ServicesStickyNav services={otherServices} />
           <div className="content">
-            {renderRichText(service.firstContentBlock, contentBlockOptions)}
+            {renderRichText(service?.firstContentBlock, contentBlockOptions)}
           </div>
         </div>
 
         {service.testimonials
-          ? service.testimonials.map((testimonial) => {
+          ? service?.testimonials.map((testimonial) => {
               return (
                 <ServiceTestimonial
-                  key={testimonial.name}
+                  key={testimonial?.name}
                   testimonial={testimonial}
                 />
               )
             })
           : null}
 
-        {service.secondContentBlock ? (
+        {service?.secondContentBlock ? (
           <div className="Service-content-block">
             {renderRichText(service.secondContentBlock, contentBlockOptions)}
           </div>
         ) : null}
 
-        {service.caseStudies.length > 0 ? (
+        {service?.caseStudies?.length > 0 ? (
           <div className="Service-case-studies">
-            {service.caseStudies.map((study, idx: number) => {
+            {service?.caseStudies.map((study, idx: number) => {
               const layout = (idx + 1) % 2 === 0 ? 'right' : 'left'
               return (
                 <CaseStudy
-                  key={study.slug}
+                  key={study?.slug}
                   buttonStyleType="solid-purple"
                   caseStudy={study}
                   layout={layout}
