@@ -24,7 +24,7 @@ interface Props {
 }
 
 const CaseStudy = ({ caseStudy, layout }: Props) => {
-  const servicesLength = caseStudy.service.length
+  const servicesLength = caseStudy?.service?.length
   return (
     <article className="case-study-listing p-6 mb-6 lg:mb-20 md:w-3/5 m-auto lg:w-full max-w-screen-xl lg:hover:bg-newBlack transition duration-300 ease-in-out">
       <AniLink
