@@ -87,29 +87,29 @@ const CaseStudy = ({ caseStudy, layout }: Props) => {
           </div>
           <div className="xl:flex xl:items-center xl:justify-between xl:mt-auto">
             <div className="yotta-stats flex mt-14">
-              <img alt={caseStudy.slug} src={caseStudy.badge.file.url} />
+              <img alt={caseStudy?.slug} src={caseStudy?.badge?.file?.url} />
               <div className="ml-4 flex flex-col">
                 <div className="">
                   {caseStudy.stats.type && (
                     <p className="text-caption text-electricViolet xl:text-sm">
-                      {caseStudy.stats.type}
+                      {caseStudy?.stats?.type}
                     </p>
                   )}
                   {caseStudy.stats.stage && (
                     <p className="text-caption xl:text-sm">
-                      {caseStudy.stats.stage}
+                      {caseStudy?.stats?.stage}
                     </p>
                   )}
                 </div>
                 <div className="mt-auto">
-                  {caseStudy.stats.amountRaised && (
+                  {caseStudy?.stats?.amountRaised && (
                     <p className="text-caption xl:text-sm">
-                      {caseStudy.stats.amountRaised}
+                      {caseStudy?.stats?.amountRaised}
                     </p>
                   )}
-                  {caseStudy.stats.founded && (
+                  {caseStudy?.stats.founded && (
                     <p className="text-caption xl:text-sm">
-                      {caseStudy.stats.founded}
+                      {caseStudy?.stats?.founded}
                     </p>
                   )}
                 </div>
