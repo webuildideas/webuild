@@ -12,7 +12,7 @@ import './styles/testimonial-slider.css'
 const richTextOptions = {
   renderNode: {
     [BLOCKS.PARAGRAPH]: (_, children) => (
-      <p className="text-body text-center text-blueRibbon font-light mt-6">
+      <p className="text-body text-center text-currentColor font-light mt-6">
         {children}
       </p>
     )
@@ -22,7 +22,11 @@ const richTextOptions = {
   }
 }
 
-export default function TestimonialSlider({ testimonials }) {
+export default function TestimonialSlider({
+  testimonials,
+  color = 'blueRibbon',
+  logoClasses = ''
+}) {
   const testimonialRef = useRef(null)
   const quotesRef = useRef(null)
   const peopleRef = useRef(null)
@@ -122,7 +126,7 @@ export default function TestimonialSlider({ testimonials }) {
   return (
     <div
       ref={testimonialRef}
-      className="testimonial-slider max-w-6xl mx-auto px-6 xl:px-0"
+      className={`testimonial-slider max-w-6xl mx-auto px-6 xl:px-0 text-${color}`}
     >
       <div className="testimonials my-14 max-w-xl mx-auto md:my-20 lg:my-40 grid place-items-center">
         {testimonials.map((testimonial, index) => (
@@ -132,7 +136,9 @@ export default function TestimonialSlider({ testimonials }) {
             testimonail-index={index}
           >
             {testimonial?.companyLogo ? (
-              <div className="flex justify-center w-1/3 mx-auto">
+              <div
+                className={`flex justify-center w-1/3 mx-auto filter ${logoClasses}`}
+              >
                 <img
                   alt={testimonial.companyLogo.file.fileName}
                   className="w-full h-full object-contain"
@@ -154,8 +160,8 @@ export default function TestimonialSlider({ testimonials }) {
               key={testimonial.name}
               className={
                 index === 0
-                  ? `person-info text-blueRibbon font-light text-center md:flex items-center justify-between active`
-                  : `person-info text-blueRibbon font-light text-center md:flex items-center justify-between `
+                  ? `person-info text-${color} font-light text-center md:flex items-center justify-between active`
+                  : `person-info text-${color} font-light text-center md:flex items-center justify-between `
               }
               perosn-index={index}
             >
@@ -163,7 +169,7 @@ export default function TestimonialSlider({ testimonials }) {
                 className="w-22 h-auto m-auto md:m-0"
                 fluid={testimonial.bwHeadshot.fluid}
               />
-              <div className="hidden md:block h-px bg-blueRibbon flex-1" />
+              <div className={`hidden md:block h-px bg-${color} flex-1`} />
               <div className="mt-4 md:ml-12">
                 <p className="mb-2">{testimonial.name}</p>
                 <p>{testimonial.role}</p>
@@ -176,14 +182,14 @@ export default function TestimonialSlider({ testimonials }) {
           className="mt-14 flex justify-center items-center gap-x-4 md:mt-0"
         >
           <div
-            className="next-btn border-1 cursor-pointer border-solid border-blueRibbon rounded-full w-22 h-22 p-7"
+            className={`next-btn border-1 cursor-pointer border-solid border-${color} rounded-full w-22 h-22 p-7`}
             onClick={handlePrevSlideClick}
             role="button"
           >
             <LeftArrow />
           </div>
           <div
-            className="next-btn border-1 cursor-pointer border-solid border-blueRibbon rounded-full w-22 h-22 p-7"
+            className={`next-btn border-1 cursor-pointer border-solid border-${color} rounded-full w-22 h-22 p-7`}
             onClick={handleNextSlideClick}
             role="button"
           >

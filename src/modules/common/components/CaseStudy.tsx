@@ -1,7 +1,7 @@
 import './styles/CaseStudy.css'
 
 // Packages
-import React, { useEffect, useMemo } from 'react'
+import React from 'react'
 import Img from 'gatsby-image'
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
@@ -19,255 +19,122 @@ import SiteMaxWidthContainer from '@common/styledComponents/SiteMaxWidthContaine
 import MotionAniLink from '@modules/common/components/MotionAniLink'
 
 interface Props {
-  animationThreshold?: number
   caseStudy: TypeCaseStudy
-  layout: 'right' | 'left'
-  mobileTextFirst?: boolean
-  taglineRichText?: boolean
-  buttonStyleType?: 'solid' | 'solid-purple' | 'outline'
+  layout: string
 }
 
-const CaseStudy = ({
-  animationThreshold = 0.75,
-  caseStudy,
-  layout,
-  mobileTextFirst,
-  taglineRichText = false,
-  buttonStyleType = 'solid'
-}: Props) => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: animationThreshold
-  })
-
-  const textControls = useAnimation()
-  const logoControls = useAnimation()
-  const imageControls = useAnimation()
-  const buttonControls = useAnimation()
-
-  const variants = {
-    visible: (i: number) => ({
-      opacity: [0, 0.25, 0.4, 0.6, 0.6, 0.6, 0.7, 0.8, 1],
-      y: 0,
-      transition: {
-        duration: 0.5,
-        delay: i * 0.25,
-        type: 'spring'
-      }
-    }),
-    hidden: {
-      opacity: 0,
-      y: 25
-    },
-    logoVisible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.85
-      }
-    },
-    logoHidden: {
-      opacity: 0,
-      y: 10
-    },
-    imageVisible: {
-      x: 0,
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.75,
-        delay: 0.15,
-        ease: 'easeInOut'
-      }
-    },
-    imageHidden: {
-      x: layout === 'right' ? 70 : -70,
-      y: 60,
-      opacity: 0
-    },
-    buttonVisible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.4,
-        delay: 0.2,
-        ease: 'easeInOut'
-      }
-    },
-    buttonHidden: {
-      y: 20,
-      opacity: 0
-    }
-  }
-
-  const richTextOptions: Options = useMemo(
-    () => ({
-      renderNode: {
-        [BLOCKS.PARAGRAPH]: (_, c) => (
-          <motion.h1
-            animate={textControls}
-            className="text-h3 font-extrabold mb-6"
-            custom={0}
-            initial="hidden"
-            variants={variants}
-          >
-            {c}
-          </motion.h1>
-        )
-      },
-      renderMark: {
-        [MARKS.BOLD]: (text) => (
-          <span className="text-h2 font-extrabold">{text}</span>
-        )
-      }
-    }),
-    [textControls]
-  )
-
-  useEffect(() => {
-    if (inView) {
-      textControls.start('visible')
-      logoControls.start('logoVisible')
-      imageControls.start('imageVisible')
-      buttonControls.start('buttonVisible')
-    }
-  }, [textControls, inView, buttonControls, logoControls, imageControls])
-
-  let bgColor
-  switch (caseStudy.name) {
-    case 'Student Loan Hero':
-      bgColor = '#41C781'
-      break
-
-    case 'Optimize':
-      bgColor = '#3A7CEB'
-      break
-
-    case 'GoSite':
-      bgColor = '#3A7CEB'
-      break
-
-    default:
-      bgColor = '#286AFF'
-      break
-  }
-
-  const caseStudyImgClasses = classNames({
-    'CaseStudy-img': true,
-    mobileTextFirst: mobileTextFirst === true,
-    'img-left': layout === 'left',
-    'img-right': layout === 'right'
-  })
-
-  const caseStudyContentClasses = classNames({
-    'CaseStudy-content': true,
-    mobileTextFirst: mobileTextFirst === true,
-    'img-left': layout === 'left',
-    'img-right': layout === 'right'
-  })
-
+const CaseStudy = ({ caseStudy, layout }: Props) => {
+  const servicesLength = caseStudy.service.length
   return (
-    <SiteMaxWidthContainer className="CaseStudy-container">
-      <article ref={ref} className="CaseStudy">
-        <div className={caseStudyContentClasses}>
-          <div className="CaseStudy-logo">
-            <AniLink
-              bg={bgColor}
-              cover
-              direction="top"
-              duration={1.25}
-              to={`/case-studies/${caseStudy.slug}/`}
-            >
-              <motion.img
-                alt={`${caseStudy.name} logo`}
-                animate={logoControls}
-                initial="hidden"
-                src={caseStudy.logo?.file?.url}
-                variants={variants}
-              />
-            </AniLink>
-          </div>
-
-          <AniLink
-            bg={bgColor}
-            cover
-            direction="top"
-            duration={1.25}
-            to={`/case-studies/${caseStudy.slug}/`}
-          >
-            {taglineRichText && caseStudy.taglineRichText ? (
-              renderRichText(caseStudy.taglineRichText, richTextOptions)
-            ) : (
-              <motion.h1
-                animate={textControls}
-                className="text-h2 font-extrabold mb-6"
-                custom={0}
-                initial="hidden"
-                variants={variants}
-              >
-                {caseStudy.tagline}
-              </motion.h1>
-            )}
-          </AniLink>
-          {caseStudy.successSummary && (
-            <AniLink
-              bg={bgColor}
-              cover
-              direction="top"
-              duration={1.25}
-              to={`/case-studies/${caseStudy.slug}/`}
-            >
-              <motion.p
-                animate={textControls}
-                className="text-body mb-10"
-                custom={1}
-                initial="hidden"
-                variants={variants}
-              >
-                {caseStudy.successSummary.successSummary}
-              </motion.p>
-            </AniLink>
-          )}
-          <MotionAniLink
-            animate={buttonControls}
-            bgColor={bgColor}
-            cover
-            direction="top"
-            duration={1.25}
-            initial="buttonHidden"
-            styleType={buttonStyleType}
-            to={`/case-studies/${caseStudy.slug}/`}
-            variants={variants}
-          >
-            Read Case Study
-          </MotionAniLink>
+    <article className="case-study-listing p-6 mb-6 lg:mb-20 md:w-3/5 m-auto lg:w-full max-w-screen-xl lg:hover:bg-newBlack transition duration-300 ease-in-out">
+      <AniLink
+        bg="#F3F3F3"
+        className="lg:flex lg:gap-x-6"
+        cover
+        direction="right"
+        duration={1.5}
+        to={`/case-studies/${caseStudy.slug}/`}
+      >
+        <div className={`img lg:w-2/5 xl:w-1/3 ${layout}`}>
+          <Img
+            alt={`${caseStudy.name}`}
+            className="lg:w-full lg:h-full lg:object-cover xl:object-contain xl:w-auto"
+            fadeIn
+            fluid={caseStudy.listingImage.fluid}
+            imgStyle={{ objectFit: 'cover' }}
+          />
         </div>
-        {caseStudy?.listingImage?.fluid ? (
-          <AniLink
-            bg={bgColor}
-            className={caseStudyImgClasses}
-            cover
-            direction="top"
-            duration={1.25}
-            to={`/case-studies/${caseStudy.slug}/`}
-          >
-            <motion.div
-              animate={imageControls}
-              initial="imageHidden"
-              variants={variants}
-            >
-              <Img
-                alt={`${caseStudy.name}`}
-                durationFadeIn={275}
-                fadeIn
-                fluid={caseStudy.listingImage.fluid}
-                imgStyle={{ objectFit: 'contain' }}
-              />
-            </motion.div>
-          </AniLink>
-        ) : null}
-      </article>
-    </SiteMaxWidthContainer>
+        <div className="info bg-white rounded-20 p-10 border border-solid border-black mt-6 flex flex-col lg:w-3/5 lg:mt-0 lg:p-16 xl:w-2/3">
+          <div className="header flex items-center justify-between">
+            <div className="flex flex-col lg:flex-row">
+              {caseStudy?.service?.map(
+                (service: { shortTitle: string }, index) => (
+                  <span
+                    key={service.shortTitle}
+                    className="text-blueRibbon uppercase text-tiny leading-relaxed"
+                  >
+                    {service.shortTitle}
+                    {servicesLength > 1 && index === 0 && <span>,&nbsp;</span>}
+                  </span>
+                )
+              )}
+            </div>
+
+            <div className="flex gap-x-2 md:gap-x-4">
+              {caseStudy?.service?.map(
+                (service: { shortTitle: string; serviceGif: any }) => (
+                  <img
+                    key={service?.serviceGif?.file.url}
+                    alt={service?.shortTitle}
+                    src={service?.serviceGif?.file?.url}
+                    style={{
+                      width: `56px`,
+                      height: `56px`,
+                      objectFit: `contain`
+                    }}
+                  />
+                )
+              )}
+            </div>
+          </div>
+          <div className="mt-12 copy xl:w-3/4 xl:mt-14">
+            <h2 className="text-3xl leading-tight xl:text-5xl">
+              {caseStudy.tagline}
+            </h2>
+            <p className="text-xl leading-loose mt-4">
+              {caseStudy.successSummary.successSummary}
+            </p>
+          </div>
+          <div className="xl:flex xl:items-center xl:justify-between xl:mt-auto">
+            <div className="yotta-stats flex mt-14">
+              <img alt={caseStudy.slug} src={caseStudy.badge.file.url} />
+              <div className="ml-4 flex flex-col">
+                <div className="">
+                  {caseStudy.stats.type && (
+                    <p className="text-caption text-electricViolet xl:text-sm">
+                      {caseStudy.stats.type}
+                    </p>
+                  )}
+                  {caseStudy.stats.stage && (
+                    <p className="text-caption xl:text-sm">
+                      {caseStudy.stats.stage}
+                    </p>
+                  )}
+                </div>
+                <div className="mt-auto">
+                  {caseStudy.stats.amountRaised && (
+                    <p className="text-caption xl:text-sm">
+                      {caseStudy.stats.amountRaised}
+                    </p>
+                  )}
+                  {caseStudy.stats.founded && (
+                    <p className="text-caption xl:text-sm">
+                      {caseStudy.stats.founded}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+            <div className="mt-8 rounded-full border border-blueRibbon border-solid py-6 px-10 flex items-center justify-center font-light text-lg">
+              <span className="mt-1">How We Did It</span>
+              <svg
+                className="w-8 h-auto ml-4"
+                fill="none"
+                viewBox="0 0 32 32"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clipRule="evenodd"
+                  d="M24.2753 7.33331C24.2753 11.6662 27.7337 15.1787 32 15.1787V15.4583V15.7379V16.2621V16.5416V16.8212C27.7338 16.8212 24.2753 20.3337 24.2753 24.6666H23.2086C23.2086 21.0582 25.3163 17.9497 28.3495 16.5416L0 16.5416V15.4583L28.3495 15.4583C25.3163 14.0503 23.2086 10.9418 23.2086 7.33331H24.2753Z"
+                  fill="#000000"
+                  fillRule="evenodd"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </AniLink>
+    </article>
   )
 }
 

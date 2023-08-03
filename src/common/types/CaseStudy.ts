@@ -9,12 +9,21 @@ export interface TypeCaseStudy {
   name: string
   slug?: string
   listingImage: TypeGatsbyImageFluid
+  badge: {
+    file: {
+      url: string
+    }
+  }
+  service: {
+    shortTitle: string
+  }
   tagline: string
   taglineRichText?: RenderRichTextData<never>
   seoTitle: string
   metaDescription: {
     metaDescription: string
   }
+  stats: any
   nextCaseStudies: TypeCaseStudy[]
   logo: TypeContentfulAsset // Deprecated
   whiteLogo?: TypeContentfulAsset // Deprecated
@@ -32,6 +41,7 @@ export interface TypeCaseStudy {
     // Deprecated
     solutionSummary: string
   }
+
   designSystemCarousel?: TypeCarousel // Deprecated
   resultOne?: RenderRichTextData<never> // Deprecated
   resultTwo?: RenderRichTextData<never> // Deprecated
