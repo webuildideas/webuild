@@ -50,10 +50,10 @@ const CaseStudy = ({ caseStudy, layout }: Props) => {
               {caseStudy?.service?.map(
                 (service: { shortTitle: string }, index) => (
                   <span
-                    key={service.shortTitle}
+                    key={service?.shortTitle}
                     className="text-blueRibbon uppercase text-tiny leading-relaxed"
                   >
-                    {service.shortTitle}
+                    {service?.shortTitle}
                     {servicesLength > 1 && index === 0 && <span>,&nbsp;</span>}
                   </span>
                 )
@@ -90,12 +90,12 @@ const CaseStudy = ({ caseStudy, layout }: Props) => {
               <img alt={caseStudy?.slug} src={caseStudy?.badge?.file?.url} />
               <div className="ml-4 flex flex-col">
                 <div className="">
-                  {caseStudy.stats.type && (
+                  {caseStudy?.stats?.type && (
                     <p className="text-caption text-electricViolet xl:text-sm">
                       {caseStudy?.stats?.type}
                     </p>
                   )}
-                  {caseStudy.stats.stage && (
+                  {caseStudy?.stats?.stage && (
                     <p className="text-caption xl:text-sm">
                       {caseStudy?.stats?.stage}
                     </p>
