@@ -107,7 +107,7 @@ const CaseStudy = ({ caseStudy, layout }: Props) => {
                       {caseStudy?.stats?.amountRaised}
                     </p>
                   )}
-                  {caseStudy?.stats.founded && (
+                  {caseStudy?.stats?.founded && (
                     <p className="text-caption xl:text-sm">
                       {caseStudy?.stats?.founded}
                     </p>
