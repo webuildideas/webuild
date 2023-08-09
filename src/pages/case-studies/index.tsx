@@ -335,7 +335,7 @@ const CaseStudies = ({
               duration={1.5}
               to="/what-we-do/"
             >
-              <span>View our work</span>
+              <span>Our services</span>
               <svg
                 className="w-8 h-auto ml-13 lg:group-hover:translate-x-3"
                 fill="none"

@@ -26,7 +26,7 @@ interface Props {
 const CaseStudy = ({ caseStudy, layout }: Props) => {
   const servicesLength = caseStudy?.service?.length
   return (
-    <article className="case-study-listing p-6 mb-6 lg:mb-20 md:w-3/5 m-auto lg:w-full max-w-screen-xl lg:hover:bg-newBlack transition duration-300 ease-in-out">
+    <article className="case-study-listing p-6 mb-6 lg:mb-20 md:w-3/5 m-auto lg:w-full max-w-screen-xl group lg:hover:bg-newBlack transition duration-300 ease-in-out">
       <AniLink
         bg="#F3F3F3"
         className="lg:flex lg:gap-x-6"
@@ -115,7 +115,7 @@ const CaseStudy = ({ caseStudy, layout }: Props) => {
                 </div>
               </div>
             </div>
-            <div className="mt-8 rounded-full border border-blueRibbon border-solid py-6 px-10 flex items-center justify-center font-light text-lg">
+            <div className="mt-8 rounded-full border border-blueRibbon border-solid py-6 px-10 flex items-center justify-center font-light text-lg transition duration-300 ease-in-out lg:group-hover:bg-blueRibbon lg:group-hover:text-white">
               <span className="mt-1">How We Did It</span>
               <svg
                 className="w-8 h-auto ml-4"
@@ -126,7 +126,7 @@ const CaseStudy = ({ caseStudy, layout }: Props) => {
                 <path
                   clipRule="evenodd"
                   d="M24.2753 7.33331C24.2753 11.6662 27.7337 15.1787 32 15.1787V15.4583V15.7379V16.2621V16.5416V16.8212C27.7338 16.8212 24.2753 20.3337 24.2753 24.6666H23.2086C23.2086 21.0582 25.3163 17.9497 28.3495 16.5416L0 16.5416V15.4583L28.3495 15.4583C25.3163 14.0503 23.2086 10.9418 23.2086 7.33331H24.2753Z"
-                  fill="#000000"
+                  fill="currentColor"
                   fillRule="evenodd"
                 />
               </svg>
