@@ -287,7 +287,7 @@ const CaseStudies = ({
           </div>
         </section>
 
-        <section className="CaseStudies-items mt-22 lg:mt-32">
+        <section className="CaseStudies-items mt-20 2xl:mt-32">
           {caseStudies.map((caseStudy, idx: number) => {
             const layout = (idx + 1) % 2 === 0 ? 'order-3' : 'order-0'
             return (
@@ -311,6 +311,7 @@ const CaseStudies = ({
             </p>
           </div>
           <TestimonialSlider
+            buttonClasses="lg:hover:bg-gray-400 lg:hover:text-gray-800 transition-all duration-300 ease-in-out"
             color="white"
             logoClasses="grayscale brightness-400"
             testimonials={testimonials}
