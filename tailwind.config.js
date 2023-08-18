@@ -26,6 +26,12 @@ module.exports = {
       },
       zIndex: {
         60: '60'
+      },
+      brightness: {
+        400: '4'
+      },
+      maxWidth: {
+        xxs: '280px'
       }
     },
     borderRadius: {
@@ -42,6 +48,7 @@ module.exports = {
       8: '32px',
       9: '36px',
       10: '40px',
+      20: '80px',
       full: '9999px'
     },
 

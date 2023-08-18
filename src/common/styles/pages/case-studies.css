@@ -1,4 +1,8 @@
-.CaseStudies {
+.case-studies-hero h1 span {
+  @apply font-crimson lowercase font-extralight;
+}
+
+/* .CaseStudies {
   overflow-x: hidden;
 }
 
@@ -129,4 +133,4 @@
       max-width: 784px;
     }
   }
-}
+} */
