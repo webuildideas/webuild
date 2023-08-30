@@ -34,7 +34,7 @@ interface Props {
   location: PageProps['location']
 }
 
-const QuadPay = ({
+const QuadPayOld = ({
   data: { allContentfulService, contentfulCaseStudy },
   location
 }: Props) => {
@@ -82,8 +82,8 @@ const QuadPay = ({
   )
 }
 
-export const QUADPAY_QUERY = graphql`
-  query quadpayQuery {
+export const QUADPAY_OLD_QUERY = graphql`
+  query quadpayOldQuery {
     contentfulCaseStudy(name: { eq: "Quadpay" }) {
       nextCaseStudies {
         logo {
@@ -121,4 +121,4 @@ export const QUADPAY_QUERY = graphql`
   }
 `
 
-export default QuadPay
+export default QuadPayOld
