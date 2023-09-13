@@ -2,14 +2,20 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/button-has-type */
 import React, { useEffect, useRef, useCallback, useState } from 'react'
+import useWindowSize from '@common/hooks/useWindowSize'
 import { graphql, Link } from 'gatsby'
 import Meta from '@components/Meta'
 import Img from 'gatsby-image'
-import useWindowSize from '@common/hooks/useWindowSize'
 import NewFooter from '@modules/common/components/NewFooter'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import ReactPlayer from 'react-player'
 import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModal'
+import { useLongPress } from 'use-long-press'
+import TapIcon from '../../static/svgs/tap-icon.inline.svg'
+import PlayIcon from '../../static/svgs/play-icon-large.inline.svg'
+import edgeVideo from '../../static/videos/quadpay/microsoft-edge.mp4'
+import trainingVideo from '../../static/videos/quadpay/training.mp4'
+import CloseIcon from '../../static/svgs/closeIcon.inline.svg'
 
 import { CaseStudyContainer, CaseStudyTextContainer } from './clickup'
 
@@ -55,8 +61,24 @@ const Quadpay = ({
     photoGridMobile,
     photoGridDesktop,
     brandColorsImg,
-    whyNeonImg,
-    walletSummaryImg,
+    originalIconsImg,
+    logoGridImg,
+    identityGridMobile,
+    identityGridDesktop,
+    screenOne,
+    screenTwo,
+    screenThree,
+    screenFour,
+    screenFive,
+    dealsImg,
+    walkthroughImg,
+    paymentOneImg,
+    paymentTwoImg,
+    beforeImg,
+    afterImg,
+    edgeCover,
+    chromeCover,
+    trainingCover,
     marketResearchImg,
     wishlistOneImg,
     wishlistTwoImg,
@@ -121,6 +143,122 @@ const Quadpay = ({
       media: `(min-width: 768px)`
     }
   ]
+
+  const identityGridSources = [
+    identityGridMobile.childImageSharp.fluid,
+    {
+      ...identityGridDesktop.childImageSharp.fluid,
+      media: `(min-width: 768px)`
+    }
+  ]
+
+  const { width } = useWindowSize()
+  const isMobile = width && width < 768
+  const isTablet = width && width < 1024
+  const isDesktop = width && width >= 1024
+
+  const bnaBgRef = useRef(null)
+  const [oldImgClasses, setOldImgClasses] = useState(
+    'opacity-0 z-0 pointer-events-none'
+  )
+
+  const showOldImage = () => {
+    // const newArr = [...oldImgClasses]
+    // newArr[index] = `opacity-100 z-50`
+    setOldImgClasses(`opacity-100 z-50`)
+  }
+
+  const hideOldImage = () => {
+    // const newArr = [...oldImgClasses]
+    // newArr[index] = `opacity-0 z-0`
+    setOldImgClasses(`opacity-0 z-0`)
+  }
+
+  const lpCallback = useCallback((event) => {
+    showOldImage()
+  }, [])
+
+  const bind = useLongPress(lpCallback, {
+    // eslint-disable-next-line no-undef
+    onFinish: () => hideOldImage()
+  })
+
+  const showOldImageOnHover = (index, e) => {
+    if (isDesktop) {
+      bnaBgRef.current.classList.remove(`bg-electricViolet`)
+      showOldImage()
+    }
+  }
+
+  const hideOldImageOnHover = (index, e) => {
+    if (isDesktop) {
+      bnaBgRef.current.classList.add(`bg-electricViolet`)
+      hideOldImage()
+    }
+  }
+
+  const videos = [
+    {
+      coverImg: edgeCover,
+      video: edgeVideo
+    },
+    {
+      coverImg: chromeCover,
+      video: 'https://www.youtube.com/watch?v=a-LFwS3cux4'
+    },
+    {
+      coverImg: trainingCover,
+      video: trainingVideo
+    }
+  ]
+
+  const thumbContainer = useRef(null)
+  const coverContainer = useRef(null)
+  const [videoUrl, setVideoUrl] = useState(videos[0].video)
+  const [thumbs, setThumbs] = useState()
+  const [covers, setCovers] = useState()
+  const [modalClasses, setModalClasses] = useState(
+    'z-0 pointer-events-none opacity-0'
+  )
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false)
+  const [modalVideoWidth, setModalVideoWidth] = useState('100%')
+
+  useEffect(() => {
+    setThumbs([...thumbContainer.current.querySelectorAll('[data-thumb]')])
+    setCovers([...coverContainer.current.querySelectorAll('.cover-img-slide')])
+  }, [])
+
+  const handleThumbClick = (e) => {
+    const thumbIndex = +e.target.dataset.thumb
+    thumbs.forEach((t) => {
+      t.classList.remove('active')
+    })
+    covers.forEach((t) => {
+      t.classList.remove('active')
+    })
+    thumbs[thumbIndex].classList.add('active')
+    covers[thumbIndex].classList.add('active')
+    setVideoUrl(videos[thumbIndex].video)
+  }
+
+  const handleShowModal = (url, square = false) => {
+    setModalClasses('z-50 opacity-100 pointer-events-auto')
+
+    if (square && isDesktop) {
+      setModalVideoWidth('50%')
+    } else {
+      setModalVideoWidth('100%')
+    }
+
+    setTimeout(() => {
+      setIsVideoPlaying(!isVideoPlaying)
+    }, 300)
+  }
+
+  const handleHideModal = () => {
+    setModalClasses('z-0 opacity-0 pointer-events-none')
+    setIsVideoPlaying(!isVideoPlaying)
+  }
 
   const { showModal } = useOpportunityFormModal()
 
@@ -277,7 +415,7 @@ const Quadpay = ({
             </div>
           </section>
           {/* PROBLEM & SOLUTION */}
-          <section className="before-after py-20">
+          <section className="before-after py-20 xl:pb-35">
             <CaseStudyContainer>
               <CaseStudyTextContainer>
                 <div className="text-base leading-relaxed lg:text-lg">
@@ -363,118 +501,161 @@ const Quadpay = ({
               </div>
               <div className="exp-services-container md:grid md:grid-cols-2 md:items-start single">
                 <div className="relative exp-services-img-two mt-20 md:order-4 md:mt-0 md:pr-16 lg:w-3/5 lg:ml-auto xl:order-1 xl:pr-0">
-                  <Img fluid={whyNeonImg.childImageSharp.fluid} />
+                  <Img fluid={originalIconsImg.childImageSharp.fluid} />
                   <div className="caption-one py-4 px-6 border border-solid border-gray-700 rounded-8 mt-4 md:absolute md:top-0 md:w-30 md:right-full md:text-right md:mt-0 md:mr-2">
-                    <ArrowRight className="transform -rotate-90 w-11 h-auto mr-4 md:mb-2 -translate-x-2 md:rotate-0 md:mr-0 md:ml-auto" />
+                    <ArrowRight className="text-blueRibbon transform -rotate-90 w-11 h-auto mr-4 md:mb-2 -translate-x-2 md:rotate-0 md:mr-0 md:ml-auto" />
                     <p className="font-courier text-gray-600 text-xs flex-1 leading-normal mt-2">
-                      Bright marketing to catch interest.
+                      Original icon design to match Quadpay’s empathetic
+                      approach.
                     </p>
                   </div>
                 </div>
-                <div className="exp-services-img-three mt-20 md:order-3 md:pr-30 md:pl-10 xl:pr-0 xl:pl-0 xl:w-1/3 xl:mr-10 xl:ml-auto">
-                  <div className="caption-one py-4 px-6 border border-solid border-gray-700 rounded-8 mb-4 md:mb-2">
+                <div className="exp-services-img-three mt-20 md:order-3 md:pr-30 md:pl-10 xl:pr-0 xl:pl-0 xl:w-10/12 xl:ml-auto">
+                  <div className="caption-one py-4 px-6 border border-solid border-gray-700 rounded-8 mb-4 md:mb-2 xl:w-1/2 xl:ml-auto">
                     <p className="font-courier text-gray-600 text-xs flex-1 leading-normal mt-2">
-                      Clear UI helps users quickly fund their wallets.
+                      We delivered 4 distinct brand directions with different
+                      options for logo, icon, color, marketing, and other
+                      collateral.
                     </p>
-                    <ArrowRight className="transform rotate-90 w-11 h-auto mr-4 md:mt-2 -translate-x-2" />
+                    <ArrowRight className="text-blueRibbon transform rotate-90 w-11 h-auto mr-4 md:mt-2 -translate-x-2" />
                   </div>
-                  <Img fluid={walletSummaryImg.childImageSharp.fluid} />
+                  <Img fluid={logoGridImg.childImageSharp.fluid} />
                 </div>
               </div>
             </div>
           </section>
           {/* LEVELING UP */}
-          <section className="py-20">
+          <section className="py-20 xl:py-35">
             <CaseStudyContainer>
               <CaseStudyTextContainer>
-                <h2 className="text-2xl mb-6 xl:text-2.5xl">Leveling Up</h2>
+                <h2 className="text-2xl font-bold mb-6 xl:text-2.5xl">
+                  Creating a relevant identity
+                </h2>
                 <p className="text-base leading-loose xl:text-lg">
-                  We started with the MVP launch of Neon, NPay. It needed to
-                  include:
-                </p>
-                <ul className="mt-8 list-disc pl-6 text-base leading-loose xl:text-lg">
-                  <li className="mt-8">
-                    Storefront of game items and bundles for a mobile game,
-                    which could easily be customized to the tone and SKUs of any
-                    game type
-                  </li>
-                  <li>
-                    Way to pay which felt safe, fast, and helped educate users
-                    sign-up for Neon easily
-                  </li>
-                  <li>
-                    Clear reason to use Neon, instead of a competitor payment
-                    system We began that process with a research-first approach
-                    and collaborative workshops with the client to determine
-                    their needs.
-                  </li>
-                </ul>
-                <p className="text-base leading-loose xl:text-lg mt-8">
-                  We began that process with a research-first approach and
-                  collaborative workshops with the client to determine their
-                  needs.
-                </p>
-                <h3 className="text-2xl mb-6 xl:text-2.5xl mt-10">
-                  UX/UI Market Research
-                </h3>
-                <p className="text-base leading-loose xl:text-lg mt-8">
-                  In order to execute on the three goals above, we explored best
-                  practices across the three markets which NPay would span:
-                  fintech, B2B SaaS, and (the most fun) mobile gaming. We needed
-                  to identify how mobile gamers interacted with their devices,
-                  when they were incentivized to purchase, and data points which
-                  they cared about when evaluating whether to complete a
-                  purchase.
-                </p>
-                <div className="mt-20 max-w-xl mx-auto">
-                  <Img fluid={marketResearchImg.childImageSharp.fluid} />
-                  <div className="flex items-start mt-10 md:mx-auto md:w-2/3">
-                    <ArrowRight className="transform -rotate-90 w-12 h-auto -ml-2" />
-                    <p className="font-courier text-xs flex-1 leading-normal">
-                      Evaluating fintech, B2B SaaS markets, and mobile gaming
-                      helped us identify how mobile gamers were interacting with
-                      their devices and which data points they cared about when
-                      deciding on whether or not to purchase.
-                    </p>
-                  </div>
-                </div>
-                <p className="text-base leading-loose xl:text-lg mt-20">
-                  We evaluated top mobile games on the marketplace, ran through
-                  their gameplay (not a bad way to spend a Monday morning), and
-                  explored payment prompts, checkout flows, and pay confirmation
-                  experiences. We learned a lot, and it inspired a game
-                  addiction in our researchers — the sounds of Candy Crush still
-                  echo in our Zoom calls.
+                  Ultimately, Quadpay ended up needing an entire brand refresh;
+                  a trendier, fashion-forward, and relevant identity. Working
+                  with them to get everything just right positioned Quadpay in
+                  their area of the market where they became widely recognized.
+                  Cohesiveness and collaboration settled in place, giving
+                  everyone a little more stability.
                 </p>
                 <p className="text-base leading-loose xl:text-lg mt-8">
-                  However, payment and shopping experiences in mobile
-                  gaming…aren’t great. Poor UX, glitchy dev, and inaccessible UI
-                  meant we needed to look elsewhere for inspiration on effective
-                  mobile payment solutions.
+                  Next on the list was catapulting their brand recognition. The
+                  key to turning things around in this area came through product
+                  enhancements and updating and releasing new features. In order
+                  for Quadpay to grow, it was critical that they offer new and
+                  exciting differentiators.
                 </p>
               </CaseStudyTextContainer>
-
-              {/* <div className="mt-14 lg:pr-2 xl:pr-9">
-                  <Img fluid={blOneImg.childImageSharp.fluid} />
-                  <div className="flex items-start mt-4 mx-auto whitespace-normal">
-                    <ArrowRight className="transform -rotate-90 w-12 h-auto -ml-2 text-blueRibbon" />
-                    <p className="font-courier text-xs flex-1 leading-normal">
-                      Our refreshed summary page tackled the recurring problem
-                      of displaying data and information in an easily digestible
-                      and on-brand manner.
-                    </p>
-                  </div>
-                </div>
-                <Img
-                  className="lg:px-2 xl:px-9"
-                  fluid={blThreeImg.childImageSharp.fluid}
-                  imgStyle={{ objectFit: 'contain' }}
+            </CaseStudyContainer>
+          </section>
+          {/* IDENTITY GUIDELINES PHOTO GRID */}
+          <section className="mx-auto px-4 md:px-6 lg:px-12">
+            <div className="w-full">
+              <Img className="w-full" fluid={identityGridSources} />
+            </div>
+            <div className="flex mt-6">
+              <svg
+                fill="none"
+                height="25"
+                viewBox="0 0 24 25"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.6129 0.232086C11.6129 6.64572 6.41363 11.845 0 11.845"
+                  stroke="#2250FF"
                 />
-                <Img
-                  className="mt-32 lg:pl-2 xl:pl-9"
-                  fluid={blFourImg.childImageSharp.fluid}
-                  imgStyle={{ objectFit: 'contain', objectPosition: 'right' }}
-                /> */}
+                <path
+                  d="M12.3871 0.232666C12.3871 6.6463 17.5864 11.8456 24 11.8456"
+                  stroke="#2250FF"
+                />
+                <line
+                  stroke="#2250FF"
+                  x1="12.1133"
+                  x2="12.1133"
+                  y1="0.232666"
+                  y2="24.2327"
+                />
+              </svg>
+              <p className="font-courier text-xs text-gray-700 ml-3">
+                Quadpay identity guidelines.
+              </p>
+            </div>
+          </section>
+          {/* STAIR STEP SCREENS */}
+          <section className="mt-20 lg:mt-35 mb-20">
+            <CaseStudyContainer>
+              <CaseStudyTextContainer className="mt-20">
+                <p className="text-base leading-relaxed lg:text-lg mt-8">
+                  We utilized and leveraged data to help them shape and define
+                  what these new features would do, then helped release them
+                  into the world. Our tried-and-true method was applied: test,
+                  learn, and rapidly iterate and optimize. And we had fun doing
+                  it. 💪
+                </p>
+              </CaseStudyTextContainer>
+            </CaseStudyContainer>
+            <CaseStudyContainer className="flex flex-wrap justify-center lg:flex-nowrap mt-20 lg:mt-35 mb-10">
+              <div className="w-1/2 pr-4 mt-37 md:w-1/3 md:pl-6 md:pr-6 md:mt-48">
+                <Img fluid={screenOne.childImageSharp.fluid} />
+              </div>
+              <div className="w-1/2 pl-4 md:w-1/3 md:pl-6 md:pr-6 md:mt-24">
+                <Img fluid={screenTwo.childImageSharp.fluid} />
+                <div className="flex mt-4 items-start">
+                  <ArrowRight className="transform -rotate-90 w-12 h-auto -ml-2" />
+                  <p className="font-courier text-xs flex-1 leading-normal">
+                    A clear plan shows users how to efficiently pay their
+                    quarterly charges.
+                  </p>
+                </div>
+              </div>
+              <div className="w-1/2 pr-4 mt-16 md:w-1/3 md:pl-6 md:pr-6 md:mt-0">
+                <Img fluid={screenThree.childImageSharp.fluid} />
+                <div className="flex mt-4 items-start">
+                  <ArrowRight className="transform -rotate-90 w-12 h-auto -ml-2" />
+                  <p className="font-courier text-xs flex-1 leading-normal">
+                    During onboarding, users are asked simple, non-judgmental
+                    questions.
+                  </p>
+                </div>
+              </div>
+              <div className="w-1/2 pl-4 mt-34 md:w-1/3 md:pr-6 md:pl-0 md:mt-20">
+                <Img fluid={screenFour.childImageSharp.fluid} />
+              </div>
+              <div className="w-1/2 mt-16 md:w-1/3 md:pl-6 md:mt-40">
+                <Img fluid={screenFive.childImageSharp.fluid} />
+              </div>
+            </CaseStudyContainer>
+            <CaseStudyContainer>
+              <CaseStudyTextContainer className="mt-20">
+                <h2 className="text-2xl leading-snug">Getting acquired</h2>
+                <p className="text-base leading-relaxed lg:text-lg mt-8">
+                  A great design refresh (and of course, the incredible product
+                  machine and deep thinking of the Quadpay team), brought
+                  Quadpay to the next level. In August, 2020, shortly after our
+                  work finished with them, they hit a major milestone. Monthly
+                  transaction volume exceeded $70 million (or 600% increase on
+                  July, 2019).
+                </p>
+                <p className="text-base leading-relaxed lg:text-lg mt-8">
+                  Those numbers were hard for other market players to ignore. In
+                  September, 2020, Australian fintech giant Zip acquired Quadpay
+                  for $296 million. Quadpay became a key part of their North
+                  American Strategy.
+                </p>
+                <p className="text-base leading-relaxed lg:text-lg mt-8">
+                  Within the year, Quadpay fully merged into the Zip brand. Zip
+                  continues to reach new heights within their new American
+                  market. By May, 2023 Zip had a $1.5b valuation, and reached
+                  their Series C round of funding (like our client ClickUp,
+                  hyperlink the case study here).
+                </p>
+                <p className="text-base leading-relaxed lg:text-lg mt-8">
+                  We’re proud of the role webuild played in this journey, and
+                  can’t wait to see Zip continue to thrive.
+                </p>
+              </CaseStudyTextContainer>
             </CaseStudyContainer>
           </section>
 
@@ -482,46 +663,26 @@ const Quadpay = ({
             <div className="whitespace-nowrap overflow-auto lg:whitespace-normal p-6 md:flex lg:px-12">
               <div className="store-front-scrollz pb-12 ">
                 <div className="grid grid-cols-3 gap-x-4 md:flex md:gap-x-0">
-                  {/* <Img
-                    className="md:flex-1 md:mr-4"
-                    fluid={wishlistOneImg.childImageSharp.fluid}
-                  /> */}
-                  <div
-                    className="md:flex-1 md:mr-4 rounded-7 overflow-hidden border-2 border-solid"
-                    style={{ borderColor: '#F8C7B8' }}
-                  >
-                    <ReactPlayer
-                      className="react-player"
-                      controls={false}
-                      height="100%"
-                      loop={true}
-                      muted={true}
-                      playing={true}
-                      playsinline={true}
-                      type="mp4"
-                      url={purchaseVideo.publicURL}
-                      width="100%"
-                    />
-                  </div>
                   <Img
                     className="md:flex-1 md:mr-4"
-                    fluid={wishlistTwoImg.childImageSharp.fluid}
+                    fluid={dealsImg.childImageSharp.fluid}
                   />
                   <Img
                     className="md:flex-1 md:mr-4"
-                    fluid={webstoreOneImg.childImageSharp.fluid}
+                    fluid={walkthroughImg.childImageSharp.fluid}
+                  />
+                  <Img
+                    className="md:flex-1 md:mr-4"
+                    fluid={paymentOneImg.childImageSharp.fluid}
                   />
                   <div className="hidden md:block relative md:flex-1 md:ml-6 lg:ml-20 xl:ml-26">
-                    <Img
-                      className=""
-                      fluid={webstoreTwoImg.childImageSharp.fluid}
-                    />
+                    <Img fluid={paymentTwoImg.childImageSharp.fluid} />
                     <div className="flex items-start mt-4 whitespace-normal absolute left-0 -bottom-4 transform translate-y-full ">
                       <ArrowRight className="transform -rotate-90 w-12 h-auto -ml-2 text-blueRibbon" />
                       <p className="font-courier text-xs flex-1 leading-normal">
-                        We created intuitive PDP screens, where a user could tap
-                        in and scroll through a carousel to explore bundle
-                        contents.
+                        By putting ownership and autonomy in the hands of users
+                        through spend calculation features, we encouraged user
+                        independence and further purchasing.
                       </p>
                     </div>
                   </div>
@@ -529,245 +690,202 @@ const Quadpay = ({
                 <div className="flex items-start mt-4 whitespace-normal w-68 md:w-2/3 md:max-w-xl">
                   <ArrowRight className="transform -rotate-90 w-12 h-auto -ml-2 text-blueRibbon" />
                   <p className="font-courier text-xs flex-1 leading-normal">
-                    The tone of the storefront needed to fit - regardless if the
-                    game felt more ‘Animal Crossing’ or ‘League of Legends’. It
-                    also needed a consistent format which a user could navigate
-                    regardless of what they were playing. We found a balance
-                    through customizable color palettes, fonts, shapes, and
-                    light mode.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="w-60 md:w-auto relative px-6 md:hidden">
-              <Img fluid={webstoreTwoImg.childImageSharp.fluid} />
-              <div className="flex items-start mt-4 whitespace-normal ">
-                <ArrowRight className="transform -rotate-90 w-12 h-auto -ml-2 text-blueRibbon" />
-                <p className="font-courier text-xs flex-1 leading-normal">
-                  We created intuitive PDP screens, where a user could tap in
-                  and scroll through a carousel to explore bundle contents.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section>
-            <CaseStudyContainer>
-              <CaseStudyTextContainer>
-                <p className="text-base leading-loose xl:text-lg mt-8">
-                  Our team’s industry knowledge in fintech came in handy. We
-                  were able to access past repositories of payment research, as
-                  well as our own designs for other checkout experiences. We
-                  considered what could be applicable to mobile gamers (high
-                  security and speedy experiences) and which might not (too many
-                  bells and whistles crypto purchasing, limited payment plan
-                  ability, vertical-only orientations, etc).
-                </p>
-                <p className="text-base leading-loose xl:text-lg mt-8">
-                  Finally, we brought payments and gaming together with our
-                  experience with other startups dealing with
-                  business-to-business software, such as payment administration.
-                  For questions on how to manage payment disputes, navigate
-                  digital wallets, and technically plug into a games existing
-                  design, we learned a lot from app designs before us.
-                </p>
-                <p className="text-base leading-loose xl:text-lg mt-8">
-                  All of this design was rolled into best practices
-                  recommendation and brought to the Neon team for their
-                  evaluation and consideration.
-                </p>
-                <p className="text-base leading-loose xl:text-lg mt-8 italic">
-                  *Note: These screens were designed as prototypes and are not
-                  yet real representations of game partners.
-                </p>
-              </CaseStudyTextContainer>
-            </CaseStudyContainer>
-          </section>
-
-          <section className="figjam">
-            <div className="px-6 lg:px-12 max-w-screen-s1536 mx-auto">
-              <div className="bg-gray-200 p-6 mt-20 rounded-10 xl:mt-32 xl:grid xl:grid-cols-3 xl:gap-x-5 xl:px-20">
-                <div className="xl:col-span-2">
-                  <Img fluid={figJamOne.childImageSharp.fluid} />
-                </div>
-                <div className="mt-6 grid items-start gap-y-6 md:grid-cols-2 md:gap-x-5 lg:w-4/5 lg:mx-auto xl:col-span-1 xl:grid-cols-1 xl:grid-rows-2 xl:mt-0 xl:w-full">
-                  <Img fluid={figJamTwo.childImageSharp.fluid} />
-                  <Img
-                    fluid={figJamThree.childImageSharp.fluid}
-                    imgStyle={{ objectFit: 'contain' }}
-                  />
-                </div>
-              </div>
-              <div className="flex items-end mt-4 max-w-xs mx-auto xl:mb-32">
-                <ArrowRight className="transform -rotate-90 w-12 h-auto -ml-2 text-blueRibbon" />
-                <p className="font-courier text-xs flex-1 leading-normal">
-                  Our FigJam that helped us align with Neon on style & tone for
-                  NPay.
-                </p>
-              </div>
-            </div>
-            <CaseStudyContainer>
-              <CaseStudyTextContainer>
-                <h3 className="text-2xl mb-6 xl:text-2.5xl mt-10">Workshops</h3>
-                <p className="text-base leading-loose xl:text-lg mt-8">
-                  We hate useless meetings — though, who doesn't? And while we
-                  were able to accomplish much of our work asynchronously, we
-                  arrived at the point where we needed to collab in real time.
-                  This critical stage is exciting! We take the bucket of
-                  research and turn it into viable MVP design.
-                </p>
-                <p className="text-base leading-loose xl:text-lg mt-8">
-                  Our producer ran a series of workshops to review research,
-                  align on style and tone, and critically assess the scope and
-                  needs of each portion of NPay to influence the shape of the
-                  design.
-                </p>
-                <h3 className="text-2xl mb-6 xl:text-2.5xl mt-16">
-                  Multiplayer Mode
-                </h3>
-                <p className="text-base leading-loose xl:text-lg mt-8">
-                  Now that we had a strategy in place, it was time to get to
-                  designing. At webuild, we never design in a silo. Our
-                  designers met continuously in huddles, video walkthroughs, and
-                  live weekly meetings with the Neon leadership and the
-                  development team to create a design which was functional,
-                  buildable, and matched their goals. Over 4 months, we created
-                  a pretty great MVP. We’re designers, so we’ll let the screens
-                  speak for themselves.
-                </p>
-              </CaseStudyTextContainer>
-            </CaseStudyContainer>
-          </section>
-
-          {/* COMPARISONS */}
-          <section className="max-w-screen-s1536 mx-auto mt-20 no-scroll-bar">
-            <div className="px-6 pb-12 max-w-lg mx-auto overflow-auto whitespace-nowrap">
-              <div className="horz-scroll-container horz-scroll-container--two">
-                <Img
-                  className="w-full"
-                  fluid={fasterCheckoutImg.childImageSharp.fluid}
-                />
-              </div>
-              <div className="flex items-start mt-4 mx-auto whitespace-normal md:w-4/5 md:mx-0">
-                <ArrowRight className="transform -rotate-90 w-12 h-auto -ml-2 text-blueRibbon" />
-                <p className="font-courier text-xs flex-1 leading-normal">
-                  You’ve made a great purchase! It might help you win that next
-                  level! Celebrate that win with a happy order confirmation
-                  which is clear and joyous.
-                </p>
-              </div>
-            </div>
-            <div className="md:mt-12 xl:grid xl:grid-cols-2 xl:gap-x-53 xl:px-12 s1440:max-w-6xl s1440:mx-auto no-scroll-bar">
-              <div className="px-6 pb-12 max-w-lg mx-auto overflow-auto whitespace-nowrap xl:max-w-none xl:px-0">
-                <div className="horz-scroll-container horz-scroll-container--two">
-                  <Img
-                    className="w-full"
-                    fluid={orderSumTwoImg.childImageSharp.fluid}
-                  />
-                </div>
-                <div className="flex items-start mt-4 mx-auto whitespace-normal md:w-4/5 md:mx-0">
-                  <ArrowRight className="transform -rotate-90 w-12 h-auto -ml-2 text-blueRibbon" />
-                  <p className="font-courier text-xs flex-1 leading-normal">
-                    You’ve made a great purchase! It might help you win that
-                    next level! Celebrate that win with a happy order
-                    confirmation which is clear and joyous.
-                  </p>
-                </div>
-              </div>
-              <div className="px-6 pb-12 max-w-lg mx-auto md:mt-4 overflow-auto whitespace-nowrap xl:max-w-none xl:px-0 xl:mt-0">
-                <div className="horz-scroll-container horz-scroll-container--two">
-                  <Img
-                    className="w-full"
-                    fluid={guestCheckoutImg.childImageSharp.fluid}
-                  />
-                </div>
-                <div className="flex items-start mt-4 mx-auto whitespace-normal md:w-4/5 md:mx-0">
-                  <ArrowRight className="transform -rotate-90 w-12 h-auto -ml-2 text-blueRibbon" />
-                  <p className="font-courier text-xs flex-1 leading-normal">
-                    Who doesn’t love a “try before you buy?” By allowing users
-                    to complete a Neon purchase, learn about the platform along
-                    the way, and experience for themselves how easy it is, we
-                    see higher success rates. That's where sign-ups are the way
-                    to go. They are a simple way to communicate, "You're done!
-                    Now just save your details."
+                    Incentives for users to continue to utilize Quadpay
+                    post-onboarding were embedded at organic points throughout
+                    the app. This included time-bound deals (left screen), clear
+                    user education on tool functionality and features (middle
+                    screen), and clear order summaries that illustrated the
+                    value proposition of BNPL (right screen). These screens also
+                    demonstrate the evolution from Quadpay to Zip UI, a fun
+                    challenge which our team was proud to kickoff
+                    post-acquisition.
                   </p>
                 </div>
               </div>
             </div>
           </section>
 
-          {/* DOESN'T STOP */}
-          <section className="py-20">
+          <section className="mt-10 xl:mt-20">
             <CaseStudyContainer>
-              <CaseStudyTextContainer>
-                <h2 className="text-2xl mb-6 xl:text-2.5xl">
-                  And it doesn't stop in-app
-                </h2>
-                <p className="text-base leading-loose xl:text-lg">
-                  We designed partner emails and marketing assets like the ones
-                  below to remind the user that their next easy purchase (and
-                  victory) is just a click away.
-                </p>
-                <h3 className="text-2xl mb-6 xl:text-2.5xl mt-10 md:mt-16">
-                  The Next Boss Level
-                </h3>
-                <p className="text-base leading-loose xl:text-lg mt-8">
-                  We’ve been Neon’s agency partner for over five months now, and
-                  seen them grow from a team of 4 to hiring their first product
-                  manager, in-house designer, and locking in customer #1 for
-                  NPay. We’re in awe of what they have accomplished — and are
-                  sure that you are as well.
-                </p>
-                <p className="text-base leading-loose xl:text-lg mt-8">
-                  So what’s next for Neon? Well, the Super App is in design, the
-                  next iteration of the MVP is in development, the design system
-                  is getting buttoned up, and the future of Neon (and mobile
-                  gaming) is looking bright.
-                </p>
-              </CaseStudyTextContainer>
-              <div className="px-6 pb-12 grid grid-cols-4 gap-x-4 boss-level-container items-start whitespace-nowrap overflow-auto mt-20 lg:whitespace-normal lg:gap-x-0 no-scroll-bar">
-                <div className="mt-14 lg:pr-2 xl:pr-9">
-                  <Img fluid={blOneImg.childImageSharp.fluid} />
-                  <div className="flex items-start mt-4 mx-auto whitespace-normal">
+              <div className="xl:flex">
+                <div className="xl:w-4/5 xl:mr-10">
+                  <div
+                    ref={coverContainer}
+                    className="relative cover-imgs grid h-87 rounded-4 overflow-hidden border border-gray-400 border-solid"
+                  >
+                    {videos.map((video, index) => {
+                      const initialClasses = index === 0 ? `active` : ``
+
+                      return (
+                        <div
+                          key={video.video}
+                          className={`cover-img-slide w-full h-full ${initialClasses}`}
+                          data-index={index}
+                        >
+                          <Img
+                            className="w-full h-full"
+                            fluid={video.coverImg.childImageSharp.fluid}
+                            imgStyle=""
+                          />
+                        </div>
+                      )
+                    })}
+                    <button
+                      className="play-btn absolute cursor-pointer border-none"
+                      onClick={() => handleShowModal()}
+                    >
+                      <PlayIcon className="pointer-events-none" />
+                    </button>
+                  </div>
+                  <div className="flex items-start mt-4 whitespace-normal w-68 md:mt-10 md:mb-10 md:w-2/3 md:max-w-md md:mx-auto xl:hidden">
                     <ArrowRight className="transform -rotate-90 w-12 h-auto -ml-2 text-blueRibbon" />
                     <p className="font-courier text-xs flex-1 leading-normal">
-                      Our refreshed summary page tackled the recurring problem
-                      of displaying data and information in an easily digestible
-                      and on-brand manner.
+                      Partnership programs like Zip for Microsoft Edge continued
+                      to bolster this tool’s footprint in the marketplace.
                     </p>
                   </div>
                 </div>
-                <Img
-                  className="lg:px-2 xl:px-9"
-                  fluid={blTwoImg.childImageSharp.fluid}
-                  imgStyle={{ objectFit: 'contain' }}
-                />
-                <Img
-                  className="lg:px-2 xl:px-9"
-                  fluid={blThreeImg.childImageSharp.fluid}
-                  imgStyle={{ objectFit: 'contain' }}
-                />
-                <Img
-                  className="mt-32 lg:pl-2 xl:pl-9"
-                  fluid={blFourImg.childImageSharp.fluid}
-                  imgStyle={{ objectFit: 'contain', objectPosition: 'right' }}
-                />
+                <div
+                  ref={thumbContainer}
+                  className="thumbnails grid grid-cols-3 gap-x-4 mt-4 xl:w-1/5 xl:grid-cols-1 xl:gap-y-4 xl:mt-0"
+                >
+                  {videos.map((video, index) => {
+                    const initialClasses = index === 0 ? `active` : ``
+                    return (
+                      <div
+                        key={index}
+                        className={`thumb h-18 rounded-4 overflow-hidden border-solid cursor-pointer ${initialClasses} md:h-auto`}
+                        data-thumb={index}
+                        onClick={(e) => handleThumbClick(e)}
+                      >
+                        <Img
+                          className="w-full h-full pointer-events-none"
+                          fluid={video.coverImg.childImageSharp.fluid}
+                        />
+                      </div>
+                    )
+                  })}
+                </div>
+                <div
+                  className={`fixed top-0 left-0 w-full h-full bg-black transition ease-in-out grid place-items-center ${modalClasses}`}
+                >
+                  <span
+                    className="absolute top-6 right-6 text-blueRibbon z-50 cursor-pointer"
+                    onClick={() => handleHideModal()}
+                  >
+                    <CloseIcon className="" />
+                  </span>
+                  <ReactPlayer
+                    config={{
+                      youtube: {
+                        playerVars: {
+                          controls: 0,
+                          playsinline: 0,
+                          autoplay: 0
+                        }
+                      }
+                    }}
+                    height="auto"
+                    playing={isVideoPlaying}
+                    url={videoUrl}
+                    width={modalVideoWidth}
+                  />
+                </div>
+              </div>
+              <div className="hidden items-start mt-4 whitespace-normal w-68 md:mt-10 md:mb-10 md:w-2/3 md:max-w-md md:mx-auto xl:flex xl:mt-4 xl:mb-0">
+                <ArrowRight className="transform -rotate-90 w-12 h-auto -ml-2 text-blueRibbon" />
+                <p className="font-courier text-xs flex-1 leading-normal">
+                  Partnership programs like Zip for Microsoft Edge continued to
+                  bolster this tool’s footprint in the marketplace.
+                </p>
               </div>
             </CaseStudyContainer>
-            <div className="md:px-6 lg:px-12 max-w-screen-s1536 mx-auto s1440:px-30 s1536:px-52">
-              <div className="bg-gray-300 p-3 mt-12 md:px-6 lg:px-33 xl:px-4 s1536:py-17 s1536:px-10">
-                <Img fluid={elementsImg.childImageSharp.fluid} />
-              </div>
-            </div>
+          </section>
+
+          {/* BEFORE & AFTER */}
+          <section className="mt-20 xl:mt-35 xl:mb-35">
             <CaseStudyContainer>
               <CaseStudyTextContainer>
-                <h3 className="text-2xl mb-6 xl:text-2.5xl mt-10 md:mt-16">
-                  Game Starting in 3... 2... 1...
-                </h3>
                 <p className="text-base leading-loose xl:text-lg mt-8">
-                  Inspired to play around in the great world of product design
-                  with webuild? Get in touch.
+                  While Quadpay/Zip is firstly a D2C fintech experience, B2B
+                  partnerships were a core component of their product growth
+                  strategy. No one knows better than our team that if you want
+                  to pitch your product to the big fish, your design needs to be
+                  top-notch. Slick partnership videos, like the ones we created
+                  above, helped paint the vision for future profitable
+                  collaborations.
                 </p>
+                <p className="text-base leading-loose xl:text-lg mt-8">
+                  Beyond B2B video assets, our videography and animation team
+                  faced an even greater go-to-market challenge.{' '}
+                  <strong>
+                    How would consumers know how to use Quadpay/Zip?
+                  </strong>
+                </p>
+                <p className="text-base leading-loose xl:text-lg mt-8">
+                  We took digital design into the real world with these training
+                  videos, which played on repeat on tablet devices in stores
+                  which supported Zip payments.
+                </p>
+              </CaseStudyTextContainer>
+            </CaseStudyContainer>
+            <CaseStudyContainer className="mt-30">
+              <CaseStudyTextContainer>
+                <div>
+                  <div className="md:grid md:grid-cols-2">
+                    <div
+                      ref={bnaBgRef}
+                      className="yotta-old-new__caption text-white border border-solid border-electricViolet py-6 px-6 grid bg-electricViolet rounded-8 relative md:px-4 md:items-start md:content-between md:order-3 lg:py-8 lg:px-5 lg:rounded-10 transition ease-in-out duration-300"
+                      onMouseEnter={(e) => showOldImageOnHover()}
+                      onMouseLeave={(e) => hideOldImageOnHover()}
+                    >
+                      <p className="old-new-title text-2.5xl leading-normal font-light text-center md:text-left md:text-xl lg:text-2.5xl lg:w-3/4">
+                        A revamped Zip Branded Design
+                      </p>
+                      <div className="old-image-container relative my-6 md:absolute md:px-0 md:top-0 md:left-0 md:w-full md:h-full md:my-0 pointer-events-none">
+                        <div className="relative z-10 md:hidden">
+                          <Img fluid={beforeImg.childImageSharp.fluid} />
+                        </div>
+                        <div
+                          className={`absolute p-px top-0 left-0 w-full h-auto md:relative transition ease-in-out duration-300 ${oldImgClasses}`}
+                        >
+                          <Img
+                            className=""
+                            fluid={afterImg.childImageSharp.fluid}
+                          />
+                        </div>
+                      </div>
+                      {isTablet ? (
+                        <button
+                          className="old-new-action border-none z-10"
+                          {...bind()}
+                        >
+                          <p className="flex font-light pointer-events-none md:flex-col md:text-left md:text-tiny md:w-3/4 lg:text-base leading-snug">
+                            <TapIcon className="mr-2 md:mb-2" />
+                            Tap and hold to reveal new design
+                          </p>
+                        </button>
+                      ) : (
+                        <p className="flex font-light pointer-events-none md:flex-col md:text-left md:text-tiny md:w-3/4 lg:text-base leading-snug">
+                          <TapIcon className="mr-2 md:mb-2" />
+                          Hover to reveal old design
+                        </p>
+                      )}
+                    </div>
+                    <div className="hidden p-px md:block">
+                      <Img fluid={beforeImg.childImageSharp.fluid} />
+                    </div>
+                  </div>
+                  <div className="caption flex items-center mt-6 md:mt-4 lg:w-3/4">
+                    <ArrowRight className="transform -rotate-90 mr-2 w-12 pointer-events-none" />
+                    <p className="flex-1 font-courier text-sm leading-tight pointer-events-none md:text-xs lg:leading-normal">
+                      This digital tool had to function in the real world. Easy,
+                      In-Store cards within a user’s digital wallet made that
+                      happen. See how we took that tool from one brand identity
+                      to the next post-acquisition
+                    </p>
+                  </div>
+                </div>
               </CaseStudyTextContainer>
             </CaseStudyContainer>
           </section>
@@ -783,34 +901,33 @@ const Quadpay = ({
                 <div className="result-card xl:col-span-3">
                   <p className="text-5xl mr-6 mt-0.5">01</p>
                   <p className="text-xl leading-snug font-light">
-                    Led workshops on product and brand strategy to align on spec
-                    and scope
+                    Brought in a friendly, fresh, and refined brand that made
+                    fintech accessible and nonjudgemental
                   </p>
                 </div>
                 <div className=" result-card xl:col-span-3">
                   <p className="text-5xl mr-6 mt-0.5">02</p>
                   <p className="text-xl leading-snug font-light">
-                    Built a robust design system from the ground up, helping
-                    developers launch quickly
+                    Turned a brand concept into reality with UX+UI refinements
+                    across the app
                   </p>
                 </div>
                 <div className=" result-card xl:col-span-2">
                   <p className="text-5xl mr-6 mt-0.5">03</p>
                   <p className="text-xl leading-snug font-light">
-                    Built a comprehensive MVP in 3 months
+                    Acquired new users via video and static ad assets
                   </p>
                 </div>
                 <div className=" result-card xl:col-span-2">
                   <p className="text-5xl mr-6 mt-0.5">04</p>
                   <p className="text-xl leading-snug font-light">
-                    Helped land first key customers with tailored designs
+                    Developed parter branded experiences for top-tier retailers
                   </p>
                 </div>
                 <div className=" result-card md:col-span-full xl:col-span-2">
                   <p className="text-5xl mr-6 mt-0.5">05</p>
                   <p className="text-xl leading-snug font-light">
-                    Contributed to strengthening Neon’s team by running user
-                    tests and onboarding internal design members
+                    Helped land a $296 million acquisition by Zip
                   </p>
                 </div>
               </div>
@@ -906,8 +1023,26 @@ export const QUADPAY_QUERY = graphql`
         }
       }
     }
-    marketResearchImg: file(
-      relativePath: { eq: "case-studies/neon/market-research-graphic.png" }
+    identityGridMobile: file(
+      relativePath: { eq: "case-studies/quadpay/identity-grid-mobile.png" }
+    ) {
+      childImageSharp {
+        fluid(maxWidth: 1600) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+    identityGridDesktop: file(
+      relativePath: { eq: "case-studies/quadpay/identity-grid-desktop.png" }
+    ) {
+      childImageSharp {
+        fluid(maxWidth: 2300) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+    screenOne: file(
+      relativePath: { eq: "case-studies/quadpay/screen-one.png" }
     ) {
       childImageSharp {
         fluid {
@@ -915,8 +1050,8 @@ export const QUADPAY_QUERY = graphql`
         }
       }
     }
-    wishlistOneImg: file(
-      relativePath: { eq: "case-studies/neon/wishlist-one.png" }
+    screenTwo: file(
+      relativePath: { eq: "case-studies/quadpay/screen-two.png" }
     ) {
       childImageSharp {
         fluid {
@@ -924,8 +1059,8 @@ export const QUADPAY_QUERY = graphql`
         }
       }
     }
-    wishlistTwoImg: file(
-      relativePath: { eq: "case-studies/neon/wishlist-two.png" }
+    screenThree: file(
+      relativePath: { eq: "case-studies/quadpay/screen-three.png" }
     ) {
       childImageSharp {
         fluid {
@@ -933,8 +1068,8 @@ export const QUADPAY_QUERY = graphql`
         }
       }
     }
-    webstoreOneImg: file(
-      relativePath: { eq: "case-studies/neon/webstore-one.png" }
+    screenFour: file(
+      relativePath: { eq: "case-studies/quadpay/screen-four.png" }
     ) {
       childImageSharp {
         fluid {
@@ -942,8 +1077,8 @@ export const QUADPAY_QUERY = graphql`
         }
       }
     }
-    webstoreTwoImg: file(
-      relativePath: { eq: "case-studies/neon/webstore-two.png" }
+    screenFive: file(
+      relativePath: { eq: "case-studies/quadpay/screen-five.png" }
     ) {
       childImageSharp {
         fluid {
@@ -951,15 +1086,15 @@ export const QUADPAY_QUERY = graphql`
         }
       }
     }
-    whyNeonImg: file(relativePath: { eq: "case-studies/neon/why-neon.png" }) {
+    dealsImg: file(relativePath: { eq: "case-studies/quadpay/deals.png" }) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid_withWebp_noBase64
         }
       }
     }
-    walletSummaryImg: file(
-      relativePath: { eq: "case-studies/neon/wallet-summary.png" }
+    walkthroughImg: file(
+      relativePath: { eq: "case-studies/quadpay/walkthrough.png" }
     ) {
       childImageSharp {
         fluid {
@@ -967,22 +1102,8 @@ export const QUADPAY_QUERY = graphql`
         }
       }
     }
-    figJamOne: file(relativePath: { eq: "case-studies/neon/fig-jam-one.png" }) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
-    figJamTwo: file(relativePath: { eq: "case-studies/neon/fig-jam-two.png" }) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
-    figJamThree: file(
-      relativePath: { eq: "case-studies/neon/fig-jam-three.png" }
+    paymentOneImg: file(
+      relativePath: { eq: "case-studies/quadpay/payment-one.png" }
     ) {
       childImageSharp {
         fluid {
@@ -990,8 +1111,8 @@ export const QUADPAY_QUERY = graphql`
         }
       }
     }
-    fasterCheckoutImg: file(
-      relativePath: { eq: "case-studies/neon/faster-checkout.png" }
+    paymentTwoImg: file(
+      relativePath: { eq: "case-studies/quadpay/payment-two.png" }
     ) {
       childImageSharp {
         fluid {
@@ -999,11 +1120,63 @@ export const QUADPAY_QUERY = graphql`
         }
       }
     }
-    orderSumTwoImg: file(
-      relativePath: { eq: "case-studies/neon/order-summary-two.png" }
+    originalIconsImg: file(
+      relativePath: { eq: "case-studies/quadpay/original-icons.png" }
     ) {
       childImageSharp {
         fluid {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+    logoGridImg: file(
+      relativePath: { eq: "case-studies/quadpay/logo-grid.png" }
+    ) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+    beforeImg: file(
+      relativePath: { eq: "case-studies/quadpay/before-img.png" }
+    ) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+    afterImg: file(relativePath: { eq: "case-studies/quadpay/after-img.png" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+    edgeCover: file(
+      relativePath: { eq: "case-studies/quadpay/edge-cover.png" }
+    ) {
+      childImageSharp {
+        fluid(maxWidth: 2300) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+    chromeCover: file(
+      relativePath: { eq: "case-studies/quadpay/chrome-cover.png" }
+    ) {
+      childImageSharp {
+        fluid(maxWidth: 2300) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+    trainingCover: file(
+      relativePath: { eq: "case-studies/quadpay/training-cover.png" }
+    ) {
+      childImageSharp {
+        fluid(maxWidth: 2300) {
           ...GatsbyImageSharpFluid_withWebp_noBase64
         }
       }
