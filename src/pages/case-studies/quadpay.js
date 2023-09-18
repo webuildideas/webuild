@@ -342,7 +342,7 @@ const Quadpay = ({
                     <div className="">
                       <div className="">
                         <p className="text-caption text-electricViolet xl:text-sm">
-                          Fintexh BNPL tool
+                          Fintech BNPL tool
                         </p>
                         <p className="text-caption xl:text-sm">Post-IPO</p>
                       </div>
@@ -431,11 +431,6 @@ const Quadpay = ({
                     apparent that we got along pretty great, and what started as
                     a singular, specific ask morphed into more opportunities to
                     iterate and optimize, well, everything.
-                  </p>
-                  <p className="text-base leading-relaxed lg:text-lg mt-8">
-                    The Neon umbrella features management support services for
-                    game developers, including a CRM, capital & cash flow
-                    management, analytics services, and more.
                   </p>
                 </div>
                 <div className="mt-15">
@@ -535,7 +530,7 @@ const Quadpay = ({
                   Ultimately, Quadpay ended up needing an entire brand refresh;
                   a trendier, fashion-forward, and relevant identity. Working
                   with them to get everything just right positioned Quadpay in
-                  their area of the market where they became widely recognized.
+                  an area of the market where they became widely recognized.
                   Cohesiveness and collaboration settled in place, giving
                   everyone a little more stability.
                 </p>
@@ -629,7 +624,9 @@ const Quadpay = ({
             </CaseStudyContainer>
             <CaseStudyContainer>
               <CaseStudyTextContainer className="mt-20">
-                <h2 className="text-2xl leading-snug">Getting acquired</h2>
+                <h2 className="text-2xl leading-snug font-bold">
+                  Getting acquired
+                </h2>
                 <p className="text-base leading-relaxed lg:text-lg mt-8">
                   A great design refresh (and of course, the incredible product
                   machine and deep thinking of the Quadpay team), brought
