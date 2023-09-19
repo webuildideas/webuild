@@ -15,6 +15,7 @@ import TapIcon from '../../static/svgs/tap-icon.inline.svg'
 import PlayIcon from '../../static/svgs/play-icon-large.inline.svg'
 import edgeVideo from '../../static/videos/quadpay/microsoft-edge.mp4'
 import trainingVideo from '../../static/videos/quadpay/training.mp4'
+import chromeVideo from '../../static/videos/quadpay/quadpay-chrome.mp4'
 import CloseIcon from '../../static/svgs/closeIcon.inline.svg'
 
 import { CaseStudyContainer, CaseStudyTextContainer } from './clickup'
@@ -79,23 +80,6 @@ const Quadpay = ({
     edgeCover,
     chromeCover,
     trainingCover,
-    marketResearchImg,
-    wishlistOneImg,
-    wishlistTwoImg,
-    webstoreOneImg,
-    webstoreTwoImg,
-    figJamOne,
-    figJamTwo,
-    figJamThree,
-    fasterCheckoutImg,
-    orderSumTwoImg,
-    guestCheckoutImg,
-    blOneImg,
-    blTwoImg,
-    blThreeImg,
-    blFourImg,
-    elementsImg,
-    purchaseVideo,
     productGif,
     marketingGif,
     designGif,
@@ -204,7 +188,7 @@ const Quadpay = ({
     },
     {
       coverImg: chromeCover,
-      video: 'https://www.youtube.com/watch?v=a-LFwS3cux4'
+      video: chromeVideo
     },
     {
       coverImg: trainingCover,
@@ -297,17 +281,14 @@ const Quadpay = ({
                 <div className="testimonial md:pl-26 relative text-blueRibbon">
                   <QuoteIcon className="w-18 h-auto md:absolute md:top-0 md:left-0 " />
                   <p className="text-primary text-left text-blueRibbon font-medium text-4xl leading-normal mt-6 md:mt-0">
-                    “
+                    “We have been blown away by the capability and experience of
+                    the webuild team. Over time webuild has become an extension
+                    of our team,
                     <span className="font-crimson font-font-extralight italic text-5xl">
-                      We have been blown away by the capability and experience
-                      of the webuild team. Over time webuild has become an
-                      extension of our team, taking ownership of all product and
-                      UX design requirements of Quadpay.{' '}
+                      taking ownership of all product and UX design requirements
+                      of Quadpay.{' '}
                     </span>
-                    They have excellent vision for product design and are
-                    reliable, attentive, and above all, produce exceptionally
-                    high-quality work quickly that is immediately usable by our
-                    developers.”
+                    ”
                   </p>
                 </div>
               </div>
@@ -365,8 +346,7 @@ const Quadpay = ({
                   <p className="text-lg mt-8 leading-loose">
                     No credit impact, no interest as long as you pay your
                     installments on time. As recently as 2020, 37% of consumers
-                    report using a BNPL service. As economic concerns loom, the
-                    number grows.
+                    report using a BNPL service.
                   </p>
                 </div>
               </CaseStudyTextContainer>
@@ -865,7 +845,7 @@ const Quadpay = ({
                       ) : (
                         <p className="flex font-light pointer-events-none md:flex-col md:text-left md:text-tiny md:w-3/4 lg:text-base leading-snug">
                           <TapIcon className="mr-2 md:mb-2" />
-                          Hover to reveal old design
+                          Hover to reveal new design
                         </p>
                       )}
                     </div>
@@ -1177,53 +1157,6 @@ export const QUADPAY_QUERY = graphql`
           ...GatsbyImageSharpFluid_withWebp_noBase64
         }
       }
-    }
-    guestCheckoutImg: file(
-      relativePath: { eq: "case-studies/neon/guest-checkout.png" }
-    ) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
-    blOneImg: file(relativePath: { eq: "case-studies/neon/bl-one.png" }) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
-    blTwoImg: file(relativePath: { eq: "case-studies/neon/bl-two.png" }) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
-    blThreeImg: file(relativePath: { eq: "case-studies/neon/bl-three.png" }) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
-    blFourImg: file(relativePath: { eq: "case-studies/neon/bl-four.png" }) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
-    elementsImg: file(relativePath: { eq: "case-studies/neon/elements.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 2300) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
-      }
-    }
-    purchaseVideo: file(relativePath: { eq: "neon/neon-purchase.mp4" }) {
-      publicURL
     }
     productGif: file(relativePath: { eq: "service-gifs/product-design.gif" }) {
       publicURL
