@@ -688,7 +688,8 @@ const Quadpay = ({
                 <div className="xl:w-4/5 xl:mr-10">
                   <div
                     ref={coverContainer}
-                    className="relative cover-imgs grid h-87 rounded-4 overflow-hidden border border-gray-400 border-solid"
+                    className="relative cover-imgs grid h-87 rounded-4 overflow-hidden border border-gray-400 border-solid cursor-pointer"
+                    onClick={() => handleShowModal()}
                   >
                     {videos.map((video, index) => {
                       const initialClasses = index === 0 ? `active` : ``
@@ -707,11 +708,8 @@ const Quadpay = ({
                         </div>
                       )
                     })}
-                    <button
-                      className="play-btn absolute cursor-pointer border-none"
-                      onClick={() => handleShowModal()}
-                    >
-                      <PlayIcon className="pointer-events-none" />
+                    <button className="play-btn absolute pointer-events-none border-none">
+                      <PlayIcon className="" />
                     </button>
                   </div>
                   <div className="flex items-start mt-4 whitespace-normal w-68 md:mt-10 md:mb-10 md:w-2/3 md:max-w-md md:mx-auto xl:hidden">
