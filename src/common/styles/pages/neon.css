@@ -74,3 +74,36 @@
     @apply object-cover;
   }
 }
+
+/* QUADPAY ADD-ONS */
+.cover-imgs {
+  grid-template-areas: 'coverImg';
+
+  @screen md {
+    height: 550px;
+  }
+
+  .cover-img-slide {
+    grid-area: coverImg;
+    @apply opacity-0 pointer-events-none;
+
+    &.active {
+      @apply opacity-100 pointer-events-auto;
+    }
+  }
+
+  .play-btn {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.thumbnails {
+  .thumb {
+    @apply border-gray-400 border;
+    &.active {
+      @apply border-electricViolet border-2 pointer-events-none;
+    }
+  }
+}
