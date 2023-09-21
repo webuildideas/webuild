@@ -802,10 +802,9 @@ const Quadpay = ({
                 <p className="text-base leading-loose xl:text-lg mt-8">
                   Beyond B2B video assets, our videography and animation team
                   faced an even greater go-to-market challenge.{' '}
-                  <strong>
-                    How would consumers know how to use{' '}
-                    <span className="font-bold">Quadpay/Zip</span>?
-                  </strong>
+                  <span className="font-bold">
+                    How would consumers know how to use Quadpay/Zip?
+                  </span>
                 </p>
                 <p className="text-base leading-loose xl:text-lg mt-8">
                   We took digital design into the real world with these training
