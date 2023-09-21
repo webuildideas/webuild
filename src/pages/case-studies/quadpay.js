@@ -323,7 +323,7 @@ const Quadpay = ({
                     <div className="">
                       <div className="">
                         <p className="text-caption text-electricViolet xl:text-sm">
-                          Fintech BNPL tool
+                          fintech BNPL tool
                         </p>
                         <p className="text-caption xl:text-sm">Post-IPO</p>
                       </div>
@@ -337,7 +337,7 @@ const Quadpay = ({
                   </div>
                   <p className="text-lg mt-8 leading-loose">
                     <span className="font-bold">
-                      Zip (formerly Quadpay) is a Fintech app that allows
+                      Zip (formerly Quadpay) is a fintech app that allows
                       payments to be split into four installments.
                     </span>{' '}
                     They're part of a larger "buy now, pay later" movement
@@ -507,7 +507,7 @@ const Quadpay = ({
                   Creating a relevant identity
                 </h2>
                 <p className="text-base leading-loose xl:text-lg">
-                  Ultimately, Quadpay ended up needing an entire brand refresh;
+                  Ultimately, Quadpay ended up needing an entire brand refresh:
                   a trendier, fashion-forward, and relevant identity. Working
                   with them to get everything just right positioned Quadpay in
                   an area of the market where they became widely recognized.
@@ -609,24 +609,33 @@ const Quadpay = ({
                 </h2>
                 <p className="text-base leading-relaxed lg:text-lg mt-8">
                   A great design refresh (and of course, the incredible product
-                  machine and deep thinking of the Quadpay team), brought
-                  Quadpay to the next level. In August, 2020, shortly after our
-                  work finished with them, they hit a major milestone. Monthly
+                  machine and deep thinking of the Quadpay team) brought Quadpay
+                  to the next level. In August 2020, shortly after our work
+                  finished with them, they hit a major milestone. Monthly
                   transaction volume exceeded $70 million (or 600% increase on
-                  July, 2019).
+                  July 2019).
                 </p>
                 <p className="text-base leading-relaxed lg:text-lg mt-8">
                   Those numbers were hard for other market players to ignore. In
-                  September, 2020, Australian fintech giant Zip acquired Quadpay
+                  September 2020, Australian fintech giant Zip acquired Quadpay
                   for $296 million. Quadpay became a key part of their North
-                  American Strategy.
+                  American strategy.
                 </p>
                 <p className="text-base leading-relaxed lg:text-lg mt-8">
                   Within the year, Quadpay fully merged into the Zip brand. Zip
                   continues to reach new heights within their new American
-                  market. By May, 2023 Zip had a $1.5b valuation, and reached
-                  their Series C round of funding (like our client ClickUp,
-                  hyperlink the case study here).
+                  market. By May 2023 Zip had a $1.5b valuation, and reached
+                  their Series C round of funding (like our client{' '}
+                  <AniLink
+                    className="text-electricViolet"
+                    cover
+                    direction="right"
+                    duration={1.5}
+                    to="/case-studies/clickup"
+                  >
+                    ClickUp
+                  </AniLink>{' '}
+                  ).
                 </p>
                 <p className="text-base leading-relaxed lg:text-lg mt-8">
                   We’re proud of the role webuild played in this journey, and
@@ -794,7 +803,8 @@ const Quadpay = ({
                   Beyond B2B video assets, our videography and animation team
                   faced an even greater go-to-market challenge.{' '}
                   <strong>
-                    How would consumers know how to use Quadpay/Zip?
+                    How would consumers know how to use{' '}
+                    <span className="font-bold">Quadpay/Zip</span>?
                   </strong>
                 </p>
                 <p className="text-base leading-loose xl:text-lg mt-8">
@@ -855,7 +865,7 @@ const Quadpay = ({
                     <ArrowRight className="transform -rotate-90 mr-2 w-12 pointer-events-none" />
                     <p className="flex-1 font-courier text-sm leading-tight pointer-events-none md:text-xs lg:leading-normal">
                       This digital tool had to function in the real world. Easy,
-                      In-Store cards within a user’s digital wallet made that
+                      in-store cards within a user’s digital wallet made that
                       happen. See how we took that tool from one brand identity
                       to the next post-acquisition
                     </p>
