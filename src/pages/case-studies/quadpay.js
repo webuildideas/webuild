@@ -625,7 +625,7 @@ const Quadpay = ({
                   Within the year, Quadpay fully merged into the Zip brand. Zip
                   continues to reach new heights within their new American
                   market. By May 2023 Zip had a $1.5b valuation, and reached
-                  their Series C round of funding (like our client{' '}
+                  their Series C round of funding (
                   <AniLink
                     className="text-electricViolet"
                     cover
@@ -633,7 +633,7 @@ const Quadpay = ({
                     duration={1.5}
                     to="/case-studies/clickup"
                   >
-                    ClickUp
+                    like our client ClickUp
                   </AniLink>{' '}
                   ).
                 </p>
