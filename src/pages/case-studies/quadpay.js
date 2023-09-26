@@ -283,7 +283,7 @@ const Quadpay = ({
                   <p className="text-primary text-left text-blueRibbon font-medium text-4xl leading-normal mt-6 md:mt-0">
                     “We have been blown away by the capability and experience of
                     the webuild team. Over time webuild has become an extension
-                    of our team,
+                    of our team,{' '}
                     <span className="font-crimson font-font-extralight italic text-5xl">
                       taking ownership of all product and UX design requirements
                       of Quadpay.{' '}
