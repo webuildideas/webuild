@@ -967,7 +967,7 @@ export const QUADPAY_QUERY = graphql`
       seoTitle
     }
     socialShare: file(
-      relativePath: { eq: "case-studies/neon/social-share-neon.jpg" }
+      relativePath: { eq: "case-studies/quadpay/social-share.jpg" }
     ) {
       publicURL
     }
