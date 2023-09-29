@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useRef, useEffect } from 'react'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { gsap } from 'gsap'
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
 // import { Options } from '@contentful/rich-text-react-renderer'
@@ -150,6 +151,33 @@ export default function TestimonialSlider({
             {testimonial.quoteShort
               ? renderRichText(testimonial.quoteShort, richTextOptions)
               : null}
+            {testimonial?.caseStudy?.slug ? (
+              <div className="flex items-center">
+                <AniLink
+                  bg="#F3F3F3"
+                  className={`mt-8 rounded-full border border-${color} border-solid py-6 px-10 inline-flex mx-auto items-center justify-center font-light text-lg transition duration-300 ease-in-out lg:hover:bg-blueRibbon lg:hover:text-white ${buttonClasses}`}
+                  cover
+                  direction="right"
+                  duration={1.5}
+                  to={`/case-studies/${testimonial?.caseStudy.slug}/`}
+                >
+                  <span className="mt-1">View the case study</span>
+                  <svg
+                    className="w-8 h-auto ml-4"
+                    fill="none"
+                    viewBox="0 0 32 32"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      clipRule="evenodd"
+                      d="M24.2753 7.33331C24.2753 11.6662 27.7337 15.1787 32 15.1787V15.4583V15.7379V16.2621V16.5416V16.8212C27.7338 16.8212 24.2753 20.3337 24.2753 24.6666H23.2086C23.2086 21.0582 25.3163 17.9497 28.3495 16.5416L0 16.5416V15.4583L28.3495 15.4583C25.3163 14.0503 23.2086 10.9418 23.2086 7.33331H24.2753Z"
+                      fill="currentColor"
+                      fillRule="evenodd"
+                    />
+                  </svg>
+                </AniLink>
+              </div>
+            ) : null}
           </div>
         ))}
       </div>

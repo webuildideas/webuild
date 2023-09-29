@@ -62,6 +62,9 @@ const NEW_HOME_PAGE_QUERY = graphql`
             fileName
           }
         }
+        caseStudy {
+          slug
+        }
       }
       logos {
         file {
