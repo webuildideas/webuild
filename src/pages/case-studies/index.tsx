@@ -313,7 +313,7 @@ const CaseStudies = ({
           <TestimonialSlider
             buttonClasses="lg:hover:bg-gray-400 lg:hover:text-gray-800 transition-all duration-300 ease-in-out"
             color="white"
-            logoClasses="grayscale brightness-400"
+            logoClasses="grayscale brightness-400 border-white"
             testimonials={testimonials}
           />
         </section>
@@ -452,6 +452,9 @@ export const CASE_STUDIES_PAGE_QUERY = graphql`
             url
             fileName
           }
+        }
+        caseStudy {
+          slug
         }
       }
 
