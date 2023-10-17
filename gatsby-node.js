@@ -16,7 +16,6 @@ export const createPages = async ({ graphql, actions }) => {
               "Tetra"
               "Yotta"
               "ClickUp"
-              # "Neon"
               "PLACEHOLDER"
             ]
           }
