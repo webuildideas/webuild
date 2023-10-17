@@ -225,7 +225,7 @@ export default function NewNav() {
                   />
                 </svg>
               </AniLink>
-              <AniLink
+              {/* <AniLink
                 bg="#F3F3F3"
                 className="block sub-item box-content lg:flex lg:items-center"
                 cover
@@ -248,7 +248,7 @@ export default function NewNav() {
                     fillRule="evenodd"
                   />
                 </svg>
-              </AniLink>
+              </AniLink> */}
               <AniLink
                 bg="#F3F3F3"
                 className="block sub-item box-content lg:flex lg:items-center"
