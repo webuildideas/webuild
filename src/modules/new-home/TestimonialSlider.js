@@ -7,7 +7,7 @@ import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import { BLOCKS, MARKS } from '@contentful/rich-text-types'
 import NextArrow from '@static/svgs/fancy-arrow-right.inline.svg'
 import LeftArrow from '@static/svgs/fancy-arrow-left.inline.svg'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import './styles/testimonial-slider.css'
 
 const richTextOptions = {
@@ -194,10 +194,9 @@ export default function TestimonialSlider({
               }
               perosn-index={index}
             >
-              <Img
-                className="w-22 h-auto m-auto md:m-0"
-                fluid={testimonial.bwHeadshot.fluid}
-              />
+              <GatsbyImage
+                image={testimonial.childImageSharp.gatsbyImageData}
+                className="w-22 h-auto m-auto md:m-0" />
               <div className={`hidden md:block h-px bg-${color} flex-1`} />
               <div className="mt-4 md:ml-12">
                 <p className="mb-2">{testimonial.name}</p>
@@ -227,5 +226,5 @@ export default function TestimonialSlider({
         </div>
       </div>
     </div>
-  )
+  );
 }

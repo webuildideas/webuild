@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation, Variants } from 'framer-motion'
 import { CarouselProvider, Slide, Slider } from 'pure-react-carousel'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import 'pure-react-carousel/dist/react-carousel.es.css'
 
 // Common
@@ -31,7 +31,7 @@ const variants: Variants = {
 }
 
 const renderImg = (image: TypeGatsbyImageFluid) => {
-  return <Img alt="carousel" durationFadeIn={125} fadeIn fluid={image.fluid} />
+  return <GatsbyImage image={image.gatsbyImageData} alt="carousel" durationFadeIn={125} fadeIn />;
 }
 
 const Carousel = ({ images, autoplay = false }: Props) => {

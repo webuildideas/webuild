@@ -4,7 +4,7 @@
 import React, { useEffect, useRef, useCallback, useState } from 'react'
 import { graphql, Link } from 'gatsby'
 import Meta from '@components/Meta'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import useWindowSize from '@common/hooks/useWindowSize'
 import NewFooter from '@modules/common/components/NewFooter'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
@@ -139,7 +139,7 @@ const Neon = ({
                 </h1>
               </div>
               <div className="img mt-11 w-full transform translate-y-9 md:mt-2 xl:transform-none">
-                <Img fluid={HeroImg.childImageSharp.fluid} />
+                <GatsbyImage image={HeroImg.childImageSharp.gatsbyImageData} />
               </div>
             </CaseStudyContainer>
           </section>
@@ -224,9 +224,9 @@ const Neon = ({
               style={{ background: '#75FB81' }}
             >
               <div className="horz-scroll-container">
-                <Img
+                <GatsbyImage
+                  image={payScreens.childImageSharp.gatsbyImageData}
                   className="w-full"
-                  fluid={payScreens.childImageSharp.fluid}
                 />
               </div>
             </div>
@@ -282,7 +282,9 @@ const Neon = ({
                   </p>
                 </div>
                 <div className="exp-services-img-one mt-10 md:order-1 md:pr-30 md:pl-10 md:mt-0 xl:pr-20">
-                  <Img fluid={orderSummaryImg.childImageSharp.fluid} />
+                  <GatsbyImage
+                    image={orderSummaryImg.childImageSharp.gatsbyImageData}
+                  />
                   <div className="caption-one py-4 px-6 border border-solid border-gray-700 rounded-8 mt-4 md:mt-2">
                     <ArrowRight className="transform -rotate-90 w-11 h-auto mr-4 md:mb-2 -translate-x-2" />
                     <p className="font-courier text-gray-600 text-xs flex-1 leading-normal mt-2">
@@ -294,7 +296,9 @@ const Neon = ({
               </div>
               <div className="exp-services-container md:grid md:grid-cols-2 md:items-start single">
                 <div className="relative exp-services-img-two mt-20 md:order-4 md:mt-0 md:pr-16 lg:w-3/5 lg:ml-auto xl:order-1 xl:pr-0">
-                  <Img fluid={whyNeonImg.childImageSharp.fluid} />
+                  <GatsbyImage
+                    image={whyNeonImg.childImageSharp.gatsbyImageData}
+                  />
                   <div className="caption-one py-4 px-6 border border-solid border-gray-700 rounded-8 mt-4 md:absolute md:top-0 md:w-30 md:right-full md:text-right md:mt-0 md:mr-2">
                     <ArrowRight className="transform -rotate-90 w-11 h-auto mr-4 md:mb-2 -translate-x-2 md:rotate-0 md:mr-0 md:ml-auto" />
                     <p className="font-courier text-gray-600 text-xs flex-1 leading-normal mt-2">
@@ -309,7 +313,9 @@ const Neon = ({
                     </p>
                     <ArrowRight className="transform rotate-90 w-11 h-auto mr-4 md:mt-2 -translate-x-2" />
                   </div>
-                  <Img fluid={walletSummaryImg.childImageSharp.fluid} />
+                  <GatsbyImage
+                    image={walletSummaryImg.childImageSharp.gatsbyImageData}
+                  />
                 </div>
               </div>
             </div>
@@ -358,7 +364,9 @@ const Neon = ({
                   purchase.
                 </p>
                 <div className="mt-20 max-w-xl mx-auto">
-                  <Img fluid={marketResearchImg.childImageSharp.fluid} />
+                  <GatsbyImage
+                    image={marketResearchImg.childImageSharp.gatsbyImageData}
+                  />
                   <div className="flex items-start mt-10 md:mx-auto md:w-2/3">
                     <ArrowRight className="transform -rotate-90 w-12 h-auto -ml-2" />
                     <p className="font-courier text-xs flex-1 leading-normal">
@@ -386,26 +394,26 @@ const Neon = ({
               </CaseStudyTextContainer>
 
               {/* <div className="mt-14 lg:pr-2 xl:pr-9">
-                  <Img fluid={blOneImg.childImageSharp.fluid} />
-                  <div className="flex items-start mt-4 mx-auto whitespace-normal">
-                    <ArrowRight className="transform -rotate-90 w-12 h-auto -ml-2 text-blueRibbon" />
-                    <p className="font-courier text-xs flex-1 leading-normal">
-                      Our refreshed summary page tackled the recurring problem
-                      of displaying data and information in an easily digestible
-                      and on-brand manner.
-                    </p>
-                  </div>
+                <Img fluid={blOneImg.childImageSharp.fluid} />
+                <div className="flex items-start mt-4 mx-auto whitespace-normal">
+                  <ArrowRight className="transform -rotate-90 w-12 h-auto -ml-2 text-blueRibbon" />
+                  <p className="font-courier text-xs flex-1 leading-normal">
+                    Our refreshed summary page tackled the recurring problem
+                    of displaying data and information in an easily digestible
+                    and on-brand manner.
+                  </p>
                 </div>
-                <Img
-                  className="lg:px-2 xl:px-9"
-                  fluid={blThreeImg.childImageSharp.fluid}
-                  imgStyle={{ objectFit: 'contain' }}
-                />
-                <Img
-                  className="mt-32 lg:pl-2 xl:pl-9"
-                  fluid={blFourImg.childImageSharp.fluid}
-                  imgStyle={{ objectFit: 'contain', objectPosition: 'right' }}
-                /> */}
+              </div>
+              <Img
+                className="lg:px-2 xl:px-9"
+                fluid={blThreeImg.childImageSharp.fluid}
+                imgStyle={{ objectFit: 'contain' }}
+              />
+              <Img
+                className="mt-32 lg:pl-2 xl:pl-9"
+                fluid={blFourImg.childImageSharp.fluid}
+                imgStyle={{ objectFit: 'contain', objectPosition: 'right' }}
+              /> */}
             </CaseStudyContainer>
           </section>
 
@@ -414,9 +422,9 @@ const Neon = ({
               <div className="store-front-scrollz pb-12 ">
                 <div className="grid grid-cols-3 gap-x-4 md:flex md:gap-x-0">
                   {/* <Img
-                    className="md:flex-1 md:mr-4"
-                    fluid={wishlistOneImg.childImageSharp.fluid}
-                  /> */}
+                  className="md:flex-1 md:mr-4"
+                  fluid={wishlistOneImg.childImageSharp.fluid}
+                /> */}
                   <div
                     className="md:flex-1 md:mr-4 rounded-7 overflow-hidden border-2 border-solid"
                     style={{ borderColor: '#F8C7B8' }}
@@ -434,18 +442,18 @@ const Neon = ({
                       width="100%"
                     />
                   </div>
-                  <Img
+                  <GatsbyImage
+                    image={wishlistTwoImg.childImageSharp.gatsbyImageData}
                     className="md:flex-1 md:mr-4"
-                    fluid={wishlistTwoImg.childImageSharp.fluid}
                   />
-                  <Img
+                  <GatsbyImage
+                    image={webstoreOneImg.childImageSharp.gatsbyImageData}
                     className="md:flex-1 md:mr-4"
-                    fluid={webstoreOneImg.childImageSharp.fluid}
                   />
                   <div className="hidden md:block relative md:flex-1 md:ml-6 lg:ml-20 xl:ml-26">
-                    <Img
+                    <GatsbyImage
+                      image={webstoreTwoImg.childImageSharp.gatsbyImageData}
                       className=""
-                      fluid={webstoreTwoImg.childImageSharp.fluid}
                     />
                     <div className="flex items-start mt-4 whitespace-normal absolute left-0 -bottom-4 transform translate-y-full ">
                       <ArrowRight className="transform -rotate-90 w-12 h-auto -ml-2 text-blueRibbon" />
@@ -471,7 +479,9 @@ const Neon = ({
               </div>
             </div>
             <div className="w-60 md:w-auto relative px-6 md:hidden">
-              <Img fluid={webstoreTwoImg.childImageSharp.fluid} />
+              <GatsbyImage
+                image={webstoreTwoImg.childImageSharp.gatsbyImageData}
+              />
               <div className="flex items-start mt-4 whitespace-normal ">
                 <ArrowRight className="transform -rotate-90 w-12 h-auto -ml-2 text-blueRibbon" />
                 <p className="font-courier text-xs flex-1 leading-normal">
@@ -519,12 +529,16 @@ const Neon = ({
             <div className="px-6 lg:px-12 max-w-screen-s1536 mx-auto">
               <div className="bg-gray-200 p-6 mt-20 rounded-10 xl:mt-32 xl:grid xl:grid-cols-3 xl:gap-x-5 xl:px-20">
                 <div className="xl:col-span-2">
-                  <Img fluid={figJamOne.childImageSharp.fluid} />
+                  <GatsbyImage
+                    image={figJamOne.childImageSharp.gatsbyImageData}
+                  />
                 </div>
                 <div className="mt-6 grid items-start gap-y-6 md:grid-cols-2 md:gap-x-5 lg:w-4/5 lg:mx-auto xl:col-span-1 xl:grid-cols-1 xl:grid-rows-2 xl:mt-0 xl:w-full">
-                  <Img fluid={figJamTwo.childImageSharp.fluid} />
-                  <Img
-                    fluid={figJamThree.childImageSharp.fluid}
+                  <GatsbyImage
+                    image={figJamTwo.childImageSharp.gatsbyImageData}
+                  />
+                  <GatsbyImage
+                    image={figJamThree.childImageSharp.gatsbyImageData}
                     imgStyle={{ objectFit: 'contain' }}
                   />
                 </div>
@@ -574,9 +588,9 @@ const Neon = ({
           <section className="max-w-screen-s1536 mx-auto mt-20 no-scroll-bar">
             <div className="px-6 pb-12 max-w-lg mx-auto overflow-auto whitespace-nowrap">
               <div className="horz-scroll-container horz-scroll-container--two">
-                <Img
+                <GatsbyImage
+                  image={fasterCheckoutImg.childImageSharp.gatsbyImageData}
                   className="w-full"
-                  fluid={fasterCheckoutImg.childImageSharp.fluid}
                 />
               </div>
               <div className="flex items-start mt-4 mx-auto whitespace-normal md:w-4/5 md:mx-0">
@@ -591,9 +605,9 @@ const Neon = ({
             <div className="md:mt-12 xl:grid xl:grid-cols-2 xl:gap-x-53 xl:px-12 s1440:max-w-6xl s1440:mx-auto no-scroll-bar">
               <div className="px-6 pb-12 max-w-lg mx-auto overflow-auto whitespace-nowrap xl:max-w-none xl:px-0">
                 <div className="horz-scroll-container horz-scroll-container--two">
-                  <Img
+                  <GatsbyImage
+                    image={orderSumTwoImg.childImageSharp.gatsbyImageData}
                     className="w-full"
-                    fluid={orderSumTwoImg.childImageSharp.fluid}
                   />
                 </div>
                 <div className="flex items-start mt-4 mx-auto whitespace-normal md:w-4/5 md:mx-0">
@@ -607,9 +621,9 @@ const Neon = ({
               </div>
               <div className="px-6 pb-12 max-w-lg mx-auto md:mt-4 overflow-auto whitespace-nowrap xl:max-w-none xl:px-0 xl:mt-0">
                 <div className="horz-scroll-container horz-scroll-container--two">
-                  <Img
+                  <GatsbyImage
+                    image={guestCheckoutImg.childImageSharp.gatsbyImageData}
                     className="w-full"
-                    fluid={guestCheckoutImg.childImageSharp.fluid}
                   />
                 </div>
                 <div className="flex items-start mt-4 mx-auto whitespace-normal md:w-4/5 md:mx-0">
@@ -658,7 +672,9 @@ const Neon = ({
               </CaseStudyTextContainer>
               <div className="px-6 pb-12 grid grid-cols-4 gap-x-4 boss-level-container items-start whitespace-nowrap overflow-auto mt-20 lg:whitespace-normal lg:gap-x-0 no-scroll-bar">
                 <div className="mt-14 lg:pr-2 xl:pr-9">
-                  <Img fluid={blOneImg.childImageSharp.fluid} />
+                  <GatsbyImage
+                    image={blOneImg.childImageSharp.gatsbyImageData}
+                  />
                   <div className="flex items-start mt-4 mx-auto whitespace-normal">
                     <ArrowRight className="transform -rotate-90 w-12 h-auto -ml-2 text-blueRibbon" />
                     <p className="font-courier text-xs flex-1 leading-normal">
@@ -668,26 +684,28 @@ const Neon = ({
                     </p>
                   </div>
                 </div>
-                <Img
+                <GatsbyImage
+                  image={blTwoImg.childImageSharp.gatsbyImageData}
                   className="lg:px-2 xl:px-9"
-                  fluid={blTwoImg.childImageSharp.fluid}
                   imgStyle={{ objectFit: 'contain' }}
                 />
-                <Img
+                <GatsbyImage
+                  image={blThreeImg.childImageSharp.gatsbyImageData}
                   className="lg:px-2 xl:px-9"
-                  fluid={blThreeImg.childImageSharp.fluid}
                   imgStyle={{ objectFit: 'contain' }}
                 />
-                <Img
+                <GatsbyImage
+                  image={blFourImg.childImageSharp.gatsbyImageData}
                   className="mt-32 lg:pl-2 xl:pl-9"
-                  fluid={blFourImg.childImageSharp.fluid}
                   imgStyle={{ objectFit: 'contain', objectPosition: 'right' }}
                 />
               </div>
             </CaseStudyContainer>
             <div className="md:px-6 lg:px-12 max-w-screen-s1536 mx-auto s1440:px-30 s1536:px-52">
               <div className="bg-gray-300 p-3 mt-12 md:px-6 lg:px-33 xl:px-4 s1536:py-17 s1536:px-10">
-                <Img fluid={elementsImg.childImageSharp.fluid} />
+                <GatsbyImage
+                  image={elementsImg.childImageSharp.gatsbyImageData}
+                />
               </div>
             </div>
             <CaseStudyContainer>
@@ -803,173 +821,131 @@ export const CLICKUP_QUERY = graphql`
     }
     HeroImg: file(relativePath: { eq: "case-studies/neon/neon-hero.png" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        gatsbyImageData(placeholder: NONE, layout: FULL_WIDTH)
       }
     }
     payScreens: file(
       relativePath: { eq: "case-studies/neon/neon-pay-screens.png" }
     ) {
       childImageSharp {
-        fluid(maxWidth: 2300) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        gatsbyImageData(placeholder: NONE, layout: FULL_WIDTH)
       }
     }
     orderSummaryImg: file(
       relativePath: { eq: "case-studies/neon/order-summary.png" }
     ) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        gatsbyImageData(placeholder: NONE, layout: FULL_WIDTH)
       }
     }
     marketResearchImg: file(
       relativePath: { eq: "case-studies/neon/market-research-graphic.png" }
     ) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        gatsbyImageData(placeholder: NONE, layout: FULL_WIDTH)
       }
     }
     wishlistOneImg: file(
       relativePath: { eq: "case-studies/neon/wishlist-one.png" }
     ) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        gatsbyImageData(placeholder: NONE, layout: FULL_WIDTH)
       }
     }
     wishlistTwoImg: file(
       relativePath: { eq: "case-studies/neon/wishlist-two.png" }
     ) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        gatsbyImageData(placeholder: NONE, layout: FULL_WIDTH)
       }
     }
     webstoreOneImg: file(
       relativePath: { eq: "case-studies/neon/webstore-one.png" }
     ) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        gatsbyImageData(placeholder: NONE, layout: FULL_WIDTH)
       }
     }
     webstoreTwoImg: file(
       relativePath: { eq: "case-studies/neon/webstore-two.png" }
     ) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        gatsbyImageData(placeholder: NONE, layout: FULL_WIDTH)
       }
     }
     whyNeonImg: file(relativePath: { eq: "case-studies/neon/why-neon.png" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        gatsbyImageData(placeholder: NONE, layout: FULL_WIDTH)
       }
     }
     walletSummaryImg: file(
       relativePath: { eq: "case-studies/neon/wallet-summary.png" }
     ) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        gatsbyImageData(placeholder: NONE, layout: FULL_WIDTH)
       }
     }
     figJamOne: file(relativePath: { eq: "case-studies/neon/fig-jam-one.png" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        gatsbyImageData(placeholder: NONE, layout: FULL_WIDTH)
       }
     }
     figJamTwo: file(relativePath: { eq: "case-studies/neon/fig-jam-two.png" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        gatsbyImageData(placeholder: NONE, layout: FULL_WIDTH)
       }
     }
     figJamThree: file(
       relativePath: { eq: "case-studies/neon/fig-jam-three.png" }
     ) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        gatsbyImageData(placeholder: NONE, layout: FULL_WIDTH)
       }
     }
     fasterCheckoutImg: file(
       relativePath: { eq: "case-studies/neon/faster-checkout.png" }
     ) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        gatsbyImageData(placeholder: NONE, layout: FULL_WIDTH)
       }
     }
     orderSumTwoImg: file(
       relativePath: { eq: "case-studies/neon/order-summary-two.png" }
     ) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        gatsbyImageData(placeholder: NONE, layout: FULL_WIDTH)
       }
     }
     guestCheckoutImg: file(
       relativePath: { eq: "case-studies/neon/guest-checkout.png" }
     ) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        gatsbyImageData(placeholder: NONE, layout: FULL_WIDTH)
       }
     }
     blOneImg: file(relativePath: { eq: "case-studies/neon/bl-one.png" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        gatsbyImageData(placeholder: NONE, layout: FULL_WIDTH)
       }
     }
     blTwoImg: file(relativePath: { eq: "case-studies/neon/bl-two.png" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        gatsbyImageData(placeholder: NONE, layout: FULL_WIDTH)
       }
     }
     blThreeImg: file(relativePath: { eq: "case-studies/neon/bl-three.png" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        gatsbyImageData(placeholder: NONE, layout: FULL_WIDTH)
       }
     }
     blFourImg: file(relativePath: { eq: "case-studies/neon/bl-four.png" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        gatsbyImageData(placeholder: NONE, layout: FULL_WIDTH)
       }
     }
     elementsImg: file(relativePath: { eq: "case-studies/neon/elements.png" }) {
       childImageSharp {
-        fluid(maxWidth: 2300) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        gatsbyImageData(placeholder: NONE, layout: FULL_WIDTH)
       }
     }
     purchaseVideo: file(relativePath: { eq: "neon/neon-purchase.mp4" }) {
@@ -993,4 +969,4 @@ export const CLICKUP_QUERY = graphql`
   }
 `
 
-export default Neon
+// export default Neon

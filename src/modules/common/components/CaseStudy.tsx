@@ -2,7 +2,7 @@ import './styles/CaseStudy.css'
 
 // Packages
 import React from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
@@ -36,13 +36,12 @@ const CaseStudy = ({ caseStudy, layout }: Props) => {
         to={`/case-studies/${caseStudy.slug}/`}
       >
         <div className={`img lg:w-2/5 xl:w-1/3 ${layout}`}>
-          <Img
+          <GatsbyImage
+            image={caseStudy.childImageSharp.gatsbyImageData}
             alt={`${caseStudy.name}`}
             className="lg:w-full lg:h-full lg:object-cover xl:object-contain xl:w-auto"
             fadeIn
-            fluid={caseStudy.listingImage.fluid}
-            imgStyle={{ objectFit: 'cover' }}
-          />
+            imgStyle={{ objectFit: 'cover' }} />
         </div>
         <div className="info bg-white rounded-20 p-10 border border-solid border-black mt-6 flex flex-col lg:w-3/5 lg:mt-0 lg:p-16 xl:w-2/3">
           <div className="header flex items-center justify-between">
@@ -135,7 +134,7 @@ const CaseStudy = ({ caseStudy, layout }: Props) => {
         </div>
       </AniLink>
     </article>
-  )
+  );
 }
 
 export default CaseStudy

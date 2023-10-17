@@ -8,7 +8,7 @@ import { Options } from '@contentful/rich-text-react-renderer'
 import { useRecoilValue } from 'recoil'
 import { graphql, PageProps } from 'gatsby'
 import Sticky from 'react-stickynode'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 
 // Common
 import { classNames } from '@common/utils/classNames'
@@ -81,10 +81,13 @@ const Insight = ({
 
         return (
           <div className="Insight-img">
-            <Img durationFadeIn={125} fadeIn fluid={node.data.target.fluid} />
+            <GatsbyImage
+              image={node.data.childImageSharp.gatsbyImageData}
+              durationFadeIn={125}
+              fadeIn />
             {caption ? <p className="text-caption">{caption}</p> : null}
           </div>
-        )
+        );
       },
 
       [BLOCKS.EMBEDDED_ENTRY]: (node) => {
@@ -128,13 +131,12 @@ const Insight = ({
               return (
                 <div className={imageContainerClassNames}>
                   {isGatsbyImageFluid(asset) ? (
-                    <Img
+                    <GatsbyImage
+                      image={asset.gatsbyImageData}
                       alt={altText}
                       className={imageClassNames}
                       durationFadeIn={125}
-                      fadeIn
-                      fluid={asset.fluid}
-                    />
+                      fadeIn />
                   ) : (
                     <img
                       alt={altText}
@@ -144,18 +146,17 @@ const Insight = ({
                   )}
                   {caption ? <p className="text-caption">{caption}</p> : null}
                 </div>
-              )
+              );
             default:
               return (
                 <div className="Insight-img">
                   {isGatsbyImageFluid(asset) ? (
-                    <Img
+                    <GatsbyImage
+                      image={asset.gatsbyImageData}
                       alt={altText}
                       className={imageType ? imageType.join(' ') : undefined}
                       durationFadeIn={125}
-                      fadeIn
-                      fluid={asset.fluid}
-                    />
+                      fadeIn />
                   ) : (
                     <img
                       alt={altText}
@@ -165,7 +166,7 @@ const Insight = ({
                   )}
                   {caption ? <p className="text-caption">{caption}</p> : null}
                 </div>
-              )
+              );
           }
         }
 

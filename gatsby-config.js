@@ -77,6 +77,7 @@ module.exports = {
     },
     `gatsby-plugin-postcss`,
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-eslint`,
@@ -179,7 +180,6 @@ module.exports = {
     {
       resolve: `gatsby-plugin-netlify`,
       options: {
-        mergeLinkHeaders: false,
         mergeCachingHeaders: false
       }
     },

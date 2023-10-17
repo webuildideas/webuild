@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import { TypeSidebarAd } from '@common/types/Sidebar'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import Arrow from '@static/svgs/cta-arrow.inline.svg'
@@ -77,11 +77,7 @@ export default function SidebarAd({ theAd, excludeEbooks }: Props) {
         <h4 className="text-h4 my-4 text-center lg:text-left">{ad.headline}</h4>
         <div className="md:flex items-center justify-between lg:block">
           <AniLink cover direction="right" duration={1.25} to={`/${link}`}>
-            <Img
-              className="mb-6 md:w-1/2 lg:w-full"
-              fadeIn
-              fluid={imgSources}
-            />
+            <GatsbyImage image={imgSources} className="mb-6 md:w-1/2 lg:w-full" fadeIn />
           </AniLink>
           <div className="flex flex-col md:block md:w-2/5 lg:w-full">
             {ad.copy && <p className="text-caption">{ad.copy}</p>}
@@ -99,7 +95,7 @@ export default function SidebarAd({ theAd, excludeEbooks }: Props) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export const MemoizedSidebarAd = React.memo(SidebarAd)

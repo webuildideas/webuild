@@ -1,6 +1,6 @@
 // Packages
 import React from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 
 // Styles
 import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
@@ -36,25 +36,23 @@ const CaseStudyTestimonial = ({ testimonial }: Props) => {
             </p>
           </div>
           <div className="ServiceTestimonial-cite-image hidden md:block">
-            <Img
+            <GatsbyImage
+              image={testimonial.image.childImageSharp.gatsbyImageData}
               className="headshot"
               durationFadeIn={150}
-              fadeIn
-              fluid={testimonial.image.childImageSharp.fluid}
-            />
+              fadeIn />
           </div>
           <div className="ServiceTestimonial-cite-image md:hidden">
-            <Img
+            <GatsbyImage
+              image={testimonial.image.childImageSharp.gatsbyImageData}
               className="headshot"
               durationFadeIn={150}
-              fadeIn
-              fluid={testimonial.image.childImageSharp.fluid}
-            />
+              fadeIn />
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default CaseStudyTestimonial

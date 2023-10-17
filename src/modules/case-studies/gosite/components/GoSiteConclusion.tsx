@@ -22,19 +22,16 @@ interface Props {
 const GoSiteConclusion = ({ testimonial }: Props) => {
   const [isPlaying, setIsPlaying] = useState(false)
 
-  const { videoCover } = useStaticQuery(graphql`
-    query {
-      videoCover: file(
-        relativePath: { eq: "case-studies/gosite/gosite-video-cover.png" }
-      ) {
-        childImageSharp {
-          fluid(maxWidth: 3000) {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
-          }
-        }
-      }
+  const { videoCover } = useStaticQuery(graphql`{
+  videoCover: file(
+    relativePath: {eq: "case-studies/gosite/gosite-video-cover.png"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(placeholder: NONE, layout: FULL_WIDTH)
     }
-  `)
+  }
+}
+`)
 
   const handlePlay = () => setIsPlaying((playing) => !playing)
   return (
@@ -55,7 +52,7 @@ const GoSiteConclusion = ({ testimonial }: Props) => {
             className="react-player"
             controls={true}
             height="100%"
-            light={videoCover.childImageSharp.fluid.src}
+            light={videoCover.childImageSharp.gatsbyImageData.src}
             playing={isPlaying}
             playsinline={true}
             url={videoSrc}
@@ -105,7 +102,7 @@ const GoSiteConclusion = ({ testimonial }: Props) => {
         </p>
       </div>
     </div>
-  )
+  );
 }
 
 export default GoSiteConclusion

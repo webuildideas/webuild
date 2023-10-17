@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 
 // Styles
 import './styles/QuadpayChallengeSolution.css'
@@ -28,41 +28,30 @@ const Solution = () => (
 )
 
 const QuadpayChallengeSolution = () => {
-  const { metrics, metricsMobile, metricsTablet } = useStaticQuery(graphql`
-    query {
-      metricsMobile: file(
-        relativePath: {
-          eq: "case-studies/quadpay/quadpay-intro-metrics-mobile.png"
-        }
-      ) {
-        childImageSharp {
-          fluid(maxWidth: 600) {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
-          }
-        }
-      }
-      metricsTablet: file(
-        relativePath: {
-          eq: "case-studies/quadpay/quadpay-intro-metrics-tablet.png"
-        }
-      ) {
-        childImageSharp {
-          fluid(maxWidth: 600) {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
-          }
-        }
-      }
-      metrics: file(
-        relativePath: { eq: "case-studies/quadpay/quadpay-intro-metrics.png" }
-      ) {
-        childImageSharp {
-          fluid(maxWidth: 600) {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
-          }
-        }
-      }
+  const { metrics, metricsMobile, metricsTablet } = useStaticQuery(graphql`{
+  metricsMobile: file(
+    relativePath: {eq: "case-studies/quadpay/quadpay-intro-metrics-mobile.png"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(width: 600, placeholder: NONE, layout: CONSTRAINED)
     }
-  `)
+  }
+  metricsTablet: file(
+    relativePath: {eq: "case-studies/quadpay/quadpay-intro-metrics-tablet.png"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(width: 600, placeholder: NONE, layout: CONSTRAINED)
+    }
+  }
+  metrics: file(
+    relativePath: {eq: "case-studies/quadpay/quadpay-intro-metrics.png"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(width: 600, placeholder: NONE, layout: CONSTRAINED)
+    }
+  }
+}
+`)
 
   return (
     <div className="QuadpayChallengeSolution">
@@ -71,12 +60,11 @@ const QuadpayChallengeSolution = () => {
           <h3 className="text-h3 font-extrabold mb-4">
             The “Buy now, pay later” movement.
           </h3>
-          <Img
+          <GatsbyImage
+            image={metricsMobile.childImageSharp.gatsbyImageData}
             className="QuadpayChallengeSolution-metrics-img-mobile"
             durationFadeIn={150}
-            fadeIn
-            fluid={metricsMobile.childImageSharp.fluid}
-          />
+            fadeIn />
           <p className="text-body mb-4 md:mb-6 lg:mb-8">
             Quadpay is a Fintech app that allows payments to be split into four
             installments. They're part of a larger "buy now, pay later" movement
@@ -90,24 +78,22 @@ const QuadpayChallengeSolution = () => {
           </p>
         </div>
 
-        <Img
+        <GatsbyImage
+          image={metricsTablet.childImageSharp.gatsbyImageData}
           className="QuadpayChallengeSolution-metrics-img-tablet"
           durationFadeIn={150}
-          fadeIn
-          fluid={metricsTablet.childImageSharp.fluid}
-        />
+          fadeIn />
 
-        <Img
+        <GatsbyImage
+          image={metrics.childImageSharp.gatsbyImageData}
           className="QuadpayChallengeSolution-metrics-img"
           durationFadeIn={150}
-          fadeIn
-          fluid={metrics.childImageSharp.fluid}
-        />
+          fadeIn />
       </div>
 
       <ChallengeSolution challenge={<Challenge />} solution={<Solution />} />
     </div>
-  )
+  );
 }
 
 export default QuadpayChallengeSolution

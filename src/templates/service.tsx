@@ -175,14 +175,10 @@ export const SERVICE_PAGE_QUERY = graphql`
           raw
         }
         mainHeadshot {
-          fluid(maxWidth: 500) {
-            ...GatsbyContentfulFluid_withWebp_noBase64
-          }
+          gatsbyImageData(width: 500)
         }
         featuredHeadshot {
-          fluid(maxWidth: 500) {
-            ...GatsbyContentfulFluid_withWebp_noBase64
-          }
+          gatsbyImageData(width: 500)
         }
       }
       caseStudies {
@@ -201,9 +197,7 @@ export const SERVICE_PAGE_QUERY = graphql`
           }
         }
         listingImage {
-          fluid(maxWidth: 625) {
-            ...GatsbyContentfulFluid_withWebp_noBase64
-          }
+          gatsbyImageData(width: 625)
         }
       }
       secondContentBlock {

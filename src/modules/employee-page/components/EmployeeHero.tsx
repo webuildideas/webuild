@@ -1,6 +1,6 @@
 import React from 'react'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
 
 // Components
@@ -62,12 +62,12 @@ const EmployeeHero = ({
             </div>
           </div>
           <div className="employee-hero__images">
-            <Img fadeIn fluid={headshot.fluid} />
+            <GatsbyImage image={headshot.gatsbyImageData} fadeIn />
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 export default EmployeeHero

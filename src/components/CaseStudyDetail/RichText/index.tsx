@@ -8,7 +8,7 @@ import { BLOCKS } from '@contentful/rich-text-types'
 import { Options } from '@contentful/rich-text-react-renderer'
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation, Variants } from 'framer-motion'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 
 // Commons
 import { TypeCarousel } from '@common/types/Carousel'
@@ -64,9 +64,9 @@ const CaseStudyRichText = ({ document }: Props) => {
             initial="hidden"
             variants={variants}
           >
-            <Img {...node.data.target} durationFadeIn={300} fadeIn />
+            <GatsbyImage {...node.data.target} durationFadeIn={300} fadeIn />
           </motion.div>
-        )
+        );
       },
       [BLOCKS.HEADING_2]: (_, children) => (
         <motion.h2

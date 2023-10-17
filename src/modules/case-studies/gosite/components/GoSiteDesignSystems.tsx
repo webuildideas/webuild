@@ -1,7 +1,7 @@
 // Packages
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 
 // SVGs
 import DesignSystems from '@static/svgs/service/circle/design-systems-circle.inline.svg'
@@ -28,237 +28,181 @@ const GoSiteDesignSystems = () => {
     webAppXl,
     webApp2xl
   } = useStaticQuery(
-    graphql`
-      query {
-        dsMobile: file(
-          relativePath: {
-            eq: "case-studies/gosite/gosite-design-system-mobile.png"
-          }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 600, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
-
-        dsMd: file(
-          relativePath: {
-            eq: "case-studies/gosite/gosite-design-system-md.png"
-          }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 1500, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
-
-        dsLg: file(
-          relativePath: {
-            eq: "case-studies/gosite/gosite-design-system-lg.png"
-          }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 2000, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
-
-        dsXl: file(
-          relativePath: {
-            eq: "case-studies/gosite/gosite-design-system-xl.png"
-          }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 2800, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
-
-        ds2xl: file(
-          relativePath: {
-            eq: "case-studies/gosite/gosite-design-system-2xl.png"
-          }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 5000, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
-
-        ddMobile: file(
-          relativePath: {
-            eq: "case-studies/gosite/gosite-design-decisions-mobile.png"
-          }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 600, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
-
-        ddMd: file(
-          relativePath: {
-            eq: "case-studies/gosite/gosite-design-decisions-md.png"
-          }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 1500, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
-
-        ddLg: file(
-          relativePath: {
-            eq: "case-studies/gosite/gosite-design-decisions-lg.png"
-          }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 2000, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
-
-        ddXl: file(
-          relativePath: {
-            eq: "case-studies/gosite/gosite-design-decisions-xl.png"
-          }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 2800, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
-
-        dd2xl: file(
-          relativePath: {
-            eq: "case-studies/gosite/gosite-design-decisions-2xl.png"
-          }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 5000, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
-
-        webAppMobile: file(
-          relativePath: { eq: "case-studies/gosite/gosite-web-app-mobile.jpg" }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 600, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
-
-        webAppMd: file(
-          relativePath: { eq: "case-studies/gosite/gosite-web-app-md.jpg" }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 1500, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
-
-        webAppLg: file(
-          relativePath: { eq: "case-studies/gosite/gosite-web-app-lg.jpg" }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 2000, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
-
-        webAppXl: file(
-          relativePath: { eq: "case-studies/gosite/gosite-web-app-xl.jpg" }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 2800, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
-
-        webApp2xl: file(
-          relativePath: { eq: "case-studies/gosite/gosite-web-app-2xl.jpg" }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 5000, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
-      }
-    `
+    graphql`{
+  dsMobile: file(
+    relativePath: {eq: "case-studies/gosite/gosite-design-system-mobile.png"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(
+        width: 600
+        quality: 100
+        placeholder: NONE
+        layout: CONSTRAINED
+      )
+    }
+  }
+  dsMd: file(
+    relativePath: {eq: "case-studies/gosite/gosite-design-system-md.png"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, placeholder: NONE, layout: FULL_WIDTH)
+    }
+  }
+  dsLg: file(
+    relativePath: {eq: "case-studies/gosite/gosite-design-system-lg.png"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, placeholder: NONE, layout: FULL_WIDTH)
+    }
+  }
+  dsXl: file(
+    relativePath: {eq: "case-studies/gosite/gosite-design-system-xl.png"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, placeholder: NONE, layout: FULL_WIDTH)
+    }
+  }
+  ds2xl: file(
+    relativePath: {eq: "case-studies/gosite/gosite-design-system-2xl.png"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, placeholder: NONE, layout: FULL_WIDTH)
+    }
+  }
+  ddMobile: file(
+    relativePath: {eq: "case-studies/gosite/gosite-design-decisions-mobile.png"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(
+        width: 600
+        quality: 100
+        placeholder: NONE
+        layout: CONSTRAINED
+      )
+    }
+  }
+  ddMd: file(
+    relativePath: {eq: "case-studies/gosite/gosite-design-decisions-md.png"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, placeholder: NONE, layout: FULL_WIDTH)
+    }
+  }
+  ddLg: file(
+    relativePath: {eq: "case-studies/gosite/gosite-design-decisions-lg.png"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, placeholder: NONE, layout: FULL_WIDTH)
+    }
+  }
+  ddXl: file(
+    relativePath: {eq: "case-studies/gosite/gosite-design-decisions-xl.png"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, placeholder: NONE, layout: FULL_WIDTH)
+    }
+  }
+  dd2xl: file(
+    relativePath: {eq: "case-studies/gosite/gosite-design-decisions-2xl.png"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, placeholder: NONE, layout: FULL_WIDTH)
+    }
+  }
+  webAppMobile: file(
+    relativePath: {eq: "case-studies/gosite/gosite-web-app-mobile.jpg"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(
+        width: 600
+        quality: 100
+        placeholder: NONE
+        layout: CONSTRAINED
+      )
+    }
+  }
+  webAppMd: file(relativePath: {eq: "case-studies/gosite/gosite-web-app-md.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, placeholder: NONE, layout: FULL_WIDTH)
+    }
+  }
+  webAppLg: file(relativePath: {eq: "case-studies/gosite/gosite-web-app-lg.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, placeholder: NONE, layout: FULL_WIDTH)
+    }
+  }
+  webAppXl: file(relativePath: {eq: "case-studies/gosite/gosite-web-app-xl.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, placeholder: NONE, layout: FULL_WIDTH)
+    }
+  }
+  webApp2xl: file(
+    relativePath: {eq: "case-studies/gosite/gosite-web-app-2xl.jpg"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, placeholder: NONE, layout: FULL_WIDTH)
+    }
+  }
+}
+`
   )
 
   const designSystemSources = [
-    dsMobile.childImageSharp.fluid,
+    dsMobile.childImageSharp.gatsbyImageData,
     {
-      ...ds2xl.childImageSharp.fluid,
+      ...ds2xl.childImageSharp.gatsbyImageData,
       media: `(min-width: 2560px)`
     },
     {
-      ...dsXl.childImageSharp.fluid,
+      ...dsXl.childImageSharp.gatsbyImageData,
       media: `(min-width: 1280px)`
     },
     {
-      ...dsLg.childImageSharp.fluid,
+      ...dsLg.childImageSharp.gatsbyImageData,
       media: `(min-width: 1024px)`
     },
     {
-      ...dsMd.childImageSharp.fluid,
+      ...dsMd.childImageSharp.gatsbyImageData,
       media: `(min-width: 768px)`
     }
   ]
 
   const designDecisionsSources = [
-    ddMobile.childImageSharp.fluid,
+    ddMobile.childImageSharp.gatsbyImageData,
     {
-      ...dd2xl.childImageSharp.fluid,
+      ...dd2xl.childImageSharp.gatsbyImageData,
       media: `(min-width: 2560px)`
     },
     {
-      ...ddXl.childImageSharp.fluid,
+      ...ddXl.childImageSharp.gatsbyImageData,
       media: `(min-width: 1280px)`
     },
     {
-      ...ddLg.childImageSharp.fluid,
+      ...ddLg.childImageSharp.gatsbyImageData,
       media: `(min-width: 1024px)`
     },
     {
-      ...ddMd.childImageSharp.fluid,
+      ...ddMd.childImageSharp.gatsbyImageData,
       media: `(min-width: 768px)`
     }
   ]
 
   const webAppSources = [
-    webAppMobile.childImageSharp.fluid,
+    webAppMobile.childImageSharp.gatsbyImageData,
     {
-      ...webApp2xl.childImageSharp.fluid,
+      ...webApp2xl.childImageSharp.gatsbyImageData,
       media: `(min-width: 2560px)`
     },
     {
-      ...webAppXl.childImageSharp.fluid,
+      ...webAppXl.childImageSharp.gatsbyImageData,
       media: `(min-width: 1280px)`
     },
     {
-      ...webAppLg.childImageSharp.fluid,
+      ...webAppLg.childImageSharp.gatsbyImageData,
       media: `(min-width: 1024px)`
     },
     {
-      ...webAppMd.childImageSharp.fluid,
+      ...webAppMd.childImageSharp.gatsbyImageData,
       media: `(min-width: 768px)`
     }
   ]
@@ -303,12 +247,11 @@ const GoSiteDesignSystems = () => {
           </p>
         </div>
       </div>
-      <Img
+      <GatsbyImage
+        image={designSystemSources}
         className="GoSiteDesignSystems-img"
         durationFadeIn={150}
-        fadeIn
-        fluid={designSystemSources}
-      />
+        fadeIn />
       <p className="GoSiteDesignSystems-copy text-body">
         Next, we worked on{' '}
         <MotionAniLink
@@ -326,12 +269,11 @@ const GoSiteDesignSystems = () => {
         relentlessly and rapidly enhancing core features product-by-product as
         we continue to listen to user observations.
       </p>
-      <Img
+      <GatsbyImage
+        image={designDecisionsSources}
         className="GoSiteDesignSystems-decisions-img"
         durationFadeIn={150}
-        fadeIn
-        fluid={designDecisionsSources}
-      />
+        fadeIn />
       <p className="GoSiteDesignSystems-copy text-body mb-4 md:mb-6 lg:mb-8">
         Since small business owners are often on the go, GoSite needed a more
         mobile-friendly app. What they had before worked, but it wasn’t the
@@ -350,14 +292,13 @@ const GoSiteDesignSystems = () => {
         that champions the service-based small business owner.
       </p>
 
-      <Img
+      <GatsbyImage
+        image={webAppSources}
         className="GoSiteDesignSystems-webApp-img"
         durationFadeIn={150}
-        fadeIn
-        fluid={webAppSources}
-      />
+        fadeIn />
     </div>
-  )
+  );
 }
 
 export default GoSiteDesignSystems

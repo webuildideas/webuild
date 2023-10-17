@@ -1,6 +1,6 @@
 // Packages
 import React from 'react'
-import Img, { FluidObject } from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import { motion } from 'framer-motion'
 
 // Common
@@ -57,7 +57,7 @@ const CaseStudyHero = ({
         }}
         transition={{ duration: 0.75, delay: 0.25 }}
       >
-        <Img durationFadeIn={125} fadeIn fluid={heroImg} />
+        <GatsbyImage image={heroImg} durationFadeIn={125} fadeIn />
       </motion.div>
     </SiteMaxWidthContainer>
   </S.CaseStudyHero>

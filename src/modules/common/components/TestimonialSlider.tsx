@@ -1,6 +1,6 @@
 // Packages
 import React, { useCallback, useEffect, useState } from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation, Variants } from 'framer-motion'
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
@@ -66,21 +66,19 @@ const TestimonialDot = ({
     <div className={dotClasses} onClick={onClick} role="button">
       <div className="Testimonial__client-headshot">
         {selected ? (
-          <Img
+          <GatsbyImage
+            image={t.childImageSharp.gatsbyImageData}
             alt={`${t.name} headshot`}
-            fixed={t.headshot.fixed}
-            style={{ width: '100%', height: '100%' }}
-          />
+            style={{ width: '100%', height: '100%' }} />
         ) : (
-          <Img
+          <GatsbyImage
+            image={t.childImageSharp.gatsbyImageData}
             alt={`${t.name} headshot`}
-            fixed={t.purpleHeadshot.fixed}
-            style={{ width: '100%', height: '100%' }}
-          />
+            style={{ width: '100%', height: '100%' }} />
         )}
       </div>
     </div>
-  )
+  );
 }
 
 const TestimonialSlider = ({ testimonials }: Props) => {
@@ -154,10 +152,9 @@ const TestimonialSlider = ({ testimonials }: Props) => {
               >
                 {testimonial.mainHeadshot?.fluid ? (
                   <div className="TestimonialSlider-featured-headshot">
-                    <Img
-                      className="headshot"
-                      fluid={testimonial.mainHeadshot?.fluid}
-                    />
+                    <GatsbyImage
+                      image={testimonial?.childImageSharp?.gatsbyImageData}
+                      className="headshot" />
                     <div className="mt-4">
                       <h5 className="text-caption font-extrabold">
                         {testimonial.name}
@@ -179,7 +176,7 @@ const TestimonialSlider = ({ testimonials }: Props) => {
                   </cite>
                 </blockquote>
               </motion.div>
-            )
+            );
           })}
         </Carousel>
         <div className="TestimonialSlider-controls">
@@ -205,7 +202,7 @@ const TestimonialSlider = ({ testimonials }: Props) => {
         </div>
       </motion.div>
     </div>
-  )
+  );
 }
 
 export default TestimonialSlider

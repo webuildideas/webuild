@@ -1,7 +1,7 @@
 // Packages
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 
 // Svgs
 import Growth from '@static/svgs/case-studies/gosite/metrics-growth.inline.svg'
@@ -49,97 +49,72 @@ const GoSiteSummary = () => {
     product2xl,
     process
   } = useStaticQuery(
-    graphql`
-      query {
-        productMobile: file(
-          relativePath: {
-            eq: "case-studies/gosite/gosite-product-feature-mobile.png"
-          }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 600, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
-
-        productMd: file(
-          relativePath: {
-            eq: "case-studies/gosite/gosite-product-feature-md.png"
-          }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 1500, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
-
-        productLg: file(
-          relativePath: {
-            eq: "case-studies/gosite/gosite-product-feature-lg.png"
-          }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 2000, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
-
-        productXl: file(
-          relativePath: {
-            eq: "case-studies/gosite/gosite-product-feature-xl.png"
-          }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 2800, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
-
-        product2xl: file(
-          relativePath: {
-            eq: "case-studies/gosite/gosite-product-feature-2xl.png"
-          }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 5000, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
-
-        process: file(
-          relativePath: { eq: "case-studies/gosite/gosite-process.png" }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 5000, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
-      }
-    `
+    graphql`{
+  productMobile: file(
+    relativePath: {eq: "case-studies/gosite/gosite-product-feature-mobile.png"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(
+        width: 600
+        quality: 100
+        placeholder: NONE
+        layout: CONSTRAINED
+      )
+    }
+  }
+  productMd: file(
+    relativePath: {eq: "case-studies/gosite/gosite-product-feature-md.png"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, placeholder: NONE, layout: FULL_WIDTH)
+    }
+  }
+  productLg: file(
+    relativePath: {eq: "case-studies/gosite/gosite-product-feature-lg.png"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, placeholder: NONE, layout: FULL_WIDTH)
+    }
+  }
+  productXl: file(
+    relativePath: {eq: "case-studies/gosite/gosite-product-feature-xl.png"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, placeholder: NONE, layout: FULL_WIDTH)
+    }
+  }
+  product2xl: file(
+    relativePath: {eq: "case-studies/gosite/gosite-product-feature-2xl.png"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, placeholder: NONE, layout: FULL_WIDTH)
+    }
+  }
+  process: file(relativePath: {eq: "case-studies/gosite/gosite-process.png"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, placeholder: NONE, layout: FULL_WIDTH)
+    }
+  }
+}
+`
   )
 
   const productFeatureSources = [
-    productMobile.childImageSharp.fluid,
+    productMobile.childImageSharp.gatsbyImageData,
     {
-      ...product2xl.childImageSharp.fluid,
+      ...product2xl.childImageSharp.gatsbyImageData,
       media: `(min-width: 2560px)`
     },
     {
-      ...productXl.childImageSharp.fluid,
+      ...productXl.childImageSharp.gatsbyImageData,
       media: `(min-width: 1280px)`
     },
     {
-      ...productLg.childImageSharp.fluid,
+      ...productLg.childImageSharp.gatsbyImageData,
       media: `(min-width: 1024px)`
     },
     {
-      ...productMd.childImageSharp.fluid,
+      ...productMd.childImageSharp.gatsbyImageData,
       media: `(min-width: 768px)`
     }
   ]
@@ -185,12 +160,11 @@ const GoSiteSummary = () => {
           ))}
         </div>
       </div>
-      <Img
+      <GatsbyImage
+        image={productFeatureSources}
         className="GoSiteSummary-product-img"
         durationFadeIn={150}
-        fadeIn
-        fluid={productFeatureSources}
-      />
+        fadeIn />
 
       <div className="GoSitesummary-summary-content">
         <p className="text-body mb-4 md:mb-6 lg:mb-8">
@@ -212,14 +186,13 @@ const GoSiteSummary = () => {
         </p>
       </div>
 
-      <Img
+      <GatsbyImage
+        image={process.childImageSharp.gatsbyImageData}
         className="GoSiteSummary-process-img"
         durationFadeIn={150}
-        fadeIn
-        fluid={process.childImageSharp.fluid}
-      />
+        fadeIn />
     </div>
-  )
+  );
 }
 
 export default GoSiteSummary

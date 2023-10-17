@@ -3,7 +3,7 @@ import './styles/TeamTestimonialSlider.css'
 
 // Packages
 import React, { useCallback, useEffect, useState } from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import { useInView } from 'react-intersection-observer'
 import { motion, useAnimation, Variants } from 'framer-motion'
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
@@ -146,19 +146,18 @@ const TestimonialSlider = ({ testimonials }: Props) => {
 
                 {testimonial.featuredHeadshot?.fluid ? (
                   <div className="TeamTestimonialSlider__featured-headshot">
-                    <Img
-                      className="headshot"
-                      fluid={testimonial.featuredHeadshot?.fluid}
-                    />
+                    <GatsbyImage
+                      image={testimonial?.childImageSharp?.gatsbyImageData}
+                      className="headshot" />
                   </div>
                 ) : null}
               </motion.div>
-            )
+            );
           })}
         </Carousel>
       </motion.div>
     </div>
-  )
+  );
 }
 
 export default TestimonialSlider

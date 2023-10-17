@@ -16,7 +16,7 @@ import videoSrc from '@static/videos/Showreel.mp4'
 
 import FancyArrow from '@static/svgs/fancy-arrow-right.inline.svg'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import TestimonialSlider from '@modules/new-home/TestimonialSlider'
 import NewFooter from '@modules/common/components/NewFooter'
 import { Helmet } from 'react-helmet'
@@ -24,12 +24,10 @@ import { Helmet } from 'react-helmet'
 import '@common/styles/pages/new-home.css'
 
 const NEW_HOME_PAGE_QUERY = graphql`
-  query query {
+  query {
     weTeam: file(relativePath: { eq: "we-build-team-new.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 1200, quality: 100) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
-        }
+        gatsbyImageData(quality: 100, placeholder: NONE, layout: FULL_WIDTH)
       }
     }
     contentfulHomePage(pageTitle: { eq: "Home" }) {
@@ -38,9 +36,7 @@ const NEW_HOME_PAGE_QUERY = graphql`
         tagline
         slug
         carouselImage {
-          fluid {
-            ...GatsbyContentfulFluid_withWebp_noBase64
-          }
+          gatsbyImageData(layout: FULL_WIDTH)
         }
         carouselServices
       }
@@ -52,9 +48,7 @@ const NEW_HOME_PAGE_QUERY = graphql`
         name
         role
         bwHeadshot {
-          fluid {
-            ...GatsbyContentfulFluid_withWebp_noBase64
-          }
+          gatsbyImageData(layout: FULL_WIDTH)
         }
         companyLogo {
           file {
@@ -89,10 +83,10 @@ const CaseStudy = ({ data }) => {
         {data.carouselServices ? data.carouselServices : `Branding`}
       </span>
       <div className="image my-8 w-full h-auto">
-        <Img
+        <GatsbyImage
+          image={data.childImageSharp.gatsbyImageData}
           className="w-full h-full"
           fadeIn
-          fluid={data.carouselImage.fluid}
         />
       </div>
 
@@ -394,10 +388,10 @@ const IndexPage = ({ location }) => {
           <div className="absolute top-0 left-0 w-full h-full grid place-items-center">
             <div className="w-px h-full bg-blueRibbon origin-top line transform scale-y-0" />
           </div>
-          <Img
+          <GatsbyImage
+            image={weTeam.childImageSharp.gatsbyImageData}
             className="w-full h-full"
             fadeIn
-            fluid={weTeam.childImageSharp.fluid}
             imgStyle={{
               transition: `transform 1.3s cubic-bezier(0.16, 1, 0.3, 1)`
             }}

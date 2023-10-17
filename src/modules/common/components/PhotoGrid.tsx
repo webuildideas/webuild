@@ -1,6 +1,6 @@
 // Packages
 import React, { useEffect } from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import { useAnimation, Variants, motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 
@@ -90,16 +90,15 @@ const PhotoGrid = ({ photos }: Props) => {
           initial={`image${idx + 1}Hidden`}
           variants={variants}
         >
-          <Img
+          <GatsbyImage
+            image={photo.gatsbyImageData}
             alt="webuild Team photos"
             durationFadeIn={275}
-            fadeIn
-            fluid={photo.fluid}
-          />
+            fadeIn />
         </motion.div>
       ))}
     </div>
-  )
+  );
 }
 
 export default PhotoGrid

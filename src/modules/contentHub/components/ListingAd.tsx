@@ -5,7 +5,7 @@ import Arrow from '@static/svgs/cta-arrow.inline.svg'
 
 import { TypeInsightTypeIconConfig } from '@modules/common/components/configs/InsightTags'
 import { TypeInsightType } from '@common/types/Insight'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 
 // Styles
 import './styles/ListingAd.css'
@@ -105,11 +105,14 @@ const ListingAd = ({ ad }: Props) => {
       </div>
       <div className="listing-ad__image">
         <AniLink cover direction="right" duration={1.25} to={`/${link}`}>
-          <Img className="h-full lg:h-auto" fadeIn fluid={ad.image.fluid} />
+          <GatsbyImage
+            image={ad.childImageSharp.gatsbyImageData}
+            className="h-full lg:h-auto"
+            fadeIn />
         </AniLink>
       </div>
     </motion.article>
-  )
+  );
 }
 
 export default ListingAd
