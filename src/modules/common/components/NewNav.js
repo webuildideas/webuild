@@ -200,7 +200,7 @@ export default function NewNav() {
             ref={dropWorkContainerRef}
             className="drop-container box-content"
           >
-            <div className="drop-container__wrapper flex flex-col gap-y-5 pl-7 pb-6 lg:h-full lg:gap-y-1 lg:justify-center lg:text-lg lg:items-start">
+            <div className="drop-container__wrapper flex flex-col gap-y-5 pl-7 pb-6 lg:h-full lg:gap-y-1 lg:justify-start lg:text-lg lg:items-start">
               <AniLink
                 bg="#F3F3F3"
                 className="block sub-item box-content lg:flex lg:items-center"
@@ -531,7 +531,7 @@ export default function NewNav() {
             </div>
           </div>
 
-          <AniLink
+          {/* <AniLink
             bg="#F3F3F3"
             className="block nav-link nav-link-3 font-extralight text-5xl md:text-7xl group mb-6"
             cover
@@ -546,6 +546,7 @@ export default function NewNav() {
               team
             </span>
           </AniLink>
+            */}
           <AniLink
             bg="#F3F3F3"
             className="block nav-link nav-link-4 font-extralight text-5xl md:text-7xl group mb-6"

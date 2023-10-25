@@ -48,7 +48,6 @@
       grid-template-areas:
         'parent1 child'
         'parent2 child'
-        'parent3 child'
         'parent4 child';
 
       .nav-link-1 {
@@ -61,7 +60,7 @@
         grid-area: 3;
       }
       .nav-link-4 {
-        grid-area: 4;
+        grid-area: 3;
       }
     }
   }
