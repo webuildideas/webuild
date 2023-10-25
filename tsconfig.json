@@ -21,12 +21,12 @@
     "stripInternal": true,
     "baseUrl": ".",
     "paths": {
-      "@common/*":  ["./src/common/*"],
-      "@modules/*":  ["./src/modules/*"],
-      "@components/*":  ["./src/components/*"],
+      "@common/*": ["./src/common/*"],
+      "@modules/*": ["./src/modules/*"],
+      "@components/*": ["./src/components/*"],
       "@static/*": ["./src/static/*"],
-      "@exampleData/*": ["./src/exampleData/*"],
-    },
+      "@exampleData/*": ["./src/exampleData/*"]
+    }
   },
   "exclude": [
     "node_modules",
@@ -37,5 +37,9 @@
     "./gatsby-browser.js",
     "./gatsby-ssr.js"
   ],
-  "include": ["./src/**/*"]
+  "include": [
+    "./src/**/*",
+    "removedPages/who-we-are.tsx",
+    "removedPages/careers.tsx"
+  ]
 }

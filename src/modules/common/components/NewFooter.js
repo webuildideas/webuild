@@ -100,7 +100,7 @@ export default function NewFooter() {
             >
               our <span className="font-crimson text-xl italic">services</span>
             </AniLink>
-            <AniLink
+            {/* <AniLink
               bg="#F3F3F3"
               className="block text-white font-extralight hover:font-bold transition-all ease-in-out duration-300"
               cover
@@ -109,7 +109,7 @@ export default function NewFooter() {
               to="/who-we-are/"
             >
               our <span className="font-crimson text-xl italic">team</span>
-            </AniLink>
+            </AniLink> */}
             <AniLink
               bg="#F3F3F3"
               className="block text-white font-extralight hover:font-bold transition-all ease-in-out duration-300"
