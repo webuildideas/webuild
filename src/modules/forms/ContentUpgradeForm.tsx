@@ -184,8 +184,6 @@ const ContentUpgradeForm = ({
         >
           {({ isSubmitting, errors }: FormikProps<FormValues>) => (
             <Form
-              data-netlify={true}
-              data-netlify-honeypot="bot-field"
               name="content-upgrade-form"
             >
               {!userHasCompletedForm ? (

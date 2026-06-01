@@ -153,13 +153,10 @@ const BookACallForm = ({
             isValid
           }: FormikProps<FormValues>) => (
             <Form
-              data-netlify={true}
-              data-netlify-honeypot="bot-field"
               name="book-a-call-form"
             >
               <h3 className="BookACallForm-title text-h3 mb-6">Book a call</h3>
 
-              <input name="form-name" type="hidden" value="book-a-call-form" />
               <input name="bot-field" type="hidden" />
 
               <div className="BookACall-row mb-6">

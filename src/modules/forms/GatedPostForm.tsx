@@ -111,11 +111,8 @@ const GatedPostForm = ({ className, postTitle, postId }: Props) => {
         >
           {({ isSubmitting, errors }: FormikProps<FormValues>) => (
             <Form
-              data-netlify={true}
-              data-netlify-honeypot="bot-field"
               name="gated-post-form"
             >
-              <input name="form-name" type="hidden" value="gated-post-form" />
               <input
                 name="subject"
                 type="hidden"

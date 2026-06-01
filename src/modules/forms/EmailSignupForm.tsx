@@ -120,11 +120,8 @@ const EmailSignupForm = ({ location }: Props) => {
       >
         {({ isSubmitting, values, errors }: FormikProps<FormValues>) => (
           <Form
-            data-netlify={true}
-            data-netlify-honeypot="bot-field"
             name="email-signup-form"
           >
-            <input name="form-name" type="hidden" value="email-signup-form" />
             <input
               name="subject"
               type="hidden"

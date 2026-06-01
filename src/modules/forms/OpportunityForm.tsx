@@ -164,13 +164,10 @@ const OpportunityForm = ({
       >
         {({ isSubmitting, values, errors }: FormikProps<FormValues>) => (
           <Form
-            data-netlify={true}
-            data-netlify-honeypot="bot-field"
             name="opportunity-form"
           >
             {/* <TextInput className="hidden" name="Lead Source" type="text" />
             <TextInput className="hidden" name="Page URL" type="text" /> */}
-            <input name="form-name" type="hidden" value="opportunity-form" />
             <input
               name="subject"
               type="hidden"

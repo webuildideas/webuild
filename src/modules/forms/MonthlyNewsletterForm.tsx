@@ -225,8 +225,6 @@ const MonthlyNewsletterForm = ({
             >
               {({ isSubmitting, values, errors }: FormikProps<FormValues>) => (
                 <Form
-                  data-netlify={true}
-                  data-netlify-honeypot="bot-field"
                   name="monthly-newsletter-form"
                 >
                   <input

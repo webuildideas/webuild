@@ -229,11 +229,8 @@ const ContactForm = () => {
       >
         {({ isSubmitting, values, errors }: FormikProps<FormValues>) => (
           <Form
-            data-netlify={true}
-            data-netlify-honeypot="bot-field"
             name="contact-form"
           >
-            <input name="form-name" type="hidden" value="contact-form" />
             <input
               name="subject"
               type="hidden"
