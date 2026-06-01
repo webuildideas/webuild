@@ -44,7 +44,7 @@ export default function NewFooter() {
           Take your product efforts to the next level. Drop us a line.
         </p>
         <a
-          className="fade-in block flex items-center border border-solid rounded-full font-light px-10 py-7 mt-12 text-gray-100"
+          className="fade-in inline-flex items-center border border-solid rounded-full font-light px-10 py-7 mt-12 text-gray-100"
           href="mailto:hello@webuild.io"
         >
           Let's go!
