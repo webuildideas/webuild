@@ -9,7 +9,6 @@ import Img from 'gatsby-image'
 import NewFooter from '@modules/common/components/NewFooter'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import ReactPlayer from 'react-player'
-import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModal'
 import { useLongPress } from 'use-long-press'
 import TapIcon from '../../static/svgs/tap-icon.inline.svg'
 import PlayIcon from '../../static/svgs/play-icon-large.inline.svg'
@@ -243,8 +242,6 @@ const Quadpay = ({
     setModalClasses('z-0 opacity-0 pointer-events-none')
     setIsVideoPlaying(!isVideoPlaying)
   }
-
-  const { showModal } = useOpportunityFormModal()
 
   return (
     <>

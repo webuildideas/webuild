@@ -9,12 +9,9 @@ import InstagramIcon from '@static/svgs/common/social/instagram.inline.svg'
 import LinkedinIcon from '@static/svgs/common/social/linkedin.inline.svg'
 import DribbbleIcon from '@static/svgs/common/social/dribbble.inline.svg'
 import InstagramGradient from '@static/svgs/common/social/instagram-gradient.inline.svg'
-// Forms
-import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModal'
 import './styles/NewFooter.css'
 
 export default function NewFooter() {
-  const { showModal } = useOpportunityFormModal()
   const footerRef = useRef(null)
   gsap.registerPlugin(ScrollTrigger)
   useEffect(() => {
@@ -46,10 +43,9 @@ export default function NewFooter() {
         <p className="font-light text-base w-11/12 mt-8 leading-relaxed fade-in">
           Take your product efforts to the next level. Drop us a line.
         </p>
-        <button
+        <a
           className="fade-in block flex items-center border border-solid rounded-full font-light px-10 py-7 mt-12 text-gray-100"
-          onClick={showModal}
-          type="button"
+          href="mailto:hello@webuild.io"
         >
           Let's go!
           <svg
@@ -65,7 +61,7 @@ export default function NewFooter() {
               fillRule="evenodd"
             />
           </svg>
-        </button>
+        </a>
       </div>
       <div className="secondary-footer px-6 pt-8 border-solid border-t border-gray-700">
         <div className="secondary-footer__wrapper m-auto md:flex md:items-center md:justify-between max-w-screen-1536">

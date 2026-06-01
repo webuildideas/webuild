@@ -13,7 +13,6 @@ import { TypeService } from '@common/types/Service'
 import OtherServices from '@modules/service/components/OtherServices'
 import ServicesStickyNav from '@modules/service/components/ServicesStickyNav'
 import NewFooter from '@modules/common/components/NewFooter'
-import OpportunityForm from '@modules/forms/OpportunityForm'
 import ServiceTestimonial from '@modules/service/components/ServiceTestimonial'
 import CaseStudy from '@modules/common/components/CaseStudy'
 import SimpleArrowLeft from '@static/svgs/common/arrows/arrow-simple-left.inline.svg'
@@ -145,8 +144,9 @@ const Service = ({
           </div>
         ) : null}
 
-        <div className="Service-opportunity-form">
-          <OpportunityForm buttonText="Let's Meet" location={location.href} />
+        <div className="Service-opportunity-form" style={{ textAlign: 'center', padding: '4rem 2rem' }}>
+          <h2>Let&apos;s talk.</h2>
+          <a href="mailto:hello@webuild.io" style={{ display: 'inline-block', marginTop: '1.5rem' }}>Let&apos;s Meet →</a>
         </div>
         <OtherServices services={otherServices} />
       </main>

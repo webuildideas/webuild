@@ -9,13 +9,10 @@ import InstagramIcon from '@static/svgs/common/social/instagram.inline.svg'
 import LinkedinIcon from '@static/svgs/common/social/linkedin.inline.svg'
 import DribbbleIcon from '@static/svgs/common/social/dribbble.inline.svg'
 import InstagramGradient from '@static/svgs/common/social/instagram-gradient.inline.svg'
-// Forms
-import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModal'
 import './styles/NewNav.css'
 import useScrollDirection from '@common/hooks/useScrollDirection'
 
 export default function NewNav() {
-  const { showModal } = useOpportunityFormModal()
   const burgerLineOneRef = useRef(null)
   const burgerLineTwoRef = useRef(null)
   const newNavRef = useRef(null)
@@ -567,9 +564,9 @@ export default function NewNav() {
           ref={contactRef}
           className="nav-contact w-full flex flex-col px-6 mx-auto lg:flex-row lg:justify-between lg:items-center"
         >
-          <p
-            className="fade-in font-light flex items-center text-2xl lg:order-2 cursor-pointer"
-            onClick={showModal}
+          <a
+            className="fade-in font-light flex items-center text-2xl lg:order-2"
+            href="mailto:hello@webuild.io"
           >
             Get in touch
             <svg
@@ -585,7 +582,7 @@ export default function NewNav() {
                 fillRule="evenodd"
               />
             </svg>
-          </p>
+          </a>
           <div className="social flex items-center gap-6 my-10">
             <a
               className="nav-social-link dribbble fade-in"

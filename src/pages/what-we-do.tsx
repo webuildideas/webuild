@@ -10,7 +10,6 @@ import { TypeService } from '@common/types/Service'
 import TestimonialSlider from '@modules/common/components/TestimonialSlider'
 import ServiceListing from '@modules/service/components/ServiceListing'
 import ProcessSteps from '@modules/common/components/ProcessSteps'
-import OpportunityForm from '@modules/forms/OpportunityForm'
 import NewFooter from '@modules/common/components/NewFooter'
 
 // styles
@@ -121,12 +120,9 @@ const WhatWeDo = ({
           </div>
         </div>
       </main>
-      <div className="ServicesPage-opportunity-form">
-        <OpportunityForm
-          buttonText="Let's Meet"
-          location={location.href}
-          title="Are you with us? Let's talk."
-        />
+      <div className="ServicesPage-opportunity-form" style={{ textAlign: 'center', padding: '4rem 2rem' }}>
+        <h2>Are you with us? Let&apos;s talk.</h2>
+        <a href="mailto:hello@webuild.io" style={{ display: 'inline-block', marginTop: '1.5rem' }}>Let&apos;s Meet →</a>
       </div>
       <NewFooter />
     </>

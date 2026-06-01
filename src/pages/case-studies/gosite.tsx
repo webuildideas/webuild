@@ -13,7 +13,6 @@ import GoSiteChallengeSolution from '@modules/case-studies/gosite/components/GoS
 import RelatedCaseStudies from '@modules/case-studies/components/NextCaseStudies'
 import NewFooter from '@modules/common/components/NewFooter'
 import OtherServices from '@modules/service/components/OtherServices'
-import OpportunityForm from '@modules/forms/OpportunityForm'
 import GoSiteDesignSystems from '@modules/case-studies/gosite/components/GoSiteDesignSystems'
 import GoSiteConclusion from '@modules/case-studies/gosite/components/GoSiteConclusion'
 import Meta from '@components/Meta'
@@ -63,12 +62,9 @@ const GoSite = ({
 
           <GoSiteConclusion testimonial={featuredTestimonial} />
         </main>
-        <div className="GoSite-opportunity-form">
-          <OpportunityForm
-            buttonText="Let's Meet"
-            location={location.href}
-            title="Set up a meeting - we'd love to chat"
-          />
+        <div className="GoSite-opportunity-form" style={{ textAlign: 'center', padding: '4rem 2rem' }}>
+          <h2>Set up a meeting &mdash; we&apos;d love to chat</h2>
+          <a href="mailto:hello@webuild.io" style={{ display: 'inline-block', marginTop: '1.5rem' }}>Let&apos;s Meet →</a>
         </div>
         <OtherServices services={services} title="How We Got There" />
         <RelatedCaseStudies caseStudies={nextCaseStudies} />

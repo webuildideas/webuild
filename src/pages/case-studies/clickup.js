@@ -10,7 +10,6 @@ import NewFooter from '@modules/common/components/NewFooter'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import ReactPlayer from 'react-player'
 // SVGS
-import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModal'
 import ArrowRight from '../../static/svgs/fancy-arrow-right.inline.svg'
 import Asterisk from '../../static/svgs/asterisk.inline.svg'
 import QuoteIcon from '../../static/svgs/quote-icon.inline.svg'
@@ -131,8 +130,6 @@ const ClickUp = ({
       link: `/what-we-do/brand-strategy-and-design/`
     }
   ]
-
-  const { showModal } = useOpportunityFormModal()
 
   return (
     <>
@@ -710,12 +707,12 @@ const ClickUp = ({
                 <p className="text-base leading-relaxed lg:text-lg mt-8">
                   Want to see how design, user testing, and research can lead to
                   greater growth for you too?{' '}
-                  <span
-                    className="text-electricViolet cursor-pointer"
-                    onClick={showModal}
+                  <a
+                    className="text-electricViolet"
+                    href="mailto:hello@webuild.io"
                   >
                     Contact us today!
-                  </span>
+                  </a>
                 </p>
               </CaseStudyTextContainer>
             </CaseStudyContainer>

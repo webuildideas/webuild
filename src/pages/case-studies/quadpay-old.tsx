@@ -13,7 +13,6 @@ import QuadpayConclusion from '@modules/case-studies/quadpay/components/QuadpayC
 import NewFooter from '@modules/common/components/NewFooter'
 import OtherServices from '@modules/service/components/OtherServices'
 import QuadpayProductDesign from '@modules/case-studies/quadpay/components/QuadpayProductDesign'
-import OpportunityForm from '@modules/forms/OpportunityForm'
 import QuadpayMarketingDesign from '@modules/case-studies/quadpay/components/QuadpayMarketingDesign'
 import QuadpayChallengeSolution from '@modules/case-studies/quadpay/components/QuadpayChallengeSolution'
 import Meta from '@components/Meta'
@@ -66,12 +65,9 @@ const QuadPayOld = ({
 
           <QuadpayConclusion />
         </main>
-        <div className="Quadpay-opportunity-form">
-          <OpportunityForm
-            buttonText="Let's Meet"
-            location={location.href}
-            title="Set up a meeting - we'd love to chat"
-          />
+        <div className="Quadpay-opportunity-form" style={{ textAlign: 'center', padding: '4rem 2rem' }}>
+          <h2>Set up a meeting &mdash; we&apos;d love to chat</h2>
+          <a href="mailto:hello@webuild.io" style={{ display: 'inline-block', marginTop: '1.5rem' }}>Let&apos;s Meet →</a>
         </div>
 
         <OtherServices services={services} title="How We Got There" />

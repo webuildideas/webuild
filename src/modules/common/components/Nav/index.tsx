@@ -18,7 +18,6 @@ import {
 // Components
 import OverlayNav from '@modules/common/components/OverlayNav'
 import Button from '@modules/common/components/Button'
-import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModal'
 import Logo from './Logo'
 import MenuIcon from './MenuIcon'
 
@@ -47,13 +46,9 @@ const Nav = memo(function NavMemo() {
   const animationControls = useAnimation()
   const [ref, inView] = useInView({ triggerOnce: true })
   const [isNavPinned, setIsNavPinned] = useRecoilState(isNavPinnedAtom)
-  const {
-    showModal,
-    isVisible: opportunityFormIsVisible
-  } = useOpportunityFormModal()
   const isOverlayNavOpen = useRecoilValue(isOverlayNavOpenAtom)
   const helmetAttrs = {
-    class: isOverlayNavOpen || opportunityFormIsVisible ? 'overlayIsOpen' : ''
+    class: isOverlayNavOpen ? 'overlayIsOpen' : ''
   }
 
   const pinNav = useCallback(() => setIsNavPinned(true), [setIsNavPinned])
@@ -178,14 +173,12 @@ const Nav = memo(function NavMemo() {
                   </AniLink>
                 </motion.li>
                 <li>
-                  <Button
+                  <a
                     className="Nav-button text-page-navigation"
-                    onClick={showModal}
-                    styleType="outline"
-                    type="button"
+                    href="mailto:hello@webuild.io"
                   >
                     Get In Touch
-                  </Button>
+                  </a>
                 </li>
               </ul>
             </div>

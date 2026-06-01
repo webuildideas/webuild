@@ -3,11 +3,7 @@ import React from 'react'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 // Components
-import Button from '@modules/common/components/Button'
 // import Logo from '@modules/common/components/Nav/Logo'
-
-// Hooks
-import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModal'
 
 // Styles
 import './styles/LandingPageNav.css'
@@ -18,7 +14,6 @@ interface Props {
 
 // TODO: Launch opportunity modal on click of Get in Touch
 const LandingPageNav = ({ tagline }: Props) => {
-  const { showModal } = useOpportunityFormModal()
   return (
     <div>
       <nav className="LandingPageNav">
@@ -47,9 +42,9 @@ const LandingPageNav = ({ tagline }: Props) => {
             </span>
           </AniLink>
           <div className="LandingPageNav-cta">
-            <Button onClick={showModal} styleType="outline">
+            <a href="mailto:hello@webuild.io" className="LandingPageNav-cta-link">
               Get In Touch
-            </Button>
+            </a>
           </div>
         </div>
       </nav>

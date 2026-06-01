@@ -31,8 +31,6 @@ import ProductDesign from '@static/svgs/service/circle/product-strategy-circle.i
 import '../../common/styles/pages/quadpay.css'
 import HeroIllustration from '@static/svgs/case-studies/tetra/tetra-hero.inline.svg'
 import { TypeGatsbyImageFluid } from '@common/types/GatsbyImage'
-import OpportunityForm from '@modules/forms/OpportunityForm'
-
 interface TetraQueryResponse {
   contentfulCaseStudy: TypeCaseStudy
   allContentfulService: {
@@ -245,12 +243,9 @@ const Tetra = ({
             sectionClasses="py-8 md:py-16 md:w-10/12 mx-auto put-to-test"
           />
         </main>
-        <div className="Quadpay-opportunity-form lg:pt-10 lg:pb-16">
-          <OpportunityForm
-            buttonText="Let's Meet"
-            location={location.href}
-            title="Set up a meeting - we'd love to chat"
-          />
+        <div className="Quadpay-opportunity-form lg:pt-10 lg:pb-16" style={{ textAlign: 'center', padding: '4rem 2rem' }}>
+          <h2>Set up a meeting &mdash; we&apos;d love to chat</h2>
+          <a href="mailto:hello@webuild.io" style={{ display: 'inline-block', marginTop: '1.5rem' }}>Let&apos;s Meet →</a>
         </div>
 
         <OtherServices

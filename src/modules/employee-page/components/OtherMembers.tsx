@@ -1,19 +1,15 @@
 import React from 'react'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import MotionAniLink from '@modules/common/components/MotionAniLink'
-import Button from '@modules/common/components/Button'
-
 import { TypeEmployee } from '@common/types/Employee'
 
 import '../styles/otherMembers.css'
-import useOpportunityFormModal from '@modules/forms/hooks/useOpportunityFormModal'
 
 interface Props {
   peeps: TypeEmployee[]
 }
 
 const OtherMembers = ({ peeps }: Props) => {
-  const { showModal } = useOpportunityFormModal()
   return (
     <section className="other-members">
       <h3 className="text-h3 font-extrabold mb-6">More of our team</h3>
@@ -66,9 +62,9 @@ const OtherMembers = ({ peeps }: Props) => {
           to join our remote team.
         </h3>
         <div className="flex flex-col md:flex-row md:items-center md:justify-center">
-          <Button animate={false} onClick={showModal} styleType="solid-purple">
+          <a className="Button Button-solid-purple text-button" href="mailto:hello@webuild.io">
             Introduce Yourself
-          </Button>
+          </a>
           <AniLink
             className="Button Button-outline-purple text-button mt-8 md:mt-0 md:ml-8"
             cover
