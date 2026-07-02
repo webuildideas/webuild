@@ -15,6 +15,7 @@ import { GlobalStyle } from '@common/theme/GlobalStyle'
 // import Nav from '@modules/common/components/Nav'
 import NewNav from '@modules/common/components/NewNav'
 import LandingPageNav from '@modules/common/components/LandingPageNav'
+import ArchiveNotice from '@modules/common/components/ArchiveNotice'
 import OpportunityFormModal from '@modules/forms/components/OpportunityFormModal'
 import BookACallFormModal from '@modules/forms/components/BookACallFormModal'
 
@@ -53,6 +54,7 @@ const AppProvider = memo(function AppProviderMemo({
   return (
     <ThemeProvider theme={styleTheme}>
       <GlobalStyle />
+      <ArchiveNotice />
       <OpportunityFormModal location={location.href} />
       {bookACallUrls.includes(location.pathname) ? (
         <>
