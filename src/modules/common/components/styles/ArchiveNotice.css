@@ -1,21 +1,62 @@
 .ArchiveNotice {
   @apply fixed;
   @apply left-0;
-  @apply bottom-0;
+  @apply top-0;
   @apply w-full;
-  @apply px-5;
-  @apply py-3;
+  @apply px-6;
+  @apply py-4;
   background: #0e0916;
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
   color: #ffffff;
   z-index: 70;
 }
 
+.ArchiveNotice-inner {
+  @apply mx-auto;
+  @apply flex;
+  @apply flex-col;
+  @apply gap-2;
+  max-width: 1080px;
+
+  @screen md {
+    @apply flex-row;
+    @apply items-start;
+    @apply gap-6;
+  }
+}
+
+.ArchiveNotice-kicker {
+  @apply m-0;
+  color: #9eafff;
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
 .ArchiveNotice-copy {
   @apply m-0;
-  @apply mx-auto;
   font-size: 14px;
   line-height: 1.45;
-  max-width: 980px;
-  text-align: center;
+  max-width: 900px;
+}
+
+.new-nav {
+  top: 168px !important;
+}
+
+.LandingPageNav {
+  margin-top: 168px;
+}
+
+@screen md {
+  .new-nav {
+    top: 87px !important;
+  }
+
+  .LandingPageNav {
+    margin-top: 87px;
+  }
 }
