@@ -65,6 +65,14 @@
   }
 }
 
+.home-archive-plaque__desktop-break {
+  display: none;
+
+  @screen lg {
+    display: block;
+  }
+}
+
 .home-archive-plaque__closing {
   color: #ffffff;
   font-family: Crimson Pro, serif;

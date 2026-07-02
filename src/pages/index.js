@@ -262,7 +262,9 @@ const IndexPage = ({ location }) => {
         >
           <p className="home-archive-plaque__kicker">2015 to 2025</p>
           <h2 className="home-archive-plaque__heading">
-            After 10 years of webuild, this chapter has come to a close.
+            After 10 years of webuild, this chapter
+            <br className="home-archive-plaque__desktop-break" /> has come to a
+            close.
           </h2>
           <p>
             From 2015 to 2025, webuild was a studio, a classroom, a canvas, and
