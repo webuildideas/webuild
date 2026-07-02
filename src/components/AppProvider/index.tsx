@@ -51,24 +51,32 @@ const AppProvider = memo(function AppProviderMemo({
   //   return () => clearTimeout(setUserConversionsData)
   // }, [])
 
+  const isHomePage = location.pathname === '/'
+
   return (
     <ThemeProvider theme={styleTheme}>
       <GlobalStyle />
-      <ArchiveNotice />
-      <OpportunityFormModal location={location.href} />
-      {bookACallUrls.includes(location.pathname) ? (
-        <>
-          <BookACallFormModal
-            location={location.href}
-            successButtonText="Go Home"
-            successButtonTo="/"
-          />
-          <LandingPageNav tagline="Results-driven Fintech design" />
-        </>
-      ) : (
-        <NewNav />
-      )}
-      {children}
+      <div
+        className={
+          isHomePage ? 'SiteFrame' : 'SiteFrame SiteFrame--withArchiveNotice'
+        }
+      >
+        {!isHomePage ? <ArchiveNotice /> : null}
+        <OpportunityFormModal location={location.href} />
+        {bookACallUrls.includes(location.pathname) ? (
+          <>
+            <BookACallFormModal
+              location={location.href}
+              successButtonText="Go Home"
+              successButtonTo="/"
+            />
+            <LandingPageNav tagline="Results-driven Fintech design" />
+          </>
+        ) : (
+          <NewNav />
+        )}
+        {children}
+      </div>
     </ThemeProvider>
   )
 })

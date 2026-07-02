@@ -13,6 +13,71 @@
   line-height: 136%;
 }
 
+.home-archive-plaque {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: rgba(255, 255, 255, 0.88);
+  max-width: 920px;
+  padding: 28px;
+  position: relative;
+  z-index: 1;
+
+  @screen md {
+    padding: 36px 44px;
+    width: calc(100% - 48px);
+  }
+
+  @screen lg {
+    padding: 44px 56px;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.65;
+    margin: 16px 0 0;
+
+    @screen md {
+      font-size: 17px;
+    }
+  }
+}
+
+.home-archive-plaque__kicker {
+  color: #9eafff;
+  font-size: 12px !important;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.45 !important;
+  margin: 0 0 14px !important;
+  text-transform: uppercase;
+}
+
+.home-archive-plaque__heading {
+  color: #ffffff;
+  font-family: Crimson Pro, serif;
+  font-size: 32px;
+  font-style: italic;
+  font-weight: 200;
+  line-height: 1.1;
+  margin: 0;
+
+  @screen md {
+    font-size: 44px;
+  }
+}
+
+.home-archive-plaque__closing {
+  color: #ffffff;
+  font-family: Crimson Pro, serif;
+  font-size: 24px !important;
+  font-style: italic;
+  font-weight: 200;
+  line-height: 1.2 !important;
+
+  @screen md {
+    font-size: 30px !important;
+  }
+}
+
 .share {
   transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
   &:hover {

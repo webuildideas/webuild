@@ -256,6 +256,33 @@ const IndexPage = ({ location }) => {
         ref={heroRef}
         className="home-hero bg-newBlack text-white pt-18 pb-26 lg:pt-60"
       >
+        <aside
+          aria-label="webuild archive note"
+          className="home-archive-plaque mx-6 mb-16 md:mx-auto lg:mb-22"
+        >
+          <p className="home-archive-plaque__kicker">2015 to 2025</p>
+          <h2 className="home-archive-plaque__heading">
+            After 10 years of webuild, this chapter has come to a close.
+          </h2>
+          <p>
+            From 2015 to 2025, webuild was a studio, a classroom, a canvas, and
+            a home for ambitious ideas. What started with scrappy websites and
+            late-night design sprints grew into a decade of work with incredible
+            clients, teammates, founders, and companies building products used
+            around the world.
+          </p>
+          <p>
+            webuild is no longer operating, but this site remains online as an
+            archive of the work, people, and partnerships that shaped it.
+          </p>
+          <p>
+            Thank you to every client, teammate, collaborator, supporter, and
+            friend who believed in us along the way.
+          </p>
+          <p className="home-archive-plaque__closing">
+            Here's to what we built, and to what comes next.
+          </p>
+        </aside>
         <div className="home-hero__intro text-center max-w-lg m-auto px-6">
           <h1 className="text-5xl lg:text-7xl font-light">
             Product design for{' '}

@@ -43,20 +43,20 @@
   max-width: 900px;
 }
 
-.new-nav {
+.SiteFrame--withArchiveNotice .new-nav {
   top: 168px !important;
 }
 
-.LandingPageNav {
+.SiteFrame--withArchiveNotice .LandingPageNav {
   margin-top: 168px;
 }
 
 @screen md {
-  .new-nav {
+  .SiteFrame--withArchiveNotice .new-nav {
     top: 87px !important;
   }
 
-  .LandingPageNav {
+  .SiteFrame--withArchiveNotice .LandingPageNav {
     margin-top: 87px;
   }
 }
